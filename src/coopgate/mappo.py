@@ -14,7 +14,8 @@ import torch
 from torch import nn
 from torch.distributions import Categorical
 
-from .config import Config, OBS_DIM, N_ACTIONS
+from .config import Config, OBS_DIM, N_ACTIONS, ACTION_SPEEDS
+from .controllers import backup_intents
 from .sim import SumoEnv
 
 
@@ -52,7 +53,7 @@ def compute_gae(rewards, values, next_values, terminals, boundaries, gamma=0.99,
     return adv, adv+values
 
 
-def train(out, total_steps=20000, seed=7, rollout=256, epochs=5, cfg=None):
+def train(out, total_steps=20000, seed=7, rollout=256, epochs=5, cfg=None, warmstart=None, bc_weight=0.):
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
     random.seed(seed)
@@ -61,19 +62,26 @@ def train(out, total_steps=20000, seed=7, rollout=256, epochs=5, cfg=None):
     torch.set_num_threads(2)
     cfg = cfg or Config()
     model = MAPPO()
+    if warmstart is not None:
+        model,_=load_policy(warmstart)
+        model.train()
     optimizer = torch.optim.Adam(model.parameters(), lr=3e-4)
     episodes, rows, returns = 0, [], []
     total, episode_return = 0, 0.0
     with SumoEnv(cfg, method='mappo') as env:
         obs = env.reset(seed)
         while total < total_steps:
-            batch = {k:[] for k in ('obs','actions','logp','rewards','values','next_values','terminals','boundaries')}
+            batch = {k:[] for k in ('obs','actions','logp','rewards','values','next_values','terminals','boundaries','expert')}
             for _ in range(min(rollout,total_steps-total)):
                 a, lp, val = model.act(obs)
+                expert=[]
+                for s,intent in zip(env.states[:3],backup_intents(env.states,cfg)):
+                    direction=int(np.clip(intent.lane-int(s[1]>1.6),-1,1))+1
+                    expert.append(3*direction+int(np.argmin(np.abs(np.array(ACTION_SPEEDS)-intent.speed))))
                 next_obs, r, terminal, truncated, info = env.step(a)
                 with torch.no_grad():
                     nv = float(model.value(torch.as_tensor(next_obs)))
-                for k,v in zip(batch, (obs,a,lp,r,val,nv,terminal,terminal or truncated)):
+                for k,v in zip(batch, (obs,a,lp,r,val,nv,terminal,terminal or truncated,expert)):
                     batch[k].append(v)
                 episode_return += r
                 obs = next_obs
@@ -99,6 +107,9 @@ def train(out, total_steps=20000, seed=7, rollout=256, epochs=5, cfg=None):
                     actor_loss = -torch.minimum(ratios*a, ratios.clamp(0.8,1.2)*a).mean()
                     value_loss = (model.value(tensors['obs'][ids])-ret_t[ids]).square().mean()
                     loss = actor_loss+0.5*value_loss-0.01*dist.entropy().mean()
+                    if bc_weight:
+                        teacher=torch.as_tensor(b['expert'][ids.numpy()],dtype=torch.long)
+                        loss-=bc_weight*dist.log_prob(teacher).mean()
                     optimizer.zero_grad()
                     loss.backward()
                     nn.utils.clip_grad_norm_(model.parameters(),0.5)
@@ -108,10 +119,12 @@ def train(out, total_steps=20000, seed=7, rollout=256, epochs=5, cfg=None):
             rows.append(row)
             if len(rows)%5 == 0 or total == total_steps:
                 print(json.dumps(row), flush=True)
-            torch.save({'model':model.state_dict(),'seed':seed,'steps':total,'config':cfg.dict()}, out/'policy.pt')
+            torch.save({'model':model.state_dict(),'seed':seed,'steps':total,'config':cfg.dict(),
+                        'bc_initialized':warmstart is not None,'bc_weight':bc_weight}, out/'policy.pt')
             with (out/'training.csv').open('w',newline='') as f:
                 w=csv.DictWriter(f,fieldnames=list(row)); w.writeheader(); w.writerows(rows)
-    (out/'config.json').write_text(json.dumps({'training_seed':seed,'steps':total,'episodes':episodes,'config':cfg.dict()},indent=2))
+    (out/'config.json').write_text(json.dumps({'training_seed':seed,'steps':total,'episodes':episodes,'config':cfg.dict(),
+                                            'bc_initialized':warmstart is not None,'bc_weight':bc_weight},indent=2))
     return model
 
 

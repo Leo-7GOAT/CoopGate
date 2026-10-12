@@ -27,6 +27,14 @@ class Config:
     switch_penalty: float = 0.08
     background_brake: float = 2.5
     prediction_error: float = 0.35
+    # Opt-in v2 executor and backup-relative gate; v1 defaults are preserved.
+    commit_lane_changes: bool = False
+    paired_horizon: int = 6
+    paired_gain: float = 0.5
+    paired_margin: float = 0.0
+    stopping_delay: float = 0.5
+    gate_budget_ms: float = 150.0
+    continuous_network: bool = False
 
     def dict(self):
         return asdict(self)

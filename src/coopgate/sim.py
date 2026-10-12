@@ -14,11 +14,11 @@ import sumolib
 import traci
 
 from .config import Config, OBS_DIM
-from .controllers import SpeedMPC, decode_action
+from .controllers import SpeedMPC, decode_action, Intent
 from .shield import Supervisor
 
 
-def build_network(directory):
+def build_network(directory, continuous=False):
     d = Path(directory)
     d.mkdir(parents=True, exist_ok=True)
     (d/'nodes.xml').write_text('''<nodes>
@@ -37,7 +37,7 @@ def build_network(directory):
     subprocess.run([sumolib.checkBinary('netconvert'), '-n', str(d/'nodes.xml'),
                     '-e', str(d/'edges.xml'), '-x', str(d/'connections.xml'),
                     '-o', str(d/'road.net.xml'), '--no-turnarounds', 'true',
-                    '--no-internal-links', 'true'], check=True, capture_output=True)
+                    '--no-internal-links', 'false' if continuous else 'true'], check=True, capture_output=True)
     (d/'types.rou.xml').write_text('''<routes>
 <vType id="controlled" length="4.8" width="1.8" accel="2.5" decel="5" emergencyDecel="9" sigma="0" minGap="0" maxSpeed="23"/>
 <vType id="human" length="4.8" width="1.8" accel="2" decel="4.5" sigma="0.3" minGap="2.5" maxSpeed="23"/>
@@ -53,7 +53,7 @@ class SumoEnv:
             raise ValueError('The bundled scenario currently supports exactly three controlled vehicles.')
         self.method, self.gui = method, gui
         self.tmp = tempfile.TemporaryDirectory(prefix='coopgate-') if workdir is None else None
-        self.directory = build_network(workdir or self.tmp.name)
+        self.directory = build_network(workdir or self.tmp.name,self.cfg.continuous_network)
         self.connection = None
         self.label = 'coopgate-'+uuid.uuid4().hex
         self.ids = ['ego0', 'ego1', 'ego2', 'human0', 'human1']
@@ -81,6 +81,9 @@ class SumoEnv:
         self.previous_accel = np.zeros(c.n_agents)
         self.last_modes = np.zeros(c.n_agents, bool)
         self.finished = np.zeros(c.n_agents, bool)
+        self.lane_targets = np.array([0, 1, 1])
+        self.lane_remaining = np.zeros(c.n_agents)
+        self.unverified = self.budget_exceeded = self.lane_overrides = 0
         self.merged = np.array([False, True, True])
         for mpc in self.mpcs:
             mpc.failures = 0
@@ -89,7 +92,7 @@ class SumoEnv:
         self.switches = self.accepted = self.decisions = self.emergencies = 0
         self.minimum_gap = float('inf')
         self.trace = []
-        spacing = 0.7 if scenario == 'dense' else 1.0
+        spacing = 0.7 if scenario in ('dense', 'shift_braking') else 1.0
         positions = [65, 65+29*spacing, 65-29*spacing, 142, 5]
         lanes = [0, 1, 1, 1, 0]
         for i, ident in enumerate(self.ids):
@@ -145,7 +148,13 @@ class SumoEnv:
             raise ValueError('Expected three discrete actions in [0, 8].')
         old = self.states.copy()
         learned = [decode_action(actions[i], int(old[i,1] > 1.6), old[i,0], c) for i in range(3)]
-        result = self.gate.select(old, learned)
+        context = {'previous_accel':self.previous_accel.copy(),
+                   'lane_targets':self.lane_targets.copy(),
+                   'lane_remaining':self.lane_remaining.copy()}
+        result = self.gate.select(old, learned, context)
+        diagnostic = result.diagnostics or {}
+        self.unverified += int(diagnostic.get('backup_unverified', False))
+        self.budget_exceeded += int(diagnostic.get('budget_exceeded', False))
         self.gate_ms.append(result.elapsed_ms)
         self.checks.append(result.checks)
         active = ~self.finished
@@ -158,21 +167,29 @@ class SumoEnv:
             if not old[i,4]:
                 continue
             intent = result.intents[i]
+            if c.commit_lane_changes and old[i,0] < c.merge_end-3:
+                if self.lane_remaining[i] > 1e-6:
+                    self.lane_overrides += int(intent.lane != self.lane_targets[i])
+                    intent = Intent(intent.speed, int(self.lane_targets[i]))
+                elif abs(old[i,1]-intent.lane*c.lane_width) > .15:
+                    self.lane_targets[i] = intent.lane
+                    self.lane_remaining[i] = c.lane_change_seconds
             acc = self.mpcs[i].control(old[i,2], intent.speed, self.previous_accel[i], result.emergency)
             self.jerk.append(abs(acc-self.previous_accel[i])/c.decision_dt)
             self.previous_accel[i] = acc
             self.connection.vehicle.setAcceleration(ident, acc, c.decision_dt)
             if old[i,0] < c.merge_end-3:
                 self.connection.vehicle.changeLane(ident, intent.lane, c.decision_dt)
-        if self.scenario == 'braking' and 2 <= self.elapsed < 4:
+        if self.scenario in ('braking', 'shift_braking') and 2 <= self.elapsed < (5 if self.scenario=='shift_braking' else 4):
             if 'human0' in self.connection.vehicle.getIDList():
-                self.connection.vehicle.slowDown('human0', 3.0, 1.0)
+                self.connection.vehicle.slowDown('human0', 0.0 if self.scenario=='shift_braking' else 3.0, 1.0)
         for _ in range(round(c.decision_dt/c.sim_dt)):
             self.connection.simulationStep()
             self.collided_ids.update(self.connection.simulation.getCollidingVehiclesIDList())
         self.elapsed += c.decision_dt
         self.steps += 1
         self.states = self._read_states()
+        self.lane_remaining = np.maximum(0.0, self.lane_remaining-c.decision_dt)
         progress = np.clip(self.states[:3,0]-old[:3,0], 0, 15)
         # Do not treat an unexplained disappearance as successful completion.
         self.finished |= self.states[:3,0] >= c.goal_x
@@ -194,7 +211,8 @@ class SumoEnv:
         truncated = self.elapsed >= c.episode_seconds and not terminated
         self.trace.append({'t':self.elapsed,'states':self.states.tolist(), 'modes':result.modes.astype(int).tolist(),
                            'score':result.score,'margin':result.margin,'emergency':result.emergency,
-                           'reward':reward,'actions':actions.tolist()})
+                           'reward':reward,'actions':actions.tolist(), 'diagnostics':diagnostic,
+                           'lane_targets':self.lane_targets.tolist(), 'lane_remaining':self.lane_remaining.tolist()})
         info = self.metrics()
         return self.observation(), reward, terminated, truncated, info
 
@@ -211,7 +229,9 @@ class SumoEnv:
                 'checks_per_step':float(np.mean(self.checks)) if self.checks else 0,
                 'mean_abs_jerk':float(np.mean(self.jerk)) if self.jerk else 0,
                 'min_gap_m':self.minimum_gap if np.isfinite(self.minimum_gap) else None,
-                'mpc_failures':sum(m.failures for m in self.mpcs)}
+                'mpc_failures':sum(m.failures for m in self.mpcs),
+                'backup_unverified_steps':self.unverified,'budget_exceeded_steps':self.budget_exceeded,
+                'lane_command_overrides':self.lane_overrides}
 
     def close(self):
         if self.connection is not None:

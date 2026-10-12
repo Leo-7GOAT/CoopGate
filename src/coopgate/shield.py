@@ -21,6 +21,7 @@ class GateResult:
     checks: int
     emergency: bool
     elapsed_ms: float
+    diagnostics: dict | None = None
 
 
 def rollout_margin(states, intents, cfg, background_accel=0.0):
@@ -72,7 +73,8 @@ def rollout_margin(states, intents, cfg, background_accel=0.0):
 
 
 class Supervisor:
-    methods = ('traditional', 'mappo', 'independent', 'mamps_style', 'joint_nominal', 'joint_robust')
+    methods = ('traditional', 'mappo', 'independent', 'mamps_style', 'joint_nominal', 'joint_robust',
+               'paired', 'paired_no_gain', 'paired_no_reserve')
 
     def __init__(self, cfg, method='joint_robust'):
         if method not in self.methods:
@@ -80,7 +82,12 @@ class Supervisor:
         self.cfg, self.method = cfg, method
         self.previous = np.zeros(cfg.n_agents, dtype=bool)
 
-    def select(self, states, learned):
+    def select(self, states, learned, context=None):
+        if self.method.startswith('paired'):
+            if not hasattr(self, '_paired'):
+                from .paired import PairedSupervisor
+                self._paired = PairedSupervisor(self.cfg, self.method)
+            return self._paired.select(states, learned, context)
         start = time.perf_counter()
         c, n = self.cfg, self.cfg.n_agents
         backup = backup_intents(states, c)
