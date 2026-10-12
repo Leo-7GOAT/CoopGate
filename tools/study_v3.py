@@ -71,4 +71,4 @@ if __name__=='__main__':
     p.add_argument('--out');p.add_argument('--checkpoint');a=p.parse_args()
     if a.prepare:prepare()
     elif a.seed is None:p.error('--seed required')
-    else:worker(a.seed,a.out or OUT/f'seed{a.seed}',a.checkpoint or ROOT/f'runs/v3_train{a.seed}/policy.pt')
+    else:worker(a.seed,a.out or ROOT/f'runs/v3_reproduction/seed{a.seed}',a.checkpoint or OUT/f'seed{a.seed}/policy.pt')

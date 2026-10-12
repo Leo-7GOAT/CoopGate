@@ -2,6 +2,7 @@ import numpy as np
 import pytest
 from coopgate.recovery import RecoveryConfig,backup_acceleration,witnesses,integrate,RecoverySupervisor
 from coopgate.platoon import initial_state,PlatoonEnv
+from coopgate.chain_recovery import solve_chain,build_chain,chain_modes,brute_modes
 
 
 def test_joint_backup_set_is_preserved_under_bounded_lead_actions():
@@ -54,3 +55,27 @@ def test_sumoclosure_matches_joint_witness_plant():
             assert m['gap_violation_substeps']==0 and not m['collision']
             if t or u:break
         assert m['completed_horizon']
+
+
+def test_chain_solution_matches_full_rollout_enumeration():
+    c=RecoveryConfig();rng=np.random.default_rng(337)
+    for seed in range(30):
+        x=initial_state(seed,c);previous=np.zeros(3);gate=RecoverySupervisor(c,'joint_rl')
+        for _ in range(5):
+            proposal=rng.uniform(-5,2.5,3)
+            selected,info=gate.select(x,previous,proposal)
+            dynamic,certificate=solve_chain(x,previous,np.array(info['proposal']),c)
+            np.testing.assert_allclose(dynamic,selected,atol=1e-7)
+            assert certificate['certified']==info['chosen_certified']
+            assert certificate['margin']==pytest.approx(info['chosen_margin'],abs=1e-7)
+            integrate(x[None,:,:],selected[None,:],rng.uniform(-9,2),c);previous=selected
+
+
+def test_dynamic_program_matches_exhaustive_binary_chains():
+    rng=np.random.default_rng(831)
+    for n in (1,2,3,8):
+        for _ in range(30):
+            feasible=rng.random((n,2,2))>.25;cost=rng.uniform(0,4,(n,2))
+            exact=brute_modes(feasible,cost);dynamic=chain_modes(feasible,cost)
+            if exact is None:assert dynamic is None
+            else:np.testing.assert_array_equal(dynamic,exact)

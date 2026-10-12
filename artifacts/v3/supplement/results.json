@@ -1,0 +1,90 @@
+{
+  "scaling": [
+    {
+      "vehicles": 3,
+      "pair_entries": 10,
+      "joint_modes": 8,
+      "mean_total_ms": 0.2929899957962334,
+      "p95_total_ms": 0.3847349580610172,
+      "mean_dp_ms": 0.016205001156777143,
+      "mean_enumeration_selection_only_ms": 0.01205500157084316
+    },
+    {
+      "vehicles": 8,
+      "pair_entries": 30,
+      "joint_modes": 256,
+      "mean_total_ms": 0.31874000560492277,
+      "p95_total_ms": 0.4202850424917415,
+      "mean_dp_ms": 0.025915002333931625,
+      "mean_enumeration_selection_only_ms": 0.33546999329701066
+    },
+    {
+      "vehicles": 16,
+      "pair_entries": 62,
+      "joint_modes": 65536,
+      "mean_total_ms": 0.38035500911064446,
+      "p95_total_ms": 0.5163100140634925,
+      "mean_dp_ms": 0.04702500009443611,
+      "mean_enumeration_selection_only_ms": null
+    },
+    {
+      "vehicles": 32,
+      "pair_entries": 126,
+      "joint_modes": 4294967296,
+      "mean_total_ms": 0.4836849984712899,
+      "p95_total_ms": 0.5996500025503337,
+      "mean_dp_ms": 0.0721899967174977,
+      "mean_enumeration_selection_only_ms": null
+    },
+    {
+      "vehicles": 64,
+      "pair_entries": 254,
+      "joint_modes": 18446744073709551616,
+      "mean_total_ms": 0.7340149924857542,
+      "p95_total_ms": 0.9087849670322613,
+      "mean_dp_ms": 0.14347499527502805,
+      "mean_enumeration_selection_only_ms": null
+    }
+  ],
+  "equivalence": [
+    {
+      "seed": 83,
+      "steps": 50,
+      "identical_commands_and_states": true
+    },
+    {
+      "seed": 97,
+      "steps": 50,
+      "identical_commands_and_states": true
+    },
+    {
+      "seed": 109,
+      "steps": 50,
+      "identical_commands_and_states": true
+    }
+  ],
+  "timing": {
+    "joint_mpc": {
+      "steps": 250,
+      "mean_ms": 12.340057601453736,
+      "p95_ms": 12.936660012928769,
+      "max_ms": 13.778500026091933,
+      "over_500ms": 0
+    },
+    "joint_rl": {
+      "steps": 250,
+      "mean_ms": 12.616468398133293,
+      "p95_ms": 13.711804972263053,
+      "max_ms": 16.932500002440065,
+      "over_500ms": 0
+    },
+    "chain_rl": {
+      "steps": 250,
+      "mean_ms": 11.052445999812335,
+      "p95_ms": 11.995134991593659,
+      "max_ms": 13.517200015485287,
+      "over_500ms": 0
+    }
+  },
+  "scope": "Single local simulator worker after main study. Scaling is synthetic fixed-order models, not a 64-car SUMO experiment; brute column excludes trajectory generation."
+}

@@ -5,10 +5,57 @@ prototype with MAPPO, longitudinal MPC, rule-based backup, matched baselines,
 episode-level metrics, and reproducible replay. This is **not a certified safety
 system or a claim of a novel algorithm**.
 
+## V3: joint braking witnesses and exact chain selection
+
+V3 adds a **separate fixed-lane longitudinal benchmark**: three controlled cars
+and an external braking leader. It does not certify or supersede the V2 merge.
+The simulator follows an explicit sampled acceleration adapter; the conditional
+proof assumes exact dynamics, fixed ordering, bounded leader braking, and joint
+compliance with the backup. The primary results are:
+
+- Actuator-command memory in the backup trajectory, a recoverable-set argument,
+  and a concrete counterexample to unchecked per-car switching.
+- An exact chain dynamic program for the same binary mode-selection problem:
+  O(nH) trajectory/compatibility work and O(n) selection under the stated structure.
+- Three independently trained policies and **2,020 primary SUMO executions**
+  across nine methods, two test distributions, and a separate risk-check set.
+- Zero collisions and gap violations in the gated RL test/certification runs,
+  but **no demonstrated progress advantage over strong gated baselines**.
+  ID mean progress: RL 416.41 m, MPC 427.54 m, constant acceleration 433.36 m.
+- Exact outputs in 150 supplementary replay steps; chain implementation full-cycle
+  P95 **12.00 ms** on the development machine. This is not a worst-case guarantee.
+
+Learning inside a shield, joint backup checks, and compositional safety already
+exist in prior work. This release establishes a reproducible, scoped result;
+it does not establish a new general safety framework or real-vehicle readiness.
+
+[V3 results and limitations](docs/v3_results.md) · [Theory and related work](docs/theory_v3.md) ·
+[Frozen protocol](artifacts/v3/final/protocol.json) · [Raw data](artifacts/v3/final)
+
+![V3 results](artifacts/v3/final/results.png)
+
+After installing the project (instructions below):
+
+```powershell
+python tools/verify_release_v3.py --replay
+python tools/replay_v3.py --gui --chain --out runs/my_v3_gui
+python tools/study_v3.py --seed 83
+python tools/study_v3.py --seed 97
+python tools/study_v3.py --seed 109
+# Optional fresh training, then pass its checkpoint to study_v3.py:
+python tools/train_v3.py --seed 83 --out runs/my_v3_train83
+python tools/study_v3.py --seed 83 --checkpoint runs/my_v3_train83/policy.pt --out runs/my_v3_study83
+```
+
+Study defaults use published checkpoints and write to `runs/v3_reproduction/seed*`;
+existing episode files are never overwritten. The replay uses the real SUMO-GUI.
+The V3 manuscript generator is `tools/build_v3_manuscript.py` (requires `python-docx`).
+No communication-delay experiment is included.
+
 ## 中文说明
 
 本项目研究多车交互中强化学习与传统规控的切换。使用真实的 Eclipse SUMO
-交通仿真器，通过 TraCI 读取状态、下发加速度与换道指令。当前场景为三辆受控车、
+交通仿真器，通过 TraCI 读取状态、下发加速度与换道指令。V1/V2场景为三辆受控车、
 两辆 SUMO 背景车的双车道合流。背景车不由 MAPPO 控制。
 
 V1初版区分：
