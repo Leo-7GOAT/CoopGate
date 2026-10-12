@@ -1,0 +1,595 @@
+{
+  "study": "v2 fixed pilot",
+  "training_seeds": [
+    31,
+    47,
+    59
+  ],
+  "training_steps": 30000,
+  "bc_episodes_per_seed": 90,
+  "bc_epochs": 20,
+  "online_bc_weight": 0.1,
+  "methods": [
+    "traditional",
+    "mappo",
+    "independent",
+    "joint_robust",
+    "paired_no_gain",
+    "paired_no_reserve",
+    "paired"
+  ],
+  "config": {
+    "n_agents": 3,
+    "sim_dt": 0.1,
+    "decision_dt": 0.5,
+    "episode_seconds": 30.0,
+    "road_length": 600.0,
+    "merge_end": 220.0,
+    "goal_x": 410.0,
+    "lane_width": 3.2,
+    "vehicle_length": 4.8,
+    "vehicle_width": 1.8,
+    "desired_speed": 18.0,
+    "max_speed": 23.0,
+    "max_accel": 2.5,
+    "max_brake": 5.0,
+    "max_jerk": 5.0,
+    "lane_change_seconds": 2.0,
+    "mpc_horizon": 12,
+    "gate_horizon": 10,
+    "safety_gap": 2.0,
+    "gate_threshold": 0.8,
+    "gate_return_threshold": 0.9,
+    "switch_penalty": 0.08,
+    "background_brake": 2.5,
+    "prediction_error": 0.35,
+    "commit_lane_changes": true,
+    "paired_horizon": 6,
+    "paired_gain": 0.5,
+    "paired_margin": 0.0,
+    "stopping_delay": 0.5,
+    "gate_budget_ms": 10000,
+    "continuous_network": true
+  },
+  "certification_scenes": [
+    {
+      "seed": 668643214,
+      "scenario": "braking"
+    },
+    {
+      "seed": 593808030,
+      "scenario": "dense"
+    },
+    {
+      "seed": 170402593,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 959005444,
+      "scenario": "braking"
+    },
+    {
+      "seed": 624558427,
+      "scenario": "dense"
+    },
+    {
+      "seed": 346217881,
+      "scenario": "dense"
+    },
+    {
+      "seed": 513307650,
+      "scenario": "dense"
+    },
+    {
+      "seed": 38506744,
+      "scenario": "braking"
+    },
+    {
+      "seed": 537229451,
+      "scenario": "dense"
+    },
+    {
+      "seed": 464077580,
+      "scenario": "dense"
+    },
+    {
+      "seed": 149989938,
+      "scenario": "dense"
+    },
+    {
+      "seed": 808811341,
+      "scenario": "braking"
+    },
+    {
+      "seed": 217490963,
+      "scenario": "dense"
+    },
+    {
+      "seed": 570375674,
+      "scenario": "braking"
+    },
+    {
+      "seed": 495207263,
+      "scenario": "dense"
+    },
+    {
+      "seed": 121664029,
+      "scenario": "braking"
+    },
+    {
+      "seed": 433610910,
+      "scenario": "dense"
+    },
+    {
+      "seed": 83968561,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 490003972,
+      "scenario": "braking"
+    },
+    {
+      "seed": 886175885,
+      "scenario": "braking"
+    },
+    {
+      "seed": 916349408,
+      "scenario": "braking"
+    },
+    {
+      "seed": 219816428,
+      "scenario": "braking"
+    },
+    {
+      "seed": 930697844,
+      "scenario": "braking"
+    },
+    {
+      "seed": 366769712,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 328078478,
+      "scenario": "braking"
+    },
+    {
+      "seed": 483435227,
+      "scenario": "dense"
+    },
+    {
+      "seed": 654599922,
+      "scenario": "dense"
+    },
+    {
+      "seed": 863834088,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 800418426,
+      "scenario": "braking"
+    },
+    {
+      "seed": 799891525,
+      "scenario": "dense"
+    },
+    {
+      "seed": 863793328,
+      "scenario": "braking"
+    },
+    {
+      "seed": 481245425,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 873036058,
+      "scenario": "braking"
+    },
+    {
+      "seed": 974118719,
+      "scenario": "dense"
+    },
+    {
+      "seed": 638611055,
+      "scenario": "dense"
+    },
+    {
+      "seed": 228561346,
+      "scenario": "braking"
+    },
+    {
+      "seed": 977650657,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 507310838,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 426575282,
+      "scenario": "braking"
+    },
+    {
+      "seed": 753701004,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 236723488,
+      "scenario": "braking"
+    },
+    {
+      "seed": 750258014,
+      "scenario": "braking"
+    },
+    {
+      "seed": 174164382,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 684087334,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 22649863,
+      "scenario": "dense"
+    },
+    {
+      "seed": 577377343,
+      "scenario": "dense"
+    },
+    {
+      "seed": 37440355,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 184122453,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 713416629,
+      "scenario": "dense"
+    },
+    {
+      "seed": 797322876,
+      "scenario": "dense"
+    },
+    {
+      "seed": 924512083,
+      "scenario": "dense"
+    },
+    {
+      "seed": 584215273,
+      "scenario": "dense"
+    },
+    {
+      "seed": 815678717,
+      "scenario": "braking"
+    },
+    {
+      "seed": 426752026,
+      "scenario": "braking"
+    },
+    {
+      "seed": 30991320,
+      "scenario": "dense"
+    },
+    {
+      "seed": 348206215,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 228464347,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 477972007,
+      "scenario": "dense"
+    },
+    {
+      "seed": 661830247,
+      "scenario": "braking"
+    },
+    {
+      "seed": 740819174,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 693006228,
+      "scenario": "dense"
+    },
+    {
+      "seed": 494850705,
+      "scenario": "dense"
+    },
+    {
+      "seed": 439995932,
+      "scenario": "braking"
+    },
+    {
+      "seed": 327633747,
+      "scenario": "braking"
+    },
+    {
+      "seed": 675024926,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 311957151,
+      "scenario": "dense"
+    },
+    {
+      "seed": 614898806,
+      "scenario": "dense"
+    },
+    {
+      "seed": 638973220,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 519604856,
+      "scenario": "braking"
+    },
+    {
+      "seed": 972943840,
+      "scenario": "braking"
+    },
+    {
+      "seed": 360995117,
+      "scenario": "braking"
+    },
+    {
+      "seed": 64982832,
+      "scenario": "dense"
+    },
+    {
+      "seed": 546290011,
+      "scenario": "dense"
+    },
+    {
+      "seed": 369496055,
+      "scenario": "dense"
+    },
+    {
+      "seed": 687615574,
+      "scenario": "dense"
+    },
+    {
+      "seed": 196917331,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 209817739,
+      "scenario": "dense"
+    },
+    {
+      "seed": 614858468,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 757638941,
+      "scenario": "braking"
+    },
+    {
+      "seed": 950261758,
+      "scenario": "braking"
+    },
+    {
+      "seed": 802840160,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 30560082,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 582846484,
+      "scenario": "braking"
+    },
+    {
+      "seed": 956602303,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 436892368,
+      "scenario": "dense"
+    },
+    {
+      "seed": 694785355,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 250131844,
+      "scenario": "braking"
+    },
+    {
+      "seed": 616418517,
+      "scenario": "braking"
+    },
+    {
+      "seed": 863917539,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 910968120,
+      "scenario": "dense"
+    },
+    {
+      "seed": 304946714,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 399894520,
+      "scenario": "braking"
+    },
+    {
+      "seed": 307793602,
+      "scenario": "dense"
+    },
+    {
+      "seed": 165117743,
+      "scenario": "braking"
+    },
+    {
+      "seed": 802117094,
+      "scenario": "dense"
+    },
+    {
+      "seed": 704346587,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 608454777,
+      "scenario": "dense"
+    },
+    {
+      "seed": 407631755,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 461228806,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 494530165,
+      "scenario": "dense"
+    }
+  ],
+  "test_scenes": [
+    {
+      "seed": 744053132,
+      "scenario": "dense"
+    },
+    {
+      "seed": 831302832,
+      "scenario": "dense"
+    },
+    {
+      "seed": 462336356,
+      "scenario": "braking"
+    },
+    {
+      "seed": 78602697,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 533502478,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 376607899,
+      "scenario": "braking"
+    },
+    {
+      "seed": 57134559,
+      "scenario": "dense"
+    },
+    {
+      "seed": 771304745,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 346655684,
+      "scenario": "dense"
+    },
+    {
+      "seed": 55909876,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 312542300,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 608833674,
+      "scenario": "dense"
+    },
+    {
+      "seed": 796126046,
+      "scenario": "dense"
+    },
+    {
+      "seed": 271124530,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 246482260,
+      "scenario": "dense"
+    }
+  ],
+  "shift_scenes": [
+    {
+      "seed": 658575361,
+      "scenario": "shift_braking"
+    },
+    {
+      "seed": 66894520,
+      "scenario": "shift_braking"
+    },
+    {
+      "seed": 442516685,
+      "scenario": "shift_braking"
+    },
+    {
+      "seed": 26978401,
+      "scenario": "shift_braking"
+    },
+    {
+      "seed": 120418568,
+      "scenario": "shift_braking"
+    },
+    {
+      "seed": 958889929,
+      "scenario": "shift_braking"
+    },
+    {
+      "seed": 246832100,
+      "scenario": "shift_braking"
+    },
+    {
+      "seed": 237330964,
+      "scenario": "shift_braking"
+    },
+    {
+      "seed": 676881682,
+      "scenario": "shift_braking"
+    },
+    {
+      "seed": 724026894,
+      "scenario": "shift_braking"
+    },
+    {
+      "seed": 190979970,
+      "scenario": "shift_braking"
+    },
+    {
+      "seed": 903574865,
+      "scenario": "shift_braking"
+    },
+    {
+      "seed": 805096718,
+      "scenario": "shift_braking"
+    },
+    {
+      "seed": 464323642,
+      "scenario": "shift_braking"
+    },
+    {
+      "seed": 685098506,
+      "scenario": "shift_braking"
+    }
+  ],
+  "certification_controllers": [
+    "traditional",
+    "paired31",
+    "paired47",
+    "paired59"
+  ],
+  "risk_endpoints": [
+    "collision",
+    "not_success"
+  ],
+  "family_size": 8,
+  "delta": 0.05,
+  "risk_target": 0.05,
+  "execution": "full deterministic mode enumeration; timing audit separately uses deployment budget",
+  "scope": "IID uniform mixture of three SUMO templates; no road-safety or OOD guarantee"
+}

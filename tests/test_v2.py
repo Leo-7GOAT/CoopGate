@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 from coopgate.certification import binomial_upper,zero_failure_sample_size,certify
-from coopgate.paired import stopping_advance,ClosedLoopPredictor,PairedSupervisor
+from coopgate.paired import stopping_advance,ClosedLoopPredictor,PairedSupervisor,potential
 from coopgate.config import Config
 from coopgate.controllers import Intent,SpeedMPC
 from coopgate.sim import SumoEnv
@@ -43,6 +43,15 @@ def test_continuous_junction_has_no_position_jump():
 def test_stopping_reserve_grows_with_reaction_delay():
     assert stopping_advance(15,15,1)>stopping_advance(15,15,.2)
     assert stopping_advance(0,0,0)==0
+
+
+def test_progress_potential_never_rewards_delaying_goal_crossing():
+    c=Config();s=np.array([[c.goal_x-1,3.2,18,0,1]]*3,dtype=float)
+    before=potential(s,c)
+    s[:,0]+=2
+    assert potential(s,c)>=before
+    s[:,0]=c.goal_x-.0001
+    assert abs(potential(s,c)-potential(np.array([[c.goal_x,3.2,18,0,1]]*3),c))<1e-6
 
 
 def test_binomial_family_correction_and_sample_size():

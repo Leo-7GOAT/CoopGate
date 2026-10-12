@@ -9,7 +9,7 @@ from coopgate.experiment import summarize
 from coopgate.certification import certify
 
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'artifacts'/'v2_continuous'
+OUT=ROOT/'artifacts'/'v2_final'
 METHODS=['traditional','mappo','independent','joint_robust','paired_no_gain','paired_no_reserve','paired']
 SEEDS=[31,47,59]
 
@@ -23,7 +23,7 @@ def prepare():
     path=OUT/'protocol.json'
     if path.exists():
         raise RuntimeError('Protocol already frozen; do not overwrite after inspecting results.')
-    rng=np.random.default_rng(20261013)
+    rng=np.random.default_rng(20261014)
     def scenes(n):
         return [{'seed':int(rng.integers(100000,1000000000)),
                  'scenario':str(rng.choice(['nominal','dense','braking']))} for _ in range(n)]
@@ -42,12 +42,14 @@ def prepare():
     print(path)
 
 
-def worker(seed):
+def worker(seed, checkpoint=None):
     protocol=json.loads((OUT/'protocol.json').read_text(encoding='utf-8'))
     cfg=Config(**protocol['config'])
-    checkpoint=ROOT/'runs'/f'v2c_train{seed}'/'policy.pt'
+    checkpoint=Path(checkpoint) if checkpoint else ROOT/'artifacts/v2_final'/f'seed{seed}'/'policy.pt'
     model,_=load_policy(checkpoint)
     out=OUT/f'seed{seed}';out.mkdir(exist_ok=True)
+    if (out/'episodes.csv').exists():
+        raise RuntimeError('Existing results will not be overwritten; choose a new --out directory.')
     import shutil
     for file in ('policy.pt','training.csv','config.json','bc.json'):
         shutil.copy2(checkpoint.parent/file,out/file)
@@ -92,6 +94,15 @@ def worker(seed):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--prepare',action='store_true');p.add_argument('--seed',type=int)
+    p.add_argument('--out',default='runs/v2_reproduction')
+    p.add_argument('--checkpoint')
     a=p.parse_args()
+    OUT=ROOT/a.out
+    OUT.mkdir(parents=True,exist_ok=True)
     if a.prepare:prepare()
-    else:worker(a.seed)
+    else:
+        if a.seed not in SEEDS:p.error('--seed must be 31, 47, or 59')
+        if not (OUT/'protocol.json').exists():
+            import shutil
+            shutil.copy2(ROOT/'artifacts/v2_final/protocol.json',OUT/'protocol.json')
+        worker(a.seed,a.checkpoint)

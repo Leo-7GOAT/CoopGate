@@ -44,7 +44,8 @@ def evaluate(checkpoint, out, seeds=10, start_seed=10000, methods=None,
              scenarios=('nominal','dense','braking'), cfg=None, gui=False):
     cfg=cfg or Config()
     model,metadata=load_policy(checkpoint)
-    methods=methods or Supervisor.methods
+    # Preserve the v1 command's default suite; v2 requires explicit executor flags.
+    methods=methods or tuple(m for m in Supervisor.methods if not m.startswith('paired'))
     out=Path(out); out.mkdir(parents=True,exist_ok=True)
     rows=[]
     for method in methods:

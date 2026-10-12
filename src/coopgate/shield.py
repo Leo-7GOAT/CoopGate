@@ -74,7 +74,7 @@ def rollout_margin(states, intents, cfg, background_accel=0.0):
 
 class Supervisor:
     methods = ('traditional', 'mappo', 'independent', 'mamps_style', 'joint_nominal', 'joint_robust',
-               'paired', 'paired_no_gain', 'paired_no_reserve')
+               'paired', 'paired_no_gain', 'paired_no_reserve', 'paired_no_memory')
 
     def __init__(self, cfg, method='joint_robust'):
         if method not in self.methods:

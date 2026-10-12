@@ -64,10 +64,12 @@ def stopping_reserve(states,cfg):
 
 
 def potential(states,cfg):
-    active=(states[:cfg.n_agents,0]<cfg.goal_x) & (states[:cfg.n_agents,4]>0)
-    return float(np.minimum(states[:cfg.n_agents,0],cfg.goal_x).sum()
-                 +1.5*np.sum(states[:cfg.n_agents,2]*active)
-                 -5*np.sum((states[:cfg.n_agents,1]<1.6)*active))
+    s=states[:cfg.n_agents]
+    # Cap projected progress, rather than dropping a velocity bonus at the goal.
+    # The latter creates an artificial incentive to stop just before finishing.
+    projected=np.minimum(s[:,0]+1.5*s[:,2],cfg.goal_x)
+    remaining=np.clip((cfg.goal_x-s[:,0])/5,0,1)
+    return float(np.sum(projected-5*(s[:,1]<1.6)*remaining))
 
 
 @dataclass
@@ -156,11 +158,13 @@ class PairedSupervisor:
         learned=list(learned)
         remaining=context.get('lane_remaining',np.zeros(3))
         targets=context.get('lane_targets',(states[:3,1]>1.6).astype(int))
-        if c.commit_lane_changes:
+        if c.commit_lane_changes and self.method!='paired_no_memory':
             for i in range(3):
                 if remaining[i]>1e-6:
                     backup[i]=Intent(backup[i].speed,int(targets[i]))
                     learned[i]=Intent(learned[i].speed,int(targets[i]))
+        if self.method=='paired_no_memory':
+            context={}
         hypotheses=(-c.background_brake,0.,1.5)
         baseline=[self.predictor.rollout(states,backup,context,a) for a in hypotheses]
         checks=3

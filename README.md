@@ -1,7 +1,7 @@
 # CoopGate
 
 **Multi-agent controller switching in real Eclipse SUMO.** A runnable research
-prototype with MAPPO, longitudinal MPC, rule-based backup, six matched baselines,
+prototype with MAPPO, longitudinal MPC, rule-based backup, matched baselines,
 episode-level metrics, and reproducible replay. This is **not a certified safety
 system or a claim of a novel algorithm**.
 
@@ -11,7 +11,7 @@ system or a claim of a novel algorithm**.
 交通仿真器，通过 TraCI 读取状态、下发加速度与换道指令。当前场景为三辆受控车、
 两辆 SUMO 背景车的双车道合流。背景车不由 MAPPO 控制。
 
-初版已经区分：
+V1初版区分：
 
 - **实现目标**：真实仿真闭环、MAPPO、OSQP 纵向 MPC、传统回退、独立/迭代/联合门控。
 - **实验目标**：在相同策略和测试种子下，比较安全、任务完成、RL 使用率和计算开销。
@@ -20,6 +20,56 @@ system or a claim of a novel algorithm**.
 
 门控的 `score` 是预测安全裕度经过 sigmoid 变换的**启发式分数**，不是安全概率。
 MPC 只跟踪纵向速度；横向由 SUMO 连续换道模型执行。没有通信延迟实验。
+
+## V2 完成的研究推进
+
+在连续合流路网上训练了三个独立策略，完成 **1030次主实验、90次记忆消融和15次计算耗时实验**。
+V2增加备用相对收益筛选、连续时间制动余量，以及与执行器换道承诺一致的预测接口。
+完整门控和传统规控在15个同分布场景均全部完成，在15个更强制动场景均完成13个。
+完整门控三组策略的强制动碰撞数为0、0、1；去制动余量后为8、7、5。
+去收益筛选使两组策略的强制动成功数从13降至5。执行器记忆消融未显示稳定收益。
+
+这些结果支持**学习策略退化防护**的初步定位，尚未证明整体优于传统规控。
+完整门控在ID和变化场景的RL使用比例仅约4.7%和2.1%。独立门控在ID场景更快，
+但在更强制动下发生更多碰撞。所有负面结果一并发布。
+
+四个冻结控制器（传统、三个完整门控策略）各运行100个独立认证场景，全部成功且无碰撞。
+对碰撞和未完成两个事件做8项同时检验，整体95%置信水平下风险上界均约4.95%。
+这个有限样本结论只适用于指定SUMO分布，传统基线也通过，不能解释为真实道路安全或性能优越。
+
+三车工程测量中，完整循环包含策略、门控、MPC和TraCI，P95约48.05 ms、最大69.16 ms，
+220个决策周期中没有超过500 ms；这是本机样本测量，不是最坏执行时间保证。
+150 ms软预算可能产生不同策略，不能自动继承完整枚举的风险检验结果。
+
+[全部数据和消融结果](docs/v2_results.md) · [数学推导与条件](docs/theory_v2.md) ·
+[与已有研究的区别及局限](docs/novelty_v2.md) · [冻结协议和开发修正记录](docs/v2_protocol.md)
+
+![V2 results](artifacts/v2_final/results.png)
+
+### 复核与复现V2
+
+安装后可直接使用发布的三个检查点。默认复现写入 `runs/`，拒绝覆盖已有实验。
+
+```powershell
+python tools/verify_release_v2.py --replay
+python tools/study_v2.py --seed 31 --out runs/v2_reproduction
+python tools/study_v2.py --seed 47 --out runs/v2_reproduction
+python tools/study_v2.py --seed 59 --out runs/v2_reproduction
+python tools/supplement_v2.py --seed 31 --out runs/v2_reproduction
+python tools/supplement_v2.py --seed 47 --out runs/v2_reproduction
+python tools/supplement_v2.py --seed 59 --out runs/v2_reproduction
+# Run timing only after other experiment processes have finished:
+python tools/supplement_v2.py --timing --out runs/v2_reproduction
+# Open the real SUMO-GUI using a V2 controller:
+coopgate evaluate --checkpoint artifacts/v2_final/seed31/policy.pt --methods paired --seeds 1 --continuous-network --commit-lane-changes --budget-ms 10000 --gui --out runs/v2_gui
+```
+
+重新训练可使用 `python tools/train_v2.py --seed 31 --out runs/v2_train31`，种子47和59同理；
+评估时通过 `tools/study_v2.py --checkpoint runs/v2_train31/policy.pt` 指定新权重。
+V2的检查点、逐回合CSV、原始轨迹、训练日志、代码哈希及独立认证集均在
+[`artifacts/v2_final`](artifacts/v2_final)，该目录有独立的 `SHA256SUMS.json`。
+`tools/build_v2_manuscript.py --out <path.docx>` 从这些结果生成中文论文二稿（需要python-docx）。
+V1默认配置与历史数据保留；修正路网和训练方式后，不能将V1/V2差异全部归因于门控算法。
 
 ## Quick start (Python 3.11+)
 
