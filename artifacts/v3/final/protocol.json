@@ -1,0 +1,719 @@
+{
+  "config": {
+    "n_agents": 3,
+    "sim_dt": 0.1,
+    "decision_dt": 0.5,
+    "episode_seconds": 25.0,
+    "road_length": 600.0,
+    "merge_end": 220.0,
+    "goal_x": 410.0,
+    "lane_width": 3.2,
+    "vehicle_length": 4.8,
+    "vehicle_width": 1.8,
+    "desired_speed": 20.0,
+    "max_speed": 20.0,
+    "max_accel": 2.5,
+    "max_brake": 5.0,
+    "max_jerk": 5.0,
+    "lane_change_seconds": 2.0,
+    "mpc_horizon": 12,
+    "gate_horizon": 10,
+    "safety_gap": 2.0,
+    "gate_threshold": 0.8,
+    "gate_return_threshold": 0.9,
+    "switch_penalty": 0.08,
+    "background_brake": 2.5,
+    "prediction_error": 0.35,
+    "commit_lane_changes": true,
+    "paired_horizon": 6,
+    "paired_gain": 0.5,
+    "paired_margin": 0.0,
+    "stopping_delay": 0.5,
+    "gate_budget_ms": 150.0,
+    "continuous_network": true,
+    "leader_brake": 9.0,
+    "witness_steps": 24,
+    "witness_buffer": 0.05
+  },
+  "training_seeds": [
+    83,
+    97,
+    109
+  ],
+  "steps": 12000,
+  "bc_episodes": 30,
+  "methods": [
+    "raw_mpc",
+    "raw_rl",
+    "joint_mpc",
+    "individual",
+    "independent_front",
+    "no_memory",
+    "joint_bc",
+    "joint_constant",
+    "joint_rl"
+  ],
+  "test_scenes": [
+    {
+      "seed": 778149656,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 161379674,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 684549975,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 334808674,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 94709753,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 827485313,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 525585106,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 119489368,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 380358097,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 838944318,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 327198867,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 589362455,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 989217227,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 590728865,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 743221112,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 36182692,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 621474427,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 926351311,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 109431729,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 849418648,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 949269764,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 465528418,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 564526289,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 808543709,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 403874197,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 410224838,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 400592307,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 169995318,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 355184915,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 885700241,
+      "scenario": "cruise"
+    }
+  ],
+  "shift_scenes": [
+    {
+      "seed": 867322175,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 99493807,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 675993993,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 236082535,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 756662344,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 544149943,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 791970700,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 937441175,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 420713406,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 591689069,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 424472784,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 237572667,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 157367160,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 183665167,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 43440624,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 495952796,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 481493408,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 157137863,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 425638597,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 409308672,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 269010325,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 406524736,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 998953214,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 44755840,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 811843335,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 582933920,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 914341961,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 864997983,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 675882709,
+      "scenario": "double_brake"
+    },
+    {
+      "seed": 54236887,
+      "scenario": "double_brake"
+    }
+  ],
+  "certification_scenes": [
+    {
+      "seed": 724594195,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 735275725,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 934181486,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 641585050,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 977674184,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 594411782,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 920652950,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 853238066,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 778943668,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 43119148,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 301771775,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 783432735,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 625677109,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 884438607,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 655223355,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 779487675,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 130491053,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 780748863,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 507237793,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 518272623,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 537728449,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 637464399,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 533304949,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 854503171,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 158150600,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 624603721,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 693100590,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 66770608,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 772684944,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 791883577,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 346631202,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 726856652,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 16975960,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 195365876,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 482889382,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 265661322,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 511523409,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 254258348,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 291030384,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 507256490,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 822747936,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 685654397,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 575474393,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 59683664,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 666555962,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 881295644,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 54293397,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 816838581,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 388418758,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 467781322,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 409613282,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 906902989,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 488268162,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 632927530,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 875090382,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 574109414,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 801085921,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 369598088,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 730986878,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 978211476,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 797682228,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 861512090,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 955931699,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 89017562,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 740950964,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 48448109,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 223405534,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 305374787,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 259053198,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 987923254,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 245967785,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 263059001,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 739849694,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 376014772,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 807449148,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 713725207,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 882835246,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 320885613,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 558593160,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 122046203,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 69675498,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 245595423,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 989722446,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 190098550,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 958485989,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 660104337,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 894684258,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 820273292,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 718644734,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 943176842,
+      "scenario": "hard_brake"
+    },
+    {
+      "seed": 655871522,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 622819964,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 486995786,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 825285685,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 771320587,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 674240666,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 29884702,
+      "scenario": "cruise"
+    },
+    {
+      "seed": 696261905,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 962907739,
+      "scenario": "moderate"
+    },
+    {
+      "seed": 462303318,
+      "scenario": "moderate"
+    }
+  ],
+  "certification_controllers": [
+    "joint_mpc",
+    "joint_rl83",
+    "joint_rl97",
+    "joint_rl109"
+  ],
+  "endpoints": [
+    "collision",
+    "gap_violation"
+  ],
+  "family_size": 8,
+  "target": 0.05,
+  "delta": 0.05,
+  "scope": "Fixed-order single-lane SUMO benchmark with exact sampled acceleration adapter; distinct task from V2 merging",
+  "primary_measure": "mean controlled distance in fixed 25-second episodes, zero after a collision; report per training seed",
+  "training_selector": "final checkpoint, no held-out selection",
+  "timing": "primary runs may be concurrent; engineering timing separately"
+}
