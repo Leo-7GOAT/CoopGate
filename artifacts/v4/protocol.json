@@ -1,0 +1,223 @@
+{
+  "config": {
+    "dt": 0.1,
+    "decision_dt": 0.5,
+    "horizon": 25.0,
+    "vmax": 20.0,
+    "brake": 5.0,
+    "accel": 2.5,
+    "jerk": 5.0,
+    "separation": 6.8,
+    "zone_start": -25.0,
+    "zone_end": 6.8,
+    "tail_steps": 24,
+    "goal": 60.0
+  },
+  "training_seeds": [
+    127,
+    139,
+    151
+  ],
+  "train_steps": 6000,
+  "bc_episodes": 20,
+  "methods": [
+    "constant",
+    "eta",
+    "search",
+    "bc",
+    "raw_rl",
+    "no_memory",
+    "individual",
+    "joint_rl"
+  ],
+  "splits": {
+    "nominal": [
+      {
+        "seed": 591344293,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 116230731,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 196676721,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 579479601,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 185948985,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 399385473,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 836580440,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 889884866,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 121350338,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 679834181,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 379468286,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 180858897,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 593729521,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 480605928,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 202903880,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 33954992,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 846595888,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 744633434,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 627999606,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 293461888,
+        "scenario": "nominal"
+      }
+    ],
+    "dense": [
+      {
+        "seed": 75610573,
+        "scenario": "dense"
+      },
+      {
+        "seed": 615955470,
+        "scenario": "dense"
+      },
+      {
+        "seed": 465031654,
+        "scenario": "dense"
+      },
+      {
+        "seed": 745640465,
+        "scenario": "dense"
+      },
+      {
+        "seed": 135265109,
+        "scenario": "dense"
+      },
+      {
+        "seed": 55404539,
+        "scenario": "dense"
+      },
+      {
+        "seed": 585745409,
+        "scenario": "dense"
+      },
+      {
+        "seed": 399539778,
+        "scenario": "dense"
+      },
+      {
+        "seed": 291747792,
+        "scenario": "dense"
+      },
+      {
+        "seed": 724631180,
+        "scenario": "dense"
+      },
+      {
+        "seed": 616692988,
+        "scenario": "dense"
+      },
+      {
+        "seed": 290612041,
+        "scenario": "dense"
+      },
+      {
+        "seed": 736440223,
+        "scenario": "dense"
+      },
+      {
+        "seed": 469008486,
+        "scenario": "dense"
+      },
+      {
+        "seed": 715303848,
+        "scenario": "dense"
+      },
+      {
+        "seed": 495784110,
+        "scenario": "dense"
+      },
+      {
+        "seed": 319208502,
+        "scenario": "dense"
+      },
+      {
+        "seed": 380977783,
+        "scenario": "dense"
+      },
+      {
+        "seed": 179423135,
+        "scenario": "dense"
+      },
+      {
+        "seed": 729852012,
+        "scenario": "dense"
+      }
+    ]
+  },
+  "selector": "final checkpoint, no held-out checkpoint or hyperparameter selection",
+  "training_distribution": "nominal only; dense has higher speeds and closer arrivals",
+  "primary": "Mean goal-arrival time per car capped at 25s; collisions score 25s for all cars. Report completion and safety alongside time.",
+  "scope": "Three fully controlled fixed-route cars, two incoming edges and one outgoing edge, no internal junction links, exact sampled speed adapter.",
+  "search_baseline": "All 125 joint actions from the same five action values, exact backup certificate, two-second constant-command progress surrogate.",
+  "statistics": "Per-training-seed paired scenes; descriptive bootstrap only. No risk certificate from this small pilot.",
+  "source_sha256": {
+    "certification.py": "fd5c820b9b6c49820cccc03f9e4045c55c7c9f1f02ae56924023a4ea8f3f9957",
+    "chain_recovery.py": "611305f6e6731061ad5efc24e6f29376bf5e709bce380662c21b1ce1feb51d64",
+    "cli.py": "b85d3dfed1486ee07a8aa2a4388343f6d7495f6e12d125cfb634dd288e015380",
+    "config.py": "817c37ef52ee95a3c397bc81f7c69cf6c8671ec87ec99f562f8c42fb3f9878fb",
+    "controllers.py": "911d04aa4c6e40fc8a2bd45391ea97471d147ab8d387999989a0ebe47dbe6feb",
+    "experiment.py": "80c9dd82acf16705ec7f5c0a7c275817fd8dd75034be41f660fd3b075e7af80e",
+    "learning_v3.py": "86a79787c9c77da3dab9cfe3999b5ecc3f8644dd131fd1d7eb5d2f09c61ecc78",
+    "learning_v4.py": "3618faefacaa7ba9e7b8226699d76e560a7524b3cf03e0ac5f7a233980fb0e99",
+    "mappo.py": "6929024f8cf82dd79e45b6d3b6ce05b19cdadb99d019a8e8b43bb45a282f8a94",
+    "merge_v4.py": "8db139e9a16316b9278513660c8b91056f8fdb8feae787ec5e188b1a01b114a6",
+    "paired.py": "50924f6ead7c07646487807340d657bc4534cd6e36d4211653e46874f849881c",
+    "platoon.py": "1330663a2f9470b9a6f9148132a54c5dd7d838be14f47a4669a72936413e0817",
+    "recovery.py": "d5faf76da0e06918476ae55bf156872116958efdd6a504b6249312ea535e05e7",
+    "shield.py": "976c02028240b4ea8494186eb8c0200270fc8c27b71142b2bec70e4aec66cd83",
+    "sim.py": "f9e3d7dbd7b2cadb7f46d0b534d27a72d76ca9f3f7682b83161d1c2329c210f2",
+    "__init__.py": "7ce2c9b64fe527c64ed90b72b46553dae55a68094a125e758730a7bcd1ecc132"
+  }
+}
