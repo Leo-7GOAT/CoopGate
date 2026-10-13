@@ -17,6 +17,16 @@ def test_safe_temporally_separated_zone_handoff():
     assert transition_safe(p,q,c)[0]
 
 
+def test_independent_permissions_cannot_be_composed():
+    c=MergeConfig();x=np.array([[-40.,10.],[-40.,10.],[-90.,10.]])
+    prev=np.zeros(3);proposal=np.full(3,2.5)
+    bad,info=MergeGate(c,'individual').select(x,prev,proposal)
+    assert info['in_set'] and not info['certified']
+    assert np.array_equal(bad,proposal)
+    _,joint=MergeGate(c,'joint_rl').select(x,prev,proposal)
+    assert joint['certified']
+
+
 def test_joint_certificate_preserves_recovery_under_random_proposals():
     rng=np.random.default_rng(2901);c=MergeConfig();g=MergeGate(c,'joint_rl')
     for _ in range(5):

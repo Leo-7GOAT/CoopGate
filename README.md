@@ -5,6 +5,54 @@ prototype with MAPPO, longitudinal MPC, rule-based backup, matched baselines,
 episode-level metrics, and reproducible replay. This is **not a certified safety
 system or a claim of a novel algorithm**.
 
+## V4: fixed-route two-to-one merge pilot
+
+V4 moves the backup contract into a **two-incoming-road / one-outgoing-road SUMO
+merge** with three fully controlled cars. It checks conflict-zone occupancy
+intervals inside each simulator substep and preserves command memory in the
+joint stopping tail. Its proof concerns this route-coordinate contract; the
+network has no internal junction links and does not establish arbitrary vehicle
+geometry safety, robustness to model error, or mixed-traffic deployment.
+
+Three seeds each trained for 6,000 shielded PPO steps after behavioral cloning.
+The frozen pilot contains **960 primary executions**, eight methods, and 20
+matched scenes in each of two distributions. The principal finding is negative
+for the learning contribution:
+
+| Mean capped per-car arrival time (s), lower is better | Nominal | Dense |
+|---|---:|---:|
+| Constant acceleration + joint certificate | 11.308 | 10.467 |
+| Learned proposals + same certificate | 11.408 | 10.489 |
+
+Both methods completed every tested episode without contract violations. Two
+learned seeds matched the constant baseline's arrival times on every scene; the
+third was slightly slower. ETA ordering and a 125-action local search did not
+beat that baseline. The search's incomplete episodes also demonstrate that safe
+stopping does not imply task completion. **These results do not establish MARL
+efficiency gains or a publishable novel algorithm.**
+
+An additional post-study audit ran 80 development executions. Hindsight selection
+among static priority variants improved only 3/20 cases, saving 0.15 s on average;
+this is not a deployable learned policy. Single-worker full-cycle P95 for gated
+RL was 15.10 ms (five preselected scenes), not a worst-case timing guarantee.
+
+[V4 results](docs/v4_results.md) · [Theory, assumptions and prior work](docs/theory_v4.md) ·
+[Frozen protocol](artifacts/v4/protocol.json) · [Raw results and checkpoints](artifacts/v4)
+
+```powershell
+python tools/verify_release_v4.py --replay
+python tools/replay_v4.py --gui --out runs/my_v4_gui
+python tools/study_v4.py --seed 127
+python tools/study_v4.py --seed 139
+python tools/study_v4.py --seed 151
+# Optional fresh training and independent reproduction output:
+python tools/train_v4.py --seed 127 --out runs/my_v4_train127
+python tools/study_v4.py --seed 127 --checkpoint runs/my_v4_train127/policy.pt --out runs/my_v4_study127
+```
+
+Reproduction defaults use published checkpoints and write to `runs/`; existing
+results are never overwritten. Earlier V2/V3 evidence remains unchanged.
+
 ## V3: joint braking witnesses and exact chain selection
 
 V3 adds a **separate fixed-lane longitudinal benchmark**: three controlled cars
