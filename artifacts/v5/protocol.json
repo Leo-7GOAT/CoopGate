@@ -1,0 +1,770 @@
+{
+  "version": "v5",
+  "scope": "Independent planning opportunity experiment; no new learning claim.",
+  "config": {
+    "dt": 0.1,
+    "decision_dt": 0.5,
+    "horizon": 25.0,
+    "vmax": 20.0,
+    "brake": 5.0,
+    "accel": 2.5,
+    "jerk": 5.0,
+    "separation": 6.8,
+    "zone_start": -25.0,
+    "zone_end": 6.8,
+    "tail_steps": 24,
+    "goal": 60.0
+  },
+  "portfolio": [
+    {
+      "name": "incumbent",
+      "weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "first": 0,
+      "coast_steps": 0
+    },
+    {
+      "name": "012_r2_c0",
+      "weights": [
+        4.0,
+        2.0,
+        1.0
+      ],
+      "first": 0,
+      "coast_steps": 0
+    },
+    {
+      "name": "012_r2_c2",
+      "weights": [
+        4.0,
+        2.0,
+        1.0
+      ],
+      "first": 0,
+      "coast_steps": 2
+    },
+    {
+      "name": "012_r2_c4",
+      "weights": [
+        4.0,
+        2.0,
+        1.0
+      ],
+      "first": 0,
+      "coast_steps": 4
+    },
+    {
+      "name": "012_r2_c6",
+      "weights": [
+        4.0,
+        2.0,
+        1.0
+      ],
+      "first": 0,
+      "coast_steps": 6
+    },
+    {
+      "name": "012_r8_c0",
+      "weights": [
+        64.0,
+        8.0,
+        1.0
+      ],
+      "first": 0,
+      "coast_steps": 0
+    },
+    {
+      "name": "012_r8_c2",
+      "weights": [
+        64.0,
+        8.0,
+        1.0
+      ],
+      "first": 0,
+      "coast_steps": 2
+    },
+    {
+      "name": "012_r8_c4",
+      "weights": [
+        64.0,
+        8.0,
+        1.0
+      ],
+      "first": 0,
+      "coast_steps": 4
+    },
+    {
+      "name": "012_r8_c6",
+      "weights": [
+        64.0,
+        8.0,
+        1.0
+      ],
+      "first": 0,
+      "coast_steps": 6
+    },
+    {
+      "name": "012_r32_c0",
+      "weights": [
+        1024.0,
+        32.0,
+        1.0
+      ],
+      "first": 0,
+      "coast_steps": 0
+    },
+    {
+      "name": "012_r32_c2",
+      "weights": [
+        1024.0,
+        32.0,
+        1.0
+      ],
+      "first": 0,
+      "coast_steps": 2
+    },
+    {
+      "name": "012_r32_c4",
+      "weights": [
+        1024.0,
+        32.0,
+        1.0
+      ],
+      "first": 0,
+      "coast_steps": 4
+    },
+    {
+      "name": "012_r32_c6",
+      "weights": [
+        1024.0,
+        32.0,
+        1.0
+      ],
+      "first": 0,
+      "coast_steps": 6
+    },
+    {
+      "name": "021_r2_c0",
+      "weights": [
+        4.0,
+        1.0,
+        2.0
+      ],
+      "first": 0,
+      "coast_steps": 0
+    },
+    {
+      "name": "021_r2_c2",
+      "weights": [
+        4.0,
+        1.0,
+        2.0
+      ],
+      "first": 0,
+      "coast_steps": 2
+    },
+    {
+      "name": "021_r2_c4",
+      "weights": [
+        4.0,
+        1.0,
+        2.0
+      ],
+      "first": 0,
+      "coast_steps": 4
+    },
+    {
+      "name": "021_r2_c6",
+      "weights": [
+        4.0,
+        1.0,
+        2.0
+      ],
+      "first": 0,
+      "coast_steps": 6
+    },
+    {
+      "name": "021_r8_c0",
+      "weights": [
+        64.0,
+        1.0,
+        8.0
+      ],
+      "first": 0,
+      "coast_steps": 0
+    },
+    {
+      "name": "021_r8_c2",
+      "weights": [
+        64.0,
+        1.0,
+        8.0
+      ],
+      "first": 0,
+      "coast_steps": 2
+    },
+    {
+      "name": "021_r8_c4",
+      "weights": [
+        64.0,
+        1.0,
+        8.0
+      ],
+      "first": 0,
+      "coast_steps": 4
+    },
+    {
+      "name": "021_r8_c6",
+      "weights": [
+        64.0,
+        1.0,
+        8.0
+      ],
+      "first": 0,
+      "coast_steps": 6
+    },
+    {
+      "name": "021_r32_c0",
+      "weights": [
+        1024.0,
+        1.0,
+        32.0
+      ],
+      "first": 0,
+      "coast_steps": 0
+    },
+    {
+      "name": "021_r32_c2",
+      "weights": [
+        1024.0,
+        1.0,
+        32.0
+      ],
+      "first": 0,
+      "coast_steps": 2
+    },
+    {
+      "name": "021_r32_c4",
+      "weights": [
+        1024.0,
+        1.0,
+        32.0
+      ],
+      "first": 0,
+      "coast_steps": 4
+    },
+    {
+      "name": "021_r32_c6",
+      "weights": [
+        1024.0,
+        1.0,
+        32.0
+      ],
+      "first": 0,
+      "coast_steps": 6
+    },
+    {
+      "name": "102_r2_c0",
+      "weights": [
+        2.0,
+        4.0,
+        1.0
+      ],
+      "first": 1,
+      "coast_steps": 0
+    },
+    {
+      "name": "102_r2_c2",
+      "weights": [
+        2.0,
+        4.0,
+        1.0
+      ],
+      "first": 1,
+      "coast_steps": 2
+    },
+    {
+      "name": "102_r2_c4",
+      "weights": [
+        2.0,
+        4.0,
+        1.0
+      ],
+      "first": 1,
+      "coast_steps": 4
+    },
+    {
+      "name": "102_r2_c6",
+      "weights": [
+        2.0,
+        4.0,
+        1.0
+      ],
+      "first": 1,
+      "coast_steps": 6
+    },
+    {
+      "name": "102_r8_c0",
+      "weights": [
+        8.0,
+        64.0,
+        1.0
+      ],
+      "first": 1,
+      "coast_steps": 0
+    },
+    {
+      "name": "102_r8_c2",
+      "weights": [
+        8.0,
+        64.0,
+        1.0
+      ],
+      "first": 1,
+      "coast_steps": 2
+    },
+    {
+      "name": "102_r8_c4",
+      "weights": [
+        8.0,
+        64.0,
+        1.0
+      ],
+      "first": 1,
+      "coast_steps": 4
+    },
+    {
+      "name": "102_r8_c6",
+      "weights": [
+        8.0,
+        64.0,
+        1.0
+      ],
+      "first": 1,
+      "coast_steps": 6
+    },
+    {
+      "name": "102_r32_c0",
+      "weights": [
+        32.0,
+        1024.0,
+        1.0
+      ],
+      "first": 1,
+      "coast_steps": 0
+    },
+    {
+      "name": "102_r32_c2",
+      "weights": [
+        32.0,
+        1024.0,
+        1.0
+      ],
+      "first": 1,
+      "coast_steps": 2
+    },
+    {
+      "name": "102_r32_c4",
+      "weights": [
+        32.0,
+        1024.0,
+        1.0
+      ],
+      "first": 1,
+      "coast_steps": 4
+    },
+    {
+      "name": "102_r32_c6",
+      "weights": [
+        32.0,
+        1024.0,
+        1.0
+      ],
+      "first": 1,
+      "coast_steps": 6
+    }
+  ],
+  "development_scenes": [
+    {
+      "seed": 500,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 501,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 502,
+      "scenario": "nominal"
+    },
+    {
+      "seed": 500,
+      "scenario": "dense"
+    },
+    {
+      "seed": 501,
+      "scenario": "dense"
+    },
+    {
+      "seed": 502,
+      "scenario": "dense"
+    }
+  ],
+  "splits": {
+    "nominal": [
+      {
+        "seed": 1440199,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1572820,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1574714,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1615864,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1127513,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1141217,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1283312,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1799636,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1046041,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1870725,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1432115,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1965631,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1205071,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1490935,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1692201,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1496091,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1972460,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1116564,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1859068,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1850171,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1998738,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1735358,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1629703,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1348668,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1666158,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1415515,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1977777,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1026526,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1011849,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1322200,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1685858,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1085277,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1949200,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1342821,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1941278,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1331299,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1815452,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1639873,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1635312,
+        "scenario": "nominal"
+      },
+      {
+        "seed": 1885372,
+        "scenario": "nominal"
+      }
+    ],
+    "dense": [
+      {
+        "seed": 1345906,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1338648,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1362260,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1910255,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1440387,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1080177,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1482956,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1208584,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1102898,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1480073,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1418063,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1539996,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1083837,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1072605,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1291926,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1149678,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1067728,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1391140,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1031357,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1294885,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1359946,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1552622,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1391478,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1001647,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1738527,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1140950,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1150532,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1436336,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1576610,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1912997,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1990138,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1269997,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1736639,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1008471,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1314318,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1320972,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1819993,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1165334,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1336721,
+        "scenario": "dense"
+      },
+      {
+        "seed": 1688557,
+        "scenario": "dense"
+      }
+    ]
+  },
+  "methods": [
+    "constant",
+    "frozen_rl127",
+    "short_portfolio",
+    "no_coast",
+    "full_portfolio"
+  ],
+  "executions": 400,
+  "primary": "Matched mean capped per-car arrival time at s=60; deadline 25 seconds, collisions cost 25.",
+  "ablations": {
+    "short_portfolio": "Select by 2-second clipped progress; execute the selected profile full-episode witness. Not receding-horizon MPC.",
+    "no_coast": "Full arrival cost, restricted to incumbent plus nine weighted profiles with no coasting prefix.",
+    "full_portfolio": "Full arrival cost across all 37 certified profiles, incumbent wins ties.",
+    "frozen_rl127": "Previously published final V4 checkpoint, selected before accessing these new test scenes."
+  },
+  "timing": "Single worker; report initial model planning and per-cycle execution separately. First response includes planning. No communication-delay metric.",
+  "source_sha256": {
+    "src/coopgate/merge_v4.py": "8db139e9a16316b9278513660c8b91056f8fdb8feae787ec5e188b1a01b114a6",
+    "src/coopgate/learning_v4.py": "3618faefacaa7ba9e7b8226699d76e560a7524b3cf03e0ac5f7a233980fb0e99",
+    "src/coopgate/planning_v5.py": "7fda10ca6f1a37f418fe24d043b1089b0ffc81aae2ba48ce8c776b85503c97a0",
+    "tools/study_v5.py": "129b9d85562935b8eee89697848fdb3cbb4d415b634d82879fa6dfc2eeaa106c",
+    "artifacts/v4/seed127/policy.pt": "bec1a7eb6761945849ac6cde4c9ebda3645da96379c2456cd7491be7617ad931"
+  },
+  "limits": [
+    "Exact sampled dynamics, three fully controlled cars, fixed routes, no disturbance or background traffic.",
+    "Finite portfolio optimum is not a globally optimal solution.",
+    "Headroom is an opportunity for future learning, not evidence that MARL obtains the gain."
+  ]
+}
