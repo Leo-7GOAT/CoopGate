@@ -5,6 +5,67 @@ prototype with MAPPO, longitudinal MPC, rule-based backup, matched baselines,
 episode-level metrics, and reproducible replay. This is **not a certified safety
 system or a claim of a novel algorithm**.
 
+## V9: feedback switching with bounded actuator error
+
+V9 extends the declared model to **acceleration error up to ±0.5 m/s² at every
+0.1 s substep**. Monotone interval propagation, joint conflict-occupancy checks
+and a braking suffix to a stopped invariant set provide a conditional robust
+route certificate. Selected profiles run in feedback from measured state;
+tracking mismatch no longer automatically discards the policy forever.
+
+The frozen learned ensemble proposes one profile. The controller compares its
+nominal rollout with the baseline, chooses one, and robustly certifies every
+executed action. Learning proposes; the interval certificate authorizes.
+
+The protocol and six improvement criteria were frozen before **200 new initial
+states × four error modes × seven methods = 5,600 actual SUMO executions**.
+Each method sees the same initial state and exogenous error tape; zero error,
+random error, persistent bias and intermittent pulses are all retained.
+
+| Method, 800 executions each | Completed | Controller aborts | Route-violation episodes | Warm first-response P95 |
+|---|---:|---:|---:|---:|
+| V8 cached plan | 638 | 162 | 3 | 7.90 ms |
+| Nominal feedback, no robust bound | 674 | 126 | 5 | 37.93 ms |
+| Robust traditional baseline | 800 | 0 | 0 | 6.61 ms |
+| **Robust learned pair** | **800** | **0** | **0** | **8.52 ms** |
+| Robust full search | 800 | 0 | 0 | 41.25 ms |
+
+All methods recorded zero SUMO collisions. Aborts and route violations are
+distinct and may overlap; the old methods are tested **outside their original
+exact-model guarantee**. Aborted episodes receive 25 s cost, never disappear
+from the denominator. Fixed- and random-proposal robust pairs also complete
+all 800 executions without violations; safety comes from the certificate.
+
+Across the three nonzero error modes, the learned pair reduces mean arrival
+cost by **3.18% versus the same-certificate traditional baseline**, **2.89%
+versus a training-selected fixed proposal**, and **2.12% versus a random
+proposal**. The last two controls use the same two-candidate budget. Savings
+versus the robust baseline are 0.333 s, with descriptive 95% paired cluster
+bootstrap interval **[0.266, 0.404] s**. Resampling uses 200 independent initial
+states, preserving the repeated error modes within each cluster.
+
+**Tradeoffs retained:** the learned pair is worse than the robust baseline on
+15/200 initial states after averaging their three perturbed runs. Full search
+is 0.062 s faster on average under disturbances but has higher first-response
+cost. This is neither a per-scene performance-dominance result nor a new MARL
+algorithm. All six predeclared improvement criteria passed.
+
+The proof requires a known error bound, exact measurements, three cooperative
+vehicles and fixed routes. Command slew limits do not bound the slew of noisy
+actual acceleration. Unknown bounds, perception error, uncooperative actors,
+delay-aware closed-loop operation and real vehicles remain unvalidated.
+Compile and warm the controller before connecting to the simulator.
+
+[V9 results and ablations](docs/v9_results.md) · [Interval and recursion proofs](docs/theory_v9.md) ·
+[Frozen protocol](artifacts/v9/protocol.json) · [Raw episodes](artifacts/v9/study/episodes.csv)
+
+```powershell
+pip install -e ".[dev,fast]"
+python tools/verify_release_v9.py --replay
+python tools/replay_v9.py --gui --disturbance bias --out runs/my_v9_demo
+python tools/study_v9.py --out runs/my_v9_reproduction
+```
+
 ## V8: exact pruning and faster verified execution
 
 The frozen controller now has a strict float64 compiled evaluation kernel and
