@@ -5,6 +5,61 @@ prototype with MAPPO, longitudinal MPC, rule-based backup, matched baselines,
 episode-level metrics, and reproducible replay. This is **not a certified safety
 system or a claim of a novel algorithm**.
 
+## V8: exact pruning and faster verified execution
+
+The frozen controller now has a strict float64 compiled evaluation kernel and
+an optimistic earliest-arrival lower bound. Pruning preserves the best choice
+in the **same 37-profile library**, including the original tie-breaking rule.
+The learned ensemble can order candidates; it cannot authorize a command or
+prune a candidate. The per-step recoverability certificate remains active.
+
+A protocol frozen before testing covers **200 new scenes / 1,400 actual SUMO
+executions**, with seven methods in randomized order within each scene:
+
+| Method | Warm first-response P95 | Nominal mean arrival | Dense mean arrival |
+|---|---:|---:|---:|
+| Traditional baseline | 10.13 ms | 11.035 s | 10.345 s |
+| Original two-profile verification | 134.21 ms | 10.143 s | 9.885 s |
+| Compiled two-profile verification | **5.57 ms** | 10.143 s | 9.885 s |
+| Compiled full search | 9.73 ms | 10.090 s | 9.633 s |
+| Natural-order exact pruning | **7.94 ms** | **10.090 s** | **9.633 s** |
+| Learned-order exact pruning | 8.35 ms | 10.090 s | 9.633 s |
+| Original full search | 173.98 ms | 10.090 s | 9.633 s |
+
+Compiled two-profile verification preserves every original choice and cuts
+warm first-response P95 by **95.85%**. Exact pruning recovers the full library's
+**8.56% nominal / 6.88% dense** mean arrival-time improvement over the baseline.
+Compared with two-profile verification, it improves **61 scenes**, ties 139,
+and worsens none. Every compiled candidate cost and every full-search/pruned
+choice matches the original evaluator. All six predeclared criteria passed.
+
+**Contribution separation:** learned ordering cuts certificate calls by 56.4%
+versus compiled full search and 12.2% versus natural ordering, but inference
+overhead makes its end-to-end P95 slightly slower than natural ordering.
+The large speedup over Python is primarily implementation work; the fair
+same-backend pruning comparison is **9.73 → 7.94 ms**. This does not establish
+novel reinforcement learning or resolve V7's failed risk calibration.
+
+All executions completed without recorded collisions or contract violations.
+The scope remains three cooperative vehicles, fixed routes, an exact model,
+and a finite profile library. Simulation pauses during computation; these are
+not delay-aware closed-loop or worst-case execution-time guarantees. A fresh
+process/cache required **1.55 s imports + 4.49 s first-call compilation**,
+excluding OS process launch. Warm the controller before connecting it to SUMO.
+
+[V8 measured results](docs/v8_results.md) · [Lower-bound proof and limits](docs/theory_v8.md) ·
+[Frozen protocol](artifacts/v8/protocol.json) · [Result figure](artifacts/v8/results.png)
+
+```powershell
+pip install -e ".[dev,fast]"
+python tools/verify_release_v8.py --replay
+python tools/replay_v8.py --gui --method bb_natural --out runs/my_v8_demo
+python tools/study_v8.py --out runs/my_v8_reproduction
+```
+
+Use a new output directory for each demo or study. Choose `--method bb_learned`
+to inspect learned ordering with the same physical checks and optimal choice.
+
 ## V7: conditional-risk diagnosis and two-profile verification
 
 The frozen V6 selector was evaluated with **1,024 new calibration states** from
