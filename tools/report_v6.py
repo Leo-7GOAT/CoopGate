@@ -73,8 +73,16 @@ def main():
         for name in ('imitation', 'policy'):
             meta = torch.load(D/f'seed{seed}'/f'{name}.pt', map_location='cpu', weights_only=True)
             checkpoints[str(seed)][name] = {'epoch': meta['epoch'], 'validation_arrival_s': meta['validation_arrival_s']}
+    contrasts = {}
+    for split, seeds in protocol['test_seeds'].items():
+        contrasts[split] = {}
+        for reference, method in [('imitation', 'learned'), ('learned', 'calibrated')]:
+            gains = np.array([float(lookup[reference, split, seed]['mean_capped_finish_s'])-float(lookup[method, split, seed]['mean_capped_finish_s']) for seed in seeds])
+            ci = np.percentile(rng.choice(gains, size=(10000, len(gains)), replace=True).mean(axis=1), [2.5, 97.5])
+            contrasts[split][f'{method}_vs_{reference}'] = {'mean_saved_s': float(gains.mean()), 'ci95_s': ci.tolist(),
+                                                         'scope': 'Supplementary descriptive paired contrast, no multiplicity correction.'}
     result = {'executions': len(rows), 'independent_scenes': 120, 'summary': summary, 'timing': latency,
-              'checkpoints': checkpoints, 'calibration_quantile_s': calibration['upper_residual_quantile_s'],
+              'checkpoints': checkpoints, 'contrasts': contrasts, 'calibration_quantile_s': calibration['upper_residual_quantile_s'],
               'scope': protocol['scope'], 'calibration_scope': calibration['scope']}
     (D/'summary.json').write_text(json.dumps(result, indent=2)+'\n', newline='\n')
     colors = ['#77828d', '#aba292', '#68a5b1', '#4f799c', '#245d47', '#c28e65']
@@ -104,8 +112,14 @@ def main():
         r = summary[split]['calibrated']; ci = r['saved_ci95_s']
         lines.append(f"- {split}：采用非基线方案 {r['nonbaseline_adoptions']}/60；提案上界覆盖率 {r['proposal_coverage']:.1%}；最终变慢率 {r['final_regression_rate']:.1%}；采用子集内变慢率 {r['conditional_regression_rate']}；平均节省 {r['mean_saved_s']:.3f} s，描述性95%配对区间 [{ci[0]:.3f}, {ci[1]:.3f}] s。")
     lines += ['', '理论是对校准集与新常规场景共同随机性的边际性能界，不是接受条件下的保证，不是碰撞概率，不适用于高密度分布偏移。测试观测比例不能证明所有场景均满足目标。', '', '## 训练检查点', '']
+    lines.insert(-2, '本次常规测试的提案上界覆盖率83.3%低于名义90%，高密度仅70%。有限测试与固定校准集上的经验覆盖不等于边际理论覆盖；结果不能写成“已实证达到90%可靠度”。高密度门控仅保留28.4%教师收益，说明错误回退与错误接受都需要进一步诊断。')
     for seed, values in checkpoints.items():
         lines.append(f"- 种子{seed}：蒸馏轮次{values['imitation']['epoch']}，验证代价{values['imitation']['validation_arrival_s']:.4f} s；最终选择轮次{values['policy']['epoch']}，验证代价{values['policy']['validation_arrival_s']:.4f} s。")
+    lines += ['', '补充的配对消融差异如下，仅作描述性比较，未进行多重比较校正。', '']
+    for split, comparisons in contrasts.items():
+        for name, value in comparisons.items():
+            ci = value['ci95_s']
+            lines.append(f"- {split} {name}：平均节省 {value['mean_saved_s']:.4f} s，95%区间 [{ci[0]:.4f}, {ci[1]:.4f}] s。")
     lines += ['', '## 运行时间与安全', '', '| 方法 | 高层选择P95 ms | 执行周期P95 ms | 首次响应P95 ms |', '|---|---:|---:|---:|']
     for method in protocol['methods']:
         t = latency[method]

@@ -5,6 +5,53 @@ prototype with MAPPO, longitudinal MPC, rule-based backup, matched baselines,
 episode-level metrics, and reproducible replay. This is **not a certified safety
 system or a claim of a novel algorithm**.
 
+## V6: learned schedule selection and a calibrated performance gate
+
+V6 learns **which joint feedback schedule to use** from the initial traffic
+state. Three models form a centralized ensemble trained with full-information
+offline contextual-bandit objectives. This is not a new decentralized MARL
+algorithm. A separate one-sided conformal bound on excess arrival cost decides
+whether to accept the learned schedule or revert to the constant baseline;
+the joint braking certificate still checks every executed low-level action.
+
+Training, validation and calibration use **768 / 128 / 256 new nominal states**.
+The protocol was committed before training, and checkpoints plus the calibration
+threshold were committed before testing. Six methods then ran **720 real SUMO
+episodes on 120 independent new scenes**.
+
+| Mean capped arrival time (s) | Nominal | Dense shift |
+|---|---:|---:|
+| Constant baseline | 10.931 | 10.453 |
+| Best fixed schedule from training | 10.978 | 10.442 |
+| Distilled selector | 10.344 | 10.100 |
+| Bandit selector | 10.272 | 10.019 |
+| Calibrated selector | **10.267** | **10.233** |
+| Full planning teacher | 10.108 | 9.681 |
+
+On nominal scenes the calibrated selector saves **6.07%** relative to the baseline
+and retains **80.7%** of the teacher's mean gain. It reduces worse-than-baseline
+cases from 11/60 to 1/60 while adopting nonbaseline schedules in 34/60 cases.
+First-response P95 is **13.75 ms**, versus **230.53 ms** for the full teacher;
+high-level inference/selection P95 is 0.71 ms. All 720 executions complete with
+no recorded collisions or route-contract violations under the declared model.
+
+**Calibration limitations are material:** empirical proposal-bound coverage is
+83.3% on nominal tests, below the nominal 90% target, and 70% under dense shift.
+The theoretical bound is marginal over calibration and new exchangeable scenes,
+not conditional on acceptance and not a collision-risk guarantee. Under dense
+shift the gate retains only 28.4% of teacher gain (2.10% improvement over baseline)
+and is slower on average than the ungated learned selector. No OOD guarantee is
+claimed. This evidence does not establish a novel general conformal method.
+
+[V6 results](docs/v6_results.md) · [Theory and prior work](docs/theory_v6.md) ·
+[Frozen protocol](artifacts/v6/protocol.json) · [Raw results](artifacts/v6/study/episodes.csv)
+
+```powershell
+python tools/verify_release_v6.py --replay
+python tools/replay_v6.py --gui --out runs/my_v6_demo
+python tools/study_v6.py --out runs/my_v6_reproduction
+```
+
 ## V5: full-horizon planning establishes useful learning headroom
 
 The new controller compares **37 jointly certified feedback schedules** through
