@@ -5,6 +5,53 @@ prototype with MAPPO, longitudinal MPC, rule-based backup, matched baselines,
 episode-level metrics, and reproducible replay. This is **not a certified safety
 system or a claim of a novel algorithm**.
 
+## V7: conditional-risk diagnosis and two-profile verification
+
+The frozen V6 selector was evaluated with **1,024 new calibration states** from
+two declared regimes. A finite-grid Clopper–Pearson procedure controls accepted
+nonbaseline performance-regression risk simultaneously across regimes and
+thresholds, under its stated sampling and exact-model assumptions. **No threshold
+qualified at risk 10% and confidence 95%.** The resulting all-fallback controller
+has zero performance gain, not a measured zero conditional risk. This negative
+result is retained alongside all **960 SUMO executions on 160 new scenes**.
+
+A separate protocol, motivated by calibration outcomes and frozen before its
+test, adds **online two-profile verification**: compare the entire model rollout
+of the learned proposal with the baseline, choose the cheaper plan, then execute
+with the existing certificate and stale-plan fallback. On **80 additional new
+scenes / 320 SUMO executions**:
+
+| Two-profile verification | Nominal (40) | Dense (40) |
+|---|---:|---:|
+| Mean arrival-time improvement vs baseline | 8.34% | 5.92% |
+| Full teacher's mean gain retained | 94.4% | 67.0% |
+| Worse-than-baseline scenes | 0/40 | 0/40 |
+
+First-response P95 is **139.74 ms**, versus **183.30 ms** for the 37-profile
+teacher and **11.13 ms** for the unverified learner on the same supplement.
+This is a modest computation saving over full search, not a low-cost confidence
+score or a hard-real-time guarantee. All **1,280 executions** completed without
+recorded collisions or route-contract violations in the declared exact model.
+No model-mismatch or real-vehicle guarantee is implied; a stale-plan fallback
+does not preserve the original whole-episode performance bound.
+
+The maximum-conformal-quantile baseline uses the same new calibration data but
+is very conservative: on dense tests it accepts 4/80 proposals, two regress,
+and mean gain is -0.06%. More calibration alone does not fix the score's
+selection quality. Dense traffic is now a **calibrated regime**, not unseen OOD.
+The two studies have disjoint test scenes; compare methods within each study.
+
+[V7 results and negative findings](docs/v7_results.md) ·
+[Conditional-risk theory and limitations](docs/theory_v7.md) ·
+[Main protocol](artifacts/v7/protocol.json) ·
+[Independent supplement protocol](artifacts/v7_pair/protocol.json)
+
+```powershell
+python tools/verify_release_v7.py --replay
+python tools/study_v7.py --out runs/my_v7_reproduction
+python tools/study_v7_pair.py --out runs/my_v7_pair_reproduction
+```
+
 ## V6: learned schedule selection and a calibrated performance gate
 
 V6 learns **which joint feedback schedule to use** from the initial traffic
