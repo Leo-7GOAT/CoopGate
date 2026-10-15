@@ -5,6 +5,46 @@ prototype with MAPPO, longitudinal MPC, rule-based backup, matched baselines,
 episode-level metrics, and reproducible replay. This is **not a certified safety
 system or a claim of a novel algorithm**.
 
+## V5: full-horizon planning establishes useful learning headroom
+
+The new controller compares **37 jointly certified feedback schedules** through
+completion, including the original constant-acceleration gate as an incumbent.
+It plans from the current initial state before execution, checks the saved plan
+each cycle, and falls back to the original feedback gate if the plan becomes
+stale. The candidate library and evaluation protocol were committed before
+testing on **80 new scenes, five methods, 400 real SUMO executions**.
+
+| Mean capped per-car arrival time (s), lower is better | Nominal | Dense |
+|---|---:|---:|
+| Constant acceleration + joint certificate | 10.971 | 10.346 |
+| Previously frozen RL127 + same certificate | 10.971 | 10.346 |
+| Same portfolio selected by 2-second progress | 11.004 | 10.325 |
+| Full arrival objective, without early coasting | 10.850 | 10.162 |
+| Full arrival objective and early-coasting portfolio | **10.171** | **9.592** |
+
+The full portfolio reduces mean arrival time by **7.29% in each distribution**:
+64/80 paired scenes improve and 16 tie. All 400 executions complete with no
+recorded collisions or route-contract violations. Initial planning P95 is
+243.25 ms; first response including planning P95 is 256.87 ms (maximum 292.11 ms);
+execution-cycle P95 is 16.13 ms. These are measured single-worker times, not WCET
+or evidence of robustness to execution delays.
+
+This is a **deterministic planning teacher, not a newly improved MARL policy**.
+The same exact-model, fixed-route, three-controlled-car limitations apply.
+Retaining the incumbent gives a simple non-worsening property only when the
+model matches execution; it is neither global optimality nor a novel general
+theorem. The useful new result is measurable room to improve the learner:
+anticipatory yielding plus a full arrival objective outperforms its old teacher.
+
+[V5 results](docs/v5_results.md) · [Theory and prior work](docs/theory_v5.md) ·
+[Frozen protocol](artifacts/v5/protocol.json) · [Raw paired results](artifacts/v5/study/episodes.csv)
+
+```powershell
+python tools/verify_release_v5.py --replay
+python tools/replay_v5.py --gui --out runs/my_v5_demo
+python tools/study_v5.py --out runs/my_v5_reproduction
+```
+
 ## V4: fixed-route two-to-one merge pilot
 
 V4 moves the backup contract into a **two-incoming-road / one-outgoing-road SUMO
