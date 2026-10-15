@@ -31,7 +31,19 @@ def main(replay=False):
         np.testing.assert_allclose(data['actual'], data['costs'][:, 1]-data['costs'][:, 0], atol=1e-10)
         assert upper_quantile(data['actual']-data['predicted'], protocol['risk']) == cal['conformal_quantiles_s'][regime]
     assert cal['max_conformal_quantile_s'] == max(cal['conformal_quantiles_s'].values())
-    assert calibrate_threshold(groups, protocol['thresholds_s'], protocol['risk'], protocol['delta'], protocol['tolerance_s']) == cal['pac']
+    recalculated = calibrate_threshold(groups, protocol['thresholds_s'], protocol['risk'], protocol['delta'], protocol['tolerance_s'])
+    # beta.ppf may differ by floating-point roundoff between SciPy/platforms.
+    # Bound values get a tight absolute tolerance; discrete counts, certification
+    # flags and the final deployed threshold must still match exactly.
+    errors = []
+    for current, saved in zip(recalculated['candidates'], cal['pac']['candidates'], strict=True):
+        for regime in current['regimes']:
+            a, b = current['regimes'][regime], saved['regimes'][regime]
+            errors.append(abs(a['upper']-b['upper']))
+            np.testing.assert_allclose(a['upper'], b['upper'], rtol=0, atol=1e-12)
+            a['upper'] = b['upper']
+    assert recalculated == cal['pac']
+    print(f'Max recalculated binomial-bound roundoff: {max(errors):.3g}', flush=True)
     old = json.loads((ROOT/'artifacts/v6/protocol.json').read_text())
     all_seeds = [s for group in [*old['data_seeds'].values(), *old['test_seeds'].values(), *protocol['calibration_seeds'].values()] for s in group]
     old_q = json.loads((ROOT/'artifacts/v6/calibration.json').read_text())['upper_residual_quantile_s']
