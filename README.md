@@ -5,6 +5,70 @@ prototype with MAPPO, longitudinal MPC, rule-based backup, matched baselines,
 episode-level metrics, and reproducible replay. This is **not a certified safety
 system or a claim of a novel algorithm**.
 
+## V10: certificate-constrained online rollout
+
+V10 recomputes the better traditional/learned base continuation at every control
+cycle, then searches intermediate acceleration commands one vehicle at a time.
+Every trial passes the unchanged **joint V9 robust backup certificate** before
+its nominal task cost is evaluated. A trial replaces the incumbent only when
+its integer arrival cost strictly decreases. Global policy time is preserved.
+
+The conditional guarantees are separate: robust route safety for the declared
+bounded actuator error, and closed-loop performance improvement **only in the
+nominal zero-error model**. An independent earliest-arrival lower bound prunes
+uncompetitive tails without changing the chosen coordinate-search action.
+Coordinate rollout and predictive safety filtering are established methods;
+this implementation does not claim a new generic MARL algorithm.
+
+The source and nine acceptance criteria were frozen in commit `bfab9dd` before
+**200 new initial states × four error modes × eight methods**. The protocol
+compares V9 traditional/learned/full-search controllers with no-learning,
+fixed/random/learned proposals and a binary-action rollout ablation. Learned
+proposal gains are reported separately from the online planner's gains.
+
+All **nine predeclared criteria passed** in 6,400 actual SUMO executions.
+Across the 600 perturbed conditions per method, V10 reduces mean capped arrival
+cost by **3.67% versus V9 learned switching**, **3.46% versus V9 full
+search**, and **7.29% versus the same-certificate traditional baseline**.
+The primary paired saving is 0.368 s, with a 95% seed-cluster bootstrap interval
+[0.325, 0.410] s; dense-scene improvement versus V9 learned switching is
+4.48%. The target completed **800/800** runs without recorded collisions,
+route violations, aborts or timeouts. All matched controls also completed.
+
+| Same-machine warm measurement | V9 learned pair | V10 rollout |
+|---|---:|---:|
+| First response P95 | 8.63 ms | 19.03 ms |
+| Controller cycle P95 | 0.14 ms | 6.84 ms |
+| Mean command slew under perturbations | 0.934 m/s³ | 0.992 m/s³ |
+
+**Tradeoffs retained:** online work and average command slew increase. Under
+perturbations, 177/200 initial-state clusters improve, 17 tie and 6 regress
+versus V9 learned switching. Zero-error tests show no regression in 200 scenes.
+Learning adds a modest **0.64%** over no-learning rollout; the main gain comes
+from online planning. Secondary intervals are descriptive, without a multiple
+comparison significance claim.
+
+A differential audit on 94 predesignated, correlated diagnostic states finds
+zero command/value mismatches with pruning disabled, while eliminating 85.24%
+of tail feedback evaluations. These states are not extra independent evidence.
+[Inspect a predesignated trajectory comparison](artifacts/v10/trajectory_example.png).
+
+
+The scope remains three cooperative vehicles, exact measurements, fixed routes
+and a known ±0.5 m/s² actuator-error bound. SUMO pauses during computation.
+Warm timings are not worst-case real-time or delay-aware control guarantees.
+The learner is the frozen V6 contextual bandit; no new MARL training is implied.
+
+[V10 paired results](docs/v10_results.md) · [Proofs and prior art](docs/theory_v10.md) ·
+[Frozen protocol](artifacts/v10/protocol.json) · [Raw runs](artifacts/v10/study/episodes.csv)
+
+```powershell
+pip install -e ".[dev,fast]"
+python tools/verify_release_v10.py --replay
+python tools/replay_v10.py --gui --disturbance bias --out runs/my_v10_demo
+python tools/study_v10.py --out runs/my_v10_reproduction
+```
+
 ## V9: feedback switching with bounded actuator error
 
 V9 extends the declared model to **acceleration error up to ±0.5 m/s² at every
