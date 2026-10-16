@@ -1,0 +1,31 @@
+{
+  "purpose": "Frozen independent-seed learning and nominal-gate performance verification; not a conditional disturbance-risk certificate",
+  "models": [
+    "artifacts/v18/independent_models/coupled_1802/policy.pt",
+    "artifacts/v18/independent_models/coupled_1812/policy.pt",
+    "artifacts/v18/independent_models/coupled_1822/policy.pt"
+  ],
+  "n_initials": 256,
+  "seed_base": 61700001,
+  "regimes": "First 128 nominal, next 128 dense; fixed strata, not IID mixture risk-validation counts",
+  "modes": ["clean", "uniform", "bias", "pulse"],
+  "methods": "One strong team planner, all three raw final joint policies and all three unchanged nominal action gates",
+  "shards": 4,
+  "sharding": "Global initial index modulo four; preserve global regime assignment and paired methods",
+  "expected_actual_sumo_runs": 7168,
+  "audit_initial_indices": [0, 1, 128, 129],
+  "primary_mean_performance_checks": [
+    "Every raw training seed has positive mean team-cost improvement over the strong baseline",
+    "The fixed three-seed average raw improvement has a positive paired initial-cluster 95 percent lower endpoint",
+    "The fixed three-seed average raw policy improves the high-conflict group's mean cost",
+    "The three-seed average gate reduces mean team cost by at least 1 percent, with a positive paired initial-cluster 95 percent lower endpoint",
+    "The three-seed average gate has nonnegative mean cost and arrival improvement for each vehicle",
+    "Each complete nominal gated rollout respects the component-wise deterministic performance identity",
+    "Gate worst-mode individual-regression frequency is lower than raw learning, reported with both all-initial and admitted-initial denominators",
+    "All actual runs complete without recorded collision, contract violation or administrative abort",
+    "Each gated method has measured p95 controller computation below the 500 ms decision period; this is not a worst-case execution-time guarantee"
+  ],
+  "interval_scope": "Conditional on the three fixed trained models; average modes and models inside each initial before bootstrapping. Report every training seed separately; do not treat seed-by-mode outcomes as independent scenes",
+  "not_certified": "Neither a per-state safety probability nor a bound on performance regression among admitted disturbed episodes is established by passing these mean-performance checks",
+  "retention": "All methods, failures, outcomes, frozen sources and final weights retained. No checkpoint or seed selection after observing this set"
+}
