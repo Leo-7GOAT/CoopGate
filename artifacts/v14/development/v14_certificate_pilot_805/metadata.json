@@ -1,0 +1,27 @@
+{
+  "algorithm": "certificate_feature_policy_iteration_v14",
+  "seed": 805,
+  "width": 64,
+  "iterations": 5,
+  "states_per_iteration": 8192,
+  "epochs": 60,
+  "rule_only": false,
+  "learned_vehicles": [
+    1
+  ],
+  "observation": "full current state and command memory of three cooperative vehicles; no future disturbances",
+  "objective": "ego arrival + 0.05 ego command variation until own arrival",
+  "training": "rollout approximate policy iteration; rule initialization and learned feedback tail improvement",
+  "inference": "neural scoring of current safety-projected actions; zero performance rollouts",
+  "selection": "fixed final iteration, not best validation checkpoint",
+  "source_sha256": {
+    "src/coopgate/certificate_policy_v14.py": "5e1aafd92aabc9b3d3afff7c3fc0bd1d5a7f85401b4f0145139f9e4f76ce0464",
+    "tools/train_certificate_policy_v14.py": "f4e20a6d96a597f6396a0680c8d7fd976187f951d4100eef73da077308b13f10"
+  },
+  "iteration": 5,
+  "visited_states": 40960,
+  "evaluated_model_transitions": 5518934,
+  "imitation_loss": 1.5169668197631836,
+  "training_action_regret_s": 0.06903457641601562,
+  "elapsed_s": 349.03197550000186
+}

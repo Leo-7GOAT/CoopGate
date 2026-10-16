@@ -1,0 +1,28 @@
+{
+  "algorithm": "rollout_policy_iteration_ego_v14",
+  "seed": 801,
+  "width": 128,
+  "iterations": 4,
+  "states_per_iteration": 8192,
+  "epochs": 40,
+  "teacher": "artifacts/v13/ego/seed_701/policy.pt",
+  "teacher_sha256": "9c3d191c778d4c13d0aca8847dc3efac46f954023c4995cd791ec7de4a54e505",
+  "rule_only": true,
+  "learned_vehicles": [
+    1
+  ],
+  "objective": "ego time + 0.05 ego command variation",
+  "inference": "local neural actor followed by the shared physical safety filter; no performance rollout",
+  "data": "on-policy visited states with 15% admissible action exploration and nominal complete-action training rollouts",
+  "checkpoint_selection": "fixed final iteration; development scores do not affect selection",
+  "source_sha256": {
+    "src/coopgate/policy_iteration_v14.py": "e97f7bbadba207d6cfc06ff170a2425abc38843c93db3177e740cee95e0472fa",
+    "tools/train_policy_iteration_v14.py": "98b3142ee471b6bafc7f69980b74bb5c0fbae2b713491232ceb594dd3a886e2a"
+  },
+  "iteration": 4,
+  "visited_states": 32768,
+  "evaluated_model_transitions": 3031711,
+  "imitation_loss": 1.6668007373809814,
+  "training_action_regret_s": 0.11567878723144531,
+  "elapsed_s": 63.238315099999454
+}

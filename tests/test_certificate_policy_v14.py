@@ -17,7 +17,11 @@ def test_certificate_actor_uses_same_actions_and_safety_filter():
             selected=int(actor.choose(features[None],mask[None])[0])
             compiled,index=choose_compiled(x,prev,int(env.steps[i]),env.packed,actor.compiled_weights())
             np.testing.assert_array_equal(compiled,commands[selected])
-            assert index==selected and robust_certificate(x,prev,compiled,env.packed,.5)
+            # Different proposals can project to identical commands/features.
+            # BLAS rounding may break their score tie differently by platform.
+            if index!=selected:
+                np.testing.assert_array_equal(features[index],features[selected])
+            assert robust_certificate(x,prev,compiled,env.packed,.5)
             actions.append(selected)
         env.step(np.array(actions)[:,None])
 

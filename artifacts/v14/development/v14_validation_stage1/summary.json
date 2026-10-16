@@ -1,0 +1,57 @@
+{
+  "protocol": {
+    "purpose": "development validation, not an independent final test",
+    "initials": 64,
+    "seed_base": 37000001,
+    "modes": [
+      "clean",
+      "uniform",
+      "bias",
+      "pulse"
+    ],
+    "methods": {
+      "rollout": "unchanged EgoRolloutGate",
+      "policy_0": "runs/v14_pi_large_803/iteration_6.pt",
+      "policy_1": "runs/v14_certificate_pilot_805/iteration_5.pt"
+    },
+    "policy_sha256": {
+      "runs/v14_pi_large_803/iteration_6.pt": "1e48203d736ef01f8aede4327ac55335e2085be7016cb4ac580d39a200dd4784",
+      "runs/v14_certificate_pilot_805/iteration_5.pt": "f716f6707333c06a3eb7ddb86f67a1639cd027d569e8b49a98727b88a471c2b0"
+    },
+    "evaluator_sha256": "787a25d185347c170149c1a0734335768ad760a1bdc42d55aca9e88accf01e53"
+  },
+  "results": {
+    "rollout": {
+      "ego_time": 9.544921875,
+      "ego_variation": 6.943359375,
+      "ego_cost": 9.89208984375,
+      "other_time": 10.529296875,
+      "runs": 256,
+      "completed": 256,
+      "collisions": 0,
+      "aborted": 0
+    },
+    "policy_0": {
+      "ego_time": 9.478515625,
+      "ego_variation": 5.9716796875,
+      "ego_cost": 9.777099609375,
+      "other_time": 10.4765625,
+      "runs": 256,
+      "completed": 256,
+      "collisions": 0,
+      "aborted": 0
+    },
+    "policy_1": {
+      "ego_time": 9.5390625,
+      "ego_variation": 7.10205078125,
+      "ego_cost": 9.8941650390625,
+      "other_time": 10.4716796875,
+      "runs": 256,
+      "completed": 256,
+      "collisions": 0,
+      "aborted": 0
+    }
+  },
+  "sumo_runs": 768,
+  "elapsed_s": 134.03045389999897
+}

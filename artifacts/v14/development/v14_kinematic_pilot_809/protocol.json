@@ -1,0 +1,24 @@
+{
+  "algorithm": "kinematic_feature_policy_iteration_v14",
+  "seed": 809,
+  "width": 64,
+  "iterations": 6,
+  "states_per_iteration": 8192,
+  "epochs": 80,
+  "rule_only": false,
+  "learned_vehicles": [
+    1
+  ],
+  "observation": "full current state and command memory of three cooperative vehicles; no future disturbances",
+  "objective": "ego arrival + 0.05 ego command variation until own arrival",
+  "training": "rollout approximate policy iteration; rule initialization and learned feedback tail improvement",
+  "inference": "neural scoring of current safety-projected actions; zero performance rollouts",
+  "selection": "fixed final iteration, not best validation checkpoint",
+  "feature_variant": "kinematic",
+  "source_sha256": {
+    "src/coopgate/certificate_policy_v14.py": "5e1aafd92aabc9b3d3afff7c3fc0bd1d5a7f85401b4f0145139f9e4f76ce0464",
+    "tools/train_certificate_policy_v14.py": "fdac641f03fa920a989e047839b57f41efdfef276e392094fe3639884258cd36",
+    "src/coopgate/kinematic_policy_v14.py": "bb9ab40bedb1215f30f22c3b4e951d7ad7e0d9ad4e42f5ffb2b33702d54bb12e",
+    "tools/train_kinematic_policy_v14.py": "34fc446a5cb7216465d5705be57b32d43fbb2b9680c0f52202eeb7b02ff864f0"
+  }
+}

@@ -26,6 +26,7 @@ def test_added_features_preserve_commands_and_compiled_actor():
             np.testing.assert_array_equal(commands,old_commands);np.testing.assert_array_equal(mask,old_mask)
             selected=int(model.choose(fe[None],mask[None])[0])
             compiled,index=choose_compiled(x,prev,step,env.packed,model.compiled_weights())
-            assert index==selected
+            if index!=selected:
+                np.testing.assert_array_equal(fe[index],fe[selected])
             np.testing.assert_array_equal(compiled,commands[selected]);actions.append(selected)
         env.step(np.array(actions)[:,None])
