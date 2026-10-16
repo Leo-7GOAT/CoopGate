@@ -1,0 +1,26 @@
+{
+  "version": "v12-single-training",
+  "seeds": [
+    411,
+    421,
+    431
+  ],
+  "steps_per_seed": 1048576,
+  "bc_epochs": 80,
+  "variation_weight": 0.05,
+  "selection": "fixed final checkpoint at 1048576 environment transitions",
+  "training_backend": "vectorized model; checked against SUMO separately",
+  "teacher_scenes": 512,
+  "teacher_sha256": "66f84f12b91cd893ec5c69a821649aa17fcfaffca8fa73a92304a5963c4dfa5f",
+  "source_sha256": {
+    "src/coopgate/marl_v12.py": "e1787954402c3713c2bfc6a5f1be9896612e28c45aafc9e19391e4d43a4000a9",
+    "src/coopgate/training_v12.py": "52591e8a36bce6070e4a01c115d49806b53f4d59dc85dcad97be584e1d409049",
+    "src/coopgate/single_v12.py": "69e46bf846fa968188a0e020f30a916ed86e3bc138abe406e3c6ae09bd712ba3",
+    "tools/train_v12.py": "b8f30652429b2cd719d9fbc0963de5d01fe0d01bd4018fdb0c3c81a49ceeeed5",
+    "tools/teacher_v12.py": "55d42424c4e8c9e770daf0de1778b14aea5afe643c8c7c24645cd80efc3e4308",
+    "tools/train_single_release_v12.py": "4f37ca2e095bb5c8ea74f7911448b275ec5c68180c1845158b453f11fb5de357"
+  },
+  "single_learner_vehicle": 1,
+  "other_vehicle_proposals": "fixed maximum admissible acceleration",
+  "safety_filter": "shared centralized joint certificate for all methods"
+}

@@ -1,0 +1,24 @@
+{
+  "algorithm": "single_ego_ppo_v12",
+  "seed": 431,
+  "steps": 1048576,
+  "n_envs": 32,
+  "rollout": 64,
+  "gamma": 0.995,
+  "gae_lambda": 0.95,
+  "clip": 0.2,
+  "epochs": 4,
+  "learning_rate": 0.0003,
+  "variation_weight": 0.05,
+  "training_backend": "vectorized exact longitudinal model",
+  "warmstart": "runs\\v12_single_release\\bc_431\\bc.pt",
+  "centralized_shield": true,
+  "decentralized_actor": true,
+  "learned_vehicles": [
+    1
+  ],
+  "finite_horizon_terminal": true,
+  "potential_gamma": 0.995,
+  "episodes": 42752,
+  "elapsed_s": 93.06186359999992
+}
