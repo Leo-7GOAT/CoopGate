@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "C:\Users\Leo\Desktop\papper\CoopGate\tools\evaluate_composed_gate_v18.py", line 125, in <module>
+    a=p.parse_args();run(a.path,a.out,a.n,a.seed_base)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Leo\Desktop\papper\CoopGate\tools\evaluate_composed_gate_v18.py", line 81, in run
+    np.testing.assert_array_equal(actual_initial,x)
+  File "C:\Users\Leo\Desktop\papper\.venv\Lib\site-packages\numpy\testing\_private\utils.py", line 1121, in assert_array_equal
+    assert_array_compare(operator.__eq__, actual, desired, err_msg=err_msg,
+  File "C:\Users\Leo\Desktop\papper\.venv\Lib\site-packages\numpy\testing\_private\utils.py", line 983, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Arrays are not equal
+
+Mismatched elements: 1 / 6 (16.7%)
+Mismatch at index:
+ [1, 0]: -97.01608540764914 (ACTUAL), -97.01608540764916 (DESIRED)
+Max absolute difference among violations: 1.42108547e-14
+Max relative difference among violations: 1.46479366e-16
+ ACTUAL: array([[-104.737673,   13.763148],
+       [ -97.016085,   10.216888],
+       [-135.300792,    9.71278 ]])
+ DESIRED: array([[-104.737673,   13.763148],
+       [ -97.016085,   10.216888],
+       [-135.300792,    9.71278 ]])

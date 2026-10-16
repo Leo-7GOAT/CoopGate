@@ -57,7 +57,9 @@ def run(path, out, n=64, seed_base=61400001):
         for i in range(n):
             seed = seed_base+i
             regime = 'nominal' if i<n//2 else 'dense'
-            x = initial(seed, regime)
+            env.reset_disturbed(seed, regime, 'clean', .5)
+            x = env.x.copy()
+            np.testing.assert_allclose(x, initial(seed, regime), atol=1e-8, rtol=0)
             predictions = {}
             prediction_start = time.perf_counter()
             for name, mask in masks.items():
@@ -78,7 +80,7 @@ def run(path, out, n=64, seed_base=61400001):
                     mask=selected[name]
                     result, trace, actual_initial = run_episode(env, seed, regime, mode,
                         lambda x,m=mask:ComposedProfile(model,m), i in audit_indices)
-                    np.testing.assert_array_equal(actual_initial,x)
+                    np.testing.assert_allclose(actual_initial,x,atol=1e-8,rtol=0)
                     costs=np.array(result['per_vehicle_finish'])+.05*np.array(result['per_vehicle_variation'])
                     result.update(controller=str(name),initial=x.tolist(),per_vehicle_cost=costs.tolist(),
                         team_cost=float(costs.mean()),component_learning_mask=mask.tolist())
