@@ -3,7 +3,7 @@
 Both the strong ego planner and learning-free cooperative planner are retained.
 No formal acceptance is inferred, and no vehicle is hidden in a team average.
 """
-import argparse,hashlib,json,time
+import argparse,hashlib,json,shutil,time
 from pathlib import Path
 import numpy as np
 import torch
@@ -46,6 +46,8 @@ def run(paths,out,n=128,seed_base=59000001):
         expected_runs=n*len(modes)*len(factories),models=checkpoints,prerequisite=prerequisite,
         source_sha256={str(p.resolve().relative_to(ROOT)).replace('\\','/'):hashlib.sha256(p.read_bytes()).hexdigest() for p in sources})
     (out/'protocol.json').write_text(json.dumps(protocol,indent=2)+'\n')
+    for name in protocol['source_sha256']:
+        target=out/'source'/name;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/name,target)
     warm=np.array([[-80.,12.],[-85.,13.],[-120.,11.]])
     for factory in factories.values():factory(warm).select(warm,np.zeros(3))
     rows=[];started=time.perf_counter()

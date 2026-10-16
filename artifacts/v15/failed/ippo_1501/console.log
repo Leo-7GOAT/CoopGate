@@ -1,0 +1,10 @@
+{"seed": 1501, "joint_environment_steps": 65536, "active_actor_samples": 161044, "episodes": 2660, "team_cost_last100": 10.319270833333333, "actor_loss": 0.0944916233420372, "critic_loss": 0.10961330682039261, "entropy": 0.4050583243370056, "reference_kl": 0.2441631555557251, "elapsed_s": 27.01855179999984, "actor0_delta_l2": 0.6516280850628391, "actor1_delta_l2": 1.846736082501593, "actor2_delta_l2": 1.6982711730524898}
+{"seed": 1501, "joint_environment_steps": 131072, "active_actor_samples": 322211, "episodes": 5370, "team_cost_last100": 10.190520833333334, "actor_loss": -0.04838137701153755, "critic_loss": 0.04900304973125458, "entropy": 0.2896282970905304, "reference_kl": 0.3368378281593323, "elapsed_s": 52.77611909999905, "actor0_delta_l2": 2.5415714597329497, "actor1_delta_l2": 3.0801632551301736, "actor2_delta_l2": 2.933224452077411}
+Traceback (most recent call last):
+  File "C:\Users\Leo\Desktop\papper\CoopGate\tools\train_cooperative_v15.py", line 118, in <module>
+    a=p.parse_args();train(a.out,a.seed,a.ego_seed,a.steps,a.critic,a.anchor)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Leo\Desktop\papper\CoopGate\tools\train_cooperative_v15.py", line 90, in train
+    if not torch.isfinite(loss):raise RuntimeError('Nonfinite joint PPO loss')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Nonfinite joint PPO loss

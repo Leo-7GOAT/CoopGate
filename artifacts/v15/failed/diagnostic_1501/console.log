@@ -1,0 +1,8 @@
+{"seed": 1501, "joint_environment_steps": 65536, "active_actor_samples": 160847, "episodes": 2649, "team_cost_last100": 10.419791666666667, "actor_loss": 0.01860404759645462, "critic_loss": 0.09242085367441177, "entropy": 0.3071235120296478, "reference_kl": 0.30563661456108093, "elapsed_s": 19.881376000001183, "actor0_delta_l2": 2.181859281641664, "actor1_delta_l2": 1.8569013028318295, "actor2_delta_l2": 1.7342689223587513}
+Traceback (most recent call last):
+  File "C:\Users\Leo\Desktop\papper\CoopGate\tools\train_cooperative_v15.py", line 129, in <module>
+    a=p.parse_args();train(a.out,a.seed,a.ego_seed,a.steps,a.critic,a.anchor)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Leo\Desktop\papper\CoopGate\tools\train_cooperative_v15.py", line 101, in train
+    raise RuntimeError('Nonfinite joint PPO loss: '+json.dumps(diagnostic))
+RuntimeError: Nonfinite joint PPO loss: {"joint_steps": 116736, "epoch": 0, "actor": 0.14316147565841675, "critic": 0.10376694053411484, "entropy": 0.28990331292152405, "kl": Infinity, "finite_logits": true, "finite_reference_logits": true, "finite_ratio": true, "min_logits": -104.86913299560547, "underflow_probabilities": 1}
