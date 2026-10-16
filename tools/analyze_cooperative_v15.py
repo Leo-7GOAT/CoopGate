@@ -8,7 +8,7 @@ from pathlib import Path
 import numpy as np
 
 
-def analyze(directory, out):
+def analyze(directory, out, comparators=None):
     directory, out = Path(directory), Path(out)
     protocol = json.loads((directory/'protocol.json').read_text())
     rows = json.loads((directory/'episodes.json').read_text())
@@ -44,7 +44,10 @@ def analyze(directory, out):
         uncertainty='Descriptive paired bootstrap conditional on the fixed trained models',
         n_initials=n, safety=safety, comparisons={},
         source_sha256={f:hashlib.sha256((directory/f).read_bytes()).hexdigest() for f in ('protocol.json','episodes.json')})
-    for baseline in [m for m in methods if m in ('ego_planner','team_planner') or m.startswith('single_')]:
+    baselines = comparators or [m for m in methods if m in ('ego_planner','team_planner') or m.startswith('single_')]
+    if len(set(baselines)) != len(baselines) or not set(baselines).issubset(methods):
+        raise ValueError('Comparators must be unique methods from the complete study')
+    for baseline in baselines:
         result['comparisons'][baseline] = {}
         for method in [m for m in methods if m != baseline]:
             comparison = {}
@@ -98,4 +101,5 @@ def analyze(directory, out):
 
 if __name__ == '__main__':
     parser=argparse.ArgumentParser();parser.add_argument('directory');parser.add_argument('--out',required=True)
-    args=parser.parse_args();analyze(args.directory,args.out)
+    parser.add_argument('--comparators',nargs='+')
+    args=parser.parse_args();analyze(args.directory,args.out,args.comparators)

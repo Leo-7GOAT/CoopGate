@@ -10,11 +10,14 @@ from coopgate.stress_prediction_v17 import predict_stress,fixed_stress_bank
 ROOT=Path(__file__).resolve().parents[1]
 
 
-def run(study,out,threads=3):
+def run(study,out,threads=3,model_name=None):
     study,out=Path(study),Path(out);torch.set_num_threads(1);set_num_threads(threads)
     p=json.loads((study/'protocol.json').read_text());rows=json.loads((study/'episodes.json').read_text())
-    if len(rows)!=p['expected_runs'] or len(p['models'])!=1:raise ValueError('One complete fixed-model development study required')
-    name=next(iter(p['models']));record=p['models'][name];path=ROOT/record['path']
+    if len(rows)!=p['expected_runs']:raise ValueError('A complete fixed-model development study is required')
+    if model_name is None and len(p['models'])!=1:raise ValueError('Specify one frozen model explicitly for a multi-model study')
+    name=model_name or next(iter(p['models']))
+    if name not in p['models']:raise ValueError('Model is not part of this frozen study')
+    record=p['models'][name];path=ROOT/record['path']
     if hashlib.sha256(path.read_bytes()).hexdigest()!=record['sha256']:raise ValueError('Policy changed')
     model,_=load_coupled(path);out.mkdir(parents=True,exist_ok=False)
     names,tapes=fixed_stress_bank()
@@ -54,4 +57,5 @@ def run(study,out,threads=3):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('study');p.add_argument('--out',required=True);p.add_argument('--threads',type=int,default=3)
-    a=p.parse_args();run(a.study,a.out,a.threads)
+    p.add_argument('--model')
+    a=p.parse_args();run(a.study,a.out,a.threads,a.model)

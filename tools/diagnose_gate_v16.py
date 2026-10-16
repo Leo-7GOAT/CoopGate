@@ -9,7 +9,7 @@ import numpy as np
 from coopgate.joint_admission_v15 import calibrate_joint
 
 
-def run(study,forecast,out):
+def run(study,forecast,out,model_name=None):
     study,forecast,out=Path(study),Path(forecast),Path(out)
     p=json.loads((study/'protocol.json').read_text());rows=json.loads((study/'episodes.json').read_text())
     direct=(forecast/'difference_predictions.json').exists()
@@ -17,8 +17,12 @@ def run(study,forecast,out):
     forecast_protocol=json.loads((forecast/'protocol.json').read_text())
     if forecast_protocol['study_protocol_sha256']!=hashlib.sha256((study/'protocol.json').read_bytes()).hexdigest():
         raise ValueError('Forecasts belong to a different study')
-    if len(rows)!=p['expected_runs'] or len(p['models'])!=1:raise ValueError('One complete candidate study required')
-    name=next(iter(p['models']));n=p['n_initials'];modes=p['modes']
+    if len(rows)!=p['expected_runs']:raise ValueError('A complete candidate study is required')
+    if model_name is None and len(p['models'])!=1:raise ValueError('Specify the frozen candidate explicitly')
+    name=model_name or next(iter(p['models']))
+    if name not in p['models']:raise ValueError('Unknown candidate model')
+    if direct and forecast_protocol.get('model')!=name:raise ValueError('Stress predictions belong to a different model')
+    n=p['n_initials'];modes=p['modes']
     lookup={(r['seed'],r['disturbance'],r['controller']):r for r in rows}
     forecasts={(r['seed'],r['controller']):np.array(r['predicted_difference' if direct else 'predicted']) for r in predictions}
     seeds=list(range(p['seed_base'],p['seed_base']+n));actual=[];predicted=[];groups=[];regimes=[]
@@ -68,4 +72,5 @@ def run(study,forecast,out):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('study');p.add_argument('forecast');p.add_argument('--out',required=True)
-    a=p.parse_args();run(a.study,a.forecast,a.out)
+    p.add_argument('--model')
+    a=p.parse_args();run(a.study,a.forecast,a.out,a.model)
