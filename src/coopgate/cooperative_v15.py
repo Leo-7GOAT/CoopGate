@@ -89,6 +89,8 @@ class CooperativeVector:
 
     All actors share a team payoff. This is a cooperative stochastic game,
     not evidence of a general-sum Nash equilibrium or real-vehicle validation.
+    Correlated disturbance modes are hidden; observed kinematics alone are not
+    claimed to be the complete Markov state of the disturbance-generating game.
     """
     def __init__(self,n=32,seed=1):
         self.c=MergeConfig();self.packed=parameters(self.c);self.n=n;self.rng=np.random.default_rng(seed)
