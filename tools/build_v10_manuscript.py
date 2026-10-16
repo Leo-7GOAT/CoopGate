@@ -243,4 +243,3 @@ def build(reference,out):
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--reference',type=Path,required=True);parser.add_argument('--out',type=Path,required=True)
     args=parser.parse_args();build(args.reference,args.out)
-
