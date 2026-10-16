@@ -1,0 +1,81 @@
+{
+  "v10_development": {
+    "executions": 320,
+    "old_initial_states": 16,
+    "raw_sha256": "6a325c9ad40637fe788dea3b897246551c620ed92f42a6bfdd183b80eed48bd2",
+    "mean_cost_by_error": {
+      "clean": {
+        "v9_pair": 9.78125,
+        "v9_full": 9.645833333333332,
+        "rollout_constant": 9.322916666666668,
+        "rollout_pair_binary": 9.333333333333334,
+        "rollout_pair": 9.34375
+      },
+      "uniform": {
+        "v9_pair": 9.84375,
+        "v9_full": 9.760416666666666,
+        "rollout_constant": 9.354166666666668,
+        "rollout_pair_binary": 9.427083333333334,
+        "rollout_pair": 9.385416666666668
+      },
+      "bias": {
+        "v9_pair": 9.885416666666666,
+        "v9_full": 9.760416666666666,
+        "rollout_constant": 9.510416666666668,
+        "rollout_pair_binary": 9.552083333333332,
+        "rollout_pair": 9.520833333333332
+      },
+      "pulse": {
+        "v9_pair": 9.833333333333332,
+        "v9_full": 9.958333333333332,
+        "rollout_constant": 9.364583333333334,
+        "rollout_pair_binary": 9.4375,
+        "rollout_pair": 9.395833333333332
+      }
+    }
+  },
+  "v10_development_adaptive": {
+    "executions": 896,
+    "old_initial_states": 32,
+    "raw_sha256": "81a9661f5f57cada8896d8b5113057dccd6ad25b150ea72227515978ad5ad151",
+    "mean_cost_by_error": {
+      "clean": {
+        "v9_pair": 9.90625,
+        "v9_full": 9.802083333333332,
+        "rollout_constant": 9.494791666666666,
+        "rollout_pair_binary": 9.5,
+        "rollout_pair": 9.447916666666668,
+        "rollout_pair_twice": 9.447916666666668,
+        "rollout_fixed": 9.515625
+      },
+      "uniform": {
+        "v9_pair": 9.994791666666668,
+        "v9_full": 9.875,
+        "rollout_constant": 9.53125,
+        "rollout_pair_binary": 9.557291666666668,
+        "rollout_pair": 9.546875,
+        "rollout_pair_twice": 9.546875,
+        "rollout_fixed": 9.557291666666668
+      },
+      "bias": {
+        "v9_pair": 10.15625,
+        "v9_full": 10.151041666666666,
+        "rollout_constant": 9.703125,
+        "rollout_pair_binary": 9.791666666666668,
+        "rollout_pair": 9.703125,
+        "rollout_pair_twice": 9.708333333333334,
+        "rollout_fixed": 9.703125
+      },
+      "pulse": {
+        "v9_pair": 10.005208333333332,
+        "v9_full": 10.104166666666668,
+        "rollout_constant": 9.572916666666668,
+        "rollout_pair_binary": 9.614583333333332,
+        "rollout_pair": 9.546875,
+        "rollout_pair_twice": 9.541666666666668,
+        "rollout_fixed": 9.59375
+      }
+    }
+  },
+  "selection": "Single adaptive coordinate sweep, five levels. Two sweeps had no clean/uniform gain and nearly doubled late-cycle work. Learning adds little in development; retain no-learning, fixed/random and binary controls without promising a learning benefit."
+}
