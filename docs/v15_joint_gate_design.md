@@ -75,6 +75,10 @@ s 是事前固定的正尺度；当前工具默认各指标 1 秒。4 个扰动�
 
 `train_cooperative_v15.py` 的入口强制检查完整单车成绩、全部轨迹审计、SUMO 重放和权重/源码哈希，当前仍因正式测试未结束而锁定。它会记录三个 actor 的更新量、实际采样动作的 PPO 概率和训练预算。上述代码与接口测试只是准备，不代表已经训练成功。没有宣称一般和博弈的均衡结果。
 
+另准备 `joint_planner_v15.py` 作为更强的非学习协同规划对照。它保持同一动作集和安全过滤器，用完整规则后续轨迹评价当前联合动作，按固定顺序执行两次坐标搜索，并始终保留规则动作。逐车时间与指令变化的统计方式和 MARL 相同。它是离散近似 rollout 规划，不宣称全局最优，也不将它重新命名为新 MPC 算法。
+
+在名义动力学和有限时域下，每次接受的动作都满足 c(s,a)+V_rule(f(s,a))<=V_rule(s)；沿闭环轨迹求和可得 J_planner<=V_rule(s0)。实际扰动下仍需实测，且该关系不意味着优于 V14 的自车优化规划器。因此后续应同时报告 V14 强自车基线和这个全队目标的协同规划基线，不能只挑容易超过的一个。当前完成两项物理/名义改进测试，没有报告正式 MARL 比较结果。
+
 ## 与既有工作的关系
 
 - [Safe Multi-Agent Reinforcement Learning via Shielding，AAMAS 2021](https://arxiv.org/abs/2101.11196) 已研究集中式和分解式安全屏蔽。我们不能把“MARL 加安全兜底”本身写成创新。
@@ -82,5 +86,8 @@ s 是事前固定的正尺度；当前工具默认各指标 1 秒。4 个扰动�
 - [Decision-Point Guided Safe Policy Improvement，AISTATS 2025](https://proceedings.mlr.press/v258/sharma25a.html) 在批量 RL 中限制可改进的决策区域。仅仅“有把握时偏离基线”也是已有思想。
 - [Conformal Risk Control](https://arxiv.org/abs/2208.02814) 提供更一般的风险控制框架。当前模块采用最大残差的 split-conformal 上界，不冒称实现了该文全部风险控制算法。
 - [MAPPO，NeurIPS 2022](https://proceedings.neurips.cc/paper_files/paper/2022/hash/9c1535a02f0ce079433344e14d910597-Abstract.html) 可作为多车学习基线；换成 MAPPO 不是论文的独立创新。
+- [Optimal Runtime Assurance via Reinforcement Learning，ICCPS 2024](https://mitras.ece.illinois.edu/research/2024/RTARL_ICCPS24.pdf) 已研究通过控制器切换兼顾硬约束和性能，并含多智能体实验。控制器切换本身不能作为首创。
+- [RTA-IR，Expert Systems with Applications 2023](https://www.sciencedirect.com/science/article/pii/S095741742301326X) 已将学习型驾驶控制、RSS 安全控制和模式切换结合。我们的统计性能验收需要与这类安全切换明确比较。
+- [A Timer-Based Hybrid Supervisor for Robust, Chatter-Free Policy Switching，RLC 2025](https://rlj.cs.umass.edu/2025/papers/Paper301.html) 研究噪声下的驻留时间和切换稳定性。当前每次合流只做一次性能准入，不能将其写成已解决反复切换稳定性。
 
 潜在贡献是围绕真实交互外部性，将逐车性能门槛、完整联合策略选择、共同物理可恢复约束和可审计闭环验证结合，并证明相对独立门控的实际价值。这个判断仍需完整相关工作核查及对照实验支持，目前不宣称首创或达到顶会录用标准。
