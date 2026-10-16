@@ -1,0 +1,23 @@
+{
+  "purpose": "Coupled multi-agent approximate policy iteration DEVELOPMENT; not a formal acceptance",
+  "seed": 1601,
+  "ego_seed": 901,
+  "cycles": 2,
+  "actor_update_order": [0, 2, 1],
+  "states_per_update": 2048,
+  "epochs_per_update": 60,
+  "actor_learning_rate": 0.0005,
+  "target_temperature_seconds": 0.04,
+  "exploration_probability_for_updated_role": 0.15,
+  "model": "Nominal full-horizon branch returns; hidden disturbance mixture for visited trajectories",
+  "checkpoint_selection": "Fixed final sixth update",
+  "validation": {
+    "initials": 128,
+    "seed_base": 59200001,
+    "modes": ["clean", "uniform", "bias", "pulse"],
+    "methods": ["ego_planner", "team_planner", "coupled_1601", "single_901"],
+    "expected_actual_sumo_runs": 2048
+  },
+  "rationale": "Previous actual multi-agent PPO regressed against strong cooperative planning and largely changed only ramp behavior; test a more direct coupled credit assignment mechanism",
+  "scope": "Established model-based MARL family, not a new PI theorem or a no-model MAPPO variant"
+}

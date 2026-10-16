@@ -13,6 +13,20 @@ This is a research prototype with conditional model-based safety guarantees.
 The completed V14 single-ego study is **not MARL**. Historical V11 uses a centralized
 contextual bandit; its online planner's gain must not be called a new MARL result.
 
+## Current cooperative development: not yet accepted
+
+Three-actor MAPPO and local-critic PPO completed actual joint training after
+V14 passed. In 2,560 new SUMO executions, MAPPO reduces team cost 5.06% against
+ego-focused planning but increases ramp-vehicle cost by 1.40 s. Against stronger
+cooperative planning it increases team cost 2.00%. Actor replacement diagnostics
+also show that the main-road greedy behavior barely changes. These are preserved
+negative results, not a successful MARL claim. The next development hypothesis
+uses established coupled multi-agent policy iteration; its effectiveness is
+not yet established.
+
+[Complete cooperative pilot](docs/v15_development_results.md) ·
+[Next development protocol](docs/v16_coupled_development.md)
+
 ## V14: standalone single-ego prerequisite passed
 
 Three fresh training seeds, fixed budgets and acceptance criteria were
