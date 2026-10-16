@@ -1,9 +1,10 @@
 # CoopGate
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
-V14 has passed the frozen single-ego learning prerequisite against a strong
-planning baseline. Work now extends the learner to genuine multi-agent training
-and tests when to admit a complete learned controller or fall back.
+V14 passed the frozen single-ego learning prerequisite. Genuine three-actor
+model-based MARL now improves mean team cost across all three fixed trained
+models. A joint action gate improves the three-model mean further and checks
+individual nominal performance against the same full baseline continuation.
 V12's team-cost gain concealed an **8.26% ego arrival regression**; it does not
 satisfy the single-ego prerequisite for MARL. V13 uses the ego's own arrival and
 command variation, and jointly calibrates cost and arrival-time differences.
@@ -13,16 +14,53 @@ This is a research prototype with conditional model-based safety guarantees.
 The completed V14 single-ego study is **not MARL**. Historical V11 uses a centralized
 contextual bandit; its online planner's gain must not be called a new MARL result.
 
-## Current cooperative development: not yet accepted
+## V18: joint gating improves the frozen three-model comparison
+
+Models and protocol were frozen in **79beb44**, before **7,168 actual SUMO runs**
+on 256 new initials with four paired disturbance modes. All models and failures
+are retained; no checkpoint or training seed was selected using this set.
+
+| Controller | Mean team cost s | Improvement | Completed runs |
+|---|---:|---:|---:|
+| Strong cooperative planner | 10.0884 | Reference | 1,024/1,024 |
+| Raw MARL, fixed three-model average | 9.9238 | 1.63% | 3,069/3,072 |
+| Joint nominal action gate, same models | 9.8861 | 2.01% | 3,072/3,072 |
+
+Paired initial-cluster 95% improvement intervals are **[0.1116, 0.2160] s** for
+raw MARL and **[0.1767, 0.2281] s** for gating. Raw learning regresses the rear
+car on average; gating improves every car's mean cost and arrival time. Raw
+high-/low-conflict gains are **2.11% / -0.36%**, versus **2.34% / 0.63%** with
+gating. These are fixed ETA-based scene groups, not all complex/simple traffic.
+
+**Eight of nine preregistered checks passed.** One raw model timed out on three
+bias-disturbed runs, so the all-methods-complete condition failed. Every gated
+run completed. All methods had zero recorded collision, contract violation and
+administrative abort. All three timeouts were additionally replayed unchanged
+with their baseline and gated counterparts; both completed in each case.
+
+The gate has a **deterministic nominal** component-wise telescoping guarantee,
+verified by reconstructing all **768** nominal gated trajectories. This does
+**not** certify disturbed performance: strict any-car/cost/time regression
+occurs in **268/768** gated policy-initial pairs, or **268/691** among pairs with
+any learning admission. Raw learning regresses in 645/768 pairs. These are
+descriptive paired counts, not independent binomial trials or safety incidents.
+Measured gate computation p95 is 147–150 ms, not a worst-case timing guarantee.
+
+[Full results and reproduction](docs/v18_independent_results.md) ·
+[Frozen records and audit](artifacts/v18/independent_study) ·
+[Per-model analysis](artifacts/v18/independent_analysis/analysis.json)
+
+![Frozen three-model gate comparison](artifacts/v18/independent_analysis/independent_gates.png)
+
+## Earlier cooperative development and preserved negative results
 
 Three-actor MAPPO and local-critic PPO completed actual joint training after
 V14 passed. In 2,560 new SUMO executions, MAPPO reduces team cost 5.06% against
 ego-focused planning but increases ramp-vehicle cost by 1.40 s. Against stronger
 cooperative planning it increases team cost 2.00%. Actor replacement diagnostics
 also show that the main-road greedy behavior barely changes. These are preserved
-negative results, not a successful MARL claim. The next development hypothesis
-uses established coupled multi-agent policy iteration; its effectiveness is
-not yet established.
+negative results. The subsequent development uses established coupled
+multi-agent policy iteration and dataset aggregation; final results are above.
 
 [Complete cooperative pilot](docs/v15_development_results.md) ·
 [Next development protocol](docs/v16_coupled_development.md)
