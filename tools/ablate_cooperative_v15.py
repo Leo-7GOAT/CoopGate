@@ -8,6 +8,7 @@ from pathlib import Path
 import numpy as np
 import torch
 from coopgate.cooperative_v15 import load_joint
+from coopgate.cooperative_iteration_v16 import load_coupled
 from coopgate.ppo_numerics_v15 import require_complete_training
 from coopgate.ego_v13 import ego_observations
 from coopgate.marl_v12 import LEVELS,action_mask,batch_step
@@ -54,8 +55,15 @@ def run(paths,out,n=128,seed_base=59100001):
     results={};protocol=dict(purpose='Development model-only actor replacement; not SUMO or an equilibrium proof',
         n_initials=n,seed_base=seed_base,variants=['full','restore_0','restore_1','restore_2','all_initial'],models={})
     for path in paths:
-        path=Path(path);model,meta=load_joint(path);require_complete_training(meta)
-        reference,_=load_joint(path.parent/'initial.pt');name=('mappo' if meta['critic_kind']=='central' else 'ippo')+f'_{meta["seed"]}'
+        path=Path(path);header=torch.load(path,map_location='cpu',weights_only=True)
+        if header['algorithm']=='coupled_policy_iteration_v16':
+            model,meta=load_coupled(path)
+            if meta['updates']!=meta['target_updates'] or meta['updates']<3:raise ValueError('Incomplete coupled training')
+            if not all(v>1e-8 for v in meta['actor_squared_parameter_change']):raise ValueError('An actor did not update')
+            reference,_=load_coupled(path.parent/'initial.pt');name=f'coupled_{meta["seed"]}'
+        else:
+            model,meta=load_joint(path);require_complete_training(meta)
+            reference,_=load_joint(path.parent/'initial.pt');name=('mappo' if meta['critic_kind']=='central' else 'ippo')+f'_{meta["seed"]}'
         protocol['models'][name]=dict(path=str(path),sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
             initial_sha256=hashlib.sha256((path.parent/'initial.pt').read_bytes()).hexdigest())
         results[name]={}

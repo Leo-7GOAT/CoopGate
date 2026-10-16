@@ -75,7 +75,7 @@ def analyze(directory, out):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    learners = [m for m in methods if m.startswith(('mappo_','ippo_'))]
+    learners = [m for m in methods if m.startswith(('mappo_','ippo_','coupled_'))]
     fig, axes = plt.subplots(1,2,figsize=(10,4.2),layout='constrained')
     for ax, baseline in zip(axes, ('ego_planner','team_planner')):
         for k, method in enumerate(learners):
