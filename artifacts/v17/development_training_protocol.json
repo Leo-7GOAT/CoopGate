@@ -1,0 +1,23 @@
+{
+  "purpose": "Dataset-aggregated coupled policy iteration DEVELOPMENT continuation",
+  "seed": 1701,
+  "parent": "artifacts/v16/development_models_stage2/coupled_1601/policy.pt",
+  "initialization": "Warm start from complete V16 stage2; not an independent random training seed",
+  "cycles": 2,
+  "actor_update_order": [0, 2, 1],
+  "passes_within_each_actor_update": 3,
+  "states_per_pass": 4096,
+  "epochs_per_pass": 80,
+  "rollout_expert_probabilities": [1.0, 0.5, 0.0],
+  "rollout_expert": "Unilateral argmin of full nominal joint-policy return, with all future actors reacting; no external planning labels",
+  "target_policy": "Freeze the whole joint policy within all three passes of one actor update",
+  "checkpoint": "Fixed final sixth actor update; intermediate diagnostics cannot change this",
+  "hypothesis": "Aggregate states visited by the improving policy to reduce sequential approximation error; compare against the frozen parent on fresh paired initials",
+  "validation": {
+    "initials": 128,
+    "seed_base": 61000001,
+    "modes": ["clean", "uniform", "bias", "pulse"],
+    "methods": ["ego_planner", "team_planner", "coupled_1701", "coupled_1601", "single_901"],
+    "expected_actual_sumo_runs": 2560
+  }
+}

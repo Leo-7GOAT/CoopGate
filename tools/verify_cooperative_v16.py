@@ -27,8 +27,13 @@ def audit_training(path):
     for name,digest in meta['source_sha256'].items():
         assert hashlib.sha256((folder/'source'/name).read_bytes()).hexdigest()==digest,name
     before,initial=load_coupled(folder/'initial.pt');target_samples=0
-    frozen_single=torch.load(ROOT/f'artifacts/v14/single/seed_{meta["ego_seed"]}/policy.pt',weights_only=True,map_location='cpu')
-    for key,value in before.actors[1].state_dict().items():assert torch.equal(value,frozen_single['model'][key])
+    if meta.get('warmstart'):
+        parent=ROOT/meta['warmstart'];assert hashlib.sha256(parent.read_bytes()).hexdigest()==meta['warmstart_sha256']
+        inherited=torch.load(parent,weights_only=True,map_location='cpu')['model']
+        for key,value in before.state_dict().items():assert torch.equal(value,inherited[key])
+    else:
+        frozen_single=torch.load(ROOT/f'artifacts/v14/single/seed_{meta["ego_seed"]}/policy.pt',weights_only=True,map_location='cpu')
+        for key,value in before.actors[1].state_dict().items():assert torch.equal(value,frozen_single['model'][key])
     with (folder/'training.csv').open() as f:history=list(csv.DictReader(f))
     assert len(history)==meta['target_updates']
     for u in range(1,meta['target_updates']+1):

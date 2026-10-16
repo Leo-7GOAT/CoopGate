@@ -27,6 +27,15 @@ not yet established.
 [Complete cooperative pilot](docs/v15_development_results.md) ·
 [Next development protocol](docs/v16_coupled_development.md)
 
+The expanded coupled policy-iteration pilot now produces meaningful changes in
+all three actors and actor-replacement effects. It still increases team cost
+0.92% against the strong cooperative planner, so effectiveness is not accepted.
+Actual SUMO fault recovery passed 384 runs, including 192 injected failures;
+these forced-admission tests do not validate the statistical gate.
+[Latest coupled results](docs/v16_stage2_results.md) ·
+[Runtime recovery](docs/v16_runtime_recovery.md) ·
+[Whole-profile interaction examples and ongoing development](docs/v17_development.md)
+
 ## V14: standalone single-ego prerequisite passed
 
 Three fresh training seeds, fixed budgets and acceptance criteria were
