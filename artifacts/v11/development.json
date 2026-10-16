@@ -1,0 +1,100 @@
+{
+  "v11_development": {
+    "executions": 320,
+    "sha256": "63ea1f3d5b8d778f1886f474d9a4348e2be1a0ab4a82eb26445bd029668fd672",
+    "methods": {
+      "v10": {
+        "perturbed_count": 48,
+        "mean_cost_s": 9.732638888888888,
+        "mean_total_variation": 35.531412760416664
+      },
+      "lex": {
+        "perturbed_count": 48,
+        "mean_cost_s": 9.586805555555555,
+        "mean_total_variation": 23.645833333333332
+      },
+      "lex_coarse": {
+        "perturbed_count": 48,
+        "mean_cost_s": 9.697916666666666,
+        "mean_total_variation": 25.0
+      },
+      "lex_ternary": {
+        "perturbed_count": 48,
+        "mean_cost_s": 9.510416666666666,
+        "mean_total_variation": 19.635416666666668
+      },
+      "timeonly_ternary": {
+        "perturbed_count": 48,
+        "mean_cost_s": 9.590277777777777,
+        "mean_total_variation": 25.520833333333332
+      }
+    }
+  },
+  "v11_development_expanded": {
+    "executions": 1152,
+    "sha256": "8aa9c4b37bd72913a1e490e2964b6757e2a57ed505b4d0b7c4602f0cc36771e0",
+    "methods": {
+      "v10": {
+        "perturbed_count": 144,
+        "mean_cost_s": 9.63888888888889,
+        "mean_total_variation": 34.21983506944444
+      },
+      "lex": {
+        "perturbed_count": 144,
+        "mean_cost_s": 9.575231481481481,
+        "mean_total_variation": 22.196180555555557
+      },
+      "lex_coarse": {
+        "perturbed_count": 144,
+        "mean_cost_s": 9.630787037037038,
+        "mean_total_variation": 23.78472222222222
+      },
+      "lex_ternary": {
+        "perturbed_count": 144,
+        "mean_cost_s": 9.54513888888889,
+        "mean_total_variation": 20.868055555555557
+      },
+      "lex_ternary_only": {
+        "perturbed_count": 144,
+        "mean_cost_s": 9.535879629629628,
+        "mean_total_variation": 19.4921875
+      },
+      "timeonly_ternary": {
+        "perturbed_count": 144,
+        "mean_cost_s": 9.583333333333334,
+        "mean_total_variation": 27.19184027777778
+      }
+    }
+  },
+  "v11_development_families": {
+    "executions": 192,
+    "sha256": "5aa949a49b2e30fb2f663e1fd85dfd31c34f2de3acdbe0d0a66f21cf9a77f69f",
+    "methods": {
+      "lex_ternary_families": {
+        "perturbed_count": 144,
+        "mean_cost_s": 9.491898148148149,
+        "mean_total_variation": 19.895833333333332
+      }
+    }
+  },
+  "v11_development_ordered": {
+    "executions": 192,
+    "sha256": "74c2dc96a6b0e8e13939dbe3981b29475fcc6bff7c0504db1b0f03b577e17bbe",
+    "methods": {
+      "lex_ternary_families": {
+        "perturbed_count": 144,
+        "mean_cost_s": 9.491898148148149,
+        "mean_total_variation": 19.895833333333332
+      }
+    }
+  },
+  "notes": [
+    "All development uses published V10 seeds, never the new V11 test seeds.",
+    "Initial phase: first 8 seeds per regime, 320 runs; lex_ternary there means hold-only tails.",
+    "Expanded phase: first 24 seeds per regime, 1152 runs; lex_ternary retains both families but improves only the best raw tail family.",
+    "Family sweeps: 192 runs on the same 48 states, both families each receive a sweep.",
+    "Ordered projection: 192 repeated runs, same episode results as family sweeps. Development timings are not formal single-worker benchmarks.",
+    "Integration smoke: 72 SUMO runs on the first published V10 seed per regime, all completed; retained in local runs/v11_study_smoke.",
+    "Chosen complete method: .625 command lattice, lexicographic objective, both families, one coordinate sweep per family."
+  ]
+}
