@@ -1,0 +1,38 @@
+{
+  "algorithm": "rollout_policy_iteration_ego_v14",
+  "seed": 1021,
+  "width": 256,
+  "iterations": 6,
+  "states_per_iteration": 32768,
+  "epochs": 80,
+  "teacher": "artifacts/v13/ego/seed_701/policy.pt",
+  "teacher_sha256": "9c3d191c778d4c13d0aca8847dc3efac46f954023c4995cd791ec7de4a54e505",
+  "rule_only": false,
+  "learned_vehicles": [
+    1
+  ],
+  "objective": "ego time + 0.05 ego command variation",
+  "warmstart": "runs\\v14_single_release\\seed_921\\phase_a\\policy.pt",
+  "latest_only": true,
+  "warmstart_sha256": "8a6acf551f0df21b093a3603645cef536d178e0a9a35e9bb7b6a02d1cd0e409d",
+  "inference": "local neural actor followed by the shared physical safety filter; no performance rollout",
+  "data": "on-policy visited states with 15% admissible action exploration and nominal complete-action training rollouts",
+  "checkpoint_selection": "Uniform parameter average of the fixed last 3 iterations; no evaluation-score selection",
+  "source_sha256": {
+    "src/coopgate/policy_iteration_v14.py": "e97f7bbadba207d6cfc06ff170a2425abc38843c93db3177e740cee95e0472fa",
+    "tools/train_policy_iteration_v14.py": "c186b7e7a7ccfa2df4d63acf1dbec1810119a8b8d52e150c424e32ed6e1b1547"
+  },
+  "iteration": 6,
+  "visited_states": 196608,
+  "evaluated_model_transitions": 30330529,
+  "imitation_loss": 1.4303478002548218,
+  "training_action_regret_s": 0.03823375701904297,
+  "elapsed_s": 950.7733786999997,
+  "averaging_window": 3,
+  "averaging_parents": {
+    "runs\\v14_single_release\\seed_921\\phase_b\\iteration_4.pt": "31b13f676861df6663604c818ca758b98c27a3ed7932d416ff48712eb6c38a21",
+    "runs\\v14_single_release\\seed_921\\phase_b\\iteration_5.pt": "569d7a5124f8f70bcb0de44990a8f1201e1f96b4caa55fe778d34b1fff1a93e2",
+    "runs\\v14_single_release\\seed_921\\phase_b\\iteration_6.pt": "e446f18f787762222c5f28cd585a63c1961e2f9fa415214c1f5712e41b0a6465"
+  },
+  "averaging_source_sha256": "fce678e6b1c8cfaaaf6a212e0c7a748f86f828eb4f59dffabd68064e08c8e063"
+}
