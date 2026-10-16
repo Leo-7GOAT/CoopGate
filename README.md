@@ -12,6 +12,19 @@ This is a research prototype with conditional model-based safety guarantees.
 The current single-ego study is **not MARL**. Historical V11 uses a centralized
 contextual bandit; its online planner's gain must not be called a new MARL result.
 
+## V14 development: direct learned decisions before MARL
+
+Training-only rollout policy iteration now tests standalone neural execution.
+Development gains remain provisional: the original small validation set and
+newer larger samples differ, and all negative outcomes are retained.
+Three new seeds, fixed training budgets, 512 untouched test initials and the
+single-ego acceptance criteria are preregistered before training. The final
+policy is a fixed average of the final three iterations' parameters; there is
+no test-based choice of a checkpoint. This remains **single-agent research**.
+
+[Development evidence and mathematical limits](docs/v14_policy_iteration_development.md) ·
+[Fresh training and evaluation preregistration](artifacts/v14/single/training_protocol.json)
+
 ## V13: ego gains and a gate that can return to the planning baseline
 
 The protocol and all final checkpoints were frozen in **3bac214** before

@@ -12,12 +12,17 @@ from develop_v12 import initial
 
 
 def evaluate(path,n=96):
-    torch.set_num_threads(1);model,_=load_policy(path);c=MergeConfig();packed=parameters(c)
+    torch.set_num_threads(1)
+    checkpoint=torch.load(path,map_location='cpu',weights_only=True)
+    if checkpoint['algorithm']=='kinematic_feature_policy_iteration_v14':
+        from coopgate.kinematic_policy_v14 import load_policy as loader,batch_candidates as candidate_function
+    else:loader,candidate_function=load_policy,batch_candidates
+    model,_=loader(path);c=MergeConfig();packed=parameters(c)
     x=np.array([initial(25000001+i,'nominal' if i<n//2 else 'dense') for i in range(n)])
     previous=np.zeros((n,3));finish=np.zeros((n,3));variation=np.zeros((n,3));complete=np.zeros((n,3),bool)
     tapes=np.array([disturbance_tape(25000001+i,['clean','uniform','bias','pulse'][i%4],.5,250) for i in range(n)])
     for step in range(50):
-        features,commands,mask=batch_candidates(x,previous,np.full(n,step),packed)
+        features,commands,mask=candidate_function(x,previous,np.full(n,step),packed)
         selected=model.choose(features,mask);chosen=commands[np.arange(n),selected]
         nxt,command,valid=batch_step(x,previous,chosen,tapes[:,5*step:5*(step+1)],packed,.5)
         if not valid.all() or not np.array_equal(command,chosen):raise RuntimeError('Training/deployment safety projection mismatch')

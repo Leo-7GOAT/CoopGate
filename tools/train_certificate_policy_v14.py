@@ -26,19 +26,27 @@ def fit(model,features,costs,rng,epochs):
     return float(loss.detach()),float(regret[np.arange(len(fe)),selected].mean())
 
 
-def train(out,seed=805,iterations=5,states=8192,epochs=50,width=64,rule_only=False):
+def train(out,seed=805,iterations=5,states=8192,epochs=50,width=64,rule_only=False,variant='certificate'):
     out=Path(out);out.mkdir(parents=True,exist_ok=False)
     torch.set_num_threads(1);torch.manual_seed(seed);rng=np.random.default_rng(seed)
-    model=CertificatePolicy(width)
-    meta=dict(algorithm='certificate_feature_policy_iteration_v14',seed=seed,width=width,iterations=iterations,
+    if variant=='kinematic':
+        from coopgate.kinematic_policy_v14 import KinematicPolicy as policy_class,batch_returns as return_function
+    elif variant=='certificate':policy_class,return_function=CertificatePolicy,batch_returns
+    else:raise ValueError('Unknown actor feature variant')
+    model=policy_class(width)
+    sources=['src/coopgate/certificate_policy_v14.py','tools/train_certificate_policy_v14.py']
+    if variant=='kinematic':sources+=['src/coopgate/kinematic_policy_v14.py','tools/train_kinematic_policy_v14.py']
+    meta=dict(algorithm=variant+'_feature_policy_iteration_v14',seed=seed,width=width,iterations=iterations,
               states_per_iteration=states,epochs=epochs,rule_only=rule_only,learned_vehicles=[1],
               observation='full current state and command memory of three cooperative vehicles; no future disturbances',
               objective='ego arrival + 0.05 ego command variation until own arrival',
               training='rollout approximate policy iteration; rule initialization and learned feedback tail improvement',
               inference='neural scoring of current safety-projected actions; zero performance rollouts',
               selection='fixed final iteration, not best validation checkpoint',
-              source_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in
-                ('src/coopgate/certificate_policy_v14.py','tools/train_certificate_policy_v14.py')})
+              feature_variant=variant,
+              source_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in sources})
+    for name in sources:
+        target=out/'source'/name;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes((ROOT/name).read_bytes())
     (out/'protocol.json').write_text(json.dumps(meta,indent=2)+'\n')
     torch.save({**meta,'iteration':0,'model':model.state_dict()},out/'initial.pt')
     history=[];started=time.perf_counter();total=visited=0
@@ -46,7 +54,7 @@ def train(out,seed=805,iterations=5,states=8192,epochs=50,width=64,rule_only=Fal
         env=EgoVector(32,35000000+seed*10+iteration,.05)
         weights=model.compiled_weights();features=[];costs=[];xs=[];memories=[];clocks=[]
         for j in range(0,states,env.n):
-            f,q,count=batch_returns(env.x,env.previous,env.steps,env.packed,weights,iteration>0 and not rule_only)
+            f,q,count=return_function(env.x,env.previous,env.steps,env.packed,weights,iteration>0 and not rule_only)
             features.append(f);costs.append(q);xs.append(env.x.copy());memories.append(env.previous.copy());clocks.append(env.steps.copy())
             total+=int(count)
             mask=np.isfinite(q);actor=model.choose(f,mask)

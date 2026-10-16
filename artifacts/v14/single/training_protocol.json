@@ -1,0 +1,2176 @@
+{
+  "version": "v14-single-preregistered",
+  "training_seeds": [
+    901,
+    911,
+    921
+  ],
+  "parent_commit": "0a476acd1f6117d893d2e59980804a710d20d0b3",
+  "objective": "Establish standalone ego learning superiority before any MARL expansion",
+  "policy": "Local neural action selection plus unchanged shared safety filter; no online performance rollout",
+  "algorithm": "Training-only rollout approximate policy iteration; existing method family, not a new RL algorithm",
+  "width": 256,
+  "teacher": "artifacts/v13/ego/seed_701/policy.pt",
+  "teacher_sha256": "9c3d191c778d4c13d0aca8847dc3efac46f954023c4995cd791ec7de4a54e505",
+  "phase_a": {
+    "iterations": 6,
+    "states": 32768,
+    "epochs": 60,
+    "latest_only": false
+  },
+  "phase_b": {
+    "iterations": 6,
+    "states": 32768,
+    "epochs": 80,
+    "latest_only": true,
+    "seed_offset": 100
+  },
+  "final_policy": {
+    "method": "uniform_parameter_average",
+    "trailing_iterations": 3
+  },
+  "model_selection": "Same fixed two-stage budget and final three-iteration average for every seed; no test-based checkpoint selection",
+  "test_initials": [
+    {
+      "seed": 45014991,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45500588,
+      "regime": "dense"
+    },
+    {
+      "seed": 45141709,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45743844,
+      "regime": "dense"
+    },
+    {
+      "seed": 45301896,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45690255,
+      "regime": "dense"
+    },
+    {
+      "seed": 45723895,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45582671,
+      "regime": "dense"
+    },
+    {
+      "seed": 45948641,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45674241,
+      "regime": "dense"
+    },
+    {
+      "seed": 45461748,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45292827,
+      "regime": "dense"
+    },
+    {
+      "seed": 45329479,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45087370,
+      "regime": "dense"
+    },
+    {
+      "seed": 45904173,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45894647,
+      "regime": "dense"
+    },
+    {
+      "seed": 45316608,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45597638,
+      "regime": "dense"
+    },
+    {
+      "seed": 45138443,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45815124,
+      "regime": "dense"
+    },
+    {
+      "seed": 45438464,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45507015,
+      "regime": "dense"
+    },
+    {
+      "seed": 45167378,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45153967,
+      "regime": "dense"
+    },
+    {
+      "seed": 45735865,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45520616,
+      "regime": "dense"
+    },
+    {
+      "seed": 45379835,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45646794,
+      "regime": "dense"
+    },
+    {
+      "seed": 45395434,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45111893,
+      "regime": "dense"
+    },
+    {
+      "seed": 45848974,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45498652,
+      "regime": "dense"
+    },
+    {
+      "seed": 45587878,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45623508,
+      "regime": "dense"
+    },
+    {
+      "seed": 45530294,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45236641,
+      "regime": "dense"
+    },
+    {
+      "seed": 45054906,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45828711,
+      "regime": "dense"
+    },
+    {
+      "seed": 45892038,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45045333,
+      "regime": "dense"
+    },
+    {
+      "seed": 45441428,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45578046,
+      "regime": "dense"
+    },
+    {
+      "seed": 45465495,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45796114,
+      "regime": "dense"
+    },
+    {
+      "seed": 45581225,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45615026,
+      "regime": "dense"
+    },
+    {
+      "seed": 45867530,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45301774,
+      "regime": "dense"
+    },
+    {
+      "seed": 45698632,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45933556,
+      "regime": "dense"
+    },
+    {
+      "seed": 45701202,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45915801,
+      "regime": "dense"
+    },
+    {
+      "seed": 45116361,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45369716,
+      "regime": "dense"
+    },
+    {
+      "seed": 45505118,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45600722,
+      "regime": "dense"
+    },
+    {
+      "seed": 45500825,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45620030,
+      "regime": "dense"
+    },
+    {
+      "seed": 45152236,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45569682,
+      "regime": "dense"
+    },
+    {
+      "seed": 45633127,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45537832,
+      "regime": "dense"
+    },
+    {
+      "seed": 45378790,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45208228,
+      "regime": "dense"
+    },
+    {
+      "seed": 45193427,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45459642,
+      "regime": "dense"
+    },
+    {
+      "seed": 45380122,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45260760,
+      "regime": "dense"
+    },
+    {
+      "seed": 45370569,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45174223,
+      "regime": "dense"
+    },
+    {
+      "seed": 45023267,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45442249,
+      "regime": "dense"
+    },
+    {
+      "seed": 45775905,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45670040,
+      "regime": "dense"
+    },
+    {
+      "seed": 45745419,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45906059,
+      "regime": "dense"
+    },
+    {
+      "seed": 45211401,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45920842,
+      "regime": "dense"
+    },
+    {
+      "seed": 45991117,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45175972,
+      "regime": "dense"
+    },
+    {
+      "seed": 45807065,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45511096,
+      "regime": "dense"
+    },
+    {
+      "seed": 45656152,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45025600,
+      "regime": "dense"
+    },
+    {
+      "seed": 45658994,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45682570,
+      "regime": "dense"
+    },
+    {
+      "seed": 45578820,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45692338,
+      "regime": "dense"
+    },
+    {
+      "seed": 45820068,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45619620,
+      "regime": "dense"
+    },
+    {
+      "seed": 45770142,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45759819,
+      "regime": "dense"
+    },
+    {
+      "seed": 45070847,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45427414,
+      "regime": "dense"
+    },
+    {
+      "seed": 45957831,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45515083,
+      "regime": "dense"
+    },
+    {
+      "seed": 45797904,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45037948,
+      "regime": "dense"
+    },
+    {
+      "seed": 45091789,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45523738,
+      "regime": "dense"
+    },
+    {
+      "seed": 45221925,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45633611,
+      "regime": "dense"
+    },
+    {
+      "seed": 45342498,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45220655,
+      "regime": "dense"
+    },
+    {
+      "seed": 45191978,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45448099,
+      "regime": "dense"
+    },
+    {
+      "seed": 45540610,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45738487,
+      "regime": "dense"
+    },
+    {
+      "seed": 45447892,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45427504,
+      "regime": "dense"
+    },
+    {
+      "seed": 45592745,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45052475,
+      "regime": "dense"
+    },
+    {
+      "seed": 45826332,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45887984,
+      "regime": "dense"
+    },
+    {
+      "seed": 45793142,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45743286,
+      "regime": "dense"
+    },
+    {
+      "seed": 45205718,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45271110,
+      "regime": "dense"
+    },
+    {
+      "seed": 45438237,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45894117,
+      "regime": "dense"
+    },
+    {
+      "seed": 45773958,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45834294,
+      "regime": "dense"
+    },
+    {
+      "seed": 45741846,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45500177,
+      "regime": "dense"
+    },
+    {
+      "seed": 45480365,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45067716,
+      "regime": "dense"
+    },
+    {
+      "seed": 45862202,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45141763,
+      "regime": "dense"
+    },
+    {
+      "seed": 45280281,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45447396,
+      "regime": "dense"
+    },
+    {
+      "seed": 45877775,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45081098,
+      "regime": "dense"
+    },
+    {
+      "seed": 45503267,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45837020,
+      "regime": "dense"
+    },
+    {
+      "seed": 45434348,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45400517,
+      "regime": "dense"
+    },
+    {
+      "seed": 45926459,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45163930,
+      "regime": "dense"
+    },
+    {
+      "seed": 45645523,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45379192,
+      "regime": "dense"
+    },
+    {
+      "seed": 45221937,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45152459,
+      "regime": "dense"
+    },
+    {
+      "seed": 45541012,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45606907,
+      "regime": "dense"
+    },
+    {
+      "seed": 45541717,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45042861,
+      "regime": "dense"
+    },
+    {
+      "seed": 45999761,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45840522,
+      "regime": "dense"
+    },
+    {
+      "seed": 45713613,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45861780,
+      "regime": "dense"
+    },
+    {
+      "seed": 45618744,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45188288,
+      "regime": "dense"
+    },
+    {
+      "seed": 45853481,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45704464,
+      "regime": "dense"
+    },
+    {
+      "seed": 45682059,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45503846,
+      "regime": "dense"
+    },
+    {
+      "seed": 45225803,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45310871,
+      "regime": "dense"
+    },
+    {
+      "seed": 45670275,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45086228,
+      "regime": "dense"
+    },
+    {
+      "seed": 45591487,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45042102,
+      "regime": "dense"
+    },
+    {
+      "seed": 45284426,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45799357,
+      "regime": "dense"
+    },
+    {
+      "seed": 45650608,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45005431,
+      "regime": "dense"
+    },
+    {
+      "seed": 45883981,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45469163,
+      "regime": "dense"
+    },
+    {
+      "seed": 45776071,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45502642,
+      "regime": "dense"
+    },
+    {
+      "seed": 45549405,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45114631,
+      "regime": "dense"
+    },
+    {
+      "seed": 45331604,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45990610,
+      "regime": "dense"
+    },
+    {
+      "seed": 45052873,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45461501,
+      "regime": "dense"
+    },
+    {
+      "seed": 45810215,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45129741,
+      "regime": "dense"
+    },
+    {
+      "seed": 45192624,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45265027,
+      "regime": "dense"
+    },
+    {
+      "seed": 45640551,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45993229,
+      "regime": "dense"
+    },
+    {
+      "seed": 45948567,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45123573,
+      "regime": "dense"
+    },
+    {
+      "seed": 45090185,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45045762,
+      "regime": "dense"
+    },
+    {
+      "seed": 45287250,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45478460,
+      "regime": "dense"
+    },
+    {
+      "seed": 45541504,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45665912,
+      "regime": "dense"
+    },
+    {
+      "seed": 45161028,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45389699,
+      "regime": "dense"
+    },
+    {
+      "seed": 45593096,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45359517,
+      "regime": "dense"
+    },
+    {
+      "seed": 45768503,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45998120,
+      "regime": "dense"
+    },
+    {
+      "seed": 45120399,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45539935,
+      "regime": "dense"
+    },
+    {
+      "seed": 45474139,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45268150,
+      "regime": "dense"
+    },
+    {
+      "seed": 45517901,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45971084,
+      "regime": "dense"
+    },
+    {
+      "seed": 45353294,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45593296,
+      "regime": "dense"
+    },
+    {
+      "seed": 45028841,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45996981,
+      "regime": "dense"
+    },
+    {
+      "seed": 45173417,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45668080,
+      "regime": "dense"
+    },
+    {
+      "seed": 45375924,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45775690,
+      "regime": "dense"
+    },
+    {
+      "seed": 45804821,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45594667,
+      "regime": "dense"
+    },
+    {
+      "seed": 45835277,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45725535,
+      "regime": "dense"
+    },
+    {
+      "seed": 45674608,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45283941,
+      "regime": "dense"
+    },
+    {
+      "seed": 45250912,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45000392,
+      "regime": "dense"
+    },
+    {
+      "seed": 45905732,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45123610,
+      "regime": "dense"
+    },
+    {
+      "seed": 45687430,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45500864,
+      "regime": "dense"
+    },
+    {
+      "seed": 45675324,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45408823,
+      "regime": "dense"
+    },
+    {
+      "seed": 45640124,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45487793,
+      "regime": "dense"
+    },
+    {
+      "seed": 45046636,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45760466,
+      "regime": "dense"
+    },
+    {
+      "seed": 45230067,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45122839,
+      "regime": "dense"
+    },
+    {
+      "seed": 45820143,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45432194,
+      "regime": "dense"
+    },
+    {
+      "seed": 45003299,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45881252,
+      "regime": "dense"
+    },
+    {
+      "seed": 45960816,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45489034,
+      "regime": "dense"
+    },
+    {
+      "seed": 45880316,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45196220,
+      "regime": "dense"
+    },
+    {
+      "seed": 45624497,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45806439,
+      "regime": "dense"
+    },
+    {
+      "seed": 45291322,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45367677,
+      "regime": "dense"
+    },
+    {
+      "seed": 45239144,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45370687,
+      "regime": "dense"
+    },
+    {
+      "seed": 45721078,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45086379,
+      "regime": "dense"
+    },
+    {
+      "seed": 45237081,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45129464,
+      "regime": "dense"
+    },
+    {
+      "seed": 45998575,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45707346,
+      "regime": "dense"
+    },
+    {
+      "seed": 45329969,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45762264,
+      "regime": "dense"
+    },
+    {
+      "seed": 45917124,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45591250,
+      "regime": "dense"
+    },
+    {
+      "seed": 45093329,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45859677,
+      "regime": "dense"
+    },
+    {
+      "seed": 45580680,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45979798,
+      "regime": "dense"
+    },
+    {
+      "seed": 45054469,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45752685,
+      "regime": "dense"
+    },
+    {
+      "seed": 45906094,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45092908,
+      "regime": "dense"
+    },
+    {
+      "seed": 45161089,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45485852,
+      "regime": "dense"
+    },
+    {
+      "seed": 45508983,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45213255,
+      "regime": "dense"
+    },
+    {
+      "seed": 45226945,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45477172,
+      "regime": "dense"
+    },
+    {
+      "seed": 45703980,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45005246,
+      "regime": "dense"
+    },
+    {
+      "seed": 45981781,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45489950,
+      "regime": "dense"
+    },
+    {
+      "seed": 45051075,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45642428,
+      "regime": "dense"
+    },
+    {
+      "seed": 45856103,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45184344,
+      "regime": "dense"
+    },
+    {
+      "seed": 45350014,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45993082,
+      "regime": "dense"
+    },
+    {
+      "seed": 45671954,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45276757,
+      "regime": "dense"
+    },
+    {
+      "seed": 45742874,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45911811,
+      "regime": "dense"
+    },
+    {
+      "seed": 45613062,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45623603,
+      "regime": "dense"
+    },
+    {
+      "seed": 45378652,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45479365,
+      "regime": "dense"
+    },
+    {
+      "seed": 45436528,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45531233,
+      "regime": "dense"
+    },
+    {
+      "seed": 45183357,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45400455,
+      "regime": "dense"
+    },
+    {
+      "seed": 45376486,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45889007,
+      "regime": "dense"
+    },
+    {
+      "seed": 45348919,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45304577,
+      "regime": "dense"
+    },
+    {
+      "seed": 45376623,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45551827,
+      "regime": "dense"
+    },
+    {
+      "seed": 45078196,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45580900,
+      "regime": "dense"
+    },
+    {
+      "seed": 45789834,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45992823,
+      "regime": "dense"
+    },
+    {
+      "seed": 45061180,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45156169,
+      "regime": "dense"
+    },
+    {
+      "seed": 45240661,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45994518,
+      "regime": "dense"
+    },
+    {
+      "seed": 45385764,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45381978,
+      "regime": "dense"
+    },
+    {
+      "seed": 45787161,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45251186,
+      "regime": "dense"
+    },
+    {
+      "seed": 45245251,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45659739,
+      "regime": "dense"
+    },
+    {
+      "seed": 45026879,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45143413,
+      "regime": "dense"
+    },
+    {
+      "seed": 45927968,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45369394,
+      "regime": "dense"
+    },
+    {
+      "seed": 45947645,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45874842,
+      "regime": "dense"
+    },
+    {
+      "seed": 45472765,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45046394,
+      "regime": "dense"
+    },
+    {
+      "seed": 45735133,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45675337,
+      "regime": "dense"
+    },
+    {
+      "seed": 45757571,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45990789,
+      "regime": "dense"
+    },
+    {
+      "seed": 45433651,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45656698,
+      "regime": "dense"
+    },
+    {
+      "seed": 45881044,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45308756,
+      "regime": "dense"
+    },
+    {
+      "seed": 45766782,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45845458,
+      "regime": "dense"
+    },
+    {
+      "seed": 45777538,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45280914,
+      "regime": "dense"
+    },
+    {
+      "seed": 45378008,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45543011,
+      "regime": "dense"
+    },
+    {
+      "seed": 45992022,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45860082,
+      "regime": "dense"
+    },
+    {
+      "seed": 45038992,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45724608,
+      "regime": "dense"
+    },
+    {
+      "seed": 45255971,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45668499,
+      "regime": "dense"
+    },
+    {
+      "seed": 45252984,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45715220,
+      "regime": "dense"
+    },
+    {
+      "seed": 45135946,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45463052,
+      "regime": "dense"
+    },
+    {
+      "seed": 45226772,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45502188,
+      "regime": "dense"
+    },
+    {
+      "seed": 45971417,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45812386,
+      "regime": "dense"
+    },
+    {
+      "seed": 45148287,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45058675,
+      "regime": "dense"
+    },
+    {
+      "seed": 45724055,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45556762,
+      "regime": "dense"
+    },
+    {
+      "seed": 45124328,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45733488,
+      "regime": "dense"
+    },
+    {
+      "seed": 45824488,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45387676,
+      "regime": "dense"
+    },
+    {
+      "seed": 45055059,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45678662,
+      "regime": "dense"
+    },
+    {
+      "seed": 45682418,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45330232,
+      "regime": "dense"
+    },
+    {
+      "seed": 45999513,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45575382,
+      "regime": "dense"
+    },
+    {
+      "seed": 45004224,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45547227,
+      "regime": "dense"
+    },
+    {
+      "seed": 45772838,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45549291,
+      "regime": "dense"
+    },
+    {
+      "seed": 45186982,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45695621,
+      "regime": "dense"
+    },
+    {
+      "seed": 45618375,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45320644,
+      "regime": "dense"
+    },
+    {
+      "seed": 45981674,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45107917,
+      "regime": "dense"
+    },
+    {
+      "seed": 45094776,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45261413,
+      "regime": "dense"
+    },
+    {
+      "seed": 45794413,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45934104,
+      "regime": "dense"
+    },
+    {
+      "seed": 45485738,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45586218,
+      "regime": "dense"
+    },
+    {
+      "seed": 45689668,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45635841,
+      "regime": "dense"
+    },
+    {
+      "seed": 45537044,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45316055,
+      "regime": "dense"
+    },
+    {
+      "seed": 45334524,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45517060,
+      "regime": "dense"
+    },
+    {
+      "seed": 45719257,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45641835,
+      "regime": "dense"
+    },
+    {
+      "seed": 45865802,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45469560,
+      "regime": "dense"
+    },
+    {
+      "seed": 45333628,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45028477,
+      "regime": "dense"
+    },
+    {
+      "seed": 45755402,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45428565,
+      "regime": "dense"
+    },
+    {
+      "seed": 45997074,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45462357,
+      "regime": "dense"
+    },
+    {
+      "seed": 45406225,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45610457,
+      "regime": "dense"
+    },
+    {
+      "seed": 45995167,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45602097,
+      "regime": "dense"
+    },
+    {
+      "seed": 45610222,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45194130,
+      "regime": "dense"
+    },
+    {
+      "seed": 45754741,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45395453,
+      "regime": "dense"
+    },
+    {
+      "seed": 45958127,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45867430,
+      "regime": "dense"
+    },
+    {
+      "seed": 45278963,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45284178,
+      "regime": "dense"
+    },
+    {
+      "seed": 45275560,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45414850,
+      "regime": "dense"
+    },
+    {
+      "seed": 45491432,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45993134,
+      "regime": "dense"
+    },
+    {
+      "seed": 45606670,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45157603,
+      "regime": "dense"
+    },
+    {
+      "seed": 45866668,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45569729,
+      "regime": "dense"
+    },
+    {
+      "seed": 45793215,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45126804,
+      "regime": "dense"
+    },
+    {
+      "seed": 45432020,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45041981,
+      "regime": "dense"
+    },
+    {
+      "seed": 45286654,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45969277,
+      "regime": "dense"
+    },
+    {
+      "seed": 45535135,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45576835,
+      "regime": "dense"
+    },
+    {
+      "seed": 45930923,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45048063,
+      "regime": "dense"
+    },
+    {
+      "seed": 45385779,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45895621,
+      "regime": "dense"
+    },
+    {
+      "seed": 45450293,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45458007,
+      "regime": "dense"
+    },
+    {
+      "seed": 45856771,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45390176,
+      "regime": "dense"
+    },
+    {
+      "seed": 45396719,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45583911,
+      "regime": "dense"
+    },
+    {
+      "seed": 45869965,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45570617,
+      "regime": "dense"
+    },
+    {
+      "seed": 45033011,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45678321,
+      "regime": "dense"
+    },
+    {
+      "seed": 45262583,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45857906,
+      "regime": "dense"
+    },
+    {
+      "seed": 45234258,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45938982,
+      "regime": "dense"
+    },
+    {
+      "seed": 45973080,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45401195,
+      "regime": "dense"
+    },
+    {
+      "seed": 45818838,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45304358,
+      "regime": "dense"
+    },
+    {
+      "seed": 45134048,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45184762,
+      "regime": "dense"
+    },
+    {
+      "seed": 45877941,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45132331,
+      "regime": "dense"
+    },
+    {
+      "seed": 45346402,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45390762,
+      "regime": "dense"
+    },
+    {
+      "seed": 45450467,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45316658,
+      "regime": "dense"
+    },
+    {
+      "seed": 45314282,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45729996,
+      "regime": "dense"
+    },
+    {
+      "seed": 45662371,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45821216,
+      "regime": "dense"
+    },
+    {
+      "seed": 45629604,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45729859,
+      "regime": "dense"
+    },
+    {
+      "seed": 45583574,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45621528,
+      "regime": "dense"
+    },
+    {
+      "seed": 45064479,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45604266,
+      "regime": "dense"
+    },
+    {
+      "seed": 45406580,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45654249,
+      "regime": "dense"
+    },
+    {
+      "seed": 45023794,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45018028,
+      "regime": "dense"
+    },
+    {
+      "seed": 45666704,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45957871,
+      "regime": "dense"
+    },
+    {
+      "seed": 45787527,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45105118,
+      "regime": "dense"
+    },
+    {
+      "seed": 45875183,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45845217,
+      "regime": "dense"
+    },
+    {
+      "seed": 45970693,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45006725,
+      "regime": "dense"
+    },
+    {
+      "seed": 45962783,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45990827,
+      "regime": "dense"
+    },
+    {
+      "seed": 45334786,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45727638,
+      "regime": "dense"
+    },
+    {
+      "seed": 45056725,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45260549,
+      "regime": "dense"
+    },
+    {
+      "seed": 45112769,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45669669,
+      "regime": "dense"
+    },
+    {
+      "seed": 45240963,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45968010,
+      "regime": "dense"
+    },
+    {
+      "seed": 45654578,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45285968,
+      "regime": "dense"
+    },
+    {
+      "seed": 45550727,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45146838,
+      "regime": "dense"
+    },
+    {
+      "seed": 45088578,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45749840,
+      "regime": "dense"
+    },
+    {
+      "seed": 45679859,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45446024,
+      "regime": "dense"
+    },
+    {
+      "seed": 45640130,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45868888,
+      "regime": "dense"
+    },
+    {
+      "seed": 45771651,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45993088,
+      "regime": "dense"
+    },
+    {
+      "seed": 45732320,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45864110,
+      "regime": "dense"
+    },
+    {
+      "seed": 45952303,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45599689,
+      "regime": "dense"
+    },
+    {
+      "seed": 45236626,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45412449,
+      "regime": "dense"
+    },
+    {
+      "seed": 45941369,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45790925,
+      "regime": "dense"
+    },
+    {
+      "seed": 45531050,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45900590,
+      "regime": "dense"
+    },
+    {
+      "seed": 45907226,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45110941,
+      "regime": "dense"
+    },
+    {
+      "seed": 45861069,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45803497,
+      "regime": "dense"
+    },
+    {
+      "seed": 45171589,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45940701,
+      "regime": "dense"
+    },
+    {
+      "seed": 45468135,
+      "regime": "nominal"
+    },
+    {
+      "seed": 45422145,
+      "regime": "dense"
+    }
+  ],
+  "disturbances": [
+    "clean",
+    "uniform",
+    "bias",
+    "pulse"
+  ],
+  "primary_methods": [
+    "learned_901",
+    "learned_911",
+    "learned_921"
+  ],
+  "secondary_methods": [
+    "last_901",
+    "last_911",
+    "last_921"
+  ],
+  "baseline": "Unmodified ego RolloutGate from V13",
+  "cost": "own arrival + 0.05 own command variation until own arrival",
+  "criteria": {
+    "ego_cost_gain_percent_min": 1.0,
+    "ego_time_gain_percent_min": 0.5,
+    "ego_variation_gain_percent_min": 10.0,
+    "every_seed_cost_improves": true,
+    "every_seed_time_improves": true,
+    "cost_cluster_ci95_lower_gt_zero": true,
+    "time_cluster_ci95_lower_gt_zero": true,
+    "all_complete_no_safety_events": true,
+    "standalone_inference": true
+  },
+  "bootstrap": {
+    "seed": 202610164502,
+    "draws": 10000,
+    "cluster": "initial, averaging four modes and three fixed trained seeds",
+    "interval": 0.95
+  },
+  "interpretation": [
+    "Training model transitions and actual SUMO executions are counted separately",
+    "Averaging parameters produces one single-ego network; this is not MARL",
+    "No test-set expansion or criterion revision after unblinding",
+    "MARL remains blocked until the full frozen single-ego acceptance and physical/replay audit pass"
+  ],
+  "runtime": {
+    "python": "3.11.9",
+    "torch": "2.14.1+cpu",
+    "numpy": "2.4.6",
+    "numba": "0.65.1"
+  },
+  "training_source_sha256": {
+    "src/coopgate/certificate_policy_v14.py": "5e1aafd92aabc9b3d3afff7c3fc0bd1d5a7f85401b4f0145139f9e4f76ce0464",
+    "src/coopgate/certification.py": "fd5c820b9b6c49820cccc03f9e4045c55c7c9f1f02ae56924023a4ea8f3f9957",
+    "src/coopgate/chain_recovery.py": "611305f6e6731061ad5efc24e6f29376bf5e709bce380662c21b1ce1feb51d64",
+    "src/coopgate/cli.py": "b85d3dfed1486ee07a8aa2a4388343f6d7495f6e12d125cfb634dd288e015380",
+    "src/coopgate/confidence_v12.py": "0d3547e1d9f899596e393367c100150250dca495d8f5672384b2098d5d52e2cd",
+    "src/coopgate/config.py": "817c37ef52ee95a3c397bc81f7c69cf6c8671ec87ec99f562f8c42fb3f9878fb",
+    "src/coopgate/controllers.py": "911d04aa4c6e40fc8a2bd45391ea97471d147ab8d387999989a0ebe47dbe6feb",
+    "src/coopgate/disturbance_v9.py": "f854af83228c958fedc832e5bf5ab726e0d241fc39ed8238ec33b849e3c9aae1",
+    "src/coopgate/ego_confidence_v13.py": "c668e9f9c6ced963de1d09dbe8592dcd6481b6baed1a0c7d3606c712ab35a37d",
+    "src/coopgate/ego_models_v13.py": "19b42dc97dd5bb925fecc81fa517dfee3bda399bd370663b15cd9e9a5acab275",
+    "src/coopgate/ego_v13.py": "050ed97d850b906b87e6135a50b08bf2c91da984948ecdb1a5b6bc95294fe866",
+    "src/coopgate/experiment.py": "80c9dd82acf16705ec7f5c0a7c275817fd8dd75034be41f660fd3b075e7af80e",
+    "src/coopgate/experiment_v10.py": "e7ae91c5e8dbf65fe0e0292b4b463e1d26d1ca675965f15d3c50877871f4a972",
+    "src/coopgate/experiment_v11.py": "55df0a59472bc7be264b98254ebf070f3891406b977789b4becfe0863fd5c4e3",
+    "src/coopgate/experiment_v8.py": "a1f09704cc5a05d734e0d1170415a736a6c5093075c71e1bcbdb4c3aee0b38c5",
+    "src/coopgate/experiment_v9.py": "227ac8632c3adf05fdf19995290e86f9f200872f41984adff3ee1e89458f0226",
+    "src/coopgate/fast_v8.py": "1ca80253fa3fa9411b3d3b245c7bb58a98025b0f1da06e2622f803c8f2df4d64",
+    "src/coopgate/kinematic_policy_v14.py": "62e355e2d8b30f340961a2ca3b3bb61320d185b6f2f5f5d01def881d7504dec2",
+    "src/coopgate/learned_rollout_v13.py": "bfbda2c118dbbcf51ed4b072965088f31afe2795cb0bff04b98609847ceab87d",
+    "src/coopgate/learning_v3.py": "86a79787c9c77da3dab9cfe3999b5ecc3f8644dd131fd1d7eb5d2f09c61ecc78",
+    "src/coopgate/learning_v4.py": "3618faefacaa7ba9e7b8226699d76e560a7524b3cf03e0ac5f7a233980fb0e99",
+    "src/coopgate/learning_v6.py": "042effa2979828c5331fc4776aa4fdc2af48cee3135191dbe265f524364b7b18",
+    "src/coopgate/mappo.py": "6929024f8cf82dd79e45b6d3b6ce05b19cdadb99d019a8e8b43bb45a282f8a94",
+    "src/coopgate/marl_v12.py": "e1787954402c3713c2bfc6a5f1be9896612e28c45aafc9e19391e4d43a4000a9",
+    "src/coopgate/merge_v4.py": "8db139e9a16316b9278513660c8b91056f8fdb8feae787ec5e188b1a01b114a6",
+    "src/coopgate/paired.py": "50924f6ead7c07646487807340d657bc4534cd6e36d4211653e46874f849881c",
+    "src/coopgate/planning_v5.py": "7fda10ca6f1a37f418fe24d043b1089b0ffc81aae2ba48ce8c776b85503c97a0",
+    "src/coopgate/platoon.py": "1330663a2f9470b9a6f9148132a54c5dd7d838be14f47a4669a72936413e0817",
+    "src/coopgate/policy_iteration_v14.py": "e97f7bbadba207d6cfc06ff170a2425abc38843c93db3177e740cee95e0472fa",
+    "src/coopgate/recovery.py": "d5faf76da0e06918476ae55bf156872116958efdd6a504b6249312ea535e05e7",
+    "src/coopgate/risk_v7.py": "4471231ba5356f27eaf1823e2a50cee2b95706de380556d60b203988fe43289b",
+    "src/coopgate/robust_v9.py": "c579b0c57516c9954e0c1c0d06da7324804a01e40402e8aff39fa98f5d80bd6b",
+    "src/coopgate/rollout_v10.py": "ea74fe7f3bb107ecfaf95cf7ff394feec66598b030b9b2e7db0560cc53fefd4e",
+    "src/coopgate/shield.py": "976c02028240b4ea8494186eb8c0200270fc8c27b71142b2bec70e4aec66cd83",
+    "src/coopgate/sim.py": "f9e3d7dbd7b2cadb7f46d0b534d27a72d76ca9f3f7682b83161d1c2329c210f2",
+    "src/coopgate/single_v12.py": "69e46bf846fa968188a0e020f30a916ed86e3bc138abe406e3c6ae09bd712ba3",
+    "src/coopgate/smooth_v11.py": "fc6af2a1ec0ec184dd6af94dc31f7ee8045fdc9eee45a22f6e076edea86cf250",
+    "src/coopgate/training_v12.py": "52591e8a36bce6070e4a01c115d49806b53f4d59dc85dcad97be584e1d409049",
+    "src/coopgate/verify_v7.py": "8e5f23c8c75dbf90b8a88175236de503f28932295897b2508cb3a6c42264eedb",
+    "src/coopgate/__init__.py": "7ce2c9b64fe527c64ed90b72b46553dae55a68094a125e758730a7bcd1ecc132",
+    "tools/train_policy_iteration_v14.py": "c186b7e7a7ccfa2df4d63acf1dbec1810119a8b8d52e150c424e32ed6e1b1547",
+    "tools/average_policy_v14.py": "fce678e6b1c8cfaaaf6a212e0c7a748f86f828eb4f59dffabd68064e08c8e063",
+    "tools/train_single_pipeline_v14.py": "cdc0afe08b8314d487d959b1b26e91b36c7f60de53b006f7f93a88adbee42d6c",
+    "tools/freeze_single_training_v14.py": "1b5b450010d7477eba428725a7a4dc0164ad6f6d21bddc71d9e9fb4721b9f249"
+  }
+}

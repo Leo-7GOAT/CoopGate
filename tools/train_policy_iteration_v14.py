@@ -52,23 +52,32 @@ def fit(model, data, rng, epochs, batch_size=512):
 
 
 def train(out, seed=801, iterations=4, states_per_iteration=8192, epochs=30,
-          teacher='artifacts/v13/ego/seed_701/policy.pt', rule_only=False, width=128):
+          teacher='artifacts/v13/ego/seed_701/policy.pt', rule_only=False, width=128,
+          warmstart=None, latest_only=False):
     out = Path(out)
     out.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(1)
     torch.manual_seed(seed)
     rng = np.random.default_rng(seed)
     model = IteratedPolicy(width)
+    if warmstart:
+        from coopgate.policy_iteration_v14 import load_policy
+        model, warm_metadata = load_policy(warmstart)
+        if warm_metadata['width']!=width:raise ValueError('Warmstart width mismatch')
     reference = LearnedRolloutGate(teacher)
     meta = dict(algorithm='rollout_policy_iteration_ego_v14', seed=seed, width=width,
                 iterations=iterations, states_per_iteration=states_per_iteration,
                 epochs=epochs, teacher=str(teacher), teacher_sha256=hashlib.sha256(Path(teacher).read_bytes()).hexdigest(),
                 rule_only=rule_only, learned_vehicles=[1], objective='ego time + 0.05 ego command variation',
+                warmstart=str(warmstart) if warmstart else None, latest_only=latest_only,
+                warmstart_sha256=hashlib.sha256(Path(warmstart).read_bytes()).hexdigest() if warmstart else None,
                 inference='local neural actor followed by the shared physical safety filter; no performance rollout',
                 data='on-policy visited states with 15% admissible action exploration and nominal complete-action training rollouts',
                 checkpoint_selection='fixed final iteration; development scores do not affect selection')
     sources = ['src/coopgate/policy_iteration_v14.py', 'tools/train_policy_iteration_v14.py']
     meta['source_sha256'] = {p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in sources}
+    for name in sources:
+        target=out/'source'/name;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes((ROOT/name).read_bytes())
     (out/'protocol.json').write_text(json.dumps(meta, indent=2)+'\n')
     torch.save({**meta, 'iteration':0, 'model':model.state_dict()}, out/'initial.pt')
     history = []
@@ -77,7 +86,7 @@ def train(out, seed=801, iterations=4, states_per_iteration=8192, epochs=30,
     started = time.perf_counter()
     for iteration in range(iterations):
         env = EgoVector(32, 34000000 + seed * 10 + iteration, .05)
-        if iteration == 0:
+        if iteration == 0 and not warmstart:
             weights, kind = reference.weights, reference.kind
         else:
             weights, kind = model.compiled_weights(), 2
@@ -99,6 +108,7 @@ def train(out, seed=801, iterations=4, states_per_iteration=8192, epochs=30,
             env.step(selected[:, None])
         new_obs, new_costs = np.concatenate(ob_round), np.concatenate(costs_round)
         np.savez_compressed(out/f'data_{iteration+1}.npz', obs=new_obs, costs=new_costs)
+        if latest_only:stored_obs,stored_costs=[],[]
         stored_obs.append(new_obs)
         stored_costs.append(new_costs)
         # Retain earlier visited states, while newly generated returns reflect
@@ -132,6 +142,8 @@ if __name__ == '__main__':
     parser.add_argument('--teacher', default='artifacts/v13/ego/seed_701/policy.pt')
     parser.add_argument('--rule-only', action='store_true')
     parser.add_argument('--width', type=int, default=128)
+    parser.add_argument('--warmstart')
+    parser.add_argument('--latest-only', action='store_true')
     args=parser.parse_args()
     train(args.out, args.seed, args.iterations, args.states, args.epochs,
-          args.teacher, args.rule_only, args.width)
+          args.teacher, args.rule_only, args.width, args.warmstart, args.latest_only)
