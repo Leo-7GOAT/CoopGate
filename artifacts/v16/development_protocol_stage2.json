@@ -1,0 +1,22 @@
+{
+  "purpose": "Second coupled MARL DEVELOPMENT attempt; not an independent seed or formal result",
+  "seed": 1601,
+  "ego_seed": 901,
+  "initialization": "Fresh same random initialization and frozen V14 ego; no continuation from stage1",
+  "cycles": 4,
+  "actor_update_order": [0, 2, 1],
+  "states_per_update": 8192,
+  "epochs_per_update": 120,
+  "exploration_probability": 0.0,
+  "targeted_issue": "Stage1 retained substantial training action regret and compounded approximation errors in intermediate closed loops",
+  "development_hypothesis": "Use greedy-policy visitation to align training states with deployment, plus more data and fitting updates; full counterfactual actions still provide action comparisons",
+  "interpretation": "Exploration, fitting budget and data budget change together; this attempt does not isolate their separate causal effects",
+  "checkpoint_selection": "Fixed final twelfth update; do not choose from intermediate diagnostic scores",
+  "validation": {
+    "initials": 128,
+    "seed_base": 59500001,
+    "modes": ["clean", "uniform", "bias", "pulse"],
+    "methods": ["ego_planner", "team_planner", "coupled_1601", "single_901"],
+    "expected_actual_sumo_runs": 2048
+  }
+}

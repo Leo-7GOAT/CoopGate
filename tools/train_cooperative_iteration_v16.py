@@ -41,9 +41,10 @@ def fit_actor(actor,obs,costs,incumbent,rng,epochs):
         changed_training_action_fraction=float(np.mean(selected!=incumbent)))
 
 
-def train(out,seed=1601,ego_seed=901,cycles=2,states=2048,epochs=60):
+def train(out,seed=1601,ego_seed=901,cycles=2,states=2048,epochs=60,exploration=.15):
     prerequisite=require_single(ROOT)
     if cycles<1 or states<32 or epochs<1:raise ValueError('Positive complete training budget required')
+    if not np.isfinite(exploration) or not 0<=exploration<=1:raise ValueError('Invalid exploration probability')
     out=Path(out);out.mkdir(parents=True,exist_ok=False)
     torch.set_num_threads(1);torch.manual_seed(seed);rng=np.random.default_rng(seed)
     teacher=ROOT/f'artifacts/v14/single/seed_{ego_seed}/policy.pt'
@@ -55,7 +56,8 @@ def train(out,seed=1601,ego_seed=901,cycles=2,states=2048,epochs=60):
         cycles=cycles,target_updates=3*cycles,states_per_update=states,epochs=epochs,
         training_backend='Known model with hidden disturbances in visitation; nominal counterfactual joint returns',
         objective='Mean individual arrival plus 0.05 individual variation, each stopped at own arrival',
-        data='On-policy joint trajectories with 15 percent admissible exploration of the currently updated role',
+        data='Current joint-policy trajectories with declared admissible exploration of the currently updated role',
+        exploration_probability=exploration,
         policy_improvement='One role at a time; all other actors frozen, full future joint policy frozen during each data batch',
         critic='Unused, frozen architecture fields only; no trained value critic in this algorithm',
         labels='Self-generated complete joint-policy returns, no external planning action labels',
@@ -82,7 +84,7 @@ def train(out,seed=1601,ego_seed=901,cycles=2,states=2048,epochs=60):
                 count+=len(ids);round_branches+=evaluated
             action=model.proposal(obs,mask)
             random=(rng.random(mask[:,role].shape)-np.where(mask[:,role],0.,2.)).argmax(-1)
-            action[:,role]=np.where(rng.random(env.n)<.15,random,action[:,role])
+            action[:,role]=np.where(rng.random(env.n)<exploration,random,action[:,role])
             env.step(action);environment_steps+=env.n
         ob,cost,incumbent,x,prev,clock=[np.concatenate([r[i] for r in stored]) for i in range(6)]
         np.savez_compressed(out/f'data_{update+1}.npz',obs=ob,costs=cost,incumbent=incumbent,states=x,previous=prev,steps=clock)
@@ -108,4 +110,5 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--out',required=True);p.add_argument('--seed',type=int,default=1601)
     p.add_argument('--ego-seed',type=int,default=901);p.add_argument('--cycles',type=int,default=2)
     p.add_argument('--states',type=int,default=2048);p.add_argument('--epochs',type=int,default=60)
-    a=p.parse_args();train(a.out,a.seed,a.ego_seed,a.cycles,a.states,a.epochs)
+    p.add_argument('--exploration',type=float,default=.15)
+    a=p.parse_args();train(a.out,a.seed,a.ego_seed,a.cycles,a.states,a.epochs,a.exploration)
