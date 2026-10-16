@@ -36,6 +36,15 @@ these forced-admission tests do not validate the statistical gate.
 [Runtime recovery](docs/v16_runtime_recovery.md) ·
 [Whole-profile interaction examples and ongoing development](docs/v17_development.md)
 
+The next dataset-aggregated continuation improves team cost **1.67% against its
+parent** on 2,560 fresh paired SUMO runs. Against strong cooperative planning its
+**0.48%** mean gain still has an interval crossing zero, and the rear vehicle
+regresses. Calibrated admission remains ineffective (zero held-out admissions).
+This is measured development progress, not a passed cooperative gate.
+[Complete V17 comparison](docs/v17_stage1_results.md) ·
+[Coupled improvement and gate proof boundaries](docs/theory_v17_coupled_gate.md) ·
+[Additional close prior work](docs/v17_related_work_audit.md)
+
 ## V14: standalone single-ego prerequisite passed
 
 Three fresh training seeds, fixed budgets and acceptance criteria were

@@ -1,0 +1,431 @@
+{
+  "purpose": "Development hypothesis generation only; no certified risk or formal test claim",
+  "model": "coupled_1701",
+  "model_sha256": "c4f01e370c252dff1e0de72d9641071c511cfa04d03e9e265c42f3c43b43dd38",
+  "conditional_risk_unit": "Worst over four modes, three vehicles and cost/time per initial",
+  "nominal_forecast_source": "runs\\v17_stress_stage1",
+  "conformal_split_bounds": {
+    "dense": {
+      "q": 0.0625,
+      "calibration_initials": 32,
+      "heldout_initials": 32
+    },
+    "nominal": {
+      "q": 0.25,
+      "calibration_initials": 32,
+      "heldout_initials": 32
+    }
+  },
+  "results": {
+    "always_learn": {
+      "all": {
+        "initials": 128,
+        "admitted": 128,
+        "harmful_admitted_initials": 106,
+        "conditional_empirical_harm": 0.828125,
+        "per_vehicle_gated_cost_change": [
+          -0.1689453125,
+          -0.162353515625,
+          0.188232421875
+        ],
+        "mean_team_gated_gain": 0.047688802083333336,
+        "gain_percent": 0.48085996799737424
+      },
+      "high_conflict": {
+        "initials": 98,
+        "admitted": 98,
+        "harmful_admitted_initials": 78,
+        "conditional_empirical_harm": 0.7959183673469388,
+        "per_vehicle_gated_cost_change": [
+          -0.22098214285714285,
+          -0.2305484693877551,
+          0.22464923469387754
+        ],
+        "mean_team_gated_gain": 0.07562712585034014,
+        "gain_percent": 0.7625701575095225
+      },
+      "low_conflict": {
+        "initials": 30,
+        "admitted": 30,
+        "harmful_admitted_initials": 28,
+        "conditional_empirical_harm": 0.9333333333333333,
+        "per_vehicle_gated_cost_change": [
+          0.0010416666666666667,
+          0.06041666666666667,
+          0.06927083333333334
+        ],
+        "mean_team_gated_gain": -0.04357638888888889,
+        "gain_percent": -0.43939331774231044
+      }
+    },
+    "nominal_all_individuals_gain_0.05": {
+      "all": {
+        "initials": 128,
+        "admitted": 5,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": 0.0,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          -0.0853271484375,
+          0.0
+        ],
+        "mean_team_gated_gain": 0.0284423828125,
+        "gain_percent": 0.28679276248307556
+      },
+      "high_conflict": {
+        "initials": 98,
+        "admitted": 5,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": 0.0,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          -0.11144770408163265,
+          0.0
+        ],
+        "mean_team_gated_gain": 0.03714923469387755,
+        "gain_percent": 0.37458646528401707
+      },
+      "low_conflict": {
+        "initials": 30,
+        "admitted": 0,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": null,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_team_gated_gain": -0.0,
+        "gain_percent": -0.0
+      }
+    },
+    "nominal_team_only_gain_0.05": {
+      "all": {
+        "initials": 128,
+        "admitted": 7,
+        "harmful_admitted_initials": 2,
+        "conditional_empirical_harm": 0.2857142857142857,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          -0.1134033203125,
+          0.000244140625
+        ],
+        "mean_team_gated_gain": 0.0377197265625,
+        "gain_percent": 0.38033889960201867
+      },
+      "high_conflict": {
+        "initials": 98,
+        "admitted": 7,
+        "harmful_admitted_initials": 2,
+        "conditional_empirical_harm": 0.2857142857142857,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          -0.14811862244897958,
+          0.00031887755102040814
+        ],
+        "mean_team_gated_gain": 0.04926658163265306,
+        "gain_percent": 0.4967691749903917
+      },
+      "low_conflict": {
+        "initials": 30,
+        "admitted": 0,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": null,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_team_gated_gain": -0.0,
+        "gain_percent": -0.0
+      }
+    },
+    "nominal_all_individuals_gain_0.1": {
+      "all": {
+        "initials": 128,
+        "admitted": 5,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": 0.0,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          -0.0853271484375,
+          0.0
+        ],
+        "mean_team_gated_gain": 0.0284423828125,
+        "gain_percent": 0.28679276248307556
+      },
+      "high_conflict": {
+        "initials": 98,
+        "admitted": 5,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": 0.0,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          -0.11144770408163265,
+          0.0
+        ],
+        "mean_team_gated_gain": 0.03714923469387755,
+        "gain_percent": 0.37458646528401707
+      },
+      "low_conflict": {
+        "initials": 30,
+        "admitted": 0,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": null,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_team_gated_gain": -0.0,
+        "gain_percent": -0.0
+      }
+    },
+    "nominal_team_only_gain_0.1": {
+      "all": {
+        "initials": 128,
+        "admitted": 5,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": 0.0,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          -0.0853271484375,
+          0.0
+        ],
+        "mean_team_gated_gain": 0.0284423828125,
+        "gain_percent": 0.28679276248307556
+      },
+      "high_conflict": {
+        "initials": 98,
+        "admitted": 5,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": 0.0,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          -0.11144770408163265,
+          0.0
+        ],
+        "mean_team_gated_gain": 0.03714923469387755,
+        "gain_percent": 0.37458646528401707
+      },
+      "low_conflict": {
+        "initials": 30,
+        "admitted": 0,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": null,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_team_gated_gain": -0.0,
+        "gain_percent": -0.0
+      }
+    },
+    "nominal_all_individuals_gain_0.2": {
+      "all": {
+        "initials": 128,
+        "admitted": 5,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": 0.0,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          -0.0853271484375,
+          0.0
+        ],
+        "mean_team_gated_gain": 0.0284423828125,
+        "gain_percent": 0.28679276248307556
+      },
+      "high_conflict": {
+        "initials": 98,
+        "admitted": 5,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": 0.0,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          -0.11144770408163265,
+          0.0
+        ],
+        "mean_team_gated_gain": 0.03714923469387755,
+        "gain_percent": 0.37458646528401707
+      },
+      "low_conflict": {
+        "initials": 30,
+        "admitted": 0,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": null,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_team_gated_gain": -0.0,
+        "gain_percent": -0.0
+      }
+    },
+    "nominal_team_only_gain_0.2": {
+      "all": {
+        "initials": 128,
+        "admitted": 5,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": 0.0,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          -0.0853271484375,
+          0.0
+        ],
+        "mean_team_gated_gain": 0.0284423828125,
+        "gain_percent": 0.28679276248307556
+      },
+      "high_conflict": {
+        "initials": 98,
+        "admitted": 5,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": 0.0,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          -0.11144770408163265,
+          0.0
+        ],
+        "mean_team_gated_gain": 0.03714923469387755,
+        "gain_percent": 0.37458646528401707
+      },
+      "low_conflict": {
+        "initials": 30,
+        "admitted": 0,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": null,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_team_gated_gain": -0.0,
+        "gain_percent": -0.0
+      }
+    },
+    "nominal_all_individuals_gain_0.5": {
+      "all": {
+        "initials": 128,
+        "admitted": 1,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": 0.0,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          -0.020751953125,
+          0.0
+        ],
+        "mean_team_gated_gain": 0.006917317708333333,
+        "gain_percent": 0.06974931276412423
+      },
+      "high_conflict": {
+        "initials": 98,
+        "admitted": 1,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": 0.0,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          -0.027104591836734693,
+          0.0
+        ],
+        "mean_team_gated_gain": 0.009034863945578231,
+        "gain_percent": 0.09110114320212145
+      },
+      "low_conflict": {
+        "initials": 30,
+        "admitted": 0,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": null,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_team_gated_gain": -0.0,
+        "gain_percent": -0.0
+      }
+    },
+    "nominal_team_only_gain_0.5": {
+      "all": {
+        "initials": 128,
+        "admitted": 1,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": 0.0,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          -0.020751953125,
+          0.0
+        ],
+        "mean_team_gated_gain": 0.006917317708333333,
+        "gain_percent": 0.06974931276412423
+      },
+      "high_conflict": {
+        "initials": 98,
+        "admitted": 1,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": 0.0,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          -0.027104591836734693,
+          0.0
+        ],
+        "mean_team_gated_gain": 0.009034863945578231,
+        "gain_percent": 0.09110114320212145
+      },
+      "low_conflict": {
+        "initials": 30,
+        "admitted": 0,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": null,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_team_gated_gain": -0.0,
+        "gain_percent": -0.0
+      }
+    },
+    "conformal_joint_split": {
+      "all": {
+        "initials": 64,
+        "admitted": 0,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": null,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_team_gated_gain": -0.0,
+        "gain_percent": -0.0
+      },
+      "high_conflict": {
+        "initials": 46,
+        "admitted": 0,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": null,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_team_gated_gain": -0.0,
+        "gain_percent": -0.0
+      },
+      "low_conflict": {
+        "initials": 18,
+        "admitted": 0,
+        "harmful_admitted_initials": 0,
+        "conditional_empirical_harm": null,
+        "per_vehicle_gated_cost_change": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_team_gated_gain": -0.0,
+        "gain_percent": -0.0
+      }
+    }
+  }
+}

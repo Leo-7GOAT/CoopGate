@@ -1,0 +1,14 @@
+{
+  "purpose": "Actual closed-loop nominal composition ablation, no calibrated risk claim",
+  "model": "artifacts/v17/development_models/coupled_1701/policy.pt",
+  "initials": 64,
+  "seed_base": 61400001,
+  "modes": ["clean", "uniform", "bias", "pulse"],
+  "methods": ["baseline", "full", "isolated_0", "isolated_1", "isolated_2", "independent_nominal", "joint_nominal"],
+  "expected_actual_sumo_runs": 1792,
+  "minimum_gain_seconds": 0.05,
+  "independent": "Each car uses its own cost/time predicted under its isolated learned-component profile; execute the resulting composed profile in closed loop",
+  "joint": "Predict the complete three-actor profile; admit only if all vehicle cost/time differences are nonpositive and mean cost improves at least 0.05 seconds",
+  "source_of_confidence": "Nominal model only, explicitly uncalibrated; this tests composition rather than a statistical guarantee",
+  "checkpoint_selection": "The fixed complete 1701 policy, irrespective of the separate 1702 continuation"
+}
