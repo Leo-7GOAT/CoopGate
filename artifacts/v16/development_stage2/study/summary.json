@@ -1,0 +1,196 @@
+{
+  "protocol": {
+    "purpose": "Coupled model-based MARL development; no formal acceptance",
+    "n_initials": 128,
+    "seed_base": 59500001,
+    "methods": [
+      "ego_planner",
+      "team_planner",
+      "coupled_1601",
+      "single_901"
+    ],
+    "modes": [
+      "clean",
+      "uniform",
+      "bias",
+      "pulse"
+    ],
+    "audit_initial_indices": [
+      0,
+      1,
+      64,
+      65
+    ],
+    "expected_runs": 2048,
+    "models": {
+      "coupled_1601": {
+        "path": "artifacts/v16/development_models_stage2/coupled_1601/policy.pt",
+        "sha256": "defd4dfb6b265bf6c9fbca1e331a04ce482f263a8640ab523479b9b9ca4595e3",
+        "algorithm": "coupled_policy_iteration_v16",
+        "seed": 1601,
+        "ego_seed": 901,
+        "updates": 12,
+        "visited_states": 98304,
+        "evaluated_model_transitions": 9407167,
+        "actor_squared_parameter_change": [
+          3610.196443274617,
+          1483.0594965554774,
+          2947.1554777920246
+        ]
+      }
+    },
+    "prerequisite": {
+      "protocol_sha256": "5784ba8a36c89b98ba47c87f09fda0f63b506fe1fb9b3e43cf2040976a971422",
+      "episodes_sha256": "38b6ad3960e7e587f6b084742656c64b5c59baf415adf9b8c53a3e1a17ff3193",
+      "audit_sha256": "5f05c77fc1f7d31dceea0f0c0f48bc27811a0c5eb6a866a66a5151ab707e4f84"
+    },
+    "source_sha256": {
+      "src/coopgate/admission_risk_v15.py": "7870ae34857e43164cca2f85964e5fabeb116358a4ca398cef788bcf396e29ea",
+      "src/coopgate/certificate_policy_v14.py": "5e1aafd92aabc9b3d3afff7c3fc0bd1d5a7f85401b4f0145139f9e4f76ce0464",
+      "src/coopgate/certification.py": "fd5c820b9b6c49820cccc03f9e4045c55c7c9f1f02ae56924023a4ea8f3f9957",
+      "src/coopgate/chain_recovery.py": "611305f6e6731061ad5efc24e6f29376bf5e709bce380662c21b1ce1feb51d64",
+      "src/coopgate/cli.py": "b85d3dfed1486ee07a8aa2a4388343f6d7495f6e12d125cfb634dd288e015380",
+      "src/coopgate/confidence_v12.py": "0d3547e1d9f899596e393367c100150250dca495d8f5672384b2098d5d52e2cd",
+      "src/coopgate/config.py": "817c37ef52ee95a3c397bc81f7c69cf6c8671ec87ec99f562f8c42fb3f9878fb",
+      "src/coopgate/controllers.py": "911d04aa4c6e40fc8a2bd45391ea97471d147ab8d387999989a0ebe47dbe6feb",
+      "src/coopgate/cooperative_iteration_v16.py": "38a77c6fe19a32c09439ecb4841febb2ec2e699477726165986a401a53f0cd65",
+      "src/coopgate/cooperative_v15.py": "45958e36ef760655da0a1ef90463c077cb73d0decc3a42566569a06c52caad56",
+      "src/coopgate/disturbance_v9.py": "f854af83228c958fedc832e5bf5ab726e0d241fc39ed8238ec33b849e3c9aae1",
+      "src/coopgate/ego_confidence_v13.py": "c668e9f9c6ced963de1d09dbe8592dcd6481b6baed1a0c7d3606c712ab35a37d",
+      "src/coopgate/ego_models_v13.py": "19b42dc97dd5bb925fecc81fa517dfee3bda399bd370663b15cd9e9a5acab275",
+      "src/coopgate/ego_v13.py": "050ed97d850b906b87e6135a50b08bf2c91da984948ecdb1a5b6bc95294fe866",
+      "src/coopgate/experiment.py": "80c9dd82acf16705ec7f5c0a7c275817fd8dd75034be41f660fd3b075e7af80e",
+      "src/coopgate/experiment_v10.py": "e7ae91c5e8dbf65fe0e0292b4b463e1d26d1ca675965f15d3c50877871f4a972",
+      "src/coopgate/experiment_v11.py": "55df0a59472bc7be264b98254ebf070f3891406b977789b4becfe0863fd5c4e3",
+      "src/coopgate/experiment_v8.py": "a1f09704cc5a05d734e0d1170415a736a6c5093075c71e1bcbdb4c3aee0b38c5",
+      "src/coopgate/experiment_v9.py": "227ac8632c3adf05fdf19995290e86f9f200872f41984adff3ee1e89458f0226",
+      "src/coopgate/fast_v8.py": "1ca80253fa3fa9411b3d3b245c7bb58a98025b0f1da06e2622f803c8f2df4d64",
+      "src/coopgate/joint_admission_v15.py": "4cccb7925af5cea79c9f11383d2dfa67626f2e842af0bdd3e6816693dab0d7ea",
+      "src/coopgate/joint_planner_v15.py": "af27229cf2094367860d3e70d166a0b47e87701ce158142ed123d2e660e8a7de",
+      "src/coopgate/kinematic_policy_v14.py": "62e355e2d8b30f340961a2ca3b3bb61320d185b6f2f5f5d01def881d7504dec2",
+      "src/coopgate/learned_rollout_v13.py": "bfbda2c118dbbcf51ed4b072965088f31afe2795cb0bff04b98609847ceab87d",
+      "src/coopgate/learning_v3.py": "86a79787c9c77da3dab9cfe3999b5ecc3f8644dd131fd1d7eb5d2f09c61ecc78",
+      "src/coopgate/learning_v4.py": "3618faefacaa7ba9e7b8226699d76e560a7524b3cf03e0ac5f7a233980fb0e99",
+      "src/coopgate/learning_v6.py": "042effa2979828c5331fc4776aa4fdc2af48cee3135191dbe265f524364b7b18",
+      "src/coopgate/mappo.py": "6929024f8cf82dd79e45b6d3b6ce05b19cdadb99d019a8e8b43bb45a282f8a94",
+      "src/coopgate/marl_v12.py": "e1787954402c3713c2bfc6a5f1be9896612e28c45aafc9e19391e4d43a4000a9",
+      "src/coopgate/merge_v4.py": "8db139e9a16316b9278513660c8b91056f8fdb8feae787ec5e188b1a01b114a6",
+      "src/coopgate/paired.py": "50924f6ead7c07646487807340d657bc4534cd6e36d4211653e46874f849881c",
+      "src/coopgate/planning_v5.py": "7fda10ca6f1a37f418fe24d043b1089b0ffc81aae2ba48ce8c776b85503c97a0",
+      "src/coopgate/platoon.py": "1330663a2f9470b9a6f9148132a54c5dd7d838be14f47a4669a72936413e0817",
+      "src/coopgate/policy_iteration_v14.py": "e97f7bbadba207d6cfc06ff170a2425abc38843c93db3177e740cee95e0472fa",
+      "src/coopgate/ppo_numerics_v15.py": "d439c2c73c395d69bcb7e06ab1dfa27ef502ba5825c19367a0553ec944dd0973",
+      "src/coopgate/profile_recovery_v15.py": "bd94523fe2d09729efb4081320ec7023ec8df47d146463cbc60303ad6628a71a",
+      "src/coopgate/recovery.py": "d5faf76da0e06918476ae55bf156872116958efdd6a504b6249312ea535e05e7",
+      "src/coopgate/risk_v7.py": "4471231ba5356f27eaf1823e2a50cee2b95706de380556d60b203988fe43289b",
+      "src/coopgate/robust_v9.py": "c579b0c57516c9954e0c1c0d06da7324804a01e40402e8aff39fa98f5d80bd6b",
+      "src/coopgate/rollout_v10.py": "ea74fe7f3bb107ecfaf95cf7ff394feec66598b030b9b2e7db0560cc53fefd4e",
+      "src/coopgate/shield.py": "976c02028240b4ea8494186eb8c0200270fc8c27b71142b2bec70e4aec66cd83",
+      "src/coopgate/sim.py": "f9e3d7dbd7b2cadb7f46d0b534d27a72d76ca9f3f7682b83161d1c2329c210f2",
+      "src/coopgate/single_v12.py": "69e46bf846fa968188a0e020f30a916ed86e3bc138abe406e3c6ae09bd712ba3",
+      "src/coopgate/smooth_v11.py": "fc6af2a1ec0ec184dd6af94dc31f7ee8045fdc9eee45a22f6e076edea86cf250",
+      "src/coopgate/training_v12.py": "52591e8a36bce6070e4a01c115d49806b53f4d59dc85dcad97be584e1d409049",
+      "src/coopgate/verify_v7.py": "8e5f23c8c75dbf90b8a88175236de503f28932295897b2508cb3a6c42264eedb",
+      "src/coopgate/__init__.py": "7ce2c9b64fe527c64ed90b72b46553dae55a68094a125e758730a7bcd1ecc132",
+      "tools/validate_cooperative_v16.py": "5aa2599ecd583e9bdd997a9f1718e3546b66e600d3b976a818a1815c6eb0bf2b",
+      "tools/experiment_ego_v13.py": "4a3478681485e28cdb46cc5cf210233854ed088cfb7f9c053de991df02d0358b",
+      "tools/prerequisite_v15.py": "111dbc9deead6111c12f1191d24177d349ed22aa532ec369c003a569c9def0a6"
+    }
+  },
+  "results": {
+    "ego_planner": {
+      "runs": 512,
+      "completed": 512,
+      "collisions": 0,
+      "aborted": 0,
+      "team_cost": 10.636515299479166,
+      "individual_cost": [
+        10.37744140625,
+        9.4315185546875,
+        12.1005859375
+      ],
+      "individual_time": [
+        9.8173828125,
+        9.1328125,
+        11.4208984375
+      ],
+      "individual_variation": [
+        11.201171875,
+        5.97412109375,
+        13.59375
+      ],
+      "controller_p95_ms": 4.439680002360546
+    },
+    "team_planner": {
+      "runs": 512,
+      "completed": 512,
+      "collisions": 0,
+      "aborted": 0,
+      "team_cost": 9.938456217447918,
+      "individual_cost": [
+        9.26885986328125,
+        9.5850830078125,
+        10.96142578125
+      ],
+      "individual_time": [
+        8.931640625,
+        9.25390625,
+        10.6328125
+      ],
+      "individual_variation": [
+        6.744384765625,
+        6.62353515625,
+        6.572265625
+      ],
+      "controller_p95_ms": 24.957029998040518
+    },
+    "coupled_1601": {
+      "runs": 512,
+      "completed": 512,
+      "collisions": 0,
+      "aborted": 0,
+      "team_cost": 10.029581705729166,
+      "individual_cost": [
+        8.75732421875,
+        10.2373046875,
+        11.0941162109375
+      ],
+      "individual_time": [
+        8.501953125,
+        9.853515625,
+        10.7294921875
+      ],
+      "individual_variation": [
+        5.107421875,
+        7.67578125,
+        7.29248046875
+      ],
+      "controller_p95_ms": 2.5570750000042604
+    },
+    "single_901": {
+      "runs": 512,
+      "completed": 512,
+      "collisions": 0,
+      "aborted": 0,
+      "team_cost": 10.516866048177082,
+      "individual_cost": [
+        10.248046875,
+        9.30841064453125,
+        11.994140625
+      ],
+      "individual_time": [
+        9.7158203125,
+        9.0693359375,
+        11.333984375
+      ],
+      "individual_variation": [
+        10.64453125,
+        4.781494140625,
+        13.203125
+      ],
+      "controller_p95_ms": 1.5673200006858676
+    }
+  },
+  "sumo_runs": 2048,
+  "elapsed_s": 430.9001448000017
+}

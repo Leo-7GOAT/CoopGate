@@ -5,12 +5,14 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 
 
-def archive(study,analysis,audit,ablation,out,diagnostic=None):
+def archive(study,analysis,audit,ablation,out,diagnostic=None,forecast=None,gate_diagnostic=None):
     out=Path(out);out.mkdir(parents=True,exist_ok=False)
     for source,name in ((study,'study'),(analysis,'analysis'),(ablation,'actor_ablation')):
         shutil.copytree(source,out/name)
     shutil.copy2(audit,out/'audit.json')
     if diagnostic:shutil.copytree(diagnostic,out/'update_diagnostic')
+    if forecast:shutil.copytree(forecast,out/'forecast')
+    if gate_diagnostic:shutil.copytree(gate_diagnostic,out/'gate_diagnostic')
     for name in ('ablate_cooperative_v15.py','analyze_cooperative_v15.py','verify_cooperative_v16.py','diagnose_updates_v16.py'):
         target=out/'analysis_source'/name;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/'tools'/name,target)
     manifest={str(p.relative_to(out)).replace('\\','/'):hashlib.sha256(p.read_bytes()).hexdigest()
@@ -22,4 +24,5 @@ def archive(study,analysis,audit,ablation,out,diagnostic=None):
 if __name__=='__main__':
     p=argparse.ArgumentParser()
     for name in ('study','analysis','audit','ablation','out'):p.add_argument('--'+name,required=True)
-    p.add_argument('--diagnostic');a=p.parse_args();archive(a.study,a.analysis,a.audit,a.ablation,a.out,a.diagnostic)
+    p.add_argument('--diagnostic');p.add_argument('--forecast');p.add_argument('--gate-diagnostic')
+    a=p.parse_args();archive(a.study,a.analysis,a.audit,a.ablation,a.out,a.diagnostic,a.forecast,a.gate_diagnostic)

@@ -1,0 +1,3449 @@
+{
+  "purpose": "Development, not a formal acceptance verdict",
+  "sampling_unit": "initial state; four disturbance modes averaged inside each initial",
+  "uncertainty": "Descriptive paired bootstrap conditional on the fixed trained models",
+  "n_initials": 128,
+  "safety": {
+    "ego_planner": {
+      "completed": 512,
+      "collision": 0,
+      "aborted": 0,
+      "contract_violations": 0,
+      "outside_steps": 0,
+      "uncertified_steps": 0,
+      "runs": 512
+    },
+    "team_planner": {
+      "completed": 512,
+      "collision": 0,
+      "aborted": 0,
+      "contract_violations": 0,
+      "outside_steps": 0,
+      "uncertified_steps": 0,
+      "runs": 512
+    },
+    "coupled_1601": {
+      "completed": 512,
+      "collision": 0,
+      "aborted": 0,
+      "contract_violations": 0,
+      "outside_steps": 0,
+      "uncertified_steps": 0,
+      "runs": 512
+    },
+    "single_901": {
+      "completed": 512,
+      "collision": 0,
+      "aborted": 0,
+      "contract_violations": 0,
+      "outside_steps": 0,
+      "uncertified_steps": 0,
+      "runs": 512
+    }
+  },
+  "comparisons": {
+    "ego_planner": {
+      "team_planner": {
+        "all": {
+          "n_initials": 128,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                10.37744140625,
+                9.4315185546875,
+                12.1005859375
+              ],
+              "method_per_vehicle": [
+                9.26885986328125,
+                9.5850830078125,
+                10.96142578125
+              ],
+              "gain_per_vehicle": [
+                1.10858154296875,
+                -0.153564453125,
+                1.13916015625
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.7941253662109375,
+                  1.4239624023437498
+                ],
+                [
+                  -0.6125762939453125,
+                  0.29566345214843737
+                ],
+                [
+                  0.8759292602539063,
+                  1.4107070922851563
+                ]
+              ],
+              "gain_team": 0.69805908203125,
+              "gain_team_percent": 6.562855055221249,
+              "ci95_team": [
+                0.5924794514973959,
+                0.8050175984700522
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 87,
+              "team_win_initial_fraction": 0.8515625,
+              "team_loss_initial_fraction": 0.0703125
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.8173828125,
+                9.1328125,
+                11.4208984375
+              ],
+              "method_per_vehicle": [
+                8.931640625,
+                9.25390625,
+                10.6328125
+              ],
+              "gain_per_vehicle": [
+                0.8857421875,
+                -0.12109375,
+                0.7880859375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.623046875,
+                  1.1533691406249993
+                ],
+                [
+                  -0.5322509765625,
+                  0.27932128906249964
+                ],
+                [
+                  0.5771484375,
+                  1.0087890625
+                ]
+              ],
+              "gain_team": 0.517578125,
+              "gain_team_percent": 5.112540192926045,
+              "ci95_team": [
+                0.4267496744791667,
+                0.6110026041666667
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 67,
+              "team_win_initial_fraction": 0.734375,
+              "team_loss_initial_fraction": 0.1328125
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                11.201171875,
+                5.97412109375,
+                13.59375
+              ],
+              "method_per_vehicle": [
+                6.744384765625,
+                6.62353515625,
+                6.572265625
+              ],
+              "gain_per_vehicle": [
+                4.456787109375,
+                -0.6494140625,
+                7.021484375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  3.36669921875,
+                  5.554321289062498
+                ],
+                [
+                  -1.591796875,
+                  0.2880859375
+                ],
+                [
+                  5.764129638671875,
+                  8.236114501953125
+                ]
+              ],
+              "gain_team": 3.609619140625,
+              "gain_team_percent": 35.194001428231374,
+              "ci95_team": [
+                3.109537760416667,
+                4.088551839192708
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 78,
+              "team_win_initial_fraction": 0.8203125,
+              "team_loss_initial_fraction": 0.09375
+            }
+          }
+        },
+        "high_conflict": {
+          "n_initials": 88,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                10.585227272727273,
+                9.730823863636363,
+                12.176136363636363
+              ],
+              "method_per_vehicle": [
+                9.151544744318182,
+                10.024680397727273,
+                10.787286931818182
+              ],
+              "gain_per_vehicle": [
+                1.4336825284090908,
+                -0.2938565340909091,
+                1.3888494318181819
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.9940496271306818,
+                  1.859465997869318
+                ],
+                [
+                  -0.9108753551136364,
+                  0.3531827059659088
+                ],
+                [
+                  1.0295587713068182,
+                  1.7311057350852272
+                ]
+              ],
+              "gain_team": 0.8428918087121211,
+              "gain_team_percent": 7.782410544492775,
+              "ci95_team": [
+                0.7082941228693183,
+                0.9866610440340909
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 65,
+              "team_win_initial_fraction": 0.8181818181818182,
+              "team_loss_initial_fraction": 0.09090909090909091
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.985795454545455,
+                9.394886363636363,
+                11.458806818181818
+              ],
+              "method_per_vehicle": [
+                8.789772727272727,
+                9.633522727272727,
+                10.431818181818182
+              ],
+              "gain_per_vehicle": [
+                1.1960227272727273,
+                -0.23863636363636365,
+                1.0269886363636365
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.8309303977272727,
+                  1.5553977272727273
+                ],
+                [
+                  -0.7912286931818181,
+                  0.34375
+                ],
+                [
+                  0.7414772727272727,
+                  1.3040127840909086
+                ]
+              ],
+              "gain_team": 0.6614583333333334,
+              "gain_team_percent": 6.434526277002442,
+              "ci95_team": [
+                0.546389678030303,
+                0.7855113636363636
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 50,
+              "team_win_initial_fraction": 0.7840909090909091,
+              "team_loss_initial_fraction": 0.09090909090909091
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                11.988636363636363,
+                6.71875,
+                14.346590909090908
+              ],
+              "method_per_vehicle": [
+                7.235440340909091,
+                7.823153409090909,
+                7.109375
+              ],
+              "gain_per_vehicle": [
+                4.7531960227272725,
+                -1.1044034090909092,
+                7.237215909090909
+              ],
+              "ci95_per_vehicle": [
+                [
+                  3.240323153409091,
+                  6.221635298295454
+                ],
+                [
+                  -2.3686079545454546,
+                  0.2237215909090909
+                ],
+                [
+                  5.66748046875,
+                  8.762428977272727
+                ]
+              ],
+              "gain_team": 3.628669507575758,
+              "gain_team_percent": 32.934035238504514,
+              "ci95_team": [
+                3.0035807291666665,
+                4.242439038825758
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 65,
+              "team_win_initial_fraction": 0.7840909090909091,
+              "team_loss_initial_fraction": 0.11363636363636363
+            }
+          }
+        },
+        "low_conflict": {
+          "n_initials": 40,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                9.9203125,
+                8.773046875,
+                11.934375
+              ],
+              "method_per_vehicle": [
+                9.526953125,
+                8.61796875,
+                11.34453125
+              ],
+              "gain_per_vehicle": [
+                0.393359375,
+                0.155078125,
+                0.58984375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.262490234375,
+                  0.5336035156249999
+                ],
+                [
+                  0.016015625,
+                  0.3300976562499997
+                ],
+                [
+                  0.34609375,
+                  0.8302734375
+                ]
+              ],
+              "gain_team": 0.3794270833333333,
+              "gain_team_percent": 3.7165049038988864,
+              "ci95_team": [
+                0.2829296875,
+                0.4830826822916665
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 22,
+              "team_win_initial_fraction": 0.925,
+              "team_loss_initial_fraction": 0.025
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.446875,
+                8.55625,
+                11.3375
+              ],
+              "method_per_vehicle": [
+                9.24375,
+                8.41875,
+                11.075
+              ],
+              "gain_per_vehicle": [
+                0.203125,
+                0.1375,
+                0.2625
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.1,
+                  0.3125
+                ],
+                [
+                  0.015546875000000026,
+                  0.29375
+                ],
+                [
+                  0.0875,
+                  0.44375
+                ]
+              ],
+              "gain_team": 0.2010416666666667,
+              "gain_team_percent": 2.055596975183726,
+              "ci95_team": [
+                0.125,
+                0.28125
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 17,
+              "team_win_initial_fraction": 0.625,
+              "team_loss_initial_fraction": 0.225
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                9.46875,
+                4.3359375,
+                11.9375
+              ],
+              "method_per_vehicle": [
+                5.6640625,
+                3.984375,
+                5.390625
+              ],
+              "gain_per_vehicle": [
+                3.8046875,
+                0.3515625,
+                6.546875
+              ],
+              "ci95_per_vehicle": [
+                [
+                  2.8826171875,
+                  4.7578125
+                ],
+                [
+                  -0.0078125,
+                  0.8203125
+                ],
+                [
+                  4.82802734375,
+                  8.34765625
+                ]
+              ],
+              "gain_team": 3.5677083333333335,
+              "gain_team_percent": 41.57814871016692,
+              "ci95_team": [
+                2.8423502604166666,
+                4.320345052083333
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 13,
+              "team_win_initial_fraction": 0.9,
+              "team_loss_initial_fraction": 0.05
+            }
+          }
+        }
+      },
+      "coupled_1601": {
+        "all": {
+          "n_initials": 128,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                10.37744140625,
+                9.4315185546875,
+                12.1005859375
+              ],
+              "method_per_vehicle": [
+                8.75732421875,
+                10.2373046875,
+                11.0941162109375
+              ],
+              "gain_per_vehicle": [
+                1.6201171875,
+                -0.8057861328125,
+                1.0064697265625
+              ],
+              "ci95_per_vehicle": [
+                [
+                  1.25889892578125,
+                  1.9943969726562498
+                ],
+                [
+                  -1.2190643310546876,
+                  -0.39481811523437527
+                ],
+                [
+                  0.728997802734375,
+                  1.3000518798828125
+                ]
+              ],
+              "gain_team": 0.60693359375,
+              "gain_team_percent": 5.706131911263452,
+              "ci95_team": [
+                0.49654083251953124,
+                0.7257898966471353
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 100,
+              "team_win_initial_fraction": 0.84375,
+              "team_loss_initial_fraction": 0.15625
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.8173828125,
+                9.1328125,
+                11.4208984375
+              ],
+              "method_per_vehicle": [
+                8.501953125,
+                9.853515625,
+                10.7294921875
+              ],
+              "gain_per_vehicle": [
+                1.3154296875,
+                -0.720703125,
+                0.69140625
+              ],
+              "ci95_per_vehicle": [
+                [
+                  1.0146484375,
+                  1.6318359375
+                ],
+                [
+                  -1.0888671875,
+                  -0.35544433593750036
+                ],
+                [
+                  0.4657958984375,
+                  0.927734375
+                ]
+              ],
+              "gain_team": 0.4287109375,
+              "gain_team_percent": 4.234726688102894,
+              "ci95_team": [
+                0.3339762369791667,
+                0.5293050130208332
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 88,
+              "team_win_initial_fraction": 0.703125,
+              "team_loss_initial_fraction": 0.25
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                11.201171875,
+                5.97412109375,
+                13.59375
+              ],
+              "method_per_vehicle": [
+                5.107421875,
+                7.67578125,
+                7.29248046875
+              ],
+              "gain_per_vehicle": [
+                6.09375,
+                -1.70166015625,
+                6.30126953125
+              ],
+              "ci95_per_vehicle": [
+                [
+                  4.86328125,
+                  7.336486816406249
+                ],
+                [
+                  -2.70263671875,
+                  -0.6664733886718754
+                ],
+                [
+                  5.10491943359375,
+                  7.556213378906249
+                ]
+              ],
+              "gain_team": 3.564453125,
+              "gain_team_percent": 34.75363008807427,
+              "ci95_team": [
+                3.0586344401041665,
+                4.072672526041666
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 92,
+              "team_win_initial_fraction": 0.921875,
+              "team_loss_initial_fraction": 0.0546875
+            }
+          }
+        },
+        "high_conflict": {
+          "n_initials": 88,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                10.585227272727273,
+                9.730823863636363,
+                12.176136363636363
+              ],
+              "method_per_vehicle": [
+                8.373934659090908,
+                10.868341619318182,
+                10.842684659090908
+              ],
+              "gain_per_vehicle": [
+                2.2112926136363638,
+                -1.1375177556818181,
+                1.3334517045454546
+              ],
+              "ci95_per_vehicle": [
+                [
+                  1.7379128196022728,
+                  2.690913529829545
+                ],
+                [
+                  -1.6934525923295454,
+                  -0.5673783735795456
+                ],
+                [
+                  0.9533025568181818,
+                  1.7136141690340907
+                ]
+              ],
+              "gain_team": 0.8024088541666665,
+              "gain_team_percent": 7.408631882664101,
+              "ci95_team": [
+                0.6530820904356062,
+                0.9538699988162876
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 72,
+              "team_win_initial_fraction": 0.8863636363636364,
+              "team_loss_initial_fraction": 0.11363636363636363
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.985795454545455,
+                9.394886363636363,
+                11.458806818181818
+              ],
+              "method_per_vehicle": [
+                8.147727272727273,
+                10.40625,
+                10.480113636363637
+              ],
+              "gain_per_vehicle": [
+                1.8380681818181819,
+                -1.0113636363636365,
+                0.9786931818181818
+              ],
+              "ci95_per_vehicle": [
+                [
+                  1.4417613636363635,
+                  2.2386718749999996
+                ],
+                [
+                  -1.5056818181818181,
+                  -0.5099431818181818
+                ],
+                [
+                  0.6704190340909091,
+                  1.2855468749999994
+                ]
+              ],
+              "gain_team": 0.6017992424242423,
+              "gain_team_percent": 5.854175302841877,
+              "ci95_team": [
+                0.4772608901515152,
+                0.731060606060606
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 64,
+              "team_win_initial_fraction": 0.7954545454545454,
+              "team_loss_initial_fraction": 0.1590909090909091
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                11.988636363636363,
+                6.71875,
+                14.346590909090908
+              ],
+              "method_per_vehicle": [
+                4.5241477272727275,
+                9.241832386363637,
+                7.251420454545454
+              ],
+              "gain_per_vehicle": [
+                7.464488636363637,
+                -2.5230823863636362,
+                7.095170454545454
+              ],
+              "ci95_per_vehicle": [
+                [
+                  5.830965909090909,
+                  9.140625
+                ],
+                [
+                  -3.8175159801136362,
+                  -1.1451970880681825
+                ],
+                [
+                  5.5290305397727275,
+                  8.675692471590905
+                ]
+              ],
+              "gain_team": 4.012192234848484,
+              "gain_team_percent": 36.41491190373872,
+              "ci95_team": [
+                3.365870620265151,
+                4.660304214015151
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 71,
+              "team_win_initial_fraction": 0.9431818181818182,
+              "team_loss_initial_fraction": 0.045454545454545456
+            }
+          }
+        },
+        "low_conflict": {
+          "n_initials": 40,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                9.9203125,
+                8.773046875,
+                11.934375
+              ],
+              "method_per_vehicle": [
+                9.60078125,
+                8.8490234375,
+                11.647265625
+              ],
+              "gain_per_vehicle": [
+                0.31953125,
+                -0.0759765625,
+                0.287109375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.15078125,
+                  0.510546875
+                ],
+                [
+                  -0.5090087890625,
+                  0.2744335937499997
+                ],
+                [
+                  0.068359375,
+                  0.5168164062499998
+                ]
+              ],
+              "gain_team": 0.17688802083333335,
+              "gain_team_percent": 1.7326259135026212,
+              "ci95_team": [
+                0.09537434895833333,
+                0.25814778645833325
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 28,
+              "team_win_initial_fraction": 0.75,
+              "team_loss_initial_fraction": 0.25
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.446875,
+                8.55625,
+                11.3375
+              ],
+              "method_per_vehicle": [
+                9.28125,
+                8.6375,
+                11.278125
+              ],
+              "gain_per_vehicle": [
+                0.165625,
+                -0.08125,
+                0.059375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.03125,
+                  0.315625
+                ],
+                [
+                  -0.465703125,
+                  0.23125
+                ],
+                [
+                  -0.1125,
+                  0.2375
+                ]
+              ],
+              "gain_team": 0.04791666666666667,
+              "gain_team_percent": 0.48993503035467045,
+              "ci95_team": [
+                -0.03648437499999999,
+                0.13020833333333331
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 24,
+              "team_win_initial_fraction": 0.5,
+              "team_loss_initial_fraction": 0.45
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                9.46875,
+                4.3359375,
+                11.9375
+              ],
+              "method_per_vehicle": [
+                6.390625,
+                4.23046875,
+                7.3828125
+              ],
+              "gain_per_vehicle": [
+                3.078125,
+                0.10546875,
+                4.5546875
+              ],
+              "ci95_per_vehicle": [
+                [
+                  2.015625,
+                  4.2421875
+                ],
+                [
+                  -0.9141601562499999,
+                  1.0859375
+                ],
+                [
+                  3.015625,
+                  6.148632812499997
+                ]
+              ],
+              "gain_team": 2.5794270833333335,
+              "gain_team_percent": 30.060698027314114,
+              "ci95_team": [
+                1.9361653645833332,
+                3.21484375
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 21,
+              "team_win_initial_fraction": 0.875,
+              "team_loss_initial_fraction": 0.075
+            }
+          }
+        }
+      },
+      "single_901": {
+        "all": {
+          "n_initials": 128,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                10.37744140625,
+                9.4315185546875,
+                12.1005859375
+              ],
+              "method_per_vehicle": [
+                10.248046875,
+                9.30841064453125,
+                11.994140625
+              ],
+              "gain_per_vehicle": [
+                0.12939453125,
+                0.12310791015625,
+                0.1064453125
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.00439453125,
+                  0.2958984375
+                ],
+                [
+                  -0.03412933349609375,
+                  0.2783874511718749
+                ],
+                [
+                  0.0004821777343750021,
+                  0.2348693847656249
+                ]
+              ],
+              "gain_team": 0.11964925130208331,
+              "gain_team_percent": 1.1248914511310122,
+              "ci95_team": [
+                0.0550323486328125,
+                0.19629160563151038
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 47,
+              "team_win_initial_fraction": 0.3515625,
+              "team_loss_initial_fraction": 0.1484375
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.8173828125,
+                9.1328125,
+                11.4208984375
+              ],
+              "method_per_vehicle": [
+                9.7158203125,
+                9.0693359375,
+                11.333984375
+              ],
+              "gain_per_vehicle": [
+                0.1015625,
+                0.0634765625,
+                0.0869140625
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.01171875,
+                  0.2412109375
+                ],
+                [
+                  -0.0732421875,
+                  0.1982421875
+                ],
+                [
+                  0.0038818359375000083,
+                  0.189453125
+                ]
+              ],
+              "gain_team": 0.083984375,
+              "gain_team_percent": 0.8295819935691319,
+              "ci95_team": [
+                0.03124186197916667,
+                0.1481201171874999
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 46,
+              "team_win_initial_fraction": 0.296875,
+              "team_loss_initial_fraction": 0.1796875
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                11.201171875,
+                5.97412109375,
+                13.59375
+              ],
+              "method_per_vehicle": [
+                10.64453125,
+                4.781494140625,
+                13.203125
+              ],
+              "gain_per_vehicle": [
+                0.556640625,
+                1.192626953125,
+                0.390625
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.107421875,
+                  1.11328125
+                ],
+                [
+                  0.5810546875,
+                  1.8115234375
+                ],
+                [
+                  -0.107421875,
+                  0.9814453125
+                ]
+              ],
+              "gain_team": 0.7132975260416667,
+              "gain_team_percent": 6.954693326985639,
+              "ci95_team": [
+                0.41544596354166663,
+                1.060831705729166
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 36,
+              "team_win_initial_fraction": 0.328125,
+              "team_loss_initial_fraction": 0.1484375
+            }
+          }
+        },
+        "high_conflict": {
+          "n_initials": 88,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                10.585227272727273,
+                9.730823863636363,
+                12.176136363636363
+              ],
+              "method_per_vehicle": [
+                10.397727272727273,
+                9.578746448863637,
+                12.027698863636363
+              ],
+              "gain_per_vehicle": [
+                0.1875,
+                0.15207741477272727,
+                0.1484375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.007830255681818176,
+                  0.4311257102272725
+                ],
+                [
+                  -0.06314364346590909,
+                  0.36275523792613623
+                ],
+                [
+                  -0.007821377840909088,
+                  0.3288352272727273
+                ]
+              ],
+              "gain_team": 0.16267163825757577,
+              "gain_team_percent": 1.5019453977136115,
+              "ci95_team": [
+                0.06823730468750001,
+                0.2689408735795455
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 37,
+              "team_win_initial_fraction": 0.4318181818181818,
+              "team_loss_initial_fraction": 0.1590909090909091
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.985795454545455,
+                9.394886363636363,
+                11.458806818181818
+              ],
+              "method_per_vehicle": [
+                9.833806818181818,
+                9.306818181818182,
+                11.336647727272727
+              ],
+              "gain_per_vehicle": [
+                0.15198863636363635,
+                0.08806818181818182,
+                0.12215909090909091
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.01278409090909091,
+                  0.3565340909090909
+                ],
+                [
+                  -0.10085227272727272,
+                  0.271342329545454
+                ],
+                [
+                  0.0,
+                  0.265625
+                ]
+              ],
+              "gain_team": 0.12073863636363637,
+              "gain_team_percent": 1.1745198286582839,
+              "ci95_team": [
+                0.04308712121212121,
+                0.20929214015151495
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 36,
+              "team_win_initial_fraction": 0.375,
+              "team_loss_initial_fraction": 0.18181818181818182
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                11.988636363636363,
+                6.71875,
+                14.346590909090908
+              ],
+              "method_per_vehicle": [
+                11.278409090909092,
+                5.438565340909091,
+                13.821022727272727
+              ],
+              "gain_per_vehicle": [
+                0.7102272727272727,
+                1.2801846590909092,
+                0.5255681818181818
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.07102272727272728,
+                  1.5198863636363635
+                ],
+                [
+                  0.5149147727272727,
+                  2.0863370028409087
+                ],
+                [
+                  -0.17755681818181818,
+                  1.3636363636363635
+                ]
+              ],
+              "gain_team": 0.8386600378787878,
+              "gain_team_percent": 7.611731843575418,
+              "ci95_team": [
+                0.4296875,
+                1.2950106534090906
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 28,
+              "team_win_initial_fraction": 0.38636363636363635,
+              "team_loss_initial_fraction": 0.17045454545454544
+            }
+          }
+        },
+        "low_conflict": {
+          "n_initials": 40,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                9.9203125,
+                8.773046875,
+                11.934375
+              ],
+              "method_per_vehicle": [
+                9.91875,
+                8.713671875,
+                11.9203125
+              ],
+              "gain_per_vehicle": [
+                0.0015625,
+                0.059375,
+                0.0140625
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.0046875,
+                  0.009375
+                ],
+                [
+                  -0.0638671875,
+                  0.21895996093749978
+                ],
+                [
+                  -0.046875,
+                  0.0890625
+                ]
+              ],
+              "gain_team": 0.024999999999999994,
+              "gain_team_percent": 0.24487609524659784,
+              "ci95_team": [
+                -0.02005208333333333,
+                0.08139322916666647
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 10,
+              "team_win_initial_fraction": 0.175,
+              "team_loss_initial_fraction": 0.125
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.446875,
+                8.55625,
+                11.3375
+              ],
+              "method_per_vehicle": [
+                9.45625,
+                8.546875,
+                11.328125
+              ],
+              "gain_per_vehicle": [
+                -0.009375,
+                0.009375,
+                0.009375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.021875,
+                  0.0
+                ],
+                [
+                  -0.090625,
+                  0.1375
+                ],
+                [
+                  -0.040625,
+                  0.071875
+                ]
+              ],
+              "gain_team": 0.0031249999999999984,
+              "gain_team_percent": 0.031952284588348055,
+              "ci95_team": [
+                -0.03333333333333333,
+                0.04791666666666667
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 10,
+              "team_win_initial_fraction": 0.125,
+              "team_loss_initial_fraction": 0.175
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                9.46875,
+                4.3359375,
+                11.9375
+              ],
+              "method_per_vehicle": [
+                9.25,
+                3.3359375,
+                11.84375
+              ],
+              "gain_per_vehicle": [
+                0.21875,
+                1.0,
+                0.09375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.0,
+                  0.53125
+                ],
+                [
+                  0.19921875,
+                  1.9297851562499986
+                ],
+                [
+                  -0.3125,
+                  0.46875
+                ]
+              ],
+              "gain_team": 0.4375,
+              "gain_team_percent": 5.098634294385432,
+              "ci95_team": [
+                0.13411458333333334,
+                0.7825520833333333
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 8,
+              "team_win_initial_fraction": 0.2,
+              "team_loss_initial_fraction": 0.1
+            }
+          }
+        }
+      }
+    },
+    "team_planner": {
+      "ego_planner": {
+        "all": {
+          "n_initials": 128,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                9.26885986328125,
+                9.5850830078125,
+                10.96142578125
+              ],
+              "method_per_vehicle": [
+                10.37744140625,
+                9.4315185546875,
+                12.1005859375
+              ],
+              "gain_per_vehicle": [
+                -1.10858154296875,
+                0.153564453125,
+                -1.13916015625
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -1.42396240234375,
+                  -0.7941253662109375
+                ],
+                [
+                  -0.2956634521484375,
+                  0.6125762939453121
+                ],
+                [
+                  -1.4107070922851563,
+                  -0.8759292602539069
+                ]
+              ],
+              "gain_team": -0.69805908203125,
+              "gain_team_percent": -7.02381805340894,
+              "ci95_team": [
+                -0.8050175984700523,
+                -0.592479451497396
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 115,
+              "team_win_initial_fraction": 0.0703125,
+              "team_loss_initial_fraction": 0.8515625
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                8.931640625,
+                9.25390625,
+                10.6328125
+              ],
+              "method_per_vehicle": [
+                9.8173828125,
+                9.1328125,
+                11.4208984375
+              ],
+              "gain_per_vehicle": [
+                -0.8857421875,
+                0.12109375,
+                -0.7880859375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -1.153369140625,
+                  -0.623046875
+                ],
+                [
+                  -0.2793212890625,
+                  0.5322509765624996
+                ],
+                [
+                  -1.0087890625,
+                  -0.5771484375
+                ]
+              ],
+              "gain_team": -0.517578125,
+              "gain_team_percent": -5.388004066418164,
+              "ci95_team": [
+                -0.6110026041666667,
+                -0.4267496744791668
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 102,
+              "team_win_initial_fraction": 0.1328125,
+              "team_loss_initial_fraction": 0.734375
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                6.744384765625,
+                6.62353515625,
+                6.572265625
+              ],
+              "method_per_vehicle": [
+                11.201171875,
+                5.97412109375,
+                13.59375
+              ],
+              "gain_per_vehicle": [
+                -4.456787109375,
+                0.6494140625,
+                -7.021484375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -5.5543212890625,
+                  -3.36669921875
+                ],
+                [
+                  -0.2880859375,
+                  1.591796875
+                ],
+                [
+                  -8.236114501953125,
+                  -5.764129638671875
+                ]
+              ],
+              "gain_team": -3.609619140625,
+              "gain_team_percent": -54.30670339761249,
+              "ci95_team": [
+                -4.088551839192708,
+                -3.109537760416667
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 115,
+              "team_win_initial_fraction": 0.09375,
+              "team_loss_initial_fraction": 0.8203125
+            }
+          }
+        },
+        "high_conflict": {
+          "n_initials": 88,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                9.151544744318182,
+                10.024680397727273,
+                10.787286931818182
+              ],
+              "method_per_vehicle": [
+                10.585227272727273,
+                9.730823863636363,
+                12.176136363636363
+              ],
+              "gain_per_vehicle": [
+                -1.4336825284090908,
+                0.2938565340909091,
+                -1.3888494318181819
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -1.8594659978693182,
+                  -0.9940496271306818
+                ],
+                [
+                  -0.35318270596590906,
+                  0.9108753551136363
+                ],
+                [
+                  -1.7311057350852275,
+                  -1.0295587713068182
+                ]
+              ],
+              "gain_team": -0.8428918087121211,
+              "gain_team_percent": -8.439182362544406,
+              "ci95_team": [
+                -0.986661044034091,
+                -0.7082941228693184
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 77,
+              "team_win_initial_fraction": 0.09090909090909091,
+              "team_loss_initial_fraction": 0.8181818181818182
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                8.789772727272727,
+                9.633522727272727,
+                10.431818181818182
+              ],
+              "method_per_vehicle": [
+                9.985795454545455,
+                9.394886363636363,
+                11.458806818181818
+              ],
+              "gain_per_vehicle": [
+                -1.1960227272727273,
+                0.23863636363636365,
+                -1.0269886363636365
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -1.5553977272727273,
+                  -0.8309303977272732
+                ],
+                [
+                  -0.34375,
+                  0.7912286931818177
+                ],
+                [
+                  -1.304012784090909,
+                  -0.7414772727272727
+                ]
+              ],
+              "gain_team": -0.6614583333333334,
+              "gain_team_percent": -6.877030619277345,
+              "ci95_team": [
+                -0.7855113636363636,
+                -0.5463896780303031
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 73,
+              "team_win_initial_fraction": 0.09090909090909091,
+              "team_loss_initial_fraction": 0.7840909090909091
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                7.235440340909091,
+                7.823153409090909,
+                7.109375
+              ],
+              "method_per_vehicle": [
+                11.988636363636363,
+                6.71875,
+                14.346590909090908
+              ],
+              "gain_per_vehicle": [
+                -4.7531960227272725,
+                1.1044034090909092,
+                -7.237215909090909
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -6.221635298295455,
+                  -3.240323153409092
+                ],
+                [
+                  -0.2237215909090909,
+                  2.3686079545454546
+                ],
+                [
+                  -8.762428977272727,
+                  -5.667480468750003
+                ]
+              ],
+              "gain_team": -3.628669507575758,
+              "gain_team_percent": -49.10692831397677,
+              "ci95_team": [
+                -4.242439038825758,
+                -3.003580729166668
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 77,
+              "team_win_initial_fraction": 0.11363636363636363,
+              "team_loss_initial_fraction": 0.7840909090909091
+            }
+          }
+        },
+        "low_conflict": {
+          "n_initials": 40,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                9.526953125,
+                8.61796875,
+                11.34453125
+              ],
+              "method_per_vehicle": [
+                9.9203125,
+                8.773046875,
+                11.934375
+              ],
+              "gain_per_vehicle": [
+                -0.393359375,
+                -0.155078125,
+                -0.58984375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.533603515625,
+                  -0.26249023437500013
+                ],
+                [
+                  -0.33009765625,
+                  -0.016015625
+                ],
+                [
+                  -0.8302734375,
+                  -0.34609375
+                ]
+              ],
+              "gain_team": -0.3794270833333333,
+              "gain_team_percent": -3.859960526141496,
+              "ci95_team": [
+                -0.4830826822916666,
+                -0.2829296875000002
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 38,
+              "team_win_initial_fraction": 0.025,
+              "team_loss_initial_fraction": 0.925
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.24375,
+                8.41875,
+                11.075
+              ],
+              "method_per_vehicle": [
+                9.446875,
+                8.55625,
+                11.3375
+              ],
+              "gain_per_vehicle": [
+                -0.203125,
+                -0.1375,
+                -0.2625
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.3125,
+                  -0.1
+                ],
+                [
+                  -0.29375,
+                  -0.015546875000001136
+                ],
+                [
+                  -0.44375,
+                  -0.0875
+                ]
+              ],
+              "gain_team": -0.2010416666666667,
+              "gain_team_percent": -2.098738581992171,
+              "ci95_team": [
+                -0.28125,
+                -0.125
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 29,
+              "team_win_initial_fraction": 0.225,
+              "team_loss_initial_fraction": 0.625
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                5.6640625,
+                3.984375,
+                5.390625
+              ],
+              "method_per_vehicle": [
+                9.46875,
+                4.3359375,
+                11.9375
+              ],
+              "gain_per_vehicle": [
+                -3.8046875,
+                -0.3515625,
+                -6.546875
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -4.7578125,
+                  -2.882617187500003
+                ],
+                [
+                  -0.8203125,
+                  0.0078125
+                ],
+                [
+                  -8.34765625,
+                  -4.828027343750001
+                ]
+              ],
+              "gain_team": -3.5677083333333335,
+              "gain_team_percent": -71.16883116883118,
+              "ci95_team": [
+                -4.320345052083334,
+                -2.842350260416668
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 38,
+              "team_win_initial_fraction": 0.05,
+              "team_loss_initial_fraction": 0.9
+            }
+          }
+        }
+      },
+      "coupled_1601": {
+        "all": {
+          "n_initials": 128,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                9.26885986328125,
+                9.5850830078125,
+                10.96142578125
+              ],
+              "method_per_vehicle": [
+                8.75732421875,
+                10.2373046875,
+                11.0941162109375
+              ],
+              "gain_per_vehicle": [
+                0.51153564453125,
+                -0.6522216796875,
+                -0.1326904296875
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.30346527099609377,
+                  0.7329147338867187
+                ],
+                [
+                  -1.0404678344726563,
+                  -0.2788436889648441
+                ],
+                [
+                  -0.2971221923828125,
+                  0.03394012451171868
+                ]
+              ],
+              "gain_team": -0.09112548828124997,
+              "gain_team_percent": -0.9168978188108372,
+              "ci95_team": [
+                -0.17775522867838542,
+                -0.003579711914062513
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 104,
+              "team_win_initial_fraction": 0.3828125,
+              "team_loss_initial_fraction": 0.6171875
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                8.931640625,
+                9.25390625,
+                10.6328125
+              ],
+              "method_per_vehicle": [
+                8.501953125,
+                9.853515625,
+                10.7294921875
+              ],
+              "gain_per_vehicle": [
+                0.4296875,
+                -0.599609375,
+                -0.0966796875
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.2587890625,
+                  0.611328125
+                ],
+                [
+                  -0.9462890625,
+                  -0.26953125
+                ],
+                [
+                  -0.228515625,
+                  0.033203125
+                ]
+              ],
+              "gain_team": -0.0888671875,
+              "gain_team_percent": -0.9251101321585903,
+              "ci95_team": [
+                -0.16341145833333331,
+                -0.012361653645833455
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 90,
+              "team_win_initial_fraction": 0.34375,
+              "team_loss_initial_fraction": 0.5703125
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                6.744384765625,
+                6.62353515625,
+                6.572265625
+              ],
+              "method_per_vehicle": [
+                5.107421875,
+                7.67578125,
+                7.29248046875
+              ],
+              "gain_per_vehicle": [
+                1.636962890625,
+                -1.05224609375,
+                -0.72021484375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.780029296875,
+                  2.5183410644531246
+                ],
+                [
+                  -1.992218017578125,
+                  -0.13302612304687544
+                ],
+                [
+                  -1.506439208984375,
+                  0.10989379882812456
+                ]
+              ],
+              "gain_team": -0.045166015625000056,
+              "gain_team_percent": -0.6795224977043167,
+              "ci95_team": [
+                -0.4541117350260417,
+                0.3764241536458328
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 99,
+              "team_win_initial_fraction": 0.5234375,
+              "team_loss_initial_fraction": 0.453125
+            }
+          }
+        },
+        "high_conflict": {
+          "n_initials": 88,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                9.151544744318182,
+                10.024680397727273,
+                10.787286931818182
+              ],
+              "method_per_vehicle": [
+                8.373934659090908,
+                10.868341619318182,
+                10.842684659090908
+              ],
+              "gain_per_vehicle": [
+                0.7776100852272727,
+                -0.8436612215909091,
+                -0.05539772727272727
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.5010653409090909,
+                  1.0730712890624998
+                ],
+                [
+                  -1.3924005681818181,
+                  -0.33651455965909155
+                ],
+                [
+                  -0.2819979580965909,
+                  0.17632723721590887
+                ]
+              ],
+              "gain_team": -0.040482954545454544,
+              "gain_team_percent": -0.4053225247326738,
+              "ci95_team": [
+                -0.1587106415719697,
+                0.07417140151515134
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 66,
+              "team_win_initial_fraction": 0.5,
+              "team_loss_initial_fraction": 0.5
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                8.789772727272727,
+                9.633522727272727,
+                10.431818181818182
+              ],
+              "method_per_vehicle": [
+                8.147727272727273,
+                10.40625,
+                10.480113636363637
+              ],
+              "gain_per_vehicle": [
+                0.6420454545454546,
+                -0.7727272727272727,
+                -0.048295454545454544
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.4161576704545455,
+                  0.8821022727272727
+                ],
+                [
+                  -1.2585227272727273,
+                  -0.3224431818181818
+                ],
+                [
+                  -0.22869318181818182,
+                  0.13497869318181768
+                ]
+              ],
+              "gain_team": -0.05965909090909093,
+              "gain_team_percent": -0.6202618883528602,
+              "ci95_team": [
+                -0.16524621212121213,
+                0.03978456439393923
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 59,
+              "team_win_initial_fraction": 0.4431818181818182,
+              "team_loss_initial_fraction": 0.5
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                7.235440340909091,
+                7.823153409090909,
+                7.109375
+              ],
+              "method_per_vehicle": [
+                4.5241477272727275,
+                9.241832386363637,
+                7.251420454545454
+              ],
+              "gain_per_vehicle": [
+                2.7112926136363638,
+                -1.4186789772727273,
+                -0.14204545454545456
+              ],
+              "ci95_per_vehicle": [
+                [
+                  1.6441761363636365,
+                  3.8566228693181803
+                ],
+                [
+                  -2.711337002840909,
+                  -0.16157670454545456
+                ],
+                [
+                  -1.2110262784090908,
+                  0.9286665482954539
+                ]
+              ],
+              "gain_team": 0.3835227272727273,
+              "gain_team_percent": 5.190228273928715,
+              "ci95_team": [
+                -0.14145359848484843,
+                0.8771454782196967
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 63,
+              "team_win_initial_fraction": 0.6704545454545454,
+              "team_loss_initial_fraction": 0.32954545454545453
+            }
+          }
+        },
+        "low_conflict": {
+          "n_initials": 40,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                9.526953125,
+                8.61796875,
+                11.34453125
+              ],
+              "method_per_vehicle": [
+                9.60078125,
+                8.8490234375,
+                11.647265625
+              ],
+              "gain_per_vehicle": [
+                -0.073828125,
+                -0.2310546875,
+                -0.302734375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.205078125,
+                  0.066015625
+                ],
+                [
+                  -0.627734375,
+                  0.05059082031249992
+                ],
+                [
+                  -0.44278320312499997,
+                  -0.161328125
+                ]
+              ],
+              "gain_team": -0.2025390625,
+              "gain_team_percent": -2.0604559363119757,
+              "ci95_team": [
+                -0.3023453776041667,
+                -0.10748372395833339
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 38,
+              "team_win_initial_fraction": 0.125,
+              "team_loss_initial_fraction": 0.875
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.24375,
+                8.41875,
+                11.075
+              ],
+              "method_per_vehicle": [
+                9.28125,
+                8.6375,
+                11.278125
+              ],
+              "gain_per_vehicle": [
+                -0.0375,
+                -0.21875,
+                -0.203125
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.1375,
+                  0.071875
+                ],
+                [
+                  -0.571875,
+                  0.03125
+                ],
+                [
+                  -0.30625,
+                  -0.096875
+                ]
+              ],
+              "gain_team": -0.153125,
+              "gain_team_percent": -1.5985210961287515,
+              "ci95_team": [
+                -0.2364583333333333,
+                -0.07604166666666667
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 31,
+              "team_win_initial_fraction": 0.125,
+              "team_loss_initial_fraction": 0.725
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                5.6640625,
+                3.984375,
+                5.390625
+              ],
+              "method_per_vehicle": [
+                6.390625,
+                4.23046875,
+                7.3828125
+              ],
+              "gain_per_vehicle": [
+                -0.7265625,
+                -0.24609375,
+                -1.9921875
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -1.7267578124999998,
+                  0.25019531249999716
+                ],
+                [
+                  -1.2265625,
+                  0.66015625
+                ],
+                [
+                  -2.99228515625,
+                  -1.1092773437500014
+                ]
+              ],
+              "gain_team": -0.98828125,
+              "gain_team_percent": -19.714285714285715,
+              "ci95_team": [
+                -1.6172200520833333,
+                -0.3905598958333343
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 36,
+              "team_win_initial_fraction": 0.2,
+              "team_loss_initial_fraction": 0.725
+            }
+          }
+        }
+      },
+      "single_901": {
+        "all": {
+          "n_initials": 128,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                9.26885986328125,
+                9.5850830078125,
+                10.96142578125
+              ],
+              "method_per_vehicle": [
+                10.248046875,
+                9.30841064453125,
+                11.994140625
+              ],
+              "gain_per_vehicle": [
+                -0.97918701171875,
+                0.27667236328125,
+                -1.03271484375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -1.2947433471679688,
+                  -0.6754714965820313
+                ],
+                [
+                  -0.15596160888671876,
+                  0.709303283691406
+                ],
+                [
+                  -1.3079055786132812,
+                  -0.7636840820312507
+                ]
+              ],
+              "gain_team": -0.5784098307291667,
+              "gain_team_percent": -5.819916273452135,
+              "ci95_team": [
+                -0.6839818318684896,
+                -0.46988881429036455
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 119,
+              "team_win_initial_fraction": 0.1796875,
+              "team_loss_initial_fraction": 0.8125
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                8.931640625,
+                9.25390625,
+                10.6328125
+              ],
+              "method_per_vehicle": [
+                9.7158203125,
+                9.0693359375,
+                11.333984375
+              ],
+              "gain_per_vehicle": [
+                -0.7841796875,
+                0.1845703125,
+                -0.701171875
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -1.0498291015625,
+                  -0.529296875
+                ],
+                [
+                  -0.2041015625,
+                  0.5742431640624996
+                ],
+                [
+                  -0.921923828125,
+                  -0.48923339843750036
+                ]
+              ],
+              "gain_team": -0.43359375,
+              "gain_team_percent": -4.513724161301254,
+              "ci95_team": [
+                -0.5205078125,
+                -0.34635416666666663
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 111,
+              "team_win_initial_fraction": 0.1796875,
+              "team_loss_initial_fraction": 0.75
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                6.744384765625,
+                6.62353515625,
+                6.572265625
+              ],
+              "method_per_vehicle": [
+                10.64453125,
+                4.781494140625,
+                13.203125
+              ],
+              "gain_per_vehicle": [
+                -3.900146484375,
+                1.842041015625,
+                -6.630859375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -4.995147705078125,
+                  -2.813568115234377
+                ],
+                [
+                  0.836181640625,
+                  2.828369140625
+                ],
+                [
+                  -7.88818359375,
+                  -5.3076171875
+                ]
+              ],
+              "gain_team": -2.8963216145833335,
+              "gain_team_percent": -43.57514539332721,
+              "ci95_team": [
+                -3.493255615234375,
+                -2.2627665201822915
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 111,
+              "team_win_initial_fraction": 0.2265625,
+              "team_loss_initial_fraction": 0.765625
+            }
+          }
+        },
+        "high_conflict": {
+          "n_initials": 88,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                9.151544744318182,
+                10.024680397727273,
+                10.787286931818182
+              ],
+              "method_per_vehicle": [
+                10.397727272727273,
+                9.578746448863637,
+                12.027698863636363
+              ],
+              "gain_per_vehicle": [
+                -1.2461825284090908,
+                0.44593394886363635,
+                -1.2404119318181819
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -1.6552179509943183,
+                  -0.8223388671875003
+                ],
+                [
+                  -0.17171297940340907,
+                  1.013250177556818
+                ],
+                [
+                  -1.5897971413352274,
+                  -0.8680730646306818
+                ]
+              ],
+              "gain_team": -0.6802201704545454,
+              "gain_team_percent": -6.810485053731901,
+              "ci95_team": [
+                -0.8220296223958332,
+                -0.5332238399621214
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 81,
+              "team_win_initial_fraction": 0.22727272727272727,
+              "team_loss_initial_fraction": 0.7727272727272727
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                8.789772727272727,
+                9.633522727272727,
+                10.431818181818182
+              ],
+              "method_per_vehicle": [
+                9.833806818181818,
+                9.306818181818182,
+                11.336647727272727
+              ],
+              "gain_per_vehicle": [
+                -1.0440340909090908,
+                0.32670454545454547,
+                -0.9048295454545454
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -1.3877840909090908,
+                  -0.6931818181818182
+                ],
+                [
+                  -0.22727272727272727,
+                  0.8423295454545454
+                ],
+                [
+                  -1.1818536931818182,
+                  -0.6122159090909091
+                ]
+              ],
+              "gain_team": -0.5407196969696969,
+              "gain_team_percent": -5.621738702372746,
+              "ci95_team": [
+                -0.6524739583333333,
+                -0.425189393939394
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 80,
+              "team_win_initial_fraction": 0.14772727272727273,
+              "team_loss_initial_fraction": 0.7954545454545454
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                7.235440340909091,
+                7.823153409090909,
+                7.109375
+              ],
+              "method_per_vehicle": [
+                11.278409090909092,
+                5.438565340909091,
+                13.821022727272727
+              ],
+              "gain_per_vehicle": [
+                -4.04296875,
+                2.3845880681818183,
+                -6.7116477272727275
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -5.490101207386364,
+                  -2.5443892045454546
+                ],
+                [
+                  1.01025390625,
+                  3.6879882812499982
+                ],
+                [
+                  -8.320356889204545,
+                  -5.0123845880681825
+                ]
+              ],
+              "gain_team": -2.7900094696969693,
+              "gain_team_percent": -37.757308770524624,
+              "ci95_team": [
+                -3.5588452888257573,
+                -1.9963008996212124
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 74,
+              "team_win_initial_fraction": 0.2840909090909091,
+              "team_loss_initial_fraction": 0.7159090909090909
+            }
+          }
+        },
+        "low_conflict": {
+          "n_initials": 40,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                9.526953125,
+                8.61796875,
+                11.34453125
+              ],
+              "method_per_vehicle": [
+                9.91875,
+                8.713671875,
+                11.9203125
+              ],
+              "gain_per_vehicle": [
+                -0.391796875,
+                -0.095703125,
+                -0.57578125
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.531650390625,
+                  -0.260546875
+                ],
+                [
+                  -0.27737792968749997,
+                  0.06016601562499986
+                ],
+                [
+                  -0.8033251953125,
+                  -0.3409960937500003
+                ]
+              ],
+              "gain_team": -0.3544270833333333,
+              "gain_team_percent": -3.6056323102804226,
+              "ci95_team": [
+                -0.4703287760416667,
+                -0.23905273437500016
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 38,
+              "team_win_initial_fraction": 0.075,
+              "team_loss_initial_fraction": 0.9
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.24375,
+                8.41875,
+                11.075
+              ],
+              "method_per_vehicle": [
+                9.45625,
+                8.546875,
+                11.328125
+              ],
+              "gain_per_vehicle": [
+                -0.2125,
+                -0.128125,
+                -0.253125
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.328125,
+                  -0.10625
+                ],
+                [
+                  -0.29375,
+                  0.003125
+                ],
+                [
+                  -0.421875,
+                  -0.09054687500000114
+                ]
+              ],
+              "gain_team": -0.19791666666666669,
+              "gain_team_percent": -2.066115702479339,
+              "ci95_team": [
+                -0.28958333333333336,
+                -0.11041666666666668
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 31,
+              "team_win_initial_fraction": 0.25,
+              "team_loss_initial_fraction": 0.65
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                5.6640625,
+                3.984375,
+                5.390625
+              ],
+              "method_per_vehicle": [
+                9.25,
+                3.3359375,
+                11.84375
+              ],
+              "gain_per_vehicle": [
+                -3.5859375,
+                0.6484375,
+                -6.453125
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -4.5234375,
+                  -2.6875
+                ],
+                [
+                  -0.10546875,
+                  1.5
+                ],
+                [
+                  -8.21884765625,
+                  -4.714550781250004
+                ]
+              ],
+              "gain_team": -3.130208333333333,
+              "gain_team_percent": -62.44155844155844,
+              "ci95_team": [
+                -3.99609375,
+                -2.2681966145833337
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 37,
+              "team_win_initial_fraction": 0.1,
+              "team_loss_initial_fraction": 0.875
+            }
+          }
+        }
+      }
+    },
+    "single_901": {
+      "ego_planner": {
+        "all": {
+          "n_initials": 128,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                10.248046875,
+                9.30841064453125,
+                11.994140625
+              ],
+              "method_per_vehicle": [
+                10.37744140625,
+                9.4315185546875,
+                12.1005859375
+              ],
+              "gain_per_vehicle": [
+                -0.12939453125,
+                -0.12310791015625,
+                -0.1064453125
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.2958984375,
+                  0.00439453125
+                ],
+                [
+                  -0.278387451171875,
+                  0.034129333496093595
+                ],
+                [
+                  -0.234869384765625,
+                  -0.0004821777343750888
+                ]
+              ],
+              "gain_team": -0.11964925130208331,
+              "gain_team_percent": -1.1376892199061757,
+              "ci95_team": [
+                -0.1962916056315104,
+                -0.05503234863281251
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 60,
+              "team_win_initial_fraction": 0.1484375,
+              "team_loss_initial_fraction": 0.3515625
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.7158203125,
+                9.0693359375,
+                11.333984375
+              ],
+              "method_per_vehicle": [
+                9.8173828125,
+                9.1328125,
+                11.4208984375
+              ],
+              "gain_per_vehicle": [
+                -0.1015625,
+                -0.0634765625,
+                -0.0869140625
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.2412109375,
+                  0.01171875
+                ],
+                [
+                  -0.1982421875,
+                  0.0732421875
+                ],
+                [
+                  -0.189453125,
+                  -0.0038818359375003553
+                ]
+              ],
+              "gain_team": -0.083984375,
+              "gain_team_percent": -0.8365216263536736,
+              "ci95_team": [
+                -0.1481201171875,
+                -0.031241861979166785
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 43,
+              "team_win_initial_fraction": 0.1796875,
+              "team_loss_initial_fraction": 0.296875
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                10.64453125,
+                4.781494140625,
+                13.203125
+              ],
+              "method_per_vehicle": [
+                11.201171875,
+                5.97412109375,
+                13.59375
+              ],
+              "gain_per_vehicle": [
+                -0.556640625,
+                -1.192626953125,
+                -0.390625
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -1.11328125,
+                  -0.107421875
+                ],
+                [
+                  -1.8115234375,
+                  -0.5810546875
+                ],
+                [
+                  -0.9814453125,
+                  0.107421875
+                ]
+              ],
+              "gain_team": -0.7132975260416667,
+              "gain_team_percent": -7.4745235151153375,
+              "ci95_team": [
+                -1.0608317057291667,
+                -0.41544596354166663
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 55,
+              "team_win_initial_fraction": 0.1484375,
+              "team_loss_initial_fraction": 0.328125
+            }
+          }
+        },
+        "high_conflict": {
+          "n_initials": 88,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                10.397727272727273,
+                9.578746448863637,
+                12.027698863636363
+              ],
+              "method_per_vehicle": [
+                10.585227272727273,
+                9.730823863636363,
+                12.176136363636363
+              ],
+              "gain_per_vehicle": [
+                -0.1875,
+                -0.15207741477272727,
+                -0.1484375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.4311257102272727,
+                  0.007830255681817923
+                ],
+                [
+                  -0.36275523792613634,
+                  0.06314364346590877
+                ],
+                [
+                  -0.3288352272727273,
+                  0.007821377840908961
+                ]
+              ],
+              "gain_team": -0.16267163825757577,
+              "gain_team_percent": -1.524847778748665,
+              "ci95_team": [
+                -0.2689408735795455,
+                -0.06823730468750007
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 48,
+              "team_win_initial_fraction": 0.1590909090909091,
+              "team_loss_initial_fraction": 0.4318181818181818
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.833806818181818,
+                9.306818181818182,
+                11.336647727272727
+              ],
+              "method_per_vehicle": [
+                9.985795454545455,
+                9.394886363636363,
+                11.458806818181818
+              ],
+              "gain_per_vehicle": [
+                -0.15198863636363635,
+                -0.08806818181818182,
+                -0.12215909090909091
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.3565340909090909,
+                  0.01278409090909091
+                ],
+                [
+                  -0.2713423295454545,
+                  0.10085227272727272
+                ],
+                [
+                  -0.265625,
+                  0.0
+                ]
+              ],
+              "gain_team": -0.12073863636363637,
+              "gain_team_percent": -1.1884787472035796,
+              "ci95_team": [
+                -0.20929214015151512,
+                -0.04308712121212121
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 37,
+              "team_win_initial_fraction": 0.18181818181818182,
+              "team_loss_initial_fraction": 0.375
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                11.278409090909092,
+                5.438565340909091,
+                13.821022727272727
+              ],
+              "method_per_vehicle": [
+                11.988636363636363,
+                6.71875,
+                14.346590909090908
+              ],
+              "gain_per_vehicle": [
+                -0.7102272727272727,
+                -1.2801846590909092,
+                -0.5255681818181818
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -1.5198863636363635,
+                  -0.07102272727272728
+                ],
+                [
+                  -2.086337002840909,
+                  -0.5149147727272727
+                ],
+                [
+                  -1.3636363636363635,
+                  0.17755681818181818
+                ]
+              ],
+              "gain_team": -0.8386600378787878,
+              "gain_team_percent": -8.238851095993953,
+              "ci95_team": [
+                -1.295010653409091,
+                -0.4296875
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 43,
+              "team_win_initial_fraction": 0.17045454545454544,
+              "team_loss_initial_fraction": 0.38636363636363635
+            }
+          }
+        },
+        "low_conflict": {
+          "n_initials": 40,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                9.91875,
+                8.713671875,
+                11.9203125
+              ],
+              "method_per_vehicle": [
+                9.9203125,
+                8.773046875,
+                11.934375
+              ],
+              "gain_per_vehicle": [
+                -0.0015625,
+                -0.059375,
+                -0.0140625
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.009375,
+                  0.0046875
+                ],
+                [
+                  -0.21895996093749998,
+                  0.0638671875
+                ],
+                [
+                  -0.0890625,
+                  0.046875
+                ]
+              ],
+              "gain_team": -0.024999999999999994,
+              "gain_team_percent": -0.24547721025378758,
+              "ci95_team": [
+                -0.08139322916666666,
+                0.02005208333333333
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 12,
+              "team_win_initial_fraction": 0.125,
+              "team_loss_initial_fraction": 0.175
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.45625,
+                8.546875,
+                11.328125
+              ],
+              "method_per_vehicle": [
+                9.446875,
+                8.55625,
+                11.3375
+              ],
+              "gain_per_vehicle": [
+                0.009375,
+                -0.009375,
+                -0.009375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.0,
+                  0.021875
+                ],
+                [
+                  -0.1375,
+                  0.090625
+                ],
+                [
+                  -0.071875,
+                  0.040625
+                ]
+              ],
+              "gain_team": -0.0031249999999999984,
+              "gain_team_percent": -0.03196249733645854,
+              "ci95_team": [
+                -0.04791666666666667,
+                0.03333333333333333
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 6,
+              "team_win_initial_fraction": 0.175,
+              "team_loss_initial_fraction": 0.125
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                9.25,
+                3.3359375,
+                11.84375
+              ],
+              "method_per_vehicle": [
+                9.46875,
+                4.3359375,
+                11.9375
+              ],
+              "gain_per_vehicle": [
+                -0.21875,
+                -1.0,
+                -0.09375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  -0.53125,
+                  0.0
+                ],
+                [
+                  -1.92978515625,
+                  -0.19921875
+                ],
+                [
+                  -0.46875,
+                  0.3125
+                ]
+              ],
+              "gain_team": -0.4375,
+              "gain_team_percent": -5.372561560601215,
+              "ci95_team": [
+                -0.7825520833333333,
+                -0.13411458333333334
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 12,
+              "team_win_initial_fraction": 0.1,
+              "team_loss_initial_fraction": 0.2
+            }
+          }
+        }
+      },
+      "team_planner": {
+        "all": {
+          "n_initials": 128,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                10.248046875,
+                9.30841064453125,
+                11.994140625
+              ],
+              "method_per_vehicle": [
+                9.26885986328125,
+                9.5850830078125,
+                10.96142578125
+              ],
+              "gain_per_vehicle": [
+                0.97918701171875,
+                -0.27667236328125,
+                1.03271484375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.6754714965820312,
+                  1.2947433471679686
+                ],
+                [
+                  -0.7093032836914063,
+                  0.1559616088867185
+                ],
+                [
+                  0.76368408203125,
+                  1.3079055786132807
+                ]
+              ],
+              "gain_team": 0.5784098307291667,
+              "gain_team_percent": 5.499830729796392,
+              "ci95_team": [
+                0.46988881429036455,
+                0.6839818318684896
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 105,
+              "team_win_initial_fraction": 0.8125,
+              "team_loss_initial_fraction": 0.1796875
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.7158203125,
+                9.0693359375,
+                11.333984375
+              ],
+              "method_per_vehicle": [
+                8.931640625,
+                9.25390625,
+                10.6328125
+              ],
+              "gain_per_vehicle": [
+                0.7841796875,
+                -0.1845703125,
+                0.701171875
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.529296875,
+                  1.0498291015624996
+                ],
+                [
+                  -0.5742431640625,
+                  0.2041015625
+                ],
+                [
+                  0.4892333984375,
+                  0.9219238281249993
+                ]
+              ],
+              "gain_team": 0.43359375,
+              "gain_team_percent": 4.318786070942222,
+              "ci95_team": [
+                0.34635416666666663,
+                0.5205078125
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 73,
+              "team_win_initial_fraction": 0.75,
+              "team_loss_initial_fraction": 0.1796875
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                10.64453125,
+                4.781494140625,
+                13.203125
+              ],
+              "method_per_vehicle": [
+                6.744384765625,
+                6.62353515625,
+                6.572265625
+              ],
+              "gain_per_vehicle": [
+                3.900146484375,
+                -1.842041015625,
+                6.630859375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  2.813568115234375,
+                  4.995147705078125
+                ],
+                [
+                  -2.828369140625,
+                  -0.836181640625
+                ],
+                [
+                  5.3076171875,
+                  7.88818359375
+                ]
+              ],
+              "gain_team": 2.8963216145833335,
+              "gain_team_percent": 30.350061825779218,
+              "ci95_team": [
+                2.2627665201822915,
+                3.493255615234375
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 97,
+              "team_win_initial_fraction": 0.765625,
+              "team_loss_initial_fraction": 0.2265625
+            }
+          }
+        },
+        "high_conflict": {
+          "n_initials": 88,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                10.397727272727273,
+                9.578746448863637,
+                12.027698863636363
+              ],
+              "method_per_vehicle": [
+                9.151544744318182,
+                10.024680397727273,
+                10.787286931818182
+              ],
+              "gain_per_vehicle": [
+                1.2461825284090908,
+                -0.44593394886363635,
+                1.2404119318181819
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.8223388671875,
+                  1.6552179509943177
+                ],
+                [
+                  -1.0132501775568181,
+                  0.17171297940340885
+                ],
+                [
+                  0.8680730646306818,
+                  1.5897971413352268
+                ]
+              ],
+              "gain_team": 0.6802201704545454,
+              "gain_team_percent": 6.37623268006491,
+              "ci95_team": [
+                0.5332238399621213,
+                0.8220296223958332
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 77,
+              "team_win_initial_fraction": 0.7727272727272727,
+              "team_loss_initial_fraction": 0.22727272727272727
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.833806818181818,
+                9.306818181818182,
+                11.336647727272727
+              ],
+              "method_per_vehicle": [
+                8.789772727272727,
+                9.633522727272727,
+                10.431818181818182
+              ],
+              "gain_per_vehicle": [
+                1.0440340909090908,
+                -0.32670454545454547,
+                0.9048295454545454
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.6931818181818182,
+                  1.3877840909090908
+                ],
+                [
+                  -0.8423295454545454,
+                  0.22727272727272727
+                ],
+                [
+                  0.6122159090909091,
+                  1.1818536931818178
+                ]
+              ],
+              "gain_team": 0.5407196969696969,
+              "gain_team_percent": 5.322520507084265,
+              "ci95_team": [
+                0.425189393939394,
+                0.6524739583333332
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 54,
+              "team_win_initial_fraction": 0.7954545454545454,
+              "team_loss_initial_fraction": 0.14772727272727273
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                11.278409090909092,
+                5.438565340909091,
+                13.821022727272727
+              ],
+              "method_per_vehicle": [
+                7.235440340909091,
+                7.823153409090909,
+                7.109375
+              ],
+              "gain_per_vehicle": [
+                4.04296875,
+                -2.3845880681818183,
+                6.7116477272727275
+              ],
+              "ci95_per_vehicle": [
+                [
+                  2.5443892045454546,
+                  5.490101207386363
+                ],
+                [
+                  -3.68798828125,
+                  -1.0102539062500007
+                ],
+                [
+                  5.012384588068182,
+                  8.320356889204545
+                ]
+              ],
+              "gain_team": 2.7900094696969693,
+              "gain_team_percent": 27.408570265713116,
+              "ci95_team": [
+                1.996300899621212,
+                3.5588452888257573
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 77,
+              "team_win_initial_fraction": 0.7159090909090909,
+              "team_loss_initial_fraction": 0.2840909090909091
+            }
+          }
+        },
+        "low_conflict": {
+          "n_initials": 40,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                9.91875,
+                8.713671875,
+                11.9203125
+              ],
+              "method_per_vehicle": [
+                9.526953125,
+                8.61796875,
+                11.34453125
+              ],
+              "gain_per_vehicle": [
+                0.391796875,
+                0.095703125,
+                0.57578125
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.260546875,
+                  0.5316503906249999
+                ],
+                [
+                  -0.060166015625,
+                  0.2773779296874995
+                ],
+                [
+                  0.34099609375,
+                  0.8033251953124999
+                ]
+              ],
+              "gain_team": 0.3544270833333333,
+              "gain_team_percent": 3.480150866202135,
+              "ci95_team": [
+                0.23905273437500002,
+                0.47032877604166645
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 28,
+              "team_win_initial_fraction": 0.9,
+              "team_loss_initial_fraction": 0.075
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.45625,
+                8.546875,
+                11.328125
+              ],
+              "method_per_vehicle": [
+                9.24375,
+                8.41875,
+                11.075
+              ],
+              "gain_per_vehicle": [
+                0.2125,
+                0.128125,
+                0.253125
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.10625,
+                  0.328125
+                ],
+                [
+                  -0.003125,
+                  0.29375
+                ],
+                [
+                  0.09054687500000003,
+                  0.421875
+                ]
+              ],
+              "gain_team": 0.19791666666666669,
+              "gain_team_percent": 2.0242914979757085,
+              "ci95_team": [
+                0.11041666666666668,
+                0.28958333333333336
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 19,
+              "team_win_initial_fraction": 0.65,
+              "team_loss_initial_fraction": 0.25
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                9.25,
+                3.3359375,
+                11.84375
+              ],
+              "method_per_vehicle": [
+                5.6640625,
+                3.984375,
+                5.390625
+              ],
+              "gain_per_vehicle": [
+                3.5859375,
+                -0.6484375,
+                6.453125
+              ],
+              "ci95_per_vehicle": [
+                [
+                  2.6875,
+                  4.5234375
+                ],
+                [
+                  -1.5,
+                  0.10546875
+                ],
+                [
+                  4.71455078125,
+                  8.218847656249999
+                ]
+              ],
+              "gain_team": 3.130208333333333,
+              "gain_team_percent": 38.43939878477774,
+              "ci95_team": [
+                2.268196614583333,
+                3.99609375
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 20,
+              "team_win_initial_fraction": 0.875,
+              "team_loss_initial_fraction": 0.1
+            }
+          }
+        }
+      },
+      "coupled_1601": {
+        "all": {
+          "n_initials": 128,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                10.248046875,
+                9.30841064453125,
+                11.994140625
+              ],
+              "method_per_vehicle": [
+                8.75732421875,
+                10.2373046875,
+                11.0941162109375
+              ],
+              "gain_per_vehicle": [
+                1.49072265625,
+                -0.92889404296875,
+                0.9000244140625
+              ],
+              "ci95_per_vehicle": [
+                [
+                  1.1474334716796875,
+                  1.8620910644531246
+                ],
+                [
+                  -1.3233688354492188,
+                  -0.5463653564453128
+                ],
+                [
+                  0.6144989013671875,
+                  1.1995086669921868
+                ]
+              ],
+              "gain_team": 0.48728434244791663,
+              "gain_team_percent": 4.6333607389853455,
+              "ci95_team": [
+                0.38398895263671873,
+                0.5949508666992186
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 109,
+              "team_win_initial_fraction": 0.796875,
+              "team_loss_initial_fraction": 0.1953125
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.7158203125,
+                9.0693359375,
+                11.333984375
+              ],
+              "method_per_vehicle": [
+                8.501953125,
+                9.853515625,
+                10.7294921875
+              ],
+              "gain_per_vehicle": [
+                1.2138671875,
+                -0.7841796875,
+                0.6044921875
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.9247802734375,
+                  1.5263671875
+                ],
+                [
+                  -1.1386962890625,
+                  -0.43747558593750036
+                ],
+                [
+                  0.373046875,
+                  0.8447753906249993
+                ]
+              ],
+              "gain_team": 0.3447265625,
+              "gain_team_percent": 3.4336294663121723,
+              "ci95_team": [
+                0.26106770833333337,
+                0.43229166666666663
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 84,
+              "team_win_initial_fraction": 0.71875,
+              "team_loss_initial_fraction": 0.2109375
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                10.64453125,
+                4.781494140625,
+                13.203125
+              ],
+              "method_per_vehicle": [
+                5.107421875,
+                7.67578125,
+                7.29248046875
+              ],
+              "gain_per_vehicle": [
+                5.537109375,
+                -2.894287109375,
+                5.91064453125
+              ],
+              "ci95_per_vehicle": [
+                [
+                  4.34075927734375,
+                  6.777404785156249
+                ],
+                [
+                  -3.726898193359375,
+                  -2.0543212890625018
+                ],
+                [
+                  4.63134765625,
+                  7.197265625
+                ]
+              ],
+              "gain_team": 2.8511555989583335,
+              "gain_team_percent": 29.876774826248244,
+              "ci95_team": [
+                2.29364013671875,
+                3.427734375
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 106,
+              "team_win_initial_fraction": 0.7578125,
+              "team_loss_initial_fraction": 0.2109375
+            }
+          }
+        },
+        "high_conflict": {
+          "n_initials": 88,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                10.397727272727273,
+                9.578746448863637,
+                12.027698863636363
+              ],
+              "method_per_vehicle": [
+                8.373934659090908,
+                10.868341619318182,
+                10.842684659090908
+              ],
+              "gain_per_vehicle": [
+                2.0237926136363638,
+                -1.2895951704545454,
+                1.1850142045454546
+              ],
+              "ci95_per_vehicle": [
+                [
+                  1.5642711292613636,
+                  2.478879616477273
+                ],
+                [
+                  -1.8094837535511363,
+                  -0.7579545454545459
+                ],
+                [
+                  0.788858309659091,
+                  1.5720880681818181
+                ]
+              ],
+              "gain_team": 0.6397372159090909,
+              "gain_team_percent": 5.9967544626139055,
+              "ci95_team": [
+                0.5033062559185607,
+                0.7765795158617422
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 77,
+              "team_win_initial_fraction": 0.8181818181818182,
+              "team_loss_initial_fraction": 0.17045454545454544
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.833806818181818,
+                9.306818181818182,
+                11.336647727272727
+              ],
+              "method_per_vehicle": [
+                8.147727272727273,
+                10.40625,
+                10.480113636363637
+              ],
+              "gain_per_vehicle": [
+                1.6860795454545454,
+                -1.0994318181818181,
+                0.8565340909090909
+              ],
+              "ci95_per_vehicle": [
+                [
+                  1.3039772727272727,
+                  2.0639914772727264
+                ],
+                [
+                  -1.569637784090909,
+                  -0.6164772727272727
+                ],
+                [
+                  0.5326704545454546,
+                  1.1633877840909086
+                ]
+              ],
+              "gain_team": 0.4810606060606061,
+              "gain_team_percent": 4.735272184936615,
+              "ci95_team": [
+                0.3745146780303031,
+                0.5928030303030303
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 59,
+              "team_win_initial_fraction": 0.8181818181818182,
+              "team_loss_initial_fraction": 0.11363636363636363
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                11.278409090909092,
+                5.438565340909091,
+                13.821022727272727
+              ],
+              "method_per_vehicle": [
+                4.5241477272727275,
+                9.241832386363637,
+                7.251420454545454
+              ],
+              "gain_per_vehicle": [
+                6.754261363636363,
+                -3.8032670454545454,
+                6.5696022727272725
+              ],
+              "ci95_per_vehicle": [
+                [
+                  5.159801136363637,
+                  8.359375
+                ],
+                [
+                  -4.877485795454546,
+                  -2.673828125000002
+                ],
+                [
+                  4.861416903409091,
+                  8.220880681818182
+                ]
+              ],
+              "gain_team": 3.1735321969696972,
+              "gain_team_percent": 31.176231176231177,
+              "ci95_team": [
+                2.419492779356061,
+                3.9003314393939394
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 80,
+              "team_win_initial_fraction": 0.7272727272727273,
+              "team_loss_initial_fraction": 0.25
+            }
+          }
+        },
+        "low_conflict": {
+          "n_initials": 40,
+          "metrics": {
+            "cost": {
+              "baseline_per_vehicle": [
+                9.91875,
+                8.713671875,
+                11.9203125
+              ],
+              "method_per_vehicle": [
+                9.60078125,
+                8.8490234375,
+                11.647265625
+              ],
+              "gain_per_vehicle": [
+                0.31796875,
+                -0.1353515625,
+                0.273046875
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.150390625,
+                  0.5074414062499998
+                ],
+                [
+                  -0.5386962890625,
+                  0.18321289062499985
+                ],
+                [
+                  0.062099609375,
+                  0.4937597656249999
+                ]
+              ],
+              "gain_team": 0.15188802083333336,
+              "gain_team_percent": 1.4914019050054341,
+              "ci95_team": [
+                0.08007486979166667,
+                0.22656575520833327
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 32,
+              "team_win_initial_fraction": 0.75,
+              "team_loss_initial_fraction": 0.25
+            },
+            "time": {
+              "baseline_per_vehicle": [
+                9.45625,
+                8.546875,
+                11.328125
+              ],
+              "method_per_vehicle": [
+                9.28125,
+                8.6375,
+                11.278125
+              ],
+              "gain_per_vehicle": [
+                0.175,
+                -0.090625,
+                0.05
+              ],
+              "ci95_per_vehicle": [
+                [
+                  0.0375,
+                  0.328125
+                ],
+                [
+                  -0.459375,
+                  0.209375
+                ],
+                [
+                  -0.10632812499999997,
+                  0.21875
+                ]
+              ],
+              "gain_team": 0.04479166666666667,
+              "gain_team_percent": 0.4581291284892393,
+              "ci95_team": [
+                -0.03333333333333334,
+                0.12291666666666665
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 25,
+              "team_win_initial_fraction": 0.5,
+              "team_loss_initial_fraction": 0.425
+            },
+            "variation": {
+              "baseline_per_vehicle": [
+                9.25,
+                3.3359375,
+                11.84375
+              ],
+              "method_per_vehicle": [
+                6.390625,
+                4.23046875,
+                7.3828125
+              ],
+              "gain_per_vehicle": [
+                2.859375,
+                -0.89453125,
+                4.4609375
+              ],
+              "ci95_per_vehicle": [
+                [
+                  1.7734375,
+                  4.03125
+                ],
+                [
+                  -1.6328125,
+                  -0.2616210937500014
+                ],
+                [
+                  2.8984375,
+                  6.0703125
+                ]
+              ],
+              "gain_team": 2.1419270833333335,
+              "gain_team_percent": 26.30316597377679,
+              "ci95_team": [
+                1.4440104166666667,
+                2.83857421875
+              ],
+              "worst_vehicle_or_mode_harmed_initials": 26,
+              "team_win_initial_fraction": 0.825,
+              "team_loss_initial_fraction": 0.125
+            }
+          }
+        }
+      }
+    }
+  },
+  "source_sha256": {
+    "protocol.json": "0a8d62941af79b9c7fede9d9440eb73a8d22350d48d06c6db393dd116a77fb98",
+    "episodes.json": "ddcf316d82220243c38b1286d459240445fa9825af4d8dfec70a27dae0186a24"
+  }
+}
