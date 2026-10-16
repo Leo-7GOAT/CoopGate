@@ -1,0 +1,23 @@
+{
+  "algorithm": "single_ego_ppo_v13",
+  "seed": 601,
+  "steps": 2097152,
+  "learned_vehicles": [
+    1
+  ],
+  "objective": "ego arrival time + 0.05 ego variation until ego arrival",
+  "n_envs": 32,
+  "rollout": 64,
+  "gamma": 0.995,
+  "gae_lambda": 0.95,
+  "epochs": 4,
+  "learning_rate": 0.0003,
+  "clip": 0.2,
+  "variation_weight": 0.05,
+  "training_backend": "exact longitudinal model",
+  "warmstart": "runs/v13_ego_memory_bc_601/bc.pt",
+  "ego_goal_is_terminal": true,
+  "observation_version": "markov_joint_memory_v1",
+  "sensor_range": 150.0,
+  "episodes": 106613
+}

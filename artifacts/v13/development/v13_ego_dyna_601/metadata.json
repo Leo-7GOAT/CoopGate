@@ -1,0 +1,25 @@
+{
+  "algorithm": "complete_action_double_dqn_ego_v13",
+  "seed": 601,
+  "steps": 262144,
+  "gamma": 1.0,
+  "batch_size": 512,
+  "replay_capacity": 262144,
+  "target_interval_updates": 250,
+  "updates_per_vector_step": 4,
+  "learned_vehicles": [
+    1
+  ],
+  "objective": "ego arrival + 0.05 ego variation until arrival",
+  "potential": "negative remaining ego distance / 20; terminal zero",
+  "epsilon_start": 1.0,
+  "epsilon_end": 0.03,
+  "epsilon_decay_steps": 131072,
+  "training_backend": "exact longitudinal model",
+  "observation_version": "markov_joint_memory_v1",
+  "sensor_range": 150.0,
+  "inference": "network only; no model lookahead",
+  "counterfactual_model_transitions": 1690738,
+  "gradient_updates": 32704,
+  "episodes": 11146
+}

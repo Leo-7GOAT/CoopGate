@@ -12,6 +12,65 @@ This is a research prototype with conditional model-based safety guarantees.
 The current single-ego study is **not MARL**. Historical V11 uses a centralized
 contextual bandit; its online planner's gain must not be called a new MARL result.
 
+## V13: ego gains and a gate that can return to the planning baseline
+
+The protocol and all final checkpoints were frozen in **3bac214** before
+**7,168 actual SUMO tests** (128 independent initial states × four error modes ×
+14 controllers). Calibration used another 256 initials and 1,024 SUMO executions.
+Three fresh Double DQN seeds each trained for 2,097,152 model transitions without
+imitation labels. The learned policy proposes an action at every control cycle.
+
+| Controller | Ego arrival s | Ego command variation m/s² | Ego cost s |
+|---|---:|---:|---:|
+| Strong rollout baseline | 9.4404 | 6.7114 | 9.7760 |
+| Standalone neural policy | 9.6110 | 6.7094 | 9.9465 |
+| Planner with untrained neural tail | 9.4375 | 6.6565 | 9.7703 |
+| Planner with trained neural tail | 9.1924 | 5.4175 | 9.4633 |
+| Joint cost/time confidence gate | 9.2490 | 6.0156 | 9.5498 |
+
+The learning-augmented planner reduces ego cost by **3.20%**, arrival time by
+**2.63%**, and command variation by **19.28%** relative to the strong baseline.
+Its paired initial-cluster 95% cost-improvement interval is **[0.1905, 0.4507] s**.
+Replacing trained weights with untrained weights removes most of the gain.
+The standalone actor, however, still does **not** establish superiority over the
+strong planner; the prerequisite for extending to MARL remains unmet.
+
+The gate requires calibrated cost improvement and arrival non-degradation before
+admission. It retains **72.33%** of the net cost gain while reducing harmful
+admission from **4.36%** (always use the learning-augmented planner) to **1.11%**
+of all policy episodes. Conditional harm among admitted episodes is **9.04%**;
+these are different denominators. Low-conflict episodes return to the baseline
+**99.15%** of the time. The high-conflict group's mean learning gain is 0.4394 s,
+versus 0.0236 s in the low-conflict group. Grouping uses initial ETA separation,
+not a general definition of road complexity.
+
+**11/11 prespecified augmented-planning and gating criteria passed.** These do
+not replace the failed standalone-policy prerequisite. Joint cost/time gating
+has only one fewer harmful admission than cost-only calibration (17 versus 18);
+this test does not establish a significant advantage for that extra constraint.
+Its value is the explicit simultaneous performance condition.
+
+Each of the learned-augmented and gated categories completed 1,536/1,536 runs
+with zero recorded collisions, route-contract violations or aborts. Auditing
+covers 112 complete traces, 633 compiled/Torch actor comparisons, and 56 actual
+SUMO replays. Eight additional checkpoint-loss/runtime-fault takeover runs all
+completed. Safety remains conditional on the stated exact-state, bounded-error,
+fully controlled three-car model. The gate chooses once per merge; these are
+not repeated online conformal guarantees. No communication-delay claim is made.
+
+[V13 full results](docs/v13_ego_results.md) ·
+[Theory and proof boundaries](docs/theory_ego_v13.md) ·
+[Frozen protocol](artifacts/v13/ego/protocol.json) ·
+[Complete summary](artifacts/v13/ego/summary.json) ·
+[Negative development results](docs/v13_development.md)
+
+![Ego-specific comparison](artifacts/v13/ego/ego_comparison.png)
+
+```powershell
+python tools/verify_ego_v13.py --replay --require-acceptance
+python tools/study_ego_v13.py --out runs/my_v13_reproduction
+```
+
 ## V12: why the evaluation objective had to change
 
 Three sequential PPO policies, 1,024 calibration executions and 5,632 fresh
