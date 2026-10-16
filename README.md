@@ -1,29 +1,59 @@
 # CoopGate
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
-Current work first tests one sequentially trained learner against a strong ego
-planning baseline, then tests when to admit the learning controller or fall back.
+V14 has passed the frozen single-ego learning prerequisite against a strong
+planning baseline. Work now extends the learner to genuine multi-agent training
+and tests when to admit a complete learned controller or fall back.
 V12's team-cost gain concealed an **8.26% ego arrival regression**; it does not
 satisfy the single-ego prerequisite for MARL. V13 uses the ego's own arrival and
 command variation, and jointly calibrates cost and arrival-time differences.
 Standalone neural control and learning-augmented planning are reported separately.
 
 This is a research prototype with conditional model-based safety guarantees.
-The current single-ego study is **not MARL**. Historical V11 uses a centralized
+The completed V14 single-ego study is **not MARL**. Historical V11 uses a centralized
 contextual bandit; its online planner's gain must not be called a new MARL result.
 
-## V14 development: direct learned decisions before MARL
+## V14: standalone single-ego prerequisite passed
 
-Training-only rollout policy iteration now tests standalone neural execution.
-Development gains remain provisional: the original small validation set and
-newer larger samples differ, and all negative outcomes are retained.
-Three new seeds, fixed training budgets, 512 untouched test initials and the
-single-ego acceptance criteria are preregistered before training. The final
-policy is a fixed average of the final three iterations' parameters; there is
-no test-based choice of a checkpoint. This remains **single-agent research**.
+Three fresh training seeds, fixed budgets and acceptance criteria were
+preregistered in **0d9e7b4**. Final networks and evaluation inputs were frozen in
+**e36a6fb**, before **14,336 actual SUMO executions** on 512 new initials and four
+disturbance modes. All nine prerequisite criteria passed, followed by 224 complete
+trajectory audits, 4,778 Torch/compiled comparisons and 56 additional SUMO replays.
 
-[Development evidence and mathematical limits](docs/v14_policy_iteration_development.md) ·
-[Fresh training and evaluation preregistration](artifacts/v14/single/training_protocol.json)
+| Controller | Ego arrival s | Ego command variation m/s² | Ego cost s |
+|---|---:|---:|---:|
+| Unchanged strong planning baseline | 9.6223 | 7.2693 | 9.9858 |
+| Standalone learned networks, three-seed mean | 9.4364 | 5.5315 | 9.7129 |
+| Fixed final networks without parameter averaging | 9.4742 | 5.6512 | 9.7568 |
+
+The primary learned policies reduce ego cost by **2.73%**, arrival time by
+**1.93%**, and command variation by **23.91%**. Every seed improves both cost and
+arrival time. Paired initial-cluster 95% improvement intervals are
+**[0.1859, 0.3615] s** for cost and **[0.1078, 0.2634] s** for arrival.
+High-conflict initials show 3.19% cost and 2.39% arrival improvement; low-conflict
+arrival improvement is 0.48%. These fixed ETA-based strata are descriptive.
+
+Training uses model-based approximate policy iteration, an established method
+family. Deployment uses one neural network and the common physical safety
+filter, with no future performance search. The final network uniformly averages
+the last three iterations' parameters; this is neither an ensemble nor MARL.
+Other-vehicle average arrival gains have an interval crossing zero; individual
+non-degradation is not established. V13's gate results must not be reused for
+these new policies. All negative development results remain available.
+
+[Complete V14 results](docs/v14_single_results.md) ·
+[Frozen test](artifacts/v14/single/protocol.json) ·
+[Replay audit](artifacts/v14/single_audit.json) ·
+[Development history](docs/v14_policy_iteration_development.md) ·
+[Joint gating theory and MARL preparation](docs/v15_joint_gate_design.md)
+
+![Frozen single-ego result](artifacts/v14/single_analysis/single_ego.png)
+
+```powershell
+python tools/verify_single_v14.py --replay --require-acceptance
+python tools/study_single_v14.py --out runs/my_v14_reproduction
+```
 
 ## V13: ego gains and a gate that can return to the planning baseline
 
@@ -45,8 +75,8 @@ The learning-augmented planner reduces ego cost by **3.20%**, arrival time by
 **2.63%**, and command variation by **19.28%** relative to the strong baseline.
 Its paired initial-cluster 95% cost-improvement interval is **[0.1905, 0.4507] s**.
 Replacing trained weights with untrained weights removes most of the gain.
-The standalone actor, however, still does **not** establish superiority over the
-strong planner; the prerequisite for extending to MARL remains unmet.
+The V13 standalone actor did **not** establish superiority over the strong
+planner. V14 above supplies the later independent prerequisite evidence.
 
 The gate requires calibrated cost improvement and arrival non-degradation before
 admission. It retains **72.33%** of the net cost gain while reducing harmful
