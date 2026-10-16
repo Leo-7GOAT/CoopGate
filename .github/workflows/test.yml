@@ -26,3 +26,6 @@ jobs:
       - run: python tools/verify_ego_v13.py --replay --require-acceptance
       - run: python tools/verify_development_v14.py --replay
       - run: python tools/verify_single_v14.py --replay --require-acceptance
+      - run: python tools/verify_cooperative_v15.py artifacts/v15/development_stage1/study --replay
+      - run: python tools/verify_cooperative_v16.py artifacts/v16/development_stage1/study --replay
+      - run: python tools/verify_cooperative_v16.py artifacts/v16/development_stage2/study --replay
