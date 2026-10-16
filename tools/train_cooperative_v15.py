@@ -53,6 +53,7 @@ def train(out,seed=1501,ego_seed=901,steps=262144,critic_kind='central',anchor=.
         physical_filter='same centralized certified 27-vertex projection; bounded error 0.5',
         source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
         source_sha256=sources,prerequisite=prerequisite,checkpoint_selection='fixed final training budget')
+    meta['actor_parameter_delta_l2_definition']='sum of squared parameter changes (squared L2), not its square root'
     (out/'protocol.json').write_text(json.dumps(meta,indent=2)+'\n')
     torch.save({**meta,'model':model.state_dict()},out/'initial.pt')
     total=active_samples=0;history=[];episodes=[];started=time.perf_counter()

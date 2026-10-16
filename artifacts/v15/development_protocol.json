@@ -1,0 +1,37 @@
+{
+  "purpose": "First multi-agent development pilot after the passed V14 prerequisite; not a formal MARL result",
+  "training_seed": 1501,
+  "initial_ego_seed": 901,
+  "methods": ["central", "local"],
+  "joint_environment_steps_per_method": 262144,
+  "number_of_trainable_actors": 3,
+  "n_envs": 32,
+  "rollout_steps": 64,
+  "epochs": 4,
+  "actor_learning_rate": 0.0001,
+  "critic_learning_rate": 0.0003,
+  "gamma": 1.0,
+  "gae_lambda": 0.95,
+  "clip": 0.2,
+  "entropy_weight": 0.002,
+  "anchor_kl_weight": 0.01,
+  "checkpoint_selection": "Fixed final budget, not best validation checkpoint",
+  "validation": {
+    "backend": "actual Eclipse SUMO",
+    "initials": 128,
+    "seed_base": 59000001,
+    "regimes": ["nominal", "dense"],
+    "regime_allocation": "First 64 nominal, last 64 dense",
+    "disturbances": ["clean", "uniform", "bias", "pulse"],
+    "controllers": ["ego_planner", "team_planner", "mappo_1501", "ippo_1501", "single_901"],
+    "expected_runs": 2560
+  },
+  "interpretation": [
+    "Three actors update from one sequential cooperative game; common payoff does not establish a general-sum Nash equilibrium",
+    "Actor initialization and proposal RNG starts are matched; critic architectures and parameter counts differ",
+    "Every vehicle is reported separately; team means do not establish individual non-degradation",
+    "Training model steps are counted separately from SUMO executions",
+    "The preceding 2048-step smoke runs reuse this initialization and seed; they are not additional independent training seeds",
+    "No new calibrated gate or formal multi-agent acceptance is claimed from this development protocol"
+  ]
+}
