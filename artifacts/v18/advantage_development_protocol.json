@@ -1,0 +1,12 @@
+{
+  "purpose": "Fixed small nominal-action-gate engineering pilot, not formal acceptance",
+  "model": "artifacts/v17/development_models/coupled_1701/policy.pt",
+  "initials": 16,
+  "seed_base": 61500001,
+  "methods": ["baseline", "full_marl", "nominal_action_gate"],
+  "modes": ["clean", "uniform", "bias", "pulse"],
+  "expected_actual_sumo_runs": 192,
+  "gate": "Compare the full-baseline remaining cost/time with the complete neural joint action followed by the SAME full-baseline continuation; admit only component-wise non-degradation and strictly lower team cost",
+  "theory_scope": "Telescoping deterministic nominal performance improvement only; common robust physical filter retained under disturbances",
+  "report": "All outcomes and actual controller computation costs, including unfavorable cases; no communication delay metrics"
+}
