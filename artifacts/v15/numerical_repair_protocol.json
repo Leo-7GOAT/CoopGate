@@ -1,0 +1,17 @@
+{
+  "parent_protocol": "artifacts/v15/development_protocol.json",
+  "status": "Development rerun after reproduced numerical failure, before validation",
+  "failed_attempts": ["v15_mappo_pilot_1501", "v15_ippo_pilot_1501"],
+  "diagnostic_attempt": "v15_mappo_diagnostic_1501",
+  "cause": "Categorical KL uses underflowed float32 probabilities to infer missing support although all masked-support logits are finite",
+  "reproduced_joint_step": 116736,
+  "original_failed_batch_kl": "positive infinity",
+  "logspace_failed_batch_kl": 0.3147578835487366,
+  "change": "Equivalent KL computation using finite log probabilities; no reward, model, learning rate, budget, or test-set change",
+  "reruns": ["v15_mappo_repaired_1501", "v15_ippo_repaired_1501"],
+  "initialization": "Start fresh from original frozen ego 901, same seed 1501; no partial-run resume",
+  "joint_steps_each": 262144,
+  "validation": "Original development protocol, 128 new initials beginning 59000001, four modes, five methods, 2560 actual SUMO runs",
+  "checkpoint_eligibility": "Require steps equals target_steps; interrupted partial models cannot enter the final comparison",
+  "statistical_interpretation": "Failed runs, diagnostic replay, and reruns are not additional independent training seeds"
+}

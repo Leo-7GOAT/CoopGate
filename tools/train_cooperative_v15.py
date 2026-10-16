@@ -10,6 +10,7 @@ import numpy as np
 import torch
 from coopgate.cooperative_v15 import JointLearner,CooperativeVector
 from coopgate.policy_iteration_v14 import load_policy
+from coopgate.ppo_numerics_v15 import logspace_categorical_kl
 from prerequisite_v15 import require_single
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -84,10 +85,21 @@ def train(out,seed=1501,ego_seed=901,steps=262144,critic_kind='central',anchor=.
                 objective=torch.minimum(ratio*ad[ids],ratio.clamp(.8,1.2)*ad[ids])
                 actor=-objective[al[ids]].mean();entropy=dist.entropy()[al[ids]].mean()
                 with torch.no_grad():ref=reference.distribution(ob[ids],ma[ids])
-                kl=torch.distributions.kl_divergence(ref,dist)[al[ids]].mean()
+                kl=logspace_categorical_kl(ref.logits,dist.logits,ma[ids])[al[ids]].mean()
                 value_loss=(model.value(ob[ids],st[ids])-re[ids]).square().mean()
                 loss=actor+.5*value_loss-.002*entropy+anchor*kl
-                if not torch.isfinite(loss):raise RuntimeError('Nonfinite joint PPO loss')
+                if not torch.isfinite(loss):
+                    diagnostic=dict(joint_steps=total,epoch=epoch,actor=float(actor.detach()),
+                        critic=float(value_loss.detach()),entropy=float(entropy.detach()),kl=float(kl.detach()),
+                        finite_logits=bool(torch.isfinite(dist.logits).all()),
+                        finite_reference_logits=bool(torch.isfinite(ref.logits).all()),
+                        finite_ratio=bool(torch.isfinite(ratio).all()),
+                        min_logits=float(dist.logits[ma[ids]].detach().min()),
+                        underflow_probabilities=int(((dist.probs==0)&ma[ids]).sum()))
+                    (out/'failure.json').write_text(json.dumps(diagnostic,indent=2)+'\n')
+                    torch.save(dict(logits=dist.logits.detach(),reference_logits=ref.logits.detach(),
+                        mask=ma[ids],active=al[ids]),out/'failure_batch.pt')
+                    raise RuntimeError('Nonfinite joint PPO loss: '+json.dumps(diagnostic))
                 optimizer.zero_grad();loss.backward();torch.nn.utils.clip_grad_norm_(model.parameters(),.5);optimizer.step()
         recent=episodes[-100:]
         changes=[sum(float((value-initial[key]).square().sum()) for key,value in model.state_dict().items()

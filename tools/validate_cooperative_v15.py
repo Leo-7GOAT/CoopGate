@@ -11,6 +11,7 @@ from coopgate.cooperative_v15 import load_joint,JointPolicyGate
 from coopgate.joint_planner_v15 import JointRolloutGate
 from coopgate.ego_v13 import EgoRolloutGate,EgoPolicyGate
 from coopgate.policy_iteration_v14 import load_policy
+from coopgate.ppo_numerics_v15 import require_complete_training
 from coopgate.disturbance_v9 import DisturbedMergeEnv
 from experiment_ego_v13 import run_episode
 from prerequisite_v15 import require_single
@@ -26,8 +27,7 @@ def run(paths,out,n=128,seed_base=59000001):
     checkpoints={};teachers=set()
     for path in paths:
         model,meta=load_joint(path)
-        if meta['steps']<=0 or not all(v>1e-8 for v in meta['actor_parameter_delta_l2']):
-            raise ValueError('All three actors must actually have trained')
+        require_complete_training(meta)
         kind='mappo' if meta['critic_kind']=='central' else 'ippo';name=f'{kind}_{meta["seed"]}'
         if name in factories:raise ValueError('Repeated trained method name')
         factories[name]=lambda x,m=model:JointPolicyGate(m);teachers.add(meta['ego_seed'])
