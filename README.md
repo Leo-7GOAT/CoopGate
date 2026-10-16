@@ -45,6 +45,15 @@ This is measured development progress, not a passed cooperative gate.
 [Coupled improvement and gate proof boundaries](docs/theory_v17_coupled_gate.md) ·
 [Additional close prior work](docs/v17_related_work_audit.md)
 
+Actual component-wise switching now exposes composition failures even with
+exact nominal predictions. A separate **stepwise full-baseline advantage gate**
+has a component-wise nominal telescoping guarantee. Its small 192-run SUMO
+pilot reduces team cost **1.91%**, with average improvement for all three cars,
+but two of 16 initial clusters still regress under a disturbance. Its p95
+computation is 135.5 ms; it is not yet a statistically certified performance gate.
+[Gate mechanism, proof scope and actual results](docs/v18_gate_development.md) ·
+[Why more training did not automatically improve the policy](docs/v17_stage2_results.md)
+
 ## V14: standalone single-ego prerequisite passed
 
 Three fresh training seeds, fixed budgets and acceptance criteria were
