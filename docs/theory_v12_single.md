@@ -1,5 +1,7 @@
 # 单车学习收益与置信门控的数学边界
 
+**V12 的目标是团队平均代价，单个学习者不等于自车目标。** 完成实验后发现，自车到达时间比强基线慢约8.26%，所以V12不能证明“自车学习优于基线”。以下公式和数据保留其原始团队目标含义；V13重新使用自车到达时间与到达前的自车累计指令变化量。门控应评价明确的基线相对收益，不能靠更换主体掩盖退化。
+
 本阶段先检验一个学习车辆，再决定是否扩展到 MARL。三车合流环境中，仅匝道车辆 ego1 的策略由 PPO 更新；另外两车始终提出固定的最大允许加速度。所有比较方法都使用同一联合安全修正器，因此安全层可以对规则车辆制动。本阶段不是三个独立学习车辆，也不是外界车辆完全不受控制的开放交通。
 
 ## 问题与两个不同的门控
@@ -78,8 +80,14 @@ B 是单动作滚动展开规划器，而非给规则控制器冠以 MPC 的名�
 
 PPO、行为克隆初始化、联合安全 shielding、rollout 和分割共形校准均有先例。当前价值在于把逐周期学习控制、误差有界的备用证书、性能校准和可审计 SUMO 对照接成闭环。没有据此宣称通用算法首创。
 
+Conformal Policy Learning 已用共形分位数切换不同特性的策略，并研究自动驾驶与实体四足机器人。2026 年 ARMS 也已将 PPO 与 QP 型控制器按场景自适应融合。因此，“复杂场景用 RL，简单场景用传统控制”本身不足以作为创新主张。本项目当前检查的是相对明确基线的回合代价退化、可恢复制动条件，以及门控的收益保留与错误放行。没有复现并击败上述论文，研究场景和实验保真度也不能直接比较。
+
+策略程序异常时的接管属于单独的工程故障处理。相应安全结论仍要求测量状态有效、执行器满足误差界；校准的性能风险结论不直接覆盖额外程序故障造成的分布变化。
+
 - Schulman et al. Proximal Policy Optimization Algorithms. https://arxiv.org/abs/1707.06347
 - Yu et al. The Surprising Effectiveness of PPO in Cooperative Multi-Agent Games. https://arxiv.org/abs/2103.01955
 - Elsayed-Aly et al. Safe Multi-Agent Reinforcement Learning via Shielding. https://arxiv.org/abs/2101.11196
 - Angelopoulos and Bates. A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification. https://arxiv.org/abs/2107.07511
 - Bertsekas. Multiagent Rollout Algorithms and Reinforcement Learning. https://arxiv.org/abs/1910.00120
+- Huang et al. Conformal Policy Learning for Sensorimotor Control Under Distribution Shifts. https://arxiv.org/abs/2311.01457
+- Liu et al. Adaptive Reinforcement and Model Predictive Control Switching for Safe Human-Robot Cooperative Navigation. https://arxiv.org/abs/2601.16686

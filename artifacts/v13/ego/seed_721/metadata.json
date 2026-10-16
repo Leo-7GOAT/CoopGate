@@ -1,0 +1,20 @@
+{
+  "algorithm": "double_dqn_ego_v13",
+  "seed": 721,
+  "steps": 2097152,
+  "gamma": 0.995,
+  "batch_size": 256,
+  "replay_capacity": 262144,
+  "target_interval_updates": 250,
+  "learned_vehicles": [
+    1
+  ],
+  "objective": "ego arrival + 0.05 ego variation until arrival",
+  "epsilon_start": 1.0,
+  "epsilon_end": 0.03,
+  "epsilon_decay_steps": 600000,
+  "training_backend": "exact longitudinal model",
+  "observation_version": "markov_joint_memory_v1",
+  "sensor_range": 150.0,
+  "episodes": 97081
+}

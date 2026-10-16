@@ -1,0 +1,24 @@
+{
+  "training_seeds": [
+    701,
+    711,
+    721
+  ],
+  "steps_per_seed": 2097152,
+  "checkpoint": "final only",
+  "algorithm": "Double DQN; no demonstrations or imitation warm start",
+  "gamma": 0.995,
+  "own_objective": "ego arrival + 0.05 total command variation until ego arrival",
+  "train_domain": "nominal/dense with equal probability; iid uniform acceleration error +/-0.5",
+  "planned_use": "standalone actor and learned-tail rollout; report these separately",
+  "source_sha256": {
+    "src/coopgate/ego_v13.py": "050ed97d850b906b87e6135a50b08bf2c91da984948ecdb1a5b6bc95294fe866",
+    "src/coopgate/ego_models_v13.py": "19b42dc97dd5bb925fecc81fa517dfee3bda399bd370663b15cd9e9a5acab275",
+    "src/coopgate/marl_v12.py": "e1787954402c3713c2bfc6a5f1be9896612e28c45aafc9e19391e4d43a4000a9",
+    "src/coopgate/training_v12.py": "52591e8a36bce6070e4a01c115d49806b53f4d59dc85dcad97be584e1d409049",
+    "src/coopgate/fast_v8.py": "1ca80253fa3fa9411b3d3b245c7bb58a98025b0f1da06e2622f803c8f2df4d64",
+    "src/coopgate/robust_v9.py": "c579b0c57516c9954e0c1c0d06da7324804a01e40402e8aff39fa98f5d80bd6b",
+    "tools/train_dqn_ego_v13.py": "5bd5bfad79e6c183b5755cb0d300c3f926f1ef12476419acb4669c7e5a48bd5c",
+    "tools/freeze_ego_training_v13.py": "e25b616ce39141a4917bf5540bf1c21026efb87e86a20f597daaaef075b10e81"
+  }
+}

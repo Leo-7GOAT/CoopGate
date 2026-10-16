@@ -1,11 +1,36 @@
 # CoopGate
 
-**Reproducible cooperative merge control in Eclipse SUMO.** The current V11
-controller combines a frozen learned profile proposal, joint backup safety
-checks, and online planning. Earlier MAPPO/MPC experiments remain available
-below; the V11 learner is a centralized contextual bandit, not newly trained
-distributed MARL. This is a research prototype with conditional model-based
-guarantees, not a certified road-driving system.
+**Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
+Current work first tests one sequentially trained learner against a strong ego
+planning baseline, then tests when to admit the learning controller or fall back.
+V12's team-cost gain concealed an **8.26% ego arrival regression**; it does not
+satisfy the single-ego prerequisite for MARL. V13 uses the ego's own arrival and
+command variation, and jointly calibrates cost and arrival-time differences.
+Standalone neural control and learning-augmented planning are reported separately.
+
+This is a research prototype with conditional model-based safety guarantees.
+The current single-ego study is **not MARL**. Historical V11 uses a centralized
+contextual bandit; its online planner's gain must not be called a new MARL result.
+
+## V12: why the evaluation objective had to change
+
+Three sequential PPO policies, 1,024 calibration executions and 5,632 fresh
+paired SUMO tests establish a team-cost improvement, but **not an ego improvement**.
+The calibrated gate retains 87.67% of the team-cost gain and reduces harmful
+cost admissions from 13.80% (always learned) to 1.30% of all policy episodes.
+The ego still arrives 2.94% later with gating. All original data and frozen
+criteria remain available; passing the ten team criteria does not override this
+failure. V13 adds a separate arrival non-degradation condition to admission.
+
+[V12 complete results and limitation](docs/v12_single_results.md) ·
+[V12 mathematical scope](docs/theory_v12_single.md) ·
+[V13 ego-specific theory and gate](docs/theory_ego_v13.md) ·
+[V13 protocol frozen before testing](artifacts/v13/ego/protocol.json)
+
+```powershell
+python tools/verify_single_v12.py --replay
+python tools/study_ego_v13.py --out runs/my_v13_reproduction
+```
 
 ## V11: faster merging with lower command variation
 
