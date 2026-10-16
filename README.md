@@ -1,9 +1,89 @@
 # CoopGate
 
-**Multi-agent controller switching in real Eclipse SUMO.** A runnable research
-prototype with MAPPO, longitudinal MPC, rule-based backup, matched baselines,
-episode-level metrics, and reproducible replay. This is **not a certified safety
-system or a claim of a novel algorithm**.
+**Reproducible cooperative merge control in Eclipse SUMO.** The current V11
+controller combines a frozen learned profile proposal, joint backup safety
+checks, and online planning. Earlier MAPPO/MPC experiments remain available
+below; the V11 learner is a centralized contextual bandit, not newly trained
+distributed MARL. This is a research prototype with conditional model-based
+guarantees, not a certified road-driving system.
+
+## V11: faster merging with lower command variation
+
+V10 optimized arrival time alone and increased average command changes relative
+to V9. V11 uses a **lexicographic arrival/total-variation objective**: time first,
+then smaller changes on time ties. Commands lie on a fixed 0.625 m/s² lattice,
+so both costs are integers. A hold-enabled feedback family supplements the
+original binary proposal/brake family; each receives a coordinate rollout.
+Every trial retains the unchanged joint V9 robust backup certificate.
+
+The code, ten criteria and **200 fresh initial states × four error modes × nine
+methods** were frozen in commit `7fc085e` before 7,200 actual SUMO executions.
+**9/10 criteria passed.** Arrival-time reduction was **0.9777%**,
+below the prespecified 1% target; this criterion remains **unmet**. No threshold
+was revised after testing. Both co-primary intervals exclude zero. The two co-primary
+endpoints compare V11 with the frozen V10 controller on identical states and
+exogenous disturbance tapes.
+
+| Mean over 600 perturbed runs per method | V10 | V11 | Reduction |
+|---|---:|---:|---:|
+| Capped mean arrival time | 9.717 s | 9.622 s | 0.98% |
+| Three-car command total variation | 34.433 m/s² | 19.732 m/s² | 42.69% |
+| Mean command change rate | 1.005 m/s³ | 0.584 m/s³ | 41.90% |
+
+The paired 97.5% seed-cluster intervals for the mean reductions are
+[0.063, 0.129] s and [13.435, 15.980] m/s².
+Both co-primary endpoints receive this prespecified confidence-level allocation;
+bootstrap inference is approximate. The 600 conditions contain **200 independent
+initial-state clusters**, not 600 independent scenes. Total variation is not
+divided by episode duration, preventing slower driving from diluting it.
+
+The complete controller finished **800/800** runs with
+0 recorded collisions, 0
+route-violation episodes, 0 aborts and 0 timeouts.
+Warm controller-cycle P95 is **8.34 ms**;
+warm first-response P95, including initialization and the first TraCI cycle, is
+**24.69 ms**. All failures remain in the data.
+
+There are still adverse outcomes: versus V10, perturbed arrival time improves
+in 113/200 clusters, ties in 41, and regresses in 46.
+The nominal theorem is a **lexicographic bound versus the base policies**,
+not componentwise dominance, not a guarantee versus V10, and not a realized
+performance bound under disturbances. Independent paired experiments test the
+two improvements. Command variation is not measured physical jerk or passenger
+comfort.
+
+Matched ablations remove the variation objective, the hold family, or the
+second family sweep. No-learning, fixed and random proposals isolate the
+learning contribution. Learning's extra arrival gain over no-learning is
+0.73% (descriptive 95% interval for seconds saved:
+[0.033, 0.110]).
+The online planner's entire gain must not be attributed to reinforcement learning.
+
+The scope remains **three cooperative fixed-route vehicles, exact measurements
+and a known ±0.5 m/s² actuator-error bound**. SUMO pauses during computation;
+warm timing quantiles do not establish worst-case or delay-aware real-time
+performance. Rollout, safety filtering and lexicographic optimization are prior
+art; this work provides a concrete construction, conditional proofs and frozen
+comparative evidence. Published-method comparisons and broader traffic settings
+remain necessary for a strong paper submission.
+
+[V11 results and ablations](docs/v11_results.md) · [Theory and proofs](docs/theory_v11.md) ·
+[Frozen protocol](artifacts/v11/protocol.json) · [All runs](artifacts/v11/study/episodes.csv) ·
+[Fixed trajectory example](artifacts/v11/trajectory_example.png) ·
+[Unmet criterion and historical regressions](docs/v11_acceptance.md) ·
+[Related work and novelty limits](docs/related_work_v11.md)
+
+```powershell
+pip install -e ".[dev,fast]"
+python tools/verify_release_v11.py --replay
+python tools/replay_v11.py --gui --disturbance bias --out runs/my_v11_demo
+python tools/study_v11.py --out runs/my_v11_reproduction
+```
+
+The verifier checks provenance, exact accounting, statistics and replays;
+passing it does not turn a failed performance target into a success.
+`python tools/verify_release_v11.py --require-acceptance` additionally enforces
+all ten performance criteria and intentionally exits nonzero for this release.
 
 ## V10: certificate-constrained online rollout
 
