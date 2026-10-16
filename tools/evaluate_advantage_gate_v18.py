@@ -38,12 +38,12 @@ def run(path,out,n=16,seed_base=61500001):
             for mi,mode in enumerate(modes):
                 for method in np.random.default_rng(seed+mi+1819).permutation(list(factories)):
                     result,trace,initial=run_episode(env,seed,regime,mode,factories[method],True)
-                    trace_audit(trace,result)
                     cost=np.array(result['per_vehicle_finish'])+.05*np.array(result['per_vehicle_variation'])
                     result.update(controller=str(method),initial=initial.tolist(),per_vehicle_cost=cost.tolist(),team_cost=float(cost.mean()),
                         learned_action_steps=sum(t.get('nominal_joint_action_admitted',False) for t in trace),control_steps=len(trace),
                         forecast_transitions=sum(t.get('performance_forecast_transitions',0) for t in trace),
                         internal_planning_transitions=sum(t.get('performance_model_transitions',0) for t in trace))
+                    trace_audit(trace,result)
                     rows.append(result);(out/f'trace_{i}_{mode}_{method}.json').write_text(json.dumps(trace,indent=2)+'\n')
             (out/'episodes.json').write_text(json.dumps(rows,indent=2)+'\n')
             print(json.dumps(dict(initials=i+1,sumo_runs=len(rows),elapsed_s=time.perf_counter()-started)),flush=True)
