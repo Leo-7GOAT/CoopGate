@@ -1,0 +1,27 @@
+{
+  "purpose": "Larger aggregated joint-policy continuation; DEVELOPMENT only",
+  "seed": 1702,
+  "parent": "artifacts/v17/development_models/coupled_1701/policy.pt",
+  "initialization": "Warm continuation; not an independent training seed",
+  "cycles": 2,
+  "actor_update_order": [0, 2, 1],
+  "passes_within_each_actor_update": 3,
+  "states_per_pass": 8192,
+  "epochs_per_pass": 120,
+  "rollout_expert_probabilities": [1.0, 0.5, 0.0],
+  "checkpoint": "Fixed final sixth actor update; all intermediate datasets and weights retained",
+  "hypothesis": "More current-policy visitation and fitting may reduce accumulated approximation error without changing objective or loosening admission criteria",
+  "motivation": "Stage1 improves paired parent team cost 1.6658% but its 0.4809% gain against strong team planning has a confidence interval crossing zero; no effectiveness acceptance",
+  "validation": {
+    "initials": 128,
+    "seed_base": 61200001,
+    "modes": ["clean", "uniform", "bias", "pulse"],
+    "methods": ["ego_planner", "team_planner", "coupled_1702", "coupled_1701", "single_901"],
+    "expected_actual_sumo_runs": 2560
+  },
+  "actor_replacement_diagnostic": {
+    "initials": 128,
+    "seed_base": 61300001,
+    "backend": "model only, four disturbance modes, five variants"
+  }
+}
