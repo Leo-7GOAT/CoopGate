@@ -1,0 +1,103 @@
+{
+  "source": "artifacts\\v14\\development\\v14_validation_average\\episodes.json",
+  "status": "Descriptive development analysis; one training seed",
+  "group_rule": "Frozen conflict_group from V12: minimum ego/neighbor ETA separation <= 1.25 s is high conflict",
+  "groups": {
+    "low_conflict": {
+      "initials": 34,
+      "metrics": {
+        "ego_cost": {
+          "baseline": 9.506893382352942,
+          "learned": 9.466911764705882,
+          "gain_percent": 0.42055397109296677,
+          "mean_improvement": 0.03998161764705882,
+          "ci95": [
+            -0.03860294117647059,
+            0.13511029411764705
+          ]
+        },
+        "ego_time": {
+          "baseline": 9.238970588235293,
+          "learned": 9.257352941176471,
+          "gain_percent": -0.19896538002388717,
+          "mean_improvement": -0.01838235294117647,
+          "ci95": [
+            -0.08088235294117647,
+            0.051470588235294115
+          ]
+        },
+        "ego_variation": {
+          "baseline": 5.358455882352941,
+          "learned": 4.1911764705882355,
+          "gain_percent": 21.78387650085763,
+          "mean_improvement": 1.1672794117647058,
+          "ci95": [
+            0.3125,
+            2.113970588235294
+          ]
+        },
+        "other_time": {
+          "baseline": 10.53125,
+          "learned": 10.602941176470589,
+          "gain_percent": -0.6807470762785877,
+          "mean_improvement": -0.07169117647058823,
+          "ci95": [
+            -0.13602941176470587,
+            -0.022058823529411766
+          ]
+        }
+      }
+    },
+    "high_conflict": {
+      "initials": 94,
+      "metrics": {
+        "ego_cost": {
+          "baseline": 9.802859042553191,
+          "learned": 9.458028590425531,
+          "gain_percent": 3.517651846576459,
+          "mean_improvement": 0.34483045212765956,
+          "ci95": [
+            0.11419132313829787,
+            0.5879384142287233
+          ]
+        },
+        "ego_time": {
+          "baseline": 9.454787234042554,
+          "learned": 9.170212765957446,
+          "gain_percent": 3.0098452883263143,
+          "mean_improvement": 0.2845744680851064,
+          "ci95": [
+            0.0797872340425532,
+            0.49867021276595747
+          ]
+        },
+        "ego_variation": {
+          "baseline": 6.961436170212766,
+          "learned": 5.756316489361702,
+          "gain_percent": 17.311365807067805,
+          "mean_improvement": 1.2051196808510638,
+          "ci95": [
+            0.4853723404255319,
+            1.9298952792553186
+          ]
+        },
+        "other_time": {
+          "baseline": 10.66622340425532,
+          "learned": 10.702127659574469,
+          "gain_percent": -0.33661638199726074,
+          "mean_improvement": -0.03590425531914894,
+          "ci95": [
+            -0.14627659574468085,
+            0.07313829787234043
+          ]
+        }
+      }
+    }
+  },
+  "bootstrap": {
+    "seed": 14151,
+    "draws": 10000,
+    "unit": "initial, averaging four modes"
+  },
+  "caution": "Group intervals are descriptive, not multiplicity-adjusted; no threshold was fitted from these results"
+}

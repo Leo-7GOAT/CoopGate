@@ -41,13 +41,23 @@ def summarize(p,rows):
             contrasts[name][key]=dict(mean_improvement=float(values.mean()),
                                       ci95=np.quantile(values[ids].mean(-1),[.025,.975]).tolist())
     group_results={}
+    group_rng=np.random.default_rng(p['bootstrap']['seed']+1)
     for group in ('low_conflict','high_conflict'):
         br=[r for r in rows if r['controller']=='rollout' and r['group']==group]
         lr=[r for r in rows if r['controller'].startswith('learned_') and r['group']==group]
         if not br:
             group_results[group]=dict(initials=0,baseline=None,learned=None)
             continue
-        group_results[group]=dict(initials=len(br)//len(p['disturbances']),baseline=mean(br),learned=mean(lr))
+        group_seeds=sorted({r['seed'] for r in br})
+        group_ids=group_rng.integers(0,len(group_seeds),(p['bootstrap']['draws'],len(group_seeds)))
+        intervals={}
+        for key in METRICS:
+            values=np.array([np.mean([lookup[s,mode,'rollout'][key]-lookup[s,mode,f'learned_{seed}'][key]
+                for mode in p['disturbances'] for seed in p['training_seeds']]) for s in group_seeds])
+            intervals[key]=dict(mean_improvement=float(values.mean()),ci95=np.quantile(values[group_ids].mean(-1),[.025,.975]).tolist())
+        group_results[group]=dict(initials=len(group_seeds),baseline=mean(br),learned=mean(lr),
+                                 paired_initial_cluster_intervals=intervals,
+                                 interpretation='Prespecified conflict grouping; descriptive, not an additional acceptance criterion')
     c=p['criteria'];g=gains['learned'];intervals=contrasts['learned']
     checks=dict(ego_cost_gain=g['ego_cost']>=c['ego_cost_gain_percent_min'],
                 ego_time_gain=g['ego_time']>=c['ego_time_gain_percent_min'],
