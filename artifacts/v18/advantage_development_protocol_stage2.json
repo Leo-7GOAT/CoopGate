@@ -1,0 +1,13 @@
+{
+  "purpose": "Larger fresh development check of the unchanged stepwise nominal gate",
+  "model": "artifacts/v17/development_models/coupled_1701/policy.pt",
+  "initials": 128,
+  "seed_base": 61600001,
+  "methods": ["baseline", "full_marl", "nominal_action_gate"],
+  "modes": ["clean", "uniform", "bias", "pulse"],
+  "expected_actual_sumo_runs": 1536,
+  "minimum_nominal_team_improvement": "Strictly positive as in the first pilot; unchanged",
+  "motivation": "The initial 16-initial pilot improved mean team cost 1.91% but retained two worst-mode individual-performance regressions; larger paired evidence is needed",
+  "report": "All three vehicle costs/times, initial-cluster intervals, adopted actions, regressions, completion, safety and actual computation time",
+  "risk_claim": "No calibrated disturbance-performance or real-vehicle guarantee"
+}

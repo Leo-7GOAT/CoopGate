@@ -1,0 +1,23 @@
+{
+  "purpose": "Three independent randomized replications of the fixed coupled-learning pipeline; formal evaluation data are not used during training",
+  "replications": [
+    {"stage_a_seed": 1801, "stage_b_seed": 1802, "ego_seed": 901},
+    {"stage_a_seed": 1811, "stage_b_seed": 1812, "ego_seed": 911},
+    {"stage_a_seed": 1821, "stage_b_seed": 1822, "ego_seed": 921}
+  ],
+  "initialization": "Each replication starts new main-road actors and its corresponding frozen passed V14 ego model; V14 models share the earlier declared DQN pretraining ancestor",
+  "stage_a": {
+    "script": "tools/train_cooperative_iteration_v16.py",
+    "cycles": 4, "states_per_actor_update": 8192, "epochs": 120, "exploration": 0.0,
+    "update_order": [0, 2, 1], "checkpoint": "Final twelfth actor update"
+  },
+  "stage_b": {
+    "script": "tools/train_dagger_cooperative_v17.py",
+    "cycles": 2, "states_per_aggregation_pass": 4096, "epochs_per_pass": 80,
+    "expert_mix": [1.0, 0.5, 0.0], "update_order": [0, 2, 1],
+    "checkpoint": "Final sixth actor update, no evaluation-based choice"
+  },
+  "pipeline_choice": "Use the V16 stage2 plus V17 stage1 pipeline. The larger extra V17 continuation is retained as a development attempt, not added automatically or used for checkpoint selection",
+  "artifacts": "Preserve all stage-A and stage-B states, targets, intermediate weights, source snapshots, budgets, logs and hashes",
+  "formal_study": "Freeze completed model hashes, gates and a separate test protocol before drawing or running unused final test initials"
+}
