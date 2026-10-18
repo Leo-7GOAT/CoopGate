@@ -15,7 +15,7 @@ def verify():
                  'bounded_gate_audit', 'nominal_predictor_audit', 'runtime_profile', 'deployment_runtime_audit',
                  'shifted_study', 'shifted_analysis', 'runtime_plot', 'certification_power', 'shifted_replay',
                  'parallel_preflight', 'parallel_gate_audit', 'parallel_analysis', 'manuscript_v14',
-                 'final_report_plan', 'final_report_preflight'):
+                 'final_report_plan', 'final_report_preflight', 'validation_driver_checks'):
         directory = ROOT / 'artifacts/v19' / name
         manifest = json.loads((directory / 'sha256.json').read_text())
         for path, expected in manifest.items():
@@ -27,6 +27,17 @@ def verify():
             assert result['protocol_sha256'] == digest(directory / 'protocol.json')
             rows = json.loads((directory / 'episodes.json').read_text())
             assert len(rows) == result['actual_sumo_runs']
+        elif name == 'validation_driver_checks':
+            result = json.loads((directory / 'checks.json').read_text())
+            assert result['source_sha256'] == digest(ROOT / 'tools/advance_validation_v19.ps1')
+            assert result['test_source_sha256'] == digest(ROOT / 'tests/test_validation_driver_v19.ps1')
+            for path, expected in result['frozen_protocol_sha256'].items():
+                assert digest(ROOT / path) == expected, path
+            assert len(result['checks']) == 3 and all(r['passed'] and not r['restarted'] for r in result['checks'])
+            assert [r['observed_exit_code'] for r in result['checks']] == [0, 0, 7]
+            assert result['readonly_prerequisite_check_passed'] is True
+            assert result['calibration_outcomes_read'] is False
+            assert result['additional_sumo_runs'] == result['final_workers_started_by_test'] == 0
         elif name == 'final_report_plan':
             plan = json.loads((directory / 'plan.json').read_text())
             assert plan['source_sha256'] == digest(directory / 'audit_final_report_v19.py') == digest(ROOT / plan['source_path'])
@@ -260,6 +271,7 @@ def verify():
                   zero_adoption_outcomes_independently_matched=2389,
                   zero_adoption_strong_lag_failures_retained=22,
                   final_statistical_report_frozen=True,
+                  native_pipeline_guard_cases=3,
                   updated_manuscript_pages=17,
                   frozen_split_policies_identical=True,
                   final_replay_coverage_frozen=True,
