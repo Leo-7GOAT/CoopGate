@@ -54,7 +54,9 @@ python tools/start_final_v19.py finalize
 python tools/compare_established_v19.py evaluate artifacts/v19/comparison_plan artifacts/v19/comparison_calibration artifacts/v19/final_confirmation artifacts/v19/final_comparison
 ```
 
-启动器检查校准目录与启动记录均已提交且未修改，并绑定风险数据、模型、控制源码、候选定义与数据分割。未完成校准的真实工作目录已经验证会被拒绝，且不会创建启动记录。默认不直接调用底层执行器绕过此检查。新的 `nominal_predictor_audit` 另以 6 个开发初态、十个完整控制器进行 120 次 SUMO 执行，核对只用观测初态初始化、固定内部种子、忽略外部标签的名义影子预测；该审计的完成情况以其独立结果为准。
+启动器检查校准目录与启动记录均已提交且未修改，并绑定风险数据、模型、控制源码、候选定义与数据分割。未完成校准的真实工作目录已经验证会被拒绝，且不会创建启动记录。默认不直接调用底层执行器绕过此检查。
+
+观测初始化审计已完成：6 个开发初态、十个完整控制器，共 120 次 SUMO 执行；60 个完整对照、1,392 个配对决策步的动作及最终指标一致。影子预测只用观测初态、固定内部种子、忽略外部标签。完整十控制器准备耗时为 11–32 秒，包含启动和重置，不能称为在线实时。[完整证据和适用范围](v19_observable_predictor.md)。
 
 ## 方法来源与适配范围
 

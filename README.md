@@ -17,7 +17,9 @@ contextual bandit; its online planner's gain must not be called a new MARL resul
 ## V19 development: disturbance-aware joint composition
 
 Development probes, a paired ablation and an actuator-harness audit completed
-**2,496 actual SUMO runs**, plus **70 post-hoc audit replays**. On the second probe's
+**2,496 actual SUMO runs**, plus **128 post-hoc audit replays** and **120
+observable-initial predictor audit runs**. These audit runs check implementation
+identity, not additional independent efficacy samples. On the second probe's
 32 initial scenes, jointly checked actor/baseline
 compositions retain **0.82%** mean team-cost improvement while reducing observed
 any-car performance regression from **39/85** admitted policy-initial pairs with
@@ -43,6 +45,22 @@ in **58 SUMO replays**, including the original harmful case, while reducing tota
 controller time **25.1%**. The same replay's p95 falls from **966 to 702 ms** and
 still exceeds 500 ms. [Runtime evidence](docs/v19_cached_runtime.md) reports the
 concurrent-load setting and all deadline misses.
+
+A physical arrival-time lower bound now rejects provably losing candidates
+early while retaining full forecasts for every accepted action. In another
+58-run paired audit it preserves all 667 decisions and reduces total controller
+time **6.84%** relative to caching. P95 improves from **703 to 648 ms**, but P99
+and the maximum worsen; the 500 ms deadline remains unmet. The two timing-study
+ratios must not be multiplied into a single benchmark result.
+[Lower-bound derivation and complete measurements](docs/v19_bounded_runtime.md)
+also retain profiling evidence that full feedback continuations dominate slow
+decisions.
+
+The nominal predictor has additionally matched **60 whole profiles and 1,392
+decisions** using only observed initial kinematics, a fixed internal engine seed,
+and no actual future disturbance. Preparing all ten shadow profiles takes
+**11–32 s** in this audit, including simulator startup and resets; it is not an
+online real-time result. [Observable-state audit](docs/v19_observable_predictor.md)
 
 The matched [conformal/LTT/mean-SPI comparison](docs/v19_established_comparison.md)
 and a separate **20,480-run** final test are frozen but await completed calibration.

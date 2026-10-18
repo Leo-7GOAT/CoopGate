@@ -11,7 +11,8 @@ def verify():
     verified = 0
     for name in ('bank_probe', 'portfolio_probe', 'shifted_harness', 'bank_probe_analysis',
                  'portfolio_probe_analysis', 'paired_bank', 'paired_bank_analysis',
-                 'composition_ablation', 'portfolio_audit', 'cached_gate_audit', 'actuator_bounds'):
+                 'composition_ablation', 'portfolio_audit', 'cached_gate_audit', 'actuator_bounds',
+                 'bounded_gate_audit', 'nominal_predictor_audit', 'runtime_profile'):
         directory = ROOT / 'artifacts/v19' / name
         manifest = json.loads((directory / 'sha256.json').read_text())
         for path, expected in manifest.items():
@@ -33,12 +34,32 @@ def verify():
                 assert len(result['nonvacuous_identity_cases']) == 6
                 assert all(r['admissions'] > 0 and r['maximum_identity_residual'] == 0
                            for r in result['nonvacuous_identity_cases'])
-            else:
+            elif name == 'cached_gate_audit':
                 assert result['actual_sumo_replays'] == 58 and result['exact_paired_cases'] == 29
                 assert result['exact_paired_decision_steps'] == 667
                 assert result['internal_work_reduction'] > .20
                 assert result['hard_real_time_certified'] is False
                 assert result['timings']['cached']['p95_ms'] > 500
+            elif name == 'bounded_gate_audit':
+                assert result['actual_sumo_replays'] == 58 and result['exact_paired_cases'] == 29
+                assert result['exact_paired_decision_steps'] == 667
+                assert result['verified_nominal_prunes'] == 150 and result['verified_bank_prunes'] == 82
+                assert .06 < result['controller_time_reduction'] < .07
+                assert result['hard_real_time_certified'] is False
+                assert result['timings']['bounded']['p95_ms'] > 500
+                assert result['timings']['bounded']['p99_ms'] > result['timings']['cached']['p99_ms']
+            elif name == 'nominal_predictor_audit':
+                assert result['actual_sumo_runs'] == 120 and result['paired_profiles'] == 60
+                assert result['paired_decision_steps'] == 1392
+                assert result['uses_actual_episode_seed'] is False and result['uses_future_disturbance'] is False
+                assert all(pair['initial_error'] == 0 for pair in result['pairs'])
+                assert len(result['preparations']) == 6
+            else:
+                raise AssertionError('Unrecognized audit: ' + name)
+            if name in ('bounded_gate_audit', 'nominal_predictor_audit'):
+                plan = json.loads((directory / 'plan.json').read_text())
+                for path, expected in plan['source_sha256'].items():
+                    assert digest(directory / 'source' / path) == digest(ROOT / path) == expected, path
             assert result['risk_certified'] is False
         elif name == 'actuator_bounds':
             result = json.loads((directory / 'analysis.json').read_text())
@@ -46,6 +67,11 @@ def verify():
             assert result['lag_mild']['acceleration_error_upper_bound'] < .5
             assert result['lag_strong']['acceleration_error_upper_bound'] > .5
             assert .054 < result['maximum_uniformly_covered_lag_tau_seconds'] < .055
+        elif name == 'runtime_profile':
+            result = json.loads((directory / 'profile.json').read_text())
+            assert result['source_audit_sha256'] == digest(ROOT / 'artifacts/v19/bounded_gate_audit/audit.json')
+            assert len(result['records']) == 6
+            assert sorted(r['seed'] for r in result['records']) == ['1802', '1802', '1812', '1812', '1822', '1822']
         else:
             result = json.loads((directory / 'analysis.json').read_text())
             assert result['risk_certified'] is False
@@ -91,7 +117,8 @@ def verify():
     for path, expected in comparison['source_sha256'].items():
         assert digest(comparison_dir / 'source' / path) == digest(ROOT / path) == expected
     result = dict(verified_assets=verified, completed_development_sumo_runs=2496,
-                  additional_posthoc_sumo_replays=70,
+                  additional_posthoc_sumo_replays=128,
+                  additional_observable_initial_predictor_sumo_runs=120,
                   frozen_split_policies_identical=True,
                   conditional_risk_certified=False, real_time_requirement_met=False,
                   strong_lag_aborts=1, scope='Manifest integrity and accounting; not a substitute for independent risk validation or replay')
