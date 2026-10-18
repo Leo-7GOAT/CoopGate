@@ -1,0 +1,132 @@
+{
+  "purpose": "Development probe of finite-disturbance joint Bellman admission; not risk certification or final comparison",
+  "actual_sumo_runs": 640,
+  "results": {
+    "bank": {
+      "members": [
+        "bank_1802",
+        "bank_1812",
+        "bank_1822"
+      ],
+      "independent_initials": 16,
+      "policy_initial_pairs": 48,
+      "mean_team_gain": 0.004448784722222222,
+      "mean_team_gain_percent": 0.04554416951317726,
+      "mean_team_gain_ci95": [
+        0.0009765624999999999,
+        0.009440104166666666
+      ],
+      "per_vehicle_cost_gain": [
+        0.007161458333333333,
+        0.0009765625,
+        0.005208333333333334
+      ],
+      "per_vehicle_time_gain": [
+        0.0026041666666666665,
+        0.0,
+        0.0
+      ],
+      "adopted_policy_initial_pairs": 10,
+      "harmful_policy_initial_pairs": 0,
+      "harmful_adopted_pairs": 0,
+      "conditional_harm_descriptive": 0.0,
+      "completed": 192,
+      "runs": 192,
+      "collisions": 0,
+      "aborted": 0,
+      "contract_violations": 0,
+      "controller_p95_ms": 201.38237999990406,
+      "controller_p99_ms": 709.5333980000282,
+      "controller_max_ms": 2688.8764000000265,
+      "steps_over_500ms": 69,
+      "total_control_steps": 4230
+    },
+    "nominal": {
+      "members": [
+        "nominal_1802",
+        "nominal_1812",
+        "nominal_1822"
+      ],
+      "independent_initials": 16,
+      "policy_initial_pairs": 48,
+      "mean_team_gain": 0.049750434027777776,
+      "mean_team_gain_percent": 0.509317115165653,
+      "mean_team_gain_ci95": [
+        0.022677951388888888,
+        0.08143717447916662
+      ],
+      "per_vehicle_cost_gain": [
+        0.0400390625,
+        0.04296875,
+        0.06624348958333331
+      ],
+      "per_vehicle_time_gain": [
+        0.010416666666666664,
+        0.015625,
+        0.015625
+      ],
+      "adopted_policy_initial_pairs": 41,
+      "harmful_policy_initial_pairs": 24,
+      "harmful_adopted_pairs": 24,
+      "conditional_harm_descriptive": 0.5853658536585366,
+      "completed": 192,
+      "runs": 192,
+      "collisions": 0,
+      "aborted": 0,
+      "contract_violations": 0,
+      "controller_p95_ms": 131.95388499998444,
+      "controller_p99_ms": 190.81320700002087,
+      "controller_max_ms": 276.10580000009577,
+      "steps_over_500ms": 0,
+      "total_control_steps": 4224
+    },
+    "raw": {
+      "members": [
+        "raw_1802",
+        "raw_1812",
+        "raw_1822"
+      ],
+      "independent_initials": 16,
+      "policy_initial_pairs": 48,
+      "mean_team_gain": -0.05832248263888888,
+      "mean_team_gain_percent": -0.5970729539837263,
+      "mean_team_gain_ci95": [
+        -0.12955864800347222,
+        0.010148111979166638
+      ],
+      "per_vehicle_cost_gain": [
+        0.18815104166666669,
+        -0.35449218749999994,
+        -0.008626302083333318
+      ],
+      "per_vehicle_time_gain": [
+        0.11979166666666664,
+        -0.34375,
+        0.015624999999999986
+      ],
+      "adopted_policy_initial_pairs": 48,
+      "harmful_policy_initial_pairs": 44,
+      "harmful_adopted_pairs": 44,
+      "conditional_harm_descriptive": 0.9166666666666666,
+      "completed": 192,
+      "runs": 192,
+      "collisions": 0,
+      "aborted": 0,
+      "contract_violations": 0,
+      "controller_p95_ms": 1.9839999999931024,
+      "controller_p99_ms": 2.43969999996807,
+      "controller_max_ms": 6.525500000179818,
+      "steps_over_500ms": 0,
+      "total_control_steps": 4301
+    }
+  },
+  "risk_certified": false,
+  "interval_scope": "Development data, conditional on three fixed models; average modes/models within independent initial, then stratified initial-cluster bootstrap. No training-seed population interval.",
+  "risk_denominator": "Model-initial counts are descriptive and correlated; not binomial independent sample counts.",
+  "study_hashes": {
+    "protocol.json": "2a3cedec40632ce9071032a28b88d25c583e16e7669b78777205989591d9f03b",
+    "episodes.json": "83c8b343a63b0ae5714b720564a22b60ee96b9d8daf5bb8daac5606c9c440f80",
+    "summary.json": "70aa2ccad3846314bd6af78e4de39ec8da6574f50340192e60c71ca59bc25f26",
+    "sha256.json": "5430f1812c58bb7908b2986006d77c0c6c042b5b48a94b5c9de351bf79e8dc6c"
+  }
+}

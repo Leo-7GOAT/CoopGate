@@ -34,4 +34,5 @@ jobs:
       - run: python tools/verify_composed_gate_v18.py artifacts/v18/composition_development/study --replay
       - run: python tools/verify_advantage_gate_v18.py artifacts/v18/advantage_development/study --replay
       - run: python tools/check_v18_evidence.py
+      - run: python tools/check_v19_evidence.py
       - run: python tools/verify_independent_v18.py physical artifacts/v18/independent_study --replay --out /tmp/v18_physical_audit.json

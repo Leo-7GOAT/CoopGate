@@ -1,0 +1,132 @@
+{
+  "purpose": "Development comparison of jointly checked actor/baseline compositions; one failed forecast scenario is an uncalibrated candidate, not a risk bound",
+  "actual_sumo_runs": 1280,
+  "results": {
+    "nominal": {
+      "members": [
+        "nominal_1802",
+        "nominal_1812",
+        "nominal_1822"
+      ],
+      "independent_initials": 32,
+      "policy_initial_pairs": 96,
+      "mean_team_gain": 0.19737413194444445,
+      "mean_team_gain_percent": 1.9637054549772754,
+      "mean_team_gain_ci95": [
+        0.12781846788194443,
+        0.275503200954861
+      ],
+      "per_vehicle_cost_gain": [
+        0.08935546874999997,
+        0.38037109375,
+        0.12239583333333333
+      ],
+      "per_vehicle_time_gain": [
+        0.049479166666666664,
+        0.33723958333333337,
+        0.04687499999999999
+      ],
+      "adopted_policy_initial_pairs": 85,
+      "harmful_policy_initial_pairs": 39,
+      "harmful_adopted_pairs": 39,
+      "conditional_harm_descriptive": 0.4588235294117647,
+      "completed": 384,
+      "runs": 384,
+      "collisions": 0,
+      "aborted": 0,
+      "contract_violations": 0,
+      "controller_p95_ms": 149.43929000010024,
+      "controller_p99_ms": 212.17187599993824,
+      "controller_max_ms": 333.99680000002263,
+      "steps_over_500ms": 0,
+      "total_control_steps": 8628
+    },
+    "portfolio0": {
+      "members": [
+        "portfolio0_1802",
+        "portfolio0_1812",
+        "portfolio0_1822"
+      ],
+      "independent_initials": 32,
+      "policy_initial_pairs": 96,
+      "mean_team_gain": 0.08262803819444445,
+      "mean_team_gain_percent": 0.8220790016301238,
+      "mean_team_gain_ci95": [
+        0.037811957465277775,
+        0.13427734375
+      ],
+      "per_vehicle_cost_gain": [
+        0.029947916666666664,
+        0.19173177083333334,
+        0.026204427083333336
+      ],
+      "per_vehicle_time_gain": [
+        0.018229166666666664,
+        0.17578125,
+        0.016927083333333336
+      ],
+      "adopted_policy_initial_pairs": 46,
+      "harmful_policy_initial_pairs": 1,
+      "harmful_adopted_pairs": 1,
+      "conditional_harm_descriptive": 0.021739130434782608,
+      "completed": 384,
+      "runs": 384,
+      "collisions": 0,
+      "aborted": 0,
+      "contract_violations": 0,
+      "controller_p95_ms": 745.0814299999365,
+      "controller_p99_ms": 2160.579396999903,
+      "controller_max_ms": 5105.0522999998975,
+      "steps_over_500ms": 620,
+      "total_control_steps": 8762
+    },
+    "portfolio1": {
+      "members": [
+        "portfolio1_1802",
+        "portfolio1_1812",
+        "portfolio1_1822"
+      ],
+      "independent_initials": 32,
+      "policy_initial_pairs": 96,
+      "mean_team_gain": 0.09581163194444445,
+      "mean_team_gain_percent": 0.9532445941423497,
+      "mean_team_gain_ci95": [
+        0.049530707465277775,
+        0.15012071397569443
+      ],
+      "per_vehicle_cost_gain": [
+        0.039225260416666664,
+        0.2119140625,
+        0.036295572916666664
+      ],
+      "per_vehicle_time_gain": [
+        0.02473958333333333,
+        0.18880208333333331,
+        0.022135416666666668
+      ],
+      "adopted_policy_initial_pairs": 57,
+      "harmful_policy_initial_pairs": 3,
+      "harmful_adopted_pairs": 3,
+      "conditional_harm_descriptive": 0.05263157894736842,
+      "completed": 384,
+      "runs": 384,
+      "collisions": 0,
+      "aborted": 0,
+      "contract_violations": 0,
+      "controller_p95_ms": 1060.6701550000466,
+      "controller_p99_ms": 2758.3393280000164,
+      "controller_max_ms": 6460.582299999714,
+      "steps_over_500ms": 745,
+      "total_control_steps": 8750
+    }
+  },
+  "risk_certified": false,
+  "interval_scope": "Development data, conditional on three fixed models; average modes/models within independent initial, then stratified initial-cluster bootstrap. No training-seed population interval.",
+  "risk_denominator": "Model-initial counts are descriptive and correlated; not binomial independent sample counts.",
+  "study_hashes": {
+    "protocol.json": "639269c85e9369f1ba57882a9034bd6575a143dce6aca2fc77551515cdaf5b74",
+    "episodes.json": "92bf974af25947fc4f08753df6d70a8fd0dd91d871b8a2c63bd0a05ec2e58e4c",
+    "summary.json": "6c266277dce95a13aa4823af0befc7942882b80232fce9dda01ad6343eabdb7c",
+    "sha256.json": "d67e45e09216550635b5a58a0038f1ae9e177baa02f9be4773228e76fae8cea3"
+  }
+}

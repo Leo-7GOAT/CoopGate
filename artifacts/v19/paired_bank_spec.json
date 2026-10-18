@@ -1,0 +1,43 @@
+{
+  "purpose": "Post-probe paired ablation: full-action bank on the same 32 initial scenes as the joint-composition probe; not independent confirmation",
+  "n_initials": 32,
+  "seed_base": 61910001,
+  "sampling": "stratified",
+  "shards": 4,
+  "modes": [
+    "clean",
+    "uniform",
+    "bias",
+    "pulse"
+  ],
+  "methods": {
+    "baseline": {
+      "kind": "baseline"
+    },
+    "bank_1802": {
+      "kind": "bank",
+      "seed": 1802,
+      "bank": "bias_pulse"
+    },
+    "bank_1812": {
+      "kind": "bank",
+      "seed": 1812,
+      "bank": "bias_pulse"
+    },
+    "bank_1822": {
+      "kind": "bank",
+      "seed": 1822,
+      "bank": "bias_pulse"
+    }
+  },
+  "expected_actual_sumo_runs": 512,
+  "all_traces_saved": false,
+  "audit_initial_indices": [
+    0,
+    1,
+    16,
+    17
+  ],
+  "paired_reference": "artifacts/v19/portfolio_probe",
+  "interpretation": "Compare using identical initial/mode pairs. The baseline is actually rerun and must reproduce the reference. This set was already inspected during development."
+}

@@ -14,6 +14,22 @@ This is a research prototype with conditional model-based safety guarantees.
 The completed V14 single-ego study is **not MARL**. Historical V11 uses a centralized
 contextual bandit; its online planner's gain must not be called a new MARL result.
 
+## V19 development: disturbance-aware joint composition
+
+Two development probes and an actuator-harness audit completed **1,984 actual
+SUMO runs**. On the second probe's 32 initial scenes, jointly checked actor/baseline
+compositions retain **0.82%** mean team-cost improvement while reducing observed
+any-car performance regression from **39/85** admitted policy-initial pairs with
+nominal gating to **1/46**. These correlated, small-sample counts are **not a risk
+certificate**. The same gate has **745 ms p95** computation and does not yet meet
+the 500 ms control period. Strong actuator lag also caused one baseline abort.
+
+An independent **40,960-run** risk-validation protocol is frozen; completion and
+certification are still pending. No per-state confidence probability or arbitrary
+disturbance guarantee is claimed. [Development results](docs/v19_development_results.md)
+and [theory/scope](docs/theory_v19_disturbance_risk.md) retain the unsuccessful designs,
+individual regression, latency tail, and dynamics-assumption failures.
+
 ## V18: joint gating improves the frozen three-model comparison
 
 Models and protocol were frozen in **79beb44**, before **7,168 actual SUMO runs**

@@ -1,0 +1,89 @@
+{
+  "purpose": "Independent IID risk validation and matched established-policy comparison; final confirmation remains a separate split",
+  "data_role": "risk_validation",
+  "n_initials": 1024,
+  "seed_base": 62000001,
+  "sampling": "iid_mixture",
+  "shards": 4,
+  "modes": [
+    "clean",
+    "uniform",
+    "bias",
+    "pulse"
+  ],
+  "methods": {
+    "baseline": {
+      "kind": "baseline"
+    },
+    "raw_1802": {
+      "kind": "raw",
+      "seed": 1802
+    },
+    "nominal_1802": {
+      "kind": "nominal",
+      "seed": 1802
+    },
+    "portfolio0_1802": {
+      "kind": "portfolio",
+      "seed": 1802,
+      "max_failed_scenarios": 0
+    },
+    "raw_1812": {
+      "kind": "raw",
+      "seed": 1812
+    },
+    "nominal_1812": {
+      "kind": "nominal",
+      "seed": 1812
+    },
+    "portfolio0_1812": {
+      "kind": "portfolio",
+      "seed": 1812,
+      "max_failed_scenarios": 0
+    },
+    "raw_1822": {
+      "kind": "raw",
+      "seed": 1822
+    },
+    "nominal_1822": {
+      "kind": "nominal",
+      "seed": 1822
+    },
+    "portfolio0_1822": {
+      "kind": "portfolio",
+      "seed": 1822,
+      "max_failed_scenarios": 0
+    }
+  },
+  "expected_actual_sumo_runs": 40960,
+  "all_traces_saved": false,
+  "audit_initial_indices": [
+    0,
+    1,
+    2,
+    3,
+    512,
+    513,
+    514,
+    515
+  ],
+  "risk_validation": {
+    "targets": [
+      "actual_random_mode",
+      "worst_mode_bundle"
+    ],
+    "method": "bonferroni",
+    "alpha": 0.05,
+    "delta": 0.05,
+    "mode_selection_stream": 19297,
+    "statistical_source_sha256": {
+      "tools/certify_gate_family_v19.py": "1cea595272cd0a0a6646ae728eafa5e970f8b15af9f34bce266055f120e78b65",
+      "src/coopgate/risk_comparators_v19.py": "fb1baa872a359853b8420af12d68f8fa05ddfb41ecbf6047dff5b19c37f48a88",
+      "tools/probe_disturbed_gate_v19.py": "9486a58850bc303ac3341c4c2c12f016ed440c8ddb4337a91989f1bdf2caeb60"
+    }
+  },
+  "candidate_policy": "All three strict joint-composition models fixed. No best-seed substitution, new checkpoint selection, or mutation after observing validation. Existing raw and nominal families use the same data and risk definition.",
+  "performance_target": "An independent final split must show actual episode adoption >=20 percent, mean team cost gain >=0.5 percent and a positive paired initial-cluster confidence interval, alongside both conditional-risk certificates.",
+  "scope": "Equally likely nominal/dense initial regimes and equally likely four declared error modes. No per-mode, per-state, arbitrary-noise, or shifted-dynamics risk guarantee.",
+  "engineering_limit": "Development p95 exceeded 500 ms. Certification does not establish real-time feasibility; include all p95/p99/max and deadline misses."
+}
