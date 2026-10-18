@@ -17,7 +17,7 @@ contextual bandit; its online planner's gain must not be called a new MARL resul
 ## V19 development: disturbance-aware joint composition
 
 Development probes, a paired ablation and an actuator-harness audit completed
-**2,496 actual SUMO runs**, plus **12 post-hoc audit replays**. On the second probe's
+**2,496 actual SUMO runs**, plus **70 post-hoc audit replays**. On the second probe's
 32 initial scenes, jointly checked actor/baseline
 compositions retain **0.82%** mean team-cost improvement while reducing observed
 any-car performance regression from **39/85** admitted policy-initial pairs with
@@ -37,6 +37,19 @@ certification are still pending. No per-state confidence probability or arbitrar
 disturbance guarantee is claimed. [Development results](docs/v19_development_results.md)
 and [theory/scope](docs/theory_v19_disturbance_risk.md) retain the unsuccessful designs,
 individual regression, latency tail, and dynamics-assumption failures.
+
+Exact-command deduplication and caching now preserve all **667 paired decisions**
+in **58 SUMO replays**, including the original harmful case, while reducing total
+controller time **25.1%**. The same replay's p95 falls from **966 to 702 ms** and
+still exceeds 500 ms. [Runtime evidence](docs/v19_cached_runtime.md) reports the
+concurrent-load setting and all deadline misses.
+
+The matched [conformal/LTT/mean-SPI comparison](docs/v19_established_comparison.md)
+and a separate **20,480-run** final test are frozen but await completed calibration.
+A **6,400-run** direct-transfer study is running. An [analytic actuator bound](docs/v19_actuator_bounds.md)
+also shows why the declared mild lag remains inside the original error envelope
+while strong lag is outside its uniformly covered range; this is not a shifted
+performance-risk guarantee.
 
 ## V18: joint gating improves the frozen three-model comparison
 

@@ -36,11 +36,14 @@ raw 加共同物理过滤器是运行时安全思想的任务适配；nominal �
 
 保留校准与最终测试文件哈希，禁止初态交叉、开发集冒充校准集、读取未完成的校准碎片或改动冻结分析源码。最终均值区间以独立初态为单位自举；三个模型的退化比例分别报告。
 
+权重哈希并不足以定义完整闭环策略。`tools/check_v19_evidence.py` 还逐文件核对校准/最终协议中共有的控制器与执行代码、观测/场景生成器、候选定义、扰动模式和模型记录，验证两个初态集合不相交，并绑定比较协议哈希。该检查随 CI 执行，也应在校准及最终评估前执行。
+
 ## 执行入口
 
 ```powershell
 python tools/compare_established_v19.py freeze artifacts/v19/risk_validation artifacts/v19/comparison_plan
 # 只有主校准研究完整 finalize 后才允许下一步。
+python tools/check_v19_evidence.py
 python tools/compare_established_v19.py calibrate artifacts/v19/comparison_plan artifacts/v19/risk_validation artifacts/v19/comparison_calibration
 # 校准选择器归档之后，再启动全新最终测试。
 python tools/study_gate_v19.py worker artifacts/v19/final_confirmation 0
