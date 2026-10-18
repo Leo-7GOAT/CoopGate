@@ -14,7 +14,7 @@ def verify():
                  'composition_ablation', 'portfolio_audit', 'cached_gate_audit', 'actuator_bounds',
                  'bounded_gate_audit', 'nominal_predictor_audit', 'runtime_profile', 'deployment_runtime_audit',
                  'shifted_study', 'shifted_analysis', 'runtime_plot', 'certification_power', 'shifted_replay',
-                 'parallel_preflight', 'parallel_gate_audit', 'parallel_analysis'):
+                 'parallel_preflight', 'parallel_gate_audit', 'parallel_analysis', 'manuscript_v14'):
         directory = ROOT / 'artifacts/v19' / name
         manifest = json.loads((directory / 'sha256.json').read_text())
         for path, expected in manifest.items():
@@ -127,6 +127,20 @@ def verify():
             assert sum(v['parallel']['decisions'] for v in result['per_model'].values()) == 667
             assert result['summary']['bounded']['over_500ms'] == result['bounded_only_deadline_misses'] + result['both_deadline_misses']
             assert result['summary']['parallel']['over_500ms'] == result['parallel_only_deadline_misses'] + result['both_deadline_misses']
+        elif name == 'manuscript_v14':
+            result = json.loads((directory / 'build.json').read_text())
+            review = json.loads((directory / 'render_review.json').read_text())
+            assert result['source_sha256'] == digest(directory / 'build_v14_manuscript.py') == digest(ROOT / 'tools/build_v14_manuscript.py')
+            assert result['document_sha256'] == review['document_sha256']
+            assert result['reference_sha256'] == review['reference_sha256']
+            for path, expected in result['completed_evidence'].items():
+                assert digest(ROOT / path) == expected, path
+            assert result['calibration_outcomes_read'] is False
+            assert result['conditional_risk_certified'] is False and result['final_comparison_completed'] is False
+            assert review['rendered_pages'] == 17 and review['reviewed_pages'] == list(range(1, 18))
+            assert review['all_pages_visually_reviewed'] is True
+            assert review['retained_native_equations'] == 13 and review['final_native_equations'] == 17
+            assert review['only_body_and_core_properties_changed'] is True
         else:
             result = json.loads((directory / 'analysis.json').read_text())
             assert result['risk_certified'] is False
@@ -220,6 +234,7 @@ def verify():
                   completed_direct_transfer_sumo_runs=6400,
                   additional_direct_transfer_sumo_replays=336,
                   direct_transfer_noncompleted=68,
+                  updated_manuscript_pages=17,
                   frozen_split_policies_identical=True,
                   final_replay_coverage_frozen=True,
                   conditional_risk_certified=False, real_time_requirement_met=False,
