@@ -45,11 +45,16 @@ python tools/compare_established_v19.py freeze artifacts/v19/risk_validation art
 # 只有主校准研究完整 finalize 后才允许下一步。
 python tools/check_v19_evidence.py
 python tools/compare_established_v19.py calibrate artifacts/v19/comparison_plan artifacts/v19/risk_validation artifacts/v19/comparison_calibration
-# 校准选择器归档之后，再启动全新最终测试。
-python tools/study_gate_v19.py worker artifacts/v19/final_confirmation 0
+# 先提交校准选择器目录，再生成并提交启动记录。
+python tools/start_final_v19.py prepare
+# 提交 artifacts/v19/final_launch.json 后，分别启动四个 shard（0..3）。
+python tools/start_final_v19.py worker 0
 # 四个 worker 全部完成后，finalize 并评估：
+python tools/start_final_v19.py finalize
 python tools/compare_established_v19.py evaluate artifacts/v19/comparison_plan artifacts/v19/comparison_calibration artifacts/v19/final_confirmation artifacts/v19/final_comparison
 ```
+
+启动器检查校准目录与启动记录均已提交且未修改，并绑定风险数据、模型、控制源码、候选定义与数据分割。未完成校准的真实工作目录已经验证会被拒绝，且不会创建启动记录。默认不直接调用底层执行器绕过此检查。新的 `nominal_predictor_audit` 另以 6 个开发初态、十个完整控制器进行 120 次 SUMO 执行，核对只用观测初态初始化、固定内部种子、忽略外部标签的名义影子预测；该审计的完成情况以其独立结果为准。
 
 ## 方法来源与适配范围
 
