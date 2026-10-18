@@ -12,7 +12,8 @@ def verify():
     for name in ('bank_probe', 'portfolio_probe', 'shifted_harness', 'bank_probe_analysis',
                  'portfolio_probe_analysis', 'paired_bank', 'paired_bank_analysis',
                  'composition_ablation', 'portfolio_audit', 'cached_gate_audit', 'actuator_bounds',
-                 'bounded_gate_audit', 'nominal_predictor_audit', 'runtime_profile', 'deployment_runtime_audit'):
+                 'bounded_gate_audit', 'nominal_predictor_audit', 'runtime_profile', 'deployment_runtime_audit',
+                 'shifted_study', 'shifted_analysis', 'runtime_plot'):
         directory = ROOT / 'artifacts/v19' / name
         manifest = json.loads((directory / 'sha256.json').read_text())
         for path, expected in manifest.items():
@@ -78,6 +79,10 @@ def verify():
             assert result['source_audit_sha256'] == digest(ROOT / 'artifacts/v19/bounded_gate_audit/audit.json')
             assert len(result['records']) == 6
             assert sorted(r['seed'] for r in result['records']) == ['1802', '1802', '1812', '1812', '1822', '1822']
+        elif name == 'runtime_plot':
+            result = json.loads((directory / 'metadata.json').read_text())
+            assert result['source_audit_sha256'] == digest(ROOT / 'artifacts/v19/bounded_gate_audit/audit.json')
+            assert result['paired_decisions'] == 667 and result['runtime_requirement_met'] is False
         else:
             result = json.loads((directory / 'analysis.json').read_text())
             assert result['risk_certified'] is False
@@ -139,14 +144,35 @@ def verify():
     assert transfer_replay['study_protocol_sha256'] == digest(ROOT / 'artifacts/v19/shifted_study/protocol.json')
     for path, expected in transfer_replay['source_sha256'].items():
         assert digest(transfer_replay_dir / 'source' / path) == digest(ROOT / path) == expected, path
+    transfer_dir = ROOT / 'artifacts/v19/shifted_study'
+    transfer_protocol = json.loads((transfer_dir / 'protocol.json').read_text())
+    transfer_rows = json.loads((transfer_dir / 'episodes.json').read_text())
+    transfer_analysis = json.loads((ROOT / 'artifacts/v19/shifted_analysis/analysis.json').read_text())
+    assert transfer_protocol['models'] == risk['models']
+    assert transfer_protocol['spec']['methods'] == risk['spec']['methods']
+    assert len(transfer_rows) == transfer_analysis['actual_sumo_runs'] == 6400
+    assert len(transfer_analysis['cells']) == 60
+    assert transfer_analysis['weights_or_thresholds_recalibrated'] is False
+    assert sum(not r['completed'] for r in transfer_rows) == 68
+    assert sum(r['trace_saved'] for r in transfer_rows) == 855
+    for row in transfer_rows:
+        if row['plant_name'] != 'lag_strong':
+            assert row['max_actual_error'] <= .5 + 1e-9 and row['error_contract_exceeded_substeps'] == 0
+            if not row['controller'].startswith('raw_'):
+                assert row['completed']
+        else:
+            assert row['error_contract_exceeded_substeps'] > 0
+    assert sum(not r['completed'] for r in transfer_rows if r['plant_name'] == 'lag_strong') == 57
     result = dict(verified_assets=verified, completed_development_sumo_runs=2496,
                   additional_posthoc_sumo_replays=128,
                   additional_observable_initial_predictor_sumo_runs=120,
                   additional_synthetic_calibration_deployment_audit_runs=56,
+                  completed_direct_transfer_sumo_runs=6400,
+                  direct_transfer_noncompleted=68,
                   frozen_split_policies_identical=True,
                   final_replay_coverage_frozen=True,
                   conditional_risk_certified=False, real_time_requirement_met=False,
-                  strong_lag_aborts=1, scope='Manifest integrity and accounting; not a substitute for independent risk validation or replay')
+                  harness_strong_lag_aborts=1, scope='Manifest integrity and accounting; not a substitute for independent risk validation or replay')
     print(json.dumps(result), flush=True)
     return result
 

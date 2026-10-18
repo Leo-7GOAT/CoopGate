@@ -1,9 +1,9 @@
 # CoopGate
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
-V14 passed the frozen single-ego learning prerequisite. Genuine three-actor
-model-based MARL now improves mean team cost across all three fixed trained
-models. A joint action gate improves the three-model mean further and checks
+V14 passed the frozen single-ego learning prerequisite. On the frozen V18
+population, genuine three-actor model-based MARL improves mean team cost across
+all three fixed trained models. A joint action gate improves the three-model mean further and checks
 individual nominal performance against the same full baseline continuation.
 V12's team-cost gain concealed an **8.26% ego arrival regression**; it does not
 satisfy the single-ego prerequisite for MARL. V13 uses the ego's own arrival and
@@ -70,10 +70,20 @@ coverage is frozen before the untouched final-test executions.
 
 The matched [conformal/LTT/mean-SPI comparison](docs/v19_established_comparison.md)
 and a separate **20,480-run** final test are frozen but await completed calibration.
-A **6,400-run** direct-transfer study is running. An [analytic actuator bound](docs/v19_actuator_bounds.md)
+A **6,400-run** direct-transfer study has completed. An [analytic actuator bound](docs/v19_actuator_bounds.md)
 also shows why the declared mild lag remains inside the original error envelope
 while strong lag is outside its uniformly covered range; this is not a shifted
 performance-risk guarantee.
+
+The completed [direct-transfer results](docs/v19_transfer_results.md) reveal
+both useful gating and important limits. Within the first three declared plant
+ranges, nominal/strict gates each complete **1,440/1,440** runs, while raw learning
+has 11 noncompletions and loses 8–9% in slow-yielding scenes. Strict-gate gains in
+tight-headway scenes are **1.04–1.73%**, but gains in speed-asymmetric scenes are
+small. Under strong lag, **57/1,600** runs do not complete, including baseline
+failures; every run exceeds the original physical-error envelope. All failures
+and capped outcomes remain in the analysis. A frozen 336-case replay audit is
+running; no shifted-distribution risk certificate is claimed.
 
 ## V18: joint gating improves the frozen three-model comparison
 
