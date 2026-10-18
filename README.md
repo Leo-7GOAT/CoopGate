@@ -17,7 +17,7 @@ contextual bandit; its online planner's gain must not be called a new MARL resul
 ## V19 development: disturbance-aware joint composition
 
 Development probes, a paired ablation and an actuator-harness audit completed
-**2,496 actual SUMO runs**, plus **128 post-hoc audit replays** and **120
+**2,496 actual SUMO runs**, plus **186 post-hoc audit replays** and **120
 observable-initial predictor audit runs**. These audit runs check implementation
 identity, not additional independent efficacy samples. On the second probe's
 32 initial scenes, jointly checked actor/baseline
@@ -58,6 +58,15 @@ ratios must not be multiplied into a single benchmark result.
 [Lower-bound derivation and complete measurements](docs/v19_bounded_runtime.md)
 also retain profiling evidence that full feedback continuations dominate slow
 decisions.
+
+Two-worker disturbance evaluation now preserves the same **667 decisions** in
+another **58 SUMO replays**, reducing complete-call wall time **15.22%** while
+increasing controller-process CPU time **10.03%**. All admitted actions retain
+the full 17-scenario check. P95 falls from **573 to 499 ms**, but **34/667** calls
+still exceed 500 ms, P99 is **1,045 ms**, and the maximum is **2,573 ms**. One
+model's P95 remains 548 ms. The [complete paired analysis](docs/v19_parallel_runtime.md)
+includes speculative work and private cache overhead; it is not a hard real-time
+result. Frozen risk/final study controllers remain unchanged.
 
 The nominal predictor has additionally matched **60 whole profiles and 1,392
 decisions** using only observed initial kinematics, a fixed internal engine seed,

@@ -1,0 +1,115 @@
+{
+  "summary": {
+    "bounded": {
+      "decisions": 667,
+      "total_wall_ms": 67132.08890001079,
+      "total_cpu_ms": 65453.125,
+      "p50_ms": 13.676599999598693,
+      "p95_ms": 573.439479999978,
+      "p99_ms": 1567.2128319992046,
+      "max_ms": 3440.7522000001336,
+      "over_500ms": 50
+    },
+    "parallel": {
+      "decisions": 667,
+      "total_wall_ms": 56914.48350003702,
+      "total_cpu_ms": 72015.625,
+      "p50_ms": 13.85620000110066,
+      "p95_ms": 498.68650999960516,
+      "p99_ms": 1044.7921159999175,
+      "max_ms": 2572.595399999045,
+      "over_500ms": 34
+    },
+    "wall_reduction_fraction": 0.15220151148867533,
+    "cpu_increase_fraction": 0.10026259250417757
+  },
+  "per_model": {
+    "1802": {
+      "bounded": {
+        "decisions": 207,
+        "total_wall_ms": 20578.595600010885,
+        "total_cpu_ms": 19984.375,
+        "p50_ms": 12.54999999946449,
+        "p95_ms": 561.4746999995987,
+        "p99_ms": 1596.8679479989428,
+        "max_ms": 3030.09480000037,
+        "over_500ms": 17
+      },
+      "parallel": {
+        "decisions": 207,
+        "total_wall_ms": 16888.124300021445,
+        "total_cpu_ms": 21500.0,
+        "p50_ms": 12.994699998671422,
+        "p95_ms": 473.6255500010882,
+        "p99_ms": 1048.9567460000756,
+        "max_ms": 2082.608700000492,
+        "over_500ms": 9
+      },
+      "wall_reduction_fraction": 0.17933543045024358,
+      "cpu_increase_fraction": 0.07584050039093038
+    },
+    "1812": {
+      "bounded": {
+        "decisions": 228,
+        "total_wall_ms": 23888.618399983898,
+        "total_cpu_ms": 23359.375,
+        "p50_ms": 14.77080000040587,
+        "p95_ms": 642.6873349993001,
+        "p99_ms": 1568.9580039992143,
+        "max_ms": 3440.7522000001336,
+        "over_500ms": 17
+      },
+      "parallel": {
+        "decisions": 228,
+        "total_wall_ms": 20482.527800011667,
+        "total_cpu_ms": 25671.875,
+        "p50_ms": 14.327500000035798,
+        "p95_ms": 548.1874249997403,
+        "p99_ms": 1053.9249019991073,
+        "max_ms": 2429.4394999997166,
+        "over_500ms": 13
+      },
+      "wall_reduction_fraction": 0.1425821511709746,
+      "cpu_increase_fraction": 0.09899665551839454
+    },
+    "1822": {
+      "bounded": {
+        "decisions": 232,
+        "total_wall_ms": 22664.874900016002,
+        "total_cpu_ms": 22109.375,
+        "p50_ms": 13.388950001171906,
+        "p95_ms": 529.7395350002262,
+        "p99_ms": 1469.5067650005146,
+        "max_ms": 3387.7890999992815,
+        "over_500ms": 16
+      },
+      "parallel": {
+        "decisions": 232,
+        "total_wall_ms": 19543.83140000391,
+        "total_cpu_ms": 24843.75,
+        "p50_ms": 13.626150000163761,
+        "p95_ms": 483.9035850008253,
+        "p99_ms": 993.3948059995964,
+        "max_ms": 2572.595399999045,
+        "over_500ms": 12
+      },
+      "wall_reduction_fraction": 0.13770398088585478,
+      "cpu_increase_fraction": 0.12367491166077738
+    }
+  },
+  "paired_decisions": 667,
+  "actual_sumo_replays": 58,
+  "exact_learning_admission_steps": 12,
+  "faster_paired_decisions": 350,
+  "slower_paired_decisions": 317,
+  "bounded_only_deadline_misses": 18,
+  "parallel_only_deadline_misses": 2,
+  "both_deadline_misses": 32,
+  "source_audit_sha256": "09790b2c09e419867d681c8e4bc96702d003afcd545092b47b211499cd1401b6",
+  "source_episodes_sha256": "16fee0f7cf94f9aee08c22dbec73932482c3e81adc17abdafd935450bd029267",
+  "source_plan_sha256": "19e38598172be1f3d474bfe3edefadb6a10b74c58ffddf44cddc625b17a0bf92",
+  "source_code_sha256": "b44717f953e4bdf66d1f8758ed39a1ffb2321d215f6d26ab6b15b439a4a5030e",
+  "risk_certified": false,
+  "hard_real_time_certified": false,
+  "scope": "Post-hoc paired development replay audit. Full select wall time includes all submitted work and pool teardown. CPU is this process only, excluding the SUMO server. Concurrent frozen studies; selected cases are not a random latency sample. No new independent efficacy observations."
+}

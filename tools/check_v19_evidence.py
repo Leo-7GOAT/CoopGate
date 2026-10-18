@@ -13,7 +13,8 @@ def verify():
                  'portfolio_probe_analysis', 'paired_bank', 'paired_bank_analysis',
                  'composition_ablation', 'portfolio_audit', 'cached_gate_audit', 'actuator_bounds',
                  'bounded_gate_audit', 'nominal_predictor_audit', 'runtime_profile', 'deployment_runtime_audit',
-                 'shifted_study', 'shifted_analysis', 'runtime_plot', 'certification_power', 'shifted_replay'):
+                 'shifted_study', 'shifted_analysis', 'runtime_plot', 'certification_power', 'shifted_replay',
+                 'parallel_preflight', 'parallel_gate_audit', 'parallel_analysis'):
         directory = ROOT / 'artifacts/v19' / name
         manifest = json.loads((directory / 'sha256.json').read_text())
         for path, expected in manifest.items():
@@ -25,6 +26,13 @@ def verify():
             assert result['protocol_sha256'] == digest(directory / 'protocol.json')
             rows = json.loads((directory / 'episodes.json').read_text())
             assert len(rows) == result['actual_sumo_runs']
+        elif name == 'parallel_preflight':
+            result = json.loads((directory / 'audit.json').read_text())
+            assert result['paired_states'] == 6 and result['all_decisions_equal'] is True
+            assert result['actual_new_sumo_runs'] == 0
+            assert result['profile_sha256'] == digest(ROOT / 'artifacts/v19/runtime_profile/profile.json')
+            for path, expected in result['source_sha256'].items():
+                assert digest(directory / Path(path).name) == digest(ROOT / path) == expected, path
         elif (directory / 'audit.json').exists():
             result = json.loads((directory / 'audit.json').read_text())
             assert result['episodes_sha256'] == digest(directory / 'episodes.json')
@@ -51,6 +59,19 @@ def verify():
                 assert result['hard_real_time_certified'] is False
                 assert result['timings']['bounded']['p95_ms'] > 500
                 assert result['timings']['bounded']['p99_ms'] > result['timings']['cached']['p99_ms']
+            elif name == 'parallel_gate_audit':
+                assert result['actual_sumo_replays'] == 58 and result['exact_paired_cases'] == 29
+                assert result['exact_paired_decisions'] == 667
+                assert result['all_commands_and_admissions_match'] is True
+                assert result['all_selected_scenarios_fully_evaluated'] is True
+                assert result['hard_real_time_certified'] is False
+                for measured in result['timings'].values():
+                    assert measured['decision_steps'] == 667 and measured['unused_speculative_errors'] == 0
+                    assert measured['total_select_wall_ms'] > 0 and measured['total_select_process_cpu_ms'] > 0
+                plan = json.loads((directory / 'plan.json').read_text())
+                assert plan['workers'] == 2
+                assert plan['source_audit_sha256'] == digest(ROOT / 'artifacts/v19/bounded_gate_audit/audit.json')
+                assert plan['source_episodes_sha256'] == digest(ROOT / 'artifacts/v19/bounded_gate_audit/episodes.json')
             elif name == 'nominal_predictor_audit':
                 assert result['actual_sumo_runs'] == 120 and result['paired_profiles'] == 60
                 assert result['paired_decision_steps'] == 1392
@@ -73,7 +94,7 @@ def verify():
                 assert result['study_summary_sha256'] == digest(ROOT / 'artifacts/v19/shifted_study/summary.json')
             else:
                 raise AssertionError('Unrecognized audit: ' + name)
-            if name in ('bounded_gate_audit', 'nominal_predictor_audit', 'deployment_runtime_audit'):
+            if name in ('bounded_gate_audit', 'nominal_predictor_audit', 'deployment_runtime_audit', 'parallel_gate_audit'):
                 plan = json.loads((directory / 'plan.json').read_text())
                 for path, expected in plan['source_sha256'].items():
                     assert digest(directory / 'source' / path) == digest(ROOT / path) == expected, path
@@ -93,6 +114,19 @@ def verify():
             result = json.loads((directory / 'metadata.json').read_text())
             assert result['source_audit_sha256'] == digest(ROOT / 'artifacts/v19/bounded_gate_audit/audit.json')
             assert result['paired_decisions'] == 667 and result['runtime_requirement_met'] is False
+        elif name == 'parallel_analysis':
+            result = json.loads((directory / 'analysis.json').read_text())
+            source = ROOT / 'artifacts/v19/parallel_gate_audit'
+            assert result['source_audit_sha256'] == digest(source / 'audit.json')
+            assert result['source_episodes_sha256'] == digest(source / 'episodes.json')
+            assert result['source_plan_sha256'] == digest(source / 'plan.json')
+            assert result['source_code_sha256'] == digest(directory / 'analyze_parallel_gate_v19.py') == digest(ROOT / 'tools/analyze_parallel_gate_v19.py')
+            assert result['actual_sumo_replays'] == 58 and result['paired_decisions'] == 667
+            assert result['hard_real_time_certified'] is False and result['risk_certified'] is False
+            assert set(result['per_model']) == {'1802', '1812', '1822'}
+            assert sum(v['parallel']['decisions'] for v in result['per_model'].values()) == 667
+            assert result['summary']['bounded']['over_500ms'] == result['bounded_only_deadline_misses'] + result['both_deadline_misses']
+            assert result['summary']['parallel']['over_500ms'] == result['parallel_only_deadline_misses'] + result['both_deadline_misses']
         else:
             result = json.loads((directory / 'analysis.json').read_text())
             assert result['risk_certified'] is False
@@ -179,7 +213,8 @@ def verify():
             assert row['error_contract_exceeded_substeps'] > 0
     assert sum(not r['completed'] for r in transfer_rows if r['plant_name'] == 'lag_strong') == 57
     result = dict(verified_assets=verified, completed_development_sumo_runs=2496,
-                  additional_posthoc_sumo_replays=128,
+                  additional_posthoc_sumo_replays=186,
+                  parallel_gate_replays_included=58,
                   additional_observable_initial_predictor_sumo_runs=120,
                   additional_synthetic_calibration_deployment_audit_runs=56,
                   completed_direct_transfer_sumo_runs=6400,
