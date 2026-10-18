@@ -39,6 +39,9 @@ certification are still pending. No per-state confidence probability or arbitrar
 disturbance guarantee is claimed. [Development results](docs/v19_development_results.md)
 and [theory/scope](docs/theory_v19_disturbance_risk.md) retain the unsuccessful designs,
 individual regression, latency tail, and dynamics-assumption failures.
+The [design-only power analysis](docs/v19_certification_power.md) explains why
+at least 115 independent learning adoptions per candidate/target are required
+even with zero observed harm; it reads no calibration outcomes.
 
 Exact-command deduplication and caching now preserve all **667 paired decisions**
 in **58 SUMO replays**, including the original harmful case, while reducing total
@@ -82,8 +85,9 @@ has 11 noncompletions and loses 8–9% in slow-yielding scenes. Strict-gate gain
 tight-headway scenes are **1.04–1.73%**, but gains in speed-asymmetric scenes are
 small. Under strong lag, **57/1,600** runs do not complete, including baseline
 failures; every run exceeds the original physical-error envelope. All failures
-and capped outcomes remain in the analysis. A frozen 336-case replay audit is
-running; no shifted-distribution risk certificate is claimed.
+and capped outcomes remain in the analysis. The frozen **336-case replay audit
+has passed**, reproducing all **68** study noncompletions; 291 saved full traces
+also match step by step. No shifted-distribution risk certificate is claimed.
 
 ## V18: joint gating improves the frozen three-model comparison
 

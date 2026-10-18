@@ -13,7 +13,7 @@ def verify():
                  'portfolio_probe_analysis', 'paired_bank', 'paired_bank_analysis',
                  'composition_ablation', 'portfolio_audit', 'cached_gate_audit', 'actuator_bounds',
                  'bounded_gate_audit', 'nominal_predictor_audit', 'runtime_profile', 'deployment_runtime_audit',
-                 'shifted_study', 'shifted_analysis', 'runtime_plot'):
+                 'shifted_study', 'shifted_analysis', 'runtime_plot', 'certification_power', 'shifted_replay'):
         directory = ROOT / 'artifacts/v19' / name
         manifest = json.loads((directory / 'sha256.json').read_text())
         for path, expected in manifest.items():
@@ -28,7 +28,9 @@ def verify():
         elif (directory / 'audit.json').exists():
             result = json.loads((directory / 'audit.json').read_text())
             assert result['episodes_sha256'] == digest(directory / 'episodes.json')
-            assert result['plan_sha256'] == digest(directory / 'plan.json')
+            plan_path = (ROOT / 'artifacts/v19/shifted_replay_plan/plan.json'
+                         if name == 'shifted_replay' else directory / 'plan.json')
+            assert result['plan_sha256'] == digest(plan_path)
             if name == 'portfolio_audit':
                 assert result['actual_sumo_replays'] == 12
                 assert result['all_strict_harm_cases_reproduced'] == 1
@@ -61,6 +63,14 @@ def verify():
                 assert result['actual_shadow_runs'] == 20 and result['paired_decision_steps'] == 409
                 assert result['all_commands_and_outcomes_match'] is True
                 assert result['synthetic_calibration'] is True and result['final_comparison_validated'] is False
+            elif name == 'shifted_replay':
+                assert result['actual_sumo_replays'] == result['actuator_trajectories_reconstructed'] == 336
+                assert result['source_actual_sumo_runs'] == 6400
+                assert result['all_source_failures'] == result['physical_failures_reproduced'] == 68
+                assert result['complete_trajectories_compared'] == 291
+                assert result['all_selected_metrics_match'] is True
+                assert result['source_episodes_sha256'] == digest(ROOT / 'artifacts/v19/shifted_study/episodes.json')
+                assert result['study_summary_sha256'] == digest(ROOT / 'artifacts/v19/shifted_study/summary.json')
             else:
                 raise AssertionError('Unrecognized audit: ' + name)
             if name in ('bounded_gate_audit', 'nominal_predictor_audit', 'deployment_runtime_audit'):
@@ -109,6 +119,11 @@ def verify():
     final_dir = ROOT / 'artifacts/v19/final_confirmation'
     risk = json.loads((risk_dir / 'protocol.json').read_text())
     final = json.loads((final_dir / 'protocol.json').read_text())
+    power = json.loads((ROOT / 'artifacts/v19/certification_power/analysis.json').read_text())
+    assert power['protocol_sha256'] == digest(risk_dir / 'protocol.json')
+    assert power['calibration_outcomes_read'] is False and power['protocol_changed'] is False
+    assert power['minimum_zero_harm_adoptions'] == 115
+    assert power['candidates'] == 9 and power['risk_targets'] == 2
     assert risk['models'] == final['models']
     assert risk['spec']['methods'] == final['spec']['methods']
     assert risk['spec']['modes'] == final['spec']['modes']
@@ -168,6 +183,7 @@ def verify():
                   additional_observable_initial_predictor_sumo_runs=120,
                   additional_synthetic_calibration_deployment_audit_runs=56,
                   completed_direct_transfer_sumo_runs=6400,
+                  additional_direct_transfer_sumo_replays=336,
                   direct_transfer_noncompleted=68,
                   frozen_split_policies_identical=True,
                   final_replay_coverage_frozen=True,
