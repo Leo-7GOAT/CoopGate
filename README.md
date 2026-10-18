@@ -62,6 +62,12 @@ and no actual future disturbance. Preparing all ten shadow profiles takes
 **11–32 s** in this audit, including simulator startup and resets; it is not an
 online real-time result. [Observable-state audit](docs/v19_observable_predictor.md)
 
+The complete-profile deployment adapter has passed another **56 SUMO executions**
+using explicitly synthetic calibration to exercise admission/fallback wiring:
+18 deployment/reference pairs match across 409 decisions. This does not replace
+real calibration or the still-pending final comparison. Actual final replay
+coverage is frozen before the untouched final-test executions.
+
 The matched [conformal/LTT/mean-SPI comparison](docs/v19_established_comparison.md)
 and a separate **20,480-run** final test are frozen but await completed calibration.
 A **6,400-run** direct-transfer study is running. An [analytic actuator bound](docs/v19_actuator_bounds.md)

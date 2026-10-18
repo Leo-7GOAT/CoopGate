@@ -12,7 +12,7 @@ def verify():
     for name in ('bank_probe', 'portfolio_probe', 'shifted_harness', 'bank_probe_analysis',
                  'portfolio_probe_analysis', 'paired_bank', 'paired_bank_analysis',
                  'composition_ablation', 'portfolio_audit', 'cached_gate_audit', 'actuator_bounds',
-                 'bounded_gate_audit', 'nominal_predictor_audit', 'runtime_profile'):
+                 'bounded_gate_audit', 'nominal_predictor_audit', 'runtime_profile', 'deployment_runtime_audit'):
         directory = ROOT / 'artifacts/v19' / name
         manifest = json.loads((directory / 'sha256.json').read_text())
         for path, expected in manifest.items():
@@ -54,9 +54,15 @@ def verify():
                 assert result['uses_actual_episode_seed'] is False and result['uses_future_disturbance'] is False
                 assert all(pair['initial_error'] == 0 for pair in result['pairs'])
                 assert len(result['preparations']) == 6
+            elif name == 'deployment_runtime_audit':
+                assert result['actual_sumo_runs'] == 56
+                assert result['actual_deployment_runs'] == result['actual_reference_runs'] == 18
+                assert result['actual_shadow_runs'] == 20 and result['paired_decision_steps'] == 409
+                assert result['all_commands_and_outcomes_match'] is True
+                assert result['synthetic_calibration'] is True and result['final_comparison_validated'] is False
             else:
                 raise AssertionError('Unrecognized audit: ' + name)
-            if name in ('bounded_gate_audit', 'nominal_predictor_audit'):
+            if name in ('bounded_gate_audit', 'nominal_predictor_audit', 'deployment_runtime_audit'):
                 plan = json.loads((directory / 'plan.json').read_text())
                 for path, expected in plan['source_sha256'].items():
                     assert digest(directory / 'source' / path) == digest(ROOT / path) == expected, path
@@ -125,9 +131,18 @@ def verify():
     assert replay_plan['final_protocol_sha256'] == digest(final_dir / 'protocol.json')
     for path, expected in replay_plan['source_sha256'].items():
         assert digest(replay_dir / 'source' / path) == digest(ROOT / path) == expected, path
+    transfer_replay_dir = ROOT / 'artifacts/v19/shifted_replay_plan'
+    transfer_replay = json.loads((transfer_replay_dir / 'plan.json').read_text())
+    for path, expected in json.loads((transfer_replay_dir / 'sha256.json').read_text()).items():
+        assert digest(transfer_replay_dir / path) == expected, path
+        verified += 1
+    assert transfer_replay['study_protocol_sha256'] == digest(ROOT / 'artifacts/v19/shifted_study/protocol.json')
+    for path, expected in transfer_replay['source_sha256'].items():
+        assert digest(transfer_replay_dir / 'source' / path) == digest(ROOT / path) == expected, path
     result = dict(verified_assets=verified, completed_development_sumo_runs=2496,
                   additional_posthoc_sumo_replays=128,
                   additional_observable_initial_predictor_sumo_runs=120,
+                  additional_synthetic_calibration_deployment_audit_runs=56,
                   frozen_split_policies_identical=True,
                   final_replay_coverage_frozen=True,
                   conditional_risk_certified=False, real_time_requirement_met=False,
