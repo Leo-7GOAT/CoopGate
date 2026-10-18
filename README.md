@@ -98,6 +98,14 @@ and capped outcomes remain in the analysis. The frozen **336-case replay audit
 has passed**, reproducing all **68** study noncompletions; 291 saved full traces
 also match step by step. No shifted-distribution risk certificate is claimed.
 
+An [independent final-report audit](docs/v19_final_report_audit.md) is now frozen.
+Its completed-transfer preflight reproduces all 180 model-cell summaries and
+matches all **2,389 zero-adoption outcomes** to their paired baselines. **22** of
+those still fail under strong lag: correct fallback does not repair a baseline
+outside its physical assumptions. The final audit keeps conditional certification,
+adoption, and gain as separate requirements, and does not transfer a fixed-profile
+conditional-risk certificate to a state-dependent selector.
+
 ## V18: joint gating improves the frozen three-model comparison
 
 Models and protocol were frozen in **79beb44**, before **7,168 actual SUMO runs**

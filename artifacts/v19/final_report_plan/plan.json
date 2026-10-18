@@ -1,0 +1,25 @@
+{
+  "purpose": "Independent final accounting and conjunction of the original risk/usefulness requirements",
+  "comparison_plan_sha256": "b7ef833f78f3137d73520cec67dea1ccd4ff3b9237c10dcd334067becef4b832",
+  "risk_protocol_sha256": "509782d7d10257b7d42f89268f7ec8ef1cc139d8119fac34cd4b8c59735962aa",
+  "final_protocol_sha256": "c896e26cb4f385230a6188233f0b63374b6383cc0432f40f7677fa05727e26c2",
+  "source_path": "tools/audit_final_report_v19.py",
+  "source_sha256": "0b800ea6a75f7f2d7ce4b1ab4ca214210183ef0b3bb941d09bbf8e20f4af01e2",
+  "thresholds": {
+    "actual_adoption_minimum": 0.2,
+    "mean_gain_percent_minimum": 0.5
+  },
+  "replicate_reporting": "Report every fixed model separately and their paired initial-cluster average. The all-replicates flag requires every model to pass; no best-seed substitution.",
+  "certificates": "Recompute original calibration counts/bounds. A state-dependent selector cannot inherit a fixed-profile conditional certificate.",
+  "interval_scope": "Original percentile bootstrap intervals and Gaussian bands retain their approximate/asymptotic scope; no new finite-sample efficacy claim.",
+  "physical_scope": "Retain all physical failures, including zero-adoption and baseline failures. Equal fallback outcomes do not imply absolute safety.",
+  "nonclaims": [
+    "new controller",
+    "new certification method",
+    "changed original criteria",
+    "real-time feasibility",
+    "goal completion"
+  ],
+  "calibration_outcomes_read": false,
+  "final_outcomes_read": false
+}

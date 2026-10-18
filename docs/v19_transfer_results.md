@@ -62,6 +62,8 @@ dense 三格与紧密跟车三格的逐格收益区间下界均为正。速度�
 
 336 次的逐车到达时间、命令变化、完成/碰撞/中止/约束指标、实际误差和学习采用次数均与原记录一致；全部新轨迹重新构建了实际执行器状态。有原始保存轨迹的 291 个案例，命令、状态、实际扰动、外生创新和执行器状态逐步完全一致。其余 45 个案例核对完整指标并独立重建物理轨迹，不声称与未保存的原轨迹逐步比较。
 
+后续独立报告复算覆盖全部 60 个组合、180 个模型分组，原采用数、退化数、完成数与均值均得到重现。2,389 个零学习采用运行的归档结果与对应基线完全相同，其中 22 个仍在强执行器滞后下失败（严格组合 12 个、名义门控 10 个）。正确回退没有消除基线本身的失配边界；这是已有数据的复核，不增加 SUMO 运行或独立风险样本。详见[最终报告复算](v19_final_report_audit.md)。
+
 结果见 [`shifted_replay/audit.json`](../artifacts/v19/shifted_replay/audit.json)。回放不增加独立性能样本数，也不把有限试验中的零碰撞提升为任意失配下的安全保证。
 
 主数据：[`shifted_study/summary.json`](../artifacts/v19/shifted_study/summary.json)、[`shifted_analysis/analysis.json`](../artifacts/v19/shifted_analysis/analysis.json)。物理假设边界见[执行器误差上界](v19_actuator_bounds.md)。

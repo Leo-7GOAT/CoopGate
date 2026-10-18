@@ -14,7 +14,8 @@ def verify():
                  'composition_ablation', 'portfolio_audit', 'cached_gate_audit', 'actuator_bounds',
                  'bounded_gate_audit', 'nominal_predictor_audit', 'runtime_profile', 'deployment_runtime_audit',
                  'shifted_study', 'shifted_analysis', 'runtime_plot', 'certification_power', 'shifted_replay',
-                 'parallel_preflight', 'parallel_gate_audit', 'parallel_analysis', 'manuscript_v14'):
+                 'parallel_preflight', 'parallel_gate_audit', 'parallel_analysis', 'manuscript_v14',
+                 'final_report_plan', 'final_report_preflight'):
         directory = ROOT / 'artifacts/v19' / name
         manifest = json.loads((directory / 'sha256.json').read_text())
         for path, expected in manifest.items():
@@ -26,6 +27,28 @@ def verify():
             assert result['protocol_sha256'] == digest(directory / 'protocol.json')
             rows = json.loads((directory / 'episodes.json').read_text())
             assert len(rows) == result['actual_sumo_runs']
+        elif name == 'final_report_plan':
+            plan = json.loads((directory / 'plan.json').read_text())
+            assert plan['source_sha256'] == digest(directory / 'audit_final_report_v19.py') == digest(ROOT / plan['source_path'])
+            assert plan['comparison_plan_sha256'] == digest(ROOT / 'artifacts/v19/comparison_plan/plan.json')
+            assert plan['risk_protocol_sha256'] == digest(ROOT / 'artifacts/v19/risk_validation/protocol.json')
+            assert plan['final_protocol_sha256'] == digest(ROOT / 'artifacts/v19/final_confirmation/protocol.json')
+            assert plan['thresholds'] == {'actual_adoption_minimum': .20, 'mean_gain_percent_minimum': .5}
+            assert plan['calibration_outcomes_read'] is False and plan['final_outcomes_read'] is False
+        elif name == 'final_report_preflight':
+            result = json.loads((directory / 'audit.json').read_text())
+            assert result['source_sha256'] == digest(directory / 'audit_final_report_v19.py') == digest(ROOT / 'tools/audit_final_report_v19.py')
+            for path, expected in result['input_sha256'].items():
+                assert digest(ROOT / 'artifacts/v19' / path) == expected, path
+            assert result['source_study_runs'] == 6400 and result['paired_controller_outcomes'] == 5760
+            assert result['reconstructed_cells'] == 60 and result['reconstructed_model_cells'] == 180
+            assert result['all_recorded_model_cell_values_match'] is True
+            assert result['zero_adoption_episodes'] == 2389 and not result['zero_adoption_outcome_mismatches']
+            assert len(result['zero_adoption_physical_failures']) == 22
+            assert all(r['plant'] == 'lag_strong' for r in result['zero_adoption_physical_failures'])
+            assert len(result['all_nonbaseline_physical_failures']) == 60 and result['baseline_physical_failures'] == 8
+            assert result['additional_sumo_runs'] == 0 and result['risk_certified'] is False
+            assert result['calibration_outcomes_read'] is False and result['final_outcomes_read'] is False
         elif name == 'parallel_preflight':
             result = json.loads((directory / 'audit.json').read_text())
             assert result['paired_states'] == 6 and result['all_decisions_equal'] is True
@@ -234,6 +257,9 @@ def verify():
                   completed_direct_transfer_sumo_runs=6400,
                   additional_direct_transfer_sumo_replays=336,
                   direct_transfer_noncompleted=68,
+                  zero_adoption_outcomes_independently_matched=2389,
+                  zero_adoption_strong_lag_failures_retained=22,
+                  final_statistical_report_frozen=True,
                   updated_manuscript_pages=17,
                   frozen_split_policies_identical=True,
                   final_replay_coverage_frozen=True,
