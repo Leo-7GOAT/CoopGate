@@ -1,0 +1,72 @@
+{
+  "purpose": "Development comparison of jointly checked actor/baseline compositions; one failed forecast scenario is an uncalibrated candidate, not a risk bound",
+  "n_initials": 32,
+  "seed_base": 61910001,
+  "sampling": "stratified",
+  "shards": 4,
+  "modes": [
+    "clean",
+    "uniform",
+    "bias",
+    "pulse"
+  ],
+  "methods": {
+    "baseline": {
+      "kind": "baseline"
+    },
+    "nominal_1802": {
+      "kind": "nominal",
+      "seed": 1802
+    },
+    "portfolio0_1802": {
+      "kind": "portfolio",
+      "seed": 1802,
+      "max_failed_scenarios": 0
+    },
+    "portfolio1_1802": {
+      "kind": "portfolio",
+      "seed": 1802,
+      "max_failed_scenarios": 1
+    },
+    "nominal_1812": {
+      "kind": "nominal",
+      "seed": 1812
+    },
+    "portfolio0_1812": {
+      "kind": "portfolio",
+      "seed": 1812,
+      "max_failed_scenarios": 0
+    },
+    "portfolio1_1812": {
+      "kind": "portfolio",
+      "seed": 1812,
+      "max_failed_scenarios": 1
+    },
+    "nominal_1822": {
+      "kind": "nominal",
+      "seed": 1822
+    },
+    "portfolio0_1822": {
+      "kind": "portfolio",
+      "seed": 1822,
+      "max_failed_scenarios": 0
+    },
+    "portfolio1_1822": {
+      "kind": "portfolio",
+      "seed": 1822,
+      "max_failed_scenarios": 1
+    }
+  },
+  "expected_actual_sumo_runs": 1280,
+  "all_traces_saved": false,
+  "audit_initial_indices": [
+    0,
+    1,
+    16,
+    17
+  ],
+  "risk_cap_target": 0.05,
+  "confidence_target": 0.95,
+  "finite_bank_claim": "Only portfolio0, and only actual tapes in its declared bank; clean and constant bias from this generator qualify. Uniform and independently resampled pulse signs do not.",
+  "keep_all_results": true
+}
