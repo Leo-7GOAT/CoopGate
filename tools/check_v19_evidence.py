@@ -116,10 +116,20 @@ def verify():
     assert final['spec']['comparison_plan_sha256'] == digest(comparison_dir / 'plan.json')
     for path, expected in comparison['source_sha256'].items():
         assert digest(comparison_dir / 'source' / path) == digest(ROOT / path) == expected
+    replay_dir = ROOT / 'artifacts/v19/comparison_replay_plan'
+    replay_plan = json.loads((replay_dir / 'plan.json').read_text())
+    for path, expected in json.loads((replay_dir / 'sha256.json').read_text()).items():
+        assert digest(replay_dir / path) == expected, path
+        verified += 1
+    assert replay_plan['comparison_plan_sha256'] == digest(comparison_dir / 'plan.json')
+    assert replay_plan['final_protocol_sha256'] == digest(final_dir / 'protocol.json')
+    for path, expected in replay_plan['source_sha256'].items():
+        assert digest(replay_dir / 'source' / path) == digest(ROOT / path) == expected, path
     result = dict(verified_assets=verified, completed_development_sumo_runs=2496,
                   additional_posthoc_sumo_replays=128,
                   additional_observable_initial_predictor_sumo_runs=120,
                   frozen_split_policies_identical=True,
+                  final_replay_coverage_frozen=True,
                   conditional_risk_certified=False, real_time_requirement_met=False,
                   strong_lag_aborts=1, scope='Manifest integrity and accounting; not a substitute for independent risk validation or replay')
     print(json.dumps(result), flush=True)

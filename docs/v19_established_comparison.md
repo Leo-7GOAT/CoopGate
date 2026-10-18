@@ -52,11 +52,23 @@ python tools/start_final_v19.py worker 0
 # 四个 worker 全部完成后，finalize 并评估：
 python tools/start_final_v19.py finalize
 python tools/compare_established_v19.py evaluate artifacts/v19/comparison_plan artifacts/v19/comparison_calibration artifacts/v19/final_confirmation artifacts/v19/final_comparison
+# 真实选择器回放覆盖协议已在最终测试之前单独冻结并提交。
+python tools/replay_comparison_v19.py run artifacts/v19/comparison_replay
 ```
 
 启动器检查校准目录与启动记录均已提交且未修改，并绑定风险数据、模型、控制源码、候选定义与数据分割。未完成校准的真实工作目录已经验证会被拒绝，且不会创建启动记录。默认不直接调用底层执行器绕过此检查。
 
 观测初始化审计已完成：6 个开发初态、十个完整控制器，共 120 次 SUMO 执行；60 个完整对照、1,392 个配对决策步的动作及最终指标一致。影子预测只用观测初态、固定内部种子、忽略外部标签。完整十控制器准备耗时为 11–32 秒，包含启动和重置，不能称为在线实时。[完整证据和适用范围](v19_observable_predictor.md)。
+
+## 真实选择器回放的冻结范围
+
+`comparison_replay_plan` 在最终测试开始前冻结代码和覆盖规则。覆盖每个方法/训练模型/扰动模式下首次出现的每个被选完整控制器、首次实际学习采用、首次采用后退化，以及所有被选轨迹中的物理失败或未完成。零采用的失败同样保留。此覆盖是实现审计，不能增加独立风险样本数。
+
+选择发生在真实 SUMO 重置之后、第一次实际运动之前。工厂函数只把观测初态交给影子预测器；`select_deployment_profile` 只接收冻结校准和名义预测，没有真实 episode seed、扰动模式或实际结果参数。选择后固定运行一个完整控制器。回放完成后才与配对评估所选控制器核对名称、逐车指标及学习采用步数；原研究保存过轨迹的案例还逐步核对动作和状态。所有新轨迹都单独重建物理状态并检查约束。
+
+影子预测按完全相同的初始位置/速度缓存，记录每次准备和复用。新部署仍须承担整套预测准备成本，不能用多方法审计中的缓存命中耗时冒充独立部署成本。`comparison.json` 的原始 `whole_profile_replays_still_required=true` 保持不改写；只有另存的完整回放审计通过后，才可以说明这一要求已满足。
+
+另设 `deployment_runtime_audit`，在两个开发初态上用明确标注的人工校准记录演练选择器接线，包括无穷分位数回退和同一训练模型内的固定选择。计划执行 18 次部署、18 次直接控制器对照和 20 次名义影子仿真。该接线审计不使用风险校准数据，不能当作已经获得统计风险保证或完成最终比较。
 
 ## 方法来源与适配范围
 
