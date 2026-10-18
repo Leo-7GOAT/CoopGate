@@ -1,0 +1,71 @@
+{
+  "purpose": "Post-probe paired development ablation, not an independent confirmation or risk certificate",
+  "independent_initials": 32,
+  "fixed_model_seeds": [
+    "1802",
+    "1812",
+    "1822"
+  ],
+  "baseline_parity_pairs": 128,
+  "parity_fields": [
+    "initial",
+    "per_vehicle_cost",
+    "per_vehicle_finish",
+    "per_vehicle_variation",
+    "completed",
+    "collision",
+    "contract_violations",
+    "aborted",
+    "control_steps"
+  ],
+  "extra_team_gain_seconds": 0.02788628472222222,
+  "extra_team_gain_ci95": [
+    0.005696614583333334,
+    0.05615370008680553
+  ],
+  "extra_team_gain_percentage_points": 0.27744491584890585,
+  "composition_counts": {
+    "0": 8636,
+    "2": 79,
+    "4": 14,
+    "1": 25,
+    "5": 7,
+    "6": 1
+  },
+  "adoption_transitions": {
+    "bank_only": 0,
+    "portfolio_only": 7,
+    "both": 39,
+    "neither": 50
+  },
+  "families": {
+    "bank": {
+      "mean_team_cost": 9.99636501736111,
+      "mean_team_gain_percent": 0.5446340857812102,
+      "adopted_model_initial_pairs": 39,
+      "harmful_model_initial_pairs": 1,
+      "harmful_adopted_pairs": 1
+    },
+    "portfolio0": {
+      "mean_team_cost": 9.96847873263889,
+      "mean_team_gain_percent": 0.8220790016301082,
+      "adopted_model_initial_pairs": 46,
+      "harmful_model_initial_pairs": 1,
+      "harmful_adopted_pairs": 1
+    }
+  },
+  "risk_certified": false,
+  "interval_scope": "Modes/models averaged within each initial; stratified initial-cluster bootstrap, conditional on the three fixed models. Development analysis.",
+  "source_studies": {
+    "artifacts\\v19\\paired_bank": {
+      "protocol.json": "42330372b2e9cd1c4ecf7b13dc83c8c6b5e19324dbd0cf868a482ede40618c9f",
+      "episodes.json": "c8df9dc42bc8fb2d310d491177098363bf8d3fd99c9b3202a67b321d536e9d64",
+      "sha256.json": "b94fac128c79652bd58314e09df4ca99a76f62de9fcfefca0f41812e9d152088"
+    },
+    "artifacts\\v19\\portfolio_probe": {
+      "protocol.json": "639269c85e9369f1ba57882a9034bd6575a143dce6aca2fc77551515cdaf5b74",
+      "episodes.json": "92bf974af25947fc4f08753df6d70a8fd0dd91d871b8a2c63bd0a05ec2e58e4c",
+      "sha256.json": "d67e45e09216550635b5a58a0038f1ae9e177baa02f9be4773228e76fae8cea3"
+    }
+  }
+}

@@ -16,13 +16,21 @@ contextual bandit; its online planner's gain must not be called a new MARL resul
 
 ## V19 development: disturbance-aware joint composition
 
-Two development probes and an actuator-harness audit completed **1,984 actual
-SUMO runs**. On the second probe's 32 initial scenes, jointly checked actor/baseline
+Development probes, a paired ablation and an actuator-harness audit completed
+**2,496 actual SUMO runs**, plus **12 post-hoc audit replays**. On the second probe's
+32 initial scenes, jointly checked actor/baseline
 compositions retain **0.82%** mean team-cost improvement while reducing observed
 any-car performance regression from **39/85** admitted policy-initial pairs with
 nominal gating to **1/46**. These correlated, small-sample counts are **not a risk
 certificate**. The same gate has **745 ms p95** computation and does not yet meet
 the 500 ms control period. Strong actuator lag also caused one baseline abort.
+
+On those same scenes, the completed full-action-bank ablation improves cost by
+**0.545%**, versus **0.822%** with joint composition. The additional paired gain is
+**0.0279 s [0.0057, 0.0562]**, with 128 repeated baseline outcomes exactly matching.
+This is a development interval, not an independent confirmation. Both methods
+retain the same one harmful case; joint composition admits seven additional
+model-initial pairs and incurs greater computation.
 
 An independent **40,960-run** risk-validation protocol is frozen; completion and
 certification are still pending. No per-state confidence probability or arbitrary

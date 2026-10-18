@@ -1,0 +1,73 @@
+{
+  "purpose": "Frozen direct transfer of all three trained actors and gates across initial-distribution and physical actuator shifts",
+  "data_role": "direct_transfer",
+  "n_initials_per_scenario": 32,
+  "seed_base": 62100001,
+  "shards": 2,
+  "scenarios": [
+    "nominal",
+    "dense",
+    "slow_yield",
+    "asymmetric_speed",
+    "tight_headway"
+  ],
+  "plants": [
+    "nominal",
+    "gain_drag",
+    "lag_mild",
+    "lag_strong"
+  ],
+  "mode": "uniform",
+  "methods": {
+    "baseline": {
+      "kind": "baseline"
+    },
+    "raw_1802": {
+      "kind": "raw",
+      "seed": 1802
+    },
+    "nominal_1802": {
+      "kind": "nominal",
+      "seed": 1802
+    },
+    "portfolio0_1802": {
+      "kind": "portfolio",
+      "seed": 1802,
+      "max_failed_scenarios": 0
+    },
+    "raw_1812": {
+      "kind": "raw",
+      "seed": 1812
+    },
+    "nominal_1812": {
+      "kind": "nominal",
+      "seed": 1812
+    },
+    "portfolio0_1812": {
+      "kind": "portfolio",
+      "seed": 1812,
+      "max_failed_scenarios": 0
+    },
+    "raw_1822": {
+      "kind": "raw",
+      "seed": 1822
+    },
+    "nominal_1822": {
+      "kind": "nominal",
+      "seed": 1822
+    },
+    "portfolio0_1822": {
+      "kind": "portfolio",
+      "seed": 1822,
+      "max_failed_scenarios": 0
+    }
+  },
+  "expected_actual_sumo_runs": 6400,
+  "audit_initial_indices": [
+    0,
+    1,
+    16,
+    17
+  ],
+  "scope": "Fixed weights and original nominal gates; no retuning, calibration, seed rejection or transferred risk certificate. All initial IDs paired across plants and controllers. Strong lag deliberately exceeds the original physical error assumption."
+}
