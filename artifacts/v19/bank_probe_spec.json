@@ -1,0 +1,16 @@
+{
+  "purpose": "Development probe of finite-disturbance joint Bellman admission; not risk certification or final comparison",
+  "n_initials": 16,
+  "seed_base": 61900001,
+  "regime_assignment": "First eight nominal, next eight dense; fixed strata",
+  "models": [1802, 1812, 1822],
+  "modes": ["clean", "uniform", "bias", "pulse"],
+  "controllers_per_model": ["raw", "nominal", "bank"],
+  "shared_baseline": "V15 full joint feedback rollout",
+  "bank": "bias_pulse",
+  "expected_actual_sumo_runs": 640,
+  "all_traces_saved": true,
+  "strict_harm_tolerance": 1e-9,
+  "bank_theory_check": "Every admitted step passed all 17 scenarios; all clean/bias actual outcomes componentwise no worse than their paired baseline",
+  "open_question": "Can out-of-bank performance risk be controlled with useful adoption and gain? Uniform and independently resampled pulse-sign results are descriptive, not a risk certificate."
+}
