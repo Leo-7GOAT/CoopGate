@@ -127,6 +127,14 @@ closed-loop improvement nor a population risk estimate. A frozen **6,656-run**
 paired SUMO study on 128 fresh initials is running for all three models and all
 three extensions; no V19 final-test outcomes are used to develop V20.
 
+A completed [action-attenuation diagnosis](docs/v20_action_repair_diagnosis.md)
+checks **220 joint commands** at the same 55 selected states. Under the sampled
+temporal bank, seven previously rejected commands have an attenuated alternative
+with positive realized-branch team gain and no positive vehicle cost/time
+component. Four original harmful branches remain. An independent review
+reconstructs every choice and 34 selected realized branches. This is a local
+one-action-then-baseline diagnostic, not a closed-loop adoption or risk result.
+
 ## V18: joint gating improves the frozen three-model comparison
 
 Models and protocol were frozen in **79beb44**, before **7,168 actual SUMO runs**
