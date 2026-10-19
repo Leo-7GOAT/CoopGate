@@ -1,0 +1,583 @@
+{
+  "actual_sumo_runs": 57,
+  "matched_cases": 19,
+  "matched_decision_steps": 427,
+  "timings": {
+    "cached": {
+      "total_controller_ms": 164230.64819997307,
+      "p50_ms": 12.668500003201189,
+      "p95_ms": 2673.03581000051,
+      "p99_ms": 4627.264707998841,
+      "max_ms": 6627.182800002629,
+      "over_500ms": 72,
+      "decision_steps": 427,
+      "process_cpu_ms": 161187.5,
+      "internal_transitions": 8316812,
+      "optimistic_transitions": 0
+    },
+    "temporal_first": {
+      "total_controller_ms": 197734.52869999528,
+      "p50_ms": 13.550299998314586,
+      "p95_ms": 3622.291719999339,
+      "p99_ms": 5391.715472001238,
+      "max_ms": 7774.42019999944,
+      "over_500ms": 71,
+      "decision_steps": 427,
+      "process_cpu_ms": 193000.0,
+      "internal_transitions": 9558248,
+      "optimistic_transitions": 0
+    },
+    "temporal_first_bounded": {
+      "total_controller_ms": 172386.76569999006,
+      "p50_ms": 12.833400000090478,
+      "p95_ms": 3111.1537399985536,
+      "p99_ms": 4875.011575997997,
+      "max_ms": 7106.775100000959,
+      "over_500ms": 69,
+      "decision_steps": 427,
+      "process_cpu_ms": 168906.25,
+      "internal_transitions": 8202472,
+      "optimistic_transitions": 438818
+    }
+  },
+  "paired_cases": [
+    {
+      "case": {
+        "index": 0,
+        "mode": "bias",
+        "method": "repair_1802",
+        "reasons": [
+          "1802 complete fallback"
+        ]
+      },
+      "matched_steps": 24,
+      "verified": {
+        "cached": {
+          "rejection_witnesses": 8,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first": {
+          "rejection_witnesses": 8,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first_bounded": {
+          "rejection_witnesses": 8,
+          "bank_bounds": 8,
+          "nominal_bounds": 15
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 0,
+        "mode": "bias",
+        "method": "repair_1812",
+        "reasons": [
+          "1812 complete fallback"
+        ]
+      },
+      "matched_steps": 24,
+      "verified": {
+        "temporal_first": {
+          "rejection_witnesses": 12,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first_bounded": {
+          "rejection_witnesses": 12,
+          "bank_bounds": 12,
+          "nominal_bounds": 14
+        },
+        "cached": {
+          "rejection_witnesses": 12,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 0,
+        "mode": "bias",
+        "method": "repair_1822",
+        "reasons": [
+          "1822 complete fallback"
+        ]
+      },
+      "matched_steps": 24,
+      "verified": {
+        "temporal_first_bounded": {
+          "rejection_witnesses": 7,
+          "bank_bounds": 7,
+          "nominal_bounds": 18
+        },
+        "cached": {
+          "rejection_witnesses": 7,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first": {
+          "rejection_witnesses": 7,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 1,
+        "mode": "bias",
+        "method": "repair_1802",
+        "reasons": [
+          "1802/bias attenuation coverage"
+        ]
+      },
+      "matched_steps": 22,
+      "verified": {
+        "cached": {
+          "rejection_witnesses": 13,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first": {
+          "rejection_witnesses": 13,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first_bounded": {
+          "rejection_witnesses": 13,
+          "bank_bounds": 13,
+          "nominal_bounds": 25
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 1,
+        "mode": "bias",
+        "method": "repair_1822",
+        "reasons": [
+          "1822/bias attenuation coverage"
+        ]
+      },
+      "matched_steps": 22,
+      "verified": {
+        "temporal_first": {
+          "rejection_witnesses": 18,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first_bounded": {
+          "rejection_witnesses": 18,
+          "bank_bounds": 18,
+          "nominal_bounds": 31
+        },
+        "cached": {
+          "rejection_witnesses": 18,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 1,
+        "mode": "pulse",
+        "method": "repair_1802",
+        "reasons": [
+          "1802/pulse attenuation coverage"
+        ]
+      },
+      "matched_steps": 21,
+      "verified": {
+        "temporal_first_bounded": {
+          "rejection_witnesses": 20,
+          "bank_bounds": 20,
+          "nominal_bounds": 15
+        },
+        "cached": {
+          "rejection_witnesses": 20,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first": {
+          "rejection_witnesses": 20,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 1,
+        "mode": "pulse",
+        "method": "repair_1812",
+        "reasons": [
+          "1812/pulse attenuation coverage"
+        ]
+      },
+      "matched_steps": 21,
+      "verified": {
+        "cached": {
+          "rejection_witnesses": 13,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first": {
+          "rejection_witnesses": 13,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first_bounded": {
+          "rejection_witnesses": 13,
+          "bank_bounds": 13,
+          "nominal_bounds": 19
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 1,
+        "mode": "pulse",
+        "method": "repair_1822",
+        "reasons": [
+          "1822/pulse attenuation coverage"
+        ]
+      },
+      "matched_steps": 21,
+      "verified": {
+        "temporal_first": {
+          "rejection_witnesses": 22,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first_bounded": {
+          "rejection_witnesses": 22,
+          "bank_bounds": 22,
+          "nominal_bounds": 14
+        },
+        "cached": {
+          "rejection_witnesses": 22,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 2,
+        "mode": "bias",
+        "method": "repair_1812",
+        "reasons": [
+          "1812/bias attenuation coverage"
+        ]
+      },
+      "matched_steps": 22,
+      "verified": {
+        "temporal_first_bounded": {
+          "rejection_witnesses": 32,
+          "bank_bounds": 32,
+          "nominal_bounds": 36
+        },
+        "cached": {
+          "rejection_witnesses": 32,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first": {
+          "rejection_witnesses": 32,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 3,
+        "mode": "clean",
+        "method": "repair_1822",
+        "reasons": [
+          "1822/clean attenuation coverage"
+        ]
+      },
+      "matched_steps": 22,
+      "verified": {
+        "cached": {
+          "rejection_witnesses": 5,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first": {
+          "rejection_witnesses": 5,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first_bounded": {
+          "rejection_witnesses": 5,
+          "bank_bounds": 5,
+          "nominal_bounds": 23
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 4,
+        "mode": "clean",
+        "method": "repair_1802",
+        "reasons": [
+          "1802/clean attenuation coverage"
+        ]
+      },
+      "matched_steps": 25,
+      "verified": {
+        "temporal_first": {
+          "rejection_witnesses": 5,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first_bounded": {
+          "rejection_witnesses": 5,
+          "bank_bounds": 5,
+          "nominal_bounds": 14
+        },
+        "cached": {
+          "rejection_witnesses": 5,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 5,
+        "mode": "clean",
+        "method": "repair_1812",
+        "reasons": [
+          "1812/clean attenuation coverage"
+        ]
+      },
+      "matched_steps": 23,
+      "verified": {
+        "temporal_first_bounded": {
+          "rejection_witnesses": 7,
+          "bank_bounds": 7,
+          "nominal_bounds": 2
+        },
+        "cached": {
+          "rejection_witnesses": 7,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first": {
+          "rejection_witnesses": 7,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 5,
+        "mode": "pulse",
+        "method": "repair_1802",
+        "reasons": [
+          "1802 largest archived single-call time"
+        ]
+      },
+      "matched_steps": 23,
+      "verified": {
+        "cached": {
+          "rejection_witnesses": 14,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first": {
+          "rejection_witnesses": 14,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first_bounded": {
+          "rejection_witnesses": 14,
+          "bank_bounds": 14,
+          "nominal_bounds": 20
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 5,
+        "mode": "uniform",
+        "method": "repair_1812",
+        "reasons": [
+          "1812/uniform attenuation coverage"
+        ]
+      },
+      "matched_steps": 23,
+      "verified": {
+        "temporal_first": {
+          "rejection_witnesses": 3,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first_bounded": {
+          "rejection_witnesses": 3,
+          "bank_bounds": 3,
+          "nominal_bounds": 2
+        },
+        "cached": {
+          "rejection_witnesses": 3,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 5,
+        "mode": "uniform",
+        "method": "repair_1822",
+        "reasons": [
+          "1822 largest archived single-call time"
+        ]
+      },
+      "matched_steps": 23,
+      "verified": {
+        "temporal_first_bounded": {
+          "rejection_witnesses": 3,
+          "bank_bounds": 3,
+          "nominal_bounds": 35
+        },
+        "cached": {
+          "rejection_witnesses": 3,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first": {
+          "rejection_witnesses": 3,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 7,
+        "mode": "uniform",
+        "method": "repair_1802",
+        "reasons": [
+          "1802/uniform attenuation coverage"
+        ]
+      },
+      "matched_steps": 21,
+      "verified": {
+        "cached": {
+          "rejection_witnesses": 23,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first": {
+          "rejection_witnesses": 23,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first_bounded": {
+          "rejection_witnesses": 23,
+          "bank_bounds": 23,
+          "nominal_bounds": 40
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 7,
+        "mode": "uniform",
+        "method": "repair_1822",
+        "reasons": [
+          "1822/uniform attenuation coverage"
+        ]
+      },
+      "matched_steps": 21,
+      "verified": {
+        "temporal_first": {
+          "rejection_witnesses": 32,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first_bounded": {
+          "rejection_witnesses": 32,
+          "bank_bounds": 32,
+          "nominal_bounds": 20
+        },
+        "cached": {
+          "rejection_witnesses": 32,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 14,
+        "mode": "pulse",
+        "method": "repair_1802",
+        "reasons": [
+          "all archived harmful repair outcomes"
+        ]
+      },
+      "matched_steps": 22,
+      "verified": {
+        "temporal_first_bounded": {
+          "rejection_witnesses": 39,
+          "bank_bounds": 39,
+          "nominal_bounds": 85
+        },
+        "cached": {
+          "rejection_witnesses": 39,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first": {
+          "rejection_witnesses": 39,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        }
+      }
+    },
+    {
+      "case": {
+        "index": 14,
+        "mode": "uniform",
+        "method": "repair_1812",
+        "reasons": [
+          "1812 largest archived single-call time"
+        ]
+      },
+      "matched_steps": 23,
+      "verified": {
+        "cached": {
+          "rejection_witnesses": 36,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first": {
+          "rejection_witnesses": 36,
+          "bank_bounds": 0,
+          "nominal_bounds": 0
+        },
+        "temporal_first_bounded": {
+          "rejection_witnesses": 36,
+          "bank_bounds": 36,
+          "nominal_bounds": 110
+        }
+      }
+    }
+  ],
+  "additional_independent_initials": 0,
+  "risk_certified": false,
+  "hard_real_time_certified": false,
+  "timing_scope": "Warmed functions and cyclic order with concurrent desktop experiments; no isolated deployment or hard deadline claim.",
+  "plan_sha256": "37a2e3014164a81201e40e7bc8bdbcaa7c58abcc780c774aa1e9c9e2385132b7",
+  "episodes_sha256": "00a87540f6bfc82b6e03891320da5db66a5b782233a329cb29cf6b6152ab2fb2"
+}

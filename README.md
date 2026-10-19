@@ -185,7 +185,19 @@ A separate [path-order equivalence study](docs/v20_ordered_repair_verification.m
 uses the same 19 fixed cases for another **57 actual SUMO runs**. Temporal paths
 are checked first, while successful admissions still require every original
 path. Each rejection needs an independently reconstructed violating forecast;
-no speedup is claimed before the complete measurements are available.
+all 57 runs now match across 427 paired decisions. Temporal-first order is
+**20.40% slower** than cached original order; adding bounds still makes it
+**4.97% slower** than that same cached reference. Every rejection is independently
+verified, and the known harmful outcome is preserved. This negative result does
+not support replacing the original path order or claiming real-time operation.
+
+A separate [prospective risk-power calculation](docs/v20_risk_power_design.md)
+uses only the frozen multiplicity budget and hypothetical adoption/risk values.
+At 20% adoption and 1% true conditional harm, 1,024 independent initials give
+only **60.49%** power for one certification test. Six risk tests across three
+policies require a joint analysis; their lower bound does not assume independence.
+This calculation neither selects a new sample size nor changes any running
+protocol, and it does not certify gain or adoption requirements.
 
 ## V18: joint gating improves the frozen three-model comparison
 
