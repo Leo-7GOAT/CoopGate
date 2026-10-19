@@ -1,0 +1,50 @@
+{
+  "purpose": "Lossless checkpoint promotion and bounded retry after Windows access denial",
+  "study": "artifacts/v19/risk_validation",
+  "protocol_sha256": "509782d7d10257b7d42f89268f7ec8ef1cc139d8119fac34cd4b8c59735962aa",
+  "snapshot_sha256": "654a3955989334207eb7ffd289b95e73e3fd1d9957be10c59409b9687af29e86",
+  "prefix_archive_sha256": "ef7654932036851c9b374a48b772a4e5b83b18c5179a8e8d78b9d102faa07c67",
+  "shards": {
+    "2": {
+      "prefix_count": 10035,
+      "remaining_count": 205,
+      "boundary_case": [
+        1002,
+        "pulse",
+        "portfolio0_1812"
+      ],
+      "first_missing_case": [
+        1002,
+        "pulse",
+        "nominal_1812"
+      ],
+      "newline": "\r\n",
+      "prefix_sha256": "97c3318344840237cc257b82afc7ee816f00089df53c9cac47552d366145fe3d"
+    }
+  },
+  "failed_shard": 2,
+  "failed_process_id": 25620,
+  "failed_process_exit_code": 1,
+  "destination_before_promotion_sha256": "460dcd186a776caefe3874e78b56bc5ae850a7f0fc9ab0164875faff2e2a5e6a",
+  "pending_filename": "episodes.json.xcnx2b6p.tmp",
+  "retained_records": 10035,
+  "planned_remaining_records": 205,
+  "required_boundary_replays": 1,
+  "previously_completed_suffix_runs": 728,
+  "first_recovery_plan_sha256": "c60db763e5f10a64a49a6fd39d98383f93afdeb1252b516dd6824f5d11abdea6",
+  "policy_or_statistical_rules_changed": false,
+  "outcome_dependent_case_selection": false,
+  "partial_certification_performed": false,
+  "promotion": "Preserve the completed pending row including its original timings; replay it before any new suffix case",
+  "runtime_overrides": [
+    "Recovery evidence directory",
+    "Atomic checkpoint replacement with bounded access/sharing retry"
+  ],
+  "retry_attempts": 41,
+  "retry_delay_seconds": 0.25,
+  "source_sha256": {
+    "tools/recover_checkpoint_v19.py": "fc5cf88972291657d8f00228b989142e465373af5b49f0d5c9da9a6f189f7068",
+    "tools/resume_frozen_risk_v19.py": "bf78d1e33ea6c9625a03f9bfae675e5c637392457788bbb5c5638dc612e0ba6a",
+    "tests/test_recover_checkpoint_v19.py": "b9c4d9fa8848c164670cbe3a14976e5de186d9428886e69d0e8f36ed46fb89cd"
+  }
+}
