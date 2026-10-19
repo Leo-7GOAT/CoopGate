@@ -144,9 +144,14 @@ extensions reaches the 20% adoption requirement. Some models also fall below
 0.5% gain. Harm counts fall, but conditional harm does not improve consistently.
 The first-adoption argument explains why a strict subset of eligible commands
 cannot increase episode adoption under the declared common-baseline assumptions.
-All **27 harmful runs and 11 distinct baselines** are retained in a frozen
-[38-run diagnostic replay](docs/v20_temporal_harm_diagnosis.md). No V19 final-test
-outcomes are used to develop V20, and no new risk certification is claimed.
+All **27 harmful runs and 11 distinct baselines** now match in the completed
+[38-run diagnostic replay](docs/v20_temporal_harm_diagnosis.md), including every
+physical trace and hindsight baseline-value identity. Each harmful run has
+exactly one positive admission residual and none during fallback; **10** such
+admissions harm only vehicles whose immediate command did not change. Among 50
+correlated positive cost/time components, 46 had zero worst-bank difference and
+four had strictly negative predicted difference. No V19 final-test outcomes
+are used to develop V20, and no new risk certification is claimed.
 
 A completed [action-attenuation diagnosis](docs/v20_action_repair_diagnosis.md)
 checks **220 joint commands** at the same 55 selected states. Under the sampled

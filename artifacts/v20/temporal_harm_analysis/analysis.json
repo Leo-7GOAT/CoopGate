@@ -1,0 +1,1361 @@
+{
+  "counts": {
+    "harmful_runs": 27,
+    "exactly_one_positive_admission": 27,
+    "positive_fallback_steps": 0,
+    "positive_cost_time_components": 50,
+    "positive_with_zero_bank_margin": 46,
+    "positive_with_strict_negative_bank_margin": 4
+  },
+  "by_bank": {
+    "portfolio0": {
+      "harmful_runs": 12,
+      "positive_only_on_unchanged_commands": 3
+    },
+    "sampled": {
+      "harmful_runs": 6,
+      "positive_only_on_unchanged_commands": 2
+    },
+    "alternating": {
+      "harmful_runs": 6,
+      "positive_only_on_unchanged_commands": 3
+    },
+    "combined": {
+      "harmful_runs": 3,
+      "positive_only_on_unchanged_commands": 2
+    }
+  },
+  "positive_admission_events": [
+    {
+      "initial_index": 10,
+      "disturbance": "uniform",
+      "controller": "portfolio0_1802",
+      "mechanism_sha256": "6d8f09437d036f85fc74d689e9b83ea4119b4df7a87d65767383024ed415163e",
+      "step": 6,
+      "admitted": true,
+      "composition": 2,
+      "command": [
+        2.5,
+        -4.375,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        -3.75,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    },
+    {
+      "initial_index": 29,
+      "disturbance": "uniform",
+      "controller": "portfolio0_1802",
+      "mechanism_sha256": "c3f240429088b4b637e36a052833df198cf1e0ecbc521949b9449e866a1deba6",
+      "step": 10,
+      "admitted": true,
+      "composition": 2,
+      "command": [
+        2.5,
+        -5.0,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        -3.75,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.625,
+          0.5
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    },
+    {
+      "initial_index": 29,
+      "disturbance": "uniform",
+      "controller": "sampled_1802",
+      "mechanism_sha256": "b07dde209ce53e2b34bc6fe832ba5d6b943cc40059b9fe22b2caba4865345bc4",
+      "step": 10,
+      "admitted": true,
+      "composition": 2,
+      "command": [
+        2.5,
+        -5.0,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        -3.75,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.625,
+          0.5
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    },
+    {
+      "initial_index": 30,
+      "disturbance": "pulse",
+      "controller": "portfolio0_1802",
+      "mechanism_sha256": "90fb1fa580efe454520ecd44caace858533467209a26b9dcf7a43199972cc08f",
+      "step": 7,
+      "admitted": true,
+      "composition": 4,
+      "command": [
+        2.5,
+        2.5,
+        1.875
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.5
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    },
+    {
+      "initial_index": 51,
+      "disturbance": "pulse",
+      "controller": "portfolio0_1812",
+      "mechanism_sha256": "443bf188158b46dc691a1f6563b1e2e91d9a673aa03906674785445f3cf6e94c",
+      "step": 3,
+      "admitted": true,
+      "composition": 2,
+      "command": [
+        2.5,
+        -4.375,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        -5.0,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.4375,
+          0.5
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    },
+    {
+      "initial_index": 51,
+      "disturbance": "pulse",
+      "controller": "sampled_1812",
+      "mechanism_sha256": "443bf188158b46dc691a1f6563b1e2e91d9a673aa03906674785445f3cf6e94c",
+      "step": 3,
+      "admitted": true,
+      "composition": 2,
+      "command": [
+        2.5,
+        -4.375,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        -5.0,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.4375,
+          0.5
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    },
+    {
+      "initial_index": 61,
+      "disturbance": "pulse",
+      "controller": "alternating_1802",
+      "mechanism_sha256": "76a24b4075ca516b68d9c480604cdb0cff2811fa9958f499c3a2c09bb0772103",
+      "step": 1,
+      "admitted": true,
+      "composition": 2,
+      "command": [
+        2.5,
+        -1.875,
+        1.25
+      ],
+      "baseline_command": [
+        2.5,
+        -4.375,
+        1.25
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.4375,
+          0.5
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    },
+    {
+      "initial_index": 61,
+      "disturbance": "pulse",
+      "controller": "combined_1802",
+      "mechanism_sha256": "76a24b4075ca516b68d9c480604cdb0cff2811fa9958f499c3a2c09bb0772103",
+      "step": 1,
+      "admitted": true,
+      "composition": 2,
+      "command": [
+        2.5,
+        -1.875,
+        1.25
+      ],
+      "baseline_command": [
+        2.5,
+        -4.375,
+        1.25
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.4375,
+          0.5
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    },
+    {
+      "initial_index": 61,
+      "disturbance": "pulse",
+      "controller": "portfolio0_1802",
+      "mechanism_sha256": "76a24b4075ca516b68d9c480604cdb0cff2811fa9958f499c3a2c09bb0772103",
+      "step": 1,
+      "admitted": true,
+      "composition": 2,
+      "command": [
+        2.5,
+        -1.875,
+        1.25
+      ],
+      "baseline_command": [
+        2.5,
+        -4.375,
+        1.25
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.4375,
+          0.5
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    },
+    {
+      "initial_index": 61,
+      "disturbance": "pulse",
+      "controller": "sampled_1802",
+      "mechanism_sha256": "76a24b4075ca516b68d9c480604cdb0cff2811fa9958f499c3a2c09bb0772103",
+      "step": 1,
+      "admitted": true,
+      "composition": 2,
+      "command": [
+        2.5,
+        -1.875,
+        1.25
+      ],
+      "baseline_command": [
+        2.5,
+        -4.375,
+        1.25
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.4375,
+          0.5
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    },
+    {
+      "initial_index": 68,
+      "disturbance": "uniform",
+      "controller": "alternating_1802",
+      "mechanism_sha256": "3d7301ed2308b1d217cd2c04e76942a7429947a177dfd79f9b60c9abdb9d03c8",
+      "step": 3,
+      "admitted": true,
+      "composition": 3,
+      "command": [
+        1.25,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        1.25,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          -0.1875,
+          0.0
+        ],
+        [
+          0.0625,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": true
+    },
+    {
+      "initial_index": 68,
+      "disturbance": "uniform",
+      "controller": "alternating_1822",
+      "mechanism_sha256": "3d7301ed2308b1d217cd2c04e76942a7429947a177dfd79f9b60c9abdb9d03c8",
+      "step": 3,
+      "admitted": true,
+      "composition": 3,
+      "command": [
+        1.25,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        1.25,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          -0.1875,
+          0.0
+        ],
+        [
+          0.0625,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": true
+    },
+    {
+      "initial_index": 68,
+      "disturbance": "uniform",
+      "controller": "combined_1802",
+      "mechanism_sha256": "3d7301ed2308b1d217cd2c04e76942a7429947a177dfd79f9b60c9abdb9d03c8",
+      "step": 3,
+      "admitted": true,
+      "composition": 3,
+      "command": [
+        1.25,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        1.25,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          -0.1875,
+          0.0
+        ],
+        [
+          0.0625,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": true
+    },
+    {
+      "initial_index": 68,
+      "disturbance": "uniform",
+      "controller": "combined_1822",
+      "mechanism_sha256": "3d7301ed2308b1d217cd2c04e76942a7429947a177dfd79f9b60c9abdb9d03c8",
+      "step": 3,
+      "admitted": true,
+      "composition": 3,
+      "command": [
+        1.25,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        1.25,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          -0.1875,
+          0.0
+        ],
+        [
+          0.0625,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": true
+    },
+    {
+      "initial_index": 68,
+      "disturbance": "uniform",
+      "controller": "portfolio0_1802",
+      "mechanism_sha256": "45a1a982747e9c9b98268c0beb3fc045db7425e9303e19c578aa72455798ff1c",
+      "step": 3,
+      "admitted": true,
+      "composition": 3,
+      "command": [
+        1.25,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        1.25,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          -0.1875,
+          0.0
+        ],
+        [
+          0.0625,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": true
+    },
+    {
+      "initial_index": 68,
+      "disturbance": "uniform",
+      "controller": "portfolio0_1822",
+      "mechanism_sha256": "45a1a982747e9c9b98268c0beb3fc045db7425e9303e19c578aa72455798ff1c",
+      "step": 3,
+      "admitted": true,
+      "composition": 3,
+      "command": [
+        1.25,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        1.25,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          -0.1875,
+          0.0
+        ],
+        [
+          0.0625,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": true
+    },
+    {
+      "initial_index": 68,
+      "disturbance": "uniform",
+      "controller": "sampled_1802",
+      "mechanism_sha256": "45a1a982747e9c9b98268c0beb3fc045db7425e9303e19c578aa72455798ff1c",
+      "step": 3,
+      "admitted": true,
+      "composition": 3,
+      "command": [
+        1.25,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        1.25,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          -0.1875,
+          0.0
+        ],
+        [
+          0.0625,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": true
+    },
+    {
+      "initial_index": 68,
+      "disturbance": "uniform",
+      "controller": "sampled_1822",
+      "mechanism_sha256": "45a1a982747e9c9b98268c0beb3fc045db7425e9303e19c578aa72455798ff1c",
+      "step": 3,
+      "admitted": true,
+      "composition": 3,
+      "command": [
+        1.25,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        1.25,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          -0.1875,
+          0.0
+        ],
+        [
+          0.0625,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": true
+    },
+    {
+      "initial_index": 91,
+      "disturbance": "uniform",
+      "controller": "alternating_1812",
+      "mechanism_sha256": "bd9d51e10757c2e218073dbf9469e039be56277b2a793ef5a7968af7b9e9a7e9",
+      "step": 0,
+      "admitted": true,
+      "composition": 2,
+      "command": [
+        2.5,
+        -1.875,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        -0.625,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -2.125,
+          -2.0
+        ],
+        [
+          2.75,
+          2.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": true
+    },
+    {
+      "initial_index": 91,
+      "disturbance": "uniform",
+      "controller": "portfolio0_1812",
+      "mechanism_sha256": "bd9d51e10757c2e218073dbf9469e039be56277b2a793ef5a7968af7b9e9a7e9",
+      "step": 0,
+      "admitted": true,
+      "composition": 2,
+      "command": [
+        2.5,
+        -1.875,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        -0.625,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -2.125,
+          -2.0
+        ],
+        [
+          2.75,
+          2.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": true
+    },
+    {
+      "initial_index": 96,
+      "disturbance": "pulse",
+      "controller": "portfolio0_1802",
+      "mechanism_sha256": "d47072b4bfdfb6aa7ec6abf89762abc6427db93c6890ee6000c93a2f40369429",
+      "step": 3,
+      "admitted": true,
+      "composition": 2,
+      "command": [
+        2.5,
+        -1.875,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        -3.125,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    },
+    {
+      "initial_index": 114,
+      "disturbance": "pulse",
+      "controller": "alternating_1822",
+      "mechanism_sha256": "208c2875c65c43f81ce50ffb80286f262446db11f8e64fe75c20dc29b54f5790",
+      "step": 0,
+      "admitted": true,
+      "composition": 2,
+      "command": [
+        2.5,
+        -0.625,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        -2.5,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    },
+    {
+      "initial_index": 114,
+      "disturbance": "pulse",
+      "controller": "portfolio0_1822",
+      "mechanism_sha256": "208c2875c65c43f81ce50ffb80286f262446db11f8e64fe75c20dc29b54f5790",
+      "step": 0,
+      "admitted": true,
+      "composition": 2,
+      "command": [
+        2.5,
+        -0.625,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        -2.5,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    },
+    {
+      "initial_index": 118,
+      "disturbance": "uniform",
+      "controller": "portfolio0_1812",
+      "mechanism_sha256": "7a15c030d12e7b91d92f425c55515eac1cfa60cd738facb4f84b5a15d50cca65",
+      "step": 2,
+      "admitted": true,
+      "composition": 1,
+      "command": [
+        -3.75,
+        2.5,
+        1.25
+      ],
+      "baseline_command": [
+        -4.375,
+        2.5,
+        1.25
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.5625,
+          0.5
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.375,
+          0.5
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          -0.0625,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    },
+    {
+      "initial_index": 118,
+      "disturbance": "uniform",
+      "controller": "sampled_1812",
+      "mechanism_sha256": "97c52a9b0c5cf483072067bbd8352ea458e84abf50506dcc67f65f2d9a42ca98",
+      "step": 2,
+      "admitted": true,
+      "composition": 1,
+      "command": [
+        -3.75,
+        2.5,
+        1.25
+      ],
+      "baseline_command": [
+        -4.375,
+        2.5,
+        1.25
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.5625,
+          0.5
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.375,
+          0.5
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    },
+    {
+      "initial_index": 125,
+      "disturbance": "uniform",
+      "controller": "alternating_1812",
+      "mechanism_sha256": "ab8703456e1add7228887e5012deaeb1e0b0e15e2bceb55c72ecd9b4a7f2681b",
+      "step": 5,
+      "admitted": true,
+      "composition": 2,
+      "command": [
+        2.5,
+        -4.375,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        -3.125,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    },
+    {
+      "initial_index": 125,
+      "disturbance": "uniform",
+      "controller": "portfolio0_1812",
+      "mechanism_sha256": "ab8703456e1add7228887e5012deaeb1e0b0e15e2bceb55c72ecd9b4a7f2681b",
+      "step": 5,
+      "admitted": true,
+      "composition": 2,
+      "command": [
+        2.5,
+        -4.375,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        -3.125,
+        2.5
+      ],
+      "hindsight_bellman_difference": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "bank_componentwise_max": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "positive_hindsight_residual": true,
+      "positive_only_on_unchanged_commands": false
+    }
+  ],
+  "source_sha256": "f0d42d14063fd028477fdb795bd11a75ffceecd6f242f3d4d9ea7a32486a8754",
+  "replay_manifest_sha256": "c31096f1784bb792740c246baac248b4b7d65d126d86d5effc87f84b8536c380",
+  "additional_sumo_runs": 0,
+  "additional_independent_initials": 0,
+  "outcome_dependent_selection": true,
+  "inference_scope": "Selected harmful development outcomes only. Margin counts are correlated components, not independent samples.",
+  "risk_certified": false,
+  "policies_changed": false
+}
