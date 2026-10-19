@@ -209,6 +209,16 @@ rejects **9/12** positive ones. These are correlated archived branch counts,
 not new closed-loop adoption or risk estimates. No controller change is claimed;
 the original 500 ms outcome metrics remain unchanged.
 
+The [V21 full phase-gate development](docs/v21_phase_gate_development.md) implements
+fixed **50 ms and 100 ms** tolerances with the complete joint candidate search.
+The original repair gate and a phase-disabled reference are retained for every
+model. **13 actual SUMO integration runs** have passed, reproducing four archived
+original outcomes and matching three complete original/reference trajectories.
+A separate **6,656-run** protocol on **128 fresh IID initials** is frozen for all
+three models, four disturbance modes and all 13 controllers. Its independent
+review is frozen with the controller. This is development, with no new risk
+certificate or shifted-dynamics guarantee.
+
 A separate [repair runtime equivalence audit](docs/v20_fast_repair_verification.md)
 freezes **57 actual SUMO replays** of 19 development cases, including every known
 repair harm and each model's slowest call. It compares the reference with exact

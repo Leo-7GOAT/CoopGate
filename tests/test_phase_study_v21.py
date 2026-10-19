@@ -6,7 +6,7 @@ import numpy as np
 import pytest
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'tools'))
-from study_phase_repair_v21 import MODELS,REFERENCE_KEYS,methods,paired_checks,phase_record_check
+from study_phase_repair_v21 import MODELS,REFERENCE_KEYS,methods,paired_checks,phase_record_check,validate_worker_exits
 
 
 def fixture():
@@ -60,3 +60,13 @@ def test_missing_or_failed_phase_path_cannot_count_as_valid_admission():
         with pytest.raises(ValueError,match='complete valid'):phase_record_check(bad,method)
     with pytest.raises(ValueError,match='Fallback'):
         phase_record_check({**item,'portfolio_joint_action_admitted':False},method)
+
+
+def test_all_original_process_exits_are_required_before_finalization():
+    launch={'worker_pids':[101,102,103]}
+    good=[dict(pid=pid,exit_code=0) for pid in launch['worker_pids']]
+    validate_worker_exits(good,launch,3)
+    for bad in (good[:-1],good[:2]+[good[0]],good[:2]+[dict(pid=104,exit_code=0)],
+                good[:2]+[dict(pid=103,exit_code=None)],good[:2]+[dict(pid=103,exit_code=1)]):
+        with pytest.raises(ValueError,match='Every original worker'):
+            validate_worker_exits(bad,launch,3)

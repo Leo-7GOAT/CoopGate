@@ -24,7 +24,7 @@ from probe_disturbed_gate_v19 import digest, save
 from recover_checkpoint_v19 import atomic_bytes
 from resume_frozen_risk_v19 import build_record, schedule
 from review_repair_closed_loop_v20 import check_forecast_record, check_selected, outcome_counts, reconstruct_candidates
-from start_final_v19 import require_committed
+from start_final_v19 import require_committed, verify_manifest
 from study_gate_v19 import read_protocol, regime_for
 from study_repair_v20 import REFERENCE_FIELDS, trace_metadata, verify_trace
 from study_temporal_v20 import independent_ranges, summarize
@@ -87,10 +87,19 @@ def freeze():
     if STUDY.exists():
         raise FileExistsError('Preserve the existing phase study')
     _,old=read_protocol(ROOT/'artifacts/v20/temporal_repair_extension')
+    preflight=ROOT/'artifacts/v21/phase_preflight'
+    verify_manifest(preflight)
+    checked=json.loads((preflight/'audit.json').read_text())
+    if not checked['all_original_and_reference_checks_pass'] or checked['completed_runs']!=13:
+        raise ValueError('Actual SUMO preflight has not passed')
+    preflight_sources=json.loads((preflight/'plan.json').read_text())['source_sha256']
+    for source,expected in preflight_sources.items():
+        if source.startswith('src/') and digest(ROOT/source)!=expected:
+            raise ValueError('Controller source changed after preflight: '+source)
     spec=dict(purpose='Fresh closed-loop phase-gate development with full-candidate search and reference identity',
-        data_role='development',seed_base=63300001,n_initials=16,shards=2,sampling='iid_mixture',
+        data_role='development',seed_base=63300001,n_initials=128,shards=3,sampling='iid_mixture',
         modes=['clean','uniform','bias','pulse'],methods=methods(),all_traces_saved=True,audit_initial_indices=[],
-        expected_actual_sumo_runs=16*4*13,mode_selection_stream=21107,bootstrap_stream=21113,bootstrap_samples=5000,
+        expected_actual_sumo_runs=128*4*13,mode_selection_stream=21107,bootstrap_stream=21113,bootstrap_samples=5000,
         phase_tolerances_seconds=[.05,.1],reference_phase_filter_enabled=False,
         report_scope='All three fixed models and both tolerances; pointwise paired development intervals, no new risk certificate.',
         timing_scope='Concurrent desktop workload; every complete call measured including phase forecasts; no deadline cutoff or hard-real-time claim.',
@@ -98,6 +107,8 @@ def freeze():
         selection_basis='Completed V20 exhaustive local screen and complete margin grid; no new study outcomes used.')
     prior=independent_ranges(spec['seed_base'],spec['n_initials'])
     sources=dict(old['source_sha256'])
+    for path in (ROOT/'src/coopgate').glob('*.py'):
+        sources[path.relative_to(ROOT).as_posix()]=digest(path)
     names=('src/coopgate/arrival_phase_v20.py','src/coopgate/phase_repair_v21.py',
         'src/coopgate/fast_repair_v20.py','src/coopgate/cached_portfolio_v19.py',
         'src/coopgate/bounded_portfolio_v19.py','src/coopgate/deduplicated_planner_v19.py',
@@ -108,6 +119,7 @@ def freeze():
         sources[name]=digest(ROOT/name)
     protocol=dict(spec=spec,models=old['models'],source_sha256=sources,disjoint_prior_protocols=prior,
         independent_review_frozen_with_controller=True,final_confirmation_outcomes_read=False,
+        actual_sumo_preflight_manifest_sha256=digest(preflight/'sha256.json'),
         development_screen_sha256=digest(ROOT/'artifacts/v20/arrival_phase_screen/sha256.json'),
         development_margin_grid_sha256=digest(ROOT/'artifacts/v20/arrival_phase_margin_analysis/sha256.json'))
     if len(factories(protocol))!=13:
@@ -119,7 +131,7 @@ def freeze():
         target.parent.mkdir(parents=True,exist_ok=True)
         shutil.copy2(ROOT/name,target)
     print(json.dumps(dict(expected_actual_sumo_runs=spec['expected_actual_sumo_runs'],
-                          independent_initials=16,protocol_sha256=digest(STUDY/'protocol.json'))),flush=True)
+                          independent_initials=spec['n_initials'],protocol_sha256=digest(STUDY/'protocol.json'))),flush=True)
 
 
 def worker(shard):
@@ -255,13 +267,22 @@ def independent_review(rows,protocol):
     return counts
 
 
+def validate_worker_exits(exits,launch,shards):
+    pids=[row['pid'] for row in exits]
+    if (len(exits)!=shards or len(set(pids))!=shards or set(pids)!=set(launch['worker_pids']) or
+            len(launch['worker_pids'])!=shards or any(row['exit_code']!=0 for row in exits)):
+        raise ValueError('Every original worker must exit successfully, with no missing or substituted handle')
+
+
 def finalize(logs):
     if (STUDY/'summary.json').exists():
         raise FileExistsError('Preserve completed study analysis')
-    exits=json.loads((Path(logs)/'worker_exits.json').read_text())['workers']
-    if len(exits)!=2 or any(r['exit_code']!=0 for r in exits):
-        raise ValueError('Both original workers must have exited successfully')
     _,protocol=read_protocol(STUDY)
+    exits=json.loads((Path(logs)/'worker_exits.json').read_text())['workers']
+    launch=json.loads((Path(logs)/'launch.json').read_text())
+    if launch['protocol_sha256']!=digest(STUDY/'protocol.json'):
+        raise ValueError('Execution launch used a different protocol')
+    validate_worker_exits(exits,launch,protocol['spec']['shards'])
     spec,rows=protocol['spec'],[]
     for shard in range(spec['shards']):
         out=STUDY/f'shard_{shard}'
