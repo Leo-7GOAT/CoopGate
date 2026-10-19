@@ -82,12 +82,21 @@ online real-time result. [Observable-state audit](docs/v19_observable_predictor.
 The complete-profile deployment adapter has passed another **56 SUMO executions**
 using explicitly synthetic calibration to exercise admission/fallback wiring:
 18 deployment/reference pairs match across 409 decisions. This does not replace
-real calibration or the still-pending final comparison. Actual final replay
-coverage is frozen before the untouched final-test executions.
+real calibration or independent final comparison. Actual final replay coverage
+was frozen before the final-test executions.
 
 The matched [conformal/LTT/mean-SPI comparison](docs/v19_established_comparison.md)
-is calibrated, and the separate **20,480-run** final test is running under its
-unchanged frozen protocol. Final results and whole-profile replay remain pending.
+has completed its separate **20,480-run** final test on 512 fresh IID initials,
+followed by **156 actual deployment replays** and **10 nominal shadow runs**.
+Every selected profile and replayed outcome matched. Strict gating preserves
+**0.669–0.724%** mean team-cost gain and **20.90–22.27%** episode adoption across
+the three fixed models, with positive paired gain intervals. Only model **1812**
+also passes both calibration risk certificates; the all-model joint target is
+not met. Raw model 1802's final gain interval crosses zero. Final strict-gate
+P95 is **586–640 ms**, still above the control period. The
+[complete final results](docs/v19_final_results.md) retain every model, failure,
+comparison and guarantee boundary. These runs do not supply 20,480 independent
+statistical samples, and the replays add no independent efficacy samples.
 A **6,400-run** direct-transfer study has completed. An [analytic actuator bound](docs/v19_actuator_bounds.md)
 also shows why the declared mild lag remains inside the original error envelope
 while strong lag is outside its uniformly covered range; this is not a shifted
@@ -104,7 +113,10 @@ and capped outcomes remain in the analysis. The frozen **336-case replay audit
 has passed**, reproducing all **68** study noncompletions; 291 saved full traces
 also match step by step. No shifted-distribution risk certificate is claimed.
 
-An [independent final-report audit](docs/v19_final_report_audit.md) is now frozen.
+The [independent final-report audit](docs/v19_final_report_audit.md) has completed
+the final comparison, calibration recount and deployment-replay verification.
+It confirms that only model 1812 meets all joint requirements; the other two
+models' lower final empirical harm frequencies do not alter calibration results.
 Its completed-transfer preflight reproduces all 180 model-cell summaries and
 matches all **2,389 zero-adoption outcomes** to their paired baselines. **22** of
 those still fail under strong lag: correct fallback does not repair a baseline
