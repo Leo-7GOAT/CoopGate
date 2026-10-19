@@ -1,0 +1,86 @@
+{
+  "purpose": "Infrastructure recovery of the exact frozen calibration suffix",
+  "study": "artifacts/v19/risk_validation",
+  "protocol_sha256": "509782d7d10257b7d42f89268f7ec8ef1cc139d8119fac34cd4b8c59735962aa",
+  "snapshot_sha256": "fc29039d0ae5b109d73fae94bb4c5981338cfa672b9c08ffc57cb35610639f04",
+  "prefix_archive_sha256": "de3b396486fa5ff93f394ee073371a468db2866969b3a4c588d27fb13cd61907",
+  "shards": {
+    "0": {
+      "prefix_count": 9271,
+      "remaining_count": 969,
+      "boundary_case": [
+        924,
+        "pulse",
+        "raw_1802"
+      ],
+      "first_missing_case": [
+        924,
+        "pulse",
+        "portfolio0_1802"
+      ],
+      "newline": "\r\n",
+      "prefix_sha256": "f3241e82aebe173b26ca9e90e9e9dd23d9c73bba093106e1bff4108b18784e41"
+    },
+    "1": {
+      "prefix_count": 8745,
+      "remaining_count": 1495,
+      "boundary_case": [
+        873,
+        "bias",
+        "portfolio0_1802"
+      ],
+      "first_missing_case": [
+        873,
+        "bias",
+        "portfolio0_1812"
+      ],
+      "newline": "\r\n",
+      "prefix_sha256": "eb795a54a9da66fc6f240ae777e8c3388a13614e6c9e60478dbbc53003ae9673"
+    },
+    "2": {
+      "prefix_count": 9307,
+      "remaining_count": 933,
+      "boundary_case": [
+        930,
+        "bias",
+        "nominal_1802"
+      ],
+      "first_missing_case": [
+        930,
+        "bias",
+        "portfolio0_1812"
+      ],
+      "newline": "\r\n",
+      "prefix_sha256": "24729b294a1de9958a6c39b862ada52fea8cc9ca3521f6129b03adf9b54f76c9"
+    },
+    "3": {
+      "prefix_count": 9353,
+      "remaining_count": 887,
+      "boundary_case": [
+        935,
+        "pulse",
+        "baseline"
+      ],
+      "first_missing_case": [
+        935,
+        "pulse",
+        "nominal_1802"
+      ],
+      "newline": "\r\n",
+      "prefix_sha256": "48205314296654213d766fca17bb0bc55b99b8159fbc55e50409b2ffe5b43a32"
+    }
+  },
+  "retained_records": 36676,
+  "planned_remaining_records": 4284,
+  "required_boundary_replays": 4,
+  "policy_or_statistical_rules_changed": false,
+  "outcome_dependent_case_selection": false,
+  "partial_certification_performed": false,
+  "boundary_result_use": "Execution identity only; no thresholds, models, candidates or sample sizes are selected from partial outcomes",
+  "timing_scope": "Original prefix timing records are retained. Resumed records are measured after restart; collection spans two sessions.",
+  "interruption_scope": "Uncommitted in-flight episode work before interruption is unknown and is not claimed as a new independent sample.",
+  "source_sha256": {
+    "tools/resume_frozen_risk_v19.py": "bf78d1e33ea6c9625a03f9bfae675e5c637392457788bbb5c5638dc612e0ba6a",
+    "tests/test_resume_frozen_risk_v19.py": "cd7952389976ea2d791e46fed8065389e2dd1e54ff0972233a71490976128ae8"
+  }
+}
