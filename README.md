@@ -228,6 +228,15 @@ pairs** and **two independent additive-simulator references** match. The frozen 
 all three models, both phase margins and prior raw/nominal/strict controls. There are
 **160 independent initial clusters**; no new transfer outcome or risk certificate is claimed.
 
+The [prospective V21 validation rules](docs/v21_prospective_validation.md) preserve
+all three models as one indivisible family, reserve **4,096 fresh calibration initials**
+and **1,024 independent final-test initials**, and give the same candidate profiles
+and calibration budget to the declared statistical adapters. A summable primary
+error budget prevents restarting a fresh 5% test after each failed attempt.
+**14 targeted tests** and an actual refusal to inspect the still-running development
+study passed. No new calibration data, selected family or risk certificate exists yet;
+the full calibration execution protocol remains to be frozen.
+
 A separate [repair runtime equivalence audit](docs/v20_fast_repair_verification.md)
 freezes **57 actual SUMO replays** of 19 development cases, including every known
 repair harm and each model's slowest call. It compares the reference with exact

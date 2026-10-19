@@ -1,0 +1,549 @@
+{
+  "purpose": "Prospective statistical and complete-family selection rules, not a calibration result",
+  "candidate_families": [
+    "phase05",
+    "phase10",
+    "repair"
+  ],
+  "fixed_models": [
+    1802,
+    1812,
+    1822
+  ],
+  "models": {
+    "1802": {
+      "path": "artifacts/v18/independent_models/coupled_1802/policy.pt",
+      "sha256": "2a53d50100b11ac5ecd3a7749cc06a51851d6ab84f2fd1e416af0ea9b4e71b6d",
+      "ego_seed": 901,
+      "training_seed": 1802,
+      "updates": 6,
+      "target_updates": 6
+    },
+    "1812": {
+      "path": "artifacts/v18/independent_models/coupled_1812/policy.pt",
+      "sha256": "49943cf074e6dfff83e41ed0e7f0a44f07c89e0771e024f8744f197d1ee0c959",
+      "ego_seed": 911,
+      "training_seed": 1812,
+      "updates": 6,
+      "target_updates": 6
+    },
+    "1822": {
+      "path": "artifacts/v18/independent_models/coupled_1822/policy.pt",
+      "sha256": "8df0829c3474050443a0cc9127451550d8585f1a0d7690a8a1a0a0e93660d6a3",
+      "ego_seed": 921,
+      "training_seed": 1822,
+      "updates": 6,
+      "target_updates": 6
+    }
+  },
+  "modes": [
+    "clean",
+    "uniform",
+    "bias",
+    "pulse"
+  ],
+  "development_protocol_sha256": "6c7407c128b52d6b955e8093275a7b651dc6d87eddee516731915551cc743f90",
+  "development_selection": "All three fixed models must have adoption >=20%, gain >=0.5%, a positive pointwise gain interval, no failed runs and empirical actual/bundle harm <=5%. Rank eligible complete families by worst six-target 95% development upper score, then minimum model gain, then phase05/phase10/repair order.",
+  "no_eligible_family": "Record rejection and continue development; never splice models or treat baseline-only execution as success",
+  "calibration": {
+    "seed_base": 63500001,
+    "independent_initials": 4096,
+    "sampling": "iid_mixture",
+    "modes": [
+      "clean",
+      "uniform",
+      "bias",
+      "pulse"
+    ],
+    "mode_selection_stream": 22107,
+    "physical_error_radius": 0.5,
+    "profiles": "raw, nominal and one development-selected gate for each of all three fixed models, plus baseline",
+    "controller_count": 10,
+    "actual_sumo_runs": 163840
+  },
+  "confirmation": {
+    "seed_base": 63600001,
+    "independent_initials": 1024,
+    "sampling": "iid_mixture",
+    "modes": [
+      "clean",
+      "uniform",
+      "bias",
+      "pulse"
+    ],
+    "mode_selection_stream": 22117,
+    "bootstrap_stream": 22123,
+    "bootstrap_samples": 5000,
+    "controller_count": 10,
+    "actual_sumo_runs": 40960,
+    "actual_adoption_minimum": 0.2,
+    "mean_gain_percent_minimum": 0.5,
+    "all_three_gain_intervals_positive": true,
+    "all_three_primary_risks_certified": true
+  },
+  "primary": {
+    "risk_limit": 0.05,
+    "total_attempt_error": 0.05,
+    "allocation": "delta_k = 0.05/[k(k+1)] for attempt k=1,2,...; every post-data attempt consumes its allocation",
+    "first_attempt_error": 0.025,
+    "targets": [
+      "actual",
+      "bundle"
+    ],
+    "family_size": 6,
+    "claim": "All three fixed models and both conditional risks pass as one indivisible family",
+    "comparator_cannot_replace_failed_primary": true
+  },
+  "comparators": {
+    "common_profiles": true,
+    "common_calibration_initials": 4096,
+    "conformal": "Same frozen worst-mode/profile/car/metric residual construction; marginal coverage only",
+    "ltt": "Same nine profiles; two-target Bonferroni exact-binomial calibration with comparison error 0.05",
+    "mean_spi": "Same nine profiles; paired full-information Gaussian mean bands with comparison error 0.05, 50000 simulations, seed 22113",
+    "selections": "Within each fixed training model; complete controller trajectories only",
+    "scope": "Established task adaptations with distinct targets; not complete original SOTA reproductions and not evidence of outperforming LTT itself"
+  },
+  "power_scenarios": [
+    {
+      "hypothetical_adoption": 0.1,
+      "hypothetical_risk": 0.01,
+      "single_target_power": 0.9991346301168587,
+      "all_six_pass_probability_lower_bound": 0.994807780701152
+    },
+    {
+      "hypothetical_adoption": 0.1,
+      "hypothetical_risk": 0.02,
+      "single_target_power": 0.8920825931007819,
+      "all_six_pass_probability_lower_bound": 0.3524955586046912
+    },
+    {
+      "hypothetical_adoption": 0.1,
+      "hypothetical_risk": 0.03,
+      "single_target_power": 0.4617836410835535,
+      "all_six_pass_probability_lower_bound": 0.0
+    },
+    {
+      "hypothetical_adoption": 0.1,
+      "hypothetical_risk": 0.04,
+      "single_target_power": 0.12117953835047218,
+      "all_six_pass_probability_lower_bound": 0.0
+    },
+    {
+      "hypothetical_adoption": 0.1,
+      "hypothetical_risk": 0.05,
+      "single_target_power": 0.01846552023953832,
+      "all_six_pass_probability_lower_bound": 0.0
+    },
+    {
+      "hypothetical_adoption": 0.2,
+      "hypothetical_risk": 0.01,
+      "single_target_power": 0.9999999885633518,
+      "all_six_pass_probability_lower_bound": 0.9999999313801109
+    },
+    {
+      "hypothetical_adoption": 0.2,
+      "hypothetical_risk": 0.02,
+      "single_target_power": 0.9974255759172515,
+      "all_six_pass_probability_lower_bound": 0.9845534555035087
+    },
+    {
+      "hypothetical_adoption": 0.2,
+      "hypothetical_risk": 0.03,
+      "single_target_power": 0.8016168679072795,
+      "all_six_pass_probability_lower_bound": 0.0
+    },
+    {
+      "hypothetical_adoption": 0.2,
+      "hypothetical_risk": 0.04,
+      "single_target_power": 0.23714472413026744,
+      "all_six_pass_probability_lower_bound": 0.0
+    },
+    {
+      "hypothetical_adoption": 0.2,
+      "hypothetical_risk": 0.05,
+      "single_target_power": 0.02027821516383055,
+      "all_six_pass_probability_lower_bound": 0.0
+    },
+    {
+      "hypothetical_adoption": 0.3,
+      "hypothetical_risk": 0.01,
+      "single_target_power": 0.999999999999956,
+      "all_six_pass_probability_lower_bound": 0.9999999999997362
+    },
+    {
+      "hypothetical_adoption": 0.3,
+      "hypothetical_risk": 0.02,
+      "single_target_power": 0.9999655366223981,
+      "all_six_pass_probability_lower_bound": 0.9997932197343884
+    },
+    {
+      "hypothetical_adoption": 0.3,
+      "hypothetical_risk": 0.03,
+      "single_target_power": 0.9403690087294232,
+      "all_six_pass_probability_lower_bound": 0.6422140523765392
+    },
+    {
+      "hypothetical_adoption": 0.3,
+      "hypothetical_risk": 0.04,
+      "single_target_power": 0.3520849846664956,
+      "all_six_pass_probability_lower_bound": 0.0
+    },
+    {
+      "hypothetical_adoption": 0.3,
+      "hypothetical_risk": 0.05,
+      "single_target_power": 0.02118799411285404,
+      "all_six_pass_probability_lower_bound": 0.0
+    }
+  ],
+  "power_assumptions": "Six equal hypothetical marginals and a union lower bound; no target independence assumed; not a forecast of actual outcomes",
+  "historical_protocol_ranges": {
+    "artifacts/v14/development/v14_validation_average/protocol.json": {
+      "blocks": [
+        [
+          37030001,
+          128
+        ]
+      ],
+      "sha256": "0cba5d20ebbe5fa8f8d75119556c1317b4215ebcf3a128cc5f34f540c35e62f2"
+    },
+    "artifacts/v14/development/v14_validation_stage1/protocol.json": {
+      "blocks": [
+        [
+          37000001,
+          64
+        ]
+      ],
+      "sha256": "cecfa4f99586c83755307f739e7246cdeb10a2aef27ee86c66ae6f25195afb4c"
+    },
+    "artifacts/v14/development/v14_validation_stage2/protocol.json": {
+      "blocks": [
+        [
+          37010001,
+          192
+        ]
+      ],
+      "sha256": "bf714db59378d40955ea88f3cb0a2a0dbfb7a3d682651a9d641b64067f96a031"
+    },
+    "artifacts/v14/development/v14_validation_stage3/protocol.json": {
+      "blocks": [
+        [
+          37020001,
+          256
+        ]
+      ],
+      "sha256": "596955efcc0a863365640198e6e982ff48d81024c9be570c464232092912ef9e"
+    },
+    "artifacts/v15/development_stage1/actor_ablation/protocol.json": {
+      "blocks": [
+        [
+          59100001,
+          128
+        ]
+      ],
+      "sha256": "f745902ac5a6a6ce0854bc1b30a8522ae660ab2ec313367241734bb3579ab688"
+    },
+    "artifacts/v15/development_stage1/study/protocol.json": {
+      "blocks": [
+        [
+          59000001,
+          128
+        ]
+      ],
+      "sha256": "e1f739125f9ae433d2c2593fa392fd4d4834989a2d311be4378103aa3cf40c8d"
+    },
+    "artifacts/v16/development_stage1/actor_ablation/protocol.json": {
+      "blocks": [
+        [
+          59300001,
+          128
+        ]
+      ],
+      "sha256": "0aafc3639bdabd097b9574119523b28f2f5430706f7f877ac4ece169175ba9a7"
+    },
+    "artifacts/v16/development_stage1/study/protocol.json": {
+      "blocks": [
+        [
+          59200001,
+          128
+        ]
+      ],
+      "sha256": "214d6abb024ac80361cf64f137a3a8bdcd8e8b109ef3760a6a85b5e2bde6d663"
+    },
+    "artifacts/v16/development_stage1/update_diagnostic/protocol.json": {
+      "blocks": [
+        [
+          59400001,
+          128
+        ]
+      ],
+      "sha256": "f3c80e646379c81ec197bba7df43eced86b87d8b8c7f351b0f3c8f3b886810b2"
+    },
+    "artifacts/v16/development_stage2/actor_ablation/protocol.json": {
+      "blocks": [
+        [
+          59700001,
+          128
+        ]
+      ],
+      "sha256": "d9802b0004d1450300baf690dfe8d8d0e14f9ece8484bac99cbd381bd2909f40"
+    },
+    "artifacts/v16/development_stage2/study/protocol.json": {
+      "blocks": [
+        [
+          59500001,
+          128
+        ]
+      ],
+      "sha256": "0a8d62941af79b9c7fede9d9440eb73a8d22350d48d06c6db393dd116a77fb98"
+    },
+    "artifacts/v16/runtime_recovery/protocol.json": {
+      "blocks": [
+        [
+          59600001,
+          8
+        ]
+      ],
+      "sha256": "96decc4af0586fbc658311702fde7279f40848631d2a29630552faa3736cfe2e"
+    },
+    "artifacts/v17/development_stage1/actor_ablation/protocol.json": {
+      "blocks": [
+        [
+          61100001,
+          128
+        ]
+      ],
+      "sha256": "2e216dae9d768325f9efe4cf5f93b243bfd3086e686c35d9d85bce3bdc30426f"
+    },
+    "artifacts/v17/development_stage1/study/protocol.json": {
+      "blocks": [
+        [
+          61000001,
+          128
+        ]
+      ],
+      "sha256": "0b1803fbf92f2b7db4bf8e7f5b6f02699d3b66f8cd15105228bc7c7935c5e71d"
+    },
+    "artifacts/v17/development_stage2/actor_ablation/protocol.json": {
+      "blocks": [
+        [
+          61300001,
+          128
+        ]
+      ],
+      "sha256": "fc673eaa65157a3019a896addda4d956036cecbd520b40450d16dd00082f899d"
+    },
+    "artifacts/v17/development_stage2/study/protocol.json": {
+      "blocks": [
+        [
+          61200001,
+          128
+        ]
+      ],
+      "sha256": "e508ca3acb4f63698459b24fa6c70faa2fc0f69445a018ccb8d3cf74c34fb5f8"
+    },
+    "artifacts/v18/advantage_development/study/protocol.json": {
+      "blocks": [
+        [
+          61500001,
+          16
+        ]
+      ],
+      "sha256": "073740cc5d270eabcd5f7eafb0f3dac1d998e209a070c640771e69b4c6ba1702"
+    },
+    "artifacts/v18/advantage_development_stage2/study/protocol.json": {
+      "blocks": [
+        [
+          61600001,
+          128
+        ]
+      ],
+      "sha256": "81bb6e30b0f17a1cadbef6d9944a3fbca032b271b5e0d3479aec6df062547b4d"
+    },
+    "artifacts/v18/composition_development/study/protocol.json": {
+      "blocks": [
+        [
+          61400001,
+          64
+        ]
+      ],
+      "sha256": "c2b1e9eebe27521b71b3cdafd309e29669c109ab9be26744a436727d64798ece"
+    },
+    "artifacts/v18/failed_advantage_accounting/protocol.json": {
+      "blocks": [
+        [
+          61500001,
+          16
+        ]
+      ],
+      "sha256": "6f78bc5ac1243815e4da0a43e8c1c671f4a3b1c9070c854c4b8b62ed581f8769"
+    },
+    "artifacts/v18/failed_composition_initial_check/protocol.json": {
+      "blocks": [
+        [
+          61400001,
+          64
+        ]
+      ],
+      "sha256": "e45dec1ab351f7549c09842ee42caed84c9c77a61fa1a0e82eccfa5053a5796d"
+    },
+    "artifacts/v18/independent_study/protocol.json": {
+      "blocks": [
+        [
+          61700001,
+          256
+        ]
+      ],
+      "sha256": "4a6518e4b6f843d00b1a2487b39db5e526ad2869a4286399c0b755c2d3e167ee"
+    },
+    "artifacts/v19/bank_probe/protocol.json": {
+      "blocks": [
+        [
+          61900001,
+          16
+        ]
+      ],
+      "sha256": "2a3cedec40632ce9071032a28b88d25c583e16e7669b78777205989591d9f03b"
+    },
+    "artifacts/v19/final_confirmation/protocol.json": {
+      "blocks": [
+        [
+          62200001,
+          512
+        ]
+      ],
+      "sha256": "c896e26cb4f385230a6188233f0b63374b6383cc0432f40f7677fa05727e26c2"
+    },
+    "artifacts/v19/paired_bank/protocol.json": {
+      "blocks": [
+        [
+          61910001,
+          32
+        ]
+      ],
+      "sha256": "42330372b2e9cd1c4ecf7b13dc83c8c6b5e19324dbd0cf868a482ede40618c9f"
+    },
+    "artifacts/v19/portfolio_probe/protocol.json": {
+      "blocks": [
+        [
+          61910001,
+          32
+        ]
+      ],
+      "sha256": "639269c85e9369f1ba57882a9034bd6575a143dce6aca2fc77551515cdaf5b74"
+    },
+    "artifacts/v19/risk_validation/protocol.json": {
+      "blocks": [
+        [
+          62000001,
+          1024
+        ]
+      ],
+      "sha256": "509782d7d10257b7d42f89268f7ec8ef1cc139d8119fac34cd4b8c59735962aa"
+    },
+    "artifacts/v19/shifted_study/protocol.json": {
+      "blocks": [
+        [
+          62100001,
+          32
+        ],
+        [
+          62101001,
+          32
+        ],
+        [
+          62102001,
+          32
+        ],
+        [
+          62103001,
+          32
+        ],
+        [
+          62104001,
+          32
+        ]
+      ],
+      "sha256": "c1b1f54ce168933e47e42ad5703ab954da7cd748136ed12ddf2397607dc59546"
+    },
+    "artifacts/v20/repair_development/protocol.json": {
+      "blocks": [
+        [
+          63200001,
+          16
+        ]
+      ],
+      "sha256": "d215fcc2b0bcbed12ee920e58867bed59f5ba7a4dbaeceb88a7bb0a6c213aeb6"
+    },
+    "artifacts/v20/temporal_development/protocol.json": {
+      "blocks": [
+        [
+          63100001,
+          128
+        ]
+      ],
+      "sha256": "b3fb371516e5ffa1d6a5bb30c18a6898b8a79d86464adebd14e8163a38eeaaa1"
+    },
+    "artifacts/v20/temporal_repair_extension/protocol.json": {
+      "blocks": [
+        [
+          63100001,
+          128
+        ]
+      ],
+      "sha256": "c3731a1a8dc43d15e9cef3900b6d00e1593be3db0a579ec1bb8588932037f4ec"
+    },
+    "artifacts/v21/matched_transfer/protocol.json": {
+      "blocks": [
+        [
+          63400001,
+          32
+        ],
+        [
+          63401001,
+          32
+        ],
+        [
+          63402001,
+          32
+        ],
+        [
+          63403001,
+          32
+        ],
+        [
+          63404001,
+          32
+        ]
+      ],
+      "sha256": "d040543a1b48cee256e420ff6d8a03b297276576a321451b72f5fcfbe5e0a196"
+    },
+    "artifacts/v21/phase_development/protocol.json": {
+      "blocks": [
+        [
+          63300001,
+          128
+        ]
+      ],
+      "sha256": "6c7407c128b52d6b955e8093275a7b651dc6d87eddee516731915551cc743f90"
+    }
+  },
+  "current_outcomes_read": false,
+  "calibration_data_generated": false,
+  "calibration_execution_protocol_frozen": false,
+  "risk_certified": false,
+  "source_sha256": {
+    "src/coopgate/prospective_validation_v21.py": "d46dfa6c3993328ee9b382a1d7d94c7a437204e70a297370082158452b845610",
+    "src/coopgate/family_risk_v20.py": "89f6ebb1a02cc59922da8c7be5064669820ef4872016e17b3d363ba68097c043",
+    "src/coopgate/comparison_v19.py": "3a2ed9b0305320dfd3f0f02f6e8fd1d54d2899529d5bcd30ce3a8b2dc82ab66e",
+    "src/coopgate/risk_comparators_v19.py": "fb1baa872a359853b8420af12d68f8fa05ddfb41ecbf6047dff5b19c37f48a88",
+    "src/coopgate/joint_admission_v15.py": "4cccb7925af5cea79c9f11383d2dfa67626f2e842af0bdd3e6816693dab0d7ea",
+    "tools/prepare_prospective_validation_v21.py": "e433a12ba3a5c19fd3951434c06ed0ea2a263a8c1515ceee6c636020e46ae036",
+    "tools/design_risk_power_v20.py": "debfe52df50bcc3d827f77968996ca4c5099a7ef243837dda6b2d3e75f52af16",
+    "tools/probe_disturbed_gate_v19.py": "9486a58850bc303ac3341c4c2c12f016ed440c8ddb4337a91989f1bdf2caeb60",
+    "tools/study_gate_v19.py": "0ab1f2963b48e541296858330065fbfb7e15fd9e5d8288d8853d43a8dfb4d27f",
+    "tools/study_phase_repair_v21.py": "ebe46e17b6726d60495251fccf70ec97c20e142183d35150820df2011cc6eba1",
+    "tools/start_final_v19.py": "13e31c8df9d93cd004b481f65b8ba5d0b86bfe6a57610a3ec688172581865bdf",
+    "tests/test_prospective_validation_v21.py": "fc4df864b6e206aec6a73a7b23af03ba24d6337d328cc2e2887c8808d295cd3e",
+    "tests/test_prospective_rules_v21.py": "7a317661ec820143ef9d9ec55182969e7ab417fa257ce905de2d3062cfe90cc8"
+  }
+}
