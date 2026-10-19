@@ -153,10 +153,22 @@ candidates without relaxing the 33-path, all-vehicle performance conditions.
 A frozen **640-run** SUMO development on 16 fresh initials compares the original
 sampled gate, a repair-disabled reference implementation and full repair for all
 three models. Every trajectory is saved. Reference identity and episode-adoption
-inclusion are checked separately from realized gain and harm. The experiment is
-running; no completed closed-loop repair improvement or risk certificate is claimed.
-An independently frozen reviewer reconstructs candidate families, recomputes
-every distinct admitted forecast and recounts outcomes after native completion.
+inclusion are checked separately from realized gain and harm. All 640 runs and the
+independently frozen review have now completed. Episode adoption rises from
+**6.25–12.5% to 25–31.25%**, with small mean gains, but one new pulse-disturbance
+case harms the rear vehicle and P95 rises to **3.02–3.42 s**. Model 1822 remains
+below the 0.5% actual gain target. The [complete development results](docs/v20_repair_development_results.md)
+retain this failure, all three models and timing costs; 16 initials cannot
+establish a 5% conditional-risk certificate. The independent review reconstructed
+all 640 physical traces, 8,788 candidate families and every distinct admitted
+forecast without reusing the performance selector.
+
+A frozen [paired repair extension](docs/v20_temporal_repair_extension.md) adds
+**1,536 SUMO runs** for the same repair policy to the existing 128-initial
+temporal-bank development pairing. It reuses those initial/noise identities
+explicitly, adding **zero independent initials**, and preserves every original
+bank and model. All new traces and distinct admitted forecasts are reviewed
+after both native collections finish; no risk certificate is inherited.
 
 ## V18: joint gating improves the frozen three-model comparison
 
