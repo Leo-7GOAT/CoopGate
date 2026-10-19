@@ -135,6 +135,17 @@ component. Four original harmful branches remain. An independent review
 reconstructs every choice and 34 selected realized branches. This is a local
 one-action-then-baseline diagnostic, not a closed-loop adoption or risk result.
 
+The [complete action-repair controller](docs/v20_repair_closed_loop.md) now retains
+every original joint candidate and adds physically reprojected attenuation
+candidates without relaxing the 33-path, all-vehicle performance conditions.
+A frozen **640-run** SUMO development on 16 fresh initials compares the original
+sampled gate, a repair-disabled reference implementation and full repair for all
+three models. Every trajectory is saved. Reference identity and episode-adoption
+inclusion are checked separately from realized gain and harm. The experiment is
+running; no completed closed-loop repair improvement or risk certificate is claimed.
+An independently frozen reviewer reconstructs candidate families, recomputes
+every distinct admitted forecast and recounts outcomes after native completion.
+
 ## V18: joint gating improves the frozen three-model comparison
 
 Models and protocol were frozen in **79beb44**, before **7,168 actual SUMO runs**
