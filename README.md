@@ -213,6 +213,12 @@ policies require a joint analysis; their lower bound does not assume independenc
 This calculation neither selects a new sample size nor changes any running
 protocol, and it does not certify gain or adoption requirements.
 
+The [training/gate alignment audit](docs/v20_training_gate_alignment.md) records
+three different requirements: mean training cost versus per-vehicle cost/time,
+learned-policy versus baseline continuation, and disturbed visitation versus
+nominal training branches. These are source-level facts and hypotheses for
+future controlled training ablations, not evidence of a new trained improvement.
+
 ## V18: joint gating improves the frozen three-model comparison
 
 Models and protocol were frozen in **79beb44**, before **7,168 actual SUMO runs**
