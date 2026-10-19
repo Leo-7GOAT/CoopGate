@@ -135,9 +135,18 @@ The separate [V20 temporal-bank development](docs/v20_temporal_gate_development.
 retains all original paths and tests three fixed extensions. A completed selected-state
 screen identifies **42/46** old harmful admissions with sampled temporal paths,
 while also rejecting **7/9** selected nonpositive steps. These counts are neither
-closed-loop improvement nor a population risk estimate. A frozen **6,656-run**
-paired SUMO study on 128 fresh initials is running for all three models and all
-three extensions; no V19 final-test outcomes are used to develop V20.
+closed-loop improvement nor a population risk estimate. The frozen **6,656-run**
+paired SUMO study on 128 fresh initials has completed for all three models and all
+three extensions. Independent outcome recounts match every method. The
+[complete results](docs/v20_temporal_development_results.md) show that extending
+the bank reduces actual adoption from **21.88–25.00% to 9.38–17.19%**; none of the
+extensions reaches the 20% adoption requirement. Some models also fall below
+0.5% gain. Harm counts fall, but conditional harm does not improve consistently.
+The first-adoption argument explains why a strict subset of eligible commands
+cannot increase episode adoption under the declared common-baseline assumptions.
+All **27 harmful runs and 11 distinct baselines** are retained in a frozen
+[38-run diagnostic replay](docs/v20_temporal_harm_diagnosis.md). No V19 final-test
+outcomes are used to develop V20, and no new risk certification is claimed.
 
 A completed [action-attenuation diagnosis](docs/v20_action_repair_diagnosis.md)
 checks **220 joint commands** at the same 55 selected states. Under the sampled
