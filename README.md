@@ -219,6 +219,15 @@ three models, four disturbance modes and all 13 controllers. Its independent
 review is frozen with the controller. This is development, with no new risk
 certificate or shifted-dynamics guarantee.
 
+A [matched-noise transfer extension](docs/v21_matched_dynamics_transfer.md) holds
+external innovations at **±0.1 m/s² for all four actuator plants**. Its **107 actual
+SUMO integration runs** passed independent checks: 106 completed and one archived
+strong-lag baseline abort was reproduced. **43 old trajectories**, **12 repair/reference
+pairs** and **two independent additive-simulator references** match. A fresh protocol
+freezes **12,160 runs** over five scenarios, four plants and 19 controllers, preserving
+all three models, both phase margins and prior raw/nominal/strict controls. There are
+**160 independent initial clusters**; no new transfer outcome or risk certificate is claimed.
+
 A separate [repair runtime equivalence audit](docs/v20_fast_repair_verification.md)
 freezes **57 actual SUMO replays** of 19 development cases, including every known
 repair harm and each model's slowest call. It compares the reference with exact
