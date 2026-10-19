@@ -36,4 +36,4 @@ $$|a_j+w_j-u_n|\le\frac{\rho D}{1-\rho^M}+0.1.$$
 
 ![执行器参数与误差假设边界](../artifacts/v19/actuator_bounds/actuator_envelope.png)
 
-数值与图由 `tools/analyze_actuator_bounds_v19.py` 生成，精确数值保存在 `artifacts/v19/actuator_bounds/analysis.json`。该解析结果与正在运行的 6400 次直接迁移试验互补：前者解释何种参数仍满足原模型假设，后者检查实际闭环收益、退化、约束和中止情况。
+数值与图由 `tools/analyze_actuator_bounds_v19.py` 生成，精确数值保存在 `artifacts/v19/actuator_bounds/analysis.json`。该解析结果与已经完成的 [6400 次直接迁移试验](v19_transfer_results.md)互补：前者解释何种参数仍满足原模型假设，后者检查实际闭环收益、退化、约束和中止情况。后续 [V21 配对迁移](v21_matched_dynamics_transfer.md)统一各动力学的外部噪声幅度，以分离执行器变化与噪声强度变化。
