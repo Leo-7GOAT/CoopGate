@@ -34,9 +34,14 @@ This is a development interval, not an independent confirmation. Both methods
 retain the same one harmful case; joint composition admits seven additional
 model-initial pairs and incurs greater computation.
 
-An independent **40,960-run** risk-validation protocol is frozen; completion and
-certification are still pending. No per-state confidence probability or arbitrary
-disturbance guarantee is claimed. [Development results](docs/v19_development_results.md)
+The independent **40,960-run** risk calibration is complete. Strict gating retains
+**22.36–23.14%** actual episode adoption and **0.708–0.766%** mean team-cost gain
+on calibration data. Only fixed model **1812** passes both prespecified 5% conditional
+performance-risk bounds; models 1802 and 1822 do not. These are population bounds
+under the declared initial/noise distribution, not per-state or arbitrary-noise
+guarantees. Calibration gains do not replace independent final-test results.
+[Complete calibration and all model outcomes](docs/v19_calibration_results.md).
+[Development results](docs/v19_development_results.md)
 and [theory/scope](docs/theory_v19_disturbance_risk.md) retain the unsuccessful designs,
 individual regression, latency tail, and dynamics-assumption failures.
 The [design-only power analysis](docs/v19_certification_power.md) explains why
@@ -81,7 +86,8 @@ real calibration or the still-pending final comparison. Actual final replay
 coverage is frozen before the untouched final-test executions.
 
 The matched [conformal/LTT/mean-SPI comparison](docs/v19_established_comparison.md)
-and a separate **20,480-run** final test are frozen but await completed calibration.
+is calibrated, and the separate **20,480-run** final test is running under its
+unchanged frozen protocol. Final results and whole-profile replay remain pending.
 A **6,400-run** direct-transfer study has completed. An [analytic actuator bound](docs/v19_actuator_bounds.md)
 also shows why the declared mild lag remains inside the original error envelope
 while strong lag is outside its uniformly covered range; this is not a shifted
@@ -105,6 +111,21 @@ those still fail under strong lag: correct fallback does not repair a baseline
 outside its physical assumptions. The final audit keeps conditional certification,
 adoption, and gain as separate requirements, and does not transfer a fixed-profile
 conditional-risk certificate to a state-dependent selector.
+
+All **46** harmful strict-gate calibration runs and 38 distinct paired baselines
+have been replayed in **84 SUMO executions**. Every harmful run has exactly one
+admission with a positive hindsight baseline-value difference; subsequent fallback
+adds no positive difference in these cases. In **13** cases, losses occur only on
+vehicles whose command did not change at that admission. This is a post-hoc
+[coupling diagnosis](docs/v19_harm_mechanism_replay.md), not an online oracle.
+
+The separate [V20 temporal-bank development](docs/v20_temporal_gate_development.md)
+retains all original paths and tests three fixed extensions. A completed selected-state
+screen identifies **42/46** old harmful admissions with sampled temporal paths,
+while also rejecting **7/9** selected nonpositive steps. These counts are neither
+closed-loop improvement nor a population risk estimate. A frozen **6,656-run**
+paired SUMO study on 128 fresh initials is running for all three models and all
+three extensions; no V19 final-test outcomes are used to develop V20.
 
 ## V18: joint gating improves the frozen three-model comparison
 
