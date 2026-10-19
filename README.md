@@ -181,8 +181,18 @@ A frozen [paired repair extension](docs/v20_temporal_repair_extension.md) adds
 **1,536 SUMO runs** for the same repair policy to the existing 128-initial
 temporal-bank development pairing. It reuses those initial/noise identities
 explicitly, adding **zero independent initials**, and preserves every original
-bank and model. All new traces and distinct admitted forecasts are reviewed
-after both native collections finish; no risk certificate is inherited.
+bank and model. Collection and independent review have now completed for all
+1,536 new physical traces, 35,522 candidate families and 295 distinct admitted
+33-path forecasts. The [complete paired results](docs/v20_temporal_repair_results.md)
+show adoption recovering to **25.78–32.03%** and cost improvement to
+**0.679–0.785%**. All three paired incremental-gain intervals against the sampled
+gate are positive. Added adoptions include new harms: actual counts are
+**1/41, 2/33, 1/38**, and four-mode counts are **3/82, 3/77, 4/80**.
+P95 is **2.23–2.52 seconds**; no risk certificate or real-time result is claimed.
+The [prospective all-or-none family certification design](docs/v20_family_risk_certification.md)
+uses standard intersection-union testing to match the requirement that all
+three fixed models and both risks pass. It does not re-certify old experiments,
+reduce true policy risk, or select a future calibration sample size.
 
 A separate [repair runtime equivalence audit](docs/v20_fast_repair_verification.md)
 freezes **57 actual SUMO replays** of 19 development cases, including every known

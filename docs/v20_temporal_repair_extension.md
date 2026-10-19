@@ -22,4 +22,4 @@
 
 这是开发集配对扩展，不是风险校准或独立最终确认。它不能继承 V19 某个固定策略的证书，也不能因零观察退化声称 5% 风险认证。计时来自不同采集阶段的并发桌面负载，不构成严格配对的计算速度实验；完整耗时和超过 500 ms 的次数仍须报告。
 
-冻结协议为 [`temporal_repair_extension/protocol.json`](../artifacts/v20/temporal_repair_extension/protocol.json)。开发集完成后，需要依据全部模型的收益、采用率、逐车风险和计算代价确定下一步；最终候选仍须使用另行冻结的新校准与确认数据。
+冻结协议为 [`temporal_repair_extension/protocol.json`](../artifacts/v20/temporal_repair_extension/protocol.json)。全部 1,536 次新增运行及独立复算现已完成，完整合并比较见[结果报告](v20_temporal_repair_results.md)。三个模型的采用率恢复到 25.78%–32.03%，成本改善达到 0.679%–0.785%，相对原采样门控的增量收益区间均为正。新增采用也产生了新的逐车退化，且 P95 为 2.23–2.52 秒；当前结果不构成风险或实时性认证。最终候选仍须使用另行冻结的新校准与确认数据。
