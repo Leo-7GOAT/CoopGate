@@ -193,6 +193,12 @@ The [prospective all-or-none family certification design](docs/v20_family_risk_c
 uses standard intersection-union testing to match the requirement that all
 three fixed models and both risks pass. It does not re-certify old experiments,
 reduce true policy risk, or select a future calibration sample size.
+All **10** remaining harmful repair runs have also undergone a complete
+[post-hoc mechanism and exact-tie diagnosis](docs/v20_repair_harm_diagnosis.md).
+Every harm has one positive admission residual and none during fallback.
+Across 11 admitted states and 124 candidate forecasts, no second admissible
+exact-gain tie exists. A baseline-nearer tie-break therefore changes zero
+commands and is not adopted as a repair.
 
 A separate [repair runtime equivalence audit](docs/v20_fast_repair_verification.md)
 freezes **57 actual SUMO replays** of 19 development cases, including every known
