@@ -1,0 +1,131 @@
+{
+  "purpose": "Lossless calibration recovery-chain verification",
+  "total_unique_study_runs": 40960,
+  "retained_original_records": 36676,
+  "resumed_unique_sumo_runs": 4284,
+  "extra_boundary_replay_sumo_runs": 5,
+  "pending_completed_rows_preserved": 1,
+  "all_original_prefixes_and_traces_preserved": true,
+  "all_four_native_exits_normal": true,
+  "failed_first_shard_2_exit_retained": true,
+  "policy_or_statistical_rules_changed": false,
+  "partial_risk_statistics_computed": false,
+  "risk_certified_by_this_audit": false,
+  "timing_scope": "Original acquisition plus first recovery, with shard 2 additionally continued after checkpoint promotion; all original timing values retained.",
+  "interruption_scope": "Uncommitted in-flight episode work before interruption is unknown and is not claimed as a new independent sample.",
+  "shards": [
+    {
+      "shard": 0,
+      "retained_before_first_recovery": 9271,
+      "resumed_unique_runs": 969,
+      "final_unique_runs": 10240,
+      "final_episodes_sha256": "aa328581b722a3f7fa18a9d608ca3daaabae9e932bf2bb5a0ed65401dc12255d",
+      "normal_native_exit": true
+    },
+    {
+      "shard": 1,
+      "retained_before_first_recovery": 8745,
+      "resumed_unique_runs": 1495,
+      "final_unique_runs": 10240,
+      "final_episodes_sha256": "0670baf7d0f22e59e2894097b704cf41ba7fefbdeeed653da6e391118fdd77ae",
+      "normal_native_exit": true
+    },
+    {
+      "shard": 2,
+      "retained_before_first_recovery": 9307,
+      "resumed_unique_runs": 933,
+      "final_unique_runs": 10240,
+      "final_episodes_sha256": "5fe66dd23dea0e4ef65d0ff9b5d8b7d1647f7fc02e31986556450c934daddaea",
+      "normal_native_exit": true
+    },
+    {
+      "shard": 3,
+      "retained_before_first_recovery": 9353,
+      "resumed_unique_runs": 887,
+      "final_unique_runs": 10240,
+      "final_episodes_sha256": "1b14ee0eb235347f78ae2ea5f0800f2f16bfadc7bfcebe41ab6ee9cbda09b49a",
+      "normal_native_exit": true
+    }
+  ],
+  "boundaries": [
+    {
+      "shard": 0,
+      "directory": "artifacts/v19/risk_recovery_20261019",
+      "case": [
+        924,
+        "pulse",
+        "raw_1802"
+      ]
+    },
+    {
+      "shard": 1,
+      "directory": "artifacts/v19/risk_recovery_20261019",
+      "case": [
+        873,
+        "bias",
+        "portfolio0_1802"
+      ]
+    },
+    {
+      "shard": 2,
+      "directory": "artifacts/v19/risk_recovery_20261019",
+      "case": [
+        930,
+        "bias",
+        "nominal_1802"
+      ]
+    },
+    {
+      "shard": 2,
+      "directory": "artifacts/v19/checkpoint_recovery_20261019",
+      "case": [
+        1002,
+        "pulse",
+        "portfolio0_1812"
+      ]
+    },
+    {
+      "shard": 3,
+      "directory": "artifacts/v19/risk_recovery_20261019",
+      "case": [
+        935,
+        "pulse",
+        "baseline"
+      ]
+    }
+  ],
+  "protocol_sha256": "509782d7d10257b7d42f89268f7ec8ef1cc139d8119fac34cd4b8c59735962aa",
+  "first_plan_sha256": "c60db763e5f10a64a49a6fd39d98383f93afdeb1252b516dd6824f5d11abdea6",
+  "second_plan_sha256": "c001bfdb9b501f7c57e8e235156f9f6bbf8bacfa77aff7378d4ce3d0a4dfe89c",
+  "recovery_runtime_evidence_sha256": {
+    "artifacts/v19/risk_recovery_20261019/workers/shard_0/boundary_audit.json": "086fb5897f9a728418276f1e8715f3c905c488127e4c19ae8da125995b2d78c0",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_0/boundary_row.json": "370f712f1f3647a0fe485edd9d24ceb12f400c2456914cdd9dc0926aa75a682a",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_0/boundary_trace.json": "52b5a5cc66f20d41e32394c7a284b2961247c9d9ef422d95dec483188304156d",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_0/complete.json": "9fbfcc93653020bc0a29cac56c57fe0b48b70d14a2fd29cfe869bd727a8c5ad7",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_0/status.json": "d5086ffcb1f0cec3aaceef05793c0e6a57260b2f06e48f52975d42fdf6e45e5c",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_1/boundary_audit.json": "7bd608b8d31ccd605b95f22f0cc78a398d5f3210f3f2d61dcbdbfe156b798653",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_1/boundary_row.json": "4b0a66975c517f1d8b1e0601b66228338ec9cc7990846ad7f64ec48be76d2a9a",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_1/boundary_trace.json": "d13d1313a30a65c8d260d29b603d0e55f6d9d17731a89865cbf0b0201fac2321",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_1/complete.json": "31f6a5d0153571128d55214008731de5bbe030439dc78f3976f93932d8468201",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_1/status.json": "2eaa4f4a25077b32c22c079a56458a85b750213e33896a0c6970e52326c42ef3",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_2/boundary_audit.json": "e9ed776264aeca7f54092c491a89d84d08b0253c5b082ccaa078978a2c04bcc0",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_2/boundary_row.json": "6ada5cbcfb505a26183d69f52482f9c96719de8acd020216ae2a893751f08255",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_2/boundary_trace.json": "87c8a389b8a9a71a3bd16dd1101d818dbf2ccb80a660c941a8e1b658abd9c85d",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_2/status.json": "c7b2120e98264cb55e9ccfcb8c6a6b0c8195bbfa6cd87846729da8c04d3733ae",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_3/boundary_audit.json": "09ac41c2a76823a48dabfee17d6c0609019aeaa0c71a084ad04edcc13db9fa91",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_3/boundary_row.json": "125678c71cb3102f92cbe4fe4280622157174f8b2a76d17fad8345922ef85e72",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_3/boundary_trace.json": "877f35ecf487f3f03122acb85f7886b2264fe9ba061347774ef0fe34d6eda01e",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_3/complete.json": "1c7b117d9b60141733b40ceee9317d01fcb543847050200f9775af37cc4c4cb6",
+    "artifacts/v19/risk_recovery_20261019/workers/shard_3/status.json": "8487f6b447784cefdf2f7a154262ac5e3a077435a98451a29d3b55f0291a0454",
+    "artifacts/v19/checkpoint_recovery_20261019/workers/shard_2/boundary_audit.json": "2e441f85298d62e476c0e7b0659cf91b238682c306617b5d822803359fc22d94",
+    "artifacts/v19/checkpoint_recovery_20261019/workers/shard_2/boundary_row.json": "70be59d7e9ba22b4b7951cab1dab490785a7b2221503b3e6ad91a7df003d1821",
+    "artifacts/v19/checkpoint_recovery_20261019/workers/shard_2/boundary_trace.json": "4d61d093e85175a94a0c0cd3fab02e9e02ca7b05d7ecfbc5e28662da987b1e7e",
+    "artifacts/v19/checkpoint_recovery_20261019/workers/shard_2/complete.json": "40bd5624112e5d91ec282605986a00e28708dff7606be3876af44eee60a2b2f2",
+    "artifacts/v19/checkpoint_recovery_20261019/workers/shard_2/status.json": "5c1a41efffbe98d10034a0528c11e5bfa5bf1a369ec14eeeebd9a57f7efeda11"
+  },
+  "promotion_sha256": "0054f5d6e4013c0da554229f605a546b07144f01f5aa0425f6da7982e7de0887",
+  "source_sha256": {
+    "tools/audit_recovery_chain_v19.py": "b1df872a004e5cc89af2adfe1459a05a26ef14c1c9e998d666d065431e28c131",
+    "tests/test_recovery_chain_v19.py": "fa8992b54e6eba7fb7e1dda330c3b285ce9102eb5c035f9062c5b80d49570966"
+  }
+}

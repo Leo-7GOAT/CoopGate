@@ -1,0 +1,68 @@
+{
+  "plan_sha256": "b7ef833f78f3137d73520cec67dea1ccd4ff3b9237c10dcd334067becef4b832",
+  "calibration_protocol_sha256": "509782d7d10257b7d42f89268f7ec8ef1cc139d8119fac34cd4b8c59735962aa",
+  "calibration_episodes_sha256": "f937d5ab3ab54bf48a53700863c6739cb56f8d575dadd655f805f31bc5770dbb",
+  "calibration_seed_base": 62000001,
+  "calibration_n_initials": 1024,
+  "names": [
+    "raw_1802",
+    "nominal_1802",
+    "portfolio0_1802",
+    "raw_1812",
+    "nominal_1812",
+    "portfolio0_1812",
+    "raw_1822",
+    "nominal_1822",
+    "portfolio0_1822"
+  ],
+  "models": {
+    "1802": {
+      "path": "artifacts/v18/independent_models/coupled_1802/policy.pt",
+      "sha256": "2a53d50100b11ac5ecd3a7749cc06a51851d6ab84f2fd1e416af0ea9b4e71b6d",
+      "ego_seed": 901,
+      "training_seed": 1802,
+      "updates": 6,
+      "target_updates": 6
+    },
+    "1812": {
+      "path": "artifacts/v18/independent_models/coupled_1812/policy.pt",
+      "sha256": "49943cf074e6dfff83e41ed0e7f0a44f07c89e0771e024f8744f197d1ee0c959",
+      "ego_seed": 911,
+      "training_seed": 1812,
+      "updates": 6,
+      "target_updates": 6
+    },
+    "1822": {
+      "path": "artifacts/v18/independent_models/coupled_1822/policy.pt",
+      "sha256": "8df0829c3474050443a0cc9127451550d8585f1a0d7690a8a1a0a0e93660d6a3",
+      "ego_seed": 921,
+      "training_seed": 1822,
+      "updates": 6,
+      "target_updates": 6
+    }
+  },
+  "conformal": {
+    "calibration_initials": 1024,
+    "rank": 974,
+    "failed_initial_bundles": 13,
+    "q": 4.0,
+    "infinite_q": false,
+    "finite_sample_marginal_coverage": true,
+    "adoption_conditional_risk_certified": false
+  },
+  "ltt_selection": {
+    "1802": "baseline",
+    "1812": "portfolio0_1812",
+    "1822": "baseline"
+  },
+  "mean_spi_selection": {
+    "1802": "nominal_1802",
+    "1812": "raw_1812",
+    "1822": "raw_1822"
+  },
+  "both_targets_certified": [
+    "portfolio0_1812"
+  ],
+  "conditional_risk_sha256": "9cb4ed4fe7de0ebdd209a94b3b23ec4b6c9a256d876dc1524c2e27186dd3eaa8",
+  "final_test_inspected": false
+}
