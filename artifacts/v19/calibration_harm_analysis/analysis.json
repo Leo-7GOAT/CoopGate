@@ -1,0 +1,62 @@
+{
+  "purpose": "Post hoc mechanism analysis of all harmful calibration replays",
+  "source_sumo_replays": 84,
+  "harmful_runs": 46,
+  "totals": {
+    "admitted_steps": 55,
+    "positive_admission_steps": 46,
+    "positive_components": 79,
+    "positive_components_with_zero_bank_slack": 61,
+    "positive_components_on_unchanged_vehicle_command": 17,
+    "harmful_steps_only_on_unchanged_vehicle_commands": 13
+  },
+  "per_model": {
+    "portfolio0_1802": {
+      "harmful_runs": 14,
+      "admitted_steps": 17,
+      "positive_admission_steps": 14,
+      "positive_components": 26,
+      "positive_components_with_zero_bank_slack": 20,
+      "positive_components_on_unchanged_vehicle_command": 2,
+      "harmful_steps_only_on_unchanged_vehicle_commands": 2
+    },
+    "portfolio0_1812": {
+      "harmful_runs": 8,
+      "admitted_steps": 9,
+      "positive_admission_steps": 8,
+      "positive_components": 12,
+      "positive_components_with_zero_bank_slack": 10,
+      "positive_components_on_unchanged_vehicle_command": 6,
+      "harmful_steps_only_on_unchanged_vehicle_commands": 5
+    },
+    "portfolio0_1822": {
+      "harmful_runs": 24,
+      "admitted_steps": 29,
+      "positive_admission_steps": 24,
+      "positive_components": 41,
+      "positive_components_with_zero_bank_slack": 31,
+      "positive_components_on_unchanged_vehicle_command": 9,
+      "harmful_steps_only_on_unchanged_vehicle_commands": 6
+    }
+  },
+  "bad_step_range": [
+    0,
+    13
+  ],
+  "all_bad_steps_have_a_vehicle_before_or_in_conflict_zone": true,
+  "bad_compositions": {
+    "2": 35,
+    "5": 1,
+    "1": 3,
+    "7": 2,
+    "4": 4,
+    "3": 1
+  },
+  "added_independent_risk_samples": 0,
+  "final_confirmation_outcomes_read": false,
+  "policy_changes": 0,
+  "selection_scope": "All 46 harmful calibration runs and their paired baselines. Frequencies here are conditional on this selected failure set, not population risk estimates.",
+  "source_audit_sha256": "b05e7360dad302ec3cae7433ff89ba0a091d9c5adac6297f2637b2db18338a78",
+  "source_manifest_sha256": "8b58ce7a7674ab78fbaa2c3cedb62948a7494d2cece034e3d40b11f78ae9f533",
+  "analyzer_sha256": "d2eee460b0bcfe0d171a2e3254e2298830c114807916f1d7674efb03d976a0c7"
+}
