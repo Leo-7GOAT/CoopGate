@@ -175,7 +175,17 @@ freezes **57 actual SUMO replays** of 19 development cases, including every know
 repair harm and each model's slowest call. It compares the reference with exact
 command reuse and rejection-only physical bounds. Accepted commands retain all
 33 complete forecasts; every pruned branch is checked against the original full
-calculation outside timing. No speedup or real-time claim is made before completion.
+calculation outside timing. All 57 runs now match across **427 paired decisions**,
+including the harmful case, with **538 nominal** and **312 disturbed** bounds
+independently verified. Complete-call time falls **41.28%** against the original
+on these selected cases, but P95 remains **2,208 ms** and **64/427** calls exceed
+500 ms. This is a concurrent-load development benchmark, not a real-time claim.
+
+A separate [path-order equivalence study](docs/v20_ordered_repair_verification.md)
+uses the same 19 fixed cases for another **57 actual SUMO runs**. Temporal paths
+are checked first, while successful admissions still require every original
+path. Each rejection needs an independently reconstructed violating forecast;
+no speedup is claimed before the complete measurements are available.
 
 ## V18: joint gating improves the frozen three-model comparison
 

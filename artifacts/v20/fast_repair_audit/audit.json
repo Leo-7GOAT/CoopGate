@@ -1,0 +1,301 @@
+{
+  "actual_sumo_runs": 57,
+  "matched_cases": 19,
+  "matched_decision_steps": 427,
+  "timings": {
+    "reference": {
+      "total_controller_ms": 226971.09299996373,
+      "p50_ms": 12.660799999139272,
+      "p95_ms": 3529.24760999922,
+      "p99_ms": 7321.251319999216,
+      "max_ms": 9308.582099998603,
+      "over_500ms": 72,
+      "decision_steps": 427,
+      "process_cpu_ms": 225578.125,
+      "internal_transitions": 11885982,
+      "optimistic_transitions": 0,
+      "max_exact_cache_entries": 0
+    },
+    "cached": {
+      "total_controller_ms": 160078.70040005218,
+      "p50_ms": 12.338299999100855,
+      "p95_ms": 2803.0946299986663,
+      "p99_ms": 4634.025109997821,
+      "max_ms": 6925.632400001632,
+      "over_500ms": 68,
+      "decision_steps": 427,
+      "process_cpu_ms": 159703.125,
+      "internal_transitions": 8316812,
+      "optimistic_transitions": 0,
+      "max_exact_cache_entries": 2580
+    },
+    "bounded": {
+      "total_controller_ms": 133279.66190001825,
+      "p50_ms": 12.50159999835887,
+      "p95_ms": 2208.2941599994224,
+      "p99_ms": 3905.5812659980456,
+      "max_ms": 6047.269999999116,
+      "over_500ms": 64,
+      "decision_steps": 427,
+      "process_cpu_ms": 133265.625,
+      "internal_transitions": 6886852,
+      "optimistic_transitions": 372171,
+      "max_exact_cache_entries": 2359
+    }
+  },
+  "paired_cases": [
+    {
+      "case": {
+        "index": 0,
+        "mode": "bias",
+        "method": "repair_1802",
+        "reasons": [
+          "1802 complete fallback"
+        ]
+      },
+      "decision_steps": 24,
+      "nominal_prunes": 15,
+      "bank_prunes": 8
+    },
+    {
+      "case": {
+        "index": 0,
+        "mode": "bias",
+        "method": "repair_1812",
+        "reasons": [
+          "1812 complete fallback"
+        ]
+      },
+      "decision_steps": 24,
+      "nominal_prunes": 14,
+      "bank_prunes": 12
+    },
+    {
+      "case": {
+        "index": 0,
+        "mode": "bias",
+        "method": "repair_1822",
+        "reasons": [
+          "1822 complete fallback"
+        ]
+      },
+      "decision_steps": 24,
+      "nominal_prunes": 18,
+      "bank_prunes": 7
+    },
+    {
+      "case": {
+        "index": 1,
+        "mode": "bias",
+        "method": "repair_1802",
+        "reasons": [
+          "1802/bias attenuation coverage"
+        ]
+      },
+      "decision_steps": 22,
+      "nominal_prunes": 25,
+      "bank_prunes": 13
+    },
+    {
+      "case": {
+        "index": 1,
+        "mode": "bias",
+        "method": "repair_1822",
+        "reasons": [
+          "1822/bias attenuation coverage"
+        ]
+      },
+      "decision_steps": 22,
+      "nominal_prunes": 31,
+      "bank_prunes": 18
+    },
+    {
+      "case": {
+        "index": 1,
+        "mode": "pulse",
+        "method": "repair_1802",
+        "reasons": [
+          "1802/pulse attenuation coverage"
+        ]
+      },
+      "decision_steps": 21,
+      "nominal_prunes": 15,
+      "bank_prunes": 20
+    },
+    {
+      "case": {
+        "index": 1,
+        "mode": "pulse",
+        "method": "repair_1812",
+        "reasons": [
+          "1812/pulse attenuation coverage"
+        ]
+      },
+      "decision_steps": 21,
+      "nominal_prunes": 19,
+      "bank_prunes": 13
+    },
+    {
+      "case": {
+        "index": 1,
+        "mode": "pulse",
+        "method": "repair_1822",
+        "reasons": [
+          "1822/pulse attenuation coverage"
+        ]
+      },
+      "decision_steps": 21,
+      "nominal_prunes": 14,
+      "bank_prunes": 22
+    },
+    {
+      "case": {
+        "index": 2,
+        "mode": "bias",
+        "method": "repair_1812",
+        "reasons": [
+          "1812/bias attenuation coverage"
+        ]
+      },
+      "decision_steps": 22,
+      "nominal_prunes": 36,
+      "bank_prunes": 32
+    },
+    {
+      "case": {
+        "index": 3,
+        "mode": "clean",
+        "method": "repair_1822",
+        "reasons": [
+          "1822/clean attenuation coverage"
+        ]
+      },
+      "decision_steps": 22,
+      "nominal_prunes": 23,
+      "bank_prunes": 5
+    },
+    {
+      "case": {
+        "index": 4,
+        "mode": "clean",
+        "method": "repair_1802",
+        "reasons": [
+          "1802/clean attenuation coverage"
+        ]
+      },
+      "decision_steps": 25,
+      "nominal_prunes": 14,
+      "bank_prunes": 5
+    },
+    {
+      "case": {
+        "index": 5,
+        "mode": "clean",
+        "method": "repair_1812",
+        "reasons": [
+          "1812/clean attenuation coverage"
+        ]
+      },
+      "decision_steps": 23,
+      "nominal_prunes": 2,
+      "bank_prunes": 7
+    },
+    {
+      "case": {
+        "index": 5,
+        "mode": "pulse",
+        "method": "repair_1802",
+        "reasons": [
+          "1802 largest archived single-call time"
+        ]
+      },
+      "decision_steps": 23,
+      "nominal_prunes": 20,
+      "bank_prunes": 14
+    },
+    {
+      "case": {
+        "index": 5,
+        "mode": "uniform",
+        "method": "repair_1812",
+        "reasons": [
+          "1812/uniform attenuation coverage"
+        ]
+      },
+      "decision_steps": 23,
+      "nominal_prunes": 2,
+      "bank_prunes": 3
+    },
+    {
+      "case": {
+        "index": 5,
+        "mode": "uniform",
+        "method": "repair_1822",
+        "reasons": [
+          "1822 largest archived single-call time"
+        ]
+      },
+      "decision_steps": 23,
+      "nominal_prunes": 35,
+      "bank_prunes": 3
+    },
+    {
+      "case": {
+        "index": 7,
+        "mode": "uniform",
+        "method": "repair_1802",
+        "reasons": [
+          "1802/uniform attenuation coverage"
+        ]
+      },
+      "decision_steps": 21,
+      "nominal_prunes": 40,
+      "bank_prunes": 23
+    },
+    {
+      "case": {
+        "index": 7,
+        "mode": "uniform",
+        "method": "repair_1822",
+        "reasons": [
+          "1822/uniform attenuation coverage"
+        ]
+      },
+      "decision_steps": 21,
+      "nominal_prunes": 20,
+      "bank_prunes": 32
+    },
+    {
+      "case": {
+        "index": 14,
+        "mode": "pulse",
+        "method": "repair_1802",
+        "reasons": [
+          "all archived harmful repair outcomes"
+        ]
+      },
+      "decision_steps": 22,
+      "nominal_prunes": 85,
+      "bank_prunes": 39
+    },
+    {
+      "case": {
+        "index": 14,
+        "mode": "uniform",
+        "method": "repair_1812",
+        "reasons": [
+          "1812 largest archived single-call time"
+        ]
+      },
+      "decision_steps": 23,
+      "nominal_prunes": 110,
+      "bank_prunes": 36
+    }
+  ],
+  "additional_independent_initials": 0,
+  "risk_certified": false,
+  "hard_real_time_certified": false,
+  "timing_scope": "Warmed functions; cyclic execution order across three implementations; concurrent desktop experiments. Complete controller wall time and process CPU time reported; no hard deadline claim.",
+  "plan_sha256": "86618f93ad2d6bbb512db2c45a0d5c6ecea0e6e0131df5fe22317e61dd627e44",
+  "episodes_sha256": "3fec8b24c2404f7ba12e0383ce50b1ce276baeadbccb5c81922edb837981c785"
+}
