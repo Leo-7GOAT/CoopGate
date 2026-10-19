@@ -170,6 +170,13 @@ explicitly, adding **zero independent initials**, and preserves every original
 bank and model. All new traces and distinct admitted forecasts are reviewed
 after both native collections finish; no risk certificate is inherited.
 
+A separate [repair runtime equivalence audit](docs/v20_fast_repair_verification.md)
+freezes **57 actual SUMO replays** of 19 development cases, including every known
+repair harm and each model's slowest call. It compares the reference with exact
+command reuse and rejection-only physical bounds. Accepted commands retain all
+33 complete forecasts; every pruned branch is checked against the original full
+calculation outside timing. No speedup or real-time claim is made before completion.
+
 ## V18: joint gating improves the frozen three-model comparison
 
 Models and protocol were frozen in **79beb44**, before **7,168 actual SUMO runs**
