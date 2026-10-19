@@ -199,11 +199,15 @@ Every harm has one positive admission residual and none during fallback.
 Across 11 admitted states and 124 candidate forecasts, no second admissible
 exact-gain tie exists. A baseline-nearer tie-break therefore changes zero
 commands and is not adopted as a repair.
-A separate [arrival-phase diagnostic](docs/v20_arrival_phase_screen.md) is frozen
-for all **526** archived admissions. It preserves the original cost and arrival
-metrics while checking whether sub-period crossing order exposes differences
-hidden by 500 ms arrival registration. The exhaustive forecast screen is in
-progress; no controller change or closed-loop improvement is claimed.
+A separate [arrival-phase diagnostic](docs/v20_arrival_phase_screen.md) has
+completed all **526** archived admissions and **295** distinct 33-path forecasts,
+matching every original cost/time difference. A zero-tolerance interpolated
+arrival-order check rejects **11/12** positive local residuals, while also
+rejecting **326/514** nonpositive residuals. The complete descriptive margin grid
+reports the tradeoff: a 50 ms margin keeps **386/514** nonpositive branches and
+rejects **9/12** positive ones. These are correlated archived branch counts,
+not new closed-loop adoption or risk estimates. No controller change is claimed;
+the original 500 ms outcome metrics remain unchanged.
 
 A separate [repair runtime equivalence audit](docs/v20_fast_repair_verification.md)
 freezes **57 actual SUMO replays** of 19 development cases, including every known
