@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\Users\Leo\Desktop\papper\CoopGate\tools\resume_frozen_risk_v19.py", line 318, in <module>
+    worker(args.shard)
+  File "C:\Users\Leo\Desktop\papper\CoopGate\tools\resume_frozen_risk_v19.py", line 232, in worker
+    atomic_bytes(out / 'episodes.json', encoded_rows(rows, entry['newline']))
+  File "C:\Users\Leo\Desktop\papper\CoopGate\tools\resume_frozen_risk_v19.py", line 65, in atomic_bytes
+    os.replace(temporary, path)
+PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\artifacts\\v19\\risk_validation\\shard_2\\episodes.json.xcnx2b6p.tmp' -> 'C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\artifacts\\v19\\risk_validation\\shard_2\\episodes.json'
