@@ -1,0 +1,11 @@
+{
+  "utc": "2026-10-21T13:37:52.527137+00:00",
+  "expected_refusal": true,
+  "return_code": 1,
+  "stderr": "Traceback (most recent call last):\n  File \"C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\tools\\select_recovered_v21.py\", line 159, in <module>\n    select(args.attempt)\n  File \"C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\tools\\select_recovered_v21.py\", line 101, in select\n    evidence = completion_receipts(recovery.EXECUTION, guard['recovery_plan_sha256'])\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\tools\\select_recovered_v21.py\", line 28, in completion_receipts\n    supervisor = recovery.read(directory / 'supervisor_exit.json')\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\tools\\recover_interrupted_v21.py\", line 48, in read\n    return json.loads(Path(path).read_text(encoding='utf-8-sig'))\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Leo\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\pathlib.py\", line 1058, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Leo\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\pathlib.py\", line 1044, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\Leo\\\\Desktop\\\\papper\\\\CoopGate\\\\artifacts\\\\v21\\\\interrupted_recovery_20261021\\\\execution\\\\supervisor_exit.json'\n",
+  "stdout": "",
+  "selection_created": false,
+  "outcome_summary_read": false,
+  "supervisor_identity_preserved": true,
+  "recovery_plan_sha256": "9600a0f6e26214417008c0b761ed743aff18ad6d663d598bffd9c4505c204128"
+}
