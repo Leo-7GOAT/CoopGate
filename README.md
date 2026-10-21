@@ -1,6 +1,15 @@
 # CoopGate
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
+Status checked on 2026-10-21: the two V21 studies were interrupted. No original
+Python/SUMO worker remains, and their temporary supervisor exit records are
+unavailable. The retained prefixes contain 6,573/6,656 phase-study observations
+and 10,073/12,160 matched-transfer observations, plus one orphan transfer trace.
+An append-only recovery preserves all original data and frozen rules, requires
+actual SUMO parity replays, and independently reviews the complete studies.
+These partial records are **not completed results or new risk certificates**.
+[Interruption and recovery protocol](docs/v21_interruption_recovery.md).
+
 V14 passed the frozen single-ego learning prerequisite. On the frozen V18
 population, genuine three-actor model-based MARL improves mean team cost across
 all three fixed trained models. A joint action gate improves the three-model mean further and checks
