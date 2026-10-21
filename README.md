@@ -13,6 +13,14 @@ The original recovery supervisor has advanced to the **2,170 missing runs**.
 These partial records are **not completed results or new risk certificates**.
 [Interruption and recovery protocol](docs/v21_interruption_recovery.md).
 
+The prospective common-data pipeline has also passed **18 focused tests** and
+reproduced all calibration and final-comparison outputs from **61,440 historical
+V19 records**, including all six comparison methods and all three fixed models.
+Forty archived complete episodes/traces round-trip through transactional storage
+without changes. This is an implementation audit with **zero new SUMO runs or
+independent initials**, not a new risk certificate or a completed calibration
+executor. [Common-data pipeline and remaining execution work](docs/v21_prospective_data_pipeline.md).
+
 V14 passed the frozen single-ego learning prerequisite. On the frozen V18
 population, genuine three-actor model-based MARL improves mean team cost across
 all three fixed trained models. A joint action gate improves the three-model mean further and checks
