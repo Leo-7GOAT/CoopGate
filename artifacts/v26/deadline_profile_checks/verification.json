@@ -1,0 +1,33 @@
+{
+  "utc": "2026-10-22T12:06:38.163408+00:00",
+  "source_sha256": {
+    "src/coopgate/deadline_profile_v26.py": "5bc8cadcdf9ebb56b53ddf5cd6e9abbe96803d09b60741e3fb98a8af08061746",
+    "tests/test_deadline_profile_v26.py": "973c6a20465ca7c99016386a04c00b0a2184c2ba88ea903f77303be382618e82",
+    "tools/audit_deadline_sumo_v26.py": "e5e86e9c8c97193c0789d83369bb88a806979bc9120613ca0b0a37ef636dba36"
+  },
+  "test_command": "python -m pytest -q tests/test_deadline_profile_v26.py",
+  "test_observation": {
+    "session_id": 47182,
+    "exit_code": 0,
+    "passed": 23,
+    "duration_seconds": 52.57
+  },
+  "actual_spawned_process_faults_tested": [
+    "hang",
+    "slow valid late response",
+    "exception",
+    "input mutation",
+    "NaN",
+    "shape",
+    "slew",
+    "acceleration limit",
+    "oversized reply",
+    "process exit",
+    "startup failure"
+  ],
+  "current_frozen_sources_checked": 340,
+  "current_frozen_sources_modified": 0,
+  "hard_real_time_certified": false,
+  "new_risk_certificate": false,
+  "sumo_fault_injection_study": "not yet executed"
+}
