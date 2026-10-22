@@ -131,6 +131,18 @@ comparators, retaining their original counts separately. No partial efficacy
 analysis or new risk certification is available.
 [Algorithm mapping, complete scope and integration evidence](docs/v27_physical_switch_comparison.md).
 
+The common-adoption audit is complete: **18,816 historical episodes and 432,486
+control steps** were reconstructed across all 288 original initial groups, with
+an actual successful process exit. Raw-policy adoption changes from 640/640 to
+**627/640, 624/640 and 623/640** under the shared actual-command definition; all
+other 29 study/controller groups retain their original counts. Original events
+and certificates remain unchanged. The full comparison analyzer passed **41
+checks**, including all 3,290 commands and two aborts in the completed integration.
+It retains 19 development methods, all 500 merged transfer cells and 126 primary
+paired contrasts, and refuses effectiveness reporting before both inputs are
+complete. [Event audit and retained counts](docs/v27_common_adoption_audit.md),
+[complete comparison rules](docs/v27_common_condition_analysis.md).
+
 The prospective common-data pipeline has also passed **18 focused tests** and
 reproduced all calibration and final-comparison outputs from **61,440 historical
 V19 records**, including all six comparison methods and all three fixed models.
