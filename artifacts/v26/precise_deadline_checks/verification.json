@@ -1,0 +1,39 @@
+{
+  "utc": "2026-10-22T12:46:07.517473+00:00",
+  "previous_goal_turn": "verified wait: original native workers and process start times checked at 20:33 local",
+  "tests": [
+    {
+      "command": "python -m pytest tests/test_deadline_profile_v26.py tests/test_precise_deadline_v26.py -q",
+      "passed": 29,
+      "seconds": 58.23,
+      "session_id": 38835,
+      "observed_exit_code": 0
+    },
+    {
+      "command": "python -m pytest tests/test_precise_deadline_audit_v26.py -q",
+      "passed": 12,
+      "seconds": 3.03,
+      "observed_exit_code": 0
+    }
+  ],
+  "source_sha256": {
+    "src/coopgate/precise_deadline_v26.py": "00d49449a1ebf1ffa47ce33c7247590312a78ad9a9208283484963c0e514c98a",
+    "tests/test_precise_deadline_v26.py": "4a32653cf08d85a64aa1fc616455da9a4027bb243a15e0ecc41c1fac50e08807",
+    "tools/audit_precise_deadline_v26.py": "868ceb96de4ee5d6ce01e6879be4fc3dc1fdef5c7680784792a835580d8072e2",
+    "tests/test_precise_deadline_audit_v26.py": "65dba627ed8bdcc4c32f81b61085a68b621fbae47d080705ff59d9a9c731a2a7"
+  },
+  "unchanged_frozen_sources": [
+    {
+      "plan": "artifacts/v25/buffered_complete_scope/plan.json",
+      "plan_sha256": "318d8644f65b34d1c49c214616e67a0d4847a37fbacb33e74694ecde1dca0b90",
+      "unchanged_sources": 340
+    },
+    {
+      "plan": "artifacts/v26/deadline_sumo/plan.json",
+      "plan_sha256": "c39ca0e1c4c0d4c828ee1bacde980d8c871f2ee32fb86e8111cf21dd393a2e40",
+      "unchanged_sources": 341
+    }
+  ],
+  "active_calibration_outcomes_read": false,
+  "new_risk_certificate": false
+}
