@@ -26,6 +26,11 @@ The actual **144-role runtime integration is now complete** after preserving
 All 64 collection/reference pairs and 16 observed-initial shadows match; a full
 independent review and actual successful supervisor exit are recorded. These
 remain implementation checks with zero new independent initials or risk claims.
+The observed-state-only predictor also passed **10 actual SUMO shadow replays**
+and **162 runtime/offline adapter-choice checks** using explicitly synthetic
+calibration fixtures. They verify execution wiring, not statistical calibration.
+Its measured full ten-profile forecast preparation took **42.48 s** for this old
+initial under concurrent load, so no real-time deployment claim is made.
 
 V14 passed the frozen single-ego learning prerequisite. On the frozen V18
 population, genuine three-actor model-based MARL improves mean team cost across
