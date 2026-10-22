@@ -45,6 +45,10 @@ started collecting only the missing original roles. The original exit remains
 unknown; complete blocks and partial record blobs are retained unchanged.
 The 1,024-initial final confirmation has not started,
 and there is no new risk certificate or partial effectiveness analysis.
+All three partial blocks are now complete: 62 original record blobs are exact
+and 88 missing roles were executed. A separate read-only review rebuilt all
+120 main physical traces and checked all 30 observed predictions; it exited
+successfully without adding simulation runs or independent samples.
 [Interruption evidence and recovery constraints](docs/v24_prospective_calibration_recovery.md).
 [Recovery launch and exact boundary evidence](artifacts/v24/prospective_calibration_recovery_20261022/launch_verification.json).
 [Full execution protocol and compute accounting](docs/v21_complete_execution_protocol.md).

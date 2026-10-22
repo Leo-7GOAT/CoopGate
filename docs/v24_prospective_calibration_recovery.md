@@ -37,3 +37,7 @@
 2026-10-22 10:16 UTC，三个真实SUMO边界回放全部完成且非计时结果一致，三个回放工作进程的实际退出码均为0；这三次回放不增加独立样本数。此后才进入缺失角色采集，三名采集工作进程的真实身份与父进程句柄已核对。完整风险校准和最终确认仍未完成，没有部分效果分析或新增风险证书。
 
 证据：[恢复代码](../tools/recover_prospective_v24.py)、[固定恢复协议](../artifacts/v24/prospective_calibration_recovery_20261022/recovery/plan.json)、[启动核验](../artifacts/v24/prospective_calibration_recovery_20261022/launch_verification.json)。该恢复保持原4,096个校准初态和1,024个最终确认初态，不重置首次尝试的0.025错误预算。
+
+三个中断初态现已补齐并封存：62条原记录保持压缩数据逐字节一致，新增88条原定缺失角色。额外的只读独立复核重建全部120条主物理轨迹、核对30条观测预测及其与独立clean执行的一致性，实际复核进程退出码为0。复核本身没有新增仿真运行或独立样本，也没有分析部分校准收益。其余预定初态继续采集；这三个块的成功不替代4,096初态完整校准。
+
+见[固定三个恢复块的只读核验](../tools/verify_restored_blocks_v24.py)、[完整复核记录](../artifacts/v24/prospective_calibration_recovery_20261022/restored_block_review/report.json)和[实际退出观察](../artifacts/v24/prospective_calibration_recovery_20261022/restored_block_review_exit.json)。
