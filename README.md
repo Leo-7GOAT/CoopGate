@@ -21,10 +21,11 @@ Forty archived complete episodes/traces round-trip through transactional storage
 without changes. This is an implementation audit with **zero new SUMO runs or
 independent initials**, not a new risk certificate or a completed calibration
 executor. [Common-data pipeline and remaining execution work](docs/v21_prospective_data_pipeline.md).
-The actual 144-role runtime integration was interrupted after 99 transactionally
-committed roles. A separately frozen recovery preserves those databases and
-executes the 45 missing roles plus two boundary replays before a full review.
-These remain implementation checks with zero new independent initials.
+The actual **144-role runtime integration is now complete** after preserving
+99 committed roles, executing the 45 missing roles and two boundary replays.
+All 64 collection/reference pairs and 16 observed-initial shadows match; a full
+independent review and actual successful supervisor exit are recorded. These
+remain implementation checks with zero new independent initials or risk claims.
 
 V14 passed the frozen single-ego learning prerequisite. On the frozen V18
 population, genuine three-actor model-based MARL improves mean team cost across
