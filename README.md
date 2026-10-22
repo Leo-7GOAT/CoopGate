@@ -118,17 +118,18 @@ decisions can change in other cases, so prior risk certification cannot simply
 be transferred. Both formal live studies retain their frozen implementations.
 [Complete pairing, clock correction and limitations](docs/v26_precise_deadline_protocol.md).
 
-Common-condition physical-switching comparators are now frozen: a MAMPS
+Common-condition physical-switching comparators are now complete: a MAMPS
 monotone-mask adapter and an all-or-none MPS adapter share the current trained
 actors, strong baseline and bounded-error stopping certificate. **20 focused
 tests and 144 actual SUMO integration runs** passed execution/review, including
 3,290 reconstructed commands and **two retained controller aborts**. The complete
-**6,912-run comparison is running** over all three models, original disturbance
+**6,912-run comparison has finished**, with 157,841 reconstructed commands and
+51 retained terminal failures, over all three models, original disturbance
 cases, five transfer scenes and four plants. These are explicit adaptations,
 not reproductions of the original robot benchmark or inherited safety theorems.
-Analysis must recompute the same actual-command adoption event for historical
-comparators, retaining their original counts separately. No partial efficacy
-analysis or new risk certification is available.
+Analysis uses the same reconstructed actual-command adoption event for historical
+comparators, retaining their original counts separately. No new risk certification
+is available.
 [Algorithm mapping, complete scope and integration evidence](docs/v27_physical_switch_comparison.md).
 
 The common-adoption audit is complete: **18,816 historical episodes and 432,486
@@ -139,9 +140,19 @@ other 29 study/controller groups retain their original counts. Original events
 and certificates remain unchanged. The full comparison analyzer passed **41
 checks**, including all 3,290 commands and two aborts in the completed integration.
 It retains 19 development methods, all 500 merged transfer cells and 126 primary
-paired contrasts, and refuses effectiveness reporting before both inputs are
-complete. [Event audit and retained counts](docs/v27_common_adoption_audit.md),
+paired contrasts; both inputs and the full report are now complete.
+[Event audit and retained counts](docs/v27_common_adoption_audit.md),
 [complete comparison rules](docs/v27_common_condition_analysis.md).
+
+The complete comparison shows a tradeoff: physical adapters gain **2.46–3.02%**
+on development but have **52.34–57.81%** empirical adopted individual-performance
+regression, versus phase05's **0.76–1.03%** gain and **0/36, 0/38, 0/39** counts.
+Phase05 has lower empirical conditional regression in all 120 transfer contrasts,
+but lower mean cost in only 29/60 MAMPS and 28/60 MPS cells. Four in-bound phase05
+transfer cells still exceed 5% empirical conditional risk, with denominators as
+small as two; strong-lag failures remain. These are descriptive old-initial
+comparisons, not uniform dominance, equal-compute evidence or a transfer risk
+certificate. [Complete results and limitations](docs/v27_complete_comparison_results.md).
 
 The prospective common-data pipeline has also passed **18 focused tests** and
 reproduced all calibration and final-comparison outputs from **61,440 historical
