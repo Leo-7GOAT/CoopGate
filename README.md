@@ -52,6 +52,7 @@ successfully without adding simulation runs or independent samples.
 [Interruption evidence and recovery constraints](docs/v24_prospective_calibration_recovery.md).
 [Recovery launch and exact boundary evidence](artifacts/v24/prospective_calibration_recovery_20261022/launch_verification.json).
 [Full execution protocol and compute accounting](docs/v21_complete_execution_protocol.md).
+[Matched inference audit: distinguish controller effects from different certification claims](docs/v25_comparison_scope_audit.md).
 [Interruption and recovery protocol](docs/v21_interruption_recovery.md).
 
 An exact cross-call cache passed 16 tests and 24 paired SUMO runs with full
