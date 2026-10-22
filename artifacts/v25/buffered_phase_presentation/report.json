@@ -1,0 +1,97 @@
+{
+  "source_plan_sha256": "2679131ac9b05bc967f00472f55368241e482b0199f80ac274abcff3f8ef972b",
+  "source_report_sha256": "b96ab59b2871b9633607ee67b4e7cf64ca8bc72bb601607cbc9c72155ba8fb97",
+  "source_manifest_sha256": "203c7253b4ddc7458e9a62b350b3e89247faa76358036241f9f91b1de2bfab85",
+  "actual_sumo_runs": 24,
+  "paired_cases": 12,
+  "old_initials": 1,
+  "new_independent_initials": 0,
+  "active_calibration_outcomes_used": false,
+  "all_non_timing_fields_exact": true,
+  "group_timings": [
+    {
+      "mode": "clean",
+      "decisions": 67,
+      "adopted_steps": 3,
+      "reference_select_ms": 15379.15590009652,
+      "buffered_select_ms": 3750.955300114583,
+      "reduction_percent": 75.6101354035234
+    },
+    {
+      "mode": "uniform",
+      "decisions": 70,
+      "adopted_steps": 3,
+      "reference_select_ms": 16723.988800134975,
+      "buffered_select_ms": 4023.958999896422,
+      "reduction_percent": 75.93899967294917
+    },
+    {
+      "mode": "bias",
+      "decisions": 72,
+      "adopted_steps": 0,
+      "reference_select_ms": 5434.52290026471,
+      "buffered_select_ms": 1447.029500035569,
+      "reduction_percent": 73.37338481055833
+    },
+    {
+      "mode": "pulse",
+      "decisions": 68,
+      "adopted_steps": 3,
+      "reference_select_ms": 17299.321300175507,
+      "buffered_select_ms": 4255.159199994523,
+      "reduction_percent": 75.40273906611958
+    },
+    {
+      "mode": "all",
+      "decisions": 277,
+      "adopted_steps": 9,
+      "reference_select_ms": 54836.98890067171,
+      "buffered_select_ms": 13477.103000041097,
+      "reduction_percent": 75.4233351060674
+    }
+  ],
+  "sample_latency": {
+    "reference": {
+      "decisions": 277,
+      "p50_p95_p99_max_ms": [
+        11.403599986806512,
+        1400.7580200093796,
+        2631.580643984489,
+        3155.3603000356816
+      ],
+      "over_500ms": 34
+    },
+    "buffered": {
+      "decisions": 277,
+      "p50_p95_p99_max_ms": [
+        3.9423999842256308,
+        335.15447997488076,
+        591.0549160162922,
+        838.1398000055924
+      ],
+      "over_500ms": 8
+    }
+  },
+  "model_transitions": {
+    "reference": 3439670,
+    "buffered": 3439670
+  },
+  "independent_review_counts": {
+    "physical_traces": 24,
+    "raw_actor_checks": 0,
+    "baseline_checks": 0,
+    "nominal_checks": 0,
+    "candidate_families": 554,
+    "admitted_forecasts": 18,
+    "distinct_admitted_forecasts": 7,
+    "error_case_replays": 0
+  },
+  "execution_observation": {
+    "session_id": 89137,
+    "exit_code": 0,
+    "source": "Actual exec/write_stdin completion observed before presentation; no reconstructed native exit receipt"
+  },
+  "timing_scope": "All select lifecycle costs including all allocation costs; report setup separately; concurrent desktop load, one old initial, no population P95 or hard realtime claim",
+  "new_risk_certificate": false,
+  "hard_real_time_certified": false
+}

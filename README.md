@@ -62,6 +62,16 @@ model work by 0.0416% on one old initial, so **no meaningful speedup is claimed*
 and the calibration controller is unchanged.
 [Full result, including the slower pulse cases](docs/v24_persistent_phase_audit.md).
 
+A separate exact buffer-reuse implementation now preserves all 277 paired
+decisions, nine learning adoptions, full physical checks and internal work
+counts in **24 completed paired SUMO runs** with independent review. Measured
+complete select time drops **75.423%**, from 54.837 s to 13.477 s in this group.
+Sample p95 drops from 1,400.758 to 335.154 ms, but **8/277 decisions still exceed
+500 ms** (reference: 34/277). This covers one old initial, three fixed models and
+four modes under concurrent load: no new efficacy sample, risk certificate or
+hard-real-time claim. The live calibration still uses its frozen implementation.
+[Exact checks, full timing results and limits](docs/v25_buffered_certificate.md).
+
 The prospective common-data pipeline has also passed **18 focused tests** and
 reproduced all calibration and final-comparison outputs from **61,440 historical
 V19 records**, including all six comparison methods and all three fixed models.

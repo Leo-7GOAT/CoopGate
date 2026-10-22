@@ -1,0 +1,5867 @@
+{
+  "case": [
+    0,
+    "uniform",
+    "phase05_1812"
+  ],
+  "implementation": "reference",
+  "wall_seconds": 6.494846699992195,
+  "row": {
+    "seed": 63100001,
+    "scenario": "dense",
+    "method": "joint_rl",
+    "collision": false,
+    "completed": true,
+    "elapsed": 11.0,
+    "mean_capped_finish_s": 8.833333333333334,
+    "contract_violations": 0,
+    "outside_steps": 0,
+    "uncertified_steps": 0,
+    "max_prediction_error": 0.1439282304237235,
+    "mean_jerk": 0.46401515151515155,
+    "intervention": 0.9090909090909091,
+    "disturbance": "uniform",
+    "radius": 0.5,
+    "aborted": false,
+    "abort_reason": "",
+    "max_command_slew": 5.0,
+    "group": "high_conflict",
+    "ego_time": 11.0,
+    "ego_variation": 10.3125,
+    "ego_cost": 11.515625,
+    "other_time": 7.75,
+    "per_vehicle_finish": [
+      7.0,
+      11.0,
+      8.5
+    ],
+    "per_vehicle_variation": [
+      2.5,
+      10.3125,
+      2.5
+    ],
+    "setup_ms": 0.9266999550163746,
+    "controller_ms": [
+      1506.1531999963336,
+      719.2298999871127,
+      2293.9955000183545,
+      1423.8589000306092,
+      122.07540002418682,
+      107.49699996085837,
+      81.33639994775876,
+      17.132500011939555,
+      17.082000034861267,
+      15.072799986228347,
+      11.577800032682717,
+      7.652699947357178,
+      8.197100018151104,
+      5.561599973589182,
+      5.607700033579022,
+      4.042700049467385,
+      3.4425000194460154,
+      2.4897000403143466,
+      1.67269998928532,
+      1.4628999633714557,
+      2.1878000115975738,
+      1.2858000118285418
+    ],
+    "learned_tail_fraction": 0.0,
+    "controller": "phase05_1812",
+    "initial": [
+      [
+        -73.09386143479509,
+        16.22232272862074
+      ],
+      [
+        -78.31917061074938,
+        12.326726967164765
+      ],
+      [
+        -106.53370756190657,
+        16.422378274088512
+      ]
+    ],
+    "initial_index": 0,
+    "per_vehicle_cost": [
+      7.125,
+      11.515625,
+      8.625
+    ],
+    "team_cost": 9.088541666666666,
+    "learned_action_steps": 2,
+    "control_steps": 22,
+    "min_adopted_bank_checks": 33,
+    "max_adopted_failed_scenarios": 0,
+    "chosen_compositions": [
+      0,
+      0,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "forecast_transitions": 8029,
+    "internal_transitions": 413106,
+    "trace_saved": true,
+    "trajectory_sha256": "b89112adcc54e2632cd0c47bcab3723ca78bf19f89078d22b016498f7f6ff959",
+    "decision_sha256": "893842d95eea93c10a04e0c064f951b7865acb7f0260887c20d77db7f9acc2bd",
+    "repair_action_steps": 1,
+    "selected_repair_weights": [
+      null,
+      null,
+      1.0,
+      0.25,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "forecast_error_count": 0,
+    "generation_error_count": 0,
+    "incomplete_work_count_steps": 0
+  },
+  "trace": [
+    {
+      "t": 0.5,
+      "x": [
+        [
+          -64.62115592711277,
+          17.45017447774712
+        ],
+        [
+          -72.29232732447093,
+          11.845655197588489
+        ],
+        [
+          -97.96293681105524,
+          17.66823191014011
+        ]
+      ],
+      "command": [
+        2.5,
+        -1.25,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.2995406686507981,
+          0.23139412058870656,
+          -0.49914421401187026
+        ],
+        [
+          -0.33755358181797745,
+          0.4759897011650126,
+          -0.0025081889935473223
+        ],
+        [
+          0.30176165462864224,
+          0.4707090752992078,
+          0.018551018380628004
+        ],
+        [
+          0.4831969567312965,
+          0.36373422892009977,
+          0.46662440645825576
+        ],
+        [
+          -0.3693468696273944,
+          -0.1025448217358047,
+          -0.02498666131749616
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        -1.25,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        -1.875,
+        1.25
+      ],
+      "candidate_count": 12,
+      "original_candidate_count": 3,
+      "repair_candidate_count": 9,
+      "nominal_candidate_count": 10,
+      "candidate_evidence": [
+        {
+          "composition": 2,
+          "weight": 0.25,
+          "command": [
+            2.5,
+            -1.40625,
+            2.5
+          ],
+          "checked_scenarios": 3,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.8125,
+                -1.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.5,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 2,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -1.4943503299252843,
+              0.0
+            ],
+            [
+              0.0,
+              -0.5808301811492349,
+              0.0
+            ]
+          ],
+          "forecast_error": null
+        },
+        {
+          "composition": 4,
+          "weight": 1.0,
+          "command": [
+            2.5,
+            -1.25,
+            1.25
+          ],
+          "checked_scenarios": 2,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.3125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.5,
+                0.5
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 1,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -1.050792763940228,
+              0.040776217259114844
+            ]
+          ],
+          "forecast_error": null
+        },
+        {
+          "composition": 2,
+          "weight": 0.75,
+          "command": [
+            2.5,
+            -1.71875,
+            2.5
+          ],
+          "checked_scenarios": 3,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.3125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.4375,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 2,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -1.2035411192685803,
+              0.0
+            ],
+            [
+              0.0,
+              -0.44094819098505766,
+              0.0
+            ]
+          ],
+          "forecast_error": null
+        },
+        {
+          "composition": 4,
+          "weight": 0.75,
+          "command": [
+            2.5,
+            -1.25,
+            1.5625
+          ],
+          "checked_scenarios": 2,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.3125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.5625,
+                0.5
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 1,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -1.050792763940228,
+              0.02983871725911591
+            ]
+          ],
+          "forecast_error": null
+        },
+        {
+          "composition": 6,
+          "weight": 0.75,
+          "command": [
+            2.5,
+            -1.71875,
+            1.5625
+          ],
+          "checked_scenarios": 2,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.3125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0625,
+                0.0
+              ],
+              [
+                0.625,
+                0.5
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 1,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -1.2035411192685803,
+              0.02983871725911591
+            ]
+          ],
+          "forecast_error": null
+        },
+        {
+          "composition": 2,
+          "weight": 0.5,
+          "command": [
+            2.5,
+            -1.5625,
+            2.5
+          ],
+          "checked_scenarios": 2,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.3125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0625,
+                0.0
+              ],
+              [
+                0.125,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 1,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -1.2367442442685803,
+              0.0
+            ]
+          ],
+          "forecast_error": null
+        },
+        {
+          "composition": 6,
+          "weight": 0.5,
+          "command": [
+            2.5,
+            -1.5625,
+            1.875
+          ],
+          "checked_scenarios": 2,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.3125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0625,
+                0.0
+              ],
+              [
+                0.5,
+                0.5
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 1,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -1.2367442442685803,
+              0.0194506086295565
+            ]
+          ],
+          "forecast_error": null
+        },
+        {
+          "composition": 6,
+          "weight": 0.25,
+          "command": [
+            2.5,
+            -1.40625,
+            2.1875
+          ],
+          "checked_scenarios": 3,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.3125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.5,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 2,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -1.1996348692685803,
+              0.009375000000000355
+            ],
+            [
+              0.0,
+              -0.5808301811492349,
+              0.012388108629558303
+            ]
+          ],
+          "forecast_error": null
+        },
+        {
+          "composition": 2,
+          "weight": 1.0,
+          "command": [
+            2.5,
+            -1.875,
+            2.5
+          ],
+          "checked_scenarios": 2,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.25,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 1,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -1.2327668594327577,
+              0.0
+            ]
+          ],
+          "forecast_error": null
+        },
+        {
+          "composition": 6,
+          "weight": 1.0,
+          "command": [
+            2.5,
+            -1.875,
+            1.25
+          ],
+          "checked_scenarios": 2,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.25,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.4375,
+                -0.5
+              ],
+              [
+                0.5,
+                0.5
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 1,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -1.2327668594327577,
+              0.040776217259114844
+            ]
+          ],
+          "forecast_error": null
+        }
+      ],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 1506.1531999963336,
+      "performance_forecast_transitions": 979,
+      "performance_model_transitions": 90644,
+      "exact_cache_entries": 616,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 1.0,
+      "x": [
+        [
+          -55.5592810393326,
+          18.55820013337781
+        ],
+        [
+          -66.54207197538699,
+          11.279082485527855
+        ],
+        [
+          -88.73656842283322,
+          18.98439171414468
+        ]
+      ],
+      "command": [
+        2.5,
+        -1.25,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.20497028378421978,
+          -0.1308761005387562,
+          -0.05618390383598193
+        ],
+        [
+          -0.07417790356514797,
+          0.26096019602038,
+          0.3232343052209202
+        ],
+        [
+          -0.4630025500035796,
+          0.1105635605791111,
+          -0.05955384647046247
+        ],
+        [
+          -0.4330717198102765,
+          0.4279988425117366,
+          0.437785667772403
+        ],
+        [
+          -0.24452098652986265,
+          -0.08437361917880626,
+          0.016315817358821483
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        -1.25,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        -2.5,
+        2.5
+      ],
+      "candidate_count": 4,
+      "original_candidate_count": 1,
+      "repair_candidate_count": 3,
+      "nominal_candidate_count": 4,
+      "candidate_evidence": [
+        {
+          "composition": 2,
+          "weight": 0.75,
+          "command": [
+            2.5,
+            -2.1875,
+            2.5
+          ],
+          "checked_scenarios": 3,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.8125,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.5,
+                0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 2,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -0.8709032302411508,
+              0.0
+            ],
+            [
+              0.0,
+              -0.015896724012057106,
+              0.0
+            ]
+          ],
+          "forecast_error": null
+        },
+        {
+          "composition": 2,
+          "weight": 1.0,
+          "command": [
+            2.5,
+            -2.5,
+            2.5
+          ],
+          "checked_scenarios": 3,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.5625,
+                0.5
+              ],
+              [
+                0.125,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 2,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -0.6901410322170349,
+              0.0
+            ],
+            [
+              0.0,
+              -0.1850651720361718,
+              0.0
+            ]
+          ],
+          "forecast_error": null
+        },
+        {
+          "composition": 2,
+          "weight": 0.5,
+          "command": [
+            2.5,
+            -1.875,
+            2.5
+          ],
+          "checked_scenarios": 3,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.5,
+                0.5
+              ],
+              [
+                0.25,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 2,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -0.7448285322170367,
+              0.0
+            ],
+            [
+              0.0,
+              -0.0937309480241133,
+              0.0
+            ]
+          ],
+          "forecast_error": null
+        },
+        {
+          "composition": 2,
+          "weight": 0.25,
+          "command": [
+            2.5,
+            -1.5625,
+            2.5
+          ],
+          "checked_scenarios": 3,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.5,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 2,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -0.8081097822170378,
+              0.0
+            ],
+            [
+              0.0,
+              -0.21787767203617037,
+              0.0
+            ]
+          ],
+          "forecast_error": null
+        }
+      ],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 719.2298999871127,
+      "performance_forecast_transitions": 553,
+      "performance_model_transitions": 42890,
+      "exact_cache_entries": 319,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 1.5,
+      "x": [
+        [
+          -45.93928117438463,
+          19.674386439530302
+        ],
+        [
+          -61.27562371956449,
+          10.064218691694073
+        ],
+        [
+          -78.87763414190812,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        -2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.4690716683753351,
+          -0.2873618542096704,
+          0.4415819224598949
+        ],
+        [
+          0.24108051053708934,
+          0.4805471076116511,
+          -0.12740469851878888
+        ],
+        [
+          -0.22625665242951398,
+          -0.2700980086485292,
+          0.29174029782574484
+        ],
+        [
+          -0.4663247888694374,
+          0.08734135549516253,
+          -0.16840327000657518
+        ],
+        [
+          -0.41756433933782566,
+          0.3409334614135573,
+          0.4169651207049846
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 0.0,
+      "nominal_joint_action_admitted": true,
+      "portfolio_joint_action_admitted": true,
+      "repair_action_admitted": false,
+      "composition": 2,
+      "repair_weight": 1.0,
+      "baseline_command": [
+        2.5,
+        1.25,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        -2.5,
+        2.5
+      ],
+      "candidate_count": 4,
+      "original_candidate_count": 1,
+      "repair_candidate_count": 3,
+      "nominal_candidate_count": 4,
+      "candidate_evidence": [
+        {
+          "composition": 2,
+          "weight": 1.0,
+          "command": [
+            2.5,
+            -2.5,
+            2.5
+          ],
+          "checked_scenarios": 33,
+          "failed_scenarios": 0,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.8125,
+                -1.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -2.125,
+                -2.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -2.125,
+                -2.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.625,
+                -1.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.6875,
+                -1.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.8125,
+                -1.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.3125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.3125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.375,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.5625,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.25,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.4375,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 33,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -1.5846784520260986,
+              0.0
+            ],
+            [
+              0.0,
+              -0.9229495987006278,
+              0.0
+            ],
+            [
+              0.0,
+              -0.9229495987006278,
+              0.0
+            ],
+            [
+              0.0,
+              -0.7056313135854069,
+              0.0
+            ],
+            [
+              0.0,
+              -0.7056313135854069,
+              0.0
+            ],
+            [
+              0.0,
+              -0.9229495987006278,
+              0.0
+            ],
+            [
+              0.0,
+              -0.9229495987006278,
+              0.0
+            ],
+            [
+              0.0,
+              -0.7056313135854069,
+              0.0
+            ],
+            [
+              0.0,
+              -0.7056313135854069,
+              0.0
+            ],
+            [
+              0.0,
+              -0.9673825763024944,
+              0.0
+            ],
+            [
+              0.0,
+              -0.9673825763024944,
+              0.0
+            ],
+            [
+              0.0,
+              -0.7149017260130499,
+              0.0
+            ],
+            [
+              0.0,
+              -0.7149017260130499,
+              0.0
+            ],
+            [
+              0.0,
+              -0.9673825763024944,
+              0.0
+            ],
+            [
+              0.0,
+              -0.9673825763024944,
+              0.0
+            ],
+            [
+              0.0,
+              -0.7149017260130499,
+              0.0
+            ],
+            [
+              0.0,
+              -0.7149017260130499,
+              0.0
+            ],
+            [
+              0.0,
+              -1.7198944061815666,
+              0.0
+            ],
+            [
+              0.0,
+              -0.5418453953414524,
+              0.0
+            ],
+            [
+              0.0,
+              -1.737009783254969,
+              0.0
+            ],
+            [
+              0.0,
+              -1.5246487760016834,
+              0.0
+            ],
+            [
+              0.0,
+              -1.6847632902082434,
+              0.0
+            ],
+            [
+              0.0,
+              -1.5905147489927227,
+              0.0
+            ],
+            [
+              0.0,
+              -1.1096539862585573,
+              0.0
+            ],
+            [
+              0.0,
+              -1.039909070514728,
+              0.0
+            ],
+            [
+              0.0,
+              -0.8985688135854097,
+              0.0
+            ],
+            [
+              0.0,
+              -0.7433200763024921,
+              0.0
+            ],
+            [
+              0.0,
+              -0.41977420057888715,
+              0.0
+            ],
+            [
+              0.0,
+              -0.6893392260130486,
+              0.0
+            ],
+            [
+              0.0,
+              -0.520900463295968,
+              0.0
+            ],
+            [
+              0.0,
+              -0.7202359011577766,
+              0.0
+            ],
+            [
+              0.0,
+              -0.5742754632959652,
+              0.0
+            ],
+            [
+              0.0,
+              -0.5445267260130535,
+              0.0
+            ]
+          ],
+          "forecast_error": null
+        }
+      ],
+      "selected_bank_differences": [
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1.8125,
+            -1.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1.125,
+            -1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1.125,
+            -1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.75,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.75,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1.125,
+            -1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1.125,
+            -1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.75,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.75,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1.125,
+            -1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1.125,
+            -1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.75,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.75,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1.125,
+            -1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1.125,
+            -1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.75,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.75,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -2.125,
+            -2.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.75,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -2.125,
+            -2.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1.625,
+            -1.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1.6875,
+            -1.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1.8125,
+            -1.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1.3125,
+            -1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1.3125,
+            -1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1.125,
+            -1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.75,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.375,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.75,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.75,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.5625,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1.25,
+            -1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.4375,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "selected_phase_differences": [
+        [
+          0.0,
+          -1.5846784520260986,
+          0.0
+        ],
+        [
+          0.0,
+          -0.9229495987006278,
+          0.0
+        ],
+        [
+          0.0,
+          -0.9229495987006278,
+          0.0
+        ],
+        [
+          0.0,
+          -0.7056313135854069,
+          0.0
+        ],
+        [
+          0.0,
+          -0.7056313135854069,
+          0.0
+        ],
+        [
+          0.0,
+          -0.9229495987006278,
+          0.0
+        ],
+        [
+          0.0,
+          -0.9229495987006278,
+          0.0
+        ],
+        [
+          0.0,
+          -0.7056313135854069,
+          0.0
+        ],
+        [
+          0.0,
+          -0.7056313135854069,
+          0.0
+        ],
+        [
+          0.0,
+          -0.9673825763024944,
+          0.0
+        ],
+        [
+          0.0,
+          -0.9673825763024944,
+          0.0
+        ],
+        [
+          0.0,
+          -0.7149017260130499,
+          0.0
+        ],
+        [
+          0.0,
+          -0.7149017260130499,
+          0.0
+        ],
+        [
+          0.0,
+          -0.9673825763024944,
+          0.0
+        ],
+        [
+          0.0,
+          -0.9673825763024944,
+          0.0
+        ],
+        [
+          0.0,
+          -0.7149017260130499,
+          0.0
+        ],
+        [
+          0.0,
+          -0.7149017260130499,
+          0.0
+        ],
+        [
+          0.0,
+          -1.7198944061815666,
+          0.0
+        ],
+        [
+          0.0,
+          -0.5418453953414524,
+          0.0
+        ],
+        [
+          0.0,
+          -1.737009783254969,
+          0.0
+        ],
+        [
+          0.0,
+          -1.5246487760016834,
+          0.0
+        ],
+        [
+          0.0,
+          -1.6847632902082434,
+          0.0
+        ],
+        [
+          0.0,
+          -1.5905147489927227,
+          0.0
+        ],
+        [
+          0.0,
+          -1.1096539862585573,
+          0.0
+        ],
+        [
+          0.0,
+          -1.039909070514728,
+          0.0
+        ],
+        [
+          0.0,
+          -0.8985688135854097,
+          0.0
+        ],
+        [
+          0.0,
+          -0.7433200763024921,
+          0.0
+        ],
+        [
+          0.0,
+          -0.41977420057888715,
+          0.0
+        ],
+        [
+          0.0,
+          -0.6893392260130486,
+          0.0
+        ],
+        [
+          0.0,
+          -0.520900463295968,
+          0.0
+        ],
+        [
+          0.0,
+          -0.7202359011577766,
+          0.0
+        ],
+        [
+          0.0,
+          -0.5742754632959652,
+          0.0
+        ],
+        [
+          0.0,
+          -0.5445267260130535,
+          0.0
+        ]
+      ],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 2293.9955000183545,
+      "performance_forecast_transitions": 2840,
+      "performance_model_transitions": 146752,
+      "exact_cache_entries": 1236,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 2.0,
+      "x": [
+        [
+          -35.94553594380875,
+          20.0
+        ],
+        [
+          -56.843554497483865,
+          8.08329358948052
+        ],
+        [
+          -68.87763414190812,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        -3.90625,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.1306586622853726,
+          -0.3292784779431893,
+          0.13220380113111552
+        ],
+        [
+          0.1843007956165965,
+          -0.318780541688948,
+          0.26476687013746925
+        ],
+        [
+          -0.41703959878659136,
+          0.3595158456687967,
+          0.33635017076124696
+        ],
+        [
+          -0.04297363582514102,
+          0.4221624909964907,
+          -0.07586171632239391
+        ],
+        [
+          -0.09783478387637445,
+          -0.41162033916868246,
+          0.1579848616588071
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 0.0,
+      "nominal_joint_action_admitted": true,
+      "portfolio_joint_action_admitted": true,
+      "repair_action_admitted": true,
+      "composition": 2,
+      "repair_weight": 0.25,
+      "baseline_command": [
+        2.5,
+        -4.375,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        -2.5,
+        2.5
+      ],
+      "candidate_count": 4,
+      "original_candidate_count": 1,
+      "repair_candidate_count": 3,
+      "nominal_candidate_count": 2,
+      "candidate_evidence": [
+        {
+          "composition": 2,
+          "weight": 0.5,
+          "command": [
+            2.5,
+            -3.4375,
+            2.5
+          ],
+          "checked_scenarios": 18,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.125,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.125,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.125,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.125,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.4375,
+                0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 17,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -0.16999140654153067,
+              0.0
+            ],
+            [
+              0.0,
+              -0.2139203130830598,
+              0.0
+            ],
+            [
+              0.0,
+              -0.2139203130830598,
+              0.0
+            ],
+            [
+              0.0,
+              0.011741406541531774,
+              0.0
+            ],
+            [
+              0.0,
+              0.011741406541531774,
+              0.0
+            ],
+            [
+              0.0,
+              -0.2139203130830598,
+              0.0
+            ],
+            [
+              0.0,
+              -0.2139203130830598,
+              0.0
+            ],
+            [
+              0.0,
+              0.011741406541531774,
+              0.0
+            ],
+            [
+              0.0,
+              0.011741406541531774,
+              0.0
+            ],
+            [
+              0.0,
+              -0.1904828130830598,
+              0.0
+            ],
+            [
+              0.0,
+              -0.1904828130830598,
+              0.0
+            ],
+            [
+              0.0,
+              0.024383593458470187,
+              0.0
+            ],
+            [
+              0.0,
+              0.024383593458470187,
+              0.0
+            ],
+            [
+              0.0,
+              -0.1904828130830598,
+              0.0
+            ],
+            [
+              0.0,
+              -0.1904828130830598,
+              0.0
+            ],
+            [
+              0.0,
+              0.024383593458470187,
+              0.0
+            ],
+            [
+              0.0,
+              0.024383593458470187,
+              0.0
+            ]
+          ],
+          "forecast_error": null
+        },
+        {
+          "composition": 2,
+          "weight": 0.25,
+          "command": [
+            2.5,
+            -3.90625,
+            2.5
+          ],
+          "checked_scenarios": 33,
+          "failed_scenarios": 0,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.546875,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.546875,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.546875,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.546875,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.171875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.171875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.171875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.171875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.171875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.546875,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.046875,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 33,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -0.08554687500000036,
+              0.0
+            ],
+            [
+              0.0,
+              -0.10763203154152912,
+              0.0
+            ],
+            [
+              0.0,
+              -0.10763203154152912,
+              0.0
+            ],
+            [
+              0.0,
+              -0.05230390654152828,
+              0.0
+            ],
+            [
+              0.0,
+              -0.05230390654152828,
+              0.0
+            ],
+            [
+              0.0,
+              -0.10763203154152912,
+              0.0
+            ],
+            [
+              0.0,
+              -0.10763203154152912,
+              0.0
+            ],
+            [
+              0.0,
+              -0.05230390654152828,
+              0.0
+            ],
+            [
+              0.0,
+              -0.05230390654152828,
+              0.0
+            ],
+            [
+              0.0,
+              -0.09591328154153089,
+              0.0
+            ],
+            [
+              0.0,
+              -0.09591328154153089,
+              0.0
+            ],
+            [
+              0.0,
+              -0.017803906541530523,
+              0.0
+            ],
+            [
+              0.0,
+              -0.017803906541530523,
+              0.0
+            ],
+            [
+              0.0,
+              -0.09591328154153089,
+              0.0
+            ],
+            [
+              0.0,
+              -0.09591328154153089,
+              0.0
+            ],
+            [
+              0.0,
+              -0.017803906541530523,
+              0.0
+            ],
+            [
+              0.0,
+              -0.017803906541530523,
+              0.0
+            ],
+            [
+              0.0,
+              -0.08668917832792467,
+              0.0
+            ],
+            [
+              0.0,
+              -0.08433441310533851,
+              0.0
+            ],
+            [
+              0.0,
+              -0.08610875035220111,
+              0.0
+            ],
+            [
+              0.0,
+              -0.0852902981779824,
+              0.0
+            ],
+            [
+              0.0,
+              -0.08504856311923881,
+              0.0
+            ],
+            [
+              0.0,
+              -0.08602198727785115,
+              0.0
+            ],
+            [
+              0.0,
+              -0.0870801428209802,
+              0.0
+            ],
+            [
+              0.0,
+              -0.08443552291510414,
+              0.0
+            ],
+            [
+              0.0,
+              -0.09239765654153054,
+              0.0
+            ],
+            [
+              0.0,
+              -0.017803906541530523,
+              0.0
+            ],
+            [
+              0.0,
+              -0.07968749999999858,
+              0.0
+            ],
+            [
+              0.0,
+              -0.09306953154152886,
+              0.0
+            ],
+            [
+              0.0,
+              -0.08203125,
+              0.0
+            ],
+            [
+              0.0,
+              -0.09005390654153089,
+              0.0
+            ],
+            [
+              0.0,
+              -0.08653828154153054,
+              0.0
+            ],
+            [
+              0.0,
+              -0.08437499999999964,
+              0.0
+            ]
+          ],
+          "forecast_error": null
+        }
+      ],
+      "selected_bank_differences": [
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.546875,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.546875,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.546875,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.546875,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.171875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.171875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.171875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.171875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.171875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.546875,
+            -0.5
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.046875,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "selected_phase_differences": [
+        [
+          0.0,
+          -0.08554687500000036,
+          0.0
+        ],
+        [
+          0.0,
+          -0.10763203154152912,
+          0.0
+        ],
+        [
+          0.0,
+          -0.10763203154152912,
+          0.0
+        ],
+        [
+          0.0,
+          -0.05230390654152828,
+          0.0
+        ],
+        [
+          0.0,
+          -0.05230390654152828,
+          0.0
+        ],
+        [
+          0.0,
+          -0.10763203154152912,
+          0.0
+        ],
+        [
+          0.0,
+          -0.10763203154152912,
+          0.0
+        ],
+        [
+          0.0,
+          -0.05230390654152828,
+          0.0
+        ],
+        [
+          0.0,
+          -0.05230390654152828,
+          0.0
+        ],
+        [
+          0.0,
+          -0.09591328154153089,
+          0.0
+        ],
+        [
+          0.0,
+          -0.09591328154153089,
+          0.0
+        ],
+        [
+          0.0,
+          -0.017803906541530523,
+          0.0
+        ],
+        [
+          0.0,
+          -0.017803906541530523,
+          0.0
+        ],
+        [
+          0.0,
+          -0.09591328154153089,
+          0.0
+        ],
+        [
+          0.0,
+          -0.09591328154153089,
+          0.0
+        ],
+        [
+          0.0,
+          -0.017803906541530523,
+          0.0
+        ],
+        [
+          0.0,
+          -0.017803906541530523,
+          0.0
+        ],
+        [
+          0.0,
+          -0.08668917832792467,
+          0.0
+        ],
+        [
+          0.0,
+          -0.08433441310533851,
+          0.0
+        ],
+        [
+          0.0,
+          -0.08610875035220111,
+          0.0
+        ],
+        [
+          0.0,
+          -0.0852902981779824,
+          0.0
+        ],
+        [
+          0.0,
+          -0.08504856311923881,
+          0.0
+        ],
+        [
+          0.0,
+          -0.08602198727785115,
+          0.0
+        ],
+        [
+          0.0,
+          -0.0870801428209802,
+          0.0
+        ],
+        [
+          0.0,
+          -0.08443552291510414,
+          0.0
+        ],
+        [
+          0.0,
+          -0.09239765654153054,
+          0.0
+        ],
+        [
+          0.0,
+          -0.017803906541530523,
+          0.0
+        ],
+        [
+          0.0,
+          -0.07968749999999858,
+          0.0
+        ],
+        [
+          0.0,
+          -0.09306953154152886,
+          0.0
+        ],
+        [
+          0.0,
+          -0.08203125,
+          0.0
+        ],
+        [
+          0.0,
+          -0.09005390654153089,
+          0.0
+        ],
+        [
+          0.0,
+          -0.08653828154153054,
+          0.0
+        ],
+        [
+          0.0,
+          -0.08437499999999964,
+          0.0
+        ]
+      ],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 1423.8589000306092,
+      "performance_forecast_transitions": 3282,
+      "performance_model_transitions": 103391,
+      "exact_cache_entries": 991,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 2.5,
+      "x": [
+        [
+          -25.94553594380875,
+          20.0
+        ],
+        [
+          -53.32947560335981,
+          6.287015720985037
+        ],
+        [
+          -58.87763414190812,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        -3.75,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.45321905654860806,
+          0.3225872535757385,
+          -0.3748458836372478
+        ],
+        [
+          -0.4978346434964972,
+          0.2684628950950001,
+          -0.39704785463596637
+        ],
+        [
+          -0.12389786502980171,
+          0.2718023884678956,
+          -0.1791403615174365
+        ],
+        [
+          0.35615624896669196,
+          0.06664614681243686,
+          -0.4575181169919279
+        ],
+        [
+          -0.4841866310794871,
+          -0.14227736890590426,
+          0.4739396827238098
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        -3.75,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        -3.125,
+        2.5
+      ],
+      "candidate_count": 4,
+      "original_candidate_count": 1,
+      "repair_candidate_count": 3,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 122.07540002418682,
+      "performance_forecast_transitions": 90,
+      "performance_model_transitions": 9187,
+      "exact_cache_entries": 86,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 3.0,
+      "x": [
+        [
+          -15.94553594380875,
+          20.0
+        ],
+        [
+          -50.36111423713754,
+          5.708840691693885
+        ],
+        [
+          -48.87763414190812,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        -1.25,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.46075775872583236,
+          0.3023513874864313,
+          0.10285206725616469
+        ],
+        [
+          0.3087557319294352,
+          -0.1227233636183197,
+          0.3401650221628666
+        ],
+        [
+          0.18143335038666508,
+          -0.03887861749643684,
+          0.038140206699463275
+        ],
+        [
+          0.3775281449782041,
+          0.0036226417901015218,
+          -0.2974942235416358
+        ],
+        [
+          -0.4316342982487895,
+          0.32387765892670284,
+          0.4527612805909381
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        -1.25,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        -1.875,
+        2.5
+      ],
+      "candidate_count": 4,
+      "original_candidate_count": 1,
+      "repair_candidate_count": 3,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 107.49699996085837,
+      "performance_forecast_transitions": 85,
+      "performance_model_transitions": 7847,
+      "exact_cache_entries": 81,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 3.5,
+      "x": [
+        [
+          -5.94553594380875,
+          20.0
+        ],
+        [
+          -47.30367571120894,
+          6.3980691867961275
+        ],
+        [
+          -38.87763414190812,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        1.25,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.25548001885173455,
+          0.4862645450100378,
+          -0.10872507140537879
+        ],
+        [
+          -0.40566010302868316,
+          -0.25659121005706464,
+          -0.27045043824739146
+        ],
+        [
+          0.2247206870242492,
+          -0.31873090122035697,
+          0.2854532817025319
+        ],
+        [
+          0.21631705146507496,
+          0.37171030971564367,
+          0.45021749967569535
+        ],
+        [
+          -0.06968517311744304,
+          0.359632207574178,
+          -0.49326356066270094
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        1.25,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        0.625,
+        2.5
+      ],
+      "candidate_count": 4,
+      "original_candidate_count": 1,
+      "repair_candidate_count": 3,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 81.33639994775876,
+      "performance_forecast_transitions": 80,
+      "performance_model_transitions": 6565,
+      "exact_cache_entries": 76,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 4.0,
+      "x": [
+        [
+          4.05446405619125,
+          20.0
+        ],
+        [
+          -43.73192580911916,
+          7.65850208632768
+        ],
+        [
+          -28.877634141908118,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.07858399765072965,
+          -0.06983806251928004,
+          -0.05979858738081689
+        ],
+        [
+          -0.2678435265418728,
+          -0.270180027418084,
+          -0.19255927751242197
+        ],
+        [
+          0.35768264297457275,
+          0.2212437558750069,
+          0.2184705249858626
+        ],
+        [
+          -0.4309891438279164,
+          0.31460669443990896,
+          -0.46763888127027387
+        ],
+        [
+          0.3170342843224916,
+          -0.09150336506202672,
+          -0.4337379668662713
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 17.132500011939555,
+      "performance_forecast_transitions": 15,
+      "performance_model_transitions": 1258,
+      "exact_cache_entries": 15,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 4.5,
+      "x": [
+        [
+          14.05446405619125,
+          20.0
+        ],
+        [
+          -39.50961266342995,
+          8.951186729552012
+        ],
+        [
+          -18.877634141908118,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.2960856628481695,
+          0.4234408230003902,
+          -0.03776605738292915
+        ],
+        [
+          0.10053404768671337,
+          0.09642830033781935,
+          -0.47853946121674706
+        ],
+        [
+          0.04516955691011704,
+          -0.47921632243448675,
+          0.4040349703893541
+        ],
+        [
+          -0.1765400064808278,
+          0.3547482721509364,
+          0.14299488693596185
+        ],
+        [
+          -0.2819366840817714,
+          0.031445359188672084,
+          -0.07625540704412259
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 17.082000034861267,
+      "performance_forecast_transitions": 14,
+      "performance_model_transitions": 1045,
+      "exact_cache_entries": 14,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 5.0,
+      "x": [
+        [
+          24.05446405619125,
+          20.0
+        ],
+        [
+          -34.636777020400814,
+          10.27683324224574
+        ],
+        [
+          -8.877634141908118,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.3336192267378425,
+          0.360643399737013,
+          -0.10493721193304861
+        ],
+        [
+          0.025786031479472005,
+          0.08142621785730375,
+          0.4655798150428304
+        ],
+        [
+          0.32295039905083434,
+          -0.21840921566128435,
+          -0.1095015467575079
+        ],
+        [
+          -0.29896045149955863,
+          0.2177288771725473,
+          0.2802231542217001
+        ],
+        [
+          0.2591732505536244,
+          0.3150758478317196,
+          -0.14158171764516292
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 15.072799986228347,
+      "performance_forecast_transitions": 13,
+      "performance_model_transitions": 875,
+      "exact_cache_entries": 13,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 5.5,
+      "x": [
+        [
+          34.05446405619125,
+          20.0
+        ],
+        [
+          -29.11311753996938,
+          11.550042503667694
+        ],
+        [
+          1.1223658580918823,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.27251643306478823,
+          -0.03165279625438033,
+          -0.22941989273009478
+        ],
+        [
+          -0.3671229537039554,
+          0.15558567843139215,
+          0.3008614703454001
+        ],
+        [
+          0.36368004802931286,
+          0.19362980596198076,
+          -0.15920822480022367
+        ],
+        [
+          -0.07145585136221233,
+          0.06478785443857449,
+          0.4760877632377647
+        ],
+        [
+          -0.00085709329814454,
+          -0.150257928358011,
+          -0.2770776420863572
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 11.577800032682717,
+      "performance_forecast_transitions": 12,
+      "performance_model_transitions": 718,
+      "exact_cache_entries": 12,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 6.0,
+      "x": [
+        [
+          44.05446405619125,
+          20.0
+        ],
+        [
+          -22.93362991847772,
+          12.898170858229635
+        ],
+        [
+          11.122365858091882,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.2702394977940814,
+          0.27211156452806784,
+          0.05233176299695497
+        ],
+        [
+          -0.4368913506687879,
+          0.33541076079711096,
+          -0.17357364328219238
+        ],
+        [
+          -0.4874751015089106,
+          -0.16394056415543268,
+          -0.44928522903333634
+        ],
+        [
+          -0.349305321623121,
+          0.1985560079674218,
+          0.08728628366499414
+        ],
+        [
+          0.14287845486143513,
+          0.3391457764822421,
+          -0.25947264543764337
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 7.652699947357178,
+      "performance_forecast_transitions": 11,
+      "performance_model_transitions": 574,
+      "exact_cache_entries": 11,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 6.5,
+      "x": [
+        [
+          54.05446405619125,
+          20.0
+        ],
+        [
+          -16.092611613839097,
+          14.205198703247559
+        ],
+        [
+          21.122365858091882,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.2263165644307007,
+          0.2079558136323395,
+          0.44060458867305896
+        ],
+        [
+          -0.04168989512574439,
+          0.044295777724993934,
+          0.23291736426174348
+        ],
+        [
+          -0.04642532432745683,
+          0.04729888675874727,
+          -0.06481891249128424
+        ],
+        [
+          0.4151201602402481,
+          0.06370074098184697,
+          0.36850344550134684
+        ],
+        [
+          0.10807816625266986,
+          0.20702723108129117,
+          -0.14003201531398868
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 8.197100018151104,
+      "performance_forecast_transitions": 10,
+      "performance_model_transitions": 443,
+      "exact_cache_entries": 10,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 7.0,
+      "x": [
+        [
+          64.05446405619125,
+          20.0
+        ],
+        [
+          -8.612287949427923,
+          15.470261627253342
+        ],
+        [
+          31.122365858091882,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.2481126711863496,
+          0.2144831324662766,
+          -0.1141209664750672
+        ],
+        [
+          -0.3132602336430461,
+          0.03227687930945,
+          0.27287244313212977
+        ],
+        [
+          -0.06561797465883523,
+          -0.3858283071202451,
+          -0.14039886807045554
+        ],
+        [
+          -0.4165218408045065,
+          -0.06130451487161759,
+          0.17178239573928666
+        ],
+        [
+          -0.075752159521287,
+          0.3510020502739556,
+          -0.11018970713096954
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 5.561599973589182,
+      "performance_forecast_transitions": 9,
+      "performance_model_transitions": 325,
+      "exact_cache_entries": 9,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 7.5,
+      "x": [
+        [
+          74.05446405619125,
+          20.0
+        ],
+        [
+          -0.4987348302255441,
+          16.715248856963733
+        ],
+        [
+          41.12236585809188,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.1280673903348546,
+          0.4035973089492809,
+          0.1230602288698669
+        ],
+        [
+          -0.05232501607491402,
+          0.023184841073493834,
+          0.28604123581650587
+        ],
+        [
+          0.026020887183786368,
+          -0.43715936373547715,
+          0.4670888040995378
+        ],
+        [
+          0.33874236700335947,
+          -0.41726677108025967,
+          -0.187338932725566
+        ],
+        [
+          -0.26863997961781705,
+          0.37751628189689557,
+          -0.2747920633004771
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 5.607700033579022,
+      "performance_forecast_transitions": 8,
+      "performance_model_transitions": 220,
+      "exact_cache_entries": 8,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 8.0,
+      "x": [
+        [
+          84.05446405619125,
+          20.0
+        ],
+        [
+          8.270694922362381,
+          18.07797661012471
+        ],
+        [
+          51.12236585809188,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.13580256108813904,
+          0.42815901523480915,
+          0.09226493442026906
+        ],
+        [
+          -0.04688230863041165,
+          0.25062580748069274,
+          -0.21702685075094408
+        ],
+        [
+          0.01970846574361107,
+          -0.13369505672961524,
+          -0.3076525238290938
+        ],
+        [
+          -0.11713869107704222,
+          0.3561315090757674,
+          0.1274295630240666
+        ],
+        [
+          0.3520108272995267,
+          0.22605625654812633,
+          0.09272232244687384
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 4.042700049467385,
+      "performance_forecast_transitions": 7,
+      "performance_model_transitions": 156,
+      "exact_cache_entries": 7,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 8.5,
+      "x": [
+        [
+          94.05446405619125,
+          20.0
+        ],
+        [
+          17.6783756828428,
+          19.285294423131553
+        ],
+        [
+          61.12236585809188,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.2563692186636525,
+          0.3920763687584615,
+          -0.4733599394551722
+        ],
+        [
+          0.42020196536059096,
+          -0.42787185902271796,
+          -0.12190883441330813
+        ],
+        [
+          0.3987195184687923,
+          -0.3293346814581243,
+          -0.16946038746086645
+        ],
+        [
+          0.022324880488649668,
+          0.17004687668755025,
+          -0.21558871804835555
+        ],
+        [
+          0.44517031972618193,
+          -0.23173857489678495,
+          -0.08373182194668871
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 3.4425000194460154,
+      "performance_forecast_transitions": 6,
+      "performance_model_transitions": 101,
+      "exact_cache_entries": 6,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 9.0,
+      "x": [
+        [
+          104.05446405619125,
+          20.0
+        ],
+        [
+          27.613356970149226,
+          20.0
+        ],
+        [
+          71.12236585809188,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.2963612967294946,
+          0.29486599586724627,
+          -0.18651222153449754
+        ],
+        [
+          0.06730948288693062,
+          -0.297491723721911,
+          -0.33104220032047593
+        ],
+        [
+          0.21275945569256904,
+          -0.2837644052037286,
+          0.042663248989106006
+        ],
+        [
+          0.3902320218356018,
+          -0.40437815300215474,
+          0.23306146510567194
+        ],
+        [
+          0.26406049525197917,
+          -0.11856121976694856,
+          -0.024993253329108067
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 2.4897000403143466,
+      "performance_forecast_transitions": 5,
+      "performance_model_transitions": 55,
+      "exact_cache_entries": 5,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 9.5,
+      "x": [
+        [
+          114.05446405619125,
+          20.0
+        ],
+        [
+          37.613356970149226,
+          20.0
+        ],
+        [
+          81.12236585809188,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.22322123829250617,
+          -0.06537854022360934,
+          -0.08191296048253383
+        ],
+        [
+          0.44052090077266737,
+          -0.24661156622631974,
+          -0.43086793629161324
+        ],
+        [
+          0.10665195669258798,
+          -0.2262592836489875,
+          0.34111379759982563
+        ],
+        [
+          0.1760595345547954,
+          0.4418554399668996,
+          -0.09131364858082369
+        ],
+        [
+          -0.39566797530416586,
+          -0.4305241070136776,
+          -0.20710178799531576
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 1.67269998928532,
+      "performance_forecast_transitions": 4,
+      "performance_model_transitions": 34,
+      "exact_cache_entries": 4,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 10.0,
+      "x": [
+        [
+          124.05446405619125,
+          20.0
+        ],
+        [
+          47.613356970149226,
+          20.0
+        ],
+        [
+          91.12236585809188,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.13045887545985535,
+          0.004635906953788904,
+          0.3628613937059354
+        ],
+        [
+          0.10310535946922228,
+          0.412420113913772,
+          -0.3109015193970771
+        ],
+        [
+          0.22228444241878675,
+          -0.3585239558188609,
+          -0.03914392939417377
+        ],
+        [
+          0.03456782823200166,
+          -0.12447573952890578,
+          0.08787993350358592
+        ],
+        [
+          0.36151843412540496,
+          -0.08305216808201876,
+          -0.41683009468226706
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 1.4628999633714557,
+      "performance_forecast_transitions": 3,
+      "performance_model_transitions": 18,
+      "exact_cache_entries": 3,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 10.5,
+      "x": [
+        [
+          134.05446405619125,
+          20.0
+        ],
+        [
+          57.613356970149226,
+          20.0
+        ],
+        [
+          101.12236585809188,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.39815217603647524,
+          -0.37154814664977376,
+          0.03925337868841394
+        ],
+        [
+          0.3452550049790478,
+          0.25115524291811897,
+          0.2733887517954201
+        ],
+        [
+          -0.32825544726583755,
+          -0.11183046013329423,
+          0.36343591439782996
+        ],
+        [
+          0.37746011461536455,
+          0.43012727990959976,
+          -0.4383614754754074
+        ],
+        [
+          -0.1335334987594754,
+          0.33868613954070115,
+          -0.36807223564167446
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 2.1878000115975738,
+      "performance_forecast_transitions": 2,
+      "performance_model_transitions": 7,
+      "exact_cache_entries": 2,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    },
+    {
+      "t": 11.0,
+      "x": [
+        [
+          144.05446405619125,
+          20.0
+        ],
+        [
+          67.61335697014923,
+          20.0
+        ],
+        [
+          111.12236585809188,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.45303059468633067,
+          -0.1715675199603769,
+          -0.2863631172550479
+        ],
+        [
+          0.281246400726501,
+          -0.0866855463239029,
+          -0.4753481916090565
+        ],
+        [
+          0.3263133122911276,
+          0.0585604352021446,
+          0.4879697456038191
+        ],
+        [
+          -0.29757421080452306,
+          -0.04513243127798827,
+          0.11073497720125347
+        ],
+        [
+          0.45728909302784027,
+          -0.3827816887734532,
+          -0.06940056943583228
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 1.2858000118285418,
+      "performance_forecast_transitions": 1,
+      "performance_model_transitions": 1,
+      "exact_cache_entries": 1,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate"
+    }
+  ]
+}
