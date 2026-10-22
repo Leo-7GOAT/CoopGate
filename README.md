@@ -154,6 +154,17 @@ small as two; strong-lag failures remain. These are descriptive old-initial
 comparisons, not uniform dominance, equal-compute evidence or a transfer risk
 certificate. [Complete results and limitations](docs/v27_complete_comparison_results.md).
 
+The complete nominal-plant failure-mechanism study now checks **480 episodes,
+81 adopted episodes and all 87 admitted decisions**. All local counterfactual
+branches completed; four regressions correspond to only two distinct initials.
+**12 real SUMO replays and all 277 commands** reproduce the original gate and its
+single-intervention baseline continuation. One mechanism increases control
+variation despite unchanged logged arrival; the other shifts an interpolated
+crossing by 12.8 ms across a 0.5 s logging boundary. Original metrics and failures
+remain unchanged. Known future noise is diagnostic-only; these post-hoc replays
+are not new independent efficacy samples, controller improvements or certificates.
+[Complete mechanisms and original-cost decomposition](docs/v28_regression_diagnostic.md).
+
 The prospective common-data pipeline has also passed **18 focused tests** and
 reproduced all calibration and final-comparison outputs from **61,440 historical
 V19 records**, including all six comparison methods and all three fixed models.
