@@ -38,9 +38,15 @@ frozen and committed. The 4,096-initial calibration was interrupted: its native
 processes are absent and the last state is 2026-10-22 09:26 UTC, without an exit
 receipt. **449 complete blocks and three partial blocks retain 22,512 roles**;
 all prefixes and source hashes pass integrity checks and are archived unchanged.
-Recovery has not started. The 1,024-initial final confirmation has not started,
+An explicit committed recovery passed 47 focused tests and all three actual
+SUMO interruption-boundary replays, with exact non-timing agreement and actual
+zero worker exits. On 2026-10-22 at 10:16 UTC, three verified native workers
+started collecting only the missing original roles. The original exit remains
+unknown; complete blocks and partial record blobs are retained unchanged.
+The 1,024-initial final confirmation has not started,
 and there is no new risk certificate or partial effectiveness analysis.
 [Interruption evidence and recovery constraints](docs/v24_prospective_calibration_recovery.md).
+[Recovery launch and exact boundary evidence](artifacts/v24/prospective_calibration_recovery_20261022/launch_verification.json).
 [Full execution protocol and compute accounting](docs/v21_complete_execution_protocol.md).
 [Interruption and recovery protocol](docs/v21_interruption_recovery.md).
 
