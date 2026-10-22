@@ -1,16 +1,17 @@
 # CoopGate
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
-Status checked on 2026-10-21: the two V21 studies were interrupted. No original
-Python/SUMO worker remains, and their temporary supervisor exit records are
-unavailable. The retained prefixes contain 6,573/6,656 phase-study observations
-and 10,073/12,160 matched-transfer observations, plus one orphan transfer trace.
-An append-only recovery preserves all original data and frozen rules, requires
-actual SUMO parity replays, and independently reviews the complete studies.
+Status checked on 2026-10-22: the original V21 studies and their first recovery
+were interrupted. Original supervisor success is not claimed. All retained
+observations are preserved in immutable archives; the phase study now has
+6,656/6,656 records and matched transfer has 12,149/12,160 records.
 All **45 actual SUMO parity replays** passed on 2026-10-21; all non-timing
 outcomes, decisions and trajectories match, with no new independent initials.
-The original recovery supervisor has advanced to the **2,170 missing runs**.
-These partial records are **not completed results or new risk certificates**.
+A separately supervised continuation launched on 2026-10-22 executes only the
+**11 remaining cases plus one boundary replay**, then independently reviews
+all **18,816** planned records. No complete effectiveness result or new risk
+certificate is available yet. The new continuation preserves all original
+selection thresholds and records its own actual process exits.
 [Interruption and recovery protocol](docs/v21_interruption_recovery.md).
 
 The prospective common-data pipeline has also passed **18 focused tests** and
@@ -20,6 +21,10 @@ Forty archived complete episodes/traces round-trip through transactional storage
 without changes. This is an implementation audit with **zero new SUMO runs or
 independent initials**, not a new risk certificate or a completed calibration
 executor. [Common-data pipeline and remaining execution work](docs/v21_prospective_data_pipeline.md).
+The actual 144-role runtime integration was interrupted after 99 transactionally
+committed roles. A separately frozen recovery preserves those databases and
+executes the 45 missing roles plus two boundary replays before a full review.
+These remain implementation checks with zero new independent initials.
 
 V14 passed the frozen single-ego learning prerequisite. On the frozen V18
 population, genuine three-actor model-based MARL improves mean team cost across
