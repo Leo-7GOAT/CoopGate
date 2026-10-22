@@ -1,0 +1,69 @@
+{
+  "utc": "2026-10-22T13:00:12.532538+00:00",
+  "observed_exit": {
+    "utc": "2026-10-22T12:56:31.232004+00:00",
+    "session_id": 86494,
+    "exit_code": 0,
+    "plan_sha256": "4b0bda97054292815d9d87c5dfcb5786f3d0954c1678c5d45d09d5b1f3b15282",
+    "actual_sumo_runs": 168,
+    "observation": "Unified execution session 86494 returned terminal exit_code 0 after all 168 cases and their independent reviews. Terminal output chunk 109a9c."
+  },
+  "source_verification": [
+    {
+      "plan": "artifacts/v25/buffered_complete_scope/plan.json",
+      "plan_sha256": "318d8644f65b34d1c49c214616e67a0d4847a37fbacb33e74694ecde1dca0b90",
+      "unchanged_source_files": 340
+    },
+    {
+      "plan": "artifacts/v26/deadline_sumo/plan.json",
+      "plan_sha256": "c39ca0e1c4c0d4c828ee1bacde980d8c871f2ee32fb86e8111cf21dd393a2e40",
+      "unchanged_source_files": 341
+    },
+    {
+      "plan": "artifacts/v26/precise_deadline_sumo/plan.json",
+      "plan_sha256": "4b0bda97054292815d9d87c5dfcb5786f3d0954c1678c5d45d09d5b1f3b15282",
+      "unchanged_source_files": 345
+    }
+  ],
+  "complete_result_files": 338,
+  "paired_decisions": 1922,
+  "equal_pairs": 84,
+  "rejected_baseline_pairs": 24,
+  "all_faults_at_injected_step": true,
+  "reaped_workers": 120,
+  "forced_worker_terminations": 120,
+  "independent_review": {
+    "physical_traces": 168,
+    "baseline_commands": 2928,
+    "actor_commands": 916
+  },
+  "clock_comparison": {
+    "coarse": {
+      "callbacks": 1922,
+      "callback_max_ms": 471.3288000202738,
+      "over_500ms": 0,
+      "timeout_count": 24,
+      "timeout_min_ms": 443.8277999870479,
+      "timeout_max_ms": 471.3288000202738,
+      "early_timeouts": 8,
+      "mean_absolute_budget_error_ms": 9.694675011754347
+    },
+    "precise": {
+      "callbacks": 1922,
+      "callback_max_ms": 463.5918000130914,
+      "over_500ms": 0,
+      "timeout_count": 24,
+      "timeout_min_ms": 450.81210002535954,
+      "timeout_max_ms": 463.5918000130914,
+      "early_timeouts": 0,
+      "mean_absolute_budget_error_ms": 5.992870833142661
+    }
+  },
+  "mean_absolute_budget_error_reduction_percent": 38.18389140557491,
+  "report_sha256": "f0bb782cec3c7b7c10806acbd0b175e7ccfa737b19a95ed7e7a282be47e9366a",
+  "results_manifest_sha256": "3916990ccf293696323c1478b641b4302b511ed6e0ddf1a17ff6988564094f18",
+  "presentation_manifest_sha256": "757b0c941822fa949bf061ccc3f8d689c09a99fbf264116913e3a6420ef80e4b",
+  "new_independent_initials": 0,
+  "new_risk_certificate": false,
+  "active_calibration_outcomes_read": false
+}

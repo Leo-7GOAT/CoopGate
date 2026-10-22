@@ -105,6 +105,19 @@ neither strict timing nor physical actuation-delay safety is claimed. Both live
 frozen studies remain unchanged.
 [Complete results, timer limitation and guarantee boundaries](docs/v26_deadline_recovery.md).
 
+A separately frozen clock correction has now completed **168 paired SUMO runs**
+over all 84 original cases, alternating execution order. All **1,922 paired
+decisions** and non-timing outcomes match. For 24 timeout calls per implementation,
+returns before the 450 ms budget fall from **8/24 to 0/24**, and mean absolute
+deviation from that budget falls from **9.695 to 5.993 ms**. All 3,844 callbacks
+are below 500 ms in this sample; the corrected maximum is **463.592 ms**. All 96
+fault episodes switch at the injected step, and 120 child processes are reaped.
+This is old-initial software timing evidence under concurrent load, not a new
+efficacy sample, risk certificate or hard deadline guarantee. Near-deadline
+decisions can change in other cases, so prior risk certification cannot simply
+be transferred. Both formal live studies retain their frozen implementations.
+[Complete pairing, clock correction and limitations](docs/v26_precise_deadline_protocol.md).
+
 The prospective common-data pipeline has also passed **18 focused tests** and
 reproduced all calibration and final-comparison outputs from **61,440 historical
 V19 records**, including all six comparison methods and all three fixed models.
