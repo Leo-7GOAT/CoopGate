@@ -34,11 +34,22 @@ complete executor passed **62 focused tests** and a **90-run actual SUMO
 integration**, including 40 independently reviewed main trajectories, 40 exact
 deployment replays and all 18 runtime/offline adapter choices. Its native
 supervisor exited successfully. The full prospective execution protocol is now
-frozen and committed, and **the 4,096-initial independent calibration is running**.
-The 1,024-initial final confirmation has not started. There is no new risk
-certificate or partial effectiveness report.
+frozen and committed. The 4,096-initial calibration was interrupted: its native
+processes are absent and the last state is 2026-10-22 09:26 UTC, without an exit
+receipt. **449 complete blocks and three partial blocks retain 22,512 roles**;
+all prefixes and source hashes pass integrity checks and are archived unchanged.
+Recovery has not started. The 1,024-initial final confirmation has not started,
+and there is no new risk certificate or partial effectiveness analysis.
+[Interruption evidence and recovery constraints](docs/v24_prospective_calibration_recovery.md).
 [Full execution protocol and compute accounting](docs/v21_complete_execution_protocol.md).
 [Interruption and recovery protocol](docs/v21_interruption_recovery.md).
+
+An exact cross-call cache passed 16 tests and 24 paired SUMO runs with full
+independent review, preserving all 277 paired decisions and nine learning
+adoptions. It reduced measured select wall time by only 0.523% and internal
+model work by 0.0416% on one old initial, so **no meaningful speedup is claimed**
+and the calibration controller is unchanged.
+[Full result, including the slower pulse cases](docs/v24_persistent_phase_audit.md).
 
 The prospective common-data pipeline has also passed **18 focused tests** and
 reproduced all calibration and final-comparison outputs from **61,440 historical

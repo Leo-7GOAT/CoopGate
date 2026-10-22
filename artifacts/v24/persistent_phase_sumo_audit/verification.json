@@ -1,0 +1,74 @@
+{
+  "plan_sha256": "4e4c9d61b7a98e6cd1fed93d02d46f79f4165d1ea10e595d06680d1826725f2a",
+  "report_sha256": "459c9b29c1e9779c7113328585d3a723010095a4cb68464642409c0d451075d0",
+  "actual_native_process_exit_code": 0,
+  "exit_observation": "exec session 41242 completed with exit_code 0",
+  "unit_tests": {
+    "command": "python -m pytest tests/test_persistent_phase_v24.py -q",
+    "passed": 16,
+    "elapsed_seconds": 15.89,
+    "source_sha256": "68513c0caa386ccb5073f55d80b87532d4d3a1212b7d6081b3c14c13f0f2d323"
+  },
+  "actual_sumo_runs": 24,
+  "paired_decisions": 277,
+  "retained_learning_adoptions": 9,
+  "all_commands_states_outcomes_and_non_work_evidence_exact": true,
+  "independent_review_counts": {
+    "physical_traces": 24,
+    "raw_actor_checks": 0,
+    "baseline_checks": 0,
+    "nominal_checks": 0,
+    "candidate_families": 554,
+    "admitted_forecasts": 18,
+    "distinct_admitted_forecasts": 7,
+    "error_case_replays": 0
+  },
+  "totals": {
+    "reference_select_ms": 48843.862600508146,
+    "persistent_select_ms": 48588.3690007031,
+    "select_wall_reduction_percent": 0.5230822998064686,
+    "reference_model_transitions": 3439670,
+    "persistent_model_transitions": 3438238,
+    "model_work_reduction_percent": 0.0416319007346635
+  },
+  "by_mode": {
+    "clean": {
+      "reference_select_ms": 14428.911300376058,
+      "persistent_select_ms": 14194.841300020926,
+      "select_wall_reduction_percent": 1.6222291168220808,
+      "reference_model_transitions": 1011367,
+      "persistent_model_transitions": 1011068,
+      "model_work_reduction_percent": 0.029563946618784278
+    },
+    "uniform": {
+      "reference_select_ms": 15285.220799793024,
+      "persistent_select_ms": 15180.662200262304,
+      "select_wall_reduction_percent": 0.6840503051950355,
+      "reference_model_transitions": 1078380,
+      "persistent_model_transitions": 1078328,
+      "model_work_reduction_percent": 0.004822047886644782
+    },
+    "bias": {
+      "reference_select_ms": 5130.27050025994,
+      "persistent_select_ms": 5116.018400294706,
+      "select_wall_reduction_percent": 0.27780406441553585,
+      "reference_model_transitions": 364790,
+      "persistent_model_transitions": 364772,
+      "model_work_reduction_percent": 0.004934345787987609
+    },
+    "pulse": {
+      "reference_select_ms": 13999.460000079125,
+      "persistent_select_ms": 14096.84710012516,
+      "select_wall_reduction_percent": -0.6956489753567957,
+      "reference_model_transitions": 985133,
+      "persistent_model_transitions": 984070,
+      "model_work_reduction_percent": 0.10790421191859373
+    }
+  },
+  "maximum_retained_cache_entries": 3007,
+  "maximum_transient_cache_entries": 3093,
+  "new_independent_initials": 0,
+  "meaningful_speedup_established": false,
+  "active_calibration_controller_changed": false,
+  "interpretation": "Only 0.52 percent select-wall reduction and 0.042 percent model-work reduction on one old initial. Pulse is slower. This is an exactness result, not a meaningful performance improvement or real-time claim."
+}

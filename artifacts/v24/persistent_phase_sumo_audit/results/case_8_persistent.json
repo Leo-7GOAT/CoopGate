@@ -1,0 +1,2931 @@
+{
+  "case": [
+    0,
+    "bias",
+    "phase05_1822"
+  ],
+  "implementation": "persistent",
+  "wall_seconds": 2.008336699975189,
+  "row": {
+    "seed": 63100001,
+    "scenario": "dense",
+    "method": "joint_rl",
+    "collision": false,
+    "completed": true,
+    "elapsed": 12.0,
+    "mean_capped_finish_s": 9.166666666666666,
+    "contract_violations": 0,
+    "outside_steps": 0,
+    "uncertified_steps": 0,
+    "max_prediction_error": 0.25000000000000355,
+    "mean_jerk": 0.451388888888889,
+    "intervention": 1.0,
+    "disturbance": "bias",
+    "radius": 0.5,
+    "aborted": false,
+    "abort_reason": "",
+    "max_command_slew": 5.0,
+    "group": "high_conflict",
+    "ego_time": 12.0,
+    "ego_variation": 11.25,
+    "ego_cost": 12.5625,
+    "other_time": 7.75,
+    "per_vehicle_finish": [
+      7.0,
+      12.0,
+      8.5
+    ],
+    "per_vehicle_variation": [
+      2.5,
+      11.25,
+      2.5
+    ],
+    "setup_ms": 1.133000012487173,
+    "controller_ms": [
+      574.2243000422604,
+      186.9917999720201,
+      780.2101000561379,
+      127.13839998468757,
+      27.033100021071732,
+      24.97249998850748,
+      23.378999962005764,
+      17.2251999611035,
+      17.483500007074326,
+      13.213600032031536,
+      11.466900003142655,
+      11.226999980863184,
+      9.496699960436672,
+      8.566300035454333,
+      5.773500015493482,
+      4.766699974425137,
+      4.488800012040883,
+      2.9433000017888844,
+      3.140399989206344,
+      2.5888000382110476,
+      1.914599968586117,
+      1.7233999678865075,
+      1.6985000111162663,
+      1.8037999980151653
+    ],
+    "learned_tail_fraction": 0.0,
+    "controller": "phase05_1822",
+    "initial": [
+      [
+        -73.09386143479509,
+        16.22232272862074
+      ],
+      [
+        -78.31917061074938,
+        12.326726967164765
+      ],
+      [
+        -106.53370756190657,
+        16.422378274088512
+      ]
+    ],
+    "initial_index": 0,
+    "per_vehicle_cost": [
+      7.125,
+      12.5625,
+      8.625
+    ],
+    "team_cost": 9.4375,
+    "learned_action_steps": 0,
+    "control_steps": 24,
+    "min_adopted_bank_checks": null,
+    "max_adopted_failed_scenarios": null,
+    "chosen_compositions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "forecast_transitions": 1842,
+    "internal_transitions": 137344,
+    "trace_saved": true,
+    "trajectory_sha256": "589dac9eb5ddb2370f66b1e97e207d20c5758ca3d75b9e92c0bf769ce1869bc2",
+    "decision_sha256": "4e70b454d33c4c75b407b9857b0d9a07ccd5babda236ac5ced9cdfd132ac7b6d",
+    "repair_action_steps": 0,
+    "selected_repair_weights": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "forecast_error_count": 0,
+    "generation_error_count": 0,
+    "incomplete_work_count_steps": 0
+  },
+  "trace": [
+    {
+      "t": 0.5,
+      "x": [
+        [
+          -64.68270007048474,
+          17.222322728620735
+        ],
+        [
+          -72.418307127167,
+          11.451726967164761
+        ],
+        [
+          -98.02251842486231,
+          17.42237827408851
+        ]
+      ],
+      "command": [
+        2.5,
+        -1.25,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        -1.25,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        -2.5,
+        2.5
+      ],
+      "candidate_count": 4,
+      "original_candidate_count": 1,
+      "repair_candidate_count": 3,
+      "nominal_candidate_count": 4,
+      "candidate_evidence": [
+        {
+          "composition": 2,
+          "weight": 1.0,
+          "command": [
+            2.5,
+            -2.5,
+            2.5
+          ],
+          "checked_scenarios": 2,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.75,
+                -1.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 1,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -1.5183486852536365,
+              0.0
+            ]
+          ],
+          "forecast_error": null
+        },
+        {
+          "composition": 2,
+          "weight": 0.75,
+          "command": [
+            2.5,
+            -2.1875,
+            2.5
+          ],
+          "checked_scenarios": 3,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.75,
+                -1.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.4375,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.125,
+                0.0
+              ],
+              [
+                0.0625,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 2,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -1.510607320089461,
+              0.0
+            ],
+            [
+              0.0,
+              -0.32355057582088165,
+              0.0
+            ]
+          ],
+          "forecast_error": null
+        },
+        {
+          "composition": 2,
+          "weight": 0.25,
+          "command": [
+            2.5,
+            -1.5625,
+            2.5
+          ],
+          "checked_scenarios": 2,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.3125,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0625,
+                0.0
+              ],
+              [
+                0.125,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 1,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -1.2367442442685803,
+              0.0
+            ]
+          ],
+          "forecast_error": null
+        },
+        {
+          "composition": 2,
+          "weight": 0.5,
+          "command": [
+            2.5,
+            -1.875,
+            2.5
+          ],
+          "checked_scenarios": 2,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -1.25,
+                -1.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 1,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -1.2327668594327577,
+              0.0
+            ]
+          ],
+          "forecast_error": null
+        }
+      ],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 574.2243000422604,
+      "performance_forecast_transitions": 432,
+      "performance_model_transitions": 38532,
+      "exact_cache_entries": 264,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "initial_or_changed_configuration",
+      "persistent_cache_entries_before": 0,
+      "persistent_cache_entries_peak": 264,
+      "persistent_cache_entries_after": 263,
+      "persistent_cache_evicted": 1,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 1.0,
+      "x": [
+        [
+          -55.77153870617437,
+          18.222322728620732
+        ],
+        [
+          -67.04869364358461,
+          10.264226967164758
+        ],
+        [
+          -89.01132928781806,
+          18.422378274088505
+        ]
+      ],
+      "command": [
+        2.5,
+        -1.875,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        -1.875,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        -3.125,
+        2.5
+      ],
+      "candidate_count": 4,
+      "original_candidate_count": 1,
+      "repair_candidate_count": 3,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 186.9917999720201,
+      "performance_forecast_transitions": 105,
+      "performance_model_transitions": 13495,
+      "exact_cache_entries": 361,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 263,
+      "persistent_cache_entries_peak": 361,
+      "persistent_cache_entries_after": 348,
+      "persistent_cache_evicted": 13,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 1.5,
+      "x": [
+        [
+          -46.360377341863966,
+          19.22232272862073
+        ],
+        [
+          -62.64783016000223,
+          7.826726967164755
+        ],
+        [
+          -79.5001401507738,
+          19.4223782740885
+        ]
+      ],
+      "command": [
+        2.5,
+        -4.375,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        -4.375,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        -1.875,
+        2.5
+      ],
+      "candidate_count": 4,
+      "original_candidate_count": 1,
+      "repair_candidate_count": 3,
+      "nominal_candidate_count": 1,
+      "candidate_evidence": [
+        {
+          "composition": 2,
+          "weight": 1.0,
+          "command": [
+            2.5,
+            -1.875,
+            2.5
+          ],
+          "checked_scenarios": 12,
+          "failed_scenarios": 1,
+          "differences": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.625,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.625,
+                -0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                -0.0625,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.5,
+                0.5
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ]
+          ],
+          "phase_checked_scenarios": 11,
+          "phase_failed_scenarios": 0,
+          "phase_differences": [
+            [
+              0.0,
+              -0.1015625,
+              0.0
+            ],
+            [
+              0.0,
+              -0.1015625,
+              0.0
+            ],
+            [
+              0.0,
+              -0.1015625,
+              0.0
+            ],
+            [
+              0.0,
+              0.018616365164175974,
+              0.0
+            ],
+            [
+              0.0,
+              -0.09696546065670297,
+              0.0
+            ],
+            [
+              0.0,
+              -0.1015625,
+              0.0
+            ],
+            [
+              0.0,
+              -0.1015625,
+              0.0
+            ],
+            [
+              0.0,
+              0.018616365164175974,
+              0.0
+            ],
+            [
+              0.0,
+              -0.09696546065670297,
+              0.0
+            ],
+            [
+              0.0,
+              -0.1015625,
+              0.0
+            ],
+            [
+              0.0,
+              -0.1015625,
+              0.0
+            ]
+          ],
+          "forecast_error": null
+        }
+      ],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 780.2101000561379,
+      "performance_forecast_transitions": 1007,
+      "performance_model_transitions": 61967,
+      "exact_cache_entries": 860,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 348,
+      "persistent_cache_entries_peak": 860,
+      "persistent_cache_entries_after": 842,
+      "persistent_cache_evicted": 18,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 2.0,
+      "x": [
+        [
+          -36.47368052327772,
+          20.0
+        ],
+        [
+          -59.46571667641987,
+          5.389226967164756
+        ],
+        [
+          -69.55566449595611,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        -4.375,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        -4.375,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        -3.125,
+        2.5
+      ],
+      "candidate_count": 4,
+      "original_candidate_count": 1,
+      "repair_candidate_count": 3,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 127.13839998468757,
+      "performance_forecast_transitions": 95,
+      "performance_model_transitions": 10352,
+      "exact_cache_entries": 933,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 842,
+      "persistent_cache_entries_peak": 933,
+      "persistent_cache_entries_after": 894,
+      "persistent_cache_evicted": 39,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 2.5,
+      "x": [
+        [
+          -26.47368052327772,
+          20.0
+        ],
+        [
+          -57.12735319283752,
+          4.201726967164757
+        ],
+        [
+          -59.55566449595611,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        -1.875,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        -1.875,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        -1.875,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 27.033100021071732,
+      "performance_forecast_transitions": 19,
+      "performance_model_transitions": 2182,
+      "exact_cache_entries": 913,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 894,
+      "persistent_cache_entries_peak": 913,
+      "persistent_cache_entries_after": 869,
+      "persistent_cache_evicted": 44,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 3.0,
+      "x": [
+        [
+          -16.47368052327772,
+          20.0
+        ],
+        [
+          -55.007739709255105,
+          4.264226967164758
+        ],
+        [
+          -49.55566449595611,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        0.625,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        0.625,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        0.625,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 24.97249998850748,
+      "performance_forecast_transitions": 18,
+      "performance_model_transitions": 1925,
+      "exact_cache_entries": 887,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 869,
+      "persistent_cache_entries_peak": 887,
+      "persistent_cache_entries_after": 836,
+      "persistent_cache_evicted": 51,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 3.5,
+      "x": [
+        [
+          -6.4736805232777215,
+          20.0
+        ],
+        [
+          -52.57562622567272,
+          5.264226967164759
+        ],
+        [
+          -39.55566449595608,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 23.378999962005764,
+      "performance_forecast_transitions": 17,
+      "performance_model_transitions": 1632,
+      "exact_cache_entries": 853,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 836,
+      "persistent_cache_entries_peak": 853,
+      "persistent_cache_entries_after": 801,
+      "persistent_cache_evicted": 52,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 4.0,
+      "x": [
+        [
+          3.5263194767222785,
+          20.0
+        ],
+        [
+          -49.643512742090365,
+          6.26422696716476
+        ],
+        [
+          -29.55566449595608,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 17.2251999611035,
+      "performance_forecast_transitions": 16,
+      "performance_model_transitions": 1372,
+      "exact_cache_entries": 817,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 801,
+      "persistent_cache_entries_peak": 817,
+      "persistent_cache_entries_after": 764,
+      "persistent_cache_evicted": 53,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 4.5,
+      "x": [
+        [
+          13.526319476722279,
+          20.0
+        ],
+        [
+          -46.21139925850798,
+          7.264226967164761
+        ],
+        [
+          -19.55566449595608,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 17.483500007074326,
+      "performance_forecast_transitions": 15,
+      "performance_model_transitions": 1176,
+      "exact_cache_entries": 779,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 764,
+      "persistent_cache_entries_peak": 779,
+      "persistent_cache_entries_after": 725,
+      "persistent_cache_evicted": 54,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 5.0,
+      "x": [
+        [
+          23.52631947672228,
+          20.0
+        ],
+        [
+          -42.2792857749256,
+          8.26422696716476
+        ],
+        [
+          -9.55566449595608,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 13.213600032031536,
+      "performance_forecast_transitions": 14,
+      "performance_model_transitions": 993,
+      "exact_cache_entries": 739,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 725,
+      "persistent_cache_entries_peak": 739,
+      "persistent_cache_entries_after": 684,
+      "persistent_cache_evicted": 55,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 5.5,
+      "x": [
+        [
+          33.52631947672228,
+          20.0
+        ],
+        [
+          -37.84717229134321,
+          9.264226967164756
+        ],
+        [
+          0.4443355040439201,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 11.466900003142655,
+      "performance_forecast_transitions": 13,
+      "performance_model_transitions": 823,
+      "exact_cache_entries": 697,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 684,
+      "persistent_cache_entries_peak": 697,
+      "persistent_cache_entries_after": 641,
+      "persistent_cache_evicted": 56,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 6.0,
+      "x": [
+        [
+          43.52631947672228,
+          20.0
+        ],
+        [
+          -32.915058807760886,
+          10.264226967164753
+        ],
+        [
+          10.44433550404392,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 11.226999980863184,
+      "performance_forecast_transitions": 13,
+      "performance_model_transitions": 763,
+      "exact_cache_entries": 654,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 641,
+      "persistent_cache_entries_peak": 654,
+      "persistent_cache_entries_after": 597,
+      "persistent_cache_evicted": 57,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 6.5,
+      "x": [
+        [
+          53.52631947672228,
+          20.0
+        ],
+        [
+          -27.482945324178502,
+          11.264226967164749
+        ],
+        [
+          20.44433550404392,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 9.496699960436672,
+      "performance_forecast_transitions": 12,
+      "performance_model_transitions": 606,
+      "exact_cache_entries": 609,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 597,
+      "persistent_cache_entries_peak": 609,
+      "persistent_cache_entries_after": 551,
+      "persistent_cache_evicted": 58,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 7.0,
+      "x": [
+        [
+          63.52631947672228,
+          20.0
+        ],
+        [
+          -21.550831840596118,
+          12.264226967164745
+        ],
+        [
+          30.44433550404392,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 8.566300035454333,
+      "performance_forecast_transitions": 11,
+      "performance_model_transitions": 462,
+      "exact_cache_entries": 562,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 551,
+      "persistent_cache_entries_peak": 562,
+      "persistent_cache_entries_after": 503,
+      "persistent_cache_evicted": 59,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 7.5,
+      "x": [
+        [
+          73.52631947672228,
+          20.0
+        ],
+        [
+          -15.118718357013734,
+          13.264226967164742
+        ],
+        [
+          40.44433550404392,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 5.773500015493482,
+      "performance_forecast_transitions": 10,
+      "performance_model_transitions": 331,
+      "exact_cache_entries": 513,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 503,
+      "persistent_cache_entries_peak": 513,
+      "persistent_cache_entries_after": 453,
+      "persistent_cache_evicted": 60,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 8.0,
+      "x": [
+        [
+          83.52631947672228,
+          20.0
+        ],
+        [
+          -8.18660487343135,
+          14.264226967164738
+        ],
+        [
+          50.44433550404392,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 4.766699974425137,
+      "performance_forecast_transitions": 9,
+      "performance_model_transitions": 249,
+      "exact_cache_entries": 462,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 453,
+      "persistent_cache_entries_peak": 462,
+      "persistent_cache_entries_after": 401,
+      "persistent_cache_evicted": 61,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 8.5,
+      "x": [
+        [
+          93.52631947672228,
+          20.0
+        ],
+        [
+          -0.7544913898490222,
+          15.264226967164735
+        ],
+        [
+          60.44433550404392,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 4.488800012040883,
+      "performance_forecast_transitions": 8,
+      "performance_model_transitions": 176,
+      "exact_cache_entries": 409,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 401,
+      "persistent_cache_entries_peak": 409,
+      "persistent_cache_entries_after": 347,
+      "persistent_cache_evicted": 62,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 9.0,
+      "x": [
+        [
+          103.52631947672228,
+          20.0
+        ],
+        [
+          7.177622093733362,
+          16.26422696716473
+        ],
+        [
+          70.44433550404392,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 2.9433000017888844,
+      "performance_forecast_transitions": 7,
+      "performance_model_transitions": 112,
+      "exact_cache_entries": 354,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 347,
+      "persistent_cache_entries_peak": 354,
+      "persistent_cache_entries_after": 291,
+      "persistent_cache_evicted": 63,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 9.5,
+      "x": [
+        [
+          113.52631947672228,
+          20.0
+        ],
+        [
+          15.609735577315732,
+          17.264226967164728
+        ],
+        [
+          80.44433550404392,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 3.140399989206344,
+      "performance_forecast_transitions": 6,
+      "performance_model_transitions": 81,
+      "exact_cache_entries": 297,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 291,
+      "persistent_cache_entries_peak": 297,
+      "persistent_cache_entries_after": 233,
+      "persistent_cache_evicted": 64,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 10.0,
+      "x": [
+        [
+          123.52631947672228,
+          20.0
+        ],
+        [
+          24.541849060898087,
+          18.264226967164724
+        ],
+        [
+          90.44433550404392,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 2.5888000382110476,
+      "performance_forecast_transitions": 5,
+      "performance_model_transitions": 55,
+      "exact_cache_entries": 238,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 233,
+      "persistent_cache_entries_peak": 238,
+      "persistent_cache_entries_after": 174,
+      "persistent_cache_evicted": 64,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 10.5,
+      "x": [
+        [
+          133.52631947672228,
+          20.0
+        ],
+        [
+          33.97396254448046,
+          19.26422696716472
+        ],
+        [
+          100.44433550404392,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 1.914599968586117,
+      "performance_forecast_transitions": 4,
+      "performance_model_transitions": 34,
+      "exact_cache_entries": 178,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 174,
+      "persistent_cache_entries_peak": 178,
+      "persistent_cache_entries_after": 113,
+      "persistent_cache_evicted": 65,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 11.0,
+      "x": [
+        [
+          143.52631947672228,
+          20.0
+        ],
+        [
+          43.87323063462988,
+          20.0
+        ],
+        [
+          110.44433550404392,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 1.7233999678865075,
+      "performance_forecast_transitions": 3,
+      "performance_model_transitions": 18,
+      "exact_cache_entries": 116,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 113,
+      "persistent_cache_entries_peak": 116,
+      "persistent_cache_entries_after": 60,
+      "persistent_cache_evicted": 56,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 11.5,
+      "x": [
+        [
+          153.52631947672228,
+          20.0
+        ],
+        [
+          53.87323063462986,
+          20.0
+        ],
+        [
+          120.44433550404392,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 1.6985000111162663,
+      "performance_forecast_transitions": 2,
+      "performance_model_transitions": 7,
+      "exact_cache_entries": 62,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 60,
+      "persistent_cache_entries_peak": 62,
+      "persistent_cache_entries_after": 24,
+      "persistent_cache_evicted": 38,
+      "persistent_cache_retained_limit": 8192
+    },
+    {
+      "t": 12.0,
+      "x": [
+        [
+          163.52631947672228,
+          20.0
+        ],
+        [
+          63.87323063462986,
+          20.0
+        ],
+        [
+          130.44433550404392,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          -0.5
+        ]
+      ],
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "nominal_joint_action_admitted": false,
+      "portfolio_joint_action_admitted": false,
+      "repair_action_admitted": false,
+      "composition": 0,
+      "repair_weight": null,
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "repair_candidate_count": 0,
+      "nominal_candidate_count": 0,
+      "candidate_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "phase_tolerance_seconds": 0.05,
+      "phase_filter_enabled": true,
+      "max_failed_scenarios": 0,
+      "temporal_bank": "sampled",
+      "forecast_bank_size": 33,
+      "forecast_bank_stream": 20019,
+      "generation_errors": [],
+      "forecast_errors": [],
+      "work_counts_complete": true,
+      "gate_ms": 1.8037999980151653,
+      "performance_forecast_transitions": 1,
+      "performance_model_transitions": 1,
+      "exact_cache_entries": 25,
+      "out_of_bank_risk_certified": false,
+      "performance_claim": "Original full-bank component conditions plus the declared phase tolerance; no out-of-bank risk certificate",
+      "persistent_cache_enabled": true,
+      "persistent_cache_reset_reason": "reuse",
+      "persistent_cache_entries_before": 24,
+      "persistent_cache_entries_peak": 25,
+      "persistent_cache_entries_after": 0,
+      "persistent_cache_evicted": 25,
+      "persistent_cache_retained_limit": 8192
+    }
+  ]
+}
