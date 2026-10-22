@@ -3,13 +3,13 @@
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 Status checked on 2026-10-22: the original V21 studies and their first recovery
 were interrupted. Original supervisor success is not claimed. All retained
-observations are preserved in immutable archives; the phase study now has
-6,656/6,656 records and matched transfer has 12,149/12,160 records.
+observations are preserved in immutable archives. The missing suffix has now
+completed: all 6,656 phase-study and 12,160 matched-transfer records are present.
 All **45 actual SUMO parity replays** passed on 2026-10-21; all non-timing
 outcomes, decisions and trajectories match, with no new independent initials.
-A separately supervised continuation launched on 2026-10-22 executes only the
-**11 remaining cases plus one boundary replay**, then independently reviews
-all **18,816** planned records. No complete effectiveness result or new risk
+A separately supervised continuation completed the **11 remaining cases plus
+one boundary replay** with a successful worker exit. It is now independently
+reviewing all **18,816** planned records. No complete effectiveness result or new risk
 certificate is available yet. The new continuation preserves all original
 selection thresholds and records its own actual process exits.
 [Interruption and recovery protocol](docs/v21_interruption_recovery.md).
