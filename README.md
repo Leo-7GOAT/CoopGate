@@ -1,17 +1,29 @@
 # CoopGate
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
-Status checked on 2026-10-22: the original V21 studies and their first recovery
-were interrupted. Original supervisor success is not claimed. All retained
-observations are preserved in immutable archives. The missing suffix has now
-completed: all 6,656 phase-study and 12,160 matched-transfer records are present.
-All **45 actual SUMO parity replays** passed on 2026-10-21; all non-timing
-outcomes, decisions and trajectories match, with no new independent initials.
-A separately supervised continuation completed the **11 remaining cases plus
-one boundary replay** with a successful worker exit. It is now independently
-reviewing all **18,816** planned records. No complete effectiveness result or new risk
-certificate is available yet. The new continuation preserves all original
-selection thresholds and records its own actual process exits.
+Status checked on 2026-10-22: both V21 studies and their full independent reviews
+are complete, covering **18,816 actual main-study runs**. The new supervisor and
+both review workers exited successfully. Original interrupted exits remain
+unknown; all retained records and recovery evidence are preserved.
+
+The frozen selection rule chooses the **50 ms phase gate for all three fixed
+models together**. On 128 development initials it retains **0.757–1.029%** cost
+improvement and **28.1–30.5%** actual adoption, with **0/36, 0/38, 0/39** actual
+harmful/adopted counts and **1/85, 1/84, 1/84** four-mode bundle counts. All three
+candidate families pass the development screen. Phase gating sacrifices some
+paired gain relative to action repair; it does not uniformly reduce empirical
+conditional risk across models and has **no new risk certificate**.
+
+The 12,160-run matched transfer study reports all **380 cells**. Phase05 completes
+all nominal, gain/drag and mild-lag runs, but has negative mean gain in two
+low-speed-yield cells. Strong lag exceeds the physical error assumption and
+leaves **8/160, 8/160, 9/160** phase05 runs incomplete (baseline: **10/160**).
+Its development p95 remains **1.55–1.69 s**, above the 500 ms decision period.
+[Complete results, tradeoffs and scope](docs/v21_complete_results.md).
+
+The original thresholds, models and statistical rules remain unchanged. New
+independent calibration and final confirmation have not started; the complete
+execution protocol still needs to be implemented and frozen.
 [Interruption and recovery protocol](docs/v21_interruption_recovery.md).
 
 The prospective common-data pipeline has also passed **18 focused tests** and

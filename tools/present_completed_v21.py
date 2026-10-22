@@ -80,6 +80,8 @@ def phase_figure(phase):
         ax.axvline(20, color='#777777', linestyle='--', linewidth=.8)
         ax.axhline(.5, color='#777777', linestyle='--', linewidth=.8)
         ax.set(title=f'Fixed model {seed}', xlabel='Actual episode adoption (%)')
+        ax.set_xlim(18, 39)
+        ax.set_ylim(.45, 1.20)
         ax.grid(alpha=.18)
     axes[0].set_ylabel('Mean team-cost improvement (%)')
     axes[0].legend(fontsize=8, loc='best')
