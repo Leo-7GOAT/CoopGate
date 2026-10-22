@@ -1,0 +1,116 @@
+{
+  "purpose": "Complete-data analysis of common-condition physical and performance gates.\n\nFreeze this analysis before reading the ongoing full comparison. Both actual\nsuccessful exits and all complete blocks are required; calibration is untouched.\n",
+  "utc": "2026-10-22T14:29:26.516873+00:00",
+  "source_sha256": {
+    "src/coopgate/physical_comparison_analysis_v27.py": "05a302d583b07aae8afdb4746b5562fbb7f93dac976cc46c6eee48e2f41ef20f",
+    "tools/analyze_physical_switch_v27.py": "6c55abfceb92f0ed39fe23b33a12cc17e13a0a460df0c8091d08722e464dd571",
+    "tests/test_physical_comparison_analysis_v27.py": "2e15b7e99e5bf1e8df41d0ba474a0fcc97200f04786c5994176f696c0d45db25",
+    "tests/test_physical_comparison_loader_v27.py": "fa92017cb0164b50b4e66e825cad8fcf6cb02f59013e6418ced329cdd349fa32"
+  },
+  "comparison_plan_sha256": "6db147d379dcc4880d1c8d8fabb2c4fbb4307dddf18097ffc3216a4c0adf465a",
+  "adoption_plan_sha256": "b98b64b037e3a17c877e47c2cab68758dda1ce7f02f4e1b2e8d0ae12c26d9644",
+  "runtime": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "executable": "C:\\Users\\Leo\\Desktop\\papper\\.venv\\Scripts\\python.exe",
+    "packages": {
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "torch": "2.14.1+cpu",
+      "numba": "0.65.1",
+      "traci": "1.28.0",
+      "sumolib": "1.28.0"
+    },
+    "binaries": {
+      "sumo": {
+        "path": "C:\\Users\\Leo\\Desktop\\papper\\.venv\\Lib\\site-packages\\sumo\\bin\\sumo.exe",
+        "sha256": "6913a1825c0eba84de8e0520f728e4ec57a469267a5465dbf5f4306870c10d07"
+      },
+      "netconvert": {
+        "path": "C:\\Users\\Leo\\Desktop\\papper\\.venv\\Lib\\site-packages\\sumo\\bin\\netconvert.exe",
+        "sha256": "5b48c72620a1e3afbde1a1805af971d37c41d59386f56ad06679383cb59be3f5"
+      }
+    }
+  },
+  "methods": {
+    "phase": [
+      "baseline",
+      "repair_1802",
+      "reference_1802",
+      "phase05_1802",
+      "phase10_1802",
+      "repair_1812",
+      "reference_1812",
+      "phase05_1812",
+      "phase10_1812",
+      "repair_1822",
+      "reference_1822",
+      "phase05_1822",
+      "phase10_1822",
+      "mamps_shared_1802",
+      "mps_shared_1802",
+      "mamps_shared_1812",
+      "mps_shared_1812",
+      "mamps_shared_1822",
+      "mps_shared_1822"
+    ],
+    "transfer": [
+      "baseline",
+      "raw_1802",
+      "nominal_1802",
+      "portfolio0_1802",
+      "repair_1802",
+      "phase05_1802",
+      "phase10_1802",
+      "raw_1812",
+      "nominal_1812",
+      "portfolio0_1812",
+      "repair_1812",
+      "phase05_1812",
+      "phase10_1812",
+      "raw_1822",
+      "nominal_1822",
+      "portfolio0_1822",
+      "repair_1822",
+      "phase05_1822",
+      "phase10_1822",
+      "mamps_shared_1802",
+      "mps_shared_1802",
+      "mamps_shared_1812",
+      "mps_shared_1812",
+      "mamps_shared_1822",
+      "mps_shared_1822"
+    ]
+  },
+  "expected_episodes": {
+    "phase": 9728,
+    "transfer": 16000
+  },
+  "old_episodes": 18816,
+  "new_comparison_executions": 6912,
+  "expected_phase_methods": 19,
+  "expected_transfer_cells": 500,
+  "expected_primary_contrasts": {
+    "phase": 6,
+    "transfer": 120
+  },
+  "expected_independent_initials": {
+    "phase": 128,
+    "transfer": 160
+  },
+  "bootstrap_samples": 5000,
+  "bootstrap_stream": 27113,
+  "bootstrap": "For each cell or phase subset with n initials, default_rng(27113).integers(n, size=(5000,n)); same draws for every matched method in that cell. Pointwise percentile 95% mean-cost intervals only.",
+  "phase_actual": "Exactly one mode per initial from the original seed_base and mode_selection_stream; identical mode for every method.",
+  "phase_bundle": "At initial level: A=any mode adopts, H=any mode harms; count A & H even when adoption and harm occur in different modes.",
+  "primary_contrasts": "For each fixed model, phase05 versus mamps_shared and mps_shared. Positive cost increment=comparator cost minus phase05 cost. Risk difference=phase05 conditional risk minus comparator conditional risk.",
+  "original_events": "Original learned_action_steps retained alongside common actual-command events; no old certification event or result is overwritten.",
+  "pairing": "Match seed, initial state, mode, radius and, for transfer, plant parameters and external innovation tape. Across plants match initial and external innovation; do not require realized actuator errors to match.",
+  "exclusions": "None. Retain capped unsuccessful outcomes, terminal errors, all fixed models, baseline failures and error-bound exceedances.",
+  "conditional_risk": "Descriptive P_hat(H|A); zero adoption is null, never zero. No risk difference if either denominator is zero.",
+  "timing": "Only new complete callbacks, including terminal error calls. Historical callback times are from different execution periods and are not a speed comparison.",
+  "scope": "Previously used development/transfer initials only. Modes, methods, models and plants do not add independent initials. No overall winner selection, simultaneous-coverage claim, new risk certificate or calibration outcome read.",
+  "new_sumo_runs_from_analysis": 0,
+  "new_independent_initials": 0,
+  "new_risk_certificate": false,
+  "active_calibration_outcomes_read": false
+}
