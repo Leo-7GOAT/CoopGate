@@ -118,6 +118,19 @@ decisions can change in other cases, so prior risk certification cannot simply
 be transferred. Both formal live studies retain their frozen implementations.
 [Complete pairing, clock correction and limitations](docs/v26_precise_deadline_protocol.md).
 
+Common-condition physical-switching comparators are now frozen: a MAMPS
+monotone-mask adapter and an all-or-none MPS adapter share the current trained
+actors, strong baseline and bounded-error stopping certificate. **20 focused
+tests and 144 actual SUMO integration runs** passed execution/review, including
+3,290 reconstructed commands and **two retained controller aborts**. The complete
+**6,912-run comparison is running** over all three models, original disturbance
+cases, five transfer scenes and four plants. These are explicit adaptations,
+not reproductions of the original robot benchmark or inherited safety theorems.
+Analysis must recompute the same actual-command adoption event for historical
+comparators, retaining their original counts separately. No partial efficacy
+analysis or new risk certification is available.
+[Algorithm mapping, complete scope and integration evidence](docs/v27_physical_switch_comparison.md).
+
 The prospective common-data pipeline has also passed **18 focused tests** and
 reproduced all calibration and final-comparison outputs from **61,440 historical
 V19 records**, including all six comparison methods and all three fixed models.
