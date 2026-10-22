@@ -79,6 +79,16 @@ records terminal exception-call time as well as successful call time, and uses
 one worker alongside the unchanged calibration. No full-scope result is yet
 available. [Frozen coverage and equivalence argument](docs/v25_complete_scope_audit.md).
 
+A complete post-hoc event-transfer audit now reports **all 270 matched cells**
+from the finished transfer study. For phase05, adoption/harm categories change
+in 14/15 mild-lag scene/model cells although all of those executions remain
+within the physical error bound. A self-contained sensitivity argument gives
+`r_Q <= min(1, r_P + rho / P(A))` when target adoption is positive and `rho`
+bounds total variation of the three-category adoption/harm event law. The
+empirical tables do **not** estimate a valid population shift upper bound or
+extend the calibration certificate; no new simulation sample is claimed.
+[Proof, complete tables and low-adoption limits](docs/v25_selective_risk_transfer.md).
+
 The prospective common-data pipeline has also passed **18 focused tests** and
 reproduced all calibration and final-comparison outputs from **61,440 historical
 V19 records**, including all six comparison methods and all three fixed models.
