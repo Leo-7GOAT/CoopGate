@@ -21,6 +21,14 @@ leaves **8/160, 8/160, 9/160** phase05 runs incomplete (baseline: **10/160**).
 Its development p95 remains **1.55–1.69 s**, above the 500 ms decision period.
 [Complete results, tradeoffs and scope](docs/v21_complete_results.md).
 
+The desktop manuscript revision 16 incorporates the completed development and
+matched-transfer evidence, the arrival-time diagnostic and the prospective
+whole-family risk argument. Its 24 pages have been rendered and inspected; all
+17 existing editable equations are retained, with six new equations added.
+[Reproducible manuscript builder](tools/build_v16_manuscript.py) and
+[document verification](artifacts/v21/manuscript_v16/qa.json) preserve the source
+hashes and distinguish development findings from the still-pending certification.
+
 The original thresholds, models and statistical rules remain unchanged. The
 complete executor passed **62 focused tests** and a **90-run actual SUMO
 integration**, including 40 independently reviewed main trajectories, 40 exact
