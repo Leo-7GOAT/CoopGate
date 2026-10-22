@@ -53,3 +53,11 @@ v22 完成全部九十条采集，但监督程序将 Windows 虚拟环境启动�
 5. `watch prospective confirmation`，全量完成并复核后执行 `analyze prospective confirmation`，保留所有方法、模型及失败结果。
 
 每个命令均通过同一个入口执行，运行目录为仓库根目录，使用项目 Python 环境。冻结命令和数据目录均拒绝覆盖。协议的冻结与集成测试通过不等于科学目标达成。
+
+## 2026-10-22 实际集成完成与正式启动
+
+v23 集成监督进程于 05:42 UTC 返回实际退出码零，采集和独立复核进程均成功退出。完整复核覆盖 40 条主执行物理轨迹、266 次原始 actor 检查、98 次基线检查、265 次名义准入检查、277 个联合候选集合及 9 次已准入预测，其中 7 个为不同完整预测。十条观测预测与独立无扰动运行一致；四十条实际部署回放的完整命令、状态与非计时结果一致，覆盖 72 个适配器/模型/扰动映射。十八个运行时选择均与离线评估一致。
+
+该旧初态完整十控制器预测墙钟时间为 19.766 秒，选择耗时约 0.189 毫秒，九十次执行所在初态块总墙钟约 157.506 秒。它们是当前桌面负载下的集成计时，不构成实时性结论，也不与早前不同实现/负载的计时作严格加速比较。之前被监督身份检查拒绝的九十条记录另行保存，不增加独立样本。
+
+完成证据见[真实成功退出](../artifacts/v21/prospective_execution_preflight_native_20261022/preflight/execution/supervisor_exit.json)、[完整复核](../artifacts/v21/prospective_execution_preflight_native_20261022/preflight/execution/completed.json)和[选择一致性](../artifacts/v21/prospective_execution_preflight_native_20261022/preflight/analysis/acceptance.json)。新完整[正式协议](../artifacts/v21/prospective_execution_attempt_1_native/frozen/plan.json)的 SHA-256 为 `277b6bf4d8dda9540b4a9aea7d396887817be797e3e64bd4cefc41e5730457b2`，已在首次新校准执行前提交。4,096 初态校准于当日启动；1,024 初态最终确认尚未开始。当前没有新证书，不能从进行中的前缀计算或报告效果结论。

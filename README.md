@@ -21,9 +21,15 @@ leaves **8/160, 8/160, 9/160** phase05 runs incomplete (baseline: **10/160**).
 Its development p95 remains **1.55–1.69 s**, above the 500 ms decision period.
 [Complete results, tradeoffs and scope](docs/v21_complete_results.md).
 
-The original thresholds, models and statistical rules remain unchanged. New
-independent calibration and final confirmation have not started; the complete
-execution protocol still needs to be implemented and frozen.
+The original thresholds, models and statistical rules remain unchanged. The
+complete executor passed **62 focused tests** and a **90-run actual SUMO
+integration**, including 40 independently reviewed main trajectories, 40 exact
+deployment replays and all 18 runtime/offline adapter choices. Its native
+supervisor exited successfully. The full prospective execution protocol is now
+frozen and committed, and **the 4,096-initial independent calibration is running**.
+The 1,024-initial final confirmation has not started. There is no new risk
+certificate or partial effectiveness report.
+[Full execution protocol and compute accounting](docs/v21_complete_execution_protocol.md).
 [Interruption and recovery protocol](docs/v21_interruption_recovery.md).
 
 The prospective common-data pipeline has also passed **18 focused tests** and
