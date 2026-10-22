@@ -93,6 +93,18 @@ empirical tables do **not** estimate a valid population shift upper bound or
 extend the calibration certificate; no new simulation sample is claimed.
 [Proof, complete tables and low-adoption limits](docs/v25_selective_risk_transfer.md).
 
+A separate process-isolated proposal wrapper now escapes a blocked learning
+controller by applying a baseline checked from the current state and previous
+executed command. **23 tests and 84 actual SUMO fault-injection runs** are complete.
+All 48 injected-fault episodes switched to the baseline; all 1,922 measured full
+callbacks were below 500 ms (maximum 475.711 ms), and all 60 child processes were
+reaped. This uses forced eligibility and one old initial, not confidence-gate
+efficacy or a new risk certificate. The 450 ms software budget uses a coarse
+Windows monotonic clock, and SUMO does not advance during host computation, so
+neither strict timing nor physical actuation-delay safety is claimed. Both live
+frozen studies remain unchanged.
+[Complete results, timer limitation and guarantee boundaries](docs/v26_deadline_recovery.md).
+
 The prospective common-data pipeline has also passed **18 focused tests** and
 reproduced all calibration and final-comparison outputs from **61,440 historical
 V19 records**, including all six comparison methods and all three fixed models.

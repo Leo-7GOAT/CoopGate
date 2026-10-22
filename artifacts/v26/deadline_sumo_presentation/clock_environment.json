@@ -1,0 +1,22 @@
+{
+  "utc": "2026-10-22T12:22:51.872783+00:00",
+  "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "clocks": {
+    "monotonic": {
+      "implementation": "GetTickCount64()",
+      "monotonic": true,
+      "adjustable": false,
+      "resolution": 0.015625
+    },
+    "perf_counter": {
+      "implementation": "QueryPerformanceCounter()",
+      "monotonic": true,
+      "adjustable": false,
+      "resolution": 1e-07
+    }
+  },
+  "selector_deadline_clock": "monotonic",
+  "outer_measurement_clock": "perf_counter",
+  "interpretation": "GetTickCount64 quantization explains early/late high-resolution observed callbacks around the nominal 450 ms software budget; timer expiration is not a hard real-time guarantee. All raw measurements are retained.",
+  "follow_up": "Use a common high-resolution monotonic deadline/measurement clock and repeat paired timing before deployment integration; the completed frozen 84-run implementation remains unchanged."
+}
