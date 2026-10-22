@@ -1,0 +1,48 @@
+{
+  "utc": "2026-10-22T13:53:04.725663+00:00",
+  "previous_goal_turn": "progress: shared physical-gate adapters and 144 real integration runs completed, with full 6912-run comparison launched",
+  "tests": [
+    {
+      "command": "python -m pytest tests/test_common_adoption_v27.py -q",
+      "passed": 12,
+      "seconds": 6.92,
+      "observed_exit_code": 0
+    },
+    {
+      "command": "python -m pytest tests/test_common_adoption_audit_v27.py -q",
+      "passed": 8,
+      "seconds": 13.38,
+      "session_id": 69095,
+      "observed_exit_code": 0
+    }
+  ],
+  "completed_integration_compatibility": {
+    "episodes": 144,
+    "decisions": 3290,
+    "all_adoption_events_exact": true,
+    "new_sumo_runs": 0
+  },
+  "windows_priority_probe": {
+    "before": 32,
+    "after": 16384,
+    "modified_other_processes": false
+  },
+  "unchanged_frozen_sources": [
+    {
+      "plan": "artifacts/v25/buffered_complete_scope/plan.json",
+      "unchanged_source_files": 340
+    },
+    {
+      "plan": "artifacts/v27/physical_switch_comparison/plan.json",
+      "unchanged_source_files": 344
+    }
+  ],
+  "source_sha256": {
+    "src/coopgate/common_adoption_v27.py": "77e286bfd5a1338b0432e415d60bdbf02aabd0cf02b84af731f09b664caafefb",
+    "tests/test_common_adoption_v27.py": "cd855b732f0c286360efa31f5326dde30081499bc28bef0386145db79ebbb58d",
+    "tools/audit_common_adoption_v27.py": "6a06bc8c8f74aec183f0c3bc8e9e2e0a7f37bb3015533da3829f024b5e148265",
+    "tests/test_common_adoption_audit_v27.py": "b34f4b2cd4e0047a79f7fd939d1cdf9aacfca7cd2b7d44087a6e01227ce21f11"
+  },
+  "active_calibration_outcomes_read": false,
+  "new_risk_certificate": false
+}
