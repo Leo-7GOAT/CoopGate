@@ -71,16 +71,16 @@ def admissions(report):
         axis.grid(axis='y', color='#dddddd', lw=.6)
         axis.spines[['top', 'right']].set_visible(False)
         axis.set_xlim(0, 88)
-    axes[0].legend(loc='upper right', fontsize=9)
     axes[1].axhline(.05, color='#996d35', lw=.8, ls='--', label='Original 50 ms phase tolerance')
-    axes[1].legend(loc='upper right', fontsize=9)
+    handles, labels = axes[1].get_legend_handles_labels()
+    figure.legend(handles, labels, loc='upper center', bbox_to_anchor=(.5, .935), ncol=2, fontsize=9)
     axes[1].set_xlabel('All 87 admitted decisions in frozen case/step order (not independent samples)')
     figure.suptitle('Finite-bank admission versus realized-noise continuation', fontsize=16, y=.97)
     figure.text(.02, .025,
         'All 480 nominal episodes / 81 adopted episodes; 87 complete local branch pairs, four local regressions.\n'
         'Each local comparison executes one original action then the feedback baseline. Known future noise is diagnostic only.\n'
         'Four regressions share only two distinct initials. This is not a new controller, risk estimate or independent evaluation.', fontsize=9)
-    figure.subplots_adjust(left=.085, right=.98, top=.90, bottom=.17, hspace=.28)
+    figure.subplots_adjust(left=.085, right=.98, top=.82, bottom=.17, hspace=.28)
     save(figure, 'all_nominal_admissions')
 
 
@@ -106,8 +106,13 @@ def mechanisms(report):
         left = np.where(current >= 0, positive, negative)
         axis.barh(np.arange(len(rows)), current, left=left, height=.5, color=color, label=label)
         for i, value in enumerate(current):
-            axis.text(left[i]+value/2, i, f'{value:+.4f}', ha='center', va='center', fontsize=8,
-                      color='white' if j != 1 else '#222222', rotation=0)
+            if abs(value) < .03:
+                axis.annotate(f'{value:+.4f}', xy=(left[i]+value/2, i), xytext=(0, 24),
+                              textcoords='offset points', ha='center', va='bottom', fontsize=8,
+                              color=color, arrowprops=dict(arrowstyle='-', color=color, lw=.6))
+            else:
+                axis.text(left[i]+value/2, i, f'{value:+.4f}', ha='center', va='center', fontsize=8,
+                          color='white' if j != 1 else '#222222', rotation=0)
         positive += np.maximum(current, 0)
         negative += np.minimum(current, 0)
     total = np.array([r['original_cost_delta'] for r in rows])
