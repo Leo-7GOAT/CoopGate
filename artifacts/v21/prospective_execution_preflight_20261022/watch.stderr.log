@@ -1,0 +1,21 @@
+Exception in thread Thread-7 (_readerthread):
+Traceback (most recent call last):
+  File "C:\Users\Leo\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Leo\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 982, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Leo\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1599, in _readerthread
+    buffer.append(fh.read())
+                  ^^^^^^^^^
+  File "<frozen codecs>", line 322, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xc2 in position 213: invalid continuation byte
+Traceback (most recent call last):
+  File "C:\Users\Leo\Desktop\papper\CoopGate\tools\execute_prospective_v21.py", line 644, in <module>
+    globals()[args.command](args.scope,args.stage)
+  File "C:\Users\Leo\Desktop\papper\CoopGate\tools\execute_prospective_v21.py", line 534, in watch
+    require_project_stopped(native_snapshot())
+                            ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Leo\Desktop\papper\CoopGate\tools\recover_interrupted_v21.py", line 62, in native_snapshot
+    data = json.loads(result.stdout) if result.stdout.strip() else []
+                                        ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'strip'
