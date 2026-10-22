@@ -1,0 +1,16 @@
+{
+  "utc": "2026-10-22T11:01:09.062469+00:00",
+  "plan_sha256": "318d8644f65b34d1c49c214616e67a0d4847a37fbacb33e74694ecde1dca0b90",
+  "command": [
+    "C:\\Users\\Leo\\Desktop\\papper\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "tools/audit_buffered_scope_v25.py",
+    "summarize"
+  ],
+  "actual_exit_code": 1,
+  "refusal": "Native exit receipt absent while full paired audit is running",
+  "stderr": "Traceback (most recent call last):\n  File \"C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\tools\\audit_buffered_scope_v25.py\", line 386, in <module>\n    globals()[parser.parse_args().action]()\n  File \"C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\tools\\audit_buffered_scope_v25.py\", line 330, in summarize\n    receipt, launch = read(execution/'exit.json'), read(execution/'launch.json')\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\tools\\audit_buffered_scope_v25.py\", line 42, in read\n    return json.loads(Path(path).read_text(encoding='utf-8'))\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Leo\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\pathlib.py\", line 1058, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Leo\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\pathlib.py\", line 1044, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\Leo\\\\Desktop\\\\papper\\\\CoopGate\\\\artifacts\\\\v25\\\\buffered_complete_scope\\\\execution\\\\exit.json'\n",
+  "analysis_directory_created": false,
+  "full_results_read": false
+}

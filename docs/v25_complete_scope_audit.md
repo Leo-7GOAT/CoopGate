@@ -33,6 +33,8 @@
 ## 证据位置
 
 - [冻结协议和全部案例](../artifacts/v25/buffered_complete_scope/plan.json)
+- [原生进程身份和首个完整块核验](../artifacts/v25/buffered_complete_scope/launch_verification.json)
+- [运行中提前汇总被拒绝的实际记录](../artifacts/v25/buffered_complete_scope/pending_report_guard.json)
 - [实际执行器与汇总入口](../tools/audit_buffered_scope_v25.py)
 - [覆盖和进程凭据测试](../tests/test_buffered_scope_v25.py)
 - [先前24次完整检查及限度](v25_buffered_certificate.md)
