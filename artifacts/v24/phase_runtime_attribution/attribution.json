@@ -1,0 +1,93 @@
+{
+  "profile_report_sha256": "1cf8f2bfd3c7cf69228192e6ab9c79c718f145ff395e1511bcc574e55315deab",
+  "recorded_cases": 7,
+  "distinct_model_state_previous_step_inputs": 4,
+  "replayed_select_calls": 14,
+  "new_sumo_runs": 0,
+  "new_independent_initials": 0,
+  "all_commands_and_non_timing_evidence_exact": true,
+  "actual_process_exit_code": 0,
+  "exit_observation": "exec session 85658 returned completed exit_code 0",
+  "rows": [
+    {
+      "case_index": 0,
+      "model": "1802",
+      "mode": "pulse",
+      "step": 2,
+      "admitted": false,
+      "complete_ms": 2356.3933999976143,
+      "disturbed_suffix_percent": 87.36105866148677,
+      "phase_percent": 0.11010800300430269,
+      "actor_percent": 0.09469738389432493
+    },
+    {
+      "case_index": 1,
+      "model": "1802",
+      "mode": "clean",
+      "step": 2,
+      "admitted": false,
+      "complete_ms": 2293.579499993939,
+      "disturbed_suffix_percent": 86.38620213890242,
+      "phase_percent": 0.11104174184764229,
+      "actor_percent": 0.1069564043856953
+    },
+    {
+      "case_index": 2,
+      "model": "1802",
+      "mode": "clean",
+      "step": 4,
+      "admitted": true,
+      "complete_ms": 1114.0627000131644,
+      "disturbed_suffix_percent": 80.6281969526163,
+      "phase_percent": 0.23768559265413514,
+      "actor_percent": 0.19609398696131689
+    },
+    {
+      "case_index": 3,
+      "model": "1812",
+      "mode": "pulse",
+      "step": 2,
+      "admitted": true,
+      "complete_ms": 2544.144999992568,
+      "disturbed_suffix_percent": 90.20083368881397,
+      "phase_percent": 0.15053429703450205,
+      "actor_percent": 0.10960322429182574
+    },
+    {
+      "case_index": 4,
+      "model": "1812",
+      "mode": "clean",
+      "step": 2,
+      "admitted": true,
+      "complete_ms": 2638.8179000350647,
+      "disturbed_suffix_percent": 90.73371862005192,
+      "phase_percent": 0.13720638735936497,
+      "actor_percent": 0.09409868753453947
+    },
+    {
+      "case_index": 5,
+      "model": "1822",
+      "mode": "pulse",
+      "step": 2,
+      "admitted": true,
+      "complete_ms": 3230.1850999938324,
+      "disturbed_suffix_percent": 91.25192243640055,
+      "phase_percent": 0.1535656123092244,
+      "actor_percent": 0.06822280688093371
+    },
+    {
+      "case_index": 6,
+      "model": "1822",
+      "mode": "clean",
+      "step": 2,
+      "admitted": true,
+      "complete_ms": 3246.8962999992073,
+      "disturbed_suffix_percent": 92.48415764508967,
+      "phase_percent": 0.15258145802024298,
+      "actor_percent": 0.07326954280707117
+    }
+  ],
+  "interpretation": "Post-hoc attribution on selected decisions from one old initial, with profiler overhead and concurrent load; not a representative latency distribution or a speedup comparison. Nested cumulative costs must not be added together.",
+  "next_experiment": "Evaluate exact baseline-command reuse across successive calls with fixed full configuration and exact state/previous/step keys, preserving every candidate, all 33 paths, and the full physical/evidence checks. No active calibration code changes.",
+  "new_risk_certificate": false
+}
