@@ -72,6 +72,13 @@ four modes under concurrent load: no new efficacy sample, risk certificate or
 hard-real-time claim. The live calibration still uses its frozen implementation.
 [Exact checks, full timing results and limits](docs/v25_buffered_certificate.md).
 
+The complete-scope extension is frozen and running: **3,456 paired cases /
+6,912 actual SUMO runs planned**, covering every phase05 case in the completed
+development and five-scenario/four-plant transfer grids. It retains all failures,
+records terminal exception-call time as well as successful call time, and uses
+one worker alongside the unchanged calibration. No full-scope result is yet
+available. [Frozen coverage and equivalence argument](docs/v25_complete_scope_audit.md).
+
 The prospective common-data pipeline has also passed **18 focused tests** and
 reproduced all calibration and final-comparison outputs from **61,440 historical
 V19 records**, including all six comparison methods and all three fixed models.
