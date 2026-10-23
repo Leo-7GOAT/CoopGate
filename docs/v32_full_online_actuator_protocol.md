@@ -22,4 +22,12 @@
 
 这是原迁移网格上的开发比较，不能替代新的独立确认、风险校准或更广路网验证。正式校准继续执行冻结的原方案；本扩展不读取其未完成结果。
 
+## 冻结与实际启动
+
+完整范围已经冻结并提交，计划 SHA256 为 `5cf9c77f269fca15c8eddf8f050547ee4b21ddd999110433bd081e0a39bac0e1`。88 项检查通过，包括全部条件覆盖、执行先后平衡、错误初态/种子/模型拒绝、逐车退化保留、失败成本处理和终止调用计时。
+
+11:38:00，原生工作进程 45292 实际启动，监督进程核对其启动器、父进程和创建时间后授权执行。第一组预先确定的六个真实回合已经封存，全部 138 条命令和非计时结果与已完成集成逐项一致。该检查仅验证新增分块和计时入口，不是完整实验结论；全部 3,840 次完成且真实退出成功后才汇总比较。
+
+证据：[冻结计划](../artifacts/v32/online_actuator_complete_grid/plan.json)、[88 项检查](../artifacts/v32/full_grid_checks/verification.json)、[首块真实重放一致性](../artifacts/v32/full_grid_checks/first_block_replay.json)、[原生工作进程确认](../artifacts/v32/online_actuator_complete_grid/execution/launch.json)。
+
 入口：[完整实验与汇总](../tools/extend_online_actuator_v32.py)。

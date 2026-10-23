@@ -22,8 +22,10 @@ and independent trace/input review. In the 15-run strong-lag cell, observed
 harmful/adopted counts change from **1/5 to 0/4**, while mean cost gain changes
 from **0.047% to 0.393%**. Gain/drag and mild-lag gains decrease, so there is no
 uniform improvement claim. These are five shared old initials, not fresh risk
-evidence. All cell p95 timings exceed 500 ms. A full **3,840-run** extension keeps
-both controllers, every model and all original conditions unchanged.
+evidence. All cell p95 timings exceed 500 ms. A full **3,840-run** extension is
+now executing, keeping both controllers, every model and all original conditions
+unchanged. Its 88 checks passed; the first six real runs reproduce all 138
+preflight commands and non-timing outcomes exactly.
 [Complete online integration and tradeoffs](docs/v32_online_actuator_gate.md),
 [full-grid comparison protocol](docs/v32_full_online_actuator_protocol.md).
 
