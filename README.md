@@ -175,6 +175,17 @@ remain unchanged. Known future noise is diagnostic-only; these post-hoc replays
 are not new independent efficacy samples, controller improvements or certificates.
 [Complete mechanisms and original-cost decomposition](docs/v28_regression_diagnostic.md).
 
+An actuator-memory evaluator now passes **24 checks**, all **640 original
+transfer-baseline predictions** and **30 real SUMO replays**. Across five scenes
+and four plants, all 14,677 historical commands and 513 replayed commands match;
+maximum state discrepancy is below 4e-13. All ten original strong-lag aborts and
+all 160 strong-lag error-bound violations are retained. The evaluator propagates
+separate actuator memories under common external innovations instead of reusing
+another branch's command-dependent error. This validates baseline prediction
+with known parameters and realized future noise; it is not an online gate gain,
+an extended physical guarantee or a new risk certificate.
+[Equations, complete scope and results](docs/v30_actuator_prediction.md).
+
 The prospective common-data pipeline has also passed **18 focused tests** and
 reproduced all calibration and final-comparison outputs from **61,440 historical
 V19 records**, including all six comparison methods and all three fixed models.
