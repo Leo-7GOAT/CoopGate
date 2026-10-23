@@ -1,6 +1,16 @@
 # CoopGate
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
+Latest execution status (2026-10-23): both long jobs were found interrupted, with
+their original native processes absent and exits unknown. **51,596 calibration
+roles and 5,435 paired-audit roles** are preserved and archived exactly. A second
+explicit recovery passed **60 checks**; the actual paired-audit boundary replay
+matched, and that audit is running. Calibration's first launch was rejected by
+the existing concurrent-project guard before any simulation. A verified native-
+handle coordinator will start the unchanged calibration after the complete audit
+exits successfully. No partial calibration effects have been analyzed and no new
+risk certificate is claimed. [Exact preservation and recovery sequence](docs/v29_second_interruption_recovery.md).
+
 Status checked on 2026-10-22: both V21 studies and their full independent reviews
 are complete, covering **18,816 actual main-study runs**. The new supervisor and
 both review workers exited successfully. Original interrupted exits remain
