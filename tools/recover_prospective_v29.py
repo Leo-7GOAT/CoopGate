@@ -31,11 +31,20 @@ def freeze():
         raise ValueError('Preserved calibration boundary changed')
     entries = [{k:v for k,v in e.items() if k != 'inventory'} for e in checked]
     spec = plan['stages']['calibration']
+    # The snapshot utility also imports the frozen buffer-audit module. Preserve
+    # its transitive dependencies even though calibration never executes it.
+    sources = {**evidence['source_sha256'],
+               **original.read(snapshot.BUFFER/'plan.json')['source_sha256'],
+               **{name:original.digest(ROOT/name) for name in SOURCES}}
+    for name, expected in sources.items():
+        if original.digest(ROOT/name) != expected:
+            raise ValueError('Frozen transitive dependency changed: '+name)
+    original.sources_committed([ROOT/name for name in sources])
     RECOVERY.mkdir(parents=True)
     (OUTPUT/'frozen').mkdir()
     shutil.copy2(PRIOR/'frozen/plan.json', OUTPUT/'frozen/plan.json')
     recovery = dict(utc=original.utc(), original_plan_sha256=evidence['source_plan_sha256'],
-        source_sha256={name:original.digest(ROOT/name) for name in SOURCES},
+        source_sha256=sources,
         inventory_sha256=original.digest(snapshot.OUT/'calibration/inventory.json'),
         parent_recovery_plan_sha256=original.digest(PRIOR/'recovery/plan.json'),
         original_exit_status='unknown', blocks=entries, retained_roles=evidence['retained_roles'],
