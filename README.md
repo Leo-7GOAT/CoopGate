@@ -1,15 +1,31 @@
 # CoopGate
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
-Latest execution status (2026-10-23): both long jobs were found interrupted, with
-their original native processes absent and exits unknown. **51,596 calibration
-roles and 5,435 paired-audit roles** are preserved and archived exactly. A second
-explicit recovery passed **60 checks**; the actual paired-audit boundary replay
-matched, and that audit is running. Calibration's first launch was rejected by
-the existing concurrent-project guard before any simulation. A verified native-
-handle coordinator will start the unchanged calibration after the complete audit
-exits successfully. No partial calibration effects have been analyzed and no new
-risk certificate is claimed. [Exact preservation and recovery sequence](docs/v29_second_interruption_recovery.md).
+Latest execution status (2026-10-23): the complete timing audit has finished
+**6,912 actual runs / 3,456 matched pairs**, with full independent review and an
+actual successful native exit. Across **79,399 calls per implementation**, total
+measured callback time falls **76.036%**; **2,299 buffered calls still exceed
+500 ms**. All 25 original aborts remain. Measurements mix desktop loads and
+execution epochs, so this is not a hard-real-time guarantee.
+[Full timing results and retained failures](docs/v29_complete_buffered_results.md).
+
+The verified native-handle coordinator then launched the unchanged prospective
+calibration. All three real boundary replays exited successfully, and three
+verified collection workers are running. The original **51,596 calibration
+roles** remain preserved; no partial calibration effects have been analyzed.
+Original interrupted exits remain unknown, final confirmation has not started,
+and no new risk certificate is claimed.
+[Exact preservation and actual recovery handoff](docs/v29_second_interruption_recovery.md).
+
+The new online reference-actuator gate has completed **120 actual SUMO runs**
+and independent trace/input review. In the 15-run strong-lag cell, observed
+harmful/adopted counts change from **1/5 to 0/4**, while mean cost gain changes
+from **0.047% to 0.393%**. Gain/drag and mild-lag gains decrease, so there is no
+uniform improvement claim. These are five shared old initials, not fresh risk
+evidence. All cell p95 timings exceed 500 ms. A full **3,840-run** extension keeps
+both controllers, every model and all original conditions unchanged.
+[Complete online integration and tradeoffs](docs/v32_online_actuator_gate.md),
+[full-grid comparison protocol](docs/v32_full_online_actuator_protocol.md).
 
 An actuator-aware diagnostic now covers **all 349 archived learning admissions**
 in the five-scene/four-plant/three-model transfer grid. All **698 real SUMO
@@ -100,12 +116,13 @@ four modes under concurrent load: no new efficacy sample, risk certificate or
 hard-real-time claim. The live calibration still uses its frozen implementation.
 [Exact checks, full timing results and limits](docs/v25_buffered_certificate.md).
 
-The complete-scope extension is frozen and running: **3,456 paired cases /
-6,912 actual SUMO runs planned**, covering every phase05 case in the completed
-development and five-scenario/four-plant transfer grids. It retains all failures,
-records terminal exception-call time as well as successful call time, and uses
-one worker alongside the unchanged calibration. No full-scope result is yet
-available. [Frozen coverage and equivalence argument](docs/v25_complete_scope_audit.md).
+The complete-scope extension has finished **3,456 paired cases / 6,912 actual
+SUMO runs**, covering every phase05 case in the completed development and
+five-scenario/four-plant transfer grids. It retains all failures and terminal
+exception-call time as well as successful call time. The full result above
+supersedes the small-scope timing estimate, with the same lack of real-time
+certification. [Frozen coverage and equivalence argument](docs/v25_complete_scope_audit.md),
+[complete results](docs/v29_complete_buffered_results.md).
 
 A complete post-hoc event-transfer audit now reports **all 270 matched cells**
 from the finished transfer study. For phase05, adoption/harm categories change
