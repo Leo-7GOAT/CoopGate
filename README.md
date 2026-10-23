@@ -9,8 +9,23 @@ measured callback time falls **76.036%**; **2,299 buffered calls still exceed
 execution epochs, so this is not a hard-real-time guarantee.
 [Full timing results and retained failures](docs/v29_complete_buffered_results.md).
 
-The verified native-handle coordinator then launched the unchanged prospective
-calibration. All three real boundary replays exited successfully, and three
+A separate actuator-memory recovery baseline has completed **all 640 actual
+SUMO conditions**, with independent reconstruction of **15,032 commands**.
+Under strong lag, task completion changes from **150/160 to 160/160**: all ten
+old abort conditions complete, with no new incomplete episodes or recorded
+route violations. The other **480 trajectories are physically identical** to
+the archived baseline. This reliability improvement has a cost: on the 150
+strong-lag pairs both methods complete, mean cost **increases 3.208%**.
+The controller uses declared actuator-class bounds and an interval stopping
+condition that includes residual actuator memory. These are old development
+initials, additional model information, and a separate physical recovery
+controller; this is not a new MARL result or performance-risk certificate.
+All 43 checks and the complete independent execution review passed.
+[Full results, every scene and all old failures](docs/v34_complete_recovery_results.md),
+[model assumptions and stopping argument](docs/v34_actuator_recovery_protocol.md).
+
+The unchanged prospective calibration is running under its verified native-handle
+coordinator. All three real boundary replays exited successfully, and three
 verified collection workers are running. The original **51,596 calibration
 roles** remain preserved; no partial calibration effects have been analyzed.
 Original interrupted exits remain unknown, final confirmation has not started,
