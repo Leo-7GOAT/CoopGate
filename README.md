@@ -22,6 +22,14 @@ are not full reproductions of prior papers or equal-compute comparisons.
 [Complete paired results, all models and retained failures](docs/v35_complete_recovery_gate_results.md),
 [common-baseline protocol and mathematical limits](docs/v35_recovery_joint_gate_protocol.md).
 
+The unchanged comparison is now running on **all 640 original conditions /
+8,320 actual executions**, retaining all three models and every old failure.
+The first complete block reproduces all **13 runs / 275 commands** and every
+non-timing field from the completed integration. The full-grid results are
+withheld until complete execution and replay; the separate original prospective
+calibration and V32 grid remain unchanged.
+[Full scope and execution protocol](docs/v36_full_recovery_gate_protocol.md).
+
 The earlier complete timing audit finished
 **6,912 actual runs / 3,456 matched pairs**, with full independent review and an
 actual successful native exit. Across **79,399 calls per implementation**, total

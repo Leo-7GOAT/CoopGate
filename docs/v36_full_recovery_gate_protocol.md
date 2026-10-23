@@ -27,3 +27,9 @@
 V35 的数学边界继续适用：有限扰动路径通过不是概率保证；物理恢复检查不能替代性能风险认证；新基线的风险证书不能从旧控制器直接继承。正式风险校准和 V32 的原冻结网格保持不变，不读取它们的中途效果。
 
 复核入口：[扩展工具](../tools/extend_recovery_gate_v36.py)、[完整范围测试](../tests/test_recovery_gate_extension_v36.py)、[V35 门控与数学定义](v35_recovery_joint_gate_protocol.md)。
+
+## 实际启动与首块一致性
+
+V35 的全部 390 次执行与 9,399 个门控决定重放通过后，本计划于 2026-10-23 固定并实际启动。首个完整封存块的 13 次执行、275 条命令及全部非耗时字段与 V35 对应记录完全一致；该检查实际退出码为 0，只验证执行器复用与实现一致性，不汇总运行中全网格的效果。
+
+[首块核验](../artifacts/v36/launch_checks/first_block.json)、[核验工具](../tools/check_recovery_extension_v36.py)、[完整固定计划](../artifacts/v36/recovery_gate_complete_grid/plan.json)。
