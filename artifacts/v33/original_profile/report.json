@@ -1,0 +1,436 @@
+{
+  "scope": "Four fixed synthetic warm calls, profiling only; no SUMO executions or efficacy samples.",
+  "state": [
+    [
+      -80.0,
+      12.0
+    ],
+    [
+      -85.0,
+      13.0
+    ],
+    [
+      -120.0,
+      11.0
+    ]
+  ],
+  "rows": [
+    {
+      "profile": "nominal",
+      "wall_seconds": 5.104897600016557,
+      "forecast_calls": 33,
+      "model_transitions": 164403,
+      "functions": [
+        {
+          "function": "select",
+          "file": "online_actuator_gate_v32.py",
+          "line": 169,
+          "calls": 1,
+          "self_seconds": 0.0011870000000000001,
+          "cumulative_seconds": 5.1047713
+        },
+        {
+          "function": "predict",
+          "file": "online_actuator_gate_v32.py",
+          "line": 190,
+          "calls": 33,
+          "self_seconds": 0.00013900000000000002,
+          "cumulative_seconds": 5.0556749000000005
+        },
+        {
+          "function": "predict",
+          "file": "online_actuator_gate_v32.py",
+          "line": 163,
+          "calls": 33,
+          "self_seconds": 0.0006746,
+          "cumulative_seconds": 5.055535900000001
+        },
+        {
+          "function": "forecast_kernel",
+          "file": "online_actuator_gate_v32.py",
+          "line": 38,
+          "calls": 33,
+          "self_seconds": 5.0546484000000005,
+          "cumulative_seconds": 5.054858100000001
+        },
+        {
+          "function": "select",
+          "file": "joint_planner_v15.py",
+          "line": 71,
+          "calls": 1,
+          "self_seconds": 6.500000000000001e-05,
+          "cumulative_seconds": 0.0394474
+        },
+        {
+          "function": "joint_rollout",
+          "file": "joint_planner_v15.py",
+          "line": 33,
+          "calls": 1,
+          "self_seconds": 0.039262700000000005,
+          "cumulative_seconds": 0.039266300000000004
+        },
+        {
+          "function": "expanded_compositions",
+          "file": "repair_portfolio_v20.py",
+          "line": 19,
+          "calls": 1,
+          "self_seconds": 5.3e-05,
+          "cumulative_seconds": 0.0031078000000000004
+        },
+        {
+          "function": "select",
+          "file": "cooperative_v15.py",
+          "line": 65,
+          "calls": 1,
+          "self_seconds": 6.13e-05,
+          "cumulative_seconds": 0.002216
+        },
+        {
+          "function": "validate",
+          "file": "robust_v9.py",
+          "line": 132,
+          "calls": 3,
+          "self_seconds": 0.0014656,
+          "cumulative_seconds": 0.0020141
+        },
+        {
+          "function": "<built-in method builtins.any>",
+          "file": "~",
+          "line": 0,
+          "calls": 57,
+          "self_seconds": 9.15e-05,
+          "cumulative_seconds": 0.001988
+        },
+        {
+          "function": "decorate_context",
+          "file": "_contextlib.py",
+          "line": 120,
+          "calls": 1,
+          "self_seconds": 8.8e-06,
+          "cumulative_seconds": 0.0016675000000000001
+        },
+        {
+          "function": "proposal",
+          "file": "cooperative_v15.py",
+          "line": 51,
+          "calls": 1,
+          "self_seconds": 3.3900000000000004e-05,
+          "cumulative_seconds": 0.0016244
+        }
+      ]
+    },
+    {
+      "profile": "gain_drag",
+      "wall_seconds": 5.788832899997942,
+      "forecast_calls": 35,
+      "model_transitions": 203043,
+      "functions": [
+        {
+          "function": "select",
+          "file": "online_actuator_gate_v32.py",
+          "line": 169,
+          "calls": 1,
+          "self_seconds": 0.0013109,
+          "cumulative_seconds": 5.7887503
+        },
+        {
+          "function": "predict",
+          "file": "online_actuator_gate_v32.py",
+          "line": 190,
+          "calls": 35,
+          "self_seconds": 0.0001395,
+          "cumulative_seconds": 5.733555300000001
+        },
+        {
+          "function": "predict",
+          "file": "online_actuator_gate_v32.py",
+          "line": 163,
+          "calls": 35,
+          "self_seconds": 0.000756,
+          "cumulative_seconds": 5.7334158
+        },
+        {
+          "function": "forecast_kernel",
+          "file": "online_actuator_gate_v32.py",
+          "line": 38,
+          "calls": 35,
+          "self_seconds": 5.732428400000001,
+          "cumulative_seconds": 5.7326575
+        },
+        {
+          "function": "select",
+          "file": "joint_planner_v15.py",
+          "line": 71,
+          "calls": 1,
+          "self_seconds": 6.780000000000001e-05,
+          "cumulative_seconds": 0.046345500000000005
+        },
+        {
+          "function": "joint_rollout",
+          "file": "joint_planner_v15.py",
+          "line": 33,
+          "calls": 1,
+          "self_seconds": 0.046173900000000004,
+          "cumulative_seconds": 0.0461779
+        },
+        {
+          "function": "expanded_compositions",
+          "file": "repair_portfolio_v20.py",
+          "line": 19,
+          "calls": 1,
+          "self_seconds": 0.0001421,
+          "cumulative_seconds": 0.0037249
+        },
+        {
+          "function": "<built-in method builtins.any>",
+          "file": "~",
+          "line": 0,
+          "calls": 57,
+          "self_seconds": 9.790000000000001e-05,
+          "cumulative_seconds": 0.0023614
+        },
+        {
+          "function": "select",
+          "file": "cooperative_v15.py",
+          "line": 65,
+          "calls": 1,
+          "self_seconds": 5.9300000000000005e-05,
+          "cumulative_seconds": 0.0022702
+        },
+        {
+          "function": "array_equal",
+          "file": "numeric.py",
+          "line": 2535,
+          "calls": 476,
+          "self_seconds": 0.0007545000000000001,
+          "cumulative_seconds": 0.0019035
+        },
+        {
+          "function": "<genexpr>",
+          "file": "repair_portfolio_v20.py",
+          "line": 32,
+          "calls": 399,
+          "self_seconds": 0.0002323,
+          "cumulative_seconds": 0.0016664000000000002
+        },
+        {
+          "function": "decorate_context",
+          "file": "_contextlib.py",
+          "line": 120,
+          "calls": 1,
+          "self_seconds": 7.8e-06,
+          "cumulative_seconds": 0.0015671
+        }
+      ]
+    },
+    {
+      "profile": "lag_mild",
+      "wall_seconds": 4.744852400035597,
+      "forecast_calls": 31,
+      "model_transitions": 159837,
+      "functions": [
+        {
+          "function": "select",
+          "file": "online_actuator_gate_v32.py",
+          "line": 169,
+          "calls": 1,
+          "self_seconds": 0.0010525,
+          "cumulative_seconds": 4.7447421
+        },
+        {
+          "function": "predict",
+          "file": "online_actuator_gate_v32.py",
+          "line": 190,
+          "calls": 31,
+          "self_seconds": 0.000126,
+          "cumulative_seconds": 4.6907838
+        },
+        {
+          "function": "predict",
+          "file": "online_actuator_gate_v32.py",
+          "line": 163,
+          "calls": 31,
+          "self_seconds": 0.0006634000000000001,
+          "cumulative_seconds": 4.6906578
+        },
+        {
+          "function": "forecast_kernel",
+          "file": "online_actuator_gate_v32.py",
+          "line": 38,
+          "calls": 31,
+          "self_seconds": 4.689788200000001,
+          "cumulative_seconds": 4.6899919
+        },
+        {
+          "function": "select",
+          "file": "joint_planner_v15.py",
+          "line": 71,
+          "calls": 1,
+          "self_seconds": 5.45e-05,
+          "cumulative_seconds": 0.046403900000000005
+        },
+        {
+          "function": "joint_rollout",
+          "file": "joint_planner_v15.py",
+          "line": 33,
+          "calls": 1,
+          "self_seconds": 0.0462406,
+          "cumulative_seconds": 0.046244600000000004
+        },
+        {
+          "function": "expanded_compositions",
+          "file": "repair_portfolio_v20.py",
+          "line": 19,
+          "calls": 1,
+          "self_seconds": 5.13e-05,
+          "cumulative_seconds": 0.0033172
+        },
+        {
+          "function": "<built-in method builtins.any>",
+          "file": "~",
+          "line": 0,
+          "calls": 57,
+          "self_seconds": 9.180000000000001e-05,
+          "cumulative_seconds": 0.0020058000000000003
+        },
+        {
+          "function": "select",
+          "file": "cooperative_v15.py",
+          "line": 65,
+          "calls": 1,
+          "self_seconds": 4.1e-05,
+          "cumulative_seconds": 0.0018690000000000002
+        },
+        {
+          "function": "array_equal",
+          "file": "numeric.py",
+          "line": 2535,
+          "calls": 476,
+          "self_seconds": 0.0006493,
+          "cumulative_seconds": 0.0015746
+        },
+        {
+          "function": "<genexpr>",
+          "file": "repair_portfolio_v20.py",
+          "line": 32,
+          "calls": 399,
+          "self_seconds": 0.0002191,
+          "cumulative_seconds": 0.001494
+        },
+        {
+          "function": "attenuated_candidates",
+          "file": "action_repair_v20.py",
+          "line": 15,
+          "calls": 7,
+          "self_seconds": 0.0001899,
+          "cumulative_seconds": 0.0014134
+        }
+      ]
+    },
+    {
+      "profile": "lag_strong",
+      "wall_seconds": 5.327569099958055,
+      "forecast_calls": 32,
+      "model_transitions": 216789,
+      "functions": [
+        {
+          "function": "select",
+          "file": "online_actuator_gate_v32.py",
+          "line": 169,
+          "calls": 1,
+          "self_seconds": 0.0010125000000000002,
+          "cumulative_seconds": 5.3274577
+        },
+        {
+          "function": "predict",
+          "file": "online_actuator_gate_v32.py",
+          "line": 190,
+          "calls": 32,
+          "self_seconds": 0.0001515,
+          "cumulative_seconds": 5.2754439
+        },
+        {
+          "function": "predict",
+          "file": "online_actuator_gate_v32.py",
+          "line": 163,
+          "calls": 32,
+          "self_seconds": 0.0006408000000000001,
+          "cumulative_seconds": 5.2752924000000005
+        },
+        {
+          "function": "forecast_kernel",
+          "file": "online_actuator_gate_v32.py",
+          "line": 38,
+          "calls": 32,
+          "self_seconds": 5.274424000000001,
+          "cumulative_seconds": 5.2746497
+        },
+        {
+          "function": "select",
+          "file": "joint_planner_v15.py",
+          "line": 71,
+          "calls": 1,
+          "self_seconds": 5.910000000000001e-05,
+          "cumulative_seconds": 0.0458478
+        },
+        {
+          "function": "joint_rollout",
+          "file": "joint_planner_v15.py",
+          "line": 33,
+          "calls": 1,
+          "self_seconds": 0.045694700000000005,
+          "cumulative_seconds": 0.045698600000000006
+        },
+        {
+          "function": "expanded_compositions",
+          "file": "repair_portfolio_v20.py",
+          "line": 19,
+          "calls": 1,
+          "self_seconds": 3.68e-05,
+          "cumulative_seconds": 0.0023396000000000003
+        },
+        {
+          "function": "select",
+          "file": "cooperative_v15.py",
+          "line": 65,
+          "calls": 1,
+          "self_seconds": 5.61e-05,
+          "cumulative_seconds": 0.0018927000000000002
+        },
+        {
+          "function": "<built-in method builtins.any>",
+          "file": "~",
+          "line": 0,
+          "calls": 57,
+          "self_seconds": 7.72e-05,
+          "cumulative_seconds": 0.0014962
+        },
+        {
+          "function": "decorate_context",
+          "file": "_contextlib.py",
+          "line": 120,
+          "calls": 1,
+          "self_seconds": 7.9e-06,
+          "cumulative_seconds": 0.0012079
+        },
+        {
+          "function": "proposal",
+          "file": "cooperative_v15.py",
+          "line": 51,
+          "calls": 1,
+          "self_seconds": 0.00017920000000000002,
+          "cumulative_seconds": 0.0011633000000000001
+        },
+        {
+          "function": "array_equal",
+          "file": "numeric.py",
+          "line": 2535,
+          "calls": 476,
+          "self_seconds": 0.0004896000000000001,
+          "cumulative_seconds": 0.00116
+        }
+      ]
+    }
+  ],
+  "actual_sumo_runs": 0
+}
