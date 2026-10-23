@@ -29,15 +29,18 @@ preflight commands and non-timing outcomes exactly.
 [Complete online integration and tradeoffs](docs/v32_online_actuator_gate.md),
 [full-grid comparison protocol](docs/v32_full_online_actuator_protocol.md).
 
-An exact buffered implementation of the online actuator predictor has passed
-**47 checks** and all **698 historical intervention branches**, preserving every
-forecast field, command, failure identity and internal work count. Its gate
-inherits the original selection and memory-update rules unchanged. A separate
-**360-run paired timing study** covers all 120 old integration conditions plus
-every old failed-baseline condition crossed with all models and both prediction
-variants. No speedup is claimed before the complete paired measurement; the
-ongoing 3,840-run study and formal calibration retain their frozen code.
-[Source constraints, complete predictor checks and measurement scope](docs/v33_buffered_actuator_protocol.md).
+The exact buffered online actuator predictor has now completed all **360 actual
+SUMO runs / 180 pairs**, after 47 checks and 698 historical forecast branches.
+Independent full review preserves all **3,306 commands**, non-timing fields,
+internal work counts and **48 abort pairs**. Across 3,354 calls per implementation,
+measured total time falls **69.434%**, with p95 **2,488.669 to 748.315 ms**.
+The original 120 integration conditions alone reach p95 **465.541 ms**, but
+124/2,685 of their optimized calls still exceed 500 ms. All old baseline-failure
+conditions remain included; no hard-real-time or new risk claim follows.
+All 15 initials are historical, and desktop load is concurrent. The ongoing
+3,840-run study and formal calibration retain their frozen implementations.
+[Complete timing and retained failures](docs/v33_complete_buffered_actuator_results.md),
+[source constraints and equivalence argument](docs/v33_buffered_actuator_protocol.md).
 
 An actuator-aware diagnostic now covers **all 349 archived learning admissions**
 in the five-scene/four-plant/three-model transfer grid. All **698 real SUMO
