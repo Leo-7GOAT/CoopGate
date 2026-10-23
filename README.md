@@ -24,6 +24,13 @@ All 43 checks and the complete independent execution review passed.
 [Full results, every scene and all old failures](docs/v34_complete_recovery_results.md),
 [model assumptions and stopping argument](docs/v34_actuator_recovery_protocol.md).
 
+Before integrating that baseline into performance admission, its complete
+predictor now matches **all 640 archived SUMO trajectories and 15,032 decisions**,
+after 87 checks. Each whole forecast starts at the initial state without inserting
+later observations or commands. True coefficients and realized innovations are
+used only for this offline diagnostic; there are no new efficacy samples or risk
+claims. [Prediction/execution consistency and full evidence](docs/v35_recovery_forecast_protocol.md).
+
 The unchanged prospective calibration is running under its verified native-handle
 coordinator. All three real boundary replays exited successfully, and three
 verified collection workers are running. The original **51,596 calibration
