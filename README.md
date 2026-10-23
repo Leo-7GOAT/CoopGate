@@ -1,7 +1,28 @@
 # CoopGate
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
-Latest execution status (2026-10-23): the complete timing audit has finished
+
+Latest complete comparison (2026-10-23): **390 actual SUMO executions** and
+**9,399 fully replayed decisions** now use the same actuator-aware recovery
+baseline, declared parameter information and physical stopping checks. The
+33-path performance gate reduces mean team cost **3.785%**, adopts learning in
+**44/90 episodes**, completes **90/90**, and records **0/44** adopted individual
+performance harms. The nominal gate gains **5.811%**, with **1/80** adopted
+individual harms. MAMPS's shared-oracle adapter gains **1.237%**, with **50/90**
+individual harms; the MPS adapter has one timeout and its all-scope gain is
+withheld. These harms are performance regressions, not collisions; all recorded
+fixed-route physical violations are zero.
+
+The 20 coverage conditions and ten old failure conditions are reported separately:
+the 33-path gate gains **1.491% / 7.714%**, respectively. All methods share 15 reused
+initials and three fixed actor sets; these are development results, not a new
+statistical risk certificate. Computation remains a limitation: the 33-path
+gate has **738.046 ms p95**, with **160/2,150 calls over 500 ms**. The adapters
+are not full reproductions of prior papers or equal-compute comparisons.
+[Complete paired results, all models and retained failures](docs/v35_complete_recovery_gate_results.md),
+[common-baseline protocol and mathematical limits](docs/v35_recovery_joint_gate_protocol.md).
+
+The earlier complete timing audit finished
 **6,912 actual runs / 3,456 matched pairs**, with full independent review and an
 actual successful native exit. Across **79,399 calls per implementation**, total
 measured callback time falls **76.036%**; **2,299 buffered calls still exceed
