@@ -92,7 +92,7 @@ def main():
         ax.set_axisbelow(True)
         ax.grid(axis='y',alpha=.18)
     fig.suptitle('Actuator-aware counterfactual verification and performance accounting',x=.055,ha='left',fontsize=16,fontweight='bold',y=.97)
-    fig.text(.055,.025,'Offline diagnostic with known parameters and realized future innovation. 698 completed replays; 404 earlier executions retained.\nAll original metrics and failures preserved. No new independent initials, deployed controller, or risk certificate.',fontsize=10,color='#404852')
+    fig.text(.055,.025,'Offline diagnostic with known parameters and realized future innovation. 698 recorded SUMO runs; 404 earlier executions retained.\nAll original metrics and failures preserved. No new independent initials, deployed controller, or risk certificate.',fontsize=10,color='#404852')
     fig.subplots_adjust(left=.055,right=.985,top=.77,bottom=.31,wspace=.3)
     for ext in ('png','svg'):
         fig.savefig(OUT/('intervention_mechanisms.'+ext),dpi=180)

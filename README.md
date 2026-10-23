@@ -11,6 +11,20 @@ handle coordinator will start the unchanged calibration after the complete audit
 exits successfully. No partial calibration effects have been analyzed and no new
 risk certificate is claimed. [Exact preservation and recovery sequence](docs/v29_second_interruption_recovery.md).
 
+An actuator-aware diagnostic now covers **all 349 archived learning admissions**
+in the five-scene/four-plant/three-model transfer grid. All **698 real SUMO
+branches / 16,230 commands** match their forecasts, including five incomplete
+baseline continuations. Relative to a nominal-actuator forecast on the same
+realized external path, **19 local performance classifications change** (17 under
+strong lag). The complete-trajectory cost/time difference equals the sum of
+same-prefix single-action baseline advantages in all **1,890 assessable source
+episodes**; the other 30 remain explicitly incomplete. A one-ULP input-validation
+defect interrupted the first 404 executions; those records are retained, and
+the entire unchanged scope was rerun after a machine-precision-only correction.
+These are offline diagnostics using known parameters and future innovations,
+not a new deployed gate, independent efficacy sample, or risk certificate.
+[Full interventions, mathematical identity, failures and evidence](docs/v31_actuator_interventions.md).
+
 Status checked on 2026-10-22: both V21 studies and their full independent reviews
 are complete, covering **18,816 actual main-study runs**. The new supervisor and
 both review workers exited successfully. Original interrupted exits remain
