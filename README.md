@@ -29,6 +29,16 @@ preflight commands and non-timing outcomes exactly.
 [Complete online integration and tradeoffs](docs/v32_online_actuator_gate.md),
 [full-grid comparison protocol](docs/v32_full_online_actuator_protocol.md).
 
+An exact buffered implementation of the online actuator predictor has passed
+**47 checks** and all **698 historical intervention branches**, preserving every
+forecast field, command, failure identity and internal work count. Its gate
+inherits the original selection and memory-update rules unchanged. A separate
+**360-run paired timing study** covers all 120 old integration conditions plus
+every old failed-baseline condition crossed with all models and both prediction
+variants. No speedup is claimed before the complete paired measurement; the
+ongoing 3,840-run study and formal calibration retain their frozen code.
+[Source constraints, complete predictor checks and measurement scope](docs/v33_buffered_actuator_protocol.md).
+
 An actuator-aware diagnostic now covers **all 349 archived learning admissions**
 in the five-scene/four-plant/three-model transfer grid. All **698 real SUMO
 branches / 16,230 commands** match their forecasts, including five incomplete

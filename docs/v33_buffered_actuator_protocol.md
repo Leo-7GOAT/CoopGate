@@ -19,4 +19,12 @@ V32 完整在线集成显示，所有动力学/预测版本的回调 p95 均超�
 
 固定合成状态和边界检查、原算法语法树约束、全部条件覆盖、终止计时检查等共 47 项检查已经通过。完整预测核验与真实仿真结果另行记录；检查通过不代表测时达标。
 
+## 完整预测核验已完成
+
+全部 698 条分支已完成复算，核验进程真实退出为 0。优化前后全部原字段严格一致，包含内部工作计数、每条命令、完整状态轨迹、执行器记忆以及失败类别和时刻；与已完成真实 SUMO 分支的独立比对也全部通过。
+
+实际基线档案包含 10 个失败初态/动力学条件。将其交叉三模型与两个预测版本得到 60 个附加条件，与原 120 个完整集成条件不重合；最终冻结 180 组原实现/优化实现配对，共 360 次真实执行。计划 SHA256 为 `f1e7fd5062d2dc43b9eb52250cc95e455fc46075ff427c3d00c9c5270bcdf28e`。
+
+证据：[完整核验报告](../artifacts/v33/buffered_actuator_audit/kernel/report.json)、[真实退出核验](../artifacts/v33/buffered_actuator_audit/kernel/verification.json)、[全部配对清单](../artifacts/v33/buffered_actuator_audit/plan.json)。该核验没有新增 SUMO 执行或独立初态，仍未产生完整在线耗时结果。
+
 实现：[缓冲执行器预测](../src/coopgate/buffered_actuator_v33.py)、[完整核验和配对实验](../tools/audit_buffered_actuator_v33.py)。
