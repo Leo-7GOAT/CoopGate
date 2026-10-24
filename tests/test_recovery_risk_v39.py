@@ -40,6 +40,13 @@ def test_attempt_two_alpha_and_complete_fixed_family_pass_jointly():
     assert result['joint_deployment_certified']
     assert result['intersection_union_test']
     assert not result['constituent_bonferroni_used']
+    assert result['primary_risk']['within_mixture_bound_bonferroni_used']
+    assert result['confirmation_iid_mixture_sampling_required']
+    for model in MODELS:
+        member = result['primary_risk']['members'][f'{model}:mixture']
+        assert member['method'] == 'stratified_joint_harm_over_adoption'
+        assert member['stratified']['component_alpha'] == pytest.approx(ATTEMPT_ALPHA / 8)
+        assert not member['stratified']['pooled_adoptions_are_binomial']
 
 
 def test_low_risk_cannot_hide_zero_adoption():
@@ -50,6 +57,28 @@ def test_low_risk_cannot_hide_zero_adoption():
     assert result['adoption']['minimum_adoption_lower'] == 0
     assert not result['adoption']['all_fixed_models_adoption_certified']
     assert not result['joint_deployment_certified']
+
+
+def test_balanced_twenty_percent_zero_harm_is_not_overcertified_by_pooling():
+    values = observations()
+    values['calibration_adopted'][:] = False
+    for plant in np.unique(values['calibration_plants']):
+        rows = np.flatnonzero(values['calibration_plants'] == plant)[:154]
+        values['calibration_adopted'][rows, :] = True
+    result = joint_deployment_certificate(**values)
+    member = result['primary_risk']['members'][f'{MODELS[0]}:mixture']
+    assert member['pointwise_risk_upper'] == pytest.approx(.056286, abs=1e-6)
+    assert result['primary_risk']['members'][f'{MODELS[0]}:strong_lag']['pointwise_risk_upper'] < .05
+    assert not result['joint_deployment_certified']
+
+
+def test_mixture_target_does_not_require_every_plant_to_pass_five_percent():
+    values = observations()
+    rows = np.flatnonzero(values['calibration_plants'] == 'nominal')[:50]
+    values['calibration_harmful'][rows, :] = True
+    assert len(rows) / 768 > .05
+    result = joint_deployment_certificate(**values)
+    assert result['joint_deployment_certified']
 
 
 def test_observed_twenty_percent_is_not_a_twenty_percent_lower_bound():
