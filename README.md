@@ -21,9 +21,11 @@ for **3,072 stratified calibration + 1,024 IID confirmation initials** (16,384
 executions). Eighteen development checks pass, including four real-policy SUMO
 runs and four fault-injection runs that preserve failures before first adoption.
 Baseline failures retain capped costs, conservatively count as harm, and block
-deployment instead of removing samples. This is **execution preparation**;
-the formal supervisor and predecessor-terminal prerequisite are still pending,
-and no new certificate is claimed.
+deployment instead of removing samples. The two-stage supervisor now verifies
+native exits, all block hashes and full replay before inference, and all 4,096
+planned simulator reset inputs pass without replacing a draw. This remains
+**execution preparation**: binding and collection must wait for the preceding
+statistical attempt to complete; no new certificate is claimed.
 [Joint risk collection and inference contract](docs/v42_joint_risk_execution.md).
 
 The next **eight-selector fair comparison** now has a real SUMO collector,

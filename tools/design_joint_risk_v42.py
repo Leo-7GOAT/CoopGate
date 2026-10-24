@@ -22,6 +22,7 @@ COUNTS = {'calibration': CALIBRATION_N, 'confirmation': CONFIRMATION_N}
 METHODS = ('baseline', *(str(model) for model in MODELS))
 NEW_SOURCES = ('tools/design_joint_risk_v42.py', 'tools/run_joint_risk_v42.py',
     'src/coopgate/joint_risk_data_v42.py', 'tests/test_joint_risk_v42.py',
+    'tools/execute_joint_risk_v42.py', 'tests/test_execute_joint_risk_v42.py',
     'docs/v42_joint_risk_execution.md')
 
 
