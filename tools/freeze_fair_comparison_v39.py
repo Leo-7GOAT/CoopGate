@@ -31,6 +31,9 @@ SCRIPT = 'tools/freeze_fair_comparison_v39.py'
 TEST = 'tests/test_fair_comparison_plan_v39.py'
 CORE = 'src/coopgate/fair_comparison_v39.py'
 CORE_TEST = 'tests/test_fair_comparison_v39.py'
+RUNTIME = 'src/coopgate/fair_runtime_v41.py'
+RUNTIME_RUNNER = 'tools/run_fair_runtime_v41.py'
+RUNTIME_TEST = 'tests/test_fair_runtime_v41.py'
 DOC = 'docs/v39_fair_comparison_protocol.md'
 MODEL_PLAN = 'artifacts/v32/online_actuator_preflight/plan.json'
 CALIBRATION = 'artifacts/v13/ego/calibration/calibration.json'
@@ -79,6 +82,7 @@ CONFIDENCE_COMPONENT_FILES = (
     'src/coopgate/confidence_v12.py',
     'src/coopgate/shield.py',
     CORE,
+    RUNTIME,
 )
 ORACLE_COMPONENT_FILES = (
     'src/coopgate/recovery_joint_gate_v35.py',
@@ -88,7 +92,8 @@ ORACLE_COMPONENT_FILES = (
 )
 
 SOURCE_FILES = (
-    CORE, SCRIPT, TEST, CORE_TEST, DOC,
+    CORE, SCRIPT, TEST, CORE_TEST, DOC, RUNTIME, RUNTIME_RUNNER, RUNTIME_TEST,
+    'tools/execute_fair_comparison_v41.py', 'tests/test_execute_fair_comparison_v41.py',
     *BASELINE_COMPONENT_FILES,
     *PROPOSED_GATE_COMPONENT_FILES,
     *CONFIDENCE_COMPONENT_FILES,
@@ -237,6 +242,17 @@ def grouped_schedule(cases):
     return groups
 
 
+def evidence_execution_contract():
+    return dict(
+        sharing='one measured packet per exact state and full executed-command history within a case',
+        cache_cost='attribute original packet cost to each selector; count actual unique builds separately',
+        confidence='sigmoid(nominal paired team-cost gain / 0.05 seconds); zero if incomplete',
+        score_is_calibrated_probability=False,
+        raw_path_semantics='33 paired baseline/raw-proposal forecasts, requiring up to 66 kernel calls',
+        deadline_semantics='cooperative cutoff; discard late result and return baseline; not a hard wall-time cap',
+        candidate_set_matched=False)
+
+
 def build_plan(root=ROOT, *, created_utc=None, runtime=None):
     root = Path(root)
     dependencies = file_hashes(root)
@@ -272,6 +288,7 @@ def build_plan(root=ROOT, *, created_utc=None, runtime=None):
             source_radius=.5, executed_external_innovation_radius=.1, scale=.2,
             hash_covers='ordered names plus executed little-endian float64 tape bytes'),
         methods=list(METHODS), method_count=len(METHODS),
+        evidence_execution=evidence_execution_contract(),
         cases=[asdict(case) for case in cases], independent_clusters=len(cases),
         groups=groups, blocks=len(groups), actual_sumo_runs=episodes,
         design=dict(kind='iid_frozen_uniform_mixture_with_replacement',
@@ -294,6 +311,7 @@ def build_plan(root=ROOT, *, created_utc=None, runtime=None):
             maximum_proposed_gate_forecast_calls_per_packet=
                 protocol.budget.maximum_proposed_gate_forecast_calls,
             maximum_fixed_path_forecasts=maximum_decisions*protocol.budget.forecast_paths,
+            maximum_raw_forecast_kernel_calls=2*maximum_decisions*protocol.budget.forecast_paths,
             maximum_proposed_gate_forecast_calls=
                 maximum_decisions*protocol.budget.maximum_proposed_gate_forecast_calls,
             maximum_physical_mask_checks=maximum_decisions*len(MASKS),
@@ -319,6 +337,8 @@ def build_plan(root=ROOT, *, created_utc=None, runtime=None):
 
 
 def validate_plan_structure(plan):
+    if plan.get('evidence_execution') != evidence_execution_contract():
+        raise ValueError('Changed measured evidence, confidence or cutoff semantics')
     if (plan.get('version') != 'v39-fair-comparison-preregistered'
             or plan.get('methods') != list(METHODS) or plan.get('method_count') != len(METHODS)
             or plan.get('independent_clusters') != PRIMARY_CLUSTERS
@@ -371,6 +391,8 @@ def validate_plan_structure(plan):
     if (budget.get('sumo_episodes') != plan['actual_sumo_runs']
             or budget.get('maximum_control_decisions') != maximum_decisions
             or budget.get('common_decision_timeout_ms') != 500.
+            or budget.get('maximum_raw_forecast_kernel_calls') !=
+                2*maximum_decisions*protocol.budget.forecast_paths
             or budget.get('maximum_proposed_gate_forecast_calls') !=
                 maximum_decisions*protocol.budget.maximum_proposed_gate_forecast_calls):
         raise ValueError('Declared execution budget differs from the exact crossed schedule')

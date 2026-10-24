@@ -56,6 +56,7 @@ def test_plan_is_exact_eight_way_cross_with_explicit_resource_ceiling(real_plan)
         'fixed_forecast_paths_per_packet': 33,
         'maximum_proposed_gate_forecast_calls_per_packet': 957,
         'maximum_fixed_path_forecasts': 8_448_000,
+        'maximum_raw_forecast_kernel_calls': 16_896_000,
         'maximum_proposed_gate_forecast_calls': 244_992_000,
         'maximum_physical_mask_checks': 2_048_000,
         'common_decision_timeout_ms': 500.,
@@ -93,6 +94,13 @@ def test_primary_clusters_are_iid_mixture_draws_not_fixed_stratified_cells(real_
         'limitation': ('Candidate sets differ: this study compares complete deployed selectors, '
                        'not only their scalar admission criteria.'),
     }
+
+
+def test_raw_paired_kernel_budget_cannot_be_halved(real_plan):
+    changed = deepcopy(real_plan)
+    changed['run_budget']['maximum_raw_forecast_kernel_calls'] //= 2
+    with pytest.raises(ValueError, match='execution budget'):
+        planner.validate_plan_structure(changed)
 
 
 def test_real_model_calibration_confidence_baseline_forecast_and_oracle_bytes_are_bound(real_plan):

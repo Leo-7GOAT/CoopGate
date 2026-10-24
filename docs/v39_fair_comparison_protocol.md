@@ -1,8 +1,9 @@
 # V39 公平对照预注册协议
 
-本文件只定义下一轮实验的比较合同，不读取任何结果、不生成实验 artifact，也不启动
-SUMO。实现位于 `src/coopgate/fair_comparison_v39.py`，协议测试位于
-`tests/test_fair_comparison_v39.py`。
+本文件定义正式实验前的比较合同，不报告效果结果。选择器位于
+`src/coopgate/fair_comparison_v39.py`，真实证据生成器位于
+`src/coopgate/fair_runtime_v41.py`，持久化执行与审计位于
+`tools/run_fair_runtime_v41.py`，正式执行入口为 `tools/execute_fair_comparison_v41.py`。
 
 ## 1. 对 V35 现状的审计
 
@@ -58,7 +59,7 @@ V35 尚不能作为“等计算公平对照”的原因如下。
 信息结构或调用频率的实现均标为 `adapter`。负对照标为 `protocol_control`，不伪装成
 文献方法。
 
-## 3. 共同证据包与严格等预算
+## 3. 共同证据包与相同预算规则
 
 每个决策状态只构造一次不可变 `DecisionEvidence`，所有八个规则消费完全相同的字节：
 
@@ -77,11 +78,20 @@ V35 尚不能作为“等计算公平对照”的原因如下。
 阈值却在执行前后替换模型或证据生成器。bank hash 覆盖 V35 实际执行的缩放后 `±0.1`
 ordered float64 tape bytes，而不是未缩放的 legacy `±0.5` 源 bank。
 
-正常完成的证据包必须恰好记录 1 次观测、1 次学习提案、1 次基线提案、33 条预测
-路径和 8 个 mask 检查。即使 always-baseline 不需要预测，它也执行并计入同样的 shadow
-work；因此比较的是选择规则，而不是“某方法少算了东西”。MPS/MAMPS 从预计算的八个
-mask 表中选择，不得额外调用 oracle。共同证据计算一旦超时，所有方法统一回退基线并
-把 timeout 保留为失败事件，不能给任何方法单独延长预算。
+正常完成的证据包必须恰好记录 1 次观测、1 次学习提案、1 次基线提案、33 对原始学习/
+基线预测（66 次 kernel 调用）和 8 个 mask 检查，另外计入 proposed gate 的候选搜索。
+普通置信分数固定为 `sigmoid(nominal paired team-cost gain / 0.05 seconds)`，名义预测
+不完整时置零；此分数不是校准概率。尺度与公式在正式结果产生前冻结。
+
+同一 case 内，只有观测字节及完整已执行命令历史完全一致，才能共享已测量的不可变
+证据包，包括原始计时、超时和失败。每种 selector 归因同样的证据成本，实际构造次数
+与缓存复用次数另计；always-baseline 也消费该包。该设计比较共享证据下的完整 selector，
+不测量各方法独立部署时的延迟。不同后续状态需要分别计算，计算次数不强行相等。
+MPS/MAMPS 从预计算的 mask 表选择，不额外调用 oracle。
+
+500 ms 是在计算阶段之间检查的协作式截止，单次 kernel 可以越过它；超时结果被丢弃，
+所有消费该包的方法统一退回已计算的基线，并保留 timeout 失败标记。它不是硬实时上限。
+重放使用记录的单调时钟检查点，能验证截止决策，不能独立证明原始操作系统耗时。
 
 等 shadow computation 和同一 raw 学习提案不代表可选 command 集相同：proposed V35
 bank gate 会投影/修复并搜索最多 28 个候选 command，而普通阈值、MPS、MAMPS 只在 raw
@@ -166,23 +176,31 @@ V13 calibration 的 701/711/721 到 1802/1812/1822 映射仅供 comparator adapt
 
 主计划固定为 640 个 IID cluster、每 block 4 个 cluster、160 blocks、八方法完全交叉，
 即 5120 个 SUMO episode。每 episode 最多 50 个控制决策，共最多 256000 个 packet；
-500 ms 共同截止对应最多 35.56 controller-hours。预算上界同时明示为 8,448,000 次固定
-path forecast、244,992,000 次 proposed-gate 内部 forecast call、2,048,000 次物理 mask
-check。上界大不等于预期耗时，实际调用数和 timeout 必须原样保留，不能超预算补跑。
+500 ms 检查阈值之和为 35.56 controller-hours，这不是实际运行时间的上界。调用上限为
+8,448,000 对固定 path forecast（16,896,000 次 raw kernel 调用）、244,992,000 次
+proposed-gate 内部 forecast call、2,048,000 次物理 mask check。共享包减少实际计算，
+独立重放也有额外开销。实际调用数与 timeout 必须原样保留，不能按效果补跑。
 
 builder 只有 `freeze` 和 `check`，没有 simulator launch 命令；`route_block` 只是无文件写入
 的单决策路由骨架，用于证明一个冻结 case 的同一 evidence hash 能送入全部八个 selector。
-真正运行器必须另行实现、提交、审核、冻结，且从实际 V35 replay 构造 proposed 字段，
-不能让调用者自行声称某条命令来自 bank gate。
+V41 运行器已经实现从实际 V35 replay 构造 proposed 字段。正式使用顺序为：提交源码，
+freeze/check 科学计划并提交，再 bind/提交执行依赖，最后 watch。独立开发种子
+139881001 用于编译预热及 SUMO 集成测试，不进入正式效果样本。
+
+每个回合先将结果与 trace 事务提交到 SQLite，再进行独立动力学递推和确定性决策重放。
+物理审计不调用仿真的执行器函数；证据重放会再次调用同一控制器实现，因此不宣称是
+独立实现的门控算法。重放失败保留未封存前缀，不覆盖、不自动重启、不替换样本。
+仅当原生进程退出成功、5120 回合和 160 块完整、文件 hash 链一致，才允许最终汇总。
 
 ## 7. 当前边界
 
-V39 现阶段完成的是可执行的公平比较合同、选择器和独立汇总器，不是实验结果。它没有：
+现阶段已有比较合同、真实运行器、持久化和汇总审计；开发集成检查不是正式效果结果。
+当前工作没有：
 
 - 读取 V29/V32/V35/V36/V38/V39 正在生成或已经封存的效果结果；
 - 为任何 adapter 创建新的理论保证；
 - 复现原始 MPS/MAMPS/CSPI 的完整系统；
-- 冻结 plan artifact、生成校准样本或启动 SUMO episode；
+- 将开发 SUMO 回合计入正式 640 个 cluster，或按开发效果调参；
 - 改动任何冻结控制器、阈值或 artifact。
 
 后续只有在新计划提交并冻结、case/cluster 哈希和 calibration bytes 全部预注册后，才能

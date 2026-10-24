@@ -16,6 +16,19 @@ with 154 adoptions per 768-row stratum gives a **5.63%** mixture upper bound and
 therefore fails the 5% target; this is a design calculation, not a SUMO result.
 [Corrected inference and explicit sampling assumptions](docs/v39_recovery_joint_design.md).
 
+The next **eight-selector fair comparison** now has a real SUMO collector,
+durable per-episode records, independent physical recurrence checks and
+deterministic decision replay. A separate development initial executes all
+eight selectors successfully through the collection/audit pipeline. The 63-check
+integration suite and two additional multi-command actuator-memory checks pass;
+these are engineering checks, not evidence of superiority. The formal design
+uses **640 IID clusters / 5,120 paired executions**, with no formal runs launched.
+Identical state/history packets share the original measured evidence and cutoff;
+this compares selectors, not their standalone latency. The 500 ms cutoff is
+cooperative, not a hard execution bound. Candidate-set differences and adapter
+limitations remain explicit.
+[Fair comparison protocol and execution contract](docs/v39_fair_comparison_protocol.md).
+
 Latest complete comparison (2026-10-23): **390 actual SUMO executions** and
 **9,399 fully replayed decisions** now use the same actuator-aware recovery
 baseline, declared parameter information and physical stopping checks. The
