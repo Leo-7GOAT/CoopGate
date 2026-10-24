@@ -16,6 +16,16 @@ with 154 adoptions per 768-row stratum gives a **5.63%** mixture upper bound and
 therefore fails the 5% target; this is a design calculation, not a SUMO result.
 [Corrected inference and explicit sampling assumptions](docs/v39_recovery_joint_design.md).
 
+The joint certificate now has a paired SUMO data path and an outcome-free design
+for **3,072 stratified calibration + 1,024 IID confirmation initials** (16,384
+executions). Eighteen development checks pass, including four real-policy SUMO
+runs and four fault-injection runs that preserve failures before first adoption.
+Baseline failures retain capped costs, conservatively count as harm, and block
+deployment instead of removing samples. This is **execution preparation**;
+the formal supervisor and predecessor-terminal prerequisite are still pending,
+and no new certificate is claimed.
+[Joint risk collection and inference contract](docs/v42_joint_risk_execution.md).
+
 The next **eight-selector fair comparison** now has a real SUMO collector,
 durable per-episode records, independent physical recurrence checks and
 deterministic decision replay. A separate development initial executes all
