@@ -489,6 +489,17 @@ def build_plan(models: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "independent_unit": "initial_id; the 9 factor cells and 13 methods are repeated paired measures",
             "aggregation": "first average paired contrasts within initial, then equal-weight the three regimes",
             "intervals": "stratified paired cluster bootstrap resampling initials within regime",
+            "primary_tests": (
+                "One-sided centered cluster-bootstrap margin tests at failure difference 0.01 and "
+                "failure-penalized cost gain 0, with Holm familywise adjustment across three models."
+            ),
+            "displayed_intervals": "Unadjusted one-sided percentile intervals, descriptive only",
+            "degenerate_rule": (
+                "Zero within-stratum/stratified-bootstrap variance, zero cluster variance, or no nonzero "
+                "failure contrast is untestable and fails closed; "
+                "zero observed discordance is not a rare-event population certificate."
+            ),
+            "finite_sample_population_risk_guarantee": False,
             "bootstrap_draws": BOOTSTRAP_DRAWS,
             "bootstrap_seed": BOOTSTRAP_SEED,
             "multiplicity": "Holm familywise alpha 0.05 across the three fixed models, separately per primary estimand",
@@ -522,8 +533,8 @@ def build_plan(models: dict[str, dict[str, Any]]) -> dict[str, Any]:
             ),
             "claim_passes_only_if": [
                 "all validity and fallback-integrity checks pass",
-                "for every fixed model, Holm-adjusted one-sided 95% upper bound for theta_F is <= 0.01",
-                "for every fixed model, Holm-adjusted one-sided 95% lower bound for theta_L is > 0",
+                "for every fixed model, the nondegenerate one-sided theta_F < 0.01 margin test passes after Holm adjustment",
+                "for every fixed model, the nondegenerate one-sided theta_L > 0 margin test passes after Holm adjustment",
             ],
             "failed_acceptance_is_reported_not_repaired": True,
         },
