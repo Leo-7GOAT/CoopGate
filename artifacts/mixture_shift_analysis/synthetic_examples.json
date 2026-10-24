@@ -1,0 +1,288 @@
+{
+  "synthetic_only": true,
+  "sumo_runs": 0,
+  "partial_formal_outcomes_read": false,
+  "tests_passed": 11,
+  "test_seconds": 1.21,
+  "source_sha256": {
+    "src/coopgate/mixture_shift_bounds.py": "b38b8a543640277f9d9ff380de5c2567ee327adb459b716def656cc058e0a30e",
+    "src/coopgate/stratified_risk.py": "9f44c2e7ad0ef4beab08f8c9360af1e2474eafebc8182a0935ec09ddb36c205a",
+    "tests/test_mixture_shift_bounds.py": "88a81333d09a46b1e1dda3a7cf191268150bed5b9b9517746d78d4143f12f130",
+    "docs/mixture_shift_risk_envelope.md": "b06cd7d7298c3c7375280e51a867bc07aa11a91f8830c46b49877cbfc8a846f0"
+  },
+  "examples": [
+    {
+      "name": "nominal_risk",
+      "artificial_counts": true,
+      "harmful_adoptions": [
+        50,
+        0,
+        0,
+        0
+      ],
+      "adoptions": [
+        768,
+        768,
+        768,
+        768
+      ],
+      "totals": [
+        768,
+        768,
+        768,
+        768
+      ],
+      "result": {
+        "risk_upper": 0.031220896808256543,
+        "adoption_lower": 0.9910985353422677,
+        "risk_witness": {
+          "weights": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "exact_weights": [
+            "1/4",
+            "1/4",
+            "1/4",
+            "1/4"
+          ]
+        },
+        "adoption_witness": {
+          "weights": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "exact_weights": [
+            "1/4",
+            "1/4",
+            "1/4",
+            "1/4"
+          ]
+        },
+        "vertices_checked": 1,
+        "zero_denominator_feasible": false,
+        "weight_lower": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "weight_upper": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "optimization_exact_for_supplied_binary_float_bounds": true,
+        "stratum_joint_harm_uppers": [
+          0.09706754642174355,
+          0.008901464657732335,
+          0.008901464657732335,
+          0.008901464657732335
+        ],
+        "stratum_adoption_lowers": [
+          0.9910985353422677,
+          0.9910985353422677,
+          0.9910985353422677,
+          0.9910985353422677
+        ],
+        "allocated_error": 0.008333333333333333,
+        "component_alpha": 0.0010416666666666667,
+        "risk_limit": 0.05,
+        "adoption_min": 0.2,
+        "risk_and_adoption_bounds_pass": true,
+        "simultaneous_over_all_weights_in_box": true,
+        "gain_certificate_transferred": false,
+        "joint_deployment_certified": false,
+        "within_stratum_distribution_change_covered": false,
+        "physical_safety_certified": false
+      }
+    },
+    {
+      "name": "shifted_risk",
+      "artificial_counts": true,
+      "harmful_adoptions": [
+        50,
+        0,
+        0,
+        0
+      ],
+      "adoptions": [
+        768,
+        768,
+        768,
+        768
+      ],
+      "totals": [
+        768,
+        768,
+        768,
+        768
+      ],
+      "result": {
+        "risk_upper": 0.07569986565950391,
+        "adoption_lower": 0.9910985353422677,
+        "risk_witness": {
+          "weights": [
+            0.75,
+            0.0,
+            0.0,
+            0.25
+          ],
+          "exact_weights": [
+            "3/4",
+            "0",
+            "0",
+            "1/4"
+          ]
+        },
+        "adoption_witness": {
+          "weights": [
+            0.75,
+            0.0,
+            0.0,
+            0.25
+          ],
+          "exact_weights": [
+            "3/4",
+            "0",
+            "0",
+            "1/4"
+          ]
+        },
+        "vertices_checked": 3,
+        "zero_denominator_feasible": false,
+        "weight_lower": [
+          0.75,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "weight_upper": [
+          0.75,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "optimization_exact_for_supplied_binary_float_bounds": true,
+        "stratum_joint_harm_uppers": [
+          0.09706754642174355,
+          0.008901464657732335,
+          0.008901464657732335,
+          0.008901464657732335
+        ],
+        "stratum_adoption_lowers": [
+          0.9910985353422677,
+          0.9910985353422677,
+          0.9910985353422677,
+          0.9910985353422677
+        ],
+        "allocated_error": 0.008333333333333333,
+        "component_alpha": 0.0010416666666666667,
+        "risk_limit": 0.05,
+        "adoption_min": 0.2,
+        "risk_and_adoption_bounds_pass": false,
+        "simultaneous_over_all_weights_in_box": true,
+        "gain_certificate_transferred": false,
+        "joint_deployment_certified": false,
+        "within_stratum_distribution_change_covered": false,
+        "physical_safety_certified": false
+      }
+    },
+    {
+      "name": "shifted_low_adoption",
+      "artificial_counts": true,
+      "harmful_adoptions": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "adoptions": [
+        768,
+        768,
+        768,
+        16
+      ],
+      "totals": [
+        768,
+        768,
+        768,
+        768
+      ],
+      "result": {
+        "risk_upper": 0.08343390834115819,
+        "adoption_lower": 0.10668881315417436,
+        "risk_witness": {
+          "weights": [
+            0.0,
+            0.0,
+            0.09999999999999998,
+            0.9
+          ],
+          "exact_weights": [
+            "0",
+            "0",
+            "900719925474099/9007199254740992",
+            "8106479329266893/9007199254740992"
+          ]
+        },
+        "adoption_witness": {
+          "weights": [
+            0.0,
+            0.0,
+            0.09999999999999998,
+            0.9
+          ],
+          "exact_weights": [
+            "0",
+            "0",
+            "900719925474099/9007199254740992",
+            "8106479329266893/9007199254740992"
+          ]
+        },
+        "vertices_checked": 3,
+        "zero_denominator_feasible": false,
+        "weight_lower": [
+          0.0,
+          0.0,
+          0.0,
+          0.9
+        ],
+        "weight_upper": [
+          0.1,
+          0.1,
+          0.1,
+          0.9
+        ],
+        "optimization_exact_for_supplied_binary_float_bounds": true,
+        "stratum_joint_harm_uppers": [
+          0.008901464657732335,
+          0.008901464657732335,
+          0.008901464657732335,
+          0.008901464657732335
+        ],
+        "stratum_adoption_lowers": [
+          0.9910985353422677,
+          0.9910985353422677,
+          0.9910985353422677,
+          0.008421066244386244
+        ],
+        "allocated_error": 0.008333333333333333,
+        "component_alpha": 0.0010416666666666667,
+        "risk_limit": 0.05,
+        "adoption_min": 0.2,
+        "risk_and_adoption_bounds_pass": false,
+        "simultaneous_over_all_weights_in_box": true,
+        "gain_certificate_transferred": false,
+        "joint_deployment_certified": false,
+        "within_stratum_distribution_change_covered": false,
+        "physical_safety_certified": false
+      }
+    }
+  ]
+}
