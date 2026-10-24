@@ -1,0 +1,83 @@
+{
+  "initials": [
+    {
+      "initial_id": "development-ood-learned:139886002",
+      "seed": 139886002,
+      "regime": "cross_route_priority_flip",
+      "state": [
+        [
+          -90.2804004744278,
+          9.849226053911314
+        ],
+        [
+          -50.48717879993155,
+          17.58671801658225
+        ],
+        [
+          -110.94123047985201,
+          9.981638111538787
+        ]
+      ]
+    }
+  ],
+  "plant_contract": {
+    "realizations": {
+      "development-plant": {
+        "name": "delay_gain_lag_heterogeneous",
+        "command_delay_decisions": [
+          2,
+          1,
+          1
+        ],
+        "gain": [
+          1.0680883916033126,
+          0.9328314476387267,
+          1.081923002252708
+        ],
+        "quadratic_drag": [
+          0.0003457633164596244,
+          0.0003581540327374057,
+          0.0005956226332753574
+        ],
+        "lag_tau_seconds": [
+          0.3351455793226019,
+          0.5277463101785224,
+          0.32832766693221116
+        ],
+        "external_innovation_radius": 0.1,
+        "controller_declared_profile": "lag_strong",
+        "outside_declared_controller_class": true,
+        "violated_assumptions": [
+          "pure_command_delay_not_in_existing_model",
+          "gain_and_drag_not_in_lag_strong_class",
+          "exact_state_observation_not_available_under_two_perception_profiles"
+        ]
+      }
+    }
+  },
+  "perception_contract": {
+    "realizations": {
+      "development-perception": {
+        "name": "bounded_bias_jitter",
+        "shared_by_all_methods": true,
+        "truth_reserved_for_physics_and_post_run_audit": true,
+        "stream_sha256": "ee031eac256fc8b4ee84990d7606694b0894f998a068bb245d1111adabdb8ae2",
+        "decisions": 50,
+        "observation_delay_decisions": 0,
+        "static_position_bias_m": [
+          -1.4313016230259463,
+          0.8022199053402399,
+          1.270316583249786
+        ],
+        "static_speed_bias_mps": [
+          -0.20394206525753197,
+          0.302122084730592,
+          -0.533516243699719
+        ],
+        "position_jitter_bound_m": 0.25,
+        "speed_jitter_bound_mps": 0.15,
+        "dropout_probability": 0.0
+      }
+    }
+  }
+}

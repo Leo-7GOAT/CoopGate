@@ -60,6 +60,16 @@ runs and report adoption with joint harm instead of comparing selected adopted
 subsets. Formal supplemental collection has not started.
 [Factorial comparison, local set properties and limitations](docs/v43_candidate_gate_factorial.md).
 
+OOD integration now also exercises the **complete trained-policy family** on
+three separate development initials: 39 SUMO runs, 552 replayed decisions and
+26 replayed terminal errors. The mild/clean development case completes, but
+all 13 methods abort in each of the other two compound conditions. One exposes
+an observed-speed domain violation; the other loses the stopping certificate
+under severe mismatch and stale observations. All failures are retained. Three
+passing integration checks establish replay correctness, **not OOD robustness**;
+the frozen 22,464-run formal grid remains unstarted and unchanged.
+[Negative development evidence and applicability limits](docs/v44_ood_learned_development.md).
+
 Latest complete comparison (2026-10-23): **390 actual SUMO executions** and
 **9,399 fully replayed decisions** now use the same actuator-aware recovery
 baseline, declared parameter information and physical stopping checks. The
