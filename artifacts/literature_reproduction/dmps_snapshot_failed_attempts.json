@@ -1,0 +1,103 @@
+{
+  "purpose": "Preserve failed interface implementations and subsequent native-state diagnostics",
+  "source_effectiveness_claimed": false,
+  "new_risk_certificate": false,
+  "directories": [
+    {
+      "directory": "dmps_sumo_snapshot_development",
+      "files_sha256": {
+        "plan.json": "ccfffccc62b96b178e6bf37e9d656696622fcf760e3d61dc80ea0eee3e25a2de",
+        "000/failure.json": "e1468b9229fa79edd7a8045326f1e80ce91a68ef00944882817fb3c368ed4735"
+      },
+      "failures": [
+        {
+          "type": "TypeError",
+          "message": "ufunc 'isfinite' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''"
+        }
+      ],
+      "complete_fixed_probe": false,
+      "completed_original_planner_evaluations": 0
+    },
+    {
+      "directory": "dmps_sumo_snapshot_development_v2",
+      "files_sha256": {
+        "plan.json": "c1be559f40ba4519e13f72e0fb5665049436acd7dfde18d15b73be81f9455f66",
+        "000/failure.json": "cead1e8cc3b87a8fab33135bfc6f63c451572930584d227e9a90cdf52139b454"
+      },
+      "failures": [
+        {
+          "type": "AssertionError",
+          "message": "\nNot equal to tolerance rtol=0, atol=1e-08\nroot.host.x.values[0][0]\nMismatched elements: 1 / 1 (100%)\nMax absolute difference among violations: 6.96663908\nMax relative difference among violations: 0.08767322\n ACTUAL: array(-72.494791)\n DESIRED: array(-79.46143)"
+        }
+      ],
+      "complete_fixed_probe": false,
+      "completed_original_planner_evaluations": 0
+    },
+    {
+      "directory": "dmps_snapshot_native_diagnosis",
+      "files_sha256": {
+        "child.xml": "c76432e51c2320df693a0fba452ca1032b4c20c5d82dc42153b913a6c28a899a",
+        "diagnostic.json": "bec7a27a17fd00df00675fa1c9c937b934ef63393c4438bebeaddd0be053bb8d",
+        "initial.xml": "ae6b8c0a331b8f99cdf540324649e8f949e32d8b704ad6d130c58516357824f3"
+      },
+      "failures": [],
+      "complete_fixed_probe": false,
+      "completed_original_planner_evaluations": 0
+    },
+    {
+      "directory": "dmps_sumo_reload_development",
+      "files_sha256": {
+        "plan.json": "e681929488215f260fcf337ebc2be08a56e66a124cf00a3211070be54a1ec701",
+        "000/failure.json": "67505fafda4eebd57c1ffb94d4624379a3f001ed5df99d5a8df3015ba161dcd8"
+      },
+      "failures": [
+        {
+          "type": "AssertionError",
+          "message": "\nNot equal to tolerance rtol=0, atol=1e-08\nroot.host.x.values[0][0]\nMismatched elements: 1 / 1 (100%)\nMax absolute difference among violations: 7.21647175\nMax relative difference among violations: 0.09954469\n ACTUAL: array(-65.278319)\n DESIRED: array(-72.494791)"
+        }
+      ],
+      "complete_fixed_probe": false,
+      "completed_original_planner_evaluations": 0
+    },
+    {
+      "directory": "dmps_reload_native_diagnosis",
+      "files_sha256": {
+        "child.xml": "94a0e26a2aa126f8f8b03eba6cb4a235c9d0d5159e6b19f31b4ae679e050b11c",
+        "diagnostic.json": "71618f17d1fd8850a07e6532075613465542b6ed0f0f990607d98f65bfef9625",
+        "root.xml": "3abe172601d1b222356aae8937503a648281b60033c2b6d54b4c3c595e7cc4ce"
+      },
+      "failures": [],
+      "complete_fixed_probe": false,
+      "completed_original_planner_evaluations": 0
+    },
+    {
+      "directory": "dmps_sumo_clock_development",
+      "files_sha256": {
+        "plan.json": "a721a2bb240a578effa54c5c45fb8392dbe2e5ef09bf28c89444052ec1c0292d",
+        "000/failure.json": "e3da4f07fd46d3b09ea7a75759ee7a82adc4138f6fc5981bb9928f679d8d27c1"
+      },
+      "failures": [
+        {
+          "type": "AssertionError",
+          "message": "\nNot equal to tolerance rtol=0, atol=1e-08\n\nMismatched elements: 6 / 6 (100%)\nFirst 5 mismatches are at indices:\n [0, 0]: -72.49977667422169 (ACTUAL), -79.4614302962107 (DESIRED)\n [0, 1]: 14.423307243978009 (ACTUAL), 13.173307243978009 (DESIRED)\n [1, 0]: -79.74268866348214 (ACTUAL), -85.58619767238983 (DESIRED)\n [1, 1]: 12.187018017815351 (ACTUAL), 10.937018017815351 (DESIRED)\n [2, 0]: -104.92226095440998 (ACTUAL), -111.49662296138746 (DESIRED)\nMax absolute difference among violations: 6.96165362\nMax relative difference among violations: 0.11429075\n ACTUAL: array([[ -72.499777,   14.423307],\n       [ -79.742689,   12.187018],\n       [-104.922261,   13.648724]])\n DESIRED: array([[ -79.46143 ,   13.173307],\n       [ -85.586198,   10.937018],\n       [-111.496623,   12.398724]])"
+        }
+      ],
+      "complete_fixed_probe": false,
+      "completed_original_planner_evaluations": 0
+    },
+    {
+      "directory": "dmps_target_sync_diagnosis",
+      "files_sha256": {
+        "failure.json": "e3da4f07fd46d3b09ea7a75759ee7a82adc4138f6fc5981bb9928f679d8d27c1"
+      },
+      "failures": [
+        {
+          "type": "AssertionError",
+          "message": "\nNot equal to tolerance rtol=0, atol=1e-08\n\nMismatched elements: 6 / 6 (100%)\nFirst 5 mismatches are at indices:\n [0, 0]: -72.49977667422169 (ACTUAL), -79.4614302962107 (DESIRED)\n [0, 1]: 14.423307243978009 (ACTUAL), 13.173307243978009 (DESIRED)\n [1, 0]: -79.74268866348214 (ACTUAL), -85.58619767238983 (DESIRED)\n [1, 1]: 12.187018017815351 (ACTUAL), 10.937018017815351 (DESIRED)\n [2, 0]: -104.92226095440998 (ACTUAL), -111.49662296138746 (DESIRED)\nMax absolute difference among violations: 6.96165362\nMax relative difference among violations: 0.11429075\n ACTUAL: array([[ -72.499777,   14.423307],\n       [ -79.742689,   12.187018],\n       [-104.922261,   13.648724]])\n DESIRED: array([[ -79.46143 ,   13.173307],\n       [ -85.586198,   10.937018],\n       [-111.496623,   12.398724]])"
+        }
+      ],
+      "complete_fixed_probe": false,
+      "completed_original_planner_evaluations": 0
+    }
+  ]
+}
