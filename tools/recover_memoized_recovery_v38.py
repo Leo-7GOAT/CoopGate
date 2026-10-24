@@ -43,9 +43,17 @@ TOTAL_BLOCKS = 180
 RECOVERY_BLOCKS = TOTAL_BLOCKS-RETAINED_BLOCKS
 RECOVERY_RUNS = 2*RECOVERY_BLOCKS
 EVIDENCE_FILES = ('watcher_launch.json','execution/launch.json',
+    'execution/spawn.json',
     'execution/worker.native.json','execution/worker.acknowledged.json',
     'execution/progress.json','watcher.stdout.log','watcher.stderr.log',
     'execution/worker.stdout.log','execution/worker.stderr.log')
+FAILED_ATTEMPT = None
+RECOVERY_SEGMENT = 'recovered_v38'
+FAILED_EVIDENCE_FILES = (
+    'watcher_launch.json','execution/spawn.json','execution/launch.json',
+    'execution/worker.native.json','execution/worker.acknowledged.json',
+    'execution/exit.json','execution/worker.stdout.log','execution/worker.stderr.log',
+    'recovery_watcher.stdout.log','recovery_watcher.stderr.log')
 
 
 def read(path):
@@ -66,6 +74,23 @@ def process_chain(launch, watcher):
     return tuple(dict.fromkeys(values))
 
 
+def process_descendants(processes, roots):
+    """Return every currently visible descendant of the frozen process roots."""
+    descendants,frontier = set(),set(roots)
+    while frontier:
+        children = {int(process['ProcessId']) for process in processes
+                    if process.get('ProcessId') is not None
+                    and process.get('ParentProcessId') is not None
+                    and int(process['ParentProcessId']) in frontier}
+        children -= descendants
+        children -= set(roots)
+        if not children:
+            break
+        descendants.update(children)
+        frontier = children
+    return descendants
+
+
 def require_interrupted_processes_absent(prior=PRIOR, processes=None):
     """Require an unknown exit with the exact old native chain absent now."""
     prior = Path(prior)
@@ -75,13 +100,89 @@ def require_interrupted_processes_absent(prior=PRIOR, processes=None):
     launch, watcher = read(execution/'launch.json'), read(prior/'watcher_launch.json')
     ids = process_chain(launch, watcher)
     processes = native_snapshot() if processes is None else processes
+    descendants = process_descendants(processes,ids)
     for process in processes:
         command = process.get('CommandLine') or ''
-        if process.get('ProcessId') in ids or 'audit_memoized_recovery_v37.py' in command:
+        if (process.get('ProcessId') in ids or process.get('ProcessId') in descendants
+                or 'audit_memoized_recovery_v37.py' in command):
             raise ValueError('The V37 execution may still be live; do not recover it')
     return dict(observed_utc=utc(),old_process_ids=list(ids),
-        target_execution_processes_absent=True,original_exit_status='unknown',
+        descendant_processes_checked=True,target_execution_processes_absent=True,
+        original_exit_status='unknown',
         exit_receipt_present=False,collection_complete_present=False)
+
+
+def failed_attempt_identity(directory=None,processes=None):
+    """Re-verify an earlier failed retry without consuming any result outcomes."""
+    directory = FAILED_ATTEMPT if directory is None else Path(directory)
+    if directory is None:
+        return None
+    directory = Path(directory)
+    verification = directory/'failed_attempt_verification.json'
+    committed(verification)
+    proof = read(verification)
+    if (proof.get('schema') != 'coopgate.memoized_recovery_failed_attempt.v1'
+            or proof.get('status') != 'failed_before_simulation'
+            or proof.get('results_eligible') is not False
+            or proof.get('restart_in_place_permitted') is not False
+            or proof.get('simulation_boundary',{}).get('new_sumo_runs') != 0
+            or proof.get('exit',{}).get('exit_code') != 1
+            or digest(directory/'plan.json') != proof.get('plan_sha256')):
+        raise ValueError('The previous failed-attempt boundary is invalid')
+    evidence_hashes = proof.get('execution_evidence_sha256',{})
+    if set(evidence_hashes) != set(FAILED_EVIDENCE_FILES):
+        raise ValueError('The previous failed-attempt evidence set is incomplete')
+    for name,expected in evidence_hashes.items():
+        path = directory/name
+        if not path.is_file() or digest(path) != expected:
+            raise ValueError('Previous failed-attempt evidence changed: '+name)
+    watcher = read(directory/'watcher_launch.json')
+    spawn = read(directory/'execution/spawn.json')
+    launch = read(directory/'execution/launch.json')
+    native = read(directory/'execution/worker.native.json')
+    acknowledgment = read(directory/'execution/worker.acknowledged.json')
+    exit_receipt = read(directory/'execution/exit.json')
+    identities = proof['process_identity']
+    plan_sha = proof['plan_sha256']
+    if (watcher.get('launcher_pid') != identities.get('outer_launcher_pid')
+            or watcher.get('plan_sha256') != plan_sha
+            or spawn.get('watcher_pid') != identities.get('watcher_pid')
+            or spawn.get('launcher_pid') != identities.get('worker_launcher_pid')
+            or spawn.get('plan_sha256') != plan_sha
+            or launch.get('watcher_pid') != identities.get('watcher_pid')
+            or launch.get('launcher_pid') != identities.get('worker_launcher_pid')
+            or launch.get('native_pid') != identities.get('native_worker_pid')
+            or launch.get('parent_pid') != identities.get('worker_launcher_pid')
+            or launch.get('plan_sha256') != plan_sha
+            or native.get('native_pid') != identities.get('native_worker_pid')
+            or native.get('parent_pid') != identities.get('worker_launcher_pid')
+            or acknowledgment.get('native_pid') != identities.get('native_worker_pid')
+            or acknowledgment.get('parent_pid') != identities.get('worker_launcher_pid')
+            or acknowledgment.get('launcher_pid') != identities.get('worker_launcher_pid')
+            or acknowledgment.get('native_start_sha256') != digest(
+                directory/'execution/worker.native.json')
+            or any(exit_receipt.get(name) != launch.get(name) for name in
+                   ('launcher_pid','native_pid','parent_pid','native_creation_date','command_line'))):
+        raise ValueError('The previous failed-attempt process identity chain changed')
+    if (exit_receipt.get('exit_code') != 1
+            or exit_receipt.get('plan_sha256') != plan_sha
+            or (directory/'blocks').exists()
+            or (directory/'execution/progress.json').exists()
+            or (directory/'execution/collection_complete.json').exists()
+            or (directory/'analysis').exists()):
+        raise ValueError('The previous retry is not a pre-simulation failure')
+    roots = tuple(identities[name] for name in ('outer_launcher_pid','watcher_pid',
+        'worker_launcher_pid','native_worker_pid'))
+    processes = native_snapshot() if processes is None else processes
+    descendants = process_descendants(processes,roots)
+    if any(process.get('ProcessId') in roots or process.get('ProcessId') in descendants
+           for process in processes):
+        raise ValueError('The previous failed retry may still have a live descendant')
+    return dict(path=directory.relative_to(ROOT).as_posix(),
+        verification_sha256=digest(verification),plan_sha256=proof['plan_sha256'],
+        execution_evidence_sha256=evidence_hashes,
+        exit_code=1,new_sumo_runs=0,
+        all_recorded_processes_and_visible_descendants_absent=True)
 
 
 def block_identity(directory, expected_metadata, expected_cases, *, complete):
@@ -99,8 +200,10 @@ def block_identity(directory, expected_metadata, expected_cases, *, complete):
             raise ValueError('Every retained block must be completely sealed')
         seal = read(directory/'observations.sqlite.seal.json')
         proof = read(directory/'complete.json')
+        proof_metadata = {name:proof.get(name) for name in expected_metadata}
         if (seal['database_sha256'] != digest(database)
                 or {k:seal[k] for k in ('metadata','cases','row_sha256','trace_sha256')} != state
+                or proof_metadata != expected_metadata
                 or proof['database_sha256'] != digest(database)
                 or proof['seal_sha256'] != digest(directory/'observations.sqlite.seal.json')
                 or len(proof.get('reviews',())) != len(expected)
@@ -158,6 +261,7 @@ def freeze():
     if digest(PRIOR/'plan.json') != source.digest(source.OUT/'plan.json'):
         raise ValueError('Configured V37 source directory changed')
     absence = require_interrupted_processes_absent()
+    previous_failed = failed_attempt_identity()
     interrupted = interrupted_inventory(prior_plan)
     original_evidence_hashes = {}
     for name in EVIDENCE_FILES:
@@ -188,6 +292,7 @@ def freeze():
         missing_groups=missing,blocks=RECOVERY_BLOCKS,actual_sumo_runs=RECOVERY_RUNS,
         aggregate_blocks=TOTAL_BLOCKS,aggregate_actual_sumo_runs=2*TOTAL_BLOCKS,
         interruption=interrupted,interruption_presence=absence,
+        previous_failed_attempt=previous_failed,
         original_execution_evidence_sha256=original_evidence_hashes,
         interruption_evidence_sha256=evidence_hashes,
         partial_block_reused_for_results=False,partial_records_engineering_only=True,
@@ -222,6 +327,8 @@ def inputs():
             raise ValueError('Frozen V38 source changed: '+name)
     sources_committed([ROOT/name for name in plan['source_sha256']])
     require_interrupted_processes_absent()
+    if failed_attempt_identity() != plan.get('previous_failed_attempt'):
+        raise ValueError('Previous failed-attempt identity changed')
     current = interrupted_inventory(prior_plan)
     if current != plan['interruption']:
         raise ValueError('Original V37 interrupted prefix changed')
@@ -253,7 +360,7 @@ def worker():
     plan = inputs()
     study.recovery.execution_priority()
     torch.set_num_threads(1)
-    models = {name:load_coupled(ROOT[item['path']])[0] for name,item in plan['models'].items()}
+    models = {name:load_coupled(ROOT/item['path'])[0] for name,item in plan['models'].items()}
     archived = source.archive()
     classes = dict(original=source.RecoveryJointGate,memoized=source.MemoizedRecoveryGate)
     warm = np.array([[-140.,12.],[-220.,10.],[-190.,12.]])
@@ -337,9 +444,18 @@ def summarize():
                            ('exit.json','launch.json','collection_complete.json')]
     infrastructure.validate_completion(plan,digest(OUT/'plan.json'),receipt,launch,done)
     check_acknowledgment(execution,'worker',launch['launcher_pid'],launch['native_pid'])
+    expected_recovery_names = [f"{group['block_index']:05d}" for group in plan['missing_groups']]
+    actual_recovery_names = sorted(path.name for path in (OUT/'blocks').iterdir()
+                                   if path.is_dir())
+    if actual_recovery_names != expected_recovery_names:
+        raise ValueError('Recovery output must contain exactly the frozen missing block range')
+    receipt_paths = ('watcher_launch.json','execution/spawn.json','execution/launch.json',
+        'execution/worker.native.json','execution/worker.acknowledged.json',
+        'execution/exit.json','execution/collection_complete.json')
+    execution_receipts = {name:digest(OUT/name) for name in receipt_paths}
     torch.set_num_threads(1)
-    models = {name:load_coupled(ROOT[item['path']])[0] for name,item in plan['models'].items()}
-    archived,cases = source.archive(),[]
+    models = {name:load_coupled(ROOT/item['path'])[0] for name,item in plan['models'].items()}
+    archived,cases,block_hashes = source.archive(),[],{}
     original_plan = read(PRIOR/'plan.json')
     for group in original_plan['groups']:
         retained = group['block_index'] < RETAINED_BLOCKS
@@ -347,9 +463,14 @@ def summarize():
         directory = root/'blocks'/f"{group['block_index']:05d}"
         expected_metadata = source.metadata(group) if retained else recovery_metadata(group)
         proof = read(directory/'complete.json')
-        if (proof['database_sha256'] != digest(directory/'observations.sqlite')
+        proof_metadata = {name:proof.get(name) for name in expected_metadata}
+        if (proof_metadata != expected_metadata
+                or proof['database_sha256'] != digest(directory/'observations.sqlite')
                 or proof['seal_sha256'] != digest(directory/'observations.sqlite.seal.json')):
             raise ValueError('A combined complete pair changed')
+        block_hashes[f"{group['block_index']:05d}"] = {
+            name:digest(directory/name) for name in
+            ('observations.sqlite','observations.sqlite.seal.json','complete.json')}
         paired = []
         loaded = list(observations(directory/'observations.sqlite',expected_metadata,group['executions']))
         if len(loaded) != 2 or len(proof.get('reviews',())) != 2:
@@ -359,7 +480,7 @@ def summarize():
             if review != proof['reviews'][index]:
                 raise ValueError('Independent V37 verification differs in combined review')
             cases.append(dict(case=list(key),row=record['row'],calls=record['calls'],review=review,
-                execution_segment='retained_v37' if retained else 'recovered_v38'))
+                execution_segment='retained_v37' if retained else RECOVERY_SEGMENT))
             paired.append(source.non_timing(record,trace))
         if paired[0] != paired[1]:
             raise ValueError('A combined original/memoized pair differs')
@@ -389,11 +510,21 @@ def summarize():
         all_original_non_timing_fields_exact=True,all_independent_physical_reviews_pass=True,
         exact_full_180_pair_coverage=True,cases=cases,cells=cells,new_independent_initials=0,
         new_risk_certificate=False,original_exit_status='unknown',
+        completion_native_pid=launch['native_pid'],completion_exit_code=receipt['exit_code'],
+        execution_receipts_sha256=execution_receipts,
         excluded_partial_records=plan['partial_record_count'],
         excluded_partial_records_are_engineering_only=True,scope=read(PRIOR/'plan.json')['scope'],
         timing_scope=plan['timing'],work_scope=read(PRIOR/'plan.json')['work'])
     exclusive_json(target/'report.json',report)
-    exclusive_json(target/'sha256.json',dict(report=digest(target/'report.json')))
+    exclusive_json(target/'completion_verification.json',dict(
+        plan_sha256=digest(OUT/'plan.json'),original_plan_sha256=digest(PRIOR/'plan.json'),
+        native_pid=launch['native_pid'],exit_code=receipt['exit_code'],
+        actual_sumo_runs=2*TOTAL_BLOCKS,retained_blocks=RETAINED_BLOCKS,
+        recovered_blocks=RECOVERY_BLOCKS,aggregate_blocks=TOTAL_BLOCKS,
+        exact_full_coverage=True,execution_receipts_sha256=execution_receipts,
+        block_files_sha256=block_hashes,report_sha256=digest(target/'report.json')))
+    exclusive_json(target/'sha256.json',dict(report=digest(target/'report.json'),
+        completion_verification=digest(target/'completion_verification.json')))
     print(json.dumps(dict(actual_sumo_runs=360,pairs=180,all_exact=True,
         totals=[cell for cell in cells if cell['rule'] is None and cell['plant'] is None])),flush=True)
 
