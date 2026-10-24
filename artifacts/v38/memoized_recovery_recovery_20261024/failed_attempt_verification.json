@@ -1,0 +1,51 @@
+{
+  "schema": "coopgate.memoized_recovery_failed_attempt.v1",
+  "attempt": "v38_memoized_recovery_recovery_20261024",
+  "status": "failed_before_simulation",
+  "observed_utc": "2026-10-24T04:41:30.8777893Z",
+  "source_commit": "577c8464dd07daf5a1dde48fb836f5196db0abfb",
+  "plan_sha256": "2ea6da13fae8ab9994d3ac06eae460bee703dc1fa7dda904ca1852ceb399217d",
+  "frozen_source_sha256": {
+    "tools/recover_memoized_recovery_v38.py": "4991914719999cd522c6653e8048f44e56b0e5c04a3ff020c2ae76e5d01b7630",
+    "tests/test_recover_memoized_recovery_v38.py": "e84a2c48075736a9aa89a16a56404c2c18bbb1292d81e8b2ab09d5d2bf16904a"
+  },
+  "process_identity": {
+    "outer_launcher_pid": 44024,
+    "watcher_pid": 22004,
+    "worker_launcher_pid": 56532,
+    "native_worker_pid": 21012,
+    "known_processes_absent_at_observation": true,
+    "known_descendants_absent_at_observation": true
+  },
+  "exit": {
+    "exit_code": 1,
+    "error_type": "TypeError",
+    "error_message": "'WindowsPath' object is not subscriptable",
+    "failing_source_line": 256,
+    "failing_expression": "ROOT[item['path']]",
+    "failure_phase": "model_loading"
+  },
+  "simulation_boundary": {
+    "blocks_directory_present": false,
+    "collection_complete_receipt_present": false,
+    "analysis_directory_present": false,
+    "matched_shifted_merge_environment_entered": false,
+    "new_sumo_runs": 0,
+    "basis": "The captured traceback terminates during model loading at source line 256. The frozen worker creates the blocks directory at line 265 and enters MatchedShiftedMergeEnv at lines 267-269, so no simulator environment or result block was created."
+  },
+  "execution_evidence_sha256": {
+    "watcher_launch.json": "13ebaf6f48ec90d5f3d293e8549a3f474abdc86d83f9b1c77be4ab65e76a53fd",
+    "execution/spawn.json": "8840ca5a63747ea0f8f4322a0d16db0acd60a14476968d9ebce46a8f78bfbf65",
+    "execution/launch.json": "4a825705e63bd0504d50fbcf4d221b2872caa43cbfc7f5dc83d1accaa644247a",
+    "execution/worker.native.json": "24b56008eb98a5f5b8fe1f27acb34f3a6aae2b7c7ca5c72434418b65e75bb469",
+    "execution/worker.acknowledged.json": "9deea7ea9b543cea8e259d085aef443e41a15da4871a7fb221039101f9681716",
+    "execution/exit.json": "8a2ed80a6e2baa2c97a00a8dee93bc373172e1de6aea60e29a95daa939997005",
+    "execution/worker.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "execution/worker.stderr.log": "1b9af9f953767d334dee117f09020a97f15e790a0865a43ec60704b5cd4d00a8",
+    "recovery_watcher.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "recovery_watcher.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "results_eligible": false,
+  "restart_in_place_permitted": false,
+  "disposition": "Preserve this directory byte-for-byte and freeze any corrected retry in a new versioned directory."
+}

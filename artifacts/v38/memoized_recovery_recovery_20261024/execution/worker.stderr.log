@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\Leo\Desktop\papper\CoopGate\tools\recover_memoized_recovery_v38.py", line 404, in <module>
+    globals()[parser.parse_args().command]()
+  File "C:\Users\Leo\Desktop\papper\CoopGate\tools\recover_memoized_recovery_v38.py", line 256, in worker
+    models = {name:load_coupled(ROOT[item['path']])[0] for name,item in plan['models'].items()}
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Leo\Desktop\papper\CoopGate\tools\recover_memoized_recovery_v38.py", line 256, in <dictcomp>
+    models = {name:load_coupled(ROOT[item['path']])[0] for name,item in plan['models'].items()}
+                                ~~~~^^^^^^^^^^^^^^
+TypeError: 'WindowsPath' object is not subscriptable
