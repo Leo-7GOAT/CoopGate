@@ -41,6 +41,15 @@ cooperative, not a hard execution bound. Candidate-set differences and adapter
 limitations remain explicit.
 [Fair comparison protocol and execution contract](docs/v39_fair_comparison_protocol.md).
 
+A separate **2×2 mechanism ablation** now crosses raw versus projected candidates
+with nominal versus 33-path admission, plus the same recovery baseline. Its five
+variants execute and replay in a real strong-lag SUMO development case. This
+separates candidate repair from the gating criterion; it is not a new external
+baseline reproduction or a superiority result. Paired contrasts retain failed
+runs and report adoption with joint harm instead of comparing selected adopted
+subsets. Formal supplemental collection has not started.
+[Factorial comparison, local set properties and limitations](docs/v43_candidate_gate_factorial.md).
+
 Latest complete comparison (2026-10-23): **390 actual SUMO executions** and
 **9,399 fully replayed decisions** now use the same actuator-aware recovery
 baseline, declared parameter information and physical stopping checks. The
