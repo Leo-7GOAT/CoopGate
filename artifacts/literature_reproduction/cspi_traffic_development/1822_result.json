@@ -1,0 +1,133 @@
+{
+  "model": "1822",
+  "nuisance_parameters": {
+    "models": [
+      {
+        "arm": 0,
+        "training_count": 29,
+        "coef": [
+          -0.12589056144992314,
+          -0.11642405336203127,
+          -0.29045165934768574,
+          0.4323817581596564,
+          0.43026951440511624,
+          0.10494876338311485,
+          0.11372299876591825,
+          0.11272344365719318,
+          0.31022980659237837,
+          -0.4854274903810709
+        ],
+        "intercept": -10.590770415337584
+      },
+      {
+        "arm": 1,
+        "training_count": 35,
+        "coef": [
+          -0.09619183206765607,
+          0.05205602416258579,
+          0.48479035215034816,
+          0.462328430906657,
+          0.12764304283325226,
+          0.3442881472987173,
+          0.08837794802894802,
+          -0.0321790828038644,
+          0.06416522747431638,
+          -0.09936167198013919
+        ],
+        "intercept": -9.98031680575687
+      }
+    ],
+    "scaler_mean": [
+      -78.30567890753647,
+      10.316559372664246,
+      -78.74935405191235,
+      11.43995161594504,
+      -110.48158000340905,
+      10.435135066284714,
+      0.171875,
+      0.28125,
+      0.234375,
+      0.3125
+    ],
+    "scaler_scale": [
+      15.704899081488772,
+      4.3266097616449,
+      13.740869677266769,
+      4.499234496948674,
+      21.41761736325412,
+      4.1428368298837945,
+      0.37727176461405115,
+      0.4496092053105675,
+      0.4236075534914362,
+      0.46351240544347894
+    ]
+  },
+  "selection": {
+    "status": "untestable",
+    "reason": "Nonfinite or zero-variance candidate; preserve untestable result",
+    "methods": [
+      {
+        "method": "cspi",
+        "status": "untestable",
+        "deployed_cutoff": 1000000.0,
+        "evaluation": {
+          "runs": 32,
+          "controller_selected": 0,
+          "actual_adopted": 0,
+          "harmful_and_adopted": 0,
+          "completed": 32,
+          "baseline_failed": 0,
+          "empirical_conditional_harm": null,
+          "all_scope_cost_gain_percent": 0.0
+        }
+      },
+      {
+        "method": "cspi_mt",
+        "status": "untestable",
+        "deployed_cutoff": 1000000.0,
+        "evaluation": {
+          "runs": 32,
+          "controller_selected": 0,
+          "actual_adopted": 0,
+          "harmful_and_adopted": 0,
+          "completed": 32,
+          "baseline_failed": 0,
+          "empirical_conditional_harm": null,
+          "all_scope_cost_gain_percent": 0.0
+        }
+      }
+    ]
+  },
+  "comparisons": {
+    "always_baseline": {
+      "runs": 32,
+      "controller_selected": 0,
+      "actual_adopted": 0,
+      "harmful_and_adopted": 0,
+      "completed": 32,
+      "baseline_failed": 0,
+      "empirical_conditional_harm": null,
+      "all_scope_cost_gain_percent": 0.0
+    },
+    "always_nominal": {
+      "runs": 32,
+      "controller_selected": 32,
+      "actual_adopted": 29,
+      "harmful_and_adopted": 2,
+      "completed": 32,
+      "baseline_failed": 0,
+      "empirical_conditional_harm": 0.06896551724137931,
+      "all_scope_cost_gain_percent": 2.3412927659028298
+    },
+    "always_bank": {
+      "runs": 32,
+      "controller_selected": 32,
+      "actual_adopted": 23,
+      "harmful_and_adopted": 0,
+      "completed": 32,
+      "baseline_failed": 0,
+      "empirical_conditional_harm": 0.0,
+      "all_scope_cost_gain_percent": 1.2677322036074319
+    }
+  }
+}
