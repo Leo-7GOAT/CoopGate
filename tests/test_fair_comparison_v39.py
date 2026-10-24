@@ -21,6 +21,7 @@ def case(index=0, cluster=None):
 
 def protocol_spec(**changes):
     values = dict(baseline_implementation_sha256=fingerprint('baseline-source'),
+        proposed_gate_implementation_sha256=fingerprint('bank-gate-source'),
         calibration_sha256=fingerprint('calibration-bytes'),
         confidence_score_definition_sha256=fingerprint('confidence-score-source'),
         forecast_bank_sha256=fingerprint('fixed-forecast-bank'),
@@ -31,7 +32,8 @@ def protocol_spec(**changes):
 
 def ledger(**changes):
     values = dict(observation_reads=1, learned_proposal_calls=1, baseline_proposal_calls=1,
-        forecast_paths=33, safety_mask_checks=8, elapsed_ms=100., timed_out=False)
+        forecast_paths=33, safety_mask_checks=8, proposed_gate_replays=1,
+        proposed_gate_forecast_calls=100, elapsed_ms=100., timed_out=False)
     values.update(changes)
     return WorkLedger(**values)
 
@@ -46,11 +48,18 @@ def evidence(*, flags=None, active=(True, True, True), work=None, confidence=.9,
         confidence=confidence, predicted_delta_s=predicted_delta,
         calibration_quantile_s=quantile, in_calibration_domain=domain,
         prediction_complete=complete, advantage_samples_s=samples,
-        safety_flags_by_mask=flags, ledger=work or ledger())
+        safety_flags_by_mask=flags, proposed_bank_command=(1., 2., 2.5),
+        proposed_bank_admitted=True, proposed_bank_physical_admissible=True,
+        proposed_bank_prediction_complete=True,
+        proposed_bank_replay_sha256=fingerprint('independent-full-bank-replay'),
+        proposed_bank_candidate_count=7, ledger=work or ledger())
 
 
 def test_method_lineage_distinguishes_controls_full_rules_and_adapters():
     assert tuple(DESCRIPTORS) == METHODS
+    assert DESCRIPTORS['proposed_bank_performance_gate'].family == 'proposed_method'
+    assert DESCRIPTORS['proposed_bank_performance_gate'].decision_rule_status == 'project_full_reproduction'
+    assert DESCRIPTORS['proposed_bank_performance_gate'].closed_loop_status == 'project_full_reproduction'
     assert DESCRIPTORS['existing_calibrated_gate'].decision_rule_status == 'full_reproduction'
     assert DESCRIPTORS['existing_calibrated_gate'].closed_loop_status == 'adapter'
     assert DESCRIPTORS['uncalibrated_confidence_threshold'].decision_rule_status == 'full_reproduction'
@@ -75,6 +84,31 @@ def test_every_rule_consumes_one_identical_full_budget_evidence_packet():
     # NumPy Boolean evidence must remain hashable and auditable.
     numpy_flags = tuple((np.bool_(True), np.bool_(True), np.bool_(True)) for _ in MASKS)
     assert protocol.select('always_baseline', evidence(flags=numpy_flags)).evidence_sha256
+
+
+def test_proposed_method_routes_the_actual_bank_command_not_a_generic_mask_command():
+    protocol = FairComparisonProtocol(protocol_spec())
+    packet = replace(evidence(), proposed_bank_command=(-1., 1., 2.),
+                     proposed_bank_candidate_count=19,
+                     proposed_bank_replay_sha256=fingerprint('weighted-bank-winner'))
+    decision = protocol.select('proposed_bank_performance_gate', packet)
+    assert decision.command == (-1., 1., 2.)
+    assert decision.learning_mask == (False, True, True)
+    assert decision.adopted and decision.physical_admissible
+    assert decision.reason == 'proposed_bank_performance_admitted'
+
+
+@pytest.mark.parametrize('changes,match', [
+    ({'proposed_bank_admitted': False}, 'adoption differs'),
+    ({'proposed_bank_physical_admissible': False}, 'fallback'),
+    ({'proposed_bank_prediction_complete': False}, 'fallback'),
+    ({'proposed_bank_replay_sha256': 'bad'}, 'SHA-256'),
+    ({'proposed_bank_candidate_count': 29}, 'candidate count'),
+])
+def test_proposed_method_rejects_inconsistent_or_unverifiable_replay(changes, match):
+    with pytest.raises(ValueError, match=match):
+        FairComparisonProtocol(protocol_spec()).select(
+            'proposed_bank_performance_gate', replace(evidence(), **changes))
 
 
 def test_mps_is_all_or_none_while_mamps_uses_monotone_common_oracle_mask():
@@ -107,8 +141,13 @@ def test_calibrated_rule_reproduces_domain_complete_upper_cost_inequality():
 def test_common_timeout_falls_back_for_every_method_and_incomplete_unmarked_work_is_rejected():
     protocol = FairComparisonProtocol(protocol_spec())
     timeout = ledger(observation_reads=0, learned_proposal_calls=0, baseline_proposal_calls=0,
-        forecast_paths=0, safety_mask_checks=0, elapsed_ms=500., timed_out=True)
-    decisions = protocol.select_all(evidence(work=timeout))
+        forecast_paths=0, safety_mask_checks=0, proposed_gate_replays=0,
+        proposed_gate_forecast_calls=0, elapsed_ms=500., timed_out=True)
+    timeout_packet = replace(evidence(work=timeout),
+        proposed_bank_command=(-1., -2., -2.5), proposed_bank_admitted=False,
+        proposed_bank_prediction_complete=False, proposed_bank_candidate_count=0,
+        proposed_bank_replay_sha256=fingerprint('timed-out-bank-replay'))
+    decisions = protocol.select_all(timeout_packet)
     assert all(item.command == (-1., -2., -2.5) and not item.adopted for item in decisions)
     assert {item.reason for item in decisions} == {'common_evidence_timeout'}
     incomplete = ledger(forecast_paths=32)
@@ -176,7 +215,7 @@ def test_preregistered_summary_uses_independent_clusters_and_excludes_always_bas
             assert report['methods'][method]['usefulness_constraints_passed']
             assert report['methods'][method]['simultaneous_adoption_lower'] >= spec.adoption_minimum
             assert report['methods'][method]['simultaneous_paired_t_gain_lower_percent'] >= spec.gain_minimum_percent
-    assert report['selected_method'] == 'always_learned'
+    assert report['selected_method'] == 'proposed_bank_performance_gate'
     assert report['primary_metric'] == spec.primary_metric
     assert sum(report['error_allocation'][name] for name in
                ('risk_family', 'adoption_family', 'gain_family')) == pytest.approx(spec.family_error)

@@ -39,16 +39,19 @@ V35 尚不能作为“等计算公平对照”的原因如下。
 
 ## 2. 固定比较族和血缘标签
 
-预注册方法固定为以下七种，不能看结果后删减：
+预注册方法固定为以下八种，不能看结果后删减：
 
-1. `always_learned`：始终执行同一个学习提案，负对照；允许暴露物理不可行。
-2. `always_baseline`：始终执行同一个恢复基线，安全负对照。
-3. `uncalibrated_confidence_threshold`：固定普通置信度阈值；没有校准声明。
-4. `existing_calibrated_gate`：完整复现项目既有校准不等式，但 V35 闭环是 adapter。
-5. `advantage_lcb_adapter`：固定路径 bank 上的 advantage LCB；不是原始 CSPI 的观测
+1. `proposed_bank_performance_gate`：实际 V35
+   `RecoveryJointGate(..., "bank_performance")` 及恢复闭环，是待检验的 proposed method；
+   finite-bank margin 仍不冒充校准概率。
+2. `always_learned`：始终执行同一个学习提案，负对照；允许暴露物理不可行。
+3. `always_baseline`：始终执行同一个恢复基线，安全负对照。
+4. `uncalibrated_confidence_threshold`：固定普通置信度阈值；没有校准声明。
+5. `existing_calibrated_gate`：完整复现项目既有校准不等式，但 V35 闭环是 adapter。
+6. `advantage_lcb_adapter`：固定路径 bank 上的 advantage LCB；不是原始 CSPI 的观测
    因果估计器或其定理复现。
-6. `mps_adapter`：共同物理判据下的 all-or-none MPS 适配器。
-7. `mamps_adapter`：共同物理判据下的单调逐智能体 MAMPS 适配器。
+7. `mps_adapter`：共同物理判据下的 all-or-none MPS 适配器。
+8. `mamps_adapter`：共同物理判据下的单调逐智能体 MAMPS 适配器。
 
 代码为每个方法分别保存 `decision_rule_status` 和 `closed_loop_status`。`full_reproduction`
 只表示项目内已明确写出的决策规则逐式复现；凡替换原论文优化器、动力学、恢复集合、
@@ -57,7 +60,7 @@ V35 尚不能作为“等计算公平对照”的原因如下。
 
 ## 3. 共同证据包与严格等预算
 
-每个决策状态只构造一次不可变 `DecisionEvidence`，所有七个规则消费完全相同的字节：
+每个决策状态只构造一次不可变 `DecisionEvidence`，所有八个规则消费完全相同的字节：
 
 - 同一 observed kinematics、上一条实际命令、决策序号、执行器类别和历史区间；
 - 同一个固定训练策略给出的联合学习提案；
@@ -65,17 +68,26 @@ V35 尚不能作为“等计算公平对照”的原因如下。
 - 同一置信度、预测成本差、预先冻结的校准分位数；
 - 同一个 33 路径 advantage 样本向量；
 - 三智能体全部八个学习/基线 mask 的共同物理检查；
+- proposed bank gate 的实际命令、候选数、完整预测/replay identity 及 forecast-call 计数；
 - 同一个 500 ms 截止和同一个工作账本。
 
-`ProtocolSpec` 在构造时必须提供恢复基线实现、校准文件、置信度定义、固定预测 bank 和
-物理 oracle 的 SHA-256；每个 case 还必须绑定实际 learned policy 的 SHA-256。没有这
-六类真实 hash 就不能创建 evaluator，防止只冻结阈值却在执行前后替换模型或证据生成器。
+`ProtocolSpec` 在构造时必须提供恢复基线实现、proposed bank-gate 声明的实现依赖集合、
+校准文件、置信度定义、固定预测 bank 和物理 oracle 的 SHA-256；每个 case 还必须绑定
+实际 learned policy 的 SHA-256。没有这七类真实 hash 就不能创建 evaluator，防止只冻结
+阈值却在执行前后替换模型或证据生成器。bank hash 覆盖 V35 实际执行的缩放后 `±0.1`
+ordered float64 tape bytes，而不是未缩放的 legacy `±0.5` 源 bank。
 
 正常完成的证据包必须恰好记录 1 次观测、1 次学习提案、1 次基线提案、33 条预测
 路径和 8 个 mask 检查。即使 always-baseline 不需要预测，它也执行并计入同样的 shadow
 work；因此比较的是选择规则，而不是“某方法少算了东西”。MPS/MAMPS 从预计算的八个
 mask 表中选择，不得额外调用 oracle。共同证据计算一旦超时，所有方法统一回退基线并
 把 timeout 保留为失败事件，不能给任何方法单独延长预算。
+
+等 shadow computation 和同一 raw 学习提案不代表可选 command 集相同：proposed V35
+bank gate 会投影/修复并搜索最多 28 个候选 command，而普通阈值、MPS、MAMPS 只在 raw
+学习/基线 mask 中选择。因此这个协议比较的是八个**完整部署 selector**，不能表述成
+“只隔离门控判据”的纯 ablation。若论文需要该因果结论，必须另加 projected-candidate-
+matched ablation；当前不能靠改措辞获得。
 
 “同一观测”指同一决策状态下的反事实比较共享完全相同的观测字节和信息字段。不同
 控制器实际执行后会进入不同后续状态，不能谎称后续数值观测仍然相同；它们只共享同一
@@ -84,7 +96,7 @@ mask 表中选择，不得额外调用 oracle。共同证据计算一旦超时�
 ## 4. 完全配对的实验单位
 
 每个 `CaseIdentity` 同时绑定：策略 ID、场景、初态、动力学类别、外生扰动及三者字节
-哈希。每个 case 必须恰好运行七种方法。方法次序只由 case 索引固定轮转并交替反向，
+哈希。每个 case 必须恰好运行八种方法。方法次序只由 case 索引固定轮转并交替反向，
 不由结果决定。
 
 所有方法使用相同的：
@@ -100,14 +112,17 @@ mask 表中选择，不得额外调用 oracle。共同证据计算一旦超时�
 baseline 完全相同，否则协议直接拒绝结果。always-learned 是故意保留的不安全负对照；
 其物理不可行提案不被静默改写成安全门控结果。
 
-多个场景/动力学 cell 可以共享一个 `independent_cluster`，但统计汇总先在 cluster 内
-聚合，再计算样本量；重复 cell、三模型或四种动力学不会被伪装成新增独立初态。
+计划中的主样本不是固定配平 cell。它从冻结的 scenario × plant × disturbance × model
+均匀混合分布中**有放回 IID 抽取** 640 个 cluster；每个 cluster 只含一个新初态和一个
+类别抽样，然后与八种方法完全交叉。无拒绝采样、无事后补 cell、无按结果选择。因此
+主 exact-binomial 目标是该预注册随机设计下的混合边际概率。若另报固定 cell 表，只能
+作为次要描述，不能把异质的固定分层 cell 当成 IID 重复后套用 pooled binomial 界。
 
 ## 5. 预注册主指标与 usefulness 约束
 
 主指标固定为：**在发生学习 adoption 的独立 cluster 中，harm 概率的同时单侧精确
 上界**。总比较误差预算固定为 `0.05`，预先分给风险、adoption、gain 三个 family 的
-比例分别为 `0.50/0.25/0.25`，再在六个非 baseline 候选内作 Bonferroni 分配；不能
+比例分别为 `0.50/0.25/0.25`，再在七个非 baseline 候选内作 Bonferroni 分配；不能
 把同一个 `0.05` 重复用于三个筛选步骤。零 adoption 的风险上界记为 1，而不是 0 或
 空白胜利。
 
@@ -131,14 +146,43 @@ always-baseline 并宣布“最安全”。
 always-baseline 始终显示在结果表中，但 `eligible=false`。所有中止、timeout、碰撞、原始
 封顶成本以及 baseline 失败均保留；不得只在双方完成的子集上建立主结论。
 
-## 6. 当前边界
+## 6. Freeze-before-run 计划与执行骨架
+
+`tools/freeze_fair_comparison_v39.py` 是单独的 freeze/check builder。它在任何运行前把以下
+**实际字节**逐文件写入依赖 hash 表并在 `check` 时重算：
+
+- V32 model plan 和 1802/1812/1822 三个 `policy.pt`；
+- V13 calibration JSON 与 protocol JSON（只绑定 bytes，builder 不读取效果数值）；
+- `confidence_v12.py`、`shield.py`、V34 baseline、V35 forecast/bank gate、V27 oracle；
+- V20 固定 33-path bank 的名称与 float64 tape bytes；
+- V39 核心、builder、测试和本协议。
+
+V13 calibration 的 701/711/721 到 1802/1812/1822 映射仅供 comparator adapter 使用，
+不把旧模型证书转移给新模型。真实 proposed method 固定为 V35
+`RecoveryJointGate(model, profile, "bank_performance")`；它的实际 command、完整预测标志、
+候选数、forecast-call 数和独立 replay identity 均进入共同 evidence packet。原要求的七个
+参考方法全部保留后，再加入待检验方法，所以公平族必须是八种；只比较七个 reference
+而漏掉 proposed gate 没有论文判别意义。
+
+主计划固定为 640 个 IID cluster、每 block 4 个 cluster、160 blocks、八方法完全交叉，
+即 5120 个 SUMO episode。每 episode 最多 50 个控制决策，共最多 256000 个 packet；
+500 ms 共同截止对应最多 35.56 controller-hours。预算上界同时明示为 8,448,000 次固定
+path forecast、244,992,000 次 proposed-gate 内部 forecast call、2,048,000 次物理 mask
+check。上界大不等于预期耗时，实际调用数和 timeout 必须原样保留，不能超预算补跑。
+
+builder 只有 `freeze` 和 `check`，没有 simulator launch 命令；`route_block` 只是无文件写入
+的单决策路由骨架，用于证明一个冻结 case 的同一 evidence hash 能送入全部八个 selector。
+真正运行器必须另行实现、提交、审核、冻结，且从实际 V35 replay 构造 proposed 字段，
+不能让调用者自行声称某条命令来自 bank gate。
+
+## 7. 当前边界
 
 V39 现阶段完成的是可执行的公平比较合同、选择器和独立汇总器，不是实验结果。它没有：
 
 - 读取 V29/V32/V35/V36/V38/V39 正在生成或已经封存的效果结果；
 - 为任何 adapter 创建新的理论保证；
 - 复现原始 MPS/MAMPS/CSPI 的完整系统；
-- 生成新独立初态、校准样本或 SUMO episode；
+- 冻结 plan artifact、生成校准样本或启动 SUMO episode；
 - 改动任何冻结控制器、阈值或 artifact。
 
 后续只有在新计划提交并冻结、case/cluster 哈希和 calibration bytes 全部预注册后，才能

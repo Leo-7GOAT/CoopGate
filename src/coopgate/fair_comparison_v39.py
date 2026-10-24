@@ -16,6 +16,7 @@ from scipy.stats import beta, t
 
 
 METHODS = (
+    'proposed_bank_performance_gate',
     'always_learned',
     'always_baseline',
     'uncalibrated_confidence_threshold',
@@ -42,6 +43,10 @@ class MethodDescriptor:
 
 
 METHOD_DESCRIPTORS = (
+    MethodDescriptor('proposed_bank_performance_gate', 'proposed_method',
+        'project_full_reproduction', 'project_full_reproduction',
+        'The bound V35 RecoveryJointGate bank_performance decision and recovery execution; '
+        'its finite-bank margin is not a calibrated probability.'),
     MethodDescriptor('always_learned', 'negative_control', 'protocol_control',
         'protocol_control', 'Executes the one common learned proposal without admission.'),
     MethodDescriptor('always_baseline', 'negative_control', 'protocol_control',
@@ -90,11 +95,14 @@ class ComputeBudget:
     baseline_proposal_calls: int = 1
     forecast_paths: int = 33
     safety_mask_checks: int = 8
+    proposed_gate_replays: int = 1
+    maximum_proposed_gate_forecast_calls: int = 957
     decision_timeout_ms: float = 500.
 
     def __post_init__(self):
         for name in ('observation_reads', 'learned_proposal_calls', 'baseline_proposal_calls',
-                     'forecast_paths', 'safety_mask_checks'):
+                     'forecast_paths', 'safety_mask_checks', 'proposed_gate_replays',
+                     'maximum_proposed_gate_forecast_calls'):
             _positive_integer(getattr(self, name), name)
         if self.safety_mask_checks != len(MASKS):
             raise ValueError('The common budget must evaluate all eight three-agent masks')
@@ -107,6 +115,7 @@ class ComputeBudget:
 @dataclass(frozen=True)
 class ProtocolSpec:
     baseline_implementation_sha256: str
+    proposed_gate_implementation_sha256: str
     calibration_sha256: str
     confidence_score_definition_sha256: str
     forecast_bank_sha256: str
@@ -128,7 +137,8 @@ class ProtocolSpec:
     primary_metric: str = 'simultaneous_exact_upper_bound_on_cluster_harm_given_adoption'
 
     def __post_init__(self):
-        for name in ('baseline_implementation_sha256', 'calibration_sha256',
+        for name in ('baseline_implementation_sha256', 'proposed_gate_implementation_sha256',
+                     'calibration_sha256',
                      'confidence_score_definition_sha256', 'forecast_bank_sha256',
                      'physical_oracle_sha256'):
             _sha256(getattr(self, name), name)
@@ -189,6 +199,8 @@ class WorkLedger:
     baseline_proposal_calls: int
     forecast_paths: int
     safety_mask_checks: int
+    proposed_gate_replays: int
+    proposed_gate_forecast_calls: int
     elapsed_ms: float
     timed_out: bool = False
 
@@ -208,6 +220,12 @@ class DecisionEvidence:
     prediction_complete: bool
     advantage_samples_s: tuple
     safety_flags_by_mask: tuple
+    proposed_bank_command: tuple
+    proposed_bank_admitted: bool
+    proposed_bank_physical_admissible: bool
+    proposed_bank_prediction_complete: bool
+    proposed_bank_replay_sha256: str
+    proposed_bank_candidate_count: int
     ledger: WorkLedger
 
 
@@ -280,13 +298,17 @@ def _command(evidence, mask):
 
 def _validate_ledger(ledger, budget):
     values = ('observation_reads', 'learned_proposal_calls', 'baseline_proposal_calls',
-              'forecast_paths', 'safety_mask_checks')
+              'forecast_paths', 'safety_mask_checks', 'proposed_gate_replays')
     for name in values:
         value, maximum = getattr(ledger, name), getattr(budget, name)
         if isinstance(value, (bool, np.bool_)) or not isinstance(value, Integral) or not 0 <= value <= maximum:
             raise ValueError('Invalid common work ledger: '+name)
         if not ledger.timed_out and value != maximum:
             raise ValueError('Every completed method packet must consume the identical full budget')
+    calls = ledger.proposed_gate_forecast_calls
+    if (isinstance(calls, (bool, np.bool_)) or not isinstance(calls, Integral)
+            or not 0 <= calls <= budget.maximum_proposed_gate_forecast_calls):
+        raise ValueError('Invalid proposed-gate forecast-call count')
     if _finite(ledger.elapsed_ms, 'Common evidence elapsed time') < 0.:
         raise ValueError('Common evidence elapsed time cannot be negative')
     if not isinstance(ledger.timed_out, (bool, np.bool_)):
@@ -328,7 +350,33 @@ def validate_evidence(evidence, spec):
         raise ValueError('Every method requires all eight three-agent physical-mask checks')
     if not all(flags[0]):
         raise ValueError('The common baseline must pass the common physical oracle')
+    bank = np.asarray(evidence.proposed_bank_command, dtype=float)
+    if bank.shape != (3,) or not np.isfinite(bank).all():
+        raise ValueError('The proposed bank-performance gate requires one finite joint command')
+    for name in ('proposed_bank_admitted', 'proposed_bank_physical_admissible',
+                 'proposed_bank_prediction_complete'):
+        if not isinstance(getattr(evidence, name), (bool, np.bool_)):
+            raise ValueError(name + ' must be Boolean')
+    _sha256(evidence.proposed_bank_replay_sha256, 'Proposed bank-performance replay')
+    if (isinstance(evidence.proposed_bank_candidate_count, (bool, np.bool_))
+            or not isinstance(evidence.proposed_bank_candidate_count, Integral)
+            or not 0 <= evidence.proposed_bank_candidate_count <= 28):
+        raise ValueError('Invalid proposed bank-performance candidate count')
+    bank_differs = bool(np.any(np.abs(bank[active] - baseline[active]) > 1e-9))
+    if evidence.proposed_bank_admitted != bank_differs:
+        raise ValueError('Proposed bank-performance adoption differs from its executed command')
+    if (np.any(np.abs(bank[~active] - baseline[~active]) > 1e-12)
+            or not evidence.proposed_bank_physical_admissible
+            or (evidence.proposed_bank_admitted and not evidence.proposed_bank_prediction_complete)
+            or (not evidence.proposed_bank_admitted and not np.array_equal(bank, baseline))):
+        raise ValueError('Invalid proposed bank-performance fallback, completion or physical evidence')
     _validate_ledger(evidence.ledger, spec.budget)
+    if (not evidence.ledger.timed_out and evidence.ledger.proposed_gate_forecast_calls < 1):
+        raise ValueError('A completed proposed bank-performance replay must record forecast work')
+    if (evidence.ledger.timed_out and (evidence.proposed_bank_admitted
+            or not np.array_equal(bank, baseline)
+            or evidence.proposed_bank_prediction_complete)):
+        raise ValueError('Timed-out proposed bank-performance evidence must be a baseline fallback')
     return evidence
 
 
@@ -361,8 +409,15 @@ class FairComparisonProtocol:
         all_learning = (True, True, True)
         baseline = (False, False, False)
         score = threshold = None
+        command_override = physical_override = None
         if evidence.ledger.timed_out:
             mask, reason = baseline, 'common_evidence_timeout'
+        elif method == 'proposed_bank_performance_gate':
+            command_override = tuple(map(float, evidence.proposed_bank_command))
+            mask = tuple(abs(command_override[i] - evidence.baseline[i]) > 1e-9 for i in range(3))
+            physical_override = bool(evidence.proposed_bank_physical_admissible)
+            reason = ('proposed_bank_performance_admitted' if evidence.proposed_bank_admitted
+                      else 'proposed_bank_performance_fallback')
         elif method == 'always_learned':
             mask, reason = all_learning, 'negative_control_always_learned'
         elif method == 'always_baseline':
@@ -392,12 +447,13 @@ class FairComparisonProtocol:
             reason = 'mps_all_or_none_physical_switch'
         else:
             mask, reason = _mamps_mask(flags), 'mamps_monotone_physical_switch'
-        command = _command(evidence, mask)
-        adopted = any(mask[i] and evidence.active[i]
-                      and abs(evidence.proposal[i] - evidence.baseline[i]) > 1e-9 for i in range(3))
+        command = command_override if command_override is not None else _command(evidence, mask)
+        adopted = any(evidence.active[i] and abs(command[i] - evidence.baseline[i]) > 1e-9
+                      for i in range(3))
         descriptor = DESCRIPTORS[method]
         return Decision(method=method, command=command, learning_mask=mask, adopted=adopted,
-            physical_admissible=bool(all(flags[_mask_code(mask)])), reason=reason,
+            physical_admissible=(physical_override if physical_override is not None
+                                 else bool(all(flags[_mask_code(mask)]))), reason=reason,
             evidence_sha256=evidence_sha256, decision_rule_status=descriptor.decision_rule_status,
             closed_loop_status=descriptor.closed_loop_status, score=score, threshold=threshold)
 
