@@ -2,6 +2,20 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
+Current status (2026-10-24): the completed recovery-gate memoization audit covers
+**180 matched pairs / 360 actual SUMO runs**, with exact non-timing equivalence.
+Measured total callback time decreases **6.67%**; the heavier 33-path gate's mean
+decreases **9.12%**, while the nominal gate's mean increases **0.33%**.
+These are desktop timing measurements, not hard-real-time guarantees.
+[Complete timing results and limitations](docs/v40_memoized_recovery_results.md).
+
+The next joint risk/adoption/gain certificate is still a **prospective design**.
+Its balanced calibration now uses valid stratum-level joint-harm/adoption bounds
+instead of assuming pooled adopted outcomes are binomial. A zero-harm example
+with 154 adoptions per 768-row stratum gives a **5.63%** mixture upper bound and
+therefore fails the 5% target; this is a design calculation, not a SUMO result.
+[Corrected inference and explicit sampling assumptions](docs/v39_recovery_joint_design.md).
+
 Latest complete comparison (2026-10-23): **390 actual SUMO executions** and
 **9,399 fully replayed decisions** now use the same actuator-aware recovery
 baseline, declared parameter information and physical stopping checks. The
@@ -60,13 +74,14 @@ later observations or commands. True coefficients and realized innovations are
 used only for this offline diagnostic; there are no new efficacy samples or risk
 claims. [Prediction/execution consistency and full evidence](docs/v35_recovery_forecast_protocol.md).
 
-The unchanged prospective calibration is running under its verified native-handle
-coordinator. All three real boundary replays exited successfully, and three
-verified collection workers are running. The original **51,596 calibration
-roles** remain preserved; no partial calibration effects have been analyzed.
-Original interrupted exits remain unknown, final confirmation has not started,
-and no new risk certificate is claimed.
-[Exact preservation and actual recovery handoff](docs/v29_second_interruption_recovery.md).
+The prospective calibration was interrupted again. Its third snapshot preserves
+**69,632 completed roles**; the committed recovery plan schedules **135,168 missing
+roles** and three boundary replays. This recovery **has not started**: it must wait
+for the currently active V32/V36 grid recoveries to finish under the existing
+project-isolation guard. Final confirmation has not started, partial efficacy
+has not been analyzed, and no new risk certificate is claimed.
+[Preserved snapshot](artifacts/v38/prospective_calibration_interruption_20261024),
+[Committed recovery plan](artifacts/v38/prospective_calibration_recovery_20261024).
 
 The new online reference-actuator gate has completed **120 actual SUMO runs**
 and independent trace/input review. In the 15-run strong-lag cell, observed
