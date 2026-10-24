@@ -23,3 +23,5 @@ python -m pytest tests/test_ood_sumo_integration_v39.py -q
 ```
 
 普通测试默认跳过这六项，以免在执行冻结计时实验时意外启动仿真进程。六项通过只说明这组工程检查通过；不证明学习策略有收益，也不证明失配条件下基线或门控安全。
+
+本机的 `sumo.exe` 和 `netconvert.exe` 由项目虚拟环境中的 `eclipse-sumo` 提供。正式计划冻结、执行 binding 和后续启动需在同一进程环境的 PATH 中加入 `C:\Users\Leo\Desktop\papper\.venv\Lib\site-packages\sumo\bin`，并使用该虚拟环境 Python；运行时收据绑定实际二进制路径及 SHA-256。首次未加入 PATH 的冻结检查在创建计划目录前失败，未启动 SUMO；补齐进程环境后完成冻结，不涉及更换二进制或实验样本。
