@@ -1,0 +1,75 @@
+{
+  "initials": [
+    {
+      "initial_id": "development-ood-learned:139886003",
+      "seed": 139886003,
+      "regime": "rear_end_merge_wave",
+      "state": [
+        [
+          -55.19914401916557,
+          6.448406970029914
+        ],
+        [
+          -73.13784968935066,
+          13.435140279331826
+        ],
+        [
+          -110.70370578459026,
+          16.46348817836612
+        ]
+      ]
+    }
+  ],
+  "plant_contract": {
+    "realizations": {
+      "development-plant": {
+        "name": "delay_gain_lag_severe",
+        "command_delay_decisions": [
+          2,
+          2,
+          3
+        ],
+        "gain": [
+          0.8033178457761104,
+          1.1306336488533686,
+          0.8580574849420484
+        ],
+        "quadratic_drag": [
+          0.0006161916445156101,
+          0.0007303870723042008,
+          0.0006005913335115988
+        ],
+        "lag_tau_seconds": [
+          0.895482536112853,
+          0.9738391283698292,
+          1.0584810657485253
+        ],
+        "external_innovation_radius": 0.1,
+        "controller_declared_profile": "lag_strong",
+        "outside_declared_controller_class": true,
+        "violated_assumptions": [
+          "pure_command_delay_not_in_existing_model",
+          "gain_and_drag_not_in_lag_strong_class",
+          "exact_state_observation_not_available_under_two_perception_profiles"
+        ]
+      }
+    }
+  },
+  "perception_contract": {
+    "realizations": {
+      "development-perception": {
+        "name": "stale_dropout",
+        "shared_by_all_methods": true,
+        "truth_reserved_for_physics_and_post_run_audit": true,
+        "stream_sha256": "022c5d61b1b8e6103959ea9b6d9909499154f2249af9dcda639867980a46b590",
+        "decisions": 50,
+        "observation_delay_decisions": 1,
+        "initial_observation_rule": "repeat_exact_initial_measurement_until_delayed_sample_exists",
+        "dropout_probability": 0.2,
+        "maximum_consecutive_dropouts": 2,
+        "realized_dropout_count": 33,
+        "dropout_rule": "hold_last_delivered_delayed_measurement_per_actor"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "initials": [
+    {
+      "initial_id": "development-ood-learned:139886001",
+      "seed": 139886001,
+      "regime": "compressed_simultaneous",
+      "state": [
+        [
+          -100.0275626144312,
+          10.65138354093557
+        ],
+        [
+          -101.54320906259449,
+          10.686425767662117
+        ],
+        [
+          -111.1787778235635,
+          8.575326229316609
+        ]
+      ]
+    }
+  ],
+  "plant_contract": {
+    "realizations": {
+      "development-plant": {
+        "name": "delay_gain_lag_mild",
+        "command_delay_decisions": [
+          1,
+          1,
+          1
+        ],
+        "gain": [
+          0.9472635884437604,
+          1.0419306670474726,
+          0.9369550810831573
+        ],
+        "quadratic_drag": [
+          0.00016784999129287398,
+          0.00011410825711169249,
+          0.00028297676383650327
+        ],
+        "lag_tau_seconds": [
+          0.13184330235258954,
+          0.192520136936151,
+          0.2001333023599502
+        ],
+        "external_innovation_radius": 0.1,
+        "controller_declared_profile": "lag_strong",
+        "outside_declared_controller_class": true,
+        "violated_assumptions": [
+          "pure_command_delay_not_in_existing_model",
+          "gain_and_drag_not_in_lag_strong_class",
+          "exact_state_observation_not_available_under_two_perception_profiles"
+        ]
+      }
+    }
+  },
+  "perception_contract": {
+    "realizations": {
+      "development-perception": {
+        "name": "clean_reference",
+        "shared_by_all_methods": true,
+        "truth_reserved_for_physics_and_post_run_audit": true,
+        "stream_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "decisions": 50,
+        "observation_delay_decisions": 0,
+        "static_position_bias_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "static_speed_bias_mps": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "dropout_probability": 0.0
+      }
+    }
+  }
+}
