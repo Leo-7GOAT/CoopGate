@@ -41,6 +41,16 @@ cooperative, not a hard execution bound. Candidate-set differences and adapter
 limitations remain explicit.
 [Fair comparison protocol and execution contract](docs/v39_fair_comparison_protocol.md).
 
+Before formal collection, the analysis has an additive **failure-accounting
+revision**: pre-adoption failures are retained, failed references cannot establish
+improvement, and ranking requires zero observed method/reference failures as well
+as the original usefulness criteria. The original bound execution is superseded
+by `tools/execute_fair_failure_v44.py`; its eight methods, 640 initial conditions,
+5,120 runs, controllers and deadlines are unchanged. Twenty-seven checks pass,
+including eight real-policy and eight injected-failure SUMO development episodes.
+These validate accounting and replay, not efficacy or zero population failure risk.
+[Counterexamples, revised analysis and execution binding](docs/v44_fair_failure_accounting.md).
+
 A separate **2×2 mechanism ablation** now crosses raw versus projected candidates
 with nominal versus 33-path admission, plus the same recovery baseline. Its five
 variants execute and replay in a real strong-lag SUMO development case. This
@@ -70,8 +80,10 @@ are not full reproductions of prior papers or equal-compute comparisons.
 [Complete paired results, all models and retained failures](docs/v35_complete_recovery_gate_results.md),
 [common-baseline protocol and mathematical limits](docs/v35_recovery_joint_gate_protocol.md).
 
-The unchanged comparison is now running on **all 640 original conditions /
+The unchanged comparison has completed collection on **all 640 original conditions /
 8,320 actual executions**, retaining all three models and every old failure.
+The additive recovery finished its 6,942 runs with native exit code zero; full
+physical and gate replay is running before any full-grid effects are reported.
 The first complete block reproduces all **13 runs / 275 commands** and every
 non-timing field from the completed integration. The full-grid results are
 withheld until complete execution and replay; the separate original prospective
