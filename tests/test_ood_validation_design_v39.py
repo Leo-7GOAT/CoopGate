@@ -183,4 +183,3 @@ def test_real_frozen_model_manifest_is_the_only_design_artifact_input():
         assert item["training_seed"] == int(model)
         assert design.digest(design.ROOT / item["path"]) == item["sha256"]
     assert design.MODEL_PLAN.as_posix().endswith("artifacts/v32/online_actuator_preflight/plan.json")
-
