@@ -1,0 +1,7634 @@
+{
+  "cluster_id": "curriculum_quality_002",
+  "method": "baseline",
+  "row": {
+    "seed": 169901001,
+    "scenario": "nominal",
+    "method": "bounded_actuator_recovery_baseline",
+    "collision": false,
+    "completed": true,
+    "elapsed": 11.5,
+    "mean_capped_finish_s": 9.5,
+    "contract_violations": 0,
+    "outside_steps": 0,
+    "uncertified_steps": 0,
+    "max_prediction_error": 0.04100160781965734,
+    "mean_jerk": 0.5797101449275363,
+    "intervention": 1.0,
+    "disturbance": "uniform",
+    "radius": 0.5,
+    "aborted": false,
+    "abort_reason": "",
+    "max_command_slew": 5.0,
+    "plant": {
+      "kind": "nominal",
+      "gain": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "drag": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tau": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "innovation_radius": 0.1
+    },
+    "max_actual_error": 0.09963808297543242,
+    "error_contract_exceeded_substeps": 0,
+    "nominal_physical_assumption_observed": true,
+    "external_innovation_radius": 0.1,
+    "physical_error_radius": 0.5,
+    "innovation_tape_sha256": "c56c827706baf67061541efe1862a48c3591770adfb362bbf316634bc082901e",
+    "initial": [
+      [
+        -72.20921053273804,
+        11.567058943036484
+      ],
+      [
+        -72.14162453825332,
+        10.486800363487305
+      ],
+      [
+        -111.8739964317489,
+        9.822428578683779
+      ]
+    ],
+    "plant_name": "nominal",
+    "rule": "baseline",
+    "model": "none",
+    "certificate_contract": "bounded_actuator_memory_stopping",
+    "per_vehicle_cost": [
+      7.625,
+      10.0,
+      11.875
+    ],
+    "team_cost": 9.833333333333334,
+    "per_vehicle_finish": [
+      7.5,
+      9.5,
+      11.5
+    ],
+    "per_vehicle_variation": [
+      2.5,
+      10.0,
+      7.5
+    ],
+    "control_steps": 23,
+    "learned_action_steps": 0
+  },
+  "trace": [
+    {
+      "t": 0.5,
+      "x": [
+        [
+          -66.05042582306561,
+          12.808326601840491
+        ],
+        [
+          -67.27693173993413,
+          9.231191107235864
+        ],
+        [
+          -107.33275526503468,
+          8.58397714554813
+        ]
+      ],
+      "command": [
+        2.5,
+        -2.5,
+        -2.5
+      ],
+      "disturbance": [
+        [
+          0.03380712531246122,
+          -0.04370570851120803,
+          0.018387304123630877
+        ],
+        [
+          0.055228447601238795,
+          -0.024184459475619313,
+          0.03649837961805469
+        ],
+        [
+          -0.06570855394592945,
+          -0.04991360223602559,
+          0.06787507175120489
+        ],
+        [
+          -0.056649508784043956,
+          0.03255763701529135,
+          0.06840756973779571
+        ],
+        [
+          -0.05400092214366392,
+          0.02915357069314517,
+          -0.07568265658717976
+        ]
+      ],
+      "innovation": [
+        [
+          0.03380712531246133,
+          -0.04370570851120803,
+          0.018387304123630738
+        ],
+        [
+          0.05522844760123874,
+          -0.024184459475619494,
+          0.03649837961805488
+        ],
+        [
+          -0.06570855394592959,
+          -0.04991360223602553,
+          0.0678750717512048
+        ],
+        [
+          -0.056649508784043935,
+          0.03255763701529141,
+          0.06840756973779577
+        ],
+        [
+          -0.05400092214366414,
+          0.029153570693145114,
+          -0.07568265658717986
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          -2.5,
+          -2.5
+        ],
+        [
+          2.5,
+          -2.5,
+          -2.5
+        ],
+        [
+          2.5,
+          -2.5,
+          -2.5
+        ],
+        [
+          2.5,
+          -2.5,
+          -2.5
+        ],
+        [
+          2.5,
+          -2.5,
+          -2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 9.388600010424852,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actuator_memory_upper": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "baseline_command": [
+        2.5,
+        -2.5,
+        -2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "actuator_memory_upper": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "nominal_proposal": [
+          2.5,
+          -2.5,
+          -2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 40,
+          "terminal_lower": [
+            [
+              -41.51409244350305,
+              0.0
+            ],
+            [
+              -59.47298370223253,
+              0.0
+            ],
+            [
+              -100.65289641651297,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              -40.06338654919941,
+              0.0
+            ],
+            [
+              -58.920983702232554,
+              0.0
+            ],
+            [
+              -100.16165355864457,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        -2.5,
+        -2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 1.0,
+      "x": [
+        [
+          -59.27793680910631,
+          14.041330243704097
+        ],
+        [
+          -63.222880055454425,
+          7.358811465645075
+        ],
+        [
+          -103.42855082025747,
+          7.2929755377284735
+        ]
+      ],
+      "command": [
+        2.5,
+        -3.75,
+        -2.5
+      ],
+      "disturbance": [
+        [
+          -0.06250685171206483,
+          -0.06456395994694253,
+          -0.08716791265143486
+        ],
+        [
+          -0.03174368060911714,
+          0.04158298435734675,
+          -0.079872261887322
+        ],
+        [
+          -0.05945806230786577,
+          0.08363655527396396,
+          -0.09341706318446352
+        ],
+        [
+          -0.03329054144260768,
+          0.035643278250995,
+          -0.09327415884922985
+        ],
+        [
+          0.01703555470770679,
+          -0.07009527384325853,
+          -0.056284681624126254
+        ]
+      ],
+      "innovation": [
+        [
+          -0.06250685171206485,
+          -0.06456395994694258,
+          -0.08716791265143504
+        ],
+        [
+          -0.03174368060911717,
+          0.0415829843573467,
+          -0.07987226188732209
+        ],
+        [
+          -0.059458062307865905,
+          0.08363655527396394,
+          -0.09341706318446366
+        ],
+        [
+          -0.03329054144260783,
+          0.03564327825099506,
+          -0.09327415884922985
+        ],
+        [
+          0.01703555470770661,
+          -0.07009527384325842,
+          -0.0562846816241263
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          -3.75,
+          -2.5
+        ],
+        [
+          2.5,
+          -3.75,
+          -2.5
+        ],
+        [
+          2.5,
+          -3.75,
+          -2.5
+        ],
+        [
+          2.5,
+          -3.75,
+          -2.5
+        ],
+        [
+          2.5,
+          -3.75,
+          -2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 4.365500062704086,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        -2.5,
+        -2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        -2.5,
+        -2.5
+      ],
+      "baseline_command": [
+        2.5,
+        -3.75,
+        -2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          -2.5,
+          -2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          -2.5,
+          -2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          -3.75,
+          -2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 45,
+          "terminal_lower": [
+            [
+              -30.62795207588767,
+              0.0
+            ],
+            [
+              -58.36516863618597,
+              0.0
+            ],
+            [
+              -98.58819868849322,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              -28.97528675551962,
+              0.0
+            ],
+            [
+              -57.979549525462396,
+              0.0
+            ],
+            [
+              -98.20480097393845,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        -3.75,
+        -2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        -2.5,
+        -2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 1.5,
+      "x": [
+        [
+          -51.8847330191804,
+          15.29039970062086
+        ],
+        [
+          -59.73298246723425,
+          6.728789504511748
+        ],
+        [
+          -99.96975249955415,
+          6.670988959851145
+        ]
+      ],
+      "command": [
+        2.5,
+        -1.25,
+        -1.25
+      ],
+      "disturbance": [
+        [
+          -0.017636441636696976,
+          -0.013359102482193297,
+          0.040119366349729235
+        ],
+        [
+          -0.09227555752052741,
+          0.010169176071223696,
+          -0.08989408668795962
+        ],
+        [
+          0.057927264039824955,
+          -0.05106001359828172,
+          0.06904826147147114
+        ],
+        [
+          -0.005309850753073775,
+          -0.025545939989294775,
+          -0.07797076559826999
+        ],
+        [
+          0.047989155038121734,
+          0.029576268665272076,
+          0.08883144569174117
+        ]
+      ],
+      "innovation": [
+        [
+          -0.017636441636697003,
+          -0.013359102482193408,
+          0.04011936634972918
+        ],
+        [
+          -0.09227555752052735,
+          0.010169176071223668,
+          -0.08989408668795956
+        ],
+        [
+          0.05792726403982493,
+          -0.051060013598281634,
+          0.06904826147147108
+        ],
+        [
+          -0.005309850753073553,
+          -0.025545939989294872,
+          -0.07797076559826999
+        ],
+        [
+          0.047989155038121734,
+          0.02957626866527202,
+          0.08883144569174128
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          -1.25,
+          -1.25
+        ],
+        [
+          2.5,
+          -1.25,
+          -1.25
+        ],
+        [
+          2.5,
+          -1.25,
+          -1.25
+        ],
+        [
+          2.5,
+          -1.25,
+          -1.25
+        ],
+        [
+          2.5,
+          -1.25,
+          -1.25
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 3.1194998882710934,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        -3.75,
+        -2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        -3.75,
+        -2.5
+      ],
+      "baseline_command": [
+        2.5,
+        -1.25,
+        -1.25
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          -3.75,
+          -2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          -3.75,
+          -2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          -1.25,
+          -1.25
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 45,
+          "terminal_lower": [
+            [
+              -18.857349785549076,
+              0.0
+            ],
+            [
+              -54.99363827072877,
+              0.0
+            ],
+            [
+              -95.32439729857339,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              -17.00421676117869,
+              0.0
+            ],
+            [
+              -54.60775712416427,
+              0.0
+            ],
+            [
+              -94.94439729857338,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        -1.25,
+        -1.25
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        -3.75,
+        -2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 2.0,
+      "x": [
+        [
+          -43.86925601062933,
+          16.528140397767906
+        ],
+        [
+          -56.17595025434363,
+          7.368549262551244
+        ],
+        [
+          -96.44553422410132,
+          7.301107586569279
+        ]
+      ],
+      "command": [
+        2.5,
+        1.25,
+        1.25
+      ],
+      "disturbance": [
+        [
+          -0.09781423551900037,
+          0.030788104666695792,
+          0.0859529238148653
+        ],
+        [
+          -0.012131450345192807,
+          0.04401898594529863,
+          -0.06707127891045639
+        ],
+        [
+          0.03616434035243277,
+          0.01381166530653033,
+          -0.054209853549278986
+        ],
+        [
+          0.005631465001648017,
+          0.08331577596489614,
+          0.03701513411127344
+        ],
+        [
+          -0.05444314801946115,
+          -0.02433695148846371,
+          0.049499341714951184
+        ]
+      ],
+      "innovation": [
+        [
+          -0.09781423551900043,
+          0.03078810466669571,
+          0.08595292381486527
+        ],
+        [
+          -0.01213145034519296,
+          0.04401898594529871,
+          -0.06707127891045639
+        ],
+        [
+          0.03616434035243263,
+          0.013811665306530371,
+          -0.054209853549279076
+        ],
+        [
+          0.0056314650016481005,
+          0.08331577596489606,
+          0.037015134111273496
+        ],
+        [
+          -0.05444314801946118,
+          -0.02433695148846364,
+          0.04949934171495124
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          1.25,
+          1.25
+        ],
+        [
+          2.5,
+          1.25,
+          1.25
+        ],
+        [
+          2.5,
+          1.25,
+          1.25
+        ],
+        [
+          2.5,
+          1.25,
+          1.25
+        ],
+        [
+          2.5,
+          1.25,
+          1.25
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 1.8700000364333391,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        -1.25,
+        -1.25
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        -1.25,
+        -1.25
+      ],
+      "baseline_command": [
+        2.5,
+        1.25,
+        1.25
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          -1.25,
+          -1.25
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          -1.25,
+          -1.25
+        ],
+        "nominal_proposal": [
+          2.5,
+          1.25,
+          1.25
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 50,
+          "terminal_lower": [
+            [
+              -6.0969743364486595,
+              0.0
+            ],
+            [
+              -48.07138765640605,
+              0.0
+            ],
+            [
+              -88.44687899591139,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              -4.017894396324392,
+              0.0
+            ],
+            [
+              -47.4610087059549,
+              0.0
+            ],
+            [
+              -87.8422800999263,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        1.25,
+        1.25
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        -1.25,
+        -1.25
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 2.5,
+      "x": [
+        [
+          -35.23750045811937,
+          17.75282901669837
+        ],
+        [
+          -52.11890515490077,
+          8.616459110538969
+        ],
+        [
+          -92.42605940704871,
+          8.533946560931552
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.07828395203297722,
+          -0.05140261848637184,
+          -0.04087537081805337
+        ],
+        [
+          -0.008905850738302412,
+          0.062074451678252096,
+          -0.09030991569402191
+        ],
+        [
+          -0.02655716884171344,
+          -0.05594875578288816,
+          0.005929485973458881
+        ],
+        [
+          -0.08538312867519604,
+          -0.07076703267810647,
+          -0.013715108417193367
+        ],
+        [
+          -0.05398371040719985,
+          0.09514243514636167,
+          -0.032639347421467235
+        ]
+      ],
+      "innovation": [
+        [
+          -0.07828395203297733,
+          -0.05140261848637191,
+          -0.04087537081805331
+        ],
+        [
+          -0.008905850738302593,
+          0.062074451678251874,
+          -0.0903099156940221
+        ],
+        [
+          -0.026557168841713552,
+          -0.05594875578288827,
+          0.0059294859734589506
+        ],
+        [
+          -0.08538312867519625,
+          -0.07076703267810634,
+          -0.013715108417193256
+        ],
+        [
+          -0.05398371040719985,
+          0.09514243514636156,
+          -0.03263934742146744
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 1.3945000246167183,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        1.25,
+        1.25
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        1.25,
+        1.25
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          1.25,
+          1.25
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          1.25,
+          1.25
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 50,
+          "terminal_lower": [
+            [
+              7.535003858879746,
+              0.0
+            ],
+            [
+              -39.242157392945025,
+              0.0
+            ],
+            [
+              -79.70732222305041,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              9.843631938433502,
+              0.0
+            ],
+            [
+              -38.35530246668991,
+              0.0
+            ],
+            [
+              -78.8272114643935,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        1.25,
+        1.25
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 3.0,
+      "x": [
+        [
+          -25.988130411227928,
+          19.002203445580353
+        ],
+        [
+          -47.43445069645725,
+          9.883591255320855
+        ],
+        [
+          -87.78499565848023,
+          9.775420958047151
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.04490547924211219,
+          -0.09665565760196992,
+          0.08488259078946614
+        ],
+        [
+          0.055900428450955,
+          0.03845949344065591,
+          -0.050553461794449195
+        ],
+        [
+          -0.06977634853280135,
+          0.08429174309867982,
+          -0.07580348654836477
+        ],
+        [
+          -0.04671710591154987,
+          0.05382953347194119,
+          -0.04196016556169013
+        ],
+        [
+          0.09924279405526626,
+          0.09139633540958503,
+          -0.0018215057289894254
+        ]
+      ],
+      "innovation": [
+        [
+          -0.04490547924211213,
+          -0.09665565760197009,
+          0.08488259078946611
+        ],
+        [
+          0.05590042845095508,
+          0.03845949344065569,
+          -0.05055346179444906
+        ],
+        [
+          -0.06977634853280137,
+          0.08429174309868001,
+          -0.07580348654836473
+        ],
+        [
+          -0.04671710591154974,
+          0.05382953347194108,
+          -0.04196016556169007
+        ],
+        [
+          0.09924279405526634,
+          0.09139633540958503,
+          -0.0018215057289894532
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 1.0976999765262008,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              22.026361723702546,
+              0.0
+            ],
+            [
+              -31.453881912229953,
+              0.0
+            ],
+            [
+              -72.01682506816087,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              24.577927527042434,
+              0.0
+            ],
+            [
+              -30.418236001176094,
+              0.0
+            ],
+            [
+              -70.98943041206775,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 3.5,
+      "x": [
+        [
+          -16.135133951002217,
+          20.0
+        ],
+        [
+          -42.123554128198805,
+          11.120504365842994
+        ],
+        [
+          -82.52230592990477,
+          11.02224173403772
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.077209775109635,
+          -0.08206977835252172,
+          0.04023934621341407
+        ],
+        [
+          -0.009910639772858332,
+          -0.008081438051162682,
+          -0.06598829037709653
+        ],
+        [
+          0.02173460938011651,
+          -0.0619645238827391,
+          0.01903164579223482
+        ],
+        [
+          0.01097593702227373,
+          0.01741542990431233,
+          0.02866138997334655
+        ],
+        [
+          0.044983067807836896,
+          0.003831415603510635,
+          -0.053736331696225825
+        ]
+      ],
+      "innovation": [
+        [
+          0.07720977510963484,
+          -0.08206977835252152,
+          0.04023934621341416
+        ],
+        [
+          -0.009910639772858332,
+          -0.008081438051162654,
+          -0.0659882903770967
+        ],
+        [
+          0.021734609380116288,
+          -0.061964523882738966,
+          0.019031645792235014
+        ],
+        [
+          0.01097593702227366,
+          0.017415429904312177,
+          0.028661389973346607
+        ],
+        [
+          0.04498306780783695,
+          0.0038314156035108154,
+          -0.05373633169622585
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 1.0800999589264393,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              36.596750967004134,
+              0.0
+            ],
+            [
+              -22.675240428366326,
+              0.0
+            ],
+            [
+              -63.387106496924616,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              38.63953062244622,
+              0.0
+            ],
+            [
+              -21.46188130283426,
+              0.0
+            ],
+            [
+              -62.19102230531523,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 4.0,
+      "x": [
+        [
+          -6.135133951002217,
+          20.0
+        ],
+        [
+          -36.18565841816945,
+          12.3854727988557
+        ],
+        [
+          -76.63498958971212,
+          12.27261968189816
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.03069070454859668,
+          0.031136516554116422,
+          -0.012334970346596918
+        ],
+        [
+          -0.043108739140046204,
+          -0.07550791046414984,
+          0.02277388859699503
+        ],
+        [
+          -0.05063911735233617,
+          0.07510733085621313,
+          0.022073860210500396
+        ],
+        [
+          -0.0146391066732523,
+          0.06643138412867966,
+          0.05263833394916073
+        ],
+        [
+          -0.08831266663411164,
+          0.05251700905221934,
+          -0.0813716338056798
+        ]
+      ],
+      "innovation": [
+        [
+          0.030690704548596487,
+          0.031136516554116256,
+          -0.012334970346596696
+        ],
+        [
+          -0.04310873914004627,
+          -0.07550791046414991,
+          0.02277388859699485
+        ],
+        [
+          -0.05063911735233598,
+          0.07510733085621302,
+          0.022073860210500576
+        ],
+        [
+          -0.014639106673252272,
+          0.06643138412867972,
+          0.05263833394916073
+        ],
+        [
+          -0.0883126666341116,
+          0.052517009052219454,
+          -0.08137163380567967
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 1.1205000337213278,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              46.6088660489977,
+              0.0
+            ],
+            [
+              -13.055738411164004,
+              0.0
+            ],
+            [
+              -53.80823568736896,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              48.635866048997826,
+              0.0
+            ],
+            [
+              -11.674637537995439,
+              0.0
+            ],
+            [
+              -52.43701151396521,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 4.5,
+      "x": [
+        [
+          3.864866048997783,
+          20.0
+        ],
+        [
+          -29.621852491062725,
+          13.632202526179732
+        ],
+        [
+          -70.12941862991698,
+          13.50157212470698
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.005884767499666044,
+          -0.054640994054563574,
+          -0.05511376947127733
+        ],
+        [
+          -0.0595620319450032,
+          -0.004907757559111214,
+          -0.06107012328299666
+        ],
+        [
+          0.006896883325541392,
+          -0.054776244988543166,
+          0.05243051744103955
+        ],
+        [
+          0.033289429976808727,
+          -0.01750476647729471,
+          -0.06460813063113902
+        ],
+        [
+          0.010346760180226955,
+          0.09912703631981179,
+          -0.08211406596740556
+        ]
+      ],
+      "innovation": [
+        [
+          0.005884767499666127,
+          -0.05464099405456344,
+          -0.055113769471277135
+        ],
+        [
+          -0.05956203194500327,
+          -0.004907757559111298,
+          -0.061070123282996706
+        ],
+        [
+          0.0068968833255412115,
+          -0.054776244988543304,
+          0.05243051744103963
+        ],
+        [
+          0.033289429976808727,
+          -0.01750476647729489,
+          -0.06460813063113886
+        ],
+        [
+          0.010346760180226844,
+          0.09912703631981176,
+          -0.0821140659674055
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 1.0373999830335379,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              56.6088660489977,
+              0.0
+            ],
+            [
+              -2.411861782517785,
+              0.0
+            ],
+            [
+              -43.2900347984991,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              58.63586604899782,
+              0.0
+            ],
+            [
+              -0.8237672227466698,
+              0.0
+            ],
+            [
+              -41.72451086211947,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 5.0,
+      "x": [
+        [
+          13.864866048997783,
+          20.0
+        ],
+        [
+          -22.42947438897852,
+          14.884285912883643
+        ],
+        [
+          -63.00478987288662,
+          14.739812792490133
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.03797141605522958,
+          0.06717143327200503,
+          -0.0139306367495875
+        ],
+        [
+          0.07522883659443025,
+          -0.07600479146384664,
+          -0.0029784787896969256
+        ],
+        [
+          -0.03438856319210881,
+          -0.0011799266850682777,
+          0.08285106619422322
+        ],
+        [
+          0.04831647225853164,
+          0.06853852706566022,
+          -0.09918135916772153
+        ],
+        [
+          -0.00911081992116669,
+          -0.0376913751496426,
+          -0.08435391365568634
+        ]
+      ],
+      "innovation": [
+        [
+          -0.03797141605522972,
+          0.06717143327200492,
+          -0.01393063674958761
+        ],
+        [
+          0.07522883659443019,
+          -0.0760047914638466,
+          -0.0029784787896968423
+        ],
+        [
+          -0.03438856319210877,
+          -0.001179926685068458,
+          0.082851066194223
+        ],
+        [
+          0.04831647225853161,
+          0.0685385270656601,
+          -0.09918135916772147
+        ],
+        [
+          -0.009110819921166871,
+          -0.03769137514964258,
+          -0.08435391365568623
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 1.0270000202581286,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              66.6088660489977,
+              0.0
+            ],
+            [
+              9.109177866274194,
+              0.0
+            ],
+            [
+              -31.933972918618366,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              68.63586604899783,
+              0.0
+            ],
+            [
+              10.892618371510109,
+              0.0
+            ],
+            [
+              -30.169815706147663,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 5.5,
+      "x": [
+        [
+          23.864866048997783,
+          20.0
+        ],
+        [
+          -14.610920770977373,
+          16.139558704800898
+        ],
+        [
+          -55.25490900580323,
+          15.99102759471203
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.07153375485495372,
+          0.0050174933500177765,
+          0.09533722896975272
+        ],
+        [
+          -0.09375502186430174,
+          0.009559628653857288,
+          0.05313080408703863
+        ],
+        [
+          0.048767105574781144,
+          0.025575861285498824,
+          0.019829501627939727
+        ],
+        [
+          -0.09382030021017318,
+          -0.011562345174017441,
+          -0.09510126978294586
+        ],
+        [
+          0.03242448983199164,
+          0.02413728105721402,
+          -0.06104824268282627
+        ]
+      ],
+      "innovation": [
+        [
+          0.07153375485495381,
+          0.005017493350017957,
+          0.09533722896975286
+        ],
+        [
+          -0.09375502186430162,
+          0.009559628653857136,
+          0.05313080408703877
+        ],
+        [
+          0.04876710557478095,
+          0.025575861285498713,
+          0.019829501627939658
+        ],
+        [
+          -0.09382030021017307,
+          -0.011562345174017302,
+          -0.09510126978294581
+        ],
+        [
+          0.03242448983199181,
+          0.02413728105721416,
+          -0.06104824268282638
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 1.0226999875158072,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              76.6088660489977,
+              0.0
+            ],
+            [
+              21.57695503642114,
+              0.0
+            ],
+            [
+              -19.619594865179025,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              78.63586604899784,
+              0.0
+            ],
+            [
+              23.58481221899789,
+              0.0
+            ],
+            [
+              -17.64063230668102,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 6.0,
+      "x": [
+        [
+          33.86486604899778,
+          20.0
+        ],
+        [
+          -6.1709257949600556,
+          17.37016400446508
+        ],
+        [
+          -46.884758177628896,
+          17.24388321782489
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.052936221429486174,
+          -0.0016039241156380335,
+          -0.016916281717924253
+        ],
+        [
+          -0.03697880153190214,
+          0.0011039968419064294,
+          0.023344806289056663
+        ],
+        [
+          0.018463773968674158,
+          -0.09852811198520772,
+          -0.07583759902787479
+        ],
+        [
+          0.0003748120753264139,
+          -0.0843307050513804,
+          0.08445275676843123
+        ],
+        [
+          0.07122432730638817,
+          -0.010588259047854987,
+          0.01351254881689723
+        ]
+      ],
+      "innovation": [
+        [
+          0.05293622142948615,
+          -0.0016039241156378808,
+          -0.016916281717924184
+        ],
+        [
+          -0.036978801531902014,
+          0.0011039968419063184,
+          0.023344806289056858
+        ],
+        [
+          0.018463773968673977,
+          -0.09852811198520761,
+          -0.07583759902787485
+        ],
+        [
+          0.0003748120753263029,
+          -0.08433070505138025,
+          0.0844527567684312
+        ],
+        [
+          0.07122432730638828,
+          -0.010588259047855028,
+          0.013512548816897424
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 1.1405000695958734,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              86.6088660489977,
+              0.0
+            ],
+            [
+              35.00004927110669,
+              0.0
+            ],
+            [
+              -6.327182070127961,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              88.63586604899785,
+              0.0
+            ],
+            [
+              37.234961012067025,
+              0.0
+            ],
+            [
+              -4.119079310656611,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 6.5,
+      "x": [
+        [
+          43.86486604899778,
+          20.0
+        ],
+        [
+          2.886757109895825,
+          18.61863565578803
+        ],
+        [
+          -37.88418640349943,
+          18.500362157596474
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.005990500942210986,
+          -0.006462814562442354,
+          0.04663731495513135
+        ],
+        [
+          0.09105665781472849,
+          -0.07148162990000317,
+          0.054990388568925574
+        ],
+        [
+          -0.034269933633881866,
+          0.0021810725226130145,
+          -0.0510751593050367
+        ],
+        [
+          -0.07947893734434341,
+          0.011307752007390537,
+          0.048857017071950004
+        ],
+        [
+          -0.02252074121868297,
+          0.04917213316188862,
+          -0.03462016357512887
+        ]
+      ],
+      "innovation": [
+        [
+          0.005990500942210944,
+          -0.006462814562442312,
+          0.046637314955131404
+        ],
+        [
+          0.09105665781472858,
+          -0.07148162990000313,
+          0.05499038856892538
+        ],
+        [
+          -0.034269933633882074,
+          0.0021810725226129035,
+          -0.051075159305036505
+        ],
+        [
+          -0.07947893734434355,
+          0.011307752007390343,
+          0.048857017071949865
+        ],
+        [
+          -0.02252074121868279,
+          0.04917213316188859,
+          -0.03462016357512872
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 0.9147999808192253,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              96.60886604899771,
+              0.0
+            ],
+            [
+              49.22986142647223,
+              0.0
+            ],
+            [
+              7.909881267930479,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              98.63586604899784,
+              0.0
+            ],
+            [
+              51.70489422736546,
+              0.0
+            ],
+            [
+              10.359657911495658,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 7.0,
+      "x": [
+        [
+          53.86486604899778,
+          20.0
+        ],
+        [
+          12.571423233826238,
+          19.867317629761693
+        ],
+        [
+          -28.26087876164422,
+          19.740084013225868
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.0725186586362474,
+          0.006910908038842756,
+          0.019542044315817186
+        ],
+        [
+          0.0021626919398132216,
+          -0.068011182580062,
+          0.02606132904368552
+        ],
+        [
+          -0.0969987411293678,
+          0.09348885247602512,
+          -0.07712204249036736
+        ],
+        [
+          0.09630804102506829,
+          0.037422074535923056,
+          -0.08667033000965274
+        ],
+        [
+          -0.016327598961471068,
+          -0.08299091273409331,
+          0.015407555434442166
+        ]
+      ],
+      "innovation": [
+        [
+          -0.07251865863624735,
+          0.006910908038842839,
+          0.019542044315817256
+        ],
+        [
+          0.0021626919398133326,
+          -0.06801118258006197,
+          0.026061329043685716
+        ],
+        [
+          -0.09699874112936775,
+          0.0934888524760252,
+          -0.07712204249036732
+        ],
+        [
+          0.09630804102506821,
+          0.03742207453592322,
+          -0.08667033000965291
+        ],
+        [
+          -0.01632759896147093,
+          -0.08299091273409348,
+          0.015407555434442166
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 0.7809000089764595,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              106.60886604899771,
+              0.0
+            ],
+            [
+              64.46579895441467,
+              0.0
+            ],
+            [
+              23.09262438448283,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              108.63586604899783,
+              0.0
+            ],
+            [
+              67.19652608557251,
+              0.0
+            ],
+            [
+              25.79873303176201,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 7.5,
+      "x": [
+        [
+          63.86486604899778,
+          20.0
+        ],
+        [
+          22.571423233826238,
+          20.0
+        ],
+        [
+          -18.2624994882064,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.06581077960272363,
+          0.05800311157129734,
+          -0.06291278847652304
+        ],
+        [
+          0.04070246872655936,
+          0.07673259331722981,
+          -0.003649854454313317
+        ],
+        [
+          0.016217523583562876,
+          -0.01720292770318821,
+          0.09138891689038875
+        ],
+        [
+          0.04425032155746589,
+          -0.07452104035990459,
+          0.09648443641781057
+        ],
+        [
+          0.05719385182183334,
+          -0.006284762230082563,
+          0.060244810987598374
+        ]
+      ],
+      "innovation": [
+        [
+          0.06581077960272383,
+          0.05800311157129737,
+          -0.0629127884765229
+        ],
+        [
+          0.0407024687265595,
+          0.07673259331722973,
+          -0.003649854454313428
+        ],
+        [
+          0.016217523583563057,
+          -0.01720292770318821,
+          0.09138891689038864
+        ],
+        [
+          0.04425032155746583,
+          -0.07452104035990437,
+          0.09648443641781063
+        ],
+        [
+          0.057193851821833286,
+          -0.006284762230082563,
+          0.06024481098759818
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 0.8272000122815371,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              116.60886604899771,
+              0.0
+            ],
+            [
+              75.31542323382615,
+              0.0
+            ],
+            [
+              34.48112963967827,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              118.63586604899783,
+              0.0
+            ],
+            [
+              77.3424232338263,
+              0.0
+            ],
+            [
+              36.51012123835583,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 8.0,
+      "x": [
+        [
+          73.86486604899778,
+          20.0
+        ],
+        [
+          32.57142323382624,
+          20.0
+        ],
+        [
+          -8.262499488206402,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.03815243664675272,
+          0.0945054672910377,
+          0.053436690858872815
+        ],
+        [
+          -0.05680223489109082,
+          0.08665292799474678,
+          0.0655071528930522
+        ],
+        [
+          0.002062442680560217,
+          0.05909043249725565,
+          -0.05964503681540112
+        ],
+        [
+          0.03359762906712538,
+          -0.027387865929019206,
+          -0.07359988088833713
+        ],
+        [
+          0.0465658059877061,
+          0.09425973991837111,
+          -0.029311045295023153
+        ]
+      ],
+      "innovation": [
+        [
+          -0.03815243664675259,
+          0.09450546729103768,
+          0.05343669085887279
+        ],
+        [
+          -0.056802234891091,
+          0.08665292799474661,
+          0.06550715289305223
+        ],
+        [
+          0.002062442680560439,
+          0.05909043249725571,
+          -0.05964503681540128
+        ],
+        [
+          0.033597629067125545,
+          -0.027387865929019026,
+          -0.07359988088833694
+        ],
+        [
+          0.046565805987706155,
+          0.0942597399183713,
+          -0.02931104529502314
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 0.6641000509262085,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              126.60886604899771,
+              0.0
+            ],
+            [
+              85.31542323382615,
+              0.0
+            ],
+            [
+              44.48150051179351,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              128.63586604899783,
+              0.0
+            ],
+            [
+              87.34242323382631,
+              0.0
+            ],
+            [
+              46.50850051179365,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 8.5,
+      "x": [
+        [
+          83.86486604899778,
+          20.0
+        ],
+        [
+          42.57142323382624,
+          20.0
+        ],
+        [
+          1.7375005117935984,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.01703734907736809,
+          0.08825197460321643,
+          0.0066279379746276845
+        ],
+        [
+          -0.042719170983409605,
+          -0.053698089253079395,
+          -0.019949073375586046
+        ],
+        [
+          0.04911097838451406,
+          -0.04097144239479533,
+          -0.05360286842504802
+        ],
+        [
+          0.0906235652998455,
+          -0.049670536518400255,
+          0.08109825049719843
+        ],
+        [
+          0.0018491327710430383,
+          0.06457820325786878,
+          -0.05092694740527959
+        ]
+      ],
+      "innovation": [
+        [
+          -0.017037349077368022,
+          0.08825197460321654,
+          0.0066279379746275735
+        ],
+        [
+          -0.042719170983409695,
+          -0.05369808925307926,
+          -0.019949073375585893
+        ],
+        [
+          0.049110978384514115,
+          -0.04097144239479529,
+          -0.05360286842504802
+        ],
+        [
+          0.09062356529984533,
+          -0.04967053651840008,
+          0.08109825049719824
+        ],
+        [
+          0.0018491327710428856,
+          0.06457820325786878,
+          -0.05092694740527977
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 0.598000013269484,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              136.6088660489977,
+              0.0
+            ],
+            [
+              95.31542323382617,
+              0.0
+            ],
+            [
+              54.48150051179351,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              138.63586604899783,
+              0.0
+            ],
+            [
+              97.3424232338263,
+              0.0
+            ],
+            [
+              56.508500511793635,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 9.0,
+      "x": [
+        [
+          93.86486604899778,
+          20.0
+        ],
+        [
+          52.57142323382624,
+          20.0
+        ],
+        [
+          11.737500511793598,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.09489728220840998,
+          0.024925312468076388,
+          -0.020755600778761707
+        ],
+        [
+          0.035492765430410245,
+          0.0279547313799422,
+          0.06460644072208277
+        ],
+        [
+          0.08532984871560734,
+          -0.09009339635793223,
+          -0.008080967096080194
+        ],
+        [
+          0.058991128849468666,
+          0.006037258378690957,
+          0.027318018062403304
+        ],
+        [
+          -0.02592503059026674,
+          0.026686922098038135,
+          -0.0023023543233939847
+        ]
+      ],
+      "innovation": [
+        [
+          0.09489728220840984,
+          0.02492531246807632,
+          -0.020755600778761887
+        ],
+        [
+          0.035492765430410356,
+          0.02795473137994231,
+          0.06460644072208294
+        ],
+        [
+          0.08532984871560753,
+          -0.09009339635793219,
+          -0.008080967096080277
+        ],
+        [
+          0.05899112884946886,
+          0.0060372583786911516,
+          0.02731801806240325
+        ],
+        [
+          -0.02592503059026685,
+          0.02668692209803819,
+          -0.0023023543233937904
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 0.5466999718919396,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              146.6088660489977,
+              0.0
+            ],
+            [
+              105.31542323382617,
+              0.0
+            ],
+            [
+              64.48150051179353,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              148.63586604899783,
+              0.0
+            ],
+            [
+              107.34242323382628,
+              0.0
+            ],
+            [
+              66.50850051179366,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 9.5,
+      "x": [
+        [
+          103.86486604899778,
+          20.0
+        ],
+        [
+          62.57142323382624,
+          20.0
+        ],
+        [
+          21.7375005117936,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.02006389154670929,
+          0.07874385772909154,
+          -0.01181614669087061
+        ],
+        [
+          0.033701960251353746,
+          0.09264185471130038,
+          -0.04083959763634093
+        ],
+        [
+          0.036514444457674156,
+          0.09164962581765757,
+          0.08305982701659653
+        ],
+        [
+          0.0458003145375705,
+          -0.08262792455919366,
+          0.028591835079897265
+        ],
+        [
+          -0.034046803870804165,
+          -0.029331768068071362,
+          0.02875420804752249
+        ]
+      ],
+      "innovation": [
+        [
+          0.020063891546709095,
+          0.07874385772909145,
+          -0.01181614669087043
+        ],
+        [
+          0.03370196025135361,
+          0.0926418547113006,
+          -0.04083959763634087
+        ],
+        [
+          0.03651444445767413,
+          0.09164962581765768,
+          0.08305982701659662
+        ],
+        [
+          0.04580031453757047,
+          -0.08262792455919372,
+          0.028591835079897432
+        ],
+        [
+          -0.034046803870804374,
+          -0.029331768068071237,
+          0.028754208047522323
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 0.5639999872073531,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              156.6088660489977,
+              0.0
+            ],
+            [
+              115.31542323382617,
+              0.0
+            ],
+            [
+              74.48150051179351,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              158.63586604899783,
+              0.0
+            ],
+            [
+              117.34242323382628,
+              0.0
+            ],
+            [
+              76.50850051179366,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 10.0,
+      "x": [
+        [
+          113.86486604899778,
+          20.0
+        ],
+        [
+          72.57142323382624,
+          20.0
+        ],
+        [
+          31.7375005117936,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          -0.019715019938057576,
+          0.0857641717316957,
+          -0.019951257988295
+        ],
+        [
+          -0.027578183747082985,
+          0.06420652817201855,
+          0.0835328680069436
+        ],
+        [
+          0.04374879667956755,
+          0.023512209004420193,
+          0.023067959978959607
+        ],
+        [
+          -0.06240223316411608,
+          0.05563285677145746,
+          0.03481117066142492
+        ],
+        [
+          -0.07632351297945572,
+          -0.038533915517757755,
+          0.058241490183489564
+        ]
+      ],
+      "innovation": [
+        [
+          -0.01971501993805755,
+          0.0857641717316959,
+          -0.019951257988295196
+        ],
+        [
+          -0.027578183747082943,
+          0.06420652817201852,
+          0.08353286800694343
+        ],
+        [
+          0.04374879667956741,
+          0.02351220900442033,
+          0.023067959978959468
+        ],
+        [
+          -0.06240223316411591,
+          0.055632856771457656,
+          0.03481117066142475
+        ],
+        [
+          -0.07632351297945583,
+          -0.038533915517757915,
+          0.05824149018348976
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 0.5235000280663371,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              166.6088660489977,
+              0.0
+            ],
+            [
+              125.31542323382617,
+              0.0
+            ],
+            [
+              84.48150051179351,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              168.63586604899783,
+              0.0
+            ],
+            [
+              127.34242323382628,
+              0.0
+            ],
+            [
+              86.50850051179367,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 10.5,
+      "x": [
+        [
+          123.86486604899778,
+          20.0
+        ],
+        [
+          82.57142323382624,
+          20.0
+        ],
+        [
+          41.7375005117936,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.06573813723573751,
+          -0.09963808297543242,
+          0.011036947689146537
+        ],
+        [
+          -0.03960843148692428,
+          0.09496941236550338,
+          0.0019091983784140787
+        ],
+        [
+          -0.03125531885768096,
+          -0.07878837112590675,
+          -0.09204287512751197
+        ],
+        [
+          -0.030301560748466017,
+          -0.00886872872015898,
+          0.06346407239557816
+        ],
+        [
+          0.00983468171195101,
+          -0.04636221507943716,
+          0.08954722443713825
+        ]
+      ],
+      "innovation": [
+        [
+          0.06573813723573749,
+          -0.09963808297543227,
+          0.01103694768914669
+        ],
+        [
+          -0.039608431486924216,
+          0.09496941236550349,
+          0.0019091983784139677
+        ],
+        [
+          -0.031255318857680944,
+          -0.07878837112590696,
+          -0.09204287512751204
+        ],
+        [
+          -0.030301560748465975,
+          -0.008868728720158911,
+          0.06346407239557833
+        ],
+        [
+          0.009834681711951121,
+          -0.04636221507943732,
+          0.08954722443713808
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 0.45409996528178453,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              176.60886604899773,
+              0.0
+            ],
+            [
+              135.31542323382618,
+              0.0
+            ],
+            [
+              94.48150051179353,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              178.63586604899783,
+              0.0
+            ],
+            [
+              137.34242323382628,
+              0.0
+            ],
+            [
+              96.50850051179366,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 11.0,
+      "x": [
+        [
+          133.86486604899778,
+          20.0
+        ],
+        [
+          92.57142323382624,
+          20.0
+        ],
+        [
+          51.7375005117936,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.03531268131038612,
+          -0.010397767964368754,
+          0.03957472700631115
+        ],
+        [
+          0.043805966553003284,
+          -0.03384223720659696,
+          -0.05653624034114779
+        ],
+        [
+          0.07168959922410689,
+          0.08158277610733045,
+          -0.015333062318698687
+        ],
+        [
+          -0.0986106573061436,
+          0.08547230225910996,
+          0.04179767382786892
+        ],
+        [
+          0.0699920815377566,
+          0.09636021767659164,
+          -0.07924004995731071
+        ]
+      ],
+      "innovation": [
+        [
+          0.03531268131038631,
+          -0.01039776796436856,
+          0.03957472700631115
+        ],
+        [
+          0.04380596655300345,
+          -0.03384223720659699,
+          -0.05653624034114799
+        ],
+        [
+          0.07168959922410678,
+          0.08158277610733056,
+          -0.015333062318698909
+        ],
+        [
+          -0.0986106573061436,
+          0.08547230225910998,
+          0.04179767382786889
+        ],
+        [
+          0.06999208153775668,
+          0.09636021767659178,
+          -0.07924004995731093
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 0.43860008008778095,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              186.6088660489977,
+              0.0
+            ],
+            [
+              145.31542323382615,
+              0.0
+            ],
+            [
+              104.48150051179353,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              188.63586604899783,
+              0.0
+            ],
+            [
+              147.34242323382628,
+              0.0
+            ],
+            [
+              106.50850051179364,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    },
+    {
+      "t": 11.5,
+      "x": [
+        [
+          143.86486604899778,
+          20.0
+        ],
+        [
+          102.57142323382624,
+          20.0
+        ],
+        [
+          61.7375005117936,
+          20.0
+        ]
+      ],
+      "command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "disturbance": [
+        [
+          0.005097354004462762,
+          0.019862080489605916,
+          0.0791360065690716
+        ],
+        [
+          -0.01442685956150136,
+          0.04557521620526073,
+          0.020667875932938173
+        ],
+        [
+          -0.06242781831053712,
+          0.04934001268977051,
+          -0.0619120421563788
+        ],
+        [
+          -0.035172502938824124,
+          -0.06383650952475106,
+          0.028629647582437467
+        ],
+        [
+          0.06413001137508934,
+          0.0747487645968361,
+          -0.07164894675876532
+        ]
+      ],
+      "innovation": [
+        [
+          0.0050973540044626925,
+          0.019862080489606,
+          0.07913600656907152
+        ],
+        [
+          -0.014426859561501387,
+          0.045575216205260866,
+          0.020667875932938173
+        ],
+        [
+          -0.06242781831053734,
+          0.0493400126897707,
+          -0.06191204215637894
+        ],
+        [
+          -0.035172502938824235,
+          -0.06383650952475124,
+          0.028629647582437467
+        ],
+        [
+          0.06413001137508953,
+          0.07474876459683613,
+          -0.07164894675876537
+        ]
+      ],
+      "actuator_states": [
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          2.5,
+          2.5,
+          2.5
+        ]
+      ],
+      "realized_error_in_contract": true,
+      "in_set": true,
+      "certified": true,
+      "intervention": 1.0,
+      "gate_ms": 0.47880003694444895,
+      "rule": "baseline",
+      "actuator_class": "nominal",
+      "certificate_kind": "bounded_actuator_memory_stopping",
+      "actuator_bounds": [
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "actuator_memory_lower": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actuator_memory_upper": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_command": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "baseline_recovery_proposed": false,
+      "baseline_evidence": {
+        "in_set": true,
+        "certified": true,
+        "intervention": 0.0,
+        "certificate_kind": "bounded_actuator_memory_stopping",
+        "actuator_class": "nominal",
+        "actuator_bounds": [
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ],
+          [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1
+          ]
+        ],
+        "actuator_memory_lower": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "actuator_memory_upper": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal": [
+          2.5,
+          2.5,
+          2.5
+        ],
+        "nominal_proposal_error": null,
+        "proposal_certificate": {
+          "certified": true,
+          "reason_code": 0,
+          "substeps": 55,
+          "terminal_lower": [
+            [
+              196.6088660489977,
+              0.0
+            ],
+            [
+              155.31542323382615,
+              0.0
+            ],
+            [
+              114.48150051179353,
+              0.0
+            ]
+          ],
+          "terminal_upper": [
+            [
+              198.63586604899783,
+              0.0
+            ],
+            [
+              157.34242323382628,
+              0.0
+            ],
+            [
+              116.50850051179364,
+              0.0
+            ]
+          ],
+          "terminal_memory_lower": [
+            -5.0,
+            -5.0,
+            -5.0
+          ],
+          "terminal_memory_upper": [
+            -5.0,
+            -5.0,
+            -5.0
+          ]
+        },
+        "recovery_certificate": null,
+        "recovery_applied": false,
+        "safety_scope": "Declared actuator class, bounded innovation, exact observed state and fixed-route contract",
+        "performance_risk_certified": false
+      },
+      "recovery_applied": false,
+      "agent_actions": null,
+      "actor_proposal": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "actual_learning_used": false,
+      "actual_learning_used_ever": false,
+      "candidate_count": 0,
+      "original_candidate_count": 0,
+      "composition": 0,
+      "repair_weight": null,
+      "candidate_evidence": [],
+      "nominal_evidence": [],
+      "selected_bank_differences": [],
+      "selected_phase_differences": [],
+      "mode_search_masks": [],
+      "mode_search_flags": [],
+      "forecast_calls": 0,
+      "performance_forecast_transitions": 0,
+      "completed_planning_model_transitions": 0,
+      "planning_work_complete": true,
+      "recovery_certificate_substeps": 0,
+      "prediction_parameters": {
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "drag": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reconstructed_actuator": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "forecast_bank_stream": 20019,
+      "forecast_bank_size": 33,
+      "external_bank_radius": 0.1,
+      "phase_tolerance_seconds": 0.05,
+      "finite_bank_performance_margin": null,
+      "margin_is_probability": false,
+      "reference_baseline_complete": null,
+      "future_realization_used": false,
+      "true_randomized_plant_used": false,
+      "conditional_performance_risk_certified": false,
+      "proposal_cache": {
+        "requests": 0,
+        "hits": 0,
+        "misses": 0,
+        "successful_misses": 0,
+        "failed_misses": 0,
+        "logical_successful_transitions": 0,
+        "computed_successful_transitions": 0,
+        "capacity_skips": 0
+      },
+      "proposal_cache_entries": 0,
+      "proposal_cache_capacity": 16384,
+      "planning_counter_scope": "Original completed_planning_model_transitions retains logical reference work; proposal_cache separately records work actually recomputed. Transitions inside failed planning calls remain uncounted, as flagged by planning_work_complete."
+    }
+  ],
+  "calls": [
+    {
+      "wall_ms": 9.418400004506111,
+      "error": null
+    },
+    {
+      "wall_ms": 4.395699943415821,
+      "error": null
+    },
+    {
+      "wall_ms": 3.146599978208542,
+      "error": null
+    },
+    {
+      "wall_ms": 1.8933999817818403,
+      "error": null
+    },
+    {
+      "wall_ms": 1.4149999478831887,
+      "error": null
+    },
+    {
+      "wall_ms": 1.1192000238224864,
+      "error": null
+    },
+    {
+      "wall_ms": 1.105200033634901,
+      "error": null
+    },
+    {
+      "wall_ms": 1.1421999661251903,
+      "error": null
+    },
+    {
+      "wall_ms": 1.0596000356599689,
+      "error": null
+    },
+    {
+      "wall_ms": 1.0512999724596739,
+      "error": null
+    },
+    {
+      "wall_ms": 1.0490999557077885,
+      "error": null
+    },
+    {
+      "wall_ms": 1.1660999152809381,
+      "error": null
+    },
+    {
+      "wall_ms": 0.9362000273540616,
+      "error": null
+    },
+    {
+      "wall_ms": 0.803499948233366,
+      "error": null
+    },
+    {
+      "wall_ms": 0.8521000854671001,
+      "error": null
+    },
+    {
+      "wall_ms": 0.6894000107422471,
+      "error": null
+    },
+    {
+      "wall_ms": 0.6202999502420425,
+      "error": null
+    },
+    {
+      "wall_ms": 0.5653999978676438,
+      "error": null
+    },
+    {
+      "wall_ms": 0.5877999356016517,
+      "error": null
+    },
+    {
+      "wall_ms": 0.5487999878823757,
+      "error": null
+    },
+    {
+      "wall_ms": 0.47640001866966486,
+      "error": null
+    },
+    {
+      "wall_ms": 0.4613999044522643,
+      "error": null
+    },
+    {
+      "wall_ms": 0.6152999121695757,
+      "error": null
+    }
+  ],
+  "episode_wall_seconds": 0.8019456999609247
+}

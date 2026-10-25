@@ -27,10 +27,12 @@ not be used as a mature weak comparator to claim method superiority.
 [earlier integration failure](docs/dmps_observable_training_results.md),
 [same-condition recovery baseline: 10/10 versus 0/10](docs/dmps_recovery_quality_results.md),
 [native curriculum-reset validation](docs/dmps_curriculum_probe_results.md).
-The fixed-budget curriculum repair is now collecting training data from the
-same untrained initialization. New policy, old policy and the recovery baseline
-will share a fresh ordinary-merge test cohort; its replay audit was committed
-and hash-bound before any test episode. No repaired-policy efficacy is claimed.
+The fixed-budget curriculum repair is also complete and independently audited.
+It contains 1,535 near-goal and three original-merge successful training episodes,
+but still completes **0/10 ordinary test tasks**, versus the recovery baseline's
+**10/10**. One additional vehicle arrives under the repaired policy; the third
+still stops, so the team-level repair has failed. All failures are retained.
+[Complete curriculum results](docs/dmps_curriculum_training_results.md),
 [Training contract](docs/dmps_curriculum_training_protocol.md),
 [pre-test independent audit contract](docs/dmps_curriculum_audit_contract.md).
 

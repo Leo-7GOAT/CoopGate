@@ -1,0 +1,3459 @@
+{
+  "complete_sha256": "1d30216357afb15413da99f5345b2dcf271255f6af01bffb70dee37921b613d4",
+  "observed_exit": {
+    "exit_code": 0,
+    "native_pid": 51560,
+    "tool_session_id": 35639,
+    "observation": "Completed functions.write_stdin returned exit_code 0",
+    "complete_sha256": "1d30216357afb15413da99f5345b2dcf271255f6af01bffb70dee37921b613d4",
+    "utc": "2026-10-25T09:07:10.872172+00:00"
+  },
+  "audit_contract_sha256": "c1bf140f59872fddd2197ef29335c09bf4b9a978331585080c6d5eaf5d0134d8",
+  "all_physics_and_replay_arrays_reconstructed": true,
+  "matched_untrained_initialization": true,
+  "ordinary_test_resets_verified": true,
+  "all_source_and_file_hashes_verified": true,
+  "training_actual_decisions": 32768,
+  "training_physical_substeps": 163840,
+  "synthetic_penalty_rows": 305,
+  "replay_rows": 33073,
+  "optimizer_steps": {
+    "actor": [
+      15352
+    ],
+    "critic1": [
+      30704
+    ],
+    "critic2": [
+      30704
+    ]
+  },
+  "parameter_l2_changes": {
+    "actor": 23.440207332815632,
+    "critic1": 21.89495952440892,
+    "critic2": 21.990862548723356,
+    "actor_targ": 23.186174227121548,
+    "critic1_targ": 21.76705965793158,
+    "critic2_targ": 21.8433894464793
+  },
+  "phase_actual_decisions": {
+    "near_goal": 8196,
+    "post_merge": 8200,
+    "single_approach": 8200,
+    "original_merge": 8172
+  },
+  "nonempty_training_episodes": 2027,
+  "absorbing_horizon_rows_verified": 488,
+  "baseline_physical_substeps": 1165,
+  "baseline_commands_replayed": 233,
+  "aggregate": {
+    "new": {
+      "conditions": 10,
+      "completed": 0,
+      "baseline_completed": 10,
+      "harms_with_complete_baseline": 10,
+      "adoption_observed": 10,
+      "adoption_unassessable": 0,
+      "failures_without_observed_reference_adoption": 0,
+      "original_proposal_accepted_steps": 500,
+      "actual_decisions": 500,
+      "original_planner_call_ms": {
+        "count": 500,
+        "mean": 6.033146801637486,
+        "p95": 13.900289993034658,
+        "max": 22.3942999728024
+      },
+      "all_scope_cost_gain_percent": null
+    },
+    "old": {
+      "conditions": 10,
+      "completed": 0,
+      "baseline_completed": 10,
+      "harms_with_complete_baseline": 10,
+      "adoption_observed": 10,
+      "adoption_unassessable": 0,
+      "failures_without_observed_reference_adoption": 0,
+      "original_proposal_accepted_steps": 500,
+      "actual_decisions": 500,
+      "original_planner_call_ms": {
+        "count": 500,
+        "mean": 4.119671398540959,
+        "p95": 12.900859978981316,
+        "max": 23.2155000558123
+      },
+      "all_scope_cost_gain_percent": null
+    }
+  },
+  "paired": {
+    "new": [
+      {
+        "case": {
+          "index": 0,
+          "seed": 169901001,
+          "plant": "nominal",
+          "disturbance": "clean"
+        },
+        "baseline_row": {
+          "seed": 169901001,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 11.5,
+          "mean_capped_finish_s": 9.5,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 2.842170943040401e-14,
+          "mean_jerk": 0.5797101449275363,
+          "intervention": 1.0,
+          "disturbance": "clean",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "nominal",
+            "gain": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "drag": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tau": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 0.0,
+          "error_contract_exceeded_substeps": 0,
+          "nominal_physical_assumption_observed": true,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "a6bedce1e512d6531cd02fe7a0b72bb64f229cdb254ec48d63308877004e620a",
+          "initial": [
+            [
+              -72.20921053273804,
+              11.567058943036484
+            ],
+            [
+              -72.14162453825332,
+              10.486800363487305
+            ],
+            [
+              -111.8739964317489,
+              9.822428578683779
+            ]
+          ],
+          "plant_name": "nominal",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            7.625,
+            10.0,
+            11.875
+          ],
+          "team_cost": 9.833333333333334,
+          "per_vehicle_finish": [
+            7.5,
+            9.5,
+            11.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            10.0,
+            7.5
+          ],
+          "control_steps": 23,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.0,
+          "prediction_errors": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            26.6128536388278,
+            7.692811820656061,
+            29.950443271547556
+          ],
+          "nominal_model_decisions": 400
+        },
+        "capped_finish": [
+          21.5,
+          7.5,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 1,
+          "seed": 169901002,
+          "plant": "nominal",
+          "disturbance": "clean"
+        },
+        "baseline_row": {
+          "seed": 169901002,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 11.5,
+          "mean_capped_finish_s": 9.666666666666666,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 2.1316282072803006e-14,
+          "mean_jerk": 0.5434782608695653,
+          "intervention": 1.0,
+          "disturbance": "clean",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "nominal",
+            "gain": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "drag": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tau": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 0.0,
+          "error_contract_exceeded_substeps": 0,
+          "nominal_physical_assumption_observed": true,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "a6bedce1e512d6531cd02fe7a0b72bb64f229cdb254ec48d63308877004e620a",
+          "initial": [
+            [
+              -79.49267266848278,
+              11.04005204926093
+            ],
+            [
+              -94.87401108140261,
+              11.197009391471369
+            ],
+            [
+              -122.08956762651266,
+              11.836414285249003
+            ]
+          ],
+          "plant_name": "nominal",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            8.125,
+            9.8125,
+            12.0
+          ],
+          "team_cost": 9.979166666666666,
+          "per_vehicle_finish": [
+            8.0,
+            9.5,
+            11.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            6.25,
+            10.0
+          ],
+          "control_steps": 23,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.0,
+          "prediction_errors": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            27.140496034175158,
+            8.674898006021976,
+            29.821199219673872
+          ],
+          "nominal_model_decisions": 427
+        },
+        "capped_finish": [
+          22.0,
+          8.5,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 2,
+          "seed": 169901001,
+          "plant": "nominal",
+          "disturbance": "uniform"
+        },
+        "baseline_row": {
+          "seed": 169901001,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 11.5,
+          "mean_capped_finish_s": 9.5,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 0.04100160781965734,
+          "mean_jerk": 0.5797101449275363,
+          "intervention": 1.0,
+          "disturbance": "uniform",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "nominal",
+            "gain": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "drag": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tau": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 0.09963808297543242,
+          "error_contract_exceeded_substeps": 0,
+          "nominal_physical_assumption_observed": true,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "c56c827706baf67061541efe1862a48c3591770adfb362bbf316634bc082901e",
+          "initial": [
+            [
+              -72.20921053273804,
+              11.567058943036484
+            ],
+            [
+              -72.14162453825332,
+              10.486800363487305
+            ],
+            [
+              -111.8739964317489,
+              9.822428578683779
+            ]
+          ],
+          "plant_name": "nominal",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            7.625,
+            10.0,
+            11.875
+          ],
+          "team_cost": 9.833333333333334,
+          "per_vehicle_finish": [
+            7.5,
+            9.5,
+            11.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            10.0,
+            7.5
+          ],
+          "control_steps": 23,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.041001607819659114,
+          "prediction_errors": [
+            0.011548566864352239,
+            0.041001607819659114,
+            0.005021961133326869,
+            0.014759758039495807,
+            0.025311381069538008,
+            0.017132144781886183,
+            0.014499274954700603,
+            0.016600892525114652,
+            0.021047557191177457,
+            0.011759332216846552,
+            0.004974470838334355,
+            0.0106020333247967,
+            0.006478939771584091,
+            0.01027814437060759,
+            0.022417494529214377,
+            0.002980227306348837,
+            0.00818271563946249,
+            0.02487859946136295,
+            0.01020338069225013,
+            0.014227015314914437,
+            0.0025592492145383172,
+            0.01221896713191084,
+            0.004279981543130695,
+            0.014336662752674645,
+            0.01620108161692002,
+            0.019925761628747374,
+            0.006362107700032205,
+            0.0059674212673064275,
+            0.001872487769422726,
+            0.023589762225557642,
+            0.007258189367933987,
+            0.03863286556493506,
+            0.015336427072167425,
+            0.0017763501175895868,
+            0.017836945085798916,
+            0.002399437647838454,
+            0.003112941462529051,
+            0.03808056812488836,
+            0.0029042485190160505,
+            0.00953031294917217,
+            0.0016001879978020384,
+            0.01632060755080289,
+            0.007583006721425534,
+            0.008897144624754105,
+            0.012896728713522876,
+            0.039098143836508115,
+            0.0011475936791498498,
+            0.016407101800606227,
+            0.02438982250618693,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            26.607451625168324,
+            7.693615913391113,
+            29.932666573673487
+          ],
+          "nominal_model_decisions": 395
+        },
+        "capped_finish": [
+          21.5,
+          7.5,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 3,
+          "seed": 169901002,
+          "plant": "nominal",
+          "disturbance": "uniform"
+        },
+        "baseline_row": {
+          "seed": 169901002,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 11.5,
+          "mean_capped_finish_s": 9.666666666666666,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 0.03887467304817882,
+          "mean_jerk": 0.5434782608695653,
+          "intervention": 1.0,
+          "disturbance": "uniform",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "nominal",
+            "gain": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "drag": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tau": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 0.09975370640727999,
+          "error_contract_exceeded_substeps": 0,
+          "nominal_physical_assumption_observed": true,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "3cd0c48f45b0f58955a673bcefc1671fc839ecf27674aaf76b8b4359814f5693",
+          "initial": [
+            [
+              -79.49267266848278,
+              11.04005204926093
+            ],
+            [
+              -94.87401108140261,
+              11.197009391471369
+            ],
+            [
+              -122.08956762651266,
+              11.836414285249003
+            ]
+          ],
+          "plant_name": "nominal",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            8.125,
+            9.8125,
+            12.0
+          ],
+          "team_cost": 9.979166666666666,
+          "per_vehicle_finish": [
+            8.0,
+            9.5,
+            11.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            6.25,
+            10.0
+          ],
+          "control_steps": 23,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.03887467304817882,
+          "prediction_errors": [
+            0.008225539637470192,
+            0.03887467304817882,
+            0.01792893637252746,
+            0.019787203698747646,
+            0.02978404222857023,
+            0.013973472436457968,
+            0.006787383154772897,
+            0.0032692419069348944,
+            0.020410911437021007,
+            0.011890354420490468,
+            0.015881817664608278,
+            0.012761994508839969,
+            0.01517943207089889,
+            0.026859275278451555,
+            0.011779096345178264,
+            0.01630696716497959,
+            0.012517160677914196,
+            0.014238100569733958,
+            0.0075361979071549845,
+            0.008479615212704683,
+            0.01303842212530737,
+            0.010871696825423882,
+            0.006111703584782191,
+            0.0033250589037416844,
+            0.00987600131577615,
+            0.010191489156220257,
+            0.026658992338266074,
+            0.00587114638484465,
+            0.0026547186623160357,
+            0.00635879559519914,
+            0.0031244532911758327,
+            0.0002733905010625648,
+            0.0014365392749038364,
+            0.0024059155680555833,
+            0.0075858560371067085,
+            0.0018886761047749445,
+            0.013872449429392475,
+            0.00508146721884728,
+            0.007113283025523387,
+            0.007949384313558738,
+            0.017545530225898887,
+            0.005702080464388359,
+            0.005708136895277605,
+            0.007035391676328828,
+            0.03311759951717974,
+            0.010304559698706584,
+            0.003919526472749624,
+            2.4056076725287312e-05,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            27.061584524810314,
+            8.6752445474267,
+            29.7953614667058
+          ],
+          "nominal_model_decisions": 422
+        },
+        "capped_finish": [
+          22.0,
+          8.5,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 4,
+          "seed": 169901001,
+          "plant": "gain_drag",
+          "disturbance": "uniform"
+        },
+        "baseline_row": {
+          "seed": 169901001,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 11.5,
+          "mean_capped_finish_s": 9.5,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 0.10020718362355652,
+          "mean_jerk": 0.5797101449275363,
+          "intervention": 1.0,
+          "disturbance": "uniform",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "gain_drag",
+            "gain": [
+              0.9902086458421533,
+              1.0103481886886043,
+              0.99515570214491
+            ],
+            "drag": [
+              0.00030629360988974934,
+              0.0003682612132290264,
+              0.0004904724241222227
+            ],
+            "tau": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 0.30034258941412606,
+          "error_contract_exceeded_substeps": 0,
+          "nominal_physical_assumption_observed": true,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "c56c827706baf67061541efe1862a48c3591770adfb362bbf316634bc082901e",
+          "initial": [
+            [
+              -72.20921053273804,
+              11.567058943036484
+            ],
+            [
+              -72.14162453825332,
+              10.486800363487305
+            ],
+            [
+              -111.8739964317489,
+              9.822428578683779
+            ]
+          ],
+          "plant_name": "gain_drag",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            7.625,
+            10.0,
+            11.875
+          ],
+          "team_cost": 9.833333333333334,
+          "per_vehicle_finish": [
+            7.5,
+            9.5,
+            11.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            10.0,
+            7.5
+          ],
+          "control_steps": 23,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.09194482471570709,
+          "prediction_errors": [
+            0.015267646537608925,
+            0.0589044731555628,
+            0.025430819183817732,
+            0.02467336282116861,
+            0.03570749569864162,
+            0.023850486902606605,
+            0.06187826301108501,
+            0.023012769222090057,
+            0.01932784154280931,
+            0.014637575045310491,
+            0.006082556378956383,
+            0.008192947107447335,
+            0.011814542912445658,
+            0.012861860094484534,
+            0.030723174940825437,
+            0.004817525990318927,
+            0.01695521384592369,
+            0.02169003747134801,
+            0.019346638339733713,
+            0.017126356439488788,
+            0.006278857195875842,
+            0.002371704972679023,
+            0.0062147065960775905,
+            0.0020409793866549286,
+            0.016866359770829398,
+            0.03323857763595317,
+            0.008188235548280076,
+            0.020559659190910295,
+            0.005149157313026009,
+            0.03971565683104483,
+            0.013587163474741537,
+            0.0580407189782548,
+            0.006623636541077005,
+            0.023876504079851202,
+            0.029506037721365175,
+            0.02755782398152995,
+            0.01314309565124816,
+            0.009368540250356716,
+            0.016961083093114837,
+            0.02315794426675133,
+            0.024022566070243556,
+            0.05330340188917404,
+            0.019901628468200983,
+            0.0504641109187407,
+            0.034210268561921,
+            0.09194482471570709,
+            0.05839641001996654,
+            0.049127297510061396,
+            0.006562059001325338,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            26.586151564493775,
+            8.237980745732784,
+            30.013774912804365
+          ],
+          "nominal_model_decisions": 394
+        },
+        "capped_finish": [
+          21.5,
+          8.0,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 5,
+          "seed": 169901002,
+          "plant": "gain_drag",
+          "disturbance": "uniform"
+        },
+        "baseline_row": {
+          "seed": 169901002,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 11.5,
+          "mean_capped_finish_s": 9.666666666666666,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 0.05488060526815097,
+          "mean_jerk": 0.5434782608695653,
+          "intervention": 1.0,
+          "disturbance": "uniform",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "gain_drag",
+            "gain": [
+              1.0075731499026934,
+              1.0378431770828525,
+              1.0231302332682968
+            ],
+            "drag": [
+              0.0002600349610277542,
+              0.00047340288742502603,
+              0.00046844231181257317
+            ],
+            "tau": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 0.2254205977890118,
+          "error_contract_exceeded_substeps": 0,
+          "nominal_physical_assumption_observed": true,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "3cd0c48f45b0f58955a673bcefc1671fc839ecf27674aaf76b8b4359814f5693",
+          "initial": [
+            [
+              -79.49267266848278,
+              11.04005204926093
+            ],
+            [
+              -94.87401108140261,
+              11.197009391471369
+            ],
+            [
+              -122.08956762651266,
+              11.836414285249003
+            ]
+          ],
+          "plant_name": "gain_drag",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            8.125,
+            9.8125,
+            12.0
+          ],
+          "team_cost": 9.979166666666666,
+          "per_vehicle_finish": [
+            8.0,
+            9.5,
+            11.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            6.25,
+            10.0
+          ],
+          "control_steps": 23,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.06694478882906552,
+          "prediction_errors": [
+            0.06694478882906552,
+            0.01293039773302418,
+            0.04547902615618149,
+            0.02925948437098924,
+            0.03677020328529412,
+            0.030830321970487518,
+            0.04249262498824358,
+            0.0114088133828254,
+            0.01732481975398681,
+            0.011643357270293642,
+            0.020175414671988356,
+            0.014272847915496989,
+            0.0167591142959842,
+            0.028704671166237983,
+            0.018382542108303923,
+            0.01960939414739027,
+            0.0416933968022446,
+            0.01631527714474612,
+            0.013587066585250218,
+            0.004979900898756107,
+            0.010694890754054942,
+            0.0038306811603454616,
+            0.008717111133188293,
+            0.003422316743673992,
+            0.009972024489633302,
+            0.017583252721180997,
+            0.026318511948244527,
+            0.011873752107488755,
+            0.003976908632750131,
+            0.0040289600305758455,
+            0.006655496253374693,
+            0.0011612515542456237,
+            0.006112016056412983,
+            0.002821437536502991,
+            0.020487643616588613,
+            0.0036661216243025763,
+            0.029805095695689232,
+            0.012784391447988597,
+            0.012104993536398823,
+            0.019119013962924924,
+            0.040372850778664926,
+            0.020511552507036512,
+            0.02100771210850283,
+            0.011809720650676425,
+            0.056306636341606264,
+            0.018080141953088713,
+            0.03790163193282581,
+            0.005192709814863861,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            27.033911731094122,
+            8.674531292170286,
+            29.80862132459879
+          ],
+          "nominal_model_decisions": 427
+        },
+        "capped_finish": [
+          22.0,
+          8.5,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 6,
+          "seed": 169901001,
+          "plant": "lag_mild",
+          "disturbance": "uniform"
+        },
+        "baseline_row": {
+          "seed": 169901001,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 11.5,
+          "mean_capped_finish_s": 9.5,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 0.04100155600906419,
+          "mean_jerk": 0.5797101449275363,
+          "intervention": 1.0,
+          "disturbance": "uniform",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "lag_mild",
+            "gain": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "drag": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tau": [
+              0.03755216146053833,
+              0.042587047172151095,
+              0.03878892553622749
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 0.2522268934088454,
+          "error_contract_exceeded_substeps": 0,
+          "nominal_physical_assumption_observed": true,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "c56c827706baf67061541efe1862a48c3591770adfb362bbf316634bc082901e",
+          "initial": [
+            [
+              -72.20921053273804,
+              11.567058943036484
+            ],
+            [
+              -72.14162453825332,
+              10.486800363487305
+            ],
+            [
+              -111.8739964317489,
+              9.822428578683779
+            ]
+          ],
+          "plant_name": "lag_mild",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            7.625,
+            10.0,
+            11.875
+          ],
+          "team_cost": 9.833333333333334,
+          "per_vehicle_finish": [
+            7.5,
+            9.5,
+            11.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            10.0,
+            7.5
+          ],
+          "control_steps": 23,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.06154128925462743,
+          "prediction_errors": [
+            0.0320883001099137,
+            0.06154128925462743,
+            0.023553103557772737,
+            0.03100168943234216,
+            0.0065689944901556885,
+            0.02906528431950406,
+            0.03324166153408381,
+            0.035343279104499636,
+            0.01842796748310871,
+            0.032299013651948094,
+            0.02175448365699717,
+            0.01768405832224218,
+            0.02701862120668541,
+            0.030817825805708687,
+            0.04115988110858737,
+            0.020015265959630213,
+            0.026925102218846808,
+            0.006136212881977965,
+            0.028945767271635114,
+            0.0329694018942992,
+            0.0036077460947496753,
+            0.003297537600096767,
+            0.00871022622667006,
+            0.0055131449337544325,
+            0.004206233354777211,
+            0.038668148208123476,
+            0.01238027887935278,
+            0.02470980784669141,
+            0.016869898809962258,
+            0.042332148804942626,
+            0.010551182422408267,
+            0.05737525368367624,
+            0.03407881365154797,
+            0.020518736696972795,
+            0.006076147913770313,
+            0.021141824227223438,
+            0.02055042007633645,
+            0.019338181545506927,
+            0.02064876966849738,
+            0.00921207363021459,
+            0.017761668940806885,
+            0.0350629941301861,
+            0.026325393300810518,
+            0.02763953120413909,
+            0.0117484697105521,
+            0.03909814573098558,
+            0.0011475936791498498,
+            0.016407101800606227,
+            0.004746329861546883,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            26.597468169406056,
+            7.692773655056953,
+            29.996366158127785
+          ],
+          "nominal_model_decisions": 392
+        },
+        "capped_finish": [
+          21.5,
+          7.5,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 7,
+          "seed": 169901002,
+          "plant": "lag_mild",
+          "disturbance": "uniform"
+        },
+        "baseline_row": {
+          "seed": 169901002,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 11.5,
+          "mean_capped_finish_s": 9.666666666666666,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 0.07058467821739889,
+          "mean_jerk": 0.5434782608695653,
+          "intervention": 1.0,
+          "disturbance": "uniform",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "lag_mild",
+            "gain": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "drag": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tau": [
+              0.041893287475673356,
+              0.049460794270713086,
+              0.045782558317074215
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 0.3533173998287862,
+          "error_contract_exceeded_substeps": 0,
+          "nominal_physical_assumption_observed": true,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "3cd0c48f45b0f58955a673bcefc1671fc839ecf27674aaf76b8b4359814f5693",
+          "initial": [
+            [
+              -79.49267266848278,
+              11.04005204926093
+            ],
+            [
+              -94.87401108140261,
+              11.197009391471369
+            ],
+            [
+              -122.08956762651266,
+              11.836414285249003
+            ]
+          ],
+          "plant_name": "lag_mild",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            8.125,
+            9.8125,
+            12.0
+          ],
+          "team_cost": 9.979166666666666,
+          "per_vehicle_finish": [
+            8.0,
+            9.5,
+            11.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            6.25,
+            10.0
+          ],
+          "control_steps": 23,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.0585684209077848,
+          "prediction_errors": [
+            0.029927768953898592,
+            0.022259701910405383,
+            0.04322971245454177,
+            0.039278222170981536,
+            0.05807762264929828,
+            0.03518649066113699,
+            0.031052378530816327,
+            0.032765032139326244,
+            0.05212005706635381,
+            0.03661038818488649,
+            0.04759096329394197,
+            0.038062770590856054,
+            0.04688857770023169,
+            0.0585684209077848,
+            0.043488241974511954,
+            0.044453942949051806,
+            0.019191984951419494,
+            0.044474559754568266,
+            0.01323672235724227,
+            0.033780420980637604,
+            0.035314672199101116,
+            0.03617249273709677,
+            0.007947661254305238,
+            0.024499875764233625,
+            0.03219065876567262,
+            0.013152597456953075,
+            0.0479950584160429,
+            0.01569710827512516,
+            0.015619967906925325,
+            0.02452914946098428,
+            0.013796988525063725,
+            0.016829320035951056,
+            0.019972607139342458,
+            0.01951897617404974,
+            0.01771496174946563,
+            0.02436676147097394,
+            0.011428326652621834,
+            0.030382243300863365,
+            0.032414059107537696,
+            0.0332501603955766,
+            0.007755245856117199,
+            0.031002856546404445,
+            0.031008912977291914,
+            0.018265384405687257,
+            0.03423873033336733,
+            0.010304552348252116,
+            0.003919526472795809,
+            0.0006920920991291268,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            27.067099627107382,
+            9.206232700496912,
+            29.808451160788536
+          ],
+          "nominal_model_decisions": 421
+        },
+        "capped_finish": [
+          22.0,
+          9.0,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 8,
+          "seed": 169901001,
+          "plant": "lag_strong",
+          "disturbance": "uniform"
+        },
+        "baseline_row": {
+          "seed": 169901001,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 12.0,
+          "mean_capped_finish_s": 10.0,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 0.882755049509349,
+          "mean_jerk": 0.6597222222222222,
+          "intervention": 1.0,
+          "disturbance": "uniform",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "lag_strong",
+            "gain": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "drag": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tau": [
+              0.3755216146053833,
+              0.42587047172151093,
+              0.38788925536227487
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 2.7190657050615994,
+          "error_contract_exceeded_substeps": 26,
+          "nominal_physical_assumption_observed": false,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "c56c827706baf67061541efe1862a48c3591770adfb362bbf316634bc082901e",
+          "initial": [
+            [
+              -72.20921053273804,
+              11.567058943036484
+            ],
+            [
+              -72.14162453825332,
+              10.486800363487305
+            ],
+            [
+              -111.8739964317489,
+              9.822428578683779
+            ]
+          ],
+          "plant_name": "lag_strong",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            7.625,
+            11.0625,
+            12.5
+          ],
+          "team_cost": 10.395833333333334,
+          "per_vehicle_finish": [
+            7.5,
+            10.5,
+            12.0
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            11.25,
+            10.0
+          ],
+          "control_steps": 24,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.6581494130998831,
+          "prediction_errors": [
+            0.6581494130998831,
+            0.4871655984849603,
+            0.49593412789933744,
+            0.4869384228339033,
+            0.466426242141293,
+            0.49113475295200804,
+            0.49154117701367284,
+            0.49358878020782626,
+            0.4766877330154724,
+            0.49457855486084146,
+            0.484035578336381,
+            0.4799647249606118,
+            0.4892994057868576,
+            0.5048011537880881,
+            0.4943819885558778,
+            0.47960163835651803,
+            0.25305751805570686,
+            0.5134213193284609,
+            0.4710138968475499,
+            0.4955013813098803,
+            0.47331090490083016,
+            0.4650783625280597,
+            0.1542346350702175,
+            0.45793538571865744,
+            0.4620464566019433,
+            0.49659525793795023,
+            0.47072412704800204,
+            0.48294360131695946,
+            0.45044849036773993,
+            0.5071060945450112,
+            0.45859227576224715,
+            0.5185762526709814,
+            0.4841614168851436,
+            0.48093420753333405,
+            0.45859214886233524,
+            0.4795491592424739,
+            0.4787674475727872,
+            0.4389291034617262,
+            0.4789027823814642,
+            0.4674695913674487,
+            0.47601826105095313,
+            0.4933198306852926,
+            0.484582165301477,
+            0.48589632025271356,
+            0.1409958338366195,
+            0.07973898225309561,
+            0.010216079704751024,
+            0.013572756789539397,
+            0.025138332737626,
+            0.0007182096167070995
+          ],
+          "per_vehicle_cost": [
+            26.71895670518279,
+            8.207063805311918,
+            29.970668129622936
+          ],
+          "nominal_model_decisions": 385
+        },
+        "capped_finish": [
+          21.5,
+          8.0,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 9,
+          "seed": 169901002,
+          "plant": "lag_strong",
+          "disturbance": "uniform"
+        },
+        "baseline_row": {
+          "seed": 169901002,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 12.5,
+          "mean_capped_finish_s": 10.333333333333334,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 0.8335497101339477,
+          "mean_jerk": 0.6666666666666665,
+          "intervention": 1.0,
+          "disturbance": "uniform",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "lag_strong",
+            "gain": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "drag": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tau": [
+              0.4189328747567336,
+              0.4946079427071308,
+              0.4578255831707421
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 2.418460041882749,
+          "error_contract_exceeded_substeps": 37,
+          "nominal_physical_assumption_observed": false,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "3cd0c48f45b0f58955a673bcefc1671fc839ecf27674aaf76b8b4359814f5693",
+          "initial": [
+            [
+              -79.49267266848278,
+              11.04005204926093
+            ],
+            [
+              -94.87401108140261,
+              11.197009391471369
+            ],
+            [
+              -122.08956762651266,
+              11.836414285249003
+            ]
+          ],
+          "plant_name": "lag_strong",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            8.125,
+            10.875,
+            13.25
+          ],
+          "team_cost": 10.75,
+          "per_vehicle_finish": [
+            8.0,
+            10.5,
+            12.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            7.5,
+            15.0
+          ],
+          "control_steps": 25,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.701466135534698,
+          "prediction_errors": [
+            0.701466135534698,
+            0.4472485270153541,
+            0.5357752522565491,
+            0.5106703727818331,
+            0.5380922860315973,
+            0.5053617128728822,
+            0.5091447274025329,
+            0.5105317467202211,
+            0.529996023520888,
+            0.5144497001093837,
+            0.5254425729898848,
+            0.5086225999559546,
+            0.5247374457145897,
+            0.5364168244895353,
+            0.5213368013756394,
+            0.5343126270486198,
+            0.4970405096139672,
+            0.5237957649770044,
+            0.44332209142513845,
+            0.5179833202603525,
+            0.2562950085229334,
+            0.5833110488386305,
+            0.4300357633204822,
+            0.5172884341455779,
+            0.30348119687414354,
+            0.439671021450994,
+            0.31798843010386335,
+            0.33363260406169104,
+            0.19438391188592874,
+            0.23102142172522822,
+            0.1421540556847143,
+            0.1505020409368374,
+            0.13789207687982952,
+            0.13123964243196973,
+            0.1865286007871152,
+            0.19223884843855288,
+            0.44112394101937014,
+            0.4358496206154481,
+            0.5227074280111168,
+            0.4978280434207534,
+            0.48012892591914635,
+            0.5010131960238144,
+            0.5017357127084132,
+            0.48466192699454425,
+            0.20481533139906816,
+            0.04174659251128432,
+            0.019699131809943538,
+            0.00011156622332464394,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            26.571187786757946,
+            9.200597312301397,
+            29.640287283807993
+          ],
+          "nominal_model_decisions": 404
+        },
+        "capped_finish": [
+          22.0,
+          9.0,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      }
+    ],
+    "old": [
+      {
+        "case": {
+          "index": 0,
+          "seed": 169901001,
+          "plant": "nominal",
+          "disturbance": "clean"
+        },
+        "baseline_row": {
+          "seed": 169901001,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 11.5,
+          "mean_capped_finish_s": 9.5,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 2.842170943040401e-14,
+          "mean_jerk": 0.5797101449275363,
+          "intervention": 1.0,
+          "disturbance": "clean",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "nominal",
+            "gain": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "drag": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tau": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 0.0,
+          "error_contract_exceeded_substeps": 0,
+          "nominal_physical_assumption_observed": true,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "a6bedce1e512d6531cd02fe7a0b72bb64f229cdb254ec48d63308877004e620a",
+          "initial": [
+            [
+              -72.20921053273804,
+              11.567058943036484
+            ],
+            [
+              -72.14162453825332,
+              10.486800363487305
+            ],
+            [
+              -111.8739964317489,
+              9.822428578683779
+            ]
+          ],
+          "plant_name": "nominal",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            7.625,
+            10.0,
+            11.875
+          ],
+          "team_cost": 9.833333333333334,
+          "per_vehicle_finish": [
+            7.5,
+            9.5,
+            11.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            10.0,
+            7.5
+          ],
+          "control_steps": 23,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.0,
+          "prediction_errors": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            25.41589006781578,
+            8.398146029561758,
+            28.41540174279362
+          ],
+          "nominal_model_decisions": 269
+        },
+        "capped_finish": [
+          25.0,
+          8.0,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 1,
+          "seed": 169901002,
+          "plant": "nominal",
+          "disturbance": "clean"
+        },
+        "baseline_row": {
+          "seed": 169901002,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 11.5,
+          "mean_capped_finish_s": 9.666666666666666,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 2.1316282072803006e-14,
+          "mean_jerk": 0.5434782608695653,
+          "intervention": 1.0,
+          "disturbance": "clean",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "nominal",
+            "gain": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "drag": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tau": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 0.0,
+          "error_contract_exceeded_substeps": 0,
+          "nominal_physical_assumption_observed": true,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "a6bedce1e512d6531cd02fe7a0b72bb64f229cdb254ec48d63308877004e620a",
+          "initial": [
+            [
+              -79.49267266848278,
+              11.04005204926093
+            ],
+            [
+              -94.87401108140261,
+              11.197009391471369
+            ],
+            [
+              -122.08956762651266,
+              11.836414285249003
+            ]
+          ],
+          "plant_name": "nominal",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            8.125,
+            9.8125,
+            12.0
+          ],
+          "team_cost": 9.979166666666666,
+          "per_vehicle_finish": [
+            8.0,
+            9.5,
+            11.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            6.25,
+            10.0
+          ],
+          "control_steps": 23,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.0,
+          "prediction_errors": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            25.470626421272755,
+            9.335196088533849,
+            27.91164567694068
+          ],
+          "nominal_model_decisions": 288
+        },
+        "capped_finish": [
+          25.0,
+          9.0,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 2,
+          "seed": 169901001,
+          "plant": "nominal",
+          "disturbance": "uniform"
+        },
+        "baseline_row": {
+          "seed": 169901001,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 11.5,
+          "mean_capped_finish_s": 9.5,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 0.04100160781965734,
+          "mean_jerk": 0.5797101449275363,
+          "intervention": 1.0,
+          "disturbance": "uniform",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "nominal",
+            "gain": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "drag": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tau": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 0.09963808297543242,
+          "error_contract_exceeded_substeps": 0,
+          "nominal_physical_assumption_observed": true,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "c56c827706baf67061541efe1862a48c3591770adfb362bbf316634bc082901e",
+          "initial": [
+            [
+              -72.20921053273804,
+              11.567058943036484
+            ],
+            [
+              -72.14162453825332,
+              10.486800363487305
+            ],
+            [
+              -111.8739964317489,
+              9.822428578683779
+            ]
+          ],
+          "plant_name": "nominal",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            7.625,
+            10.0,
+            11.875
+          ],
+          "team_cost": 9.833333333333334,
+          "per_vehicle_finish": [
+            7.5,
+            9.5,
+            11.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            10.0,
+            7.5
+          ],
+          "control_steps": 23,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.041001607819658226,
+          "prediction_errors": [
+            0.011548566864352239,
+            0.041001607819658226,
+            0.005021961133326869,
+            0.014759758039495807,
+            0.025311381069538896,
+            0.017132144781886183,
+            0.013086889477857966,
+            0.0001750105959015258,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0009438922924118742,
+            0.0013180260263396804,
+            0.00390010305066113,
+            0.03071207017723765,
+            0.0008490109694783143,
+            9.41590967755701e-05,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            25.4144520573318,
+            8.399287295527756,
+            28.42257176246494
+          ],
+          "nominal_model_decisions": 267
+        },
+        "capped_finish": [
+          25.0,
+          8.0,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 3,
+          "seed": 169901002,
+          "plant": "nominal",
+          "disturbance": "uniform"
+        },
+        "baseline_row": {
+          "seed": 169901002,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 11.5,
+          "mean_capped_finish_s": 9.666666666666666,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 0.03887467304817882,
+          "mean_jerk": 0.5434782608695653,
+          "intervention": 1.0,
+          "disturbance": "uniform",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "nominal",
+            "gain": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "drag": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tau": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 0.09975370640727999,
+          "error_contract_exceeded_substeps": 0,
+          "nominal_physical_assumption_observed": true,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "3cd0c48f45b0f58955a673bcefc1671fc839ecf27674aaf76b8b4359814f5693",
+          "initial": [
+            [
+              -79.49267266848278,
+              11.04005204926093
+            ],
+            [
+              -94.87401108140261,
+              11.197009391471369
+            ],
+            [
+              -122.08956762651266,
+              11.836414285249003
+            ]
+          ],
+          "plant_name": "nominal",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            8.125,
+            9.8125,
+            12.0
+          ],
+          "team_cost": 9.979166666666666,
+          "per_vehicle_finish": [
+            8.0,
+            9.5,
+            11.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            6.25,
+            10.0
+          ],
+          "control_steps": 23,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.03887467304817882,
+          "prediction_errors": [
+            0.008225539637470192,
+            0.03887467304817882,
+            0.017928936372525683,
+            0.019787203698747646,
+            0.02978404222857023,
+            0.0016457941326741832,
+            0.006787383154772897,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.01338873728852974,
+            0.006761684497345044,
+            0.013113509899280729,
+            0.0031763710939429757,
+            0.0033168678381088057,
+            0.004907216572021866,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            25.470863584429026,
+            9.335436791647226,
+            27.912172963260673
+          ],
+          "nominal_model_decisions": 288
+        },
+        "capped_finish": [
+          25.0,
+          9.0,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 4,
+          "seed": 169901001,
+          "plant": "gain_drag",
+          "disturbance": "uniform"
+        },
+        "baseline_row": {
+          "seed": 169901001,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 11.5,
+          "mean_capped_finish_s": 9.5,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 0.10020718362355652,
+          "mean_jerk": 0.5797101449275363,
+          "intervention": 1.0,
+          "disturbance": "uniform",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "gain_drag",
+            "gain": [
+              0.9902086458421533,
+              1.0103481886886043,
+              0.99515570214491
+            ],
+            "drag": [
+              0.00030629360988974934,
+              0.0003682612132290264,
+              0.0004904724241222227
+            ],
+            "tau": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 0.30034258941412606,
+          "error_contract_exceeded_substeps": 0,
+          "nominal_physical_assumption_observed": true,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "c56c827706baf67061541efe1862a48c3591770adfb362bbf316634bc082901e",
+          "initial": [
+            [
+              -72.20921053273804,
+              11.567058943036484
+            ],
+            [
+              -72.14162453825332,
+              10.486800363487305
+            ],
+            [
+              -111.8739964317489,
+              9.822428578683779
+            ]
+          ],
+          "plant_name": "gain_drag",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            7.625,
+            10.0,
+            11.875
+          ],
+          "team_cost": 9.833333333333334,
+          "per_vehicle_finish": [
+            7.5,
+            9.5,
+            11.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            10.0,
+            7.5
+          ],
+          "control_steps": 23,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.07718249188065229,
+          "prediction_errors": [
+            0.015267646537608925,
+            0.04300237250509653,
+            0.025406967894829435,
+            0.015034375946511691,
+            0.035760407334318955,
+            0.023975055993837202,
+            0.06228899818576039,
+            0.010052807257210361,
+            0.0,
+            0.0,
+            0.0,
+            0.0005263341552499412,
+            0.05867836394888215,
+            0.07718249188065229,
+            0.06692289401567209,
+            0.04529687357875645,
+            0.05841237982630787,
+            0.05340995948872518,
+            0.0003731315925534773,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            25.422233838588,
+            8.40373217407614,
+            28.408661351539195
+          ],
+          "nominal_model_decisions": 269
+        },
+        "capped_finish": [
+          25.0,
+          8.0,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 5,
+          "seed": 169901002,
+          "plant": "gain_drag",
+          "disturbance": "uniform"
+        },
+        "baseline_row": {
+          "seed": 169901002,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 11.5,
+          "mean_capped_finish_s": 9.666666666666666,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 0.05488060526815097,
+          "mean_jerk": 0.5434782608695653,
+          "intervention": 1.0,
+          "disturbance": "uniform",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "gain_drag",
+            "gain": [
+              1.0075731499026934,
+              1.0378431770828525,
+              1.0231302332682968
+            ],
+            "drag": [
+              0.0002600349610277542,
+              0.00047340288742502603,
+              0.00046844231181257317
+            ],
+            "tau": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 0.2254205977890118,
+          "error_contract_exceeded_substeps": 0,
+          "nominal_physical_assumption_observed": true,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "3cd0c48f45b0f58955a673bcefc1671fc839ecf27674aaf76b8b4359814f5693",
+          "initial": [
+            [
+              -79.49267266848278,
+              11.04005204926093
+            ],
+            [
+              -94.87401108140261,
+              11.197009391471369
+            ],
+            [
+              -122.08956762651266,
+              11.836414285249003
+            ]
+          ],
+          "plant_name": "gain_drag",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            8.125,
+            9.8125,
+            12.0
+          ],
+          "team_cost": 9.979166666666666,
+          "per_vehicle_finish": [
+            8.0,
+            9.5,
+            11.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            6.25,
+            10.0
+          ],
+          "control_steps": 23,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.11542992045201572,
+          "prediction_errors": [
+            0.06694478882906552,
+            0.04021507716851236,
+            0.06224779809015146,
+            0.06963715172066554,
+            0.03557859946263586,
+            0.03073305821724759,
+            0.033121247375156315,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0005334275887456386,
+            0.07607948596414005,
+            0.09794399211965299,
+            0.08841016679337699,
+            0.11542992045201572,
+            0.060604401262711605,
+            0.06248728497780576,
+            5.58416121521077e-05,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            25.463687658309937,
+            9.333808542694896,
+            27.93013779539615
+          ],
+          "nominal_model_decisions": 291
+        },
+        "capped_finish": [
+          25.0,
+          9.0,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 6,
+          "seed": 169901001,
+          "plant": "lag_mild",
+          "disturbance": "uniform"
+        },
+        "baseline_row": {
+          "seed": 169901001,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 11.5,
+          "mean_capped_finish_s": 9.5,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 0.04100155600906419,
+          "mean_jerk": 0.5797101449275363,
+          "intervention": 1.0,
+          "disturbance": "uniform",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "lag_mild",
+            "gain": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "drag": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tau": [
+              0.03755216146053833,
+              0.042587047172151095,
+              0.03878892553622749
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 0.2522268934088454,
+          "error_contract_exceeded_substeps": 0,
+          "nominal_physical_assumption_observed": true,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "c56c827706baf67061541efe1862a48c3591770adfb362bbf316634bc082901e",
+          "initial": [
+            [
+              -72.20921053273804,
+              11.567058943036484
+            ],
+            [
+              -72.14162453825332,
+              10.486800363487305
+            ],
+            [
+              -111.8739964317489,
+              9.822428578683779
+            ]
+          ],
+          "plant_name": "lag_mild",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            7.625,
+            10.0,
+            11.875
+          ],
+          "team_cost": 9.833333333333334,
+          "per_vehicle_finish": [
+            7.5,
+            9.5,
+            11.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            10.0,
+            7.5
+          ],
+          "control_steps": 23,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.04879110164620215,
+          "prediction_errors": [
+            0.0320883001099137,
+            0.020477347648991895,
+            0.005021963758856884,
+            0.014762995309430593,
+            0.02605490331544158,
+            0.017303753366970653,
+            0.012416319870798276,
+            0.00048095135277215206,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0007934773016913255,
+            0.00708731101351745,
+            0.0015459833675954826,
+            0.04879110164620215,
+            0.025560948300043407,
+            0.015952804462823877,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            25.414261631667614,
+            8.399084174074233,
+            28.41414125263691
+          ],
+          "nominal_model_decisions": 267
+        },
+        "capped_finish": [
+          25.0,
+          8.0,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 7,
+          "seed": 169901002,
+          "plant": "lag_mild",
+          "disturbance": "uniform"
+        },
+        "baseline_row": {
+          "seed": 169901002,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 11.5,
+          "mean_capped_finish_s": 9.666666666666666,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 0.07058467821739889,
+          "mean_jerk": 0.5434782608695653,
+          "intervention": 1.0,
+          "disturbance": "uniform",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "lag_mild",
+            "gain": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "drag": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tau": [
+              0.041893287475673356,
+              0.049460794270713086,
+              0.045782558317074215
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 0.3533173998287862,
+          "error_contract_exceeded_substeps": 0,
+          "nominal_physical_assumption_observed": true,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "3cd0c48f45b0f58955a673bcefc1671fc839ecf27674aaf76b8b4359814f5693",
+          "initial": [
+            [
+              -79.49267266848278,
+              11.04005204926093
+            ],
+            [
+              -94.87401108140261,
+              11.197009391471369
+            ],
+            [
+              -122.08956762651266,
+              11.836414285249003
+            ]
+          ],
+          "plant_name": "lag_mild",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            8.125,
+            9.8125,
+            12.0
+          ],
+          "team_cost": 9.979166666666666,
+          "per_vehicle_finish": [
+            8.0,
+            9.5,
+            11.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            6.25,
+            10.0
+          ],
+          "control_steps": 23,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.07057792242082606,
+          "prediction_errors": [
+            0.029909156711328322,
+            0.07057792242082606,
+            0.018015344792401855,
+            0.01978614277505386,
+            0.029790244078395034,
+            0.0015960702644122193,
+            0.006942607734316653,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.013534524863839437,
+            0.016439824750349885,
+            0.014375482880435442,
+            0.012876869760276577,
+            0.035753807107646196,
+            0.014876537286482971,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            25.470314625650644,
+            9.334878034424037,
+            27.910528895561583
+          ],
+          "nominal_model_decisions": 288
+        },
+        "capped_finish": [
+          25.0,
+          9.0,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 8,
+          "seed": 169901001,
+          "plant": "lag_strong",
+          "disturbance": "uniform"
+        },
+        "baseline_row": {
+          "seed": 169901001,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 12.0,
+          "mean_capped_finish_s": 10.0,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 0.882755049509349,
+          "mean_jerk": 0.6597222222222222,
+          "intervention": 1.0,
+          "disturbance": "uniform",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "lag_strong",
+            "gain": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "drag": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tau": [
+              0.3755216146053833,
+              0.42587047172151093,
+              0.38788925536227487
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 2.7190657050615994,
+          "error_contract_exceeded_substeps": 26,
+          "nominal_physical_assumption_observed": false,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "c56c827706baf67061541efe1862a48c3591770adfb362bbf316634bc082901e",
+          "initial": [
+            [
+              -72.20921053273804,
+              11.567058943036484
+            ],
+            [
+              -72.14162453825332,
+              10.486800363487305
+            ],
+            [
+              -111.8739964317489,
+              9.822428578683779
+            ]
+          ],
+          "plant_name": "lag_strong",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            7.625,
+            11.0625,
+            12.5
+          ],
+          "team_cost": 10.395833333333334,
+          "per_vehicle_finish": [
+            7.5,
+            10.5,
+            12.0
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            11.25,
+            10.0
+          ],
+          "control_steps": 24,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.7442582721480555,
+          "prediction_errors": [
+            0.6573691485883053,
+            0.7442582721480555,
+            0.2176196051947752,
+            0.05349209906331476,
+            0.07873176821566669,
+            0.028160668382957166,
+            0.0012325238010255646,
+            0.050413825308478266,
+            0.005107694886650194,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.22902226339240883,
+            0.03250959147663224,
+            0.39699594868699606,
+            0.5385217169088321,
+            0.2557646853498845,
+            0.004970411751983761,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            25.39686557278037,
+            8.377309375442564,
+            28.261300324462354
+          ],
+          "nominal_model_decisions": 252
+        },
+        "capped_finish": [
+          25.0,
+          8.0,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      },
+      {
+        "case": {
+          "index": 9,
+          "seed": 169901002,
+          "plant": "lag_strong",
+          "disturbance": "uniform"
+        },
+        "baseline_row": {
+          "seed": 169901002,
+          "scenario": "nominal",
+          "method": "bounded_actuator_recovery_baseline",
+          "collision": false,
+          "completed": true,
+          "elapsed": 12.5,
+          "mean_capped_finish_s": 10.333333333333334,
+          "contract_violations": 0,
+          "outside_steps": 0,
+          "uncertified_steps": 0,
+          "max_prediction_error": 0.8335497101339477,
+          "mean_jerk": 0.6666666666666665,
+          "intervention": 1.0,
+          "disturbance": "uniform",
+          "radius": 0.5,
+          "aborted": false,
+          "abort_reason": "",
+          "max_command_slew": 5.0,
+          "plant": {
+            "kind": "lag_strong",
+            "gain": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "drag": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tau": [
+              0.4189328747567336,
+              0.4946079427071308,
+              0.4578255831707421
+            ],
+            "innovation_radius": 0.1
+          },
+          "max_actual_error": 2.418460041882749,
+          "error_contract_exceeded_substeps": 37,
+          "nominal_physical_assumption_observed": false,
+          "external_innovation_radius": 0.1,
+          "physical_error_radius": 0.5,
+          "innovation_tape_sha256": "3cd0c48f45b0f58955a673bcefc1671fc839ecf27674aaf76b8b4359814f5693",
+          "initial": [
+            [
+              -79.49267266848278,
+              11.04005204926093
+            ],
+            [
+              -94.87401108140261,
+              11.197009391471369
+            ],
+            [
+              -122.08956762651266,
+              11.836414285249003
+            ]
+          ],
+          "plant_name": "lag_strong",
+          "rule": "baseline",
+          "model": "none",
+          "certificate_contract": "bounded_actuator_memory_stopping",
+          "per_vehicle_cost": [
+            8.125,
+            10.875,
+            13.25
+          ],
+          "team_cost": 10.75,
+          "per_vehicle_finish": [
+            8.0,
+            10.5,
+            12.5
+          ],
+          "per_vehicle_variation": [
+            2.5,
+            7.5,
+            15.0
+          ],
+          "control_steps": 25,
+          "learned_action_steps": 0
+        },
+        "learning_review": {
+          "actual_decisions": 50,
+          "physical_substeps": 250,
+          "completed": false,
+          "geometry_violations": 0,
+          "collision": false,
+          "administrative_failure": null,
+          "maximum_prediction_error": 0.9476162171374032,
+          "prediction_errors": [
+            0.7011199282437541,
+            0.9476162171374032,
+            0.3114197129602294,
+            0.09274528553947636,
+            0.04881217095489365,
+            0.040442091655709056,
+            0.007410931965203815,
+            3.9698972010171474e-05,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0015739910304546356,
+            0.2683772567477405,
+            0.09458131148273097,
+            0.3517836443633904,
+            0.5788301467403407,
+            0.6227822619286236,
+            0.025048520724908485,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_cost": [
+            25.45821573957801,
+            9.346335815265775,
+            27.996459681540728
+          ],
+          "nominal_model_decisions": 277
+        },
+        "capped_finish": [
+          25.0,
+          9.0,
+          25.0
+        ],
+        "adoption_vs_reference": true,
+        "shadow_errors": [],
+        "baseline_failed": false,
+        "learned_failed": true,
+        "relative_harm": true,
+        "relative_performance_assessable": false,
+        "paired_cost_gain_percent": null
+      }
+    ]
+  },
+  "evaluation_conditions": 30,
+  "independent_test_initials": 2,
+  "new_risk_certificate": false,
+  "comparative_family_superiority_claimed": false,
+  "proposal_acceptance_is_reference_adoption": false,
+  "model_selection_performed": false
+}
