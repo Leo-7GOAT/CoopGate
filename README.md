@@ -36,6 +36,26 @@ still stops, so the team-level repair has failed. All failures are retained.
 [Training contract](docs/dmps_curriculum_training_protocol.md),
 [pre-test independent audit contract](docs/dmps_curriculum_audit_contract.md).
 
+A post-exit diagnosis found different critic estimates for proposals that decode
+to identical physical commands. A task-adapted effective-command critic variant
+has passed a **128-transition / 640-substep native training and replay probe**;
+its matched 32,768-transition training and fresh three-way evaluation are running.
+It changes the critic input representation, keeps the nominal recipe's reward,
+initial weights and real interaction budget, and is not labeled original DMPS.
+No task-completion improvement is established yet.
+[Value diagnosis](docs/dmps_curriculum_value_diagnosis.md),
+[fixed single-change experiment](docs/dmps_effective_action_protocol.md),
+[native probe](docs/dmps_effective_action_probe_results.md).
+
+An additional original-CSPI/CSPI-MT comparison has been frozen before any formal
+candidate-factorial outcome. It reserves **256 fitting / 128 tuning / 128 safety
+test / 128 evaluation units**, uses only randomized observed-arm labels for
+fitting/testing, and holds paired evaluation outcomes until deployment choices
+are written. Export requires all 3,200 parent executions and their full audit.
+It compares episode selection with online gating, reports unequal data/compute
+budgets, and supplies no current efficacy or new finite-sample risk certificate.
+[Prospective original-method comparison](docs/cspi_factorial_prospective_protocol.md).
+
 The completed recovery-gate memoization audit covers
 **180 matched pairs / 360 actual SUMO runs**, with exact non-timing equivalence.
 Measured total callback time decreases **6.67%**; the heavier 33-path gate's mean
