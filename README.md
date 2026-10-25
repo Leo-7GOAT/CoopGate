@@ -38,11 +38,15 @@ still stops, so the team-level repair has failed. All failures are retained.
 
 A post-exit diagnosis found different critic estimates for proposals that decode
 to identical physical commands. A task-adapted effective-command critic variant
-has passed a **128-transition / 640-substep native training and replay probe**;
-its matched 32,768-transition training and fresh three-way evaluation are running.
+passed a **128-transition / 640-substep native training and replay probe**;
+its matched 32,768-transition training and fresh three-way evaluation are now
+complete and fully audited. The new policy still completes **0/10 tasks**, versus
+the recovery baseline's **10/10**. Training contains 42 completed episodes, but
+the final deterministic policy misses the third vehicle's deadline in testing.
 It changes the critic input representation, keeps the nominal recipe's reward,
 initial weights and real interaction budget, and is not labeled original DMPS.
-No task-completion improvement is established yet.
+No task-completion improvement is established by this repair.
+[Complete failed-repair results](docs/dmps_effective_action_results.md),
 [Value diagnosis](docs/dmps_curriculum_value_diagnosis.md),
 [fixed single-change experiment](docs/dmps_effective_action_protocol.md),
 [native probe](docs/dmps_effective_action_probe_results.md).
