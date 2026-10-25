@@ -67,14 +67,16 @@ No task-completion improvement is established by this repair.
 [fixed single-change experiment](docs/dmps_effective_action_protocol.md),
 [native probe](docs/dmps_effective_action_probe_results.md).
 
-The next fixed-budget repair parameterizes online and target actor outputs inside
-the current feasible command interval while retaining all four effective-input
-critics. It preserves the physical action support and original reward. Twelve
-checks and a **128-transition / 640-substep real SUMO training probe** pass; the
-32,768-transition run and fresh three-way evaluation are collecting. Its frozen
-audit also reloads each policy with the proper hooks and replays original MCTS
-choices on sealed physical observations. No task-performance improvement or
-MARL training result is established by the integration checks.
+The feasible-actor repair has also completed **32,768 real transitions and all
+30 test conditions**, with native exit zero and the frozen full audit passing.
+Online/target actor outputs respect the current feasible command interval while
+retaining the four effective-input critics. Replaying the actual final policies
+and original MCTS matches all 1,000 new/parent test decisions. Nevertheless,
+both learned policies complete **0/10** tasks versus the baseline's **10/10**;
+the new policy stops a different vehicle. All failures and null all-scope gains
+remain. This is not a successful task repair, original-method superiority,
+MARL training result, or risk certificate.
+[Complete feasible-actor results and physical trajectories](docs/dmps_feasible_actor_results.md),
 [Feasible-output contract](docs/dmps_feasible_actor_protocol.md),
 [native probe results](docs/dmps_feasible_actor_probe_results.md),
 [retained-handle audit handoff](docs/dmps_feasible_actor_audit_handoff.md).
