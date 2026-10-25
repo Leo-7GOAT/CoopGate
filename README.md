@@ -12,6 +12,13 @@ no fresh population-risk certificate, original-method superiority claim, or
 hard-real-time guarantee.
 [Full-grid results, all failures and limitations](docs/v36_full_recovery_gate_results.md).
 
+An outcome-free sensitivity analysis now checks the unchanged V42 joint
+risk/adoption/gain design against **22 hypothetical populations**. It exposes
+the power loss from sparse strong-lag adoption and occasional performance harm;
+these are synthetic design calculations, with no formal outcome read or new
+SUMO execution. The original thresholds and sample budget remain fixed.
+[Power assumptions, Monte Carlo uncertainty and results](docs/joint_risk_design_power_results.md).
+
 All five retained bank regressions now have **16 additional native SUMO
 counterfactual replays**, covering every one of their eight adoption points.
 The existing V31 local-to-episode identity matches all five exactly. Offline
