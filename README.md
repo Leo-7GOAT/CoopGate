@@ -37,6 +37,15 @@ pass. These are three reused development initials and no new control execution,
 task repair, verified interval-arithmetic safety claim, or population certificate.
 [State-envelope logic, public-information boundary and all frame results](docs/aged_observation_envelope_results.md).
 
+The subsequent closed-loop preprocessing probe is complete: **117 native SUMO
+runs and full independent replay**, including exact reproduction of all 39 raw
+controls. Constant-velocity compensation and envelope midpoints still finish
+**0/13 severe/stale tasks** and abort earlier; zero recorded geometry violations
+in these shorter prefixes does not establish improved safety. All 39 complete
+controller-scope gains are null because the stale reference fails. The initial
+zero-SUMO model-list bootstrap failure is preserved beside its explicit fix.
+[Complete closed-loop results and abort-time limits](docs/timestamped_control_probe_results.md).
+
 The separate **3,840-run actuator-prediction grid** is also complete and replayed.
 Strong-lag failures remain, so its all-scope relative gain is withheld; this older
 baseline must not be mixed with the corrected recovery grid.
