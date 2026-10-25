@@ -26,7 +26,13 @@ not be used as a mature weak comparator to claim method superiority.
 [Full training audit and task failures](docs/dmps_observable_long_run_results.md),
 [earlier integration failure](docs/dmps_observable_training_results.md),
 [same-condition recovery baseline: 10/10 versus 0/10](docs/dmps_recovery_quality_results.md),
-[native curriculum-reset validation for the next training stage](docs/dmps_curriculum_probe_results.md).
+[native curriculum-reset validation](docs/dmps_curriculum_probe_results.md).
+The fixed-budget curriculum repair is now collecting training data from the
+same untrained initialization. New policy, old policy and the recovery baseline
+will share a fresh ordinary-merge test cohort; its replay audit was committed
+and hash-bound before any test episode. No repaired-policy efficacy is claimed.
+[Training contract](docs/dmps_curriculum_training_protocol.md),
+[pre-test independent audit contract](docs/dmps_curriculum_audit_contract.md).
 
 The completed recovery-gate memoization audit covers
 **180 matched pairs / 360 actual SUMO runs**, with exact non-timing equivalence.
@@ -92,9 +98,13 @@ three separate development initials: 39 SUMO runs, 552 replayed decisions and
 all 13 methods abort in each of the other two compound conditions. One exposes
 an observed-speed domain violation; the other loses the stopping certificate
 under severe mismatch and stale observations. All failures are retained. Three
-passing integration checks establish replay correctness, **not OOD robustness**;
-the frozen 22,464-run formal grid remains unstarted and unchanged.
-[Negative development evidence and applicability limits](docs/v44_ood_learned_development.md).
+passing integration checks establish replay correctness, **not OOD robustness**.
+The frozen **22,464-run / 1,728-block formal grid is now collecting** through
+the unchanged collector. All formal effects remain withheld until the entire
+schedule, actual native exit and independent replay are verified. Shared-desktop
+timing is diagnostic and does not establish standalone latency or a hard bound.
+[Negative development evidence and applicability limits](docs/v44_ood_learned_development.md),
+[unchanged full-scope execution and resource context](docs/v39_ood_execution_resource_context.md).
 
 Earlier integration comparison (2026-10-23): **390 actual SUMO executions** and
 **9,399 fully replayed decisions** now use the same actuator-aware recovery
