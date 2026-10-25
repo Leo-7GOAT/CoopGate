@@ -18,12 +18,14 @@ baseline must not be mixed with the corrected recovery grid.
 [Complete prediction comparison](docs/v32_full_online_actuator_results.md).
 
 Original DMPS planner/trainer integration now distinguishes nominal-model search
-from real SUMO transitions. The first from-scratch integration verifies all
-256 real training transitions and 108 gradient updates, but its strong-lag
-evaluation fails and is preserved. This is training-interface evidence, not a
-converged competitive baseline or a full reproduction of the original paper.
-[Training evidence and retained failure](docs/dmps_observable_training_results.md),
-[fixed longer-training protocol](docs/dmps_observable_long_run_protocol.md).
+from real SUMO transitions. A complete from-scratch run verifies **32,768 real
+training transitions / 30,704 gradient updates**, but finishes **0/10 evaluation
+tasks**: one vehicle arrives while two stop. Every timeout and all raw data are
+retained. This fixed training recipe has failed to learn task completion; it must
+not be used as a mature weak comparator to claim method superiority.
+[Full training audit and task failures](docs/dmps_observable_long_run_results.md),
+[earlier integration failure](docs/dmps_observable_training_results.md),
+[predeclared same-condition recovery baseline check](docs/dmps_recovery_quality_protocol.md).
 
 The completed recovery-gate memoization audit covers
 **180 matched pairs / 360 actual SUMO runs**, with exact non-timing equivalence.
