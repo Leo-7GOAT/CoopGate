@@ -1,0 +1,175 @@
+{
+  "result": {
+    "case": {
+      "index": 5,
+      "seed": 149899002,
+      "plant": "gain_drag",
+      "disturbance": "uniform"
+    },
+    "baseline_failure": null,
+    "baseline_row": {
+      "seed": 149899002,
+      "scenario": "nominal",
+      "method": "bounded_actuator_recovery_baseline",
+      "collision": false,
+      "completed": true,
+      "elapsed": 10.5,
+      "mean_capped_finish_s": 9.5,
+      "contract_violations": 0,
+      "outside_steps": 0,
+      "uncertified_steps": 0,
+      "max_prediction_error": 0.06096899115326693,
+      "mean_jerk": 0.39682539682539686,
+      "intervention": 1.0,
+      "disturbance": "uniform",
+      "radius": 0.5,
+      "aborted": false,
+      "abort_reason": "",
+      "max_command_slew": 5.0,
+      "plant": {
+        "kind": "gain_drag",
+        "gain": [
+          1.0119826136173553,
+          1.0341766658519909,
+          1.0210564477811468
+        ],
+        "drag": [
+          0.0004023641644863115,
+          0.0003164916178778083,
+          0.0002786890657817782
+        ],
+        "tau": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "innovation_radius": 0.1
+      },
+      "max_actual_error": 0.23091651587051487,
+      "error_contract_exceeded_substeps": 0,
+      "nominal_physical_assumption_observed": true,
+      "external_innovation_radius": 0.1,
+      "physical_error_radius": 0.5,
+      "innovation_tape_sha256": "116794ba414efc6b19f33d9c50156c236f91fac5676492a52e85e72c32ad441a",
+      "initial": [
+        [
+          -88.92612012575546,
+          10.68470505382512
+        ],
+        [
+          -81.85205734190032,
+          12.231708052120757
+        ],
+        [
+          -120.81425775887374,
+          11.777052949373072
+        ]
+      ],
+      "plant_name": "gain_drag",
+      "rule": "baseline",
+      "model": "none",
+      "certificate_contract": "bounded_actuator_memory_stopping",
+      "per_vehicle_cost": [
+        10.375,
+        8.125,
+        10.625
+      ],
+      "team_cost": 9.708333333333334,
+      "per_vehicle_finish": [
+        10.0,
+        8.0,
+        10.5
+      ],
+      "per_vehicle_variation": [
+        7.5,
+        2.5,
+        2.5
+      ],
+      "control_steps": 21,
+      "learned_action_steps": 0
+    },
+    "baseline_review": {
+      "physical_substeps": 105,
+      "reference_replayed_commands": 21,
+      "recorded_failure": false,
+      "genuine_failures_retained": true,
+      "runtime_independently_certified": false
+    },
+    "learning_review": {
+      "actual_decisions": 50,
+      "physical_substeps": 250,
+      "completed": false,
+      "geometry_violations": 0,
+      "collision": false,
+      "administrative_failure": null,
+      "maximum_prediction_error": 0.06310900548463039,
+      "prediction_errors": [
+        0.04545102498792808,
+        0.042469370487799196,
+        0.04332619924530068,
+        0.05981451127758497,
+        0.042277027487282015,
+        0.028763231761530506,
+        0.0006004107903905265,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.00835661602086546,
+        0.06310900548463039,
+        0.06027235907361472,
+        0.006246720299756703,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "per_vehicle_cost": [
+        25.50046819821,
+        8.296320415101945,
+        28.100286253727973
+      ],
+      "nominal_model_decisions": 247
+    },
+    "baseline_failed": false,
+    "learned_failed": true,
+    "relative_harm": true,
+    "relative_performance_assessable": false,
+    "paired_cost_gain_percent": null
+  },
+  "files_sha256": {
+    "episode.json": "3f5ba74bac792201b0f7ff1862407bea940de62a8acc9e0e0f5c266a63e476c6",
+    "review.json": "953549020fda2d55c1a7d91b0e17642254ba6ea3eb5c8c335bf16e207655a9a4"
+  }
+}
