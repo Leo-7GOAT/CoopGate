@@ -40,8 +40,9 @@ task repair, verified interval-arithmetic safety claim, or population certificat
 The subsequent closed-loop preprocessing probe is complete: **117 native SUMO
 runs and full independent replay**, including exact reproduction of all 39 raw
 controls. Constant-velocity compensation and envelope midpoints still finish
-**0/13 severe/stale tasks** and abort earlier; zero recorded geometry violations
-in these shorter prefixes does not establish improved safety. All 39 complete
+**0/13 severe/stale tasks**; their baselines abort at **3.0 s**, versus the raw
+baseline's **8.5 s**. Zero recorded geometry violations over unequal prefixes
+does not establish improved safety. All 39 complete
 controller-scope gains are null because the stale reference fails. The initial
 zero-SUMO model-list bootstrap failure is preserved beside its explicit fix.
 [Complete closed-loop results and abort-time limits](docs/timestamped_control_probe_results.md).
