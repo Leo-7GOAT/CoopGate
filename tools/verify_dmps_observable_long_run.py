@@ -78,7 +78,7 @@ def verify(output=OUT):
         if review is not None:assert result['actual_decisions']==review['review']['actual_decisions']
         if result['failure'] is not None:
             assert io.read(output/f'case_failure_{index:03d}.json')==result['failure']
-    assert sum(r is not None for r in all_reviews['evaluation'])==len(eval_file['episodes'])
+    assert [r for r in all_reviews['evaluation'] if r is not None]==eval_file['episodes']
     assert done['evaluation_actual_decisions']==len(all_calls['evaluation'])
     assert done['evaluation_failures']==sum(r['failure'] is not None for r in results)
     replay={name:[] for name in ('obs_buf','act_buf','next_obs_buf','rew_buf','done_buf')}
