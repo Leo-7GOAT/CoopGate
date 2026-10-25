@@ -60,6 +60,18 @@ No task-completion improvement is established by this repair.
 [fixed single-change experiment](docs/dmps_effective_action_protocol.md),
 [native probe](docs/dmps_effective_action_probe_results.md).
 
+The next fixed-budget repair parameterizes online and target actor outputs inside
+the current feasible command interval while retaining all four effective-input
+critics. It preserves the physical action support and original reward. Twelve
+checks and a **128-transition / 640-substep real SUMO training probe** pass; the
+32,768-transition run and fresh three-way evaluation are collecting. Its frozen
+audit also reloads each policy with the proper hooks and replays original MCTS
+choices on sealed physical observations. No task-performance improvement or
+MARL training result is established by the integration checks.
+[Feasible-output contract](docs/dmps_feasible_actor_protocol.md),
+[native probe results](docs/dmps_feasible_actor_probe_results.md),
+[retained-handle audit handoff](docs/dmps_feasible_actor_audit_handoff.md).
+
 An additional original-CSPI/CSPI-MT comparison has been frozen before any formal
 candidate-factorial outcome. It reserves **256 fitting / 128 tuning / 128 safety
 test / 128 evaluation units**, uses only randomized observed-arm labels for
