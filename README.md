@@ -47,6 +47,14 @@ controller-scope gains are null because the stale reference fails. The initial
 zero-SUMO model-list bootstrap failure is preserved beside its explicit fix.
 [Complete closed-loop results and abort-time limits](docs/timestamped_control_probe_results.md).
 
+A separate compound-delay braking-tube component and retained-backup manager
+pass **17 checks**. Its fixed, complete diagnosis of all **2,245 public prefixes**
+from those 117 completed runs certifies only **21 frames**: no initial frame and
+none of the 39 abort frames passes. This does not prove physical infeasibility;
+the simultaneous-braking family and interval conservatism remain limitations.
+The component is not deployed in SUMO and supplies no repaired task or risk
+certificate. [Full domain results and conditional theory](docs/compound_backup_domain_results.md).
+
 The separate **3,840-run actuator-prediction grid** is also complete and replayed.
 Strong-lag failures remain, so its all-scope relative gain is withheld; this older
 baseline must not be mixed with the corrected recovery grid.
