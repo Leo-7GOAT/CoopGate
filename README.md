@@ -25,7 +25,8 @@ retained. This fixed training recipe has failed to learn task completion; it mus
 not be used as a mature weak comparator to claim method superiority.
 [Full training audit and task failures](docs/dmps_observable_long_run_results.md),
 [earlier integration failure](docs/dmps_observable_training_results.md),
-[predeclared same-condition recovery baseline check](docs/dmps_recovery_quality_protocol.md).
+[same-condition recovery baseline: 10/10 versus 0/10](docs/dmps_recovery_quality_results.md),
+[native curriculum-reset validation for the next training stage](docs/dmps_curriculum_probe_results.md).
 
 The completed recovery-gate memoization audit covers
 **180 matched pairs / 360 actual SUMO runs**, with exact non-timing equivalence.
