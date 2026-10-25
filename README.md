@@ -60,6 +60,14 @@ It compares episode selection with online gating, reports unequal data/compute
 budgets, and supplies no current efficacy or new finite-sample risk certificate.
 [Prospective original-method comparison](docs/cspi_factorial_prospective_protocol.md).
 
+Before the affected formal collections start, an additive compatibility entry
+normalizes sealed tuple case keys to the list containers expected by three
+frozen finalizers/exporters. The original function bodies, payloads, ordering,
+native/full-replay gates, controllers and statistics remain unchanged. Subsequent
+joint-risk finalization, factorial summary and CSPI export use this disclosed
+entry and record its source/output identity.
+[Key-format regression and execution entry](docs/episode_key_compatibility.md).
+
 The completed recovery-gate memoization audit covers
 **180 matched pairs / 360 actual SUMO runs**, with exact non-timing equivalence.
 Measured total callback time decreases **6.67%**; the heavier 33-path gate's mean
