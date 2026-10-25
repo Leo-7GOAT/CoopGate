@@ -12,6 +12,15 @@ no fresh population-risk certificate, original-method superiority claim, or
 hard-real-time guarantee.
 [Full-grid results, all failures and limitations](docs/v36_full_recovery_gate_results.md).
 
+All five retained bank regressions now have **16 additional native SUMO
+counterfactual replays**, covering every one of their eight adoption points.
+The existing V31 local-to-episode identity matches all five exactly. Offline
+oracle parameter/memory contrasts expose model error, while an exact-nominal
+counterexample still passes the finite bank: a 0.0234375 s interpolated crossing
+delay changes the original grid arrival by 0.5 s. This is post-hoc diagnosis on
+four old initials, not a deployed repair or a new risk certificate.
+[Complete mechanism results and metric sensitivity](docs/v36_regression_mechanism_results.md).
+
 The separate **3,840-run actuator-prediction grid** is also complete and replayed.
 Strong-lag failures remain, so its all-scope relative gain is withheld; this older
 baseline must not be mixed with the corrected recovery grid.
