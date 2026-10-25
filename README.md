@@ -2,7 +2,30 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
-Current status (2026-10-24): the completed recovery-gate memoization audit covers
+Current status (2026-10-25): the complete original development grid has finished
+**8,320 actual SUMO executions and full independent replay**. Across 1,920 runs,
+the disturbance-bank performance gate completes all runs, reduces aggregate team
+cost **1.7235%**, adopts learning in **1,150/1,920 episodes**, and retains **five
+adopted individual performance regressions**. These are not collision counts.
+The grid reuses 160 independent initials across models and plants; it supplies
+no fresh population-risk certificate, original-method superiority claim, or
+hard-real-time guarantee.
+[Full-grid results, all failures and limitations](docs/v36_full_recovery_gate_results.md).
+
+The separate **3,840-run actuator-prediction grid** is also complete and replayed.
+Strong-lag failures remain, so its all-scope relative gain is withheld; this older
+baseline must not be mixed with the corrected recovery grid.
+[Complete prediction comparison](docs/v32_full_online_actuator_results.md).
+
+Original DMPS planner/trainer integration now distinguishes nominal-model search
+from real SUMO transitions. The first from-scratch integration verifies all
+256 real training transitions and 108 gradient updates, but its strong-lag
+evaluation fails and is preserved. This is training-interface evidence, not a
+converged competitive baseline or a full reproduction of the original paper.
+[Training evidence and retained failure](docs/dmps_observable_training_results.md),
+[fixed longer-training protocol](docs/dmps_observable_long_run_protocol.md).
+
+The completed recovery-gate memoization audit covers
 **180 matched pairs / 360 actual SUMO runs**, with exact non-timing equivalence.
 Measured total callback time decreases **6.67%**; the heavier 33-path gate's mean
 decreases **9.12%**, while the nominal gate's mean increases **0.33%**.
@@ -70,7 +93,7 @@ passing integration checks establish replay correctness, **not OOD robustness**;
 the frozen 22,464-run formal grid remains unstarted and unchanged.
 [Negative development evidence and applicability limits](docs/v44_ood_learned_development.md).
 
-Latest complete comparison (2026-10-23): **390 actual SUMO executions** and
+Earlier integration comparison (2026-10-23): **390 actual SUMO executions** and
 **9,399 fully replayed decisions** now use the same actuator-aware recovery
 baseline, declared parameter information and physical stopping checks. The
 33-path performance gate reduces mean team cost **3.785%**, adopts learning in
@@ -90,15 +113,16 @@ are not full reproductions of prior papers or equal-compute comparisons.
 [Complete paired results, all models and retained failures](docs/v35_complete_recovery_gate_results.md),
 [common-baseline protocol and mathematical limits](docs/v35_recovery_joint_gate_protocol.md).
 
-The unchanged comparison has completed collection on **all 640 original conditions /
+The unchanged comparison has completed **all 640 original conditions /
 8,320 actual executions**, retaining all three models and every old failure.
-The additive recovery finished its 6,942 runs with native exit code zero; full
-physical and gate replay is running before any full-grid effects are reported.
-The first complete block reproduces all **13 runs / 275 commands** and every
-non-timing field from the completed integration. The full-grid results are
-withheld until complete execution and replay; the separate original prospective
-calibration and V32 grid remain unchanged.
-[Full scope and execution protocol](docs/v36_full_recovery_gate_protocol.md).
+The additive recovery finished its 6,942 runs with native exit code zero, and
+the complete physical/gate replay and all block hashes have passed. The larger
+grid supersedes the smaller integration as the descriptive result: its bank-gate
+gain is 1.7235%, with five retained performance-regression counterexamples.
+The separate original prospective calibration is still required before the next
+joint-risk study can bind; this completed grid does not supply a new certificate.
+[Full results and counterexamples](docs/v36_full_recovery_gate_results.md),
+[unchanged scope and execution protocol](docs/v36_full_recovery_gate_protocol.md).
 
 The earlier complete timing audit finished
 **6,912 actual runs / 3,456 matched pairs**, with full independent review and an
