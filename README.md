@@ -28,6 +28,15 @@ delay changes the original grid arrival by 0.5 s. This is post-hoc diagnosis on
 four old initials, not a deployed repair or a new risk certificate.
 [Complete mechanism results and metric sensitivity](docs/v36_regression_mechanism_results.md).
 
+A separate causal observation-envelope diagnosis uses all **39 completed OOD
+development trajectories / 791 received frames**, including terminal attempts.
+With public measurement-source timestamps and an enlarged compound-model bound,
+all recorded states/memories are enclosed; stale-profile midpoint position MAE
+is **0.1199 m**, versus **6.4011 m** for the stale measurement. Fourteen checks
+pass. These are three reused development initials and no new control execution,
+task repair, verified interval-arithmetic safety claim, or population certificate.
+[State-envelope logic, public-information boundary and all frame results](docs/aged_observation_envelope_results.md).
+
 The separate **3,840-run actuator-prediction grid** is also complete and replayed.
 Strong-lag failures remain, so its all-scope relative gain is withheld; this older
 baseline must not be mixed with the corrected recovery grid.
