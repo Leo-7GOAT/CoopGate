@@ -12,6 +12,12 @@ function Require([bool]$Condition, [string]$Message) {
 }
 try {
     Set-Location -LiteralPath $ProjectRoot
+    # PowerShell names are case-insensitive: a watcher variable must never
+    # shadow the OOD directory when production builds its receipt path.
+    & {
+        $ood = $null
+        Require (Test-Path -LiteralPath (Join-Path $ProjectRoot "$OodRoot/execution/spawn.json")) 'OOD receipt path is shadowed by its process variable'
+    }
     # Attach through a fresh GetProcessById object, matching production use.
     $child = Start-Process -FilePath 'powershell.exe' -ArgumentList @('-NoProfile', '-Command', 'Start-Sleep -Seconds 3; exit 0') -WindowStyle Hidden -PassThru
     $processes += $child

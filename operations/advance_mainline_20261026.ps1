@@ -7,7 +7,7 @@ $SimPython = Join-Path $ProjectRoot '../.venv/Scripts/python.exe'
 $BaselinePython = Join-Path $ProjectRoot '../.venv-baselines/Scripts/python.exe'
 $Journal = Join-Path $ProjectRoot '.git/mainline-20261026.jsonl'
 $Recovery = 'artifacts/recovery_20261026/calibration_recovery'
-$Ood = 'artifacts/recovery_20261026/ood_recovery'
+$OodRoot = 'artifacts/recovery_20261026/ood_recovery'
 
 function Write-Event([string]$Kind, $Detail) {
     $entry = [ordered]@{ utc = [DateTime]::UtcNow.ToString('o'); kind = $Kind; detail = $Detail }
@@ -82,11 +82,11 @@ function Invoke-Mainline {
     try {
         Write-Event 'queue_started' @{ protocol_changes = $false; retries = 0; shutdown = $false }
         $calibration = Open-ExistingWatcher 52256 '2026-10-26T13:55:13.968914+08:00' "$Recovery/calibration/execution/watcher_launch.json"
-        $ood = Open-ExistingWatcher 32664 '2026-10-26T13:59:47.583286+08:00' "$Ood/execution/spawn.json"
+        $ood = Open-ExistingWatcher 32664 '2026-10-26T13:59:47.583286+08:00' "$OodRoot/execution/spawn.json"
 
         Wait-ActualZero $ood 'ood'
         Invoke-Checked $SimPython @('-X', 'utf8', 'tools/recover_ood_20261026.py', 'summarize')
-        Commit-Receipts 'Complete original OOD scope and full independent replay' @("$Ood/execution", "$Ood/analysis")
+        Commit-Receipts 'Complete original OOD scope and full independent replay' @("$OodRoot/execution", "$OodRoot/analysis")
 
         Wait-ActualZero $calibration 'calibration'
         Invoke-Checked $SimPython @('-X', 'utf8', 'tools/recover_prospective_20261026.py', 'analyze', 'calibration')
