@@ -27,7 +27,8 @@ def routed_functions():
 
 def finalize(namespace):
     keys.inputs()
-    keys.compatible_function(namespace['finalize'])()
+    import parallel_joint_risk_replay_20261027 as replay
+    replay.finalize(namespace)
     target=original.OUT/'analysis'
     outputs=[target/name for name in ('certificate.json','replay.json','verification.json')]
     original.io.exclusive_json(target/'key_representation_compatibility.json',dict(
@@ -47,10 +48,16 @@ def main():
     for name in ('watch','worker'):
         commands.add_parser(name).add_argument('stage',choices=original.design.STAGES)
     args=parser.parse_args(); namespace=routed_functions()
+    import parallel_joint_risk_replay_20261027 as replay
     # Original bind freezes every tools/*.py source, including this route.
     # Actual terminal receipts, full replay and both original attempts' alpha
     # accounting are checked by the unchanged predecessor verification body.
     if args.command=='finalize':return finalize(namespace)
+    if args.command=='bind':
+        replay.contract_inputs()
+        namespace['bind']()
+        return replay.bind_registration()
+    replay.bound_registration_inputs()
     namespace[args.command](*([args.stage] if hasattr(args,'stage') else []))
 
 
