@@ -82,8 +82,8 @@ def main():
     matrix=np.array([r['failure_percent'] for r in descriptive]).reshape(13,9)
     fig,ax=plt.subplots(figsize=(7.3,5.2),layout='constrained')
     image=ax.imshow(matrix,vmin=0,vmax=100,cmap='YlOrRd',aspect='auto')
-    ax.set_xticks(range(9),[f'{p}\n{s}' for p in ('mild','heterogeneous','severe')
-                          for s in ('clean','bias/jitter','stale/dropout')],fontsize=6.8)
+    ax.set_xticks(range(9),[f'{p}\n{s}' for p in ('mild','hetero.','severe')
+                          for s in ('clean','bias','stale')],fontsize=6.8)
     ax.set_yticks(range(13),[('baseline' if m=='none' else f'{r}/{m}') for r,m in METHODS],fontsize=6.8)
     for y in range(13):
         for x in range(9):
@@ -91,7 +91,8 @@ def main():
                     color='white' if matrix[y,x]>=60 else 'black')
     for x in (2.5,5.5):ax.axvline(x,color='0.4',linewidth=.8)
     ax.set_title('Empirical episode failure (%) under compound mismatch',fontsize=10)
-    ax.set_xlabel('192 initial conditions per cell; the same initials repeat across nine cells',fontsize=7)
+    ax.set_xlabel('bias: bounded bias/jitter; stale: dropout/staleness\n'
+                  '192 initial conditions per cell; the same initials repeat across nine cells',fontsize=7)
     fig.colorbar(image,ax=ax,label='Failure (%)',shrink=.85)
     fig.savefig(OUT/'failure_scope.png',dpi=300)
     fig.savefig(OUT/'failure_scope.svg')
