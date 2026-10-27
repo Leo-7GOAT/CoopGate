@@ -1,0 +1,135 @@
+{
+  "source_report_sha256": "e894faa20226222b96d8361b01e1bc3c021d6c69514c60b0b0dbf95c94703643",
+  "actual_sumo_runs": 22464,
+  "independent_initials": 192,
+  "repeated_factor_cells_per_initial": 9,
+  "all_three_fixed_models_pass": false,
+  "original_primary": {
+    "models": {
+      "1802": {
+        "failure_risk_difference": -0.001157407407407409,
+        "failure_descriptive_unadjusted_one_sided_95pct_upper": 0.005208333333333334,
+        "failure_margin": 0.01,
+        "failure_raw_margin_test_p": 0.0007999600019999,
+        "failure_margin_testable": true,
+        "failure_cluster_variance": 0.00335978066489992,
+        "failure_within_stratum_variance": {
+          "compressed_simultaneous": 0.001221707818930041,
+          "cross_route_priority_flip": 0.0033528071722516164,
+          "rear_end_merge_wave": 0.0038702723887909067
+        },
+        "failure_stratified_bootstrap_variance": 1.4386208963942654e-05,
+        "failure_nonzero_cluster_contrasts": 43,
+        "failure_penalized_cost_gain_seconds": 0.17693790388695999,
+        "loss_descriptive_unadjusted_one_sided_95pct_lower": -0.05886513038917811,
+        "loss_margin_seconds": 0.0,
+        "loss_raw_margin_test_p": 0.10324483775811209,
+        "loss_margin_testable": true,
+        "loss_cluster_variance": 4.770536537343261,
+        "loss_within_stratum_variance": {
+          "compressed_simultaneous": 1.3925805859020963,
+          "cross_route_priority_flip": 4.652538517587894,
+          "rear_end_merge_wave": 5.718296545149416
+        },
+        "loss_stratified_bootstrap_variance": 0.020124189585732036,
+        "independent_initials": 192,
+        "repeated_cells_per_initial": 9,
+        "failure_holm_adjusted_p": 0.0007999600019999,
+        "loss_holm_adjusted_p": 0.10324483775811209,
+        "frozen_thresholds_pass": false
+      },
+      "1812": {
+        "failure_risk_difference": -0.00636574074074074,
+        "failure_descriptive_unadjusted_one_sided_95pct_upper": 0.0011574074074074073,
+        "failure_margin": 0.01,
+        "failure_raw_margin_test_p": 9.99950002499875e-05,
+        "failure_margin_testable": true,
+        "failure_cluster_variance": 0.0045484966496455725,
+        "failure_within_stratum_variance": {
+          "compressed_simultaneous": 0.003086419753086419,
+          "cross_route_priority_flip": 0.0022995051930237115,
+          "rear_end_merge_wave": 0.006466784244562021
+        },
+        "failure_stratified_bootstrap_variance": 2.016609652281391e-05,
+        "failure_nonzero_cluster_contrasts": 43,
+        "failure_penalized_cost_gain_seconds": 0.35901632426697533,
+        "loss_descriptive_unadjusted_one_sided_95pct_lower": 0.08407660590277763,
+        "loss_margin_seconds": 0.0,
+        "loss_raw_margin_test_p": 0.01609919504024799,
+        "loss_margin_testable": true,
+        "loss_cluster_variance": 6.449435975601906,
+        "loss_within_stratum_variance": {
+          "compressed_simultaneous": 3.847545191929518,
+          "cross_route_priority_flip": 3.219172090724796,
+          "rear_end_merge_wave": 9.452837355675152
+        },
+        "loss_stratified_bootstrap_variance": 0.028011629842355966,
+        "independent_initials": 192,
+        "repeated_cells_per_initial": 9,
+        "failure_holm_adjusted_p": 0.000199990000499975,
+        "loss_holm_adjusted_p": 0.03219839008049598,
+        "frozen_thresholds_pass": true
+      },
+      "1822": {
+        "failure_risk_difference": -0.006365740740740739,
+        "failure_descriptive_unadjusted_one_sided_95pct_upper": -0.0005787037037037028,
+        "failure_margin": 0.01,
+        "failure_raw_margin_test_p": 4.999750012499375e-05,
+        "failure_margin_testable": true,
+        "failure_cluster_variance": 0.002997207140240881,
+        "failure_within_stratum_variance": {
+          "compressed_simultaneous": 0.0011635312561238485,
+          "cross_route_priority_flip": 0.0021555947481873405,
+          "rear_end_merge_wave": 0.004332622966882226
+        },
+        "failure_stratified_bootstrap_variance": 1.2988023070101497e-05,
+        "failure_nonzero_cluster_contrasts": 38,
+        "failure_penalized_cost_gain_seconds": 0.3631501374421296,
+        "loss_descriptive_unadjusted_one_sided_95pct_lower": 0.14193635163483778,
+        "loss_margin_seconds": 0.0,
+        "loss_raw_margin_test_p": 0.0032998350082495873,
+        "loss_margin_testable": true,
+        "loss_cluster_variance": 4.251035646383763,
+        "loss_within_stratum_variance": {
+          "compressed_simultaneous": 1.3331070365742133,
+          "cross_route_priority_flip": 2.9026178911545375,
+          "rear_end_merge_wave": 6.3820903910017
+        },
+        "loss_stratified_bootstrap_variance": 0.018238816400299594,
+        "independent_initials": 192,
+        "repeated_cells_per_initial": 9,
+        "failure_holm_adjusted_p": 0.00014999250037498125,
+        "loss_holm_adjusted_p": 0.009899505024748761,
+        "frozen_thresholds_pass": true
+      }
+    },
+    "all_three_fixed_models_pass": false,
+    "inference": {
+      "independent_unit": "initial_id; the 9 factor cells and 13 methods are repeated paired measures",
+      "aggregation": "first average paired contrasts within initial, then equal-weight the three regimes",
+      "intervals": "stratified paired cluster bootstrap resampling initials within regime",
+      "primary_tests": "One-sided centered cluster-bootstrap margin tests at failure difference 0.01 and failure-penalized cost gain 0, with Holm familywise adjustment across three models.",
+      "displayed_intervals": "Unadjusted one-sided percentile intervals, descriptive only",
+      "degenerate_rule": "Zero within-stratum/stratified-bootstrap variance, zero cluster variance, or no nonzero failure contrast is untestable and fails closed; zero observed discordance is not a rare-event population certificate.",
+      "finite_sample_population_risk_guarantee": false,
+      "bootstrap_draws": 20000,
+      "bootstrap_seed": 39003939,
+      "multiplicity": "Holm familywise alpha 0.05 across the three fixed models, separately per primary estimand",
+      "no_pseudoreplication": "22,464 SUMO runs are not treated as independent samples",
+      "no_optional_stopping": true
+    },
+    "margin_test_note": "Holm-adjusted one-sided centered cluster-bootstrap margin tests are the frozen decisions. Displayed percentile bounds are explicitly unadjusted and descriptive. Degenerate cluster contrasts are untestable and fail closed; no finite-sample population-risk guarantee is made."
+  },
+  "new_inferential_tests": 0,
+  "new_sumo_runs": 0,
+  "new_population_safety_certificate": false,
+  "failures_omitted": 0,
+  "notes": [
+    "The original Holm-adjusted cluster-bootstrap decisions are copied unchanged.",
+    "Original percentile bounds are descriptive and unadjusted; no finite-sample population-risk guarantee follows.",
+    "The heatmap is descriptive; nine repeated cells do not create nine independent samples per initial.",
+    "mps_shared and mamps_shared are project adapters, not full original-author reproductions.",
+    "Failure-penalized cost gain is not a failure-free travel-time efficiency gain.",
+    "No controller latency ranking or communication-delay statistic is produced."
+  ]
+}

@@ -2,7 +2,17 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
-Current status (2026-10-25): the complete original development grid has finished
+Latest complete stress evidence (2026-10-27): **22,464 SUMO runs and full
+independent replay**, with 192 independent initials repeated across nine factor
+cells. Two fixed models pass the predeclared relative comparisons, but the
+**all-three-model criterion fails**. Composite failure remains 55.09% for the
+baseline and 54.46%–54.98% for bank gates, mostly software aborts. Recorded
+collisions are 1 for the baseline and 2 for each bank model. These out-of-assumption
+results establish limitations, not deployable safety. The complete conditional
+risk/adoption/gain study and fair comparison remain pending.
+[Full scope results, original tests and failure accounting](docs/ood_complete_results_20261027.md).
+
+Earlier development evidence (2026-10-25): the complete original grid has finished
 **8,320 actual SUMO executions and full independent replay**. Across 1,920 runs,
 the disturbance-bank performance gate completes all runs, reduces aggregate team
 cost **1.7235%**, adopts learning in **1,150/1,920 episodes**, and retains **five
