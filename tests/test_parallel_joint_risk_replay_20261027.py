@@ -68,3 +68,31 @@ def test_missing_registration_blocks_any_model_or_record_access(tmp_path,monkeyp
     monkeypatch.setattr(replay,'PLAN',tmp_path/'missing.json')
     monkeypatch.setattr(replay.original.io,'committed',lambda p: (_ for _ in ()).throw(ValueError('missing registration')))
     with pytest.raises(ValueError,match='missing registration'):replay.finalize({})
+
+
+def test_both_native_stages_precede_pool_creation_and_output(tmp_path,monkeypatch):
+    monkeypatch.setattr(replay,'bound_registration_inputs',lambda:{})
+    monkeypatch.setattr(replay.original,'OUT',tmp_path/'unstarted')
+    monkeypatch.setattr(replay.original.io,'native_snapshot',lambda:[])
+    monkeypatch.setattr(replay.original.io,'digest',lambda p:'hash')
+    stages=[]
+    def terminal(stage,*args):
+        stages.append(stage)
+        if stage=='confirmation':raise ValueError('confirmation actual exit missing')
+    namespace=dict(bound_inputs=lambda:({},{}),require_quiet=lambda p:None,
+                   stage_terminal=terminal)
+    monkeypatch.setattr(replay,'replay_blocks',lambda *a:pytest.fail('Pool before native completion'))
+    with pytest.raises(ValueError,match='actual exit missing'):replay.finalize(namespace)
+    assert stages==['calibration','confirmation']
+    assert not (tmp_path/'unstarted').exists()
+
+
+def test_recovered_execution_retains_all_original_scientific_function_bodies():
+    from types import FunctionType
+    import execute_joint_risk_recovered_20261027 as route
+    namespace=route.routed_functions()
+    for name,function in vars(route.original).items():
+        if isinstance(function,FunctionType) and function.__module__==route.original.__name__:
+            assert namespace[name].__code__ is function.__code__
+            assert namespace[name].__globals__ is namespace
+    assert namespace['predecessor'] is route.recovered
