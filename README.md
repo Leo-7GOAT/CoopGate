@@ -2,6 +2,13 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
+Execution update (2026-10-27): the user authorized withdrawing the obsolete
+prerequisite attempt **incomplete, with no certificate and all data retained**.
+The previously registered **16,384-run joint risk/adoption/gain study** now takes
+priority, with its full sample, three fixed models, criteria and separate error
+allocation unchanged. Full fair comparison, candidate factorial and original-author
+CSPI analysis remain in the queue. [Authorization and exact scope](docs/legacy_withdrawal_20261027.md).
+
 Latest complete stress evidence (2026-10-27): **22,464 SUMO runs and full
 independent replay**, with 192 independent initials repeated across nine factor
 cells. Two fixed models pass the predeclared relative comparisons, but the
