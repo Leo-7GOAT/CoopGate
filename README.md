@@ -2,6 +2,13 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
+Execution recovery (2026-10-28): an unexplained process interruption is preserved
+with unknown exits. **900 completed runs are reused verbatim**; the three saved
+rows at the unsealed boundary reproduce exactly in all non-timing fields.
+The full **16,384 unique-run** study continues under a one-shot Windows scheduler
+task, with all original statistical criteria retained. Validation is still pending.
+[Recovery protocol, accounting and checks](docs/joint_recovery_20261028.md).
+
 Execution update (2026-10-27): the user authorized withdrawing the obsolete
 prerequisite attempt **incomplete, with no certificate and all data retained**.
 The previously registered **16,384-run joint risk/adoption/gain study** now takes
