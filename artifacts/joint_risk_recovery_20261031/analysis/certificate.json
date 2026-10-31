@@ -1,0 +1,288 @@
+{
+  "attempt": 2,
+  "allocated_error": 0.008333333333333333,
+  "total_attempt_error": 0.05,
+  "fixed_models": [
+    1802,
+    1812,
+    1822
+  ],
+  "fixed_inferential_members": [
+    "risk:1802:mixture",
+    "risk:1802:strong_lag",
+    "risk:1812:mixture",
+    "risk:1812:strong_lag",
+    "risk:1822:mixture",
+    "risk:1822:strong_lag",
+    "adoption:1802",
+    "adoption:1812",
+    "adoption:1822",
+    "gain:1802",
+    "gain:1812",
+    "gain:1822"
+  ],
+  "calibration_initials": 3072,
+  "confirmation_initials": 1024,
+  "primary_risk": {
+    "members": {
+      "1802:mixture": {
+        "harmful_adoptions": 21,
+        "adoptions": 1861,
+        "pointwise_p_value": 0.0002670182558759393,
+        "pointwise_risk_upper": 0.038096816234714795,
+        "conditional_risk_observed": true,
+        "method": "stratified_joint_harm_over_adoption",
+        "stratified": {
+          "risk_upper": 0.038096816234714795,
+          "joint_harm_upper": 0.02098710615437003,
+          "adoption_lower": 0.5508887153474531,
+          "stratum_joint_harm_uppers": [
+            0.011900179693946277,
+            0.03291668787579839,
+            0.011900179693946277,
+            0.02723137735378916
+          ],
+          "stratum_adoption_lowers": [
+            0.493324155414267,
+            0.5445096821419125,
+            0.4815949035532532,
+            0.6841261202803794
+          ],
+          "component_alpha": 0.0010416666666666667,
+          "allocated_error": 0.008333333333333333,
+          "target_weights": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "finite_sample_valid_under_within_stratum_iid": true,
+          "pooled_adoptions_are_binomial": false,
+          "pointwise_p_value": 0.0002670182558759393,
+          "risk_limit": 0.05,
+          "certified": true
+        }
+      },
+      "1802:strong_lag": {
+        "harmful_adoptions": 8,
+        "adoptions": 565,
+        "pointwise_p_value": 5.06228595643261e-06,
+        "pointwise_risk_upper": 0.031087779806447946,
+        "conditional_risk_observed": true,
+        "method": "within_stratum_exact_binomial"
+      },
+      "1812:mixture": {
+        "harmful_adoptions": 22,
+        "adoptions": 1900,
+        "pointwise_p_value": 0.00026194187838513017,
+        "pointwise_risk_upper": 0.038197090814228764,
+        "conditional_risk_observed": true,
+        "method": "stratified_joint_harm_over_adoption",
+        "stratified": {
+          "risk_upper": 0.038197090814228764,
+          "joint_harm_upper": 0.02153603822674343,
+          "adoption_lower": 0.5638135723865405,
+          "stratum_joint_harm_uppers": [
+            0.008901464657732335,
+            0.03291668787579839,
+            0.019058583400305258,
+            0.02526741697313773
+          ],
+          "stratum_adoption_lowers": [
+            0.5011607231750139,
+            0.5617043080761019,
+            0.4959348233949278,
+            0.6964544349001185
+          ],
+          "component_alpha": 0.0010416666666666667,
+          "allocated_error": 0.008333333333333333,
+          "target_weights": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "finite_sample_valid_under_within_stratum_iid": true,
+          "pooled_adoptions_are_binomial": false,
+          "pointwise_p_value": 0.00026194187838513017,
+          "risk_limit": 0.05,
+          "certified": true
+        }
+      },
+      "1812:strong_lag": {
+        "harmful_adoptions": 7,
+        "adoptions": 574,
+        "pointwise_p_value": 9.26148245383251e-07,
+        "pointwise_risk_upper": 0.02817196887334933,
+        "conditional_risk_observed": true,
+        "method": "within_stratum_exact_binomial"
+      },
+      "1822:mixture": {
+        "harmful_adoptions": 11,
+        "adoptions": 1861,
+        "pointwise_p_value": 8.02048260339916e-06,
+        "pointwise_risk_upper": 0.028541774876822995,
+        "conditional_risk_observed": true,
+        "method": "stratified_joint_harm_over_adoption",
+        "stratified": {
+          "risk_upper": 0.028541774876822995,
+          "joint_harm_upper": 0.015724938152128685,
+          "adoption_lower": 0.5509446493777068,
+          "stratum_joint_harm_uppers": [
+            0.008901464657732335,
+            0.02526741697313773,
+            0.011900179693946277,
+            0.016830691283698396
+          ],
+          "stratum_adoption_lowers": [
+            0.4985470118052281,
+            0.5524372259674384,
+            0.46730063535856603,
+            0.6854937243795949
+          ],
+          "component_alpha": 0.0010416666666666667,
+          "allocated_error": 0.008333333333333333,
+          "target_weights": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "finite_sample_valid_under_within_stratum_iid": true,
+          "pooled_adoptions_are_binomial": false,
+          "pointwise_p_value": 8.02048260339916e-06,
+          "risk_limit": 0.05,
+          "certified": true
+        }
+      },
+      "1822:strong_lag": {
+        "harmful_adoptions": 3,
+        "adoptions": 566,
+        "pointwise_p_value": 1.1963747882835218e-09,
+        "pointwise_risk_upper": 0.0180684493808651,
+        "conditional_risk_observed": true,
+        "method": "within_stratum_exact_binomial"
+      }
+    },
+    "family_p_value": 0.0002670182558759393,
+    "maximum_conditional_risk_upper": 0.038197090814228764,
+    "allocated_error": 0.008333333333333333,
+    "risk_limit": 0.05,
+    "attempt": 2,
+    "all_fixed_models_both_targets_certified": true,
+    "intersection_union_test": true,
+    "constituent_bonferroni_used": false,
+    "within_mixture_bound_bonferroni_used": true,
+    "calibration_iid_within_each_plant_required": true,
+    "statewise_probability_certified": false,
+    "out_of_distribution_risk_certified": false
+  },
+  "adoption": {
+    "members": {
+      "1802": {
+        "adoptions": 602,
+        "initials": 1024,
+        "observed_rate": 0.587890625,
+        "pointwise_p_value": 1.4427344617458532e-162,
+        "adoption_lower": 0.5502780001304644,
+        "certified": true
+      },
+      "1812": {
+        "adoptions": 615,
+        "initials": 1024,
+        "observed_rate": 0.6005859375,
+        "pointwise_p_value": 1.4989476417181458e-172,
+        "adoption_lower": 0.5631026279373753,
+        "certified": true
+      },
+      "1822": {
+        "adoptions": 605,
+        "initials": 1024,
+        "observed_rate": 0.5908203125,
+        "pointwise_p_value": 7.614418555978559e-165,
+        "adoption_lower": 0.55323528169374,
+        "certified": true
+      }
+    },
+    "threshold": 0.2,
+    "attempt": 2,
+    "allocated_error": 0.008333333333333333,
+    "family_p_value": 1.4427344617458532e-162,
+    "minimum_adoption_lower": 0.5502780001304644,
+    "all_fixed_models_adoption_certified": true,
+    "exact_binomial": true,
+    "intersection_union_test": true,
+    "constituent_bonferroni_used": false
+  },
+  "paired_gain": {
+    "members": {
+      "1802": {
+        "mean_gain_percent": 1.4153299393222407,
+        "standard_deviation": 3.4342559846904823,
+        "standard_error": 0.10732049952157757,
+        "pointwise_p_value": 2.6271475910200715e-17,
+        "gain_lower_percent": 1.1579835425007636,
+        "testable": true,
+        "certified": true
+      },
+      "1812": {
+        "mean_gain_percent": 1.5312464308667666,
+        "standard_deviation": 3.467051005337892,
+        "standard_error": 0.10834534391680913,
+        "pointwise_p_value": 6.115010724938639e-21,
+        "gain_lower_percent": 1.2714425351183254,
+        "testable": true,
+        "certified": true
+      },
+      "1822": {
+        "mean_gain_percent": 1.5499541819461164,
+        "standard_deviation": 3.5313265610422935,
+        "standard_error": 0.11035395503257167,
+        "pointwise_p_value": 6.319356835817463e-21,
+        "gain_lower_percent": 1.2853337894839871,
+        "testable": true,
+        "certified": true
+      }
+    },
+    "threshold_percent": 0.5,
+    "attempt": 2,
+    "allocated_error": 0.008333333333333333,
+    "critical": 2.3979239564547097,
+    "family_p_value": 2.6271475910200715e-17,
+    "minimum_gain_lower_percent": 1.1579835425007636,
+    "all_fixed_models_gain_certified": true,
+    "paired_by_independent_initial": true,
+    "exact_finite_sample": false,
+    "normal_iid_exact_otherwise_asymptotic": true,
+    "intersection_union_test": true,
+    "constituent_bonferroni_used": false
+  },
+  "constituent_p_values": {
+    "risk:1802:mixture": 0.0002670182558759393,
+    "risk:1802:strong_lag": 5.06228595643261e-06,
+    "risk:1812:mixture": 0.00026194187838513017,
+    "risk:1812:strong_lag": 9.26148245383251e-07,
+    "risk:1822:mixture": 8.02048260339916e-06,
+    "risk:1822:strong_lag": 1.1963747882835218e-09,
+    "adoption:1802": 1.4427344617458532e-162,
+    "adoption:1812": 1.4989476417181458e-172,
+    "adoption:1822": 7.614418555978559e-165,
+    "gain:1802": 2.6271475910200715e-17,
+    "gain:1812": 6.115010724938639e-21,
+    "gain:1822": 6.319356835817463e-21
+  },
+  "joint_family_p_value": 0.0002670182558759393,
+  "all_statistical_components_certified": true,
+  "observed_execution_failures": 0,
+  "all_baseline_and_candidate_executions_complete": true,
+  "joint_deployment_certified": true,
+  "intersection_union_test": true,
+  "constituent_bonferroni_used": false,
+  "controller_family_selection_permitted": false,
+  "confirmation_outcomes_used_for_selection": false,
+  "confirmation_iid_mixture_sampling_required": true,
+  "zero_observed_failures_is_not_zero_population_failure_risk": true,
+  "baseline_failed_pairs_imputed_harm": 0,
+  "baseline_failure_samples_removed": 0,
+  "gain_retains_capped_failure_costs": true
+}
