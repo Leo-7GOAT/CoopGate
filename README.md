@@ -2,20 +2,39 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
-Execution update (2026-10-31): a further interrupted calibration retains **5,544
+Completed joint study (2026-10-31): **16,384 unique SUMO records, 4,096 independent
+initials, and full independent physical/controller replay**. Both collection stages
+and the native finalizer exited zero. All three fixed models pass the registered
+joint risk/adoption/gain decision without model or threshold selection. Confirmation
+mean paired team-cost gains are **1.4153%–1.5500%**, with lower bounds
+**1.1580%–1.2853%** (required >0.5%); observed adoption is **58.7891%–60.0586%**,
+with lower bounds **55.0278%–56.3103%** (required ≥20%). The largest calibration
+conditional performance-regression risk upper bound is **3.8197%** (limit 5%).
+Risk means failure or any cost/arrival regression >1e-9 among adopted executions.
+Risk/adoption validity requires the registered IID sampling assumptions; paired
+t gain inference is normal-IID exact and otherwise asymptotic with finite variance.
+The certificate covers the registered mixture and strong-lag laws; statewise and
+out-of-distribution risk are outside its scope. The OOD stress limitation below
+remains unchanged. Fair comparison, candidate factorial, author-code CSPI analysis,
+and complete raw-data delivery remain in progress.
+[Original certificate](artifacts/joint_risk_recovery_20261031/analysis/certificate.json)
+and [native exit, coverage and results receipt](artifacts/joint_risk_recovery_20261031/analysis/completion_receipt_20261031.json).
+
+Earlier execution checkpoint (2026-10-31): a further interrupted calibration retained **5,544
 complete records**. A separately frozen recovery keeps all 16,384 unique planned
 records and all original criteria. Windows denied the planned S4U registration;
 the actual launch uses limited Interactive login with an automatic-sleep request,
 so logout can still interrupt it. [Recovery](docs/joint_recovery_20261031.md) and
 [actual launch fallback](artifacts/joint_risk_recovery_20261031/launch_fallback.json).
 The saved boundary row reproduces exactly in all non-timing fields, and new
-collection has advanced beyond the interrupted prefix; full validation remains pending.
+collection advanced beyond the interrupted prefix. The completed study is reported above.
 
 Execution recovery (2026-10-28): an unexplained process interruption is preserved
 with unknown exits. **900 completed runs are reused verbatim**; the three saved
 rows at the unsealed boundary reproduce exactly in all non-timing fields.
 The full **16,384 unique-run** study continues under a one-shot Windows scheduler
-task, with all original statistical criteria retained. Validation is still pending.
+task, with all original statistical criteria retained. Validation was pending at
+that checkpoint; the completed joint study is reported above.
 [Recovery protocol, accounting and checks](docs/joint_recovery_20261028.md).
 
 Execution update (2026-10-27): the user authorized withdrawing the obsolete
@@ -31,8 +50,8 @@ cells. Two fixed models pass the predeclared relative comparisons, but the
 **all-three-model criterion fails**. Composite failure remains 55.09% for the
 baseline and 54.46%–54.98% for bank gates, mostly software aborts. Recorded
 collisions are 1 for the baseline and 2 for each bank model. These out-of-assumption
-results establish limitations, not deployable safety. The complete conditional
-risk/adoption/gain study and fair comparison remain pending.
+results establish limitations, not deployable safety. The conditional joint study
+is now complete (above); fair comparison remains in progress.
 [Full scope results, original tests and failure accounting](docs/ood_complete_results_20261027.md).
 
 Earlier development evidence (2026-10-25): the complete original grid has finished
