@@ -20,6 +20,14 @@ and complete raw-data delivery remain in progress.
 [Original certificate](artifacts/joint_risk_recovery_20261031/analysis/certificate.json)
 and [native exit, coverage and results receipt](artifacts/joint_risk_recovery_20261031/analysis/completion_receipt_20261031.json).
 
+Fair-review recovery (2026-11-01): the original **5,120-run fair collection is
+complete with native exit zero and all 160 sealed block hashes verified**. Its
+subsequent review was interrupted with an unknown native exit and no analysis
+output. A separately recorded recovery repeats the unchanged full review over
+the same bytes, adding **zero fair simulations or statistical samples**. The
+original factorial and author-code CSPI stages remain unchanged.
+[Interruption and recovery registration](artifacts/fair_replay_recovery_20261101/recovery.json).
+
 Earlier execution checkpoint (2026-10-31): a further interrupted calibration retained **5,544
 complete records**. A separately frozen recovery keeps all 16,384 unique planned
 records and all original criteria. Windows denied the planned S4U registration;
