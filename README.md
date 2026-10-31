@@ -2,6 +2,13 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
+Execution update (2026-10-31): a further interrupted calibration retains **5,544
+complete records**. A separately frozen recovery keeps all 16,384 unique planned
+records and all original criteria. Windows denied the planned S4U registration;
+the actual launch uses limited Interactive login with an automatic-sleep request,
+so logout can still interrupt it. [Recovery](docs/joint_recovery_20261031.md) and
+[actual launch fallback](artifacts/joint_risk_recovery_20261031/launch_fallback.json).
+
 Execution recovery (2026-10-28): an unexplained process interruption is preserved
 with unknown exits. **900 completed runs are reused verbatim**; the three saved
 rows at the unsealed boundary reproduce exactly in all non-timing fields.
