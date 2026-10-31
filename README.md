@@ -8,6 +8,8 @@ records and all original criteria. Windows denied the planned S4U registration;
 the actual launch uses limited Interactive login with an automatic-sleep request,
 so logout can still interrupt it. [Recovery](docs/joint_recovery_20261031.md) and
 [actual launch fallback](artifacts/joint_risk_recovery_20261031/launch_fallback.json).
+The saved boundary row reproduces exactly in all non-timing fields, and new
+collection has advanced beyond the interrupted prefix; full validation remains pending.
 
 Execution recovery (2026-10-28): an unexplained process interruption is preserved
 with unknown exits. **900 completed runs are reused verbatim**; the three saved
