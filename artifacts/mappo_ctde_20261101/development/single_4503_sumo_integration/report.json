@@ -1,0 +1,347 @@
+{
+  "protocol": {
+    "purpose": "development; not a risk certificate or untouched confirmation",
+    "backend": "sumo",
+    "n_independent_initials": 2,
+    "seed_base": 94700001,
+    "modes": [
+      "clean",
+      "uniform",
+      "bias",
+      "pulse"
+    ],
+    "methods": [
+      "rule",
+      "ego_planner",
+      "team_planner",
+      "bc_only",
+      "single_central_4503"
+    ],
+    "checkpoints": {
+      "bc_only": {
+        "path": "artifacts/mappo_ctde_20261101/development/bc_4503/initializer.pt",
+        "sha256": "7e5f09b48d2b6b5765d45f8ca9da1ac43f954f0dbc99fb94a0906c65e1d6eedb",
+        "stage": "bc_only",
+        "steps": 0
+      },
+      "single_central_4503": {
+        "path": "artifacts/mappo_ctde_20261101/development/single_4503/policy.pt",
+        "sha256": "a2be18c92ebff9158f252313dc4209ee1c1e63c207269d581c6dcc3363069ccb",
+        "stage": "single",
+        "steps": 2097152
+      }
+    },
+    "expected_executions": 40,
+    "no_outcome_filtering": true
+  },
+  "results": {
+    "rule": {
+      "executions": 8,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        11.375,
+        10.8125,
+        12.609375
+      ],
+      "controller_p95_ms": 0.130039919167757,
+      "controller_max_ms": 0.4120999947190285,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -6.774344151302771,
+          "mean_team_gain_s": -0.7317708333333334,
+          "team_gain_one_sided_t_lower_s": -5.35199004068668,
+          "mean_per_vehicle_gain_s": [
+            -0.78125,
+            -0.6953125,
+            -0.71875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -5.713868370839872,
+            -5.0853428500474855,
+            -5.256758901172682
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -10.40843272222628,
+          "mean_team_gain_s": -1.1015625,
+          "team_gain_one_sided_t_lower_s": -3.551429624183803,
+          "mean_per_vehicle_gain_s": [
+            -1.25,
+            -0.625,
+            -1.4296875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -3.2230473483359487,
+            -5.26166126858948,
+            -2.1695802556259807
+          ]
+        },
+        "bc_only": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -1.5848501181641044,
+          "mean_team_gain_s": -0.17708333333333334,
+          "team_gain_one_sided_t_lower_s": -1.295143497390371,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            -0.53125,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            -3.885430492171113,
+            0.0
+          ]
+        }
+      }
+    },
+    "ego_planner": {
+      "executions": 8,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        10.59375,
+        10.1171875,
+        11.890625
+      ],
+      "controller_p95_ms": 4.04334997292608,
+      "controller_max_ms": 6.431400077417493,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.0,
+          "mean_team_gain_s": 0.0,
+          "team_gain_one_sided_t_lower_s": 0.0,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -3.6196156232683907,
+          "mean_team_gain_s": -0.36979166666666663,
+          "team_gain_one_sided_t_lower_s": -2.54014374983621,
+          "mean_per_vehicle_gain_s": [
+            -0.46875,
+            0.0703125,
+            -0.7109375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -3.428321022503923,
+            -0.1763184185419936,
+            -4.509053645546701
+          ]
+        },
+        "bc_only": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 4.317130420772777,
+          "mean_team_gain_s": 0.5546875,
+          "team_gain_one_sided_t_lower_s": -2.9474715432963094,
+          "mean_per_vehicle_gain_s": [
+            0.78125,
+            0.1640625,
+            0.71875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -4.151368370839872,
+            -0.8717873578763731,
+            -3.819258901172682
+          ]
+        }
+      }
+    },
+    "team_planner": {
+      "executions": 8,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        10.125,
+        10.1875,
+        11.1796875
+      ],
+      "controller_p95_ms": 27.303049922920763,
+      "controller_max_ms": 41.75640014000237,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 3.307715823435017,
+          "mean_team_gain_s": 0.36979166666666663,
+          "team_gain_one_sided_t_lower_s": -1.800560416502877,
+          "mean_per_vehicle_gain_s": [
+            0.46875,
+            -0.0703125,
+            0.7109375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -2.490821022503923,
+            -0.3169434185419936,
+            -3.087178645546701
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.0,
+          "mean_team_gain_s": 0.0,
+          "team_gain_one_sided_t_lower_s": 0.0,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "bc_only": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 7.617309159298703,
+          "mean_team_gain_s": 0.9244791666666667,
+          "team_gain_one_sided_t_lower_s": -0.40732779346009895,
+          "mean_per_vehicle_gain_s": [
+            1.25,
+            0.09375,
+            1.4296875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.7230473483359487,
+            -1.1887307764183666,
+            0.6897947443740192
+          ]
+        }
+      }
+    },
+    "bc_only": {
+      "executions": 8,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        11.375,
+        10.28125,
+        12.609375
+      ],
+      "controller_p95_ms": 1.545439986512065,
+      "controller_max_ms": 3.85520001873374,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -5.11742407333006,
+          "mean_team_gain_s": -0.5546875,
+          "team_gain_one_sided_t_lower_s": -4.0568465432963094,
+          "mean_per_vehicle_gain_s": [
+            -0.78125,
+            -0.1640625,
+            -0.71875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -5.713868370839872,
+            -1.199912357876373,
+            -5.256758901172682
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -8.746091802685175,
+          "mean_team_gain_s": -0.9244791666666667,
+          "team_gain_one_sided_t_lower_s": -2.2562861267934324,
+          "mean_per_vehicle_gain_s": [
+            -1.25,
+            -0.09375,
+            -1.4296875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -3.2230473483359487,
+            -1.3762307764183666,
+            -2.1695802556259807
+          ]
+        },
+        "bc_only": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.0,
+          "mean_team_gain_s": 0.0,
+          "team_gain_one_sided_t_lower_s": 0.0,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "single_central_4503": {
+      "executions": 8,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        10.59375,
+        10.0,
+        11.890625
+      ],
+      "controller_p95_ms": 1.3369499705731867,
+      "controller_max_ms": 1.6902999486774206,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.36396254631489877,
+          "mean_team_gain_s": 0.0390625,
+          "team_gain_one_sided_t_lower_s": -0.2075684185419936,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            0.1171875,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            -0.6227052556259808,
+            0.0
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -3.2547384493636615,
+          "mean_team_gain_s": -0.33072916666666663,
+          "team_gain_one_sided_t_lower_s": -2.7477121683782033,
+          "mean_per_vehicle_gain_s": [
+            -0.46875,
+            0.1875,
+            -0.7109375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -3.428321022503923,
+            -0.3057618370839872,
+            -4.509053645546701
+          ]
+        },
+        "bc_only": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 4.652953567191307,
+          "mean_team_gain_s": 0.59375,
+          "team_gain_one_sided_t_lower_s": -3.1550399618383027,
+          "mean_per_vehicle_gain_s": [
+            0.78125,
+            0.28125,
+            0.71875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -4.151368370839872,
+            -1.4944926135023537,
+            -3.819258901172682
+          ]
+        }
+      }
+    }
+  },
+  "executions": 40,
+  "elapsed_s": 8.823769700014964,
+  "intervals": "Development t intervals on independent initial means; not finite-sample certificates"
+}

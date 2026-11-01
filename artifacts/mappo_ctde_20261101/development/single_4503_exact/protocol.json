@@ -1,0 +1,35 @@
+{
+  "purpose": "development; not a risk certificate or untouched confirmation",
+  "backend": "exact",
+  "n_independent_initials": 128,
+  "seed_base": 94700001,
+  "modes": [
+    "clean",
+    "uniform",
+    "bias",
+    "pulse"
+  ],
+  "methods": [
+    "rule",
+    "ego_planner",
+    "team_planner",
+    "bc_only",
+    "single_central_4503"
+  ],
+  "checkpoints": {
+    "bc_only": {
+      "path": "artifacts/mappo_ctde_20261101/development/bc_4503/initializer.pt",
+      "sha256": "7e5f09b48d2b6b5765d45f8ca9da1ac43f954f0dbc99fb94a0906c65e1d6eedb",
+      "stage": "bc_only",
+      "steps": 0
+    },
+    "single_central_4503": {
+      "path": "artifacts/mappo_ctde_20261101/development/single_4503/policy.pt",
+      "sha256": "a2be18c92ebff9158f252313dc4209ee1c1e63c207269d581c6dcc3363069ccb",
+      "stage": "single",
+      "steps": 2097152
+    }
+  },
+  "expected_executions": 2560,
+  "no_outcome_filtering": true
+}

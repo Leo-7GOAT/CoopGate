@@ -1,0 +1,29 @@
+{
+  "algorithm": "planner_bc_initializer_20261101",
+  "purpose": "expert initialization, NOT MAPPO",
+  "source": "fresh strong ego planner proposals; no old policy-iteration weights",
+  "state_target_count": 8192,
+  "seed": 4503,
+  "source_seed_base": 948000001,
+  "epochs": 80,
+  "learning_rate": 0.0003,
+  "label_smoothing": 0.05,
+  "ppo_config": {
+    "width": 128,
+    "n_envs": 64,
+    "rollout": 64,
+    "epochs": 5,
+    "minibatch": 1024,
+    "actor_lr": 0.0003,
+    "critic_lr": 0.0003,
+    "gamma": 1.0,
+    "gae_lambda": 1.0,
+    "clip": 0.2,
+    "value_scale": 10.0,
+    "entropy": 0.02,
+    "max_grad_norm": 0.5,
+    "kinematic_features": true
+  },
+  "primary_checkpoint": "fixed final epoch; no test-based checkpoint selection",
+  "information": "same 18 local features and 8 deterministic kinematic functions"
+}

@@ -54,20 +54,45 @@ Completed A/B raw data, training weights/curves, source snapshots and failed
 integration instrumentation are all preserved in a byte-verified archive:
 321 files, 87,208,894 original bytes, 28,281,950 compressed bytes.
 
-## In progress: prospectively amended C
+## Completed development C (expert initialization plus genuine PPO)
 
 A separately labeled, non-PPO expert initializer was trained on exactly 8,192
 fresh strong-ego-planner proposals, 431 simulated trajectories and 80 supervised
 epochs. Training action accuracy is 91.31%; this is NOT held-out traffic
 performance or PPO benefit. No old PI weights/labels are used.
 
-C now performs 2,097,152 actual on-policy single-agent PPO transitions with
+C completed 2,097,152 actual on-policy single-agent PPO transitions with
 lambda=1, seed 4503, starting from that actor. Its PPO collector and updates
 never read expert labels. The fixed final model must be compared both with
 the strong planners and with the BC-only initializer, on fresh development
 seeds. This explicit expert-initialized PPO path supersedes the earlier
 development-only no-imitation-initialization choice. It is not from-scratch
 MAPPO, and imitation benefit cannot be attributed to reinforcement learning.
+The full comparison has 2,560 exact-simulator executions on 128 new development
+initials and four modes, all completed. PPO ramp cost improved by .7859 seconds
+relative to BC alone (development t lower .5548); this establishes genuine
+policy-gradient benefit in this development comparison. However ramp cost
+still exceeds strong ego planning by .2676 seconds. Team gain .4211% has a
+negative t lower (-.0148 seconds). The prerequisite remains unmet. The full
+PPO/GAE audit passed. A separately named actual-SUMO integration matched all
+1,002 commands and 5,010 independently reconstructed physical substeps across
+40 runs. These repetitions add no independent initials.
+
+All 8,192 BC labels were regenerated from the declared 431 planner trajectories
+and matched. Completed C data and its initializer are preserved in a verified
+archive of 180 files, 62,645,882 original bytes and 22,286,885 compressed bytes.
+
+## In progress: prospectively amended D
+
+An unlabeled reset-state pool was generated from 907 fresh rule trajectories:
+8,192 exact float64 near-merge states, previous commands and clocks. No expert
+actions, returns, old training states or held-out states enter this pool.
+Half of training starts now use these states; the rest retain the original
+sampler. On-policy PPO continues from C for 2,097,152 new transitions, seed
+4504. A separate 8,192-step numerical smoke run completed; it is not an
+efficacy result or an independent training seed. Actual original-start paired
+evaluation of the fixed final model is still pending.
+
 Three-agent MAPPO, independent seeds and new gate certification remain pending.
 
 ## Next gates
