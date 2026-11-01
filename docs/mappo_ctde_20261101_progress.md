@@ -25,16 +25,21 @@
   Full SUMO follow-up was not enabled by its prospective condition. Restoring
   the always-coasting rear initializer can cause failed arrival, so that
   comparison alone cannot establish useful conditional rear cooperation.
-- L (`joint_4703`) is active through native pipeline session25431. Fixed
+- L (`joint_4703`) completed all native commands with actual exit0. Fixed
   budget2,097,152, parent `single_4601`, same disclosed rear-coasting prior.
   Ego actor LR1e-5, other actors1e-4: all three receive on-policy updates.
   Adds a stronger role2 replacement with the unchanged highest-admissible
   parent actor, in addition to the three original-role replacements.
   Fresh128 initials / four modes / ten methods =5,120 exact executions;
-  80 actual SUMO integration runs and replay. Full3,072-SUMO follow-up is
-  conditional on zero failures and positive gain/t-lower vs strong TEAM.
-  See `docs/mappo_joint_ego_stable_20261101_protocol.md`. Do not modify frozen
-  source/protocol or restart this native queue on an observation timeout.
+  80 actual SUMO integration runs and replay. Raw final failures0. Team
+  mean gain vs strong TEAM is-.00417s, t-lower-.06457s; the mean paired
+  percentage gain is-.17288%. Superiority is NOT established and full3,072
+  SUMO was not enabled by the prospectively registered condition.
+  Restoring front actor0 loses .26143s mean team cost (development t-lower
+  .19433s). Restoring rear actor2 to the highest-admissible parent loses
+  .03031s (t-lower .01855s). Both non-ramp actors now have actual behavioral
+  contribution; this remains one development seed, not a new risk certificate.
+  See `docs/mappo_joint_ego_stable_20261101_protocol.md`.
 - The new audited MAPPO deployment adapter connects actual joint actor weights
   to the existing actuator recovery/finite-bank gates. Physical baseline parity
   and modified-weight rejection are tested. It issues NO inherited or new risk
@@ -48,13 +53,22 @@
   zero/undefined. Training ran concurrently; these callback timings are not
   isolated runtime evidence. The full400-run integration protocol is registered
   separately in `docs/mappo_recovery_integration_20261101_protocol.md`.
-- All completed A--K raw data are retained in their separate byte-verified
+- The400-run L actuator recovery/gate integration is active in native
+  collection session74489, output `development/joint_4703_recovery_integration`.
+  Five fresh initial draws across five scenes, repeated across four classes,
+  four disturbance modes and all five selectors. Do not change its frozen
+  source files or restart into the existing directory. Observe its actual
+  zero exit before running `tools/evaluate_mappo_recovery.py review --out
+  artifacts/mappo_ctde_20261101/development/joint_4703_recovery_integration`.
+  Runtime is explicitly non-isolated; collection overlaps the fixed L exact
+  evaluation and Git upload. No communication-latency measurement is used.
+- All completed A--L raw data are retained in their separate byte-verified
   deliveries. E/F/G/H remain negative development outcomes, not discarded
   runs. Old PI studies, their failures and original paper remain unchanged.
 
-L's pipeline owns native child handles and will conditionally run the registered
-full SUMO follow-up only if its exact joint-versus-strong-team condition passes.
-Read its completed report/role reverts; avoid inferring success from training
+L's native pipeline is terminal, not waiting for more training or raw SUMO.
+Its development condition failed. Read its completed report/role reverts;
+avoid inferring success from training
 curves, parameter changes, native zero exits, or a positive initial prior.
 The active goal is NOT complete or blocked.
 
@@ -190,7 +204,7 @@ commands and 4,805 physical substeps. All E data are archived (182 files,
 The continuation commands and session references below are historical and
 superseded by the authoritative current milestone above. Do not execute them
 again. F/G/H completed without satisfying the prerequisite; I/J/K supersede
-these operational instructions. L is the only active experiment.
+these operational instructions. L's actuator/gate integration is the active experiment.
 
 The startup and subsequent actor heads are now routed only by the already
 observed local clock. This separates rare initial decisions from abundant

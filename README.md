@@ -14,8 +14,14 @@ over its unchanged pretrained initializer. Two completed joint MAPPO runs have
 three independently updated actors and a centralized critic. J is **1.221%**
 worse than strong team planning; K narrows its own development-set gap to
 **0.405%**, still failing the superiority condition. These use different fresh
-cases and are not a controlled estimate of the change. L is active with a
-smaller, nonzero ego learning rate and a stronger rear-role replacement control.
+cases and are not a controlled estimate of the change. L completes 2,097,152
+joint steps, 5,120 exact comparisons and 80 SUMO integration runs. Its raw
+team cost remains .00417s worse than strong team planning, so superiority is
+unproved. Restoring the initial front role or the unchanged highest-admissible
+rear role worsens team cost by .26143s / .03031s on its paired development
+cases: both non-ramp learned policies have behavioral contribution. New MAPPO
+actuator/gate integration is active; see the
+[implemented MAPPO mathematics](docs/mappo_algorithm_identity_20261101.md).
 No previous risk certificate transfers to new
 weights. See the [single competence assessment](artifacts/mappo_ctde_20261101/development/single_4601_sumo_full/single_competence.json),
 [full SUMO replay](artifacts/mappo_ctde_20261101/development/single_4601_sumo_full/verification.json),
