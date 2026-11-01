@@ -48,7 +48,7 @@ def schedule(n,seed_base,scope):
             for profile in profiles for mode in modes]
 
 
-def collect(out,checkpoint,n=1,seed_base=96800001,scope='integration'):
+def collect(out,checkpoint,n=1,seed_base=96800001,scope='integration',runtime_context='Not isolated; concurrent workload unspecified'):
     out=Path(out);out.mkdir(parents=True,exist_ok=False)
     torch.set_num_threads(1)
     model,identity=load_deployment_actor(checkpoint)
@@ -65,6 +65,7 @@ def collect(out,checkpoint,n=1,seed_base=96800001,scope='integration'):
         physical_contract='Declared actuator-class bounds and command-history stopping certificate',
         online_information='Observed kinematics and executed commands only; no true plant or future tape',
         timing='Each full callback including terminal exceptions; no shared evidence cost and no hard-real-time claim',
+        runtime_context=runtime_context,runtime_isolation_claim=False,
         inference='Repeated profiles/modes are not additional independent initials; conditional harm is descriptive')
     write(out/'plan.json',plan)
     warm=np.array([[-140.,12.],[-220.,10.],[-190.,12.]])
@@ -165,9 +166,10 @@ if __name__=='__main__':
     parser.add_argument('--out',required=True);parser.add_argument('--checkpoint')
     parser.add_argument('--n',type=int,default=1);parser.add_argument('--seed-base',type=int,default=96800001)
     parser.add_argument('--scope',choices=('smoke','integration'),default='integration')
+    parser.add_argument('--runtime-context',default='Not isolated; concurrent workload unspecified')
     args=parser.parse_args()
     if args.action=='collect':
         if not args.checkpoint:parser.error('--checkpoint required for collection')
-        collect(args.out,args.checkpoint,args.n,args.seed_base,args.scope)
+        collect(args.out,args.checkpoint,args.n,args.seed_base,args.scope,args.runtime_context)
     else:
         review(args.out)
