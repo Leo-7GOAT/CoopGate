@@ -1,0 +1,100 @@
+{
+  "utc": "2026-11-01T03:55:04.363463+00:00",
+  "status": "All three research objectives and requested manuscript delivery verified",
+  "requirements": [
+    {
+      "objective": 1,
+      "status": "complete",
+      "evidence": [
+        "artifacts/joint_risk_recovery_20261031/analysis/certificate.json",
+        "artifacts/joint_risk_recovery_20261031/analysis/completion_receipt_20261031.json",
+        "artifacts/joint_completed_publication_20261031.json"
+      ],
+      "finding": "All three fixed models pass the unchanged risk/adoption/gain thresholds after 16384 runs and full replay. Risk/adoption guarantees require registered IID laws; gain inference is normal-IID exact, otherwise asymptotic. No statewise, arbitrary OOD or road-safety claim."
+    },
+    {
+      "objective": 2,
+      "status": "complete",
+      "evidence": [
+        "artifacts/v44/fair_failure_preserving_execution/analysis/report.json",
+        "artifacts/candidate_factorial/complete_fair_cases/analysis/completion_receipt_20261101.json",
+        "artifacts/literature_reproduction/cspi_factorial_prospective/analysis/complete.json",
+        "artifacts/fair_completed_publication_20261101.json",
+        "artifacts/factorial_cspi_completed_publication_20261101.json"
+      ],
+      "finding": "Full original 5120-run shared-budget comparison, 3200-run candidate factorial and original-author CSPI/CSPI-MT analysis complete. Shared-budget ranking unavailable. CSPI has greater held-out gain; bank has fewer observed individual regressions. Different data/compute budgets disclosed; no universal superiority, fresh samples or new certificate."
+    },
+    {
+      "objective": 3,
+      "status": "complete",
+      "evidence": [
+        "artifacts/recovery_20261027/ood_finalization_receipt.json",
+        "artifacts/recovery_20261027/ood_transport_verification.json",
+        "artifacts/recovery_20261026/ood_recovery/analysis/report.json"
+      ],
+      "finding": "All 22464 expanded runs and full independent replay complete. 192 independent initials with nine repeated factor cells; all-model criterion fails and remains reported. High composite failure and bounded-model assumptions limit applicability."
+    }
+  ],
+  "manuscript": {
+    "status": "complete",
+    "pages": 13,
+    "equations": 11,
+    "tables": 11,
+    "desktop_path": "C:\\Users\\Leo\\Desktop\\CoopGate_论文完整初稿_20261101.docx",
+    "sha256": "356297e1aed063f034742a4d871b4d246fda28fb99f2673c3e6a86227389e09f",
+    "qa": "artifacts/paper_completed_20261101/qa.json",
+    "publication": "artifacts/paper_completed_publication_20261101.json"
+  },
+  "implementation_scope": "Offline coupled model-based multi-agent approximate policy iteration and centralized joint gate; not MAPPO/CTDE, full-stack driving or real-vehicle validation. Finite-path prediction is not statewise probability confidence.",
+  "original_remaining_stage_exits": [
+    {
+      "utc": "2026-11-01T02:50:24.3850226Z",
+      "arguments": [
+        "-X",
+        "utf8",
+        "tools/execute_candidate_factorial.py",
+        "watch"
+      ],
+      "exit_code": 0
+    },
+    {
+      "utc": "2026-11-01T03:24:08.1781766Z",
+      "arguments": [
+        "-X",
+        "utf8",
+        "tools/finalize_episode_keys.py",
+        "factorial"
+      ],
+      "exit_code": 0
+    },
+    {
+      "utc": "2026-11-01T03:24:26.9736796Z",
+      "arguments": [
+        "-X",
+        "utf8",
+        "tools/finalize_episode_keys.py",
+        "cspi-export"
+      ],
+      "exit_code": 0
+    },
+    {
+      "utc": "2026-11-01T03:24:36.9372994Z",
+      "arguments": [
+        "-X",
+        "utf8",
+        "tools/finalize_episode_keys.py",
+        "cspi-analysis"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "original_remaining_queue_completed": true,
+  "extra_experiments_beyond_registered_plans": 0,
+  "frozen_scientific_thresholds_changed": false,
+  "shutdown": {
+    "executed": false,
+    "scheduled": false,
+    "reason": "Other protected work is still actively computing. Preserve the prior user instruction not to interfere with that work; the condition for shutting down all work is not met."
+  },
+  "journal_sha256": "afaf9064dcabb39cb0b7464a05f927800fbfa5bec76d649996f57c61ad1cf0cb"
+}

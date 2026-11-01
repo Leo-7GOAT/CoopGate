@@ -20,6 +20,8 @@ analysis and complete raw-data deliveries are finished below. The updated
 [13-page manuscript draft](artifacts/paper_completed_20261101/CoopGate_论文完整初稿_20261101.docx)
 includes the full results, assumptions and limitations; all pages, 11 editable
 equations and 11 tables passed [render and source QA](artifacts/paper_completed_20261101/qa.json).
+[Published manuscript and input bytes](artifacts/paper_completed_publication_20261101.json)
+and [requirement-by-requirement completion audit](artifacts/completion_audit_20261101.json).
 [Original certificate](artifacts/joint_risk_recovery_20261031/analysis/certificate.json)
 and [native exit, coverage and results receipt](artifacts/joint_risk_recovery_20261031/analysis/completion_receipt_20261031.json).
 
