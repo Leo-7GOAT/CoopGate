@@ -2,41 +2,40 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
-**New active work (2026-11-01): authentic on-policy MAPPO replacement.**
-The completed results below use model-based multi-agent policy iteration,
-**not MAPPO**. A new decentralized actor / centralized critic PPO pipeline,
-independent rollout/GAE audit and actual SUMO integration are implemented.
-The PI-warm-started single PPO now completes **2,560 actual SUMO executions**
-and full replay: ramp cost/time/command variation improve **2.886% / 2.339% /
-17.708%** versus the unchanged strong ego planner. These are single-seed
-development results; PPO has not demonstrated an additional ramp improvement
-over its unchanged pretrained initializer. Two completed joint MAPPO runs have
-three independently updated actors and a centralized critic. J is **1.221%**
-worse than strong team planning; K narrows its own development-set gap to
-**0.405%**, still failing the superiority condition. These use different fresh
-cases and are not a controlled estimate of the change. L completes 2,097,152
-joint steps, 5,120 exact comparisons and 80 SUMO integration runs. Its raw
-team cost remains .00417s worse than strong team planning, so superiority is
-unproved. Restoring the initial front role or the unchanged highest-admissible
-rear role worsens team cost by .26143s / .03031s on its paired development
-cases: both non-ramp learned policies have behavioral contribution. New MAPPO
-actuator/gate integration completes400 SUMO runs and independent replay.
-The bank gate improves mean cost .4846%, adopts29/80 repeated conditions,
-and observes0 harmful adopted conditions; only FIVE initial draws underlie
-these repeats, so this is not a risk certificate or the required utility pass.
-Its41/1,840 callbacks above500ms also leave online cost unresolved. Two fixed
-single-PPO replications are retained:4602 completed2,560 SUMO/replay and
-passes numerical/development-interval competence;4603 has positive mean gains but fails the registered
-cost/time interval condition. The full three-seed prerequisite is unproved.
-See the
-[implemented MAPPO mathematics](docs/mappo_algorithm_identity_20261101.md).
-No previous risk certificate transfers to new
-weights. See the [single competence assessment](artifacts/mappo_ctde_20261101/development/single_4601_sumo_full/single_competence.json),
-[full SUMO replay](artifacts/mappo_ctde_20261101/development/single_4601_sumo_full/verification.json),
-[prospective protocol](docs/mappo_ctde_20261101_protocol.md)
-and [verified progress / remaining work](docs/mappo_ctde_20261101_progress.md).
-The 13-page manuscript below still reports the prior PI studies; its MAPPO
-revision awaits the new experiments, gate certification and comparisons.
+**Active MAPPO work (2026-11-01).** Three independent local actors, a centralized
+critic, joint on-policy proposals, GAE and clipped PPO are implemented and
+independently audited. Fixed joint seeds4703/4704/4705 EACH complete2,097,152
+new joint steps,5,120 exact comparisons and80 actual SUMO integration/replay.
+Raw team gains versus strong team planning are-.00417/-.05914/+.05646s;
+all development t lower bounds are negative. General superiority is unproved.
+Front-role behavioral benefit repeats across all three; rear-role benefit
+versus the highest-admissible parent repeats in two and fails in4704.
+
+Two single-PPO seeds complete2,560 actual SUMO comparisons EACH and pass
+development competence; the third has positive point gains but fails its
+registered cost/time interval condition. The old PI initializer is explicitly
+disclosed; additional PPO benefit over it and three-seed acceptance are unproved.
+
+The [complete three-model gate matrix](artifacts/mappo_ctde_20261101/three_model_gate_matrix.json)
+has1,200 actual SUMO runs and full replay, on the SAME FIVE initial draws.
+Bank-gated cost gains are .4846%/.6423%/.5536%, with29/28/30 adopted conditions
+and0 observed harmful adoptions. These repeated outcomes do NOT certify risk;
+the first model also misses the unchanged .5% utility threshold. Online costs
+remain unresolved. A rejection-only physical arrival bound preserves all
+commands/admissions in7,324 paired replay callbacks while reducing measured
+total nominal/bank callback cost26%/16%. Extra certificate caching worsens
+bank tail latency and is not adopted. Neither replay adds SUMO trials.
+
+The old minimum margin is degenerate at adopted decisions. A separate
+[scenario-score threshold prototype](docs/scenario_confidence_gate_20261101_protocol.md)
+is implemented/tested; its score is NOT a safety probability and its actual
+SUMO/calibration/confirmation are pending. See the
+[MAPPO mathematics](docs/mappo_algorithm_identity_20261101.md),
+[prospective protocol](docs/mappo_ctde_20261101_protocol.md) and
+[verified progress / remaining work](docs/mappo_ctde_20261101_progress.md).
+No old risk certificate transfers. The13-page manuscript and historical
+results below concern prior model-based PI, **not the new MAPPO studies**;
+the MAPPO paper revision awaits remaining comparisons and fresh certification.
 
 Completed joint study (2026-10-31): **16,384 unique SUMO records, 4,096 independent
 initials, and full independent physical/controller replay**. Both collection stages

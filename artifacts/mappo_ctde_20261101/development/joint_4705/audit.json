@@ -1,0 +1,55 @@
+{
+  "algorithm": "mappo_ctde_20261101",
+  "stage": "joint",
+  "steps": 2097152,
+  "final_budget_complete": true,
+  "on_policy_proposals_verified": true,
+  "independent_gae_verified": true,
+  "snapshots": [
+    {
+      "path": "rollout_before_update_2097152.pt",
+      "steps": 2097152,
+      "sampled_action_logp_max_error": 0.0,
+      "actor_gradient_l2": 0.27987693428178656,
+      "critic_gradient_l2": 0.006016301362873917,
+      "phase_actor_gradient_l2": null,
+      "per_role_actor_gradient_l2": [
+        0.12385363051546344,
+        0.7861181282218028,
+        0.15691831152595526
+      ],
+      "active_role_samples": [
+        3055,
+        3577,
+        3677
+      ],
+      "independent_gae_max_error": 1.430511474609375e-06
+    },
+    {
+      "path": "rollout_before_update_4096.pt",
+      "steps": 4096,
+      "sampled_action_logp_max_error": 0.0,
+      "actor_gradient_l2": 0.25872355108268064,
+      "critic_gradient_l2": 0.9803602169956114,
+      "phase_actor_gradient_l2": null,
+      "per_role_actor_gradient_l2": [
+        0.3231719320997403,
+        0.7570155161417371,
+        0.327304266355603
+      ],
+      "active_role_samples": [
+        2754,
+        2348,
+        4040
+      ],
+      "independent_gae_max_error": 1.0728836059570312e-06
+    }
+  ],
+  "role_parameter_delta_squared_l2": [
+    53.43239370151423,
+    0.46703575323408586,
+    17.476271800347604
+  ],
+  "policy_sha256": "ffe58343ef0ee9eda1113cfc19aedccc900fc556fce15f66e3a99e45c6d9b451",
+  "meaning": "Algorithm integrity only; not evidence of superiority or safety"
+}

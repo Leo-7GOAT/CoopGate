@@ -82,15 +82,43 @@
   thresholds pass. Do not edit their frozen source/protocol or restart them.
   Three-seed acceptance remains unproved, and J/K/L are not three
   identical-configuration replications.
-- Two exact-L JOINT replications are now ACTIVE, with the SAME fixed I parent:
-  4704/session11127/native train PID67728 and4705/session85960/PID8996.
-  Each2,097,152 new joint steps, then5,120 exact comparisons,80 SUMO/replay,
-  and the unchanged conditional3,072-run full SUMO. See
+- Both exact-L JOINT replications are COMPLETE, native pipelines11127/85960
+  each observed exit0. Same fixed I parent; each2,097,152 new joint steps,
+  5,120 exact comparisons and80 SUMO/replay.4704/4705 team gains vs strong
+  TEAM are-.05914s/+.05646s, t lower-.12795s/-.00944s. Neither passes the
+  positive-lower-bound condition, so neither full3,072-SUMO stage is enabled.
+  Front-role benefit repeats; rear-vs-highest-admissible benefit is negative
+  in4704 and positive in4705. Keep this inconsistency, not a best-seed claim. See
   `docs/mappo_joint_replications_20261101_protocol.md`. These are independent
   joint optimization RNG seeds conditional on one parent, not independent
   complete single/joint pipelines. Keep all negative outcomes; no best seed.
-  The parent queues own actual native exit handles. Do not modify their
-  frozen source/protocol or restart any queue on tool observation timeout.
+  All native handles are terminal; do not restart these completed queues.
+- Three-model actuator/gate integration is COMPLETE:400 actual SUMO runs per
+  fixed model,1,200 total, all28,118 commands/140,590 physical substeps replay.
+  Every repeated baseline trajectory matches across models. SAME five initial
+  draws, not15 or1200 independent trials. Bank gains .48458%/.64234%/.55362%,
+  adoption29/28/30 of80 conditions, observed harmful0/29,0/28,0/30. No new
+  risk certificate or all-model utility pass. Both new collection/review pairs
+  exited0 (64905/83212 and84481/20805). See `three_model_gate_matrix.json`.
+- Optimistic-arrival rejection completed160 source episodes/320 whole-gate
+  replays,7,324 callbacks, all commands/admissions/accepted evidence identical.
+  Paired total callback cost falls26.0% nominal/15.9% bank; bank max remains
+  1425.26ms,40 calls>500ms. Actual bound work and every rejection-prefix proof
+  are recorded. This is replay, not extra SUMO or independent efficacy data.
+  Native smoke75905/full75179 exited0. Byte-exact source snapshots are archived.
+- Extra nominal-certificate caching also passes complete160/320 replay and
+  primitive key/capacity tests, but bank max grows to2073.02ms vs1651.26ms in
+  its own paired reference,44 vs43 calls>500ms. Do NOT adopt it as a latency
+  solution. Preserve its negative engineering outcome (27060/50128 exits0).
+- Original minimum performance margins are all zero at4703's175 nominal/47
+  bank adopted decisions. A NEW `ScenarioConfidenceGate` uses complete-path
+  pass fractions with registered failed-path budgets0/1/3. Budget0 preserves
+  original real predictor admission in four-class tests; synthetic tests show
+  threshold switching. Eight targeted tests pass. This is NOT a calibrated
+  probability/risk certificate. Actual new-rule SUMO and independent score
+  checking/calibration/confirmation are NEXT, not already run. See
+  `docs/scenario_confidence_gate_20261101_protocol.md`. Do not mislabel its
+  allowed positive path differences as strict-bank evidence.
 - All completed A--L raw data are retained in their separate byte-verified
   deliveries. E/F/G/H remain negative development outcomes, not discarded
   runs. Old PI studies, their failures and original paper remain unchanged.
@@ -233,8 +261,8 @@ commands and 4,805 physical substeps. All E data are archived (182 files,
 The continuation commands and session references below are historical and
 superseded by the authoritative current milestone above. Do not execute them
 again. F/G/H completed without satisfying the prerequisite; I/J/K supersede
-these operational instructions. Fixed4602 full SUMO and joint4704/4705 are
-active;4603 and the L400-run gate integration are terminal.
+these operational instructions. All4601--4603 single stages,4703--4705 joint
+stages and three-model gate integrations are terminal; use current next gates.
 
 The startup and subsequent actor heads are now routed only by the already
 observed local clock. This separates rare initial decisions from abundant
@@ -281,18 +309,21 @@ archive; E is unfinished and must not be archived as completed. All original
 studies/certificates remain unchanged, and the other protected desktop project
 must not be accessed or interrupted. The goal is ACTIVE, not complete/blocked.
 
-Three-agent MAPPO, independent seeds and new gate certification remain pending.
+Historical pending note superseded: three-agent MAPPO and fixed joint seeds
+are complete. Stable superiority, IPPO and new gate certification remain pending.
 
 ## Next gates
 
-1. Establish the new single PPO's paired performance against the strong ego
-   baseline. If it fails, retain that result and diagnose the policy before
-   expanding to joint training.
-2. True joint MAPPO, independent seeds, IPPO and role substitution; verify
-   behavior-level cooperation as well as mathematical update identity.
-3. Actuator-memory training/deployment with the SAME strong recovery baseline.
-4. Fixed-policy gate calibration and fresh tests, adoption-matched controls,
-   selector-specific measured runtime; no transfer of old certificates.
+1. Implement independent actual-SUMO smoke/review for the new score-threshold
+   rule, retaining actuator-memory physical checks and complete path scores.
+   Existing strict-bank replay cannot certify intentionally allowed regressions.
+2. Register fresh calibration/confirmation, fixed thresholds and new familywise
+   error allocation for ALL three models; retain risk<=5%,adoption>=20%,
+   utility>.5%. Add the calibration-selected adoption-matched control.
+3. Complete IPPO and online cost validation. Retain4603's failed interval and
+   all-model raw-superiority/utility gaps; do not chase a replacement seed.
+4. Use new exact-pruning implementation only after fresh actual SUMO verification;
+   certificate caching is not a proven latency improvement.
 5. Update the paper only with completed new results; publish code, data and
    negative outcomes. No claim of venue readiness until these evidence gaps
    are assessed.

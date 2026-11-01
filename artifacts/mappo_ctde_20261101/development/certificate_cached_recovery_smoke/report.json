@@ -1,0 +1,67 @@
+{
+  "all_commands_and_admission_fields_match": true,
+  "source_episodes": 4,
+  "whole_controller_replays": 8,
+  "callback_count": 172,
+  "scope": "smoke",
+  "summary": {
+    "nominal_performance/memoized": {
+      "callbacks": 43,
+      "sum_ms": 1187.5318998936564,
+      "p95_ms": 119.5313899079337,
+      "max_ms": 362.0476999785751,
+      "over_500ms": 0,
+      "planning": 220977,
+      "rejections": 0,
+      "bound_substeps": 0,
+      "certificate_requests": 0,
+      "certificate_hits": 0,
+      "certificate_misses": 0
+    },
+    "nominal_performance/certificate_cached": {
+      "callbacks": 43,
+      "sum_ms": 798.9780006464571,
+      "p95_ms": 73.68205997627221,
+      "max_ms": 305.65420002676547,
+      "over_500ms": 0,
+      "planning": 158830,
+      "rejections": 128,
+      "bound_substeps": 106155,
+      "certificate_requests": 434205,
+      "certificate_hits": 184121,
+      "certificate_misses": 250084
+    },
+    "bank_performance/certificate_cached": {
+      "callbacks": 43,
+      "sum_ms": 2836.4436998963356,
+      "p95_ms": 92.77355005033313,
+      "max_ms": 1587.452500127256,
+      "over_500ms": 2,
+      "planning": 521211,
+      "rejections": 140,
+      "bound_substeps": 314782,
+      "certificate_requests": 1550557,
+      "certificate_hits": 264105,
+      "certificate_misses": 1286452
+    },
+    "bank_performance/memoized": {
+      "callbacks": 43,
+      "sum_ms": 2988.6856998782605,
+      "p95_ms": 135.78982995823026,
+      "max_ms": 1457.8079001512378,
+      "over_500ms": 2,
+      "planning": 584227,
+      "rejections": 0,
+      "bound_substeps": 0,
+      "certificate_requests": 0,
+      "certificate_hits": 0,
+      "certificate_misses": 0
+    }
+  },
+  "extra_sumo_executions": 0,
+  "extra_independent_initials": 0,
+  "elapsed_s": 7.922397699905559,
+  "callbacks_sha256": "50e95c4cf73301f93fc11e14818f76456828b3c5d8357e9916c117e20c557dda",
+  "risk_certificate": false,
+  "meaning": "Exact paired development replay; no new efficacy population or hard-real-time guarantee"
+}
