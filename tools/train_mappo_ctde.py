@@ -92,7 +92,7 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
         actor_information='local 18 observed features only', critic_information='global 13 public state features' if critic_kind=='central' else 'local 18 observed features',
         reward='ramp cost' if stage=='single' else 'mean per-car cost',
         time_limit='terminal finite 25s horizon; no terminal bootstrap',
-        primary_checkpoint='final fixed step budget', no_teacher_actions=expert_initial is None and continue_single is None and legacy_initial is None,
+        primary_checkpoint='final fixed step budget', no_teacher_actions=expert_initial is None and continue_single is None and legacy_initial is None and inherited_legacy is None,
         no_teacher_actions_in_ppo_updates=True, no_policy_iteration=legacy_initial is None and inherited_legacy is None,
         no_policy_iteration_in_ppo_updates=True)
     (out/'protocol.json').write_text(json.dumps(meta, indent=2)+'\n', encoding='utf-8')
