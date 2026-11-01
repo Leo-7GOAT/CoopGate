@@ -21,7 +21,8 @@ def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def train(out, steps, seed, stage, critic_kind='central', initial=None, config=None, expert_initial=None):
+def train(out, steps, seed, stage, critic_kind='central', initial=None, config=None, expert_initial=None,
+          continue_single=None, reset_pool=None):
     cfg = config or PPOConfig()
     if steps <= 0 or steps % cfg.n_envs:
         raise ValueError('Step budget must be a positive multiple of vector width')
@@ -29,6 +30,8 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
         raise ValueError('Only the joint stage may warm start from new single PPO')
     if expert_initial and (initial or stage != 'single'):
         raise ValueError('Expert initializer is a separate single-stage development path')
+    if continue_single and (initial or expert_initial or stage!='single'):
+        raise ValueError('Single continuation is a separate failed-prerequisite development path')
     out = Path(out)
     out.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(1)
@@ -47,6 +50,12 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
         if source['algorithm'] != 'planner_bc_initializer_20261101' or source['ppo_config'] != asdict(cfg):
             raise ValueError('Expected a separately declared matching planner-BC initializer')
         model.actor.load_state_dict(source['model']['actor'])
+    if continue_single:
+        source, previous_meta=load_mappo(continue_single)
+        if (previous_meta['stage']!='single' or previous_meta['steps']!=previous_meta['target_steps']
+                or previous_meta['ppo_config']!=asdict(cfg)):
+            raise ValueError('Single continuation requires completed matching on-policy single PPO')
+        model.load_state_dict(source.state_dict())
     initial_actor = {k:v.detach().clone() for k,v in model.actor.state_dict().items()}
     optimizer = torch.optim.Adam([dict(params=model.actor.parameters(), lr=cfg.actor_lr),
                                   dict(params=model.critic.parameters(), lr=cfg.critic_lr)], eps=1e-5)
@@ -56,13 +65,16 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
         stage=stage, critic_kind=critic_kind, seed=seed, target_steps=steps, ppo_config=asdict(cfg),
         initial_checkpoint=None if initial is None else dict(path=str(initial), sha256=digest(initial)),
         expert_initializer=None if expert_initial is None else dict(path=str(expert_initial), sha256=digest(expert_initial)),
+        continued_single_checkpoint=None if continue_single is None else dict(path=str(continue_single), sha256=digest(continue_single)),
+        reset_pool=None if reset_pool is None else dict(path=str(reset_pool), sha256=digest(reset_pool), probability=.5,
+            training_metrics='suffix cost on 50% reset states; not comparable to original-start costs'),
         source_commit=subprocess.check_output(['git','rev-parse','HEAD'], cwd=ROOT, text=True).strip(),
         source_sha256=source_hashes, training_backend='exact vector simulator, not SUMO process invocations',
         likelihood_action='sampled pre-shield categorical proposal',
         actor_information='local 18 observed features only', critic_information='global 13 public state features' if critic_kind=='central' else 'local 18 observed features',
         reward='ramp cost' if stage=='single' else 'mean per-car cost',
         time_limit='terminal finite 25s horizon; no terminal bootstrap',
-        primary_checkpoint='final fixed step budget', no_teacher_actions=expert_initial is None,
+        primary_checkpoint='final fixed step budget', no_teacher_actions=expert_initial is None and continue_single is None,
         no_teacher_actions_in_ppo_updates=True, no_policy_iteration=True)
     (out/'protocol.json').write_text(json.dumps(meta, indent=2)+'\n', encoding='utf-8')
     for name in source_hashes:
@@ -70,7 +82,11 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes((ROOT/name).read_bytes())
     torch.save(dict(**meta, steps=0, model=model.state_dict()), out/'initial.pt')
-    env = PPOVector(cfg.n_envs, seed+450000000, stage)
+    if reset_pool:
+        from coopgate.mappo_reset_curriculum import ResetCurriculumVector
+        env=ResetCurriculumVector(reset_pool,cfg.n_envs,seed+450000000,stage)
+    else:
+        env = PPOVector(cfg.n_envs, seed+450000000, stage)
     obs, state, mask = env.inputs()
     history, episodes, samples = [], [], np.zeros(3, np.int64)
     total = updates = 0
@@ -171,6 +187,9 @@ if __name__ == '__main__':
     parser.add_argument('--entropy', type=float, default=.01)
     parser.add_argument('--gae-lambda', type=float, default=.95)
     parser.add_argument('--expert-initial')
+    parser.add_argument('--continue-single')
+    parser.add_argument('--reset-pool')
     args=parser.parse_args()
     config=PPOConfig(kinematic_features=args.kinematic, entropy=args.entropy, gae_lambda=args.gae_lambda)
-    train(args.out, args.steps, args.seed, args.stage, args.critic, args.initial, config, args.expert_initial)
+    train(args.out, args.steps, args.seed, args.stage, args.critic, args.initial, config, args.expert_initial,
+          args.continue_single, args.reset_pool)

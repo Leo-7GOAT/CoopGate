@@ -120,3 +120,33 @@ on 128 new development initials, seeds 94700001--94700128, four modes. Also
 report paired PPO-minus-BC improvement, not just PPO-minus-planner. Preserve
 all initializers, updates and outcomes. This multi-factor development attempt
 cannot isolate the causal benefit of any one hyperparameter.
+
+## Development amendment D: unlabeled reset-state curriculum
+
+C's complete 128-initial/four-mode development comparison has 2,560 executions
+and zero failures. PPO improved ramp cost versus its BC-only initializer by
+0.7859 seconds (development one-sided t lower .5548), demonstrating real
+policy-gradient benefit. It still lost to strong ego planning in ramp cost by
+.2676 seconds. The small positive mean team gain .4211% has a negative t lower;
+there is no passed single-agent prerequisite and no joint training yet.
+
+D retains C's actor and critic, with an explicitly fresh optimizer and seed
+4504. Collect 8,192 UNLABELED recoverable states from fresh highest-admissible
+rule trajectories starting at seed 950000001. Include actual states with ramp
+position in [-65,-15], carrying exact float64 positions, speeds, previous
+commands and global clock. No old held-out states, expert actions, returns or
+PI labels enter this pool. Every source rollout must remain physically valid;
+no rejection of unsafe source trajectories is allowed.
+
+Half of resets use original starts; half uniformly sample this fixed pool and
+draw fresh future disturbances. Actual PPO trajectories are newly collected
+on-policy from that initial-state mixture; stored actions/returns are never
+replayed as PPO samples. Complete 2,097,152 new joint simulator transitions,
+same kinematic architecture, entropy .02 and lambda=1. Training metrics on
+curriculum episodes are suffix costs, not original-start performance.
+
+Evaluate the fixed final actor from the unchanged ORIGINAL start sampler on
+fresh 128 development initials 94800001--94800128 and four modes. Compare D,
+its parent C, both strong planners and highest-admissible rule. Preserve all
+methods, cases and failures. State-reset training changes the training
+objective's initial-state law, and does not guarantee original-start gains.
