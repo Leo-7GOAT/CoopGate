@@ -31,6 +31,8 @@ do not establish improvement. This is a shared evidence-budget experiment, not a
 standalone controller-latency certification. MPS/MAMPS entries are project adapters.
 [Unchanged full report](artifacts/v44/fair_failure_preserving_execution/analysis/report.json)
 and [native completion and failure accounting](artifacts/fair_replay_recovery_20261101/completion.json).
+[Complete sealed raw data and byte-verified archive inventory](artifacts/fair_completed_delivery_20261101/inventory.json)
+retain every failed and timed-out record.
 The uncapped candidate factorial and original-author CSPI comparison remain pending.
 
 Fair-review recovery (2026-11-01): the original **5,120-run fair collection is
