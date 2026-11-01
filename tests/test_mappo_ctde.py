@@ -185,7 +185,9 @@ def test_phase_actor_routes_only_on_own_clock_and_both_heads_receive_gradients()
         assert sum(float(p.grad.square().sum()) for p in head.parameters())>0
 
 
-def test_startup_expert_costs_match_original_strong_planner_value_and_argmin():
+def test_startup_expert_costs_match_original_strong_planner_value_and_argmin(monkeypatch):
+    from pathlib import Path
+    monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[1]/'tools'))
     from tools.initialize_mappo_phase import initial_action_costs
     from tools.develop_v12 import initial
     from coopgate.ego_v13 import EgoRolloutGate
