@@ -7,7 +7,8 @@ its experiments, negative results and manuscript are not relabeled as MAPPO.
 
 - Shared decentralized categorical actor, centralized team critic, joint
   synchronous on-policy collection, GAE, clipped PPO/value losses, entropy and
-  gradient clipping. No planner action labels or policy-iteration updates.
+  gradient clipping. PPO updates never read planner action labels and perform
+  no policy-iteration updates. A separate, disclosed BC initializer is used in C.
 - Single-agent prerequisite and joint-agent training stages with explicit
   active-agent loss masks. Random initialization; new single PPO weights are
   the only permitted warm-start source for the joint stage.

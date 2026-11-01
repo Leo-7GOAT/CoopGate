@@ -139,6 +139,9 @@ def evaluate(out, paths, n=128, seed_base=94500001, backend='exact', expert_init
                   backend=backend, n_independent_initials=n, seed_base=seed_base,
                   modes=modes, methods=list(factories), checkpoints=checkpoints,
                   expected_executions=n*len(modes)*len(factories), no_outcome_filtering=True)
+    root=Path(__file__).resolve().parents[1]
+    inputs=list((root/'src/coopgate').glob('*.py'))+[Path(__file__)]
+    protocol['source_sha256']={p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs}
     (out/'protocol.json').write_text(json.dumps(protocol, indent=2)+'\n', encoding='utf-8')
     for factory in factories.values():
         factory().select(initial(94509999, 'nominal'), np.zeros(3))
@@ -181,7 +184,7 @@ def evaluate(out, paths, n=128, seed_base=94500001, backend='exact', expert_init
         own=[r for r in rows if r['method'] == method]
         failures=sum(not r['completed'] for r in own)
         comparisons={}
-        references=['ego_planner', 'team_planner']+(['bc_only'] if expert_initial else [])
+        references=list(dict.fromkeys(['ego_planner','team_planner']+list(checkpoints)))
         for reference in references:
             paired=[lookup[r['seed'], r['mode'], reference] for r in own]
             if failures or any(not p['completed'] for p in paired):

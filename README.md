@@ -7,7 +7,8 @@ The completed results below use model-based multi-agent policy iteration,
 **not MAPPO**. A new decentralized actor / centralized critic PPO pipeline,
 independent rollout/GAE audit and actual SUMO integration are implemented.
 The first single-agent PPO development run did **not** beat the strong planner;
-the follow-up is in progress. No previous risk certificate transfers to new
+the follow-up is in progress. Three-agent training has not started because the
+new single-agent superiority prerequisite remains unmet. No previous risk certificate transfers to new
 weights. See the [prospective protocol](docs/mappo_ctde_20261101_protocol.md)
 and [verified progress / remaining work](docs/mappo_ctde_20261101_progress.md).
 

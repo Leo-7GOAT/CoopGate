@@ -129,3 +129,24 @@ def test_policy_iteration_checkpoint_cannot_be_called_mappo(tmp_path):
     torch.save(dict(algorithm='coupled_policy_iteration_v16'), path)
     with pytest.raises(ValueError, match='Not a new on-policy PPO'):
         load_mappo(path)
+
+
+def test_reset_curriculum_carries_command_memory_and_global_clock(tmp_path):
+    from coopgate.mappo_reset_curriculum import ResetCurriculumVector
+    path=tmp_path/'states.npz'
+    state=np.array([[[-100., 10.], [-95., 9.], [-140., 10.]]])
+    previous=np.full((1,3),1.25)
+    np.savez(path, state=state, previous=previous, step=np.array([10]))
+    env=ResetCurriculumVector(path, n=64, seed=76)
+    assert 0 < env.curriculum_resets < 64
+    reset=env.steps==10
+    np.testing.assert_array_equal(env.x[reset], np.broadcast_to(state,(reset.sum(),3,2)))
+    np.testing.assert_array_equal(env.previous[reset],np.broadcast_to(previous,(reset.sum(),3)))
+    np.testing.assert_allclose(env.inputs()[1][reset, -1],.2)
+    assert np.all(env.time==0.) and np.all(env.variation==0.)
+    _, _, mask=env.inputs()
+    actions=np.where(mask,np.arange(13),-1).max(-1)
+    following, reward, boundary, active, finished=env.step(actions)
+    assert np.isfinite(reward).all()
+    assert not active[:,(0,2)].any()
+    assert not boundary.any()
