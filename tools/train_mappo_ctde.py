@@ -71,9 +71,15 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
             model.actor.roles[2][-1].weight.zero_()
             model.actor.roles[2][-1].bias.copy_(torch.tensor(-.08*np.abs(LEVELS),dtype=torch.float32))
     initial_actor = {k:v.detach().clone() for k,v in model.actor.state_dict().items()}
-    actor_groups=([dict(params=model.actor.initial.parameters(),lr=cfg.initial_actor_lr),
-                   dict(params=model.actor.flow.parameters(),lr=cfg.actor_lr)] if cfg.phase_actor
-                  else [dict(params=model.actor.parameters(),lr=cfg.actor_lr)])
+    if cfg.ego_actor_lr>0:
+        if not cfg.role_actors:
+            raise ValueError('A separate ego learning rate requires independent role actors')
+        actor_groups=[dict(params=actor.parameters(),lr=cfg.ego_actor_lr if i==1 else cfg.actor_lr)
+                      for i,actor in enumerate(model.actor.roles)]
+    else:
+        actor_groups=([dict(params=model.actor.initial.parameters(),lr=cfg.initial_actor_lr),
+                       dict(params=model.actor.flow.parameters(),lr=cfg.actor_lr)] if cfg.phase_actor
+                      else [dict(params=model.actor.parameters(),lr=cfg.actor_lr)])
     optimizer = torch.optim.Adam(actor_groups+[dict(params=model.critic.parameters(),lr=cfg.critic_lr)],eps=1e-5)
     # Keep rollout/minibatch RNG independent of how many random numbers the
     # chosen critic architecture or initializer consumed during construction.
@@ -227,11 +233,13 @@ if __name__ == '__main__':
     parser.add_argument('--logit-scale',type=float,default=1.)
     parser.add_argument('--width',type=int,default=128)
     parser.add_argument('--rear-coast',action='store_true')
+    parser.add_argument('--ego-actor-lr',type=float,default=0.)
     args=parser.parse_args()
     config=PPOConfig(width=args.width,kinematic_features=args.kinematic or args.accelerated, entropy=args.entropy,
                      gae_lambda=args.gae_lambda,accelerated_features=args.accelerated,actor_lr=args.actor_lr,
                      phase_actor=args.phase_actor,initial_actor_lr=args.initial_actor_lr,
                      startup_width=args.startup_width,startup_relu=args.startup_relu,
-                     role_actors=args.role_actors,actor_relu=args.actor_relu,actor_logit_scale=args.logit_scale)
+                     role_actors=args.role_actors,actor_relu=args.actor_relu,actor_logit_scale=args.logit_scale,
+                     ego_actor_lr=args.ego_actor_lr)
     train(args.out, args.steps, args.seed, args.stage, args.critic, args.initial, config, args.expert_initial,
           args.continue_single,args.reset_pool,args.legacy_initial,args.rear_coast)

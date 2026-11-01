@@ -20,6 +20,15 @@ def audit(directory):
         if hashlib.sha256((directory/'source'/name).read_bytes()).hexdigest() != expected:
             raise ValueError('Training snapshot hash mismatch: '+name)
     model, final=load_mappo(directory/'policy.pt')
+    role_parameter_deltas=None
+    if model.config.role_actors:
+        initial=torch.load(directory/'initial.pt',map_location='cpu',weights_only=True)['model']
+        role_parameter_deltas=[sum(float((v-initial[k]).square().sum()) for k,v in model.state_dict().items()
+                                   if k.startswith(f'actor.roles.{i}.')) for i in range(3)]
+        if meta['stage']=='single' and (role_parameter_deltas[0]!=0 or role_parameter_deltas[2]!=0 or role_parameter_deltas[1]<=0):
+            raise ValueError('Single-stage separate-role update scope violated')
+        if meta['stage']=='joint' and not all(d>0 for d in role_parameter_deltas):
+            raise ValueError('A joint actor parameter set did not update')
     if complete['policy_sha256'] != hashlib.sha256((directory/'policy.pt').read_bytes()).hexdigest():
         raise ValueError('Final policy hash mismatch')
     if final['steps'] != meta['target_steps'] or complete['steps'] != meta['target_steps']:
@@ -89,6 +98,7 @@ def audit(directory):
     report=dict(algorithm=meta['algorithm'], stage=meta['stage'], steps=final['steps'],
         final_budget_complete=True, on_policy_proposals_verified=True,
         independent_gae_verified=True, snapshots=batches,
+        role_parameter_delta_squared_l2=role_parameter_deltas,
         policy_sha256=complete['policy_sha256'],
         meaning='Algorithm integrity only; not evidence of superiority or safety')
     (directory/'audit.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')

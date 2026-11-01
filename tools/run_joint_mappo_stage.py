@@ -27,7 +27,8 @@ def utc():
 
 def run(seed=4701,steps=1048576):
     settings={4701:dict(steps=1048576,initial_seed=95500001,protocol='mappo_joint_20261101_protocol.md',rear_coast=False),
-              4702:dict(steps=2097152,initial_seed=95600001,protocol='mappo_joint_coast_20261101_protocol.md',rear_coast=True)}
+              4702:dict(steps=2097152,initial_seed=95600001,protocol='mappo_joint_coast_20261101_protocol.md',rear_coast=True),
+              4703:dict(steps=2097152,initial_seed=95700001,protocol='mappo_joint_ego_stable_20261101_protocol.md',rear_coast=True,ego_actor_lr=1e-5,role_reference=True)}
     if seed not in settings or steps!=settings[seed]['steps']:
         raise ValueError('Use a registered fixed joint-stage seed/budget')
     config=settings[seed]
@@ -56,9 +57,10 @@ def run(seed=4701,steps=1048576):
               actual_single_proof_sha256=sha(proof/'verification.json'),
               primary_initials=128,primary_seed_base=config['initial_seed'],modes=4,
               rear_coast_initialization=config['rear_coast'],
-              exact_expected_executions=4608,
+              ego_actor_lr=config.get('ego_actor_lr',1e-4),
+              exact_expected_executions=512*(10 if config.get('role_reference') else 9),
               role_replacement='All three roles separately restored to original parameters, full paired closed-loop evaluation; no new independent initials',
-              sumo_integration_expected_executions=72,
+              sumo_integration_expected_executions=8*(10 if config.get('role_reference') else 9),
               full_sumo_condition='Zero failure, positive raw joint mean gain and positive development one-sided t lower vs strong team planner',
               full_sumo_expected_executions_if_condition_met=3072,
               no_retries=True,no_checkpoint_selection=True)
@@ -95,18 +97,21 @@ def run(seed=4701,steps=1048576):
     exact=BASE/f'{study}_exact'
     integration=BASE/f'{study}_sumo_integration'
     common=['--paths',str(parent),str(own/'policy.pt'),'--joint-initial',str(own/'initial.pt')]
+    role_reference_args=['--role-reference',str(parent)] if config.get('role_reference') else []
     try:
         train_args=['tools/train_mappo_ctde.py','--out',str(own),'--steps',str(steps),'--seed',str(seed),
             '--stage','joint','--width','256','--kinematic','--role-actors','--actor-relu',
             '--logit-scale','5','--entropy','.01','--gae-lambda','1','--actor-lr','.0001','--initial',str(parent)]
         if config['rear_coast']:
             train_args.append('--rear-coast')
+        if 'ego_actor_lr' in config:
+            train_args.extend(['--ego-actor-lr',str(config['ego_actor_lr'])])
         command('train',train_args)
         command('training-audit',['tools/audit_mappo_ctde.py',str(own)])
         command('exact',['tools/evaluate_mappo_ctde.py','--out',str(exact),*common,
-            '--revert-final',str(own/'policy.pt'),'--n','128','--seed-base',str(config['initial_seed']),'--backend','exact'])
+            '--revert-final',str(own/'policy.pt'),*role_reference_args,'--n','128','--seed-base',str(config['initial_seed']),'--backend','exact'])
         command('sumo-integration',['tools/evaluate_mappo_ctde.py','--out',str(integration),*common,
-            '--revert-final',str(own/'policy.pt'),'--n','2','--seed-base',str(config['initial_seed']),'--backend','sumo'])
+            '--revert-final',str(own/'policy.pt'),*role_reference_args,'--n','2','--seed-base',str(config['initial_seed']),'--backend','sumo'])
         command('sumo-integration-review',['tools/verify_mappo_sumo.py',str(integration)])
         command('conflict-analysis',['tools/analyze_mappo_development.py',str(exact)])
         primary=json.loads((exact/'report.json').read_text())

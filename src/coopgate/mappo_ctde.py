@@ -38,6 +38,7 @@ class PPOConfig:
     role_actors: bool = False
     actor_relu: bool = False
     actor_logit_scale: float = 1.
+    ego_actor_lr: float = 0.
 
 
 def local_kinematic_features(obs):
@@ -129,7 +130,10 @@ class DecentralizedActors(nn.Module):
 
 
 class MAPPOCTDE(nn.Module):
-    """One local actor shared across roles; one scalar common-payoff critic.
+    """Local categorical actors and centralized or local value learning.
+
+    Configuration selects a shared actor, local-clock heads, or three
+    independently parameterized local actors. Deployment never calls critic.
 
     IPPO is an information ablation with the same network count and width.
     Its shared local critic predicts three values from three local inputs.

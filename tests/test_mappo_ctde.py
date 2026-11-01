@@ -216,3 +216,17 @@ def test_separate_actor_roles_have_local_inputs_and_independent_gradients():
     assert norms[1]>0 and norms[0]==norms[2]==0
     np.testing.assert_array_equal(model.proposal(obs[:,1:2],mask[:,1:2])[:,0],
                                   model.proposal(obs,mask)[:,1])
+
+
+def test_small_ego_rate_does_not_freeze_any_joint_actor(tmp_path):
+    from tools.train_mappo_ctde import train
+    cfg=PPOConfig(width=16,n_envs=4,rollout=16,epochs=2,minibatch=32,
+                  role_actors=True,actor_lr=1e-4,ego_actor_lr=1e-5)
+    out=tmp_path/'actual_two_rate_joint'
+    final=train(out,128,78,'joint',config=cfg)
+    initial=torch.load(out/'initial.pt',weights_only=True)['model']
+    for i in range(3):
+        delta=sum(float((v-initial[k]).square().sum()) for k,v in final['model'].items()
+                  if k.startswith(f'actor.roles.{i}.'))
+        assert delta>0
+    assert [g['lr'] for g in final['optimizer']['param_groups']]==[1e-4,1e-5,1e-4,cfg.critic_lr]

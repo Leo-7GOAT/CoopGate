@@ -22,6 +22,17 @@ def verify(directory):
         raise ValueError('Actual SUMO results required')
     factories=dict(rule=RuleGate, ego_planner=EgoRolloutGate, team_planner=JointRolloutGate)
     for name, item in protocol['checkpoints'].items():
+        if item['stage']=='joint_initial':
+            untouched,meta=load_mappo(item['path'])
+            if meta['stage']!='joint' or meta['steps']!=0:
+                raise ValueError('Joint initializer must retain zero-update identity')
+            factories[name]=lambda untouched=untouched:PPOGate(untouched,'joint')
+            continue
+        if item['stage']=='joint_revert':
+            final,meta=load_mappo(item['path']);untouched,_=load_mappo(item['initial_path'])
+            final.actor.roles[item['role']].load_state_dict(untouched.actor.roles[item['role']].state_dict())
+            final.eval();factories[name]=lambda final=final:PPOGate(final,'joint')
+            continue
         if item['stage']=='legacy_initial':
             source=torch.load(item['path'],map_location='cpu',weights_only=True)
             if source['algorithm']!='legacy_pi_actor_initializer_20261101':

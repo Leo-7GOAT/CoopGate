@@ -128,7 +128,7 @@ def exact_episode(seed, scenario, mode, factory):
 
 
 def evaluate(out, paths, n=128, seed_base=94500001, backend='exact', expert_initial=None,legacy_initial=None,
-             joint_initial=None,revert_final=None):
+             joint_initial=None,revert_final=None,role_reference=None):
     out=Path(out); out.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(1)
     factories=dict(rule=RuleGate, ego_planner=EgoRolloutGate, team_planner=JointRolloutGate)
@@ -181,8 +181,22 @@ def evaluate(out, paths, n=128, seed_base=94500001, backend='exact', expert_init
                 checkpoints[name]=dict(path=str(revert_final),sha256=hashlib.sha256(Path(revert_final).read_bytes()).hexdigest(),
                     stage='joint_revert',steps=final_meta['steps'],role=role,initial_path=str(joint_initial),
                     initial_sha256=checkpoints['joint_initial']['sha256'])
+            if role_reference:
+                reference,reference_meta=load_mappo(role_reference)
+                if not reference.config.role_actors or reference_meta['steps']!=reference_meta['target_steps']:
+                    raise ValueError('Completed role-compatible parent reference required')
+                reverted=MAPPOCTDE(final.config,final.critic_kind);reverted.load_state_dict(final.state_dict())
+                reverted.actor.roles[2].load_state_dict(reference.actor.roles[2].state_dict());reverted.eval()
+                name='joint_revert_2_parent'
+                factories[name]=lambda reverted=reverted:PPOGate(reverted,'joint')
+                checkpoints[name]=dict(path=str(revert_final),sha256=hashlib.sha256(Path(revert_final).read_bytes()).hexdigest(),
+                    stage='joint_revert',steps=final_meta['steps'],role=2,initial_path=str(role_reference),
+                    initial_sha256=hashlib.sha256(Path(role_reference).read_bytes()).hexdigest(),
+                    meaning='Restore the parent highest-admissible rear role, not the coasting initializer')
     elif revert_final:
         raise ValueError('Role replacement requires its explicit joint initial checkpoint')
+    if role_reference and not revert_final:
+        raise ValueError('Parent role reference requires a final role-replacement model')
     modes=('clean', 'uniform', 'bias', 'pulse')
     protocol=dict(purpose='development; not a risk certificate or untouched confirmation',
                   backend=backend, n_independent_initials=n, seed_base=seed_base,
@@ -279,6 +293,7 @@ if __name__ == '__main__':
     parser.add_argument('--expert-initial')
     parser.add_argument('--legacy-initial')
     parser.add_argument('--joint-initial');parser.add_argument('--revert-final')
+    parser.add_argument('--role-reference')
     args=parser.parse_args()
     evaluate(args.out,args.paths,args.n,args.seed_base,args.backend,args.expert_initial,args.legacy_initial,
-             args.joint_initial,args.revert_final)
+             args.joint_initial,args.revert_final,args.role_reference)
