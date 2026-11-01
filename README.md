@@ -20,10 +20,23 @@ and complete raw-data delivery remain in progress.
 [Original certificate](artifacts/joint_risk_recovery_20261031/analysis/certificate.json)
 and [native exit, coverage and results receipt](artifacts/joint_risk_recovery_20261031/analysis/completion_receipt_20261031.json).
 
+Completed evidence-budget comparison (2026-11-01): **5,120 runs, 640 independent
+initials, eight selectors, full independent replay, and actual native exit zero**.
+Every selector, including the reference, has **638/640 cases with recorded evidence
+timeouts** under the frozen shared-budget protocol. A timeout remains a protocol
+failure even when fallback finishes. All selectors are comparison-ineligible;
+failed-reference relative improvements are unassessable, and **no method ranking
+or superiority conclusion is supported**. The retained diagnostic cost differences
+do not establish improvement. This is a shared evidence-budget experiment, not a
+standalone controller-latency certification. MPS/MAMPS entries are project adapters.
+[Unchanged full report](artifacts/v44/fair_failure_preserving_execution/analysis/report.json)
+and [native completion and failure accounting](artifacts/fair_replay_recovery_20261101/completion.json).
+The uncapped candidate factorial and original-author CSPI comparison remain pending.
+
 Fair-review recovery (2026-11-01): the original **5,120-run fair collection is
 complete with native exit zero and all 160 sealed block hashes verified**. Its
 subsequent review was interrupted with an unknown native exit and no analysis
-output. A separately recorded recovery repeats the unchanged full review over
+output. A separately recorded recovery completed the unchanged full review over
 the same bytes, adding **zero fair simulations or statistical samples**. The
 original factorial and author-code CSPI stages remain unchanged.
 [Interruption and recovery registration](artifacts/fair_replay_recovery_20261101/recovery.json).
