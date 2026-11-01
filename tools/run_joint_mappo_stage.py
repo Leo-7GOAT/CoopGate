@@ -28,7 +28,9 @@ def utc():
 def run(seed=4701,steps=1048576):
     settings={4701:dict(steps=1048576,initial_seed=95500001,protocol='mappo_joint_20261101_protocol.md',rear_coast=False),
               4702:dict(steps=2097152,initial_seed=95600001,protocol='mappo_joint_coast_20261101_protocol.md',rear_coast=True),
-              4703:dict(steps=2097152,initial_seed=95700001,protocol='mappo_joint_ego_stable_20261101_protocol.md',rear_coast=True,ego_actor_lr=1e-5,role_reference=True)}
+              4703:dict(steps=2097152,initial_seed=95700001,protocol='mappo_joint_ego_stable_20261101_protocol.md',rear_coast=True,ego_actor_lr=1e-5,role_reference=True),
+              4704:dict(steps=2097152,initial_seed=96000001,protocol='mappo_joint_replications_20261101_protocol.md',rear_coast=True,ego_actor_lr=1e-5,role_reference=True),
+              4705:dict(steps=2097152,initial_seed=96100001,protocol='mappo_joint_replications_20261101_protocol.md',rear_coast=True,ego_actor_lr=1e-5,role_reference=True)}
     if seed not in settings or steps!=settings[seed]['steps']:
         raise ValueError('Use a registered fixed joint-stage seed/budget')
     config=settings[seed]
