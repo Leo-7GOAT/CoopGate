@@ -53,15 +53,25 @@
   zero/undefined. Training ran concurrently; these callback timings are not
   isolated runtime evidence. The full400-run integration protocol is registered
   separately in `docs/mappo_recovery_integration_20261101_protocol.md`.
-- The400-run L actuator recovery/gate integration is active in native
-  collection session74489, output `development/joint_4703_recovery_integration`.
-  Five fresh initial draws across five scenes, repeated across four classes,
-  four disturbance modes and all five selectors. Do not change its frozen
-  source files or restart into the existing directory. Observe its actual
-  zero exit before running `tools/evaluate_mappo_recovery.py review --out
-  artifacts/mappo_ctde_20261101/development/joint_4703_recovery_integration`.
-  Runtime is explicitly non-isolated; collection overlaps the fixed L exact
-  evaluation and Git upload. No communication-latency measurement is used.
+- The400-run L actuator recovery/gate integration is COMPLETE: native
+  collection session74489 and review77393 both exited0. Every9,332 commands
+  and46,660 physical substeps independently matched; complete gate replay
+  matched too. Five fresh initial draws underlie the80 conditions per method.
+  All methods complete80/80. Bank gate adopts29/80, observes0/29 harmful,
+  aggregate cost gain .48458%. Nominal-only gate adopts55/80 with6 harmful,
+  gain1.62852%. These are repeated descriptive conditions, NOT independent
+  binomial trials or risk-certified results. Bank utility also falls below
+  the unchanged .5% formal threshold. Bank timing p95=181.44ms, max1828.96ms,
+  41/1840 callbacks>500ms; all costs belong to the actual selector. Runtime
+  is explicitly non-isolated (exact evaluation/Git overlap), not hard-real-time
+  evidence. No communication-latency measurement is used.
+- Two fixed single-PPO replications are ACTIVE: seed4602/session3154 and
+  seed4603/session47895. Same I initializer, architecture, hyperparameters and
+  262,144-step budget; new fresh95800001/95900001 sets. See
+  `docs/mappo_replication_20261101_protocol.md`. Each queue owns its native
+  children and conditionally performs full SUMO only if unchanged single-car
+  thresholds pass. Do not edit their frozen source/protocol or restart them.
+  These are not yet passed, and J/K/L are not three identical-config seeds.
 - All completed A--L raw data are retained in their separate byte-verified
   deliveries. E/F/G/H remain negative development outcomes, not discarded
   runs. Old PI studies, their failures and original paper remain unchanged.
@@ -204,7 +214,7 @@ commands and 4,805 physical substeps. All E data are archived (182 files,
 The continuation commands and session references below are historical and
 superseded by the authoritative current milestone above. Do not execute them
 again. F/G/H completed without satisfying the prerequisite; I/J/K supersede
-these operational instructions. L's actuator/gate integration is the active experiment.
+these operational instructions. The fixed4602/4603 replications are active.
 
 The startup and subsequent actor heads are now routed only by the already
 observed local clock. This separates rare initial decisions from abundant

@@ -20,7 +20,12 @@ team cost remains .00417s worse than strong team planning, so superiority is
 unproved. Restoring the initial front role or the unchanged highest-admissible
 rear role worsens team cost by .26143s / .03031s on its paired development
 cases: both non-ramp learned policies have behavioral contribution. New MAPPO
-actuator/gate integration is active; see the
+actuator/gate integration completes400 SUMO runs and independent replay.
+The bank gate improves mean cost .4846%, adopts29/80 repeated conditions,
+and observes0 harmful adopted conditions; only FIVE initial draws underlie
+these repeats, so this is not a risk certificate or the required utility pass.
+Its41/1,840 callbacks above500ms also leave online cost unresolved. Two fixed
+single-PPO replications are active. See the
 [implemented MAPPO mathematics](docs/mappo_algorithm_identity_20261101.md).
 No previous risk certificate transfers to new
 weights. See the [single competence assessment](artifacts/mappo_ctde_20261101/development/single_4601_sumo_full/single_competence.json),
