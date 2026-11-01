@@ -115,6 +115,37 @@ seed 4505, original starts, smaller actor LR 3e-5 and entropy .005. Final
 paired evaluation includes BC-only and parent D, with unchanged strong
 baselines and fresh development seeds. This new hypothesis is unverified.
 
+E's separate initializer completed 400 epochs on the reused training data,
+training action accuracy 92.31%, with ZERO additional expert trajectories.
+Its actual PPO run is now active at
+`artifacts/mappo_ctde_20261101/development/single_4505` (fixed 2,097,152 steps).
+No intermediate policy is an accepted result.
+
+### Next executable steps for the active goal
+
+After the actual E training process exits zero (root unified-exec session
+23740), run the following once, preserving every output directory:
+
+```powershell
+& C:/Users/Leo/Desktop/papper/.venv/Scripts/python.exe tools/audit_mappo_ctde.py artifacts/mappo_ctde_20261101/development/single_4505
+& C:/Users/Leo/Desktop/papper/.venv/Scripts/python.exe tools/evaluate_mappo_ctde.py --out artifacts/mappo_ctde_20261101/development/single_4505_exact --paths artifacts/mappo_ctde_20261101/development/single_4504/policy.pt artifacts/mappo_ctde_20261101/development/single_4505/policy.pt --n 128 --seed-base 94900001 --backend exact --expert-initial artifacts/mappo_ctde_20261101/development/bc_4505/initializer.pt
+```
+
+Wait for each native zero exit and inspect the COMPLETE report. Judge ramp
+cost versus strong ego planning separately from team mean and from BC gain.
+Do not reinterpret D's 1.1371% team gain as a passed ramp prerequisite. If E
+establishes a positive ramp result, independently verify actual SUMO before
+formal joint expansion. If not, diagnose the remaining initial-action errors
+before proposing another bounded prospective amendment; do not silently extend
+E, weaken the baseline or promote a lucky intermediate checkpoint. A local
+clock-conditioned actor head is one possible untested follow-up hypothesis,
+not an approved success or an implemented feature.
+
+Every completed raw A/B/C/D directory is delivered in its separate byte-verified
+archive; E is unfinished and must not be archived as completed. All original
+studies/certificates remain unchanged, and the other protected desktop project
+must not be accessed or interrupted. The goal is ACTIVE, not complete/blocked.
+
 Three-agent MAPPO, independent seeds and new gate certification remain pending.
 
 ## Next gates
