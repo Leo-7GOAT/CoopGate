@@ -99,13 +99,19 @@ def run_math(text):
     return run
 
 
+def append_math(parent, value):
+    values = value if isinstance(value, (list, tuple)) else [value]
+    for item in values:
+        parent.append(run_math(item) if isinstance(item, str) else item)
+
+
 def scripted(base, sub=None, sup=None):
     tag = 'm:sSubSup' if sub is not None and sup is not None else ('m:sSub' if sub is not None else 'm:sSup')
     element = OxmlElement(tag)
     for name, text in [('m:e', base), ('m:sub', sub), ('m:sup', sup)]:
         if text is not None:
             child = OxmlElement(name)
-            child.append(run_math(text))
+            append_math(child, text)
             element.append(child)
     return element
 
@@ -114,8 +120,55 @@ def fraction(numerator, denominator):
     element = OxmlElement('m:f')
     for name, text in [('m:num', numerator), ('m:den', denominator)]:
         child = OxmlElement(name)
-        child.append(run_math(text))
+        append_math(child, text)
         element.append(child)
+    return element
+
+
+def summation(lower, upper, expression):
+    element = OxmlElement('m:nary')
+    properties = OxmlElement('m:naryPr')
+    for name, value in [('m:chr', '∑'), ('m:limLoc', 'subSup')]:
+        child = OxmlElement(name)
+        child.set(qn('m:val'), value)
+        properties.append(child)
+    if upper is None:
+        hidden = OxmlElement('m:supHide')
+        hidden.set(qn('m:val'), '1')
+        properties.append(hidden)
+    element.append(properties)
+    for name, value in [('m:sub', lower), ('m:sup', upper), ('m:e', expression)]:
+        child = OxmlElement(name)
+        if value is not None:
+            append_math(child, value)
+        element.append(child)
+    return element
+
+
+def square_root(value):
+    element = OxmlElement('m:rad')
+    properties = OxmlElement('m:radPr')
+    hidden = OxmlElement('m:degHide')
+    hidden.set(qn('m:val'), '1')
+    properties.append(hidden)
+    element.append(properties)
+    element.append(OxmlElement('m:deg'))
+    expression = OxmlElement('m:e')
+    append_math(expression, value)
+    element.append(expression)
+    return element
+
+
+def overbar(value):
+    element = OxmlElement('m:bar')
+    properties = OxmlElement('m:barPr')
+    position = OxmlElement('m:pos')
+    position.set(qn('m:val'), 'top')
+    properties.append(position)
+    element.append(properties)
+    expression = OxmlElement('m:e')
+    append_math(expression, value)
+    element.append(expression)
     return element
 
 
@@ -200,6 +253,11 @@ def build():
                     paragraph.paragraph_format.space_after = Pt(3)
                     paragraph.paragraph_format.space_before = Pt(3)
                     paragraph.paragraph_format.line_spacing = 1.05
+                    # Keep short scientific tables intact; longer tables retain
+                    # their original repeating-header pagination behavior.
+                    if (ri == 0 or (len(t.rows) <= 6 and ri < len(t.rows) - 1)
+                            or (len(t.rows) > 6 and ri == len(t.rows) - 2)):
+                        paragraph.paragraph_format.keep_with_next = True
                     for run in paragraph.runs:
                         run.font.size = Pt(10)
                         run.bold = ri == 0
@@ -242,4 +300,11 @@ def build():
 
 
 if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--revision', type=int, default=1)
+    arguments = parser.parse_args()
+    if arguments.revision < 1:
+        parser.error('Revision must be positive')
+    OUT = ROOT / f'runs/manuscript_completed_20261101/revision{arguments.revision}'
     build()

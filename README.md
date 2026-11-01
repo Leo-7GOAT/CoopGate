@@ -15,9 +15,11 @@ Risk/adoption validity requires the registered IID sampling assumptions; paired
 t gain inference is normal-IID exact and otherwise asymptotic with finite variance.
 The certificate covers the registered mixture and strong-lag laws; statewise and
 out-of-distribution risk are outside its scope. The OOD stress limitation below
-remains unchanged. The fair comparison, candidate factorial and author-code CSPI
-analysis are complete below; final factorial raw-data delivery and manuscript
-review remain in progress.
+remains unchanged. The fair comparison, candidate factorial, author-code CSPI
+analysis and complete raw-data deliveries are finished below. The updated
+[13-page manuscript draft](artifacts/paper_completed_20261101/CoopGate_论文完整初稿_20261101.docx)
+includes the full results, assumptions and limitations; all pages, 11 editable
+equations and 11 tables passed [render and source QA](artifacts/paper_completed_20261101/qa.json).
 [Original certificate](artifacts/joint_risk_recovery_20261031/analysis/certificate.json)
 and [native exit, coverage and results receipt](artifacts/joint_risk_recovery_20261031/analysis/completion_receipt_20261031.json).
 
@@ -60,6 +62,7 @@ prediction budgets, adds no independent samples or SUMO runs, and issues no new
 finite-sample certificate. [Original author test and held-out results](artifacts/literature_reproduction/cspi_factorial_prospective/analysis/complete.json).
 [Complete factorial/CSPI raw data and byte-verified archive inventory](artifacts/factorial_cspi_completed_delivery_20261101/inventory.json)
 retain all 3,200 trajectories and the original randomized exports and author outputs.
+[Public Git bytes verified against all 1,957 original files](artifacts/factorial_cspi_completed_publication_20261101.json).
 
 Fair-review recovery (2026-11-01): the original **5,120-run fair collection is
 complete with native exit zero and all 160 sealed block hashes verified**. Its
