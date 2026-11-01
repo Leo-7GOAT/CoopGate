@@ -1,6 +1,7 @@
 import numpy as np
 import pytest
 import torch
+from dataclasses import asdict
 
 from coopgate.mappo_ctde import MAPPOCTDE, PPOConfig, PPOVector, gae, losses, load_mappo
 
@@ -102,3 +103,29 @@ def test_training_checkpoint_is_actual_on_policy_ppo(tmp_path):
         lp=model.distribution(b['obs'], b['mask']).log_prob(b['actions'])
     torch.testing.assert_close(lp, b['old_logp'])
     assert meta['no_teacher_actions'] and meta['no_policy_iteration']
+
+
+def test_expert_initializer_is_disclosed_and_ppo_never_needs_teacher_dataset(tmp_path):
+    from tools.train_mappo_ctde import train
+    cfg=PPOConfig(width=16, n_envs=4, rollout=16, epochs=2, minibatch=32)
+    initial=MAPPOCTDE(cfg)
+    path=tmp_path/'bc.pt'
+    torch.save(dict(algorithm='planner_bc_initializer_20261101', ppo_config=asdict(cfg),
+                    model=dict(actor=initial.actor.state_dict())), path)
+    # No teacher dataset exists: this path must collect its own on-policy data.
+    result=train(tmp_path/'ppo', 128, 75, 'single', config=cfg, expert_initial=path)
+    assert not result['no_teacher_actions']
+    assert result['no_teacher_actions_in_ppo_updates']
+    assert result['actor_delta_squared_l2'] > 0
+    assert result['actor_samples'][0] == result['actor_samples'][2] == 0
+    assert result['actor_samples'][1] > 0
+    saved=torch.load(tmp_path/'ppo'/'initial.pt', weights_only=True)
+    for key, value in initial.actor.state_dict().items():
+        torch.testing.assert_close(value, saved['model']['actor.'+key])
+
+
+def test_policy_iteration_checkpoint_cannot_be_called_mappo(tmp_path):
+    path=tmp_path/'pi.pt'
+    torch.save(dict(algorithm='coupled_policy_iteration_v16'), path)
+    with pytest.raises(ValueError, match='Not a new on-policy PPO'):
+        load_mappo(path)
