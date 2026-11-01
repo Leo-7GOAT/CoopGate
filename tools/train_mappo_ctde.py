@@ -74,6 +74,7 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
     torch.manual_seed(proposal_rng_seed)
     source_paths = list((ROOT/'src/coopgate').glob('*.py')) + [Path(__file__), ROOT/'docs/mappo_ctde_20261101_protocol.md']
     source_hashes = {p.relative_to(ROOT).as_posix():digest(p) for p in source_paths}
+    inherited_legacy=(init_meta or {}).get('legacy_initializer') or (init_meta or {}).get('inherited_legacy_initializer')
     meta = dict(algorithm='mappo_ctde_20261101' if critic_kind == 'central' else 'ippo_local_20261101',
         stage=stage, critic_kind=critic_kind, seed=seed, proposal_rng_seed=proposal_rng_seed,
         target_steps=steps, ppo_config=asdict(cfg),
@@ -82,6 +83,7 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
         continued_single_checkpoint=None if continue_single is None else dict(path=str(continue_single), sha256=digest(continue_single)),
         legacy_initializer=None if legacy_initial is None else dict(path=str(legacy_initial),sha256=digest(legacy_initial),
             ancestry='Model-based policy-iteration ego actor; old performance/certificates are not new PPO evidence'),
+        inherited_legacy_initializer=inherited_legacy,
         reset_pool=None if reset_pool is None else dict(path=str(reset_pool), sha256=digest(reset_pool), probability=.5,
             training_metrics='suffix cost on 50% reset states; not comparable to original-start costs'),
         source_commit=subprocess.check_output(['git','rev-parse','HEAD'], cwd=ROOT, text=True).strip(),
@@ -91,7 +93,7 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
         reward='ramp cost' if stage=='single' else 'mean per-car cost',
         time_limit='terminal finite 25s horizon; no terminal bootstrap',
         primary_checkpoint='final fixed step budget', no_teacher_actions=expert_initial is None and continue_single is None and legacy_initial is None,
-        no_teacher_actions_in_ppo_updates=True, no_policy_iteration=legacy_initial is None,
+        no_teacher_actions_in_ppo_updates=True, no_policy_iteration=legacy_initial is None and inherited_legacy is None,
         no_policy_iteration_in_ppo_updates=True)
     (out/'protocol.json').write_text(json.dumps(meta, indent=2)+'\n', encoding='utf-8')
     for name in source_hashes:
