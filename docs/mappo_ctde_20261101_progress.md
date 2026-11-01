@@ -106,7 +106,7 @@ future tapes were used only for offline diagnosis, never by actor/gate. This
 cannot estimate population prevalence, but it rules out treating max softmax
 as a validated safety confidence.
 
-## In progress: prospectively amended E
+## Completed development E
 
 Add analytic accelerating entry/exit margins derived exclusively from local
 observations. Refit a separately labeled BC initializer on the same 8,192
@@ -117,9 +117,36 @@ baselines and fresh development seeds. This new hypothesis is unverified.
 
 E's separate initializer completed 400 epochs on the reused training data,
 training action accuracy 92.31%, with ZERO additional expert trajectories.
-Its actual PPO run is now active at
+Its actual PPO run completed at
 `artifacts/mappo_ctde_20261101/development/single_4505` (fixed 2,097,152 steps).
-No intermediate policy is an accepted result.
+All 3,072 development executions completed. The ramp remains .1804 seconds
+worse than strong ego planning, though PPO improves it by .1729 seconds versus
+BC alone. Team gain versus strong ego planning is .6211%. This is not a passed
+ramp prerequisite. Forty actual SUMO integration runs independently matched 961
+commands and 4,805 physical substeps. All E data are archived (182 files,
+70,047,596 original bytes; 24,552,604 compressed bytes).
+
+## In progress: prospectively amended F
+
+The startup and subsequent actor heads are now routed only by the already
+observed local clock. This separates rare initial decisions from abundant
+later acceleration decisions; it increases actor capacity and is not claimed
+capacity-matched to E. Both heads use the same on-policy PPO surrogate.
+
+A clearly separate cost-sensitive expert initializer fitted its startup head
+on 8,192 fresh training initials and all 73,728 admissible proposal costs, using
+1,806,756 nominal counterfactual joint decisions. Its flow head exactly copies
+E's completed PPO actor. These expert calls are NOT PPO steps or SUMO runs.
+Training greedy nominal regret is .4990 seconds, so fitting accuracy cannot
+establish original-start superiority. F's actual PPO run, seed 4506, uses a fixed
+1,048,576 new on-policy transitions, startup LR3e-4/flow LR3e-5, lambda1,
+entropy .005, original starts. Expert costs are never read by PPO updates.
+
+The previous E continuation commands below are historical and already executed.
+For F, wait for root unified-exec training session 64915 to exit zero, audit
+`development/single_4506`, then evaluate F, parent E and its BC-only control on
+fresh seeds 95000001--95000128. The whole expert table reviewer is running in
+session 93640; do not restart it if observation times out. Goal remains active.
 
 ### Next executable steps for the active goal
 

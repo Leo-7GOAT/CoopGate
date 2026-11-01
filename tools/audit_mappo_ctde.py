@@ -56,6 +56,12 @@ def audit(directory):
         loss.backward()
         actor_norm=sum(float(p.grad.square().sum()) for p in before.actor.parameters())**.5
         critic_norm=sum(float(p.grad.square().sum()) for p in before.critic.parameters())**.5
+        phase_gradients=None
+        if cfg.phase_actor:
+            phase_gradients={name:sum(float(p.grad.square().sum()) for p in head.parameters())**.5
+                             for name,head in [('initial',before.actor.initial),('flow',before.actor.flow)]}
+            if not all(v>0 for v in phase_gradients.values()):
+                raise ValueError('A phase head supplied no on-policy PPO gradient')
         if not actor_norm > 0 or not critic_norm > 0:
             raise ValueError('Actor or centralized critic has no gradient')
         role_gradients=[]
@@ -74,6 +80,7 @@ def audit(directory):
         batches.append(dict(path=path.name, steps=saved['metadata']['steps'],
             sampled_action_logp_max_error=float((lp-b['old_logp']).abs().max()),
             actor_gradient_l2=actor_norm, critic_gradient_l2=critic_norm,
+            phase_actor_gradient_l2=phase_gradients,
             per_role_actor_gradient_l2=role_gradients,
             active_role_samples=b['active'].sum(0).tolist(),
             independent_gae_max_error=float(np.max(np.abs(standardized.reshape(-1, 3)-b['advantage'].numpy())))))

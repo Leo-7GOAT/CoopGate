@@ -211,7 +211,8 @@ def evaluate(out, paths, n=128, seed_base=94500001, backend='exact', expert_init
                 elapsed_s=time.perf_counter()-started,
                 intervals='Development t intervals on independent initial means; not finite-sample certificates')
     (out/'report.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
-    print(json.dumps(report), flush=True)
+    print(json.dumps(dict(executions=report['executions'],elapsed_s=report['elapsed_s'],
+                          results=summary)),flush=True)
 
 
 if __name__ == '__main__':

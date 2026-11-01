@@ -183,3 +183,20 @@ def test_phase_actor_routes_only_on_own_clock_and_both_heads_receive_gradients()
     model.distribution(obs,mask).entropy().sum().backward()
     for head in (model.actor.initial,model.actor.flow):
         assert sum(float(p.grad.square().sum()) for p in head.parameters())>0
+
+
+def test_startup_expert_costs_match_original_strong_planner_value_and_argmin():
+    from tools.initialize_mappo_phase import initial_action_costs
+    from tools.develop_v12 import initial
+    from coopgate.ego_v13 import EgoRolloutGate
+    from coopgate.fast_v8 import parameters
+    from coopgate.merge_v4 import MergeConfig
+    from coopgate.marl_v12 import LEVELS
+    for i in range(16):
+        x=initial(951099001+i,'nominal' if i%2==0 else 'dense')
+        costs,work=initial_action_costs(x,parameters(MergeConfig()))
+        _,info=EgoRolloutGate().select(x,np.zeros(3))
+        index=np.argmin(np.abs(LEVELS-info['ego_proposal']))
+        assert abs(costs[index]-info['rollout_value'])<1e-8
+        assert abs(costs[index]-costs.min())<1e-8
+        assert work>=9
