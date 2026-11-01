@@ -22,6 +22,7 @@ def compose(p, h, eq, table, fmt, joint, fair_receipt, fair, factorial, cspi, oo
     p('多智能体 rollout 和策略迭代已经研究通过其他智能体的闭环响应评价联合决策[1]。本项目使用模型式近似策略迭代训练三个独立 actor，训练目标为共同团队成本；它不等同于 MAPPO，也不提供一般和博弈的纳什均衡或神经逼近下的收敛保证。安全过滤和联合准入仍为集中模块，不能据此宣称整套系统完全分散。')
     p('MAMPS 已通过模型预测屏蔽处理多个智能体的学习与备份切换[2]；DMPS 进一步通过局部规划和学习价值选择有任务进展的安全恢复动作[3]。因此，考虑智能体间耦合、让备份控制关注收益，以及尽量保留学习动作均已有研究。本文关注的具体目标是：以共同反馈基线为反事实参照，检查完整执行动作对所有车辆成本和到达时间的影响，并在实际采用的回合中评价退化风险。')
     p('CSPI-MT 使用独立数据检验阈值策略的平均改进，并考虑多个阈值的检验功效[4]；Learn then Test 将风险控制转化为有效的假设检验[5]。本文沿用这些统计思想，明确区分平均价值改善与采用后逐车退化概率。后者依赖同初态、同执行器、同外生创新带的仿真配对，拥有随机单臂观察日志之外的信息。')
+    p('DeepSPI 已研究世界模型和表征学习下的安全策略更新，以局部更新约束建立单调改进关系[8]。本文没有提出新的世界模型学习算法，也不取代该类训练理论；研究对象是冻结策略部署时的联合动作准入、基线反事实及逐车性能退化。因此，理论与实验均围绕实际执行的门控闭环组织。')
     p('共享证据对照中的 MPS、MAMPS 和 advantage-LCB 为本项目适配器，不能继承原论文全部保证。原作者 CSPI 补充使用固定提交中的十三个原函数，但其任务接口、评分拟合和支持处理仍需披露。已有 DMPS 固定预算任务适配没有学会完成普通测试；这些失败被保留，但不用于证明 DMPS 方法族无效或本文优越。')
 
     h('3 控制问题与比较指标')
@@ -195,6 +196,7 @@ def compose(p, h, eq, table, fmt, joint, fair_receipt, fair, factorial, cspi, oo
         '[5] Angelopoulos A N, Bates S, Candès E J, Jordan M I, Lei L. Learn then Test: Calibrating Predictive Algorithms to Achieve Risk Control. 2022. https://arxiv.org/abs/2110.01052',
         '[6] Berger R L, Hsu J C. Bioequivalence Trials, Intersection–Union Tests and Equivalence Confidence Sets. Statistical Science, 1996, 11(4): 283–319. https://doi.org/10.1214/ss/1032280304',
         '[7] 李东旭. CoopGate 代码 冻结模型 实验协议与原始记录. https://github.com/Leo-7GOAT/CoopGate',
+        '[8] Delgrange F, Avalos R, Röpke W. Deep SPI: Safe Policy Improvement via World Models. ICLR, 2026. https://proceedings.iclr.cc/paper_files/paper/2026/hash/0212b0dff7b4aa3bd8b8cc4ce24fd384-Abstract-Conference.html',
     ]
     for text in references:
         paragraph = p(text)
