@@ -49,18 +49,18 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
         model.actor.load_state_dict(source.actor.state_dict())
     if expert_initial:
         source=torch.load(expert_initial, map_location='cpu', weights_only=True)
-        if source['algorithm'] != 'planner_bc_initializer_20261101' or source['ppo_config'] != asdict(cfg):
+        if source['algorithm'] != 'planner_bc_initializer_20261101' or PPOConfig(**source['ppo_config']) != cfg:
             raise ValueError('Expected a separately declared matching planner-BC initializer')
         model.actor.load_state_dict(source['model']['actor'])
     if continue_single:
         source, previous_meta=load_mappo(continue_single)
         if (previous_meta['stage']!='single' or previous_meta['steps']!=previous_meta['target_steps']
-                or previous_meta['ppo_config']!=asdict(cfg)):
+                or PPOConfig(**previous_meta['ppo_config'])!=cfg):
             raise ValueError('Single continuation requires completed matching on-policy single PPO')
         model.load_state_dict(source.state_dict())
     if legacy_initial:
         source=torch.load(legacy_initial,map_location='cpu',weights_only=True)
-        if source['algorithm']!='legacy_pi_actor_initializer_20261101' or source['ppo_config']!=asdict(cfg):
+        if source['algorithm']!='legacy_pi_actor_initializer_20261101' or PPOConfig(**source['ppo_config'])!=cfg:
             raise ValueError('Explicit matching legacy-PI initializer required; it is not a PPO result')
         model.actor.load_state_dict(source['model']['actor'])
     if rear_coast:

@@ -230,3 +230,18 @@ def test_small_ego_rate_does_not_freeze_any_joint_actor(tmp_path):
                   if k.startswith(f'actor.roles.{i}.'))
         assert delta>0
     assert [g['lr'] for g in final['optimizer']['param_groups']]==[1e-4,1e-5,1e-4,cfg.critic_lr]
+
+
+def test_initializer_missing_new_zero_default_field_still_trains(tmp_path):
+    from dataclasses import asdict
+    from tools.train_mappo_ctde import train
+    cfg=PPOConfig(width=16,n_envs=4,rollout=16,epochs=2,minibatch=32,role_actors=True)
+    old_config=asdict(cfg);old_config.pop('ego_actor_lr')
+    source=MAPPOCTDE(cfg)
+    path=tmp_path/'old_initializer.pt'
+    torch.save(dict(algorithm='legacy_pi_actor_initializer_20261101',ppo_config=old_config,
+                    model=dict(actor=source.actor.state_dict())),path)
+    final=train(tmp_path/'new_ppo',128,79,'single',config=cfg,legacy_initial=path)
+    assert final['steps']==128
+    assert final['no_policy_iteration_in_ppo_updates']
+    assert not final['no_policy_iteration']
