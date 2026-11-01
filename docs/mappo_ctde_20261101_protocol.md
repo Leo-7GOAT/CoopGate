@@ -269,3 +269,40 @@ actor-head LRs3e-5, critic LR3e-4, lambda1, entropy.005, original starts. Compar
 final H, parent F and its initializer against both unchanged strong planners on
 fresh development seeds 95200001--95200128, four modes, retaining all outcomes.
 G always completes its original registered budget and primary comparison.
+
+## Independent development I: explicitly disclosed legacy-policy warm start
+
+The previous no-PI-initialization restriction was a DEVELOPMENT design choice,
+not a user requirement or a definition of MAPPO. It is revised explicitly to
+avoid repeatedly learning an already verified single-car skill. The completed
+V14 source has three trained single-ego policies, full SUMO/replay audits and
+nine passed criteria. These are old MODEL-BASED PI results, never MAPPO results.
+
+Create a separate non-PPO initializer from V14 seed901, checking the original
+prerequisite hashes. Copy its ReLU256 ego weights exactly into actor1. Initialize
+separate actors0/2 with highest-admissible greedy preferences but non-saturated
+stochastic .4*LEVELS logits. All three actors have separate parameters and local
+inputs. The centralized critic is new. Scale sampling logits by five, while
+greedy inference uses the raw logits, preserving old deterministic actions.
+Verify conversion on 1,024 kinematic fixtures; this is not new performance data.
+
+I runs 262,144 NEW on-policy single-agent PPO transitions, seed4601, actor LR1e-5,
+critic LR3e-4, gamma1/lambda1, entropy.001. Only ramp actor loss is active in
+this prerequisite; actors0/2 are not claimed trained until joint MAPPO. The PPO
+code uses no expert labels, counterfactual targets or policy-iteration updates.
+The final PPO model must be compared separately with its UNCHANGED legacy
+initializer, strong ego/team planners and rule on 128 fresh development initials
+95300001--95300128 and four modes. The old certificate/score is not transferred.
+
+This is PI-WARM-STARTED MAPPO, not from-scratch model-free learning or a sample-
+efficiency win. Old training cost is inherited and must be disclosed. Positive
+new performance cannot automatically be attributed to PPO; compare against the
+initializer and require actual multi-agent behavioral contribution in joint
+training. No unchanged legacy actor is renamed a trained MAPPO policy. All
+earlier failed attempts and conditional H retain their original full budgets.
+
+For I and later training, reset the proposal/minibatch Torch RNG after model
+construction to seed+451000000; the vector-environment RNG remains
+seed+450000000. This prevents critic architecture/initializer construction
+from consuming different amounts of the subsequent proposal RNG stream.
+Already running H retains its earlier frozen source and RNG convention.

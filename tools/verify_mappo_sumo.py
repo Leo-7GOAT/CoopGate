@@ -22,6 +22,14 @@ def verify(directory):
         raise ValueError('Actual SUMO results required')
     factories=dict(rule=RuleGate, ego_planner=EgoRolloutGate, team_planner=JointRolloutGate)
     for name, item in protocol['checkpoints'].items():
+        if item['stage']=='legacy_initial':
+            source=torch.load(item['path'],map_location='cpu',weights_only=True)
+            if source['algorithm']!='legacy_pi_actor_initializer_20261101':
+                raise ValueError('Wrong legacy initialization identity')
+            legacy=MAPPOCTDE(PPOConfig(**source['ppo_config']))
+            legacy.actor.load_state_dict(source['model']['actor']);legacy.eval()
+            factories[name]=lambda legacy=legacy:PPOGate(legacy,'single')
+            continue
         if item['stage'] == 'bc_only':
             source=torch.load(item['path'], map_location='cpu', weights_only=True)
             if source['algorithm'] != 'planner_bc_initializer_20261101':

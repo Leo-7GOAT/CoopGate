@@ -22,7 +22,7 @@ def digest(path):
 
 
 def train(out, steps, seed, stage, critic_kind='central', initial=None, config=None, expert_initial=None,
-          continue_single=None, reset_pool=None):
+          continue_single=None, reset_pool=None,legacy_initial=None):
     cfg = config or PPOConfig()
     if steps <= 0 or steps % cfg.n_envs:
         raise ValueError('Step budget must be a positive multiple of vector width')
@@ -32,6 +32,8 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
         raise ValueError('Expert initializer is a separate single-stage development path')
     if continue_single and (initial or expert_initial or stage!='single'):
         raise ValueError('Single continuation is a separate failed-prerequisite development path')
+    if legacy_initial and (initial or expert_initial or continue_single or stage!='single'):
+        raise ValueError('Legacy initialization is a separately disclosed single-stage experiment')
     out = Path(out)
     out.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(1)
@@ -56,18 +58,30 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
                 or previous_meta['ppo_config']!=asdict(cfg)):
             raise ValueError('Single continuation requires completed matching on-policy single PPO')
         model.load_state_dict(source.state_dict())
+    if legacy_initial:
+        source=torch.load(legacy_initial,map_location='cpu',weights_only=True)
+        if source['algorithm']!='legacy_pi_actor_initializer_20261101' or source['ppo_config']!=asdict(cfg):
+            raise ValueError('Explicit matching legacy-PI initializer required; it is not a PPO result')
+        model.actor.load_state_dict(source['model']['actor'])
     initial_actor = {k:v.detach().clone() for k,v in model.actor.state_dict().items()}
     actor_groups=([dict(params=model.actor.initial.parameters(),lr=cfg.initial_actor_lr),
                    dict(params=model.actor.flow.parameters(),lr=cfg.actor_lr)] if cfg.phase_actor
                   else [dict(params=model.actor.parameters(),lr=cfg.actor_lr)])
     optimizer = torch.optim.Adam(actor_groups+[dict(params=model.critic.parameters(),lr=cfg.critic_lr)],eps=1e-5)
+    # Keep rollout/minibatch RNG independent of how many random numbers the
+    # chosen critic architecture or initializer consumed during construction.
+    proposal_rng_seed=seed+451000000
+    torch.manual_seed(proposal_rng_seed)
     source_paths = list((ROOT/'src/coopgate').glob('*.py')) + [Path(__file__), ROOT/'docs/mappo_ctde_20261101_protocol.md']
     source_hashes = {p.relative_to(ROOT).as_posix():digest(p) for p in source_paths}
     meta = dict(algorithm='mappo_ctde_20261101' if critic_kind == 'central' else 'ippo_local_20261101',
-        stage=stage, critic_kind=critic_kind, seed=seed, target_steps=steps, ppo_config=asdict(cfg),
+        stage=stage, critic_kind=critic_kind, seed=seed, proposal_rng_seed=proposal_rng_seed,
+        target_steps=steps, ppo_config=asdict(cfg),
         initial_checkpoint=None if initial is None else dict(path=str(initial), sha256=digest(initial)),
         expert_initializer=None if expert_initial is None else dict(path=str(expert_initial), sha256=digest(expert_initial)),
         continued_single_checkpoint=None if continue_single is None else dict(path=str(continue_single), sha256=digest(continue_single)),
+        legacy_initializer=None if legacy_initial is None else dict(path=str(legacy_initial),sha256=digest(legacy_initial),
+            ancestry='Model-based policy-iteration ego actor; old performance/certificates are not new PPO evidence'),
         reset_pool=None if reset_pool is None else dict(path=str(reset_pool), sha256=digest(reset_pool), probability=.5,
             training_metrics='suffix cost on 50% reset states; not comparable to original-start costs'),
         source_commit=subprocess.check_output(['git','rev-parse','HEAD'], cwd=ROOT, text=True).strip(),
@@ -76,8 +90,9 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
         actor_information='local 18 observed features only', critic_information='global 13 public state features' if critic_kind=='central' else 'local 18 observed features',
         reward='ramp cost' if stage=='single' else 'mean per-car cost',
         time_limit='terminal finite 25s horizon; no terminal bootstrap',
-        primary_checkpoint='final fixed step budget', no_teacher_actions=expert_initial is None and continue_single is None,
-        no_teacher_actions_in_ppo_updates=True, no_policy_iteration=True)
+        primary_checkpoint='final fixed step budget', no_teacher_actions=expert_initial is None and continue_single is None and legacy_initial is None,
+        no_teacher_actions_in_ppo_updates=True, no_policy_iteration=legacy_initial is None,
+        no_policy_iteration_in_ppo_updates=True)
     (out/'protocol.json').write_text(json.dumps(meta, indent=2)+'\n', encoding='utf-8')
     for name in source_hashes:
         target=out/'source'/name
@@ -197,10 +212,15 @@ if __name__ == '__main__':
     parser.add_argument('--initial-actor-lr',type=float,default=3e-4)
     parser.add_argument('--startup-width',type=int,default=0)
     parser.add_argument('--startup-relu',action='store_true')
+    parser.add_argument('--legacy-initial')
+    parser.add_argument('--role-actors',action='store_true');parser.add_argument('--actor-relu',action='store_true')
+    parser.add_argument('--logit-scale',type=float,default=1.)
+    parser.add_argument('--width',type=int,default=128)
     args=parser.parse_args()
-    config=PPOConfig(kinematic_features=args.kinematic or args.accelerated, entropy=args.entropy,
+    config=PPOConfig(width=args.width,kinematic_features=args.kinematic or args.accelerated, entropy=args.entropy,
                      gae_lambda=args.gae_lambda,accelerated_features=args.accelerated,actor_lr=args.actor_lr,
                      phase_actor=args.phase_actor,initial_actor_lr=args.initial_actor_lr,
-                     startup_width=args.startup_width,startup_relu=args.startup_relu)
+                     startup_width=args.startup_width,startup_relu=args.startup_relu,
+                     role_actors=args.role_actors,actor_relu=args.actor_relu,actor_logit_scale=args.logit_scale)
     train(args.out, args.steps, args.seed, args.stage, args.critic, args.initial, config, args.expert_initial,
-          args.continue_single, args.reset_pool)
+          args.continue_single,args.reset_pool,args.legacy_initial)

@@ -110,11 +110,20 @@ def exact_episode(seed, scenario, mode, factory):
                 controller_ms=[x['controller_ms'] for x in trace], trace=trace)
 
 
-def evaluate(out, paths, n=128, seed_base=94500001, backend='exact', expert_initial=None):
+def evaluate(out, paths, n=128, seed_base=94500001, backend='exact', expert_initial=None,legacy_initial=None):
     out=Path(out); out.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(1)
     factories=dict(rule=RuleGate, ego_planner=EgoRolloutGate, team_planner=JointRolloutGate)
     checkpoints={}
+    if legacy_initial:
+        source=torch.load(legacy_initial,map_location='cpu',weights_only=True)
+        if source['algorithm']!='legacy_pi_actor_initializer_20261101':
+            raise ValueError('Legacy comparator must retain its non-PPO identity')
+        legacy=MAPPOCTDE(PPOConfig(**source['ppo_config']))
+        legacy.actor.load_state_dict(source['model']['actor']);legacy.eval()
+        factories['legacy_initial']=lambda:PPOGate(legacy,'single')
+        checkpoints['legacy_initial']=dict(path=str(legacy_initial),sha256=hashlib.sha256(Path(legacy_initial).read_bytes()).hexdigest(),
+                                          stage='legacy_initial',steps=0)
     if expert_initial:
         source=torch.load(expert_initial, map_location='cpu', weights_only=True)
         if source['algorithm'] != 'planner_bc_initializer_20261101':
@@ -223,5 +232,6 @@ if __name__ == '__main__':
     parser.add_argument('--seed-base', type=int, default=94500001)
     parser.add_argument('--backend', choices=['exact','sumo'], default='exact')
     parser.add_argument('--expert-initial')
+    parser.add_argument('--legacy-initial')
     args=parser.parse_args()
-    evaluate(args.out, args.paths, args.n, args.seed_base, args.backend, args.expert_initial)
+    evaluate(args.out,args.paths,args.n,args.seed_base,args.backend,args.expert_initial,args.legacy_initial)

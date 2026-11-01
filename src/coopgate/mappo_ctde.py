@@ -35,6 +35,9 @@ class PPOConfig:
     initial_actor_lr: float = 3e-4
     startup_width: int = 0
     startup_relu: bool = False
+    role_actors: bool = False
+    actor_relu: bool = False
+    actor_logit_scale: float = 1.
 
 
 def local_kinematic_features(obs):
@@ -111,6 +114,20 @@ class PhaseActor(nn.Module):
         return torch.where(initial[...,None],self.initial(features),self.flow(features))
 
 
+class DecentralizedActors(nn.Module):
+    """Three independently parameterized local actors; no cross-role inputs."""
+    def __init__(self,inputs,width,relu):
+        super().__init__()
+        self.roles=nn.ModuleList([mlp(inputs,width,len(LEVELS),.01,relu=relu) for _ in range(3)])
+
+    def forward(self,features):
+        if features.ndim>=2 and features.shape[-2]==3:
+            return torch.stack([actor(features[...,i,:]) for i,actor in enumerate(self.roles)],dim=-2)
+        if features.ndim==1 or features.shape[-2]==1:
+            return self.roles[1](features)
+        raise ValueError('Separate actors require an explicit role axis of length 3, or 1 for ramp-only deployment')
+
+
 class MAPPOCTDE(nn.Module):
     """One local actor shared across roles; one scalar common-payoff critic.
 
@@ -124,10 +141,19 @@ class MAPPOCTDE(nn.Module):
             raise ValueError('critic_kind must be central or local')
         if self.config.accelerated_features and not self.config.kinematic_features:
             raise ValueError('Accelerated representation extends kinematic representation')
+        if self.config.role_actors and self.config.phase_actor:
+            raise ValueError('Separate-role and phase-routed actor variants are distinct')
+        if not self.config.actor_logit_scale>0:
+            raise ValueError('Positive actor logit scale required')
         self.critic_kind = critic_kind
         actor_dim=OBS_DIM+8*int(self.config.kinematic_features)+10*int(self.config.accelerated_features)
         critic_dim=(STATE_DIM+3*(actor_dim-OBS_DIM)) if critic_kind=='central' else actor_dim
-        self.actor = PhaseActor(actor_dim,self.config.width,self.config.startup_width,self.config.startup_relu) if self.config.phase_actor else mlp(actor_dim,self.config.width,len(LEVELS),.01)
+        if self.config.role_actors:
+            self.actor=DecentralizedActors(actor_dim,self.config.width,self.config.actor_relu)
+        elif self.config.phase_actor:
+            self.actor=PhaseActor(actor_dim,self.config.width,self.config.startup_width,self.config.startup_relu)
+        else:
+            self.actor=mlp(actor_dim,self.config.width,len(LEVELS),.01,relu=self.config.actor_relu)
         self.critic = mlp(critic_dim,
                           self.config.width, 1, 1.)
 
@@ -143,7 +169,7 @@ class MAPPOCTDE(nn.Module):
         if not mask.any(-1).all():
             raise ValueError('Empty categorical action support')
         features=self.features(observations)
-        logits = self.actor(features)
+        logits = self.config.actor_logit_scale*self.actor(features)
         if not torch.isfinite(logits).all():
             raise ValueError('Nonfinite actor logits')
         return Categorical(logits=logits.masked_fill(~mask, -1e9))
@@ -162,6 +188,16 @@ class MAPPOCTDE(nn.Module):
         device = next(self.parameters()).device
         obs = torch.as_tensor(observations, dtype=torch.float32, device=device)
         mask = torch.as_tensor(mask, dtype=torch.bool, device=device)
+        if self.config.role_actors:
+            # The positive sampling-temperature scale cannot alter deployment
+            # argmax. Use raw logits to preserve the converted legacy actor's
+            # exact tie ordering without a logsumexp subtraction.
+            if not mask.any(-1).all():
+                raise ValueError('Empty categorical action support')
+            logits=self.actor(self.features(obs))
+            if not torch.isfinite(logits).all():
+                raise ValueError('Nonfinite actor logits')
+            return logits.masked_fill(~mask,-1e9).argmax(-1).cpu().numpy()
         return self.distribution(obs, mask).logits.argmax(-1).cpu().numpy()
 
 

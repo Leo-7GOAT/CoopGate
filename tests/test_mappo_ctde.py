@@ -202,3 +202,17 @@ def test_startup_expert_costs_match_original_strong_planner_value_and_argmin(mon
         assert abs(costs[index]-info['rollout_value'])<1e-8
         assert abs(costs[index]-costs.min())<1e-8
         assert work>=9
+
+
+def test_separate_actor_roles_have_local_inputs_and_independent_gradients():
+    cfg=PPOConfig(width=16,role_actors=True,actor_relu=True,actor_logit_scale=5.)
+    model=MAPPOCTDE(cfg)
+    obs=torch.randn(8,3,18);mask=torch.ones(8,3,13,dtype=torch.bool)
+    baseline=model.distribution(obs,mask).logits.detach()
+    altered=obs.clone();altered[:,0]+=10.
+    torch.testing.assert_close(baseline[:,1],model.distribution(altered,mask).logits[:,1])
+    model.distribution(obs,mask).entropy()[:,1].sum().backward()
+    norms=[sum(float(p.grad.square().sum()) for p in actor.parameters()) for actor in model.actor.roles]
+    assert norms[1]>0 and norms[0]==norms[2]==0
+    np.testing.assert_array_equal(model.proposal(obs[:,1:2],mask[:,1:2])[:,0],
+                                  model.proposal(obs,mask)[:,1])
