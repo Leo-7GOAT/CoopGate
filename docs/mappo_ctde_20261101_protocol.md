@@ -245,3 +245,27 @@ against both unchanged strong planners on fresh 128 development initials
 95100001--95100128, four modes. Full source, all failures and final checkpoints
 are retained; no intermediate model selection. Architecture and initialization
 differences must be disclosed. No success is inferred from training regret.
+
+## Conditional development H: non-saturating expert-logit regression
+
+G's completed initializer has training greedy nominal regret .5244 seconds
+(1,014 starts above one second), before its fixed PPO run/test outcomes are
+known. Thus merely increasing startup capacity and minimizing probability-
+weighted expert cost did not fit the fixed table better. A probability-weighted
+loss can have very small gradients for disfavored actions. Prepare H's separate
+initializer concurrently using the same full audited table and SAME fixed F
+flow parent, with seed4508. No G test outcome is used to prepare it.
+
+H uses ReLU256 and 400 supervised epochs/LR3e-4, but regresses RAW startup
+logits to -(candidate cost - minimum candidate cost)/.5 seconds, masked MSE.
+Every admissible action has a regression gradient independent of its current
+softmax probability. This is a fixed-expert model-based initializer, not
+on-policy learning or policy iteration; all expert queries are reused, not new.
+It does not ensure low actual cost or generalization.
+
+ONLY if G's completed original-start comparison still fails the single-agent
+prerequisite, H performs 1,048,576 NEW on-policy PPO transitions, seed4508, both
+actor-head LRs3e-5, critic LR3e-4, lambda1, entropy.005, original starts. Compare
+final H, parent F and its initializer against both unchanged strong planners on
+fresh development seeds 95200001--95200128, four modes, retaining all outcomes.
+G always completes its original registered budget and primary comparison.

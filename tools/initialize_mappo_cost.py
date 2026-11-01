@@ -14,7 +14,7 @@ import torch
 from coopgate.mappo_ctde import MAPPOCTDE,PPOConfig,load_mappo
 
 
-def initialize(out,parent,dataset,seed=4507):
+def initialize(out,parent,dataset,seed=4507,loss_kind='expected'):
     out=Path(out);out.mkdir(parents=True,exist_ok=False)
     torch.set_num_threads(1);torch.manual_seed(seed)
     source,meta=load_mappo(parent)
@@ -29,8 +29,11 @@ def initialize(out,parent,dataset,seed=4507):
     data=torch.load(dataset,map_location='cpu',weights_only=True)
     if len(data['obs'])!=8192 or not (data['obs'][:,5]==0).all():
         raise ValueError('Use the entire fixed startup training table')
+    if loss_kind not in ('expected','q_mse'):
+        raise ValueError('Unknown supervised initialization loss')
     plan=dict(algorithm='planner_bc_initializer_20261101',
-        initialization_method='expected expert regret plus .025s soft-target CE, ReLU256 startup only',
+        initialization_method='expected expert regret plus .025s soft-target CE, ReLU256 startup only' if loss_kind=='expected' else 'masked fixed-expert regret-logit regression, ReLU256 startup only',
+        loss_kind=loss_kind,regression_cost_scale_seconds=.5,
         ppo_config=asdict(cfg),seed=seed,epochs=400,initials=8192,
         parent_ppo=dict(path=str(parent),sha256=hashlib.sha256(Path(parent).read_bytes()).hexdigest()),
         dataset_source=dict(path=str(dataset),sha256=hashlib.sha256(dataset.read_bytes()).hexdigest()),
@@ -44,8 +47,13 @@ def initialize(out,parent,dataset,seed=4507):
     optimizer=torch.optim.Adam(model.actor.initial.parameters(),lr=3e-4)
     for _ in range(400):
         for ids in torch.randperm(len(obs)).split(512):
-            dist=model.distribution(obs[ids],mask[ids])
-            loss=((dist.probs*regret[ids]).sum(-1)-.025*(targets[ids]*dist.logits).sum(-1)).mean()
+            if loss_kind=='expected':
+                dist=model.distribution(obs[ids],mask[ids])
+                loss=((dist.probs*regret[ids]).sum(-1)-.025*(targets[ids]*dist.logits).sum(-1)).mean()
+            else:
+                raw=model.actor.initial(model.features(obs[ids]))
+                target=-regret[ids]/.5
+                loss=(raw-target).square()[mask[ids]].mean()
             if not torch.isfinite(loss):
                 raise FloatingPointError('Nonfinite expected-regret initializer loss')
             optimizer.zero_grad();loss.backward()
@@ -68,4 +76,5 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--out',required=True)
     parser.add_argument('--parent',required=True);parser.add_argument('--dataset',required=True)
     parser.add_argument('--seed',type=int,default=4507)
-    args=parser.parse_args();initialize(args.out,args.parent,args.dataset,args.seed)
+    parser.add_argument('--loss',choices=['expected','q_mse'],default='expected')
+    args=parser.parse_args();initialize(args.out,args.parent,args.dataset,args.seed,args.loss)
