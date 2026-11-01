@@ -46,7 +46,8 @@ class PPOGate(JointPolicyGate):
         self.step += 1
         return command, dict(gate_ms=(time.perf_counter()-started)*1000.,
                              agent_actions=actions.tolist(), proposal=proposal.tolist(),
-                             shield_vertex=vertex, certified=True)
+                             shield_vertex=vertex, certified=True, in_set=True,
+                             intervention=float(np.mean(np.abs(command-proposal)>1e-8)))
 
 
 class RuleGate:
@@ -59,7 +60,9 @@ class RuleGate:
         command, _, ok=project_joint(state, previous, proposal, self.packed, .5)
         if not ok:
             raise RuntimeError('Rule has no certified command')
-        return command, dict(gate_ms=(time.perf_counter()-started)*1000.)
+        return command, dict(gate_ms=(time.perf_counter()-started)*1000.,
+                             certified=True, in_set=True,
+                             intervention=float(np.mean(np.abs(command-proposal)>1e-8)))
 
 
 def exact_episode(seed, scenario, mode, factory):

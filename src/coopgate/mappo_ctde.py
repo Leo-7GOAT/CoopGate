@@ -29,6 +29,28 @@ class PPOConfig:
     value_scale: float = 10.
     entropy: float = .01
     max_grad_norm: float = .5
+    kinematic_features: bool = False
+
+
+def local_kinematic_features(obs):
+    """Eight deterministic functions of the SAME local observation.
+
+    Relative ETA and time headway improve representation, not information:
+    no planner, optimal-action labels, hidden state or rollout is evaluated.
+    """
+    position, speed = obs[..., 0]*150., obs[..., 1]*20.
+    own_eta = (-25.-position).clamp(min=0.) / speed.clamp(min=1.)
+    extra=[]
+    for start in (6, 12):
+        visible=obs[..., start]
+        distance=obs[..., start+1]*150.
+        neighbor_speed=(speed+obs[..., start+2]*20.).clamp(min=1.)
+        eta=(-25.-position-distance).clamp(min=0.)/neighbor_speed
+        extra.extend((visible*(eta-own_eta).clamp(-10., 10.)/10.,
+                      visible*distance/(speed.clamp(min=1.)*10.),
+                      visible*(distance.abs()<35.).float(),
+                      visible*(eta<own_eta).float()))
+    return torch.cat((obs, torch.stack(extra, dim=-1)), dim=-1)
 
 
 def mlp(inputs, width, outputs, output_gain):
@@ -54,8 +76,10 @@ class MAPPOCTDE(nn.Module):
         if critic_kind not in ('central', 'local'):
             raise ValueError('critic_kind must be central or local')
         self.critic_kind = critic_kind
-        self.actor = mlp(OBS_DIM, self.config.width, len(LEVELS), .01)
-        self.critic = mlp(STATE_DIM if critic_kind == 'central' else OBS_DIM,
+        actor_dim=OBS_DIM+8*int(self.config.kinematic_features)
+        critic_dim=(STATE_DIM+24*int(self.config.kinematic_features)) if critic_kind=='central' else actor_dim
+        self.actor = mlp(actor_dim, self.config.width, len(LEVELS), .01)
+        self.critic = mlp(critic_dim,
                           self.config.width, 1, 1.)
 
     def distribution(self, observations, mask):
@@ -63,15 +87,20 @@ class MAPPOCTDE(nn.Module):
             raise ValueError('Local observations/action masks have incompatible shapes')
         if not mask.any(-1).all():
             raise ValueError('Empty categorical action support')
-        logits = self.actor(observations)
+        features=local_kinematic_features(observations) if self.config.kinematic_features else observations
+        logits = self.actor(features)
         if not torch.isfinite(logits).all():
             raise ValueError('Nonfinite actor logits')
         return Categorical(logits=logits.masked_fill(~mask, -1e9))
 
     def value(self, observations, state):
         if self.critic_kind == 'central':
+            if self.config.kinematic_features:
+                extra=local_kinematic_features(observations)[..., 18:].flatten(start_dim=-2)
+                state=torch.cat((state, extra), dim=-1)
             return self.config.value_scale * self.critic(state).expand(*state.shape[:-1], 3)
-        return self.config.value_scale * self.critic(observations).squeeze(-1)
+        features=local_kinematic_features(observations) if self.config.kinematic_features else observations
+        return self.config.value_scale * self.critic(features).squeeze(-1)
 
     @torch.no_grad()
     def proposal(self, observations, mask):

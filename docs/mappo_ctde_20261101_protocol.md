@@ -71,3 +71,23 @@ results apply only to the previously frozen full controller.
 Reference: https://arxiv.org/abs/2103.01955 and
 https://github.com/marlbenchmark/on-policy (method guidance; this is an
 independent traffic adaptation, not an unchanged original-author executable).
+
+## Development amendment B (before B training or evaluation)
+
+Run A completed 262,144 steps and its full 128-initial/4-mode development
+comparison. It underperformed the strong ego planner by 1.182 seconds in mean
+ramp cost. Do not launch the joint stage from this unsuccessful prerequisite.
+The original run, on-policy audit and every comparison remain retained.
+
+One bounded follow-up B, seed 4502, trains single-agent PPO from scratch for
+2,097,152 joint transitions, entropy coefficient .02. Eight known kinematic
+functions (relative ETA, time headway, near-neighbor and ordering indicators)
+are appended to the SAME local observations; the global critic receives their
+concatenation in addition to its existing public state. No new hidden
+information, teacher labels, planning reward or action imitation is introduced.
+This changes representation, training budget and entropy together, so cannot
+isolate their separate causal effects. Evaluate the fixed final model on fresh
+128 development initials, seeds 94600001--94600128, both regimes/four modes.
+All original strong baselines remain. This is development, with no confirmatory
+p-value or risk certificate. A further attempt requires another explicit
+prospective amendment and preservation of B regardless of its outcome.
