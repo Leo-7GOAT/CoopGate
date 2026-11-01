@@ -19,9 +19,10 @@ def test_gae_bootstrap_and_reset_are_distinct_and_no_cross_episode_leakage():
     np.testing.assert_allclose(adv, 11.)
 
 
-def test_decentralized_actor_and_centralized_critic_information_paths():
+@pytest.mark.parametrize('kinematic', [False, True])
+def test_decentralized_actor_and_centralized_critic_information_paths(kinematic):
     torch.manual_seed(71)
-    model=MAPPOCTDE(PPOConfig(width=32))
+    model=MAPPOCTDE(PPOConfig(width=32, kinematic_features=kinematic))
     obs=torch.randn(4, 3, 18)
     state=torch.randn(4, 13, requires_grad=True)
     mask=torch.ones(4, 3, 13, dtype=torch.bool)

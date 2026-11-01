@@ -149,9 +149,10 @@ def evaluate(out, paths, n=128, seed_base=94500001, backend='exact'):
                         if backend == 'exact':
                             row=exact_episode(seed, scenario, mode, factory)
                         else:
-                            result, trace, _=run_episode(env, seed, scenario, mode,
+                            result, trace, actual_initial=run_episode(env, seed, scenario, mode,
                                                         lambda _state, f=factory:f(), True)
-                            row={**result, 'seed':seed, 'scenario':scenario, 'mode':mode, 'trace':trace}
+                            row={**result, 'seed':seed, 'scenario':scenario, 'mode':mode,
+                                 'initial':actual_initial.tolist(), 'trace':trace}
                             cost=np.array(row['per_vehicle_finish'])+.05*np.array(row['per_vehicle_variation'])
                             row.update(per_vehicle_cost=cost.tolist(), team_cost=float(cost.mean()))
                         row['method']=name
