@@ -6,8 +6,8 @@
   audited V14 PI initialization. All 2,560 actual SUMO executions and all
   63,227 commands / 316,135 physical substeps independently replayed. Ramp
   cost gain2.886%, time2.339%, variation17.708%; original numeric thresholds
-  and development cluster intervals are met. There is only ONE new PPO seed,
-  not the full original three-seed acceptance. Ramp cost versus the untouched
+  and development cluster intervals are met. I's comparison has ONE new PPO
+  seed (additional replications below), not full three-seed acceptance. Ramp cost versus the untouched
   initializer is .0242s worse, so additional PPO ramp benefit is unproved.
 - J (`joint_4701`) completed 1,048,576 joint transitions, all three independent
   actors' parameter/gradient audits, 4,608 exact comparisons and 72 actual SUMO
@@ -65,10 +65,11 @@
   41/1840 callbacks>500ms; all costs belong to the actual selector. Runtime
   is explicitly non-isolated (exact evaluation/Git overlap), not hard-real-time
   evidence. No communication-latency measurement is used.
-- Fixed single-PPO replication4602/session3154 is ACTIVE in full SUMO.
-  Training/audit/exact native exits0; exact cost/time/variation gains
+- Fixed single-PPO replication4602/session3154 is COMPLETE, all actual
+  native exits0. Full2,560 SUMO executions independently match63,006 commands
+  and315,030 physical substeps. SUMO cost/time/variation gains
   3.4089%/2.7576%/20.8277%, all numeric/development interval checks pass.
-  Do not treat the unfinished SUMO report as a completed result.
+  This is a second successful seed; the complete three-seed criterion still fails.
   Replication4603/session47895 is terminal with native exit0, but scientific
   competence fails: gains1.5686%/1.0116%/17.5217%, cost/time bootstrap lower
   bounds-.02143s/-.0625s. Full SUMO was not enabled by the registered condition.

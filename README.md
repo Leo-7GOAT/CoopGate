@@ -25,8 +25,8 @@ The bank gate improves mean cost .4846%, adopts29/80 repeated conditions,
 and observes0 harmful adopted conditions; only FIVE initial draws underlie
 these repeats, so this is not a risk certificate or the required utility pass.
 Its41/1,840 callbacks above500ms also leave online cost unresolved. Two fixed
-single-PPO replications are retained:4602 passed exact competence and is in
-full SUMO validation;4603 has positive mean gains but fails the registered
+single-PPO replications are retained:4602 completed2,560 SUMO/replay and
+passes numerical/development-interval competence;4603 has positive mean gains but fails the registered
 cost/time interval condition. The full three-seed prerequisite is unproved.
 See the
 [implemented MAPPO mathematics](docs/mappo_algorithm_identity_20261101.md).

@@ -1,0 +1,64 @@
+{
+  "method": "single_central_4602",
+  "backend": "sumo",
+  "n_independent_initials": 128,
+  "repeated_mode_pairs": 512,
+  "metrics": {
+    "cost": {
+      "baseline_mean": 10.06591796875,
+      "policy_mean": 9.7227783203125,
+      "aggregate_mean_gain_percent": 3.4089255396555904,
+      "mean_paired_gain": 0.3431396484375,
+      "development_cluster_bootstrap_ci95": [
+        0.12518157958984374,
+        0.5564147949218747
+      ]
+    },
+    "time": {
+      "baseline_mean": 9.703125,
+      "policy_mean": 9.435546875,
+      "aggregate_mean_gain_percent": 2.757648953301127,
+      "mean_paired_gain": 0.267578125,
+      "development_cluster_bootstrap_ci95": [
+        0.0830078125,
+        0.45803222656249964
+      ]
+    },
+    "variation": {
+      "baseline_mean": 7.255859375,
+      "policy_mean": 5.74462890625,
+      "aggregate_mean_gain_percent": 20.827725437415882,
+      "mean_paired_gain": 1.51123046875,
+      "development_cluster_bootstrap_ci95": [
+        0.792205810546875,
+        2.24609375
+      ]
+    }
+  },
+  "original_numeric_thresholds": {
+    "cost_gain_percent_min": 1.0,
+    "time_gain_percent_min": 0.5,
+    "variation_gain_percent_min": 10.0
+  },
+  "numeric_thresholds_met": true,
+  "new_training_seeds_in_this_comparison": 1,
+  "full_original_three_seed_acceptance_claim": false,
+  "ancestry": "PI warm start; this does not establish from-scratch PPO sample efficiency",
+  "initializer_contrast": {
+    "all_scope_gain_assessable": true,
+    "mean_paired_percentage_gain": 0.04643584746489718,
+    "mean_team_gain_s": 0.005187988281249999,
+    "team_gain_one_sided_t_lower_s": -0.010491183307469235,
+    "mean_per_vehicle_gain_s": [
+      0.00048828125,
+      0.01263427734375,
+      0.00244140625
+    ],
+    "per_vehicle_gain_one_sided_t_lower_s": [
+      -0.03004334411090255,
+      -0.03801925031936996,
+      -0.0338354993132248
+    ]
+  },
+  "interpretation": "Single-seed development competence only, not a new risk certificate or three-seed formal acceptance"
+}
