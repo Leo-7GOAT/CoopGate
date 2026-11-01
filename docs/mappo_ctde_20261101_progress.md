@@ -65,13 +65,22 @@
   41/1840 callbacks>500ms; all costs belong to the actual selector. Runtime
   is explicitly non-isolated (exact evaluation/Git overlap), not hard-real-time
   evidence. No communication-latency measurement is used.
-- Two fixed single-PPO replications are ACTIVE: seed4602/session3154 and
-  seed4603/session47895. Same I initializer, architecture, hyperparameters and
+- Fixed single-PPO replication4602/session3154 is ACTIVE in full SUMO.
+  Training/audit/exact native exits0; exact cost/time/variation gains
+  3.4089%/2.7576%/20.8277%, all numeric/development interval checks pass.
+  Do not treat the unfinished SUMO report as a completed result.
+  Replication4603/session47895 is terminal with native exit0, but scientific
+  competence fails: gains1.5686%/1.0116%/17.5217%, cost/time bootstrap lower
+  bounds-.02143s/-.0625s. Full SUMO was not enabled by the registered condition.
+  This is insufficient precision at128 initials, not evidence of superiority.
+  Its failed outcome and full raw training/evaluation archive are preserved.
+  Both use the same I initializer, architecture, hyperparameters and
   262,144-step budget; new fresh95800001/95900001 sets. See
   `docs/mappo_replication_20261101_protocol.md`. Each queue owns its native
   children and conditionally performs full SUMO only if unchanged single-car
   thresholds pass. Do not edit their frozen source/protocol or restart them.
-  These are not yet passed, and J/K/L are not three identical-config seeds.
+  Three-seed acceptance remains unproved, and J/K/L are not three
+  identical-configuration replications.
 - All completed A--L raw data are retained in their separate byte-verified
   deliveries. E/F/G/H remain negative development outcomes, not discarded
   runs. Old PI studies, their failures and original paper remain unchanged.
@@ -214,7 +223,7 @@ commands and 4,805 physical substeps. All E data are archived (182 files,
 The continuation commands and session references below are historical and
 superseded by the authoritative current milestone above. Do not execute them
 again. F/G/H completed without satisfying the prerequisite; I/J/K supersede
-these operational instructions. The fixed4602/4603 replications are active.
+these operational instructions. Fixed4602 full SUMO is active;4603 is terminal.
 
 The startup and subsequent actor heads are now routed only by the already
 observed local clock. This separates rare initial decisions from abundant
