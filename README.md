@@ -10,9 +10,12 @@ The PI-warm-started single PPO now completes **2,560 actual SUMO executions**
 and full replay: ramp cost/time/command variation improve **2.886% / 2.339% /
 17.708%** versus the unchanged strong ego planner. These are single-seed
 development results; PPO has not demonstrated an additional ramp improvement
-over its unchanged pretrained initializer. The first joint MAPPO run has three
-independently updated actors and a centralized critic, but remains **1.221%
-worse than strong team planning**. The next fixed joint experiment is active.
+over its unchanged pretrained initializer. Two completed joint MAPPO runs have
+three independently updated actors and a centralized critic. J is **1.221%**
+worse than strong team planning; K narrows its own development-set gap to
+**0.405%**, still failing the superiority condition. These use different fresh
+cases and are not a controlled estimate of the change. L is active with a
+smaller, nonzero ego learning rate and a stronger rear-role replacement control.
 No previous risk certificate transfers to new
 weights. See the [single competence assessment](artifacts/mappo_ctde_20261101/development/single_4601_sumo_full/single_competence.json),
 [full SUMO replay](artifacts/mappo_ctde_20261101/development/single_4601_sumo_full/verification.json),

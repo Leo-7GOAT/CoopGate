@@ -17,23 +17,34 @@
   trajectories. This is authentic MAPPO execution with inadequate cooperation,
   not a passed final efficacy result. Its planned large-SUMO follow-up was not
   enabled by the failed development condition; no result or sample was deleted.
-- K (`joint_4702`) is active through native pipeline session64355, source-bound
-  execution receipts `artifacts/mappo_ctde_20261101/joint_4702_execution`.
-  Its 2,097,152-transition training/audit have completed; full nine-method
-  comparison is running. A broad rear coasting initialization explores a
-  different merge ordering; it is explicitly a prior, not learned behavior.
-  Preserve the frozen source/protocol until the pipeline exits. Do not restart
-  it on observation timeout. See `docs/mappo_joint_coast_20261101_protocol.md`.
+- K (`joint_4702`) completed 2,097,152 genuine joint transitions, all three
+  actor update audits, 4,608 exact comparisons and 72 actual SUMO runs.
+  All 1,882 commands / 9,410 physical substeps independently matched. Its
+  team cost is .4050% worse than strong team planning; ramp cost is1.1611s
+  worse. It has zero raw final failures, but does NOT pass superiority.
+  Full SUMO follow-up was not enabled by its prospective condition. Restoring
+  the always-coasting rear initializer can cause failed arrival, so that
+  comparison alone cannot establish useful conditional rear cooperation.
+- L (`joint_4703`) is active through native pipeline session25431. Fixed
+  budget2,097,152, parent `single_4601`, same disclosed rear-coasting prior.
+  Ego actor LR1e-5, other actors1e-4: all three receive on-policy updates.
+  Adds a stronger role2 replacement with the unchanged highest-admissible
+  parent actor, in addition to the three original-role replacements.
+  Fresh128 initials / four modes / ten methods =5,120 exact executions;
+  80 actual SUMO integration runs and replay. Full3,072-SUMO follow-up is
+  conditional on zero failures and positive gain/t-lower vs strong TEAM.
+  See `docs/mappo_joint_ego_stable_20261101_protocol.md`. Do not modify frozen
+  source/protocol or restart this native queue on an observation timeout.
 - The new audited MAPPO deployment adapter connects actual joint actor weights
   to the existing actuator recovery/finite-bank gates. Physical baseline parity
   and modified-weight rejection are tested. It issues NO inherited or new risk
   certificate; actuator/MAPPO performance, matched adoption, latency and fresh
   risk/adoption/utility tests are still pending.
-- All completed A--I/J raw data are retained in their separate byte-verified
+- All completed A--K raw data are retained in their separate byte-verified
   deliveries. E/F/G/H remain negative development outcomes, not discarded
   runs. Old PI studies, their failures and original paper remain unchanged.
 
-K's pipeline owns native child handles and will conditionally run the registered
+L's pipeline owns native child handles and will conditionally run the registered
 full SUMO follow-up only if its exact joint-versus-strong-team condition passes.
 Read its completed report/role reverts; avoid inferring success from training
 curves, parameter changes, native zero exits, or a positive initial prior.
@@ -49,8 +60,9 @@ its experiments, negative results and manuscript are not relabeled as MAPPO.
   gradient clipping. PPO updates never read planner action labels and perform
   no policy-iteration updates. A separate, disclosed BC initializer is used in C.
 - Single-agent prerequisite and joint-agent training stages with explicit
-  active-agent loss masks. Random initialization; new single PPO weights are
-  the only permitted warm-start source for the joint stage.
+  active-agent loss masks. Earlier random and BC starts failed. The disclosed
+  I amendment uses PI initialization; newly PPO-updated single weights are
+  the only warm-start source for the joint stage.
 - Snapshot the first/final pre-update rollout, sampling policy, original
   action log probabilities, rewards, terminal flags and complete source hashes.
 - Audit reconstructs GAE independently and checks sampled-proposal log
@@ -165,7 +177,12 @@ ramp prerequisite. Forty actual SUMO integration runs independently matched 961
 commands and 4,805 physical substeps. All E data are archived (182 files,
 70,047,596 original bytes; 24,552,604 compressed bytes).
 
-## In progress: prospectively amended F
+## Historical notes: prospectively amended F
+
+The continuation commands and session references below are historical and
+superseded by the authoritative current milestone above. Do not execute them
+again. F/G/H completed without satisfying the prerequisite; I/J/K supersede
+these operational instructions. L is the only active experiment.
 
 The startup and subsequent actor heads are now routed only by the already
 observed local clock. This separates rare initial decisions from abundant
