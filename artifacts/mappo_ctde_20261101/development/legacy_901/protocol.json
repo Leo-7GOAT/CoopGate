@@ -1,0 +1,46 @@
+{
+  "algorithm": "legacy_pi_actor_initializer_20261101",
+  "purpose": "Transfer initialization and separate comparator ONLY; NOT MAPPO training/result",
+  "parent": {
+    "path": "artifacts/v14/single/seed_901/policy.pt",
+    "sha256": "b5a4867983dcba2ca4af470401ff08dde200ab5e39f68fa0c5d4d949c98ce622",
+    "algorithm": "rollout_policy_iteration_ego_v14",
+    "checkpoint_seed": 1001
+  },
+  "original_single_prerequisite": {
+    "protocol_sha256": "5784ba8a36c89b98ba47c87f09fda0f63b506fe1fb9b3e43cf2040976a971422",
+    "episodes_sha256": "38b6ad3960e7e587f6b084742656c64b5c59baf415adf9b8c53a3e1a17ff3193",
+    "audit_sha256": "5f05c77fc1f7d31dceea0f0c0f48bc27811a0c5eb6a866a66a5151ab707e4f84"
+  },
+  "ppo_config": {
+    "width": 256,
+    "n_envs": 64,
+    "rollout": 64,
+    "epochs": 5,
+    "minibatch": 1024,
+    "actor_lr": 1e-05,
+    "critic_lr": 0.0003,
+    "gamma": 1.0,
+    "gae_lambda": 1.0,
+    "clip": 0.2,
+    "value_scale": 10.0,
+    "entropy": 0.001,
+    "max_grad_norm": 0.5,
+    "kinematic_features": true,
+    "accelerated_features": false,
+    "phase_actor": false,
+    "initial_actor_lr": 0.0003,
+    "startup_width": 0,
+    "startup_relu": false,
+    "role_actors": true,
+    "actor_relu": true,
+    "actor_logit_scale": 5.0
+  },
+  "conversion": "Exact ReLU weights and local feature functions; no online policy iteration",
+  "sampling_logit_scale": 5.0,
+  "greedy_action_conversion_cases": 1024,
+  "conversion_all_equal": true,
+  "main_road_initialization": "Highest-admissible greedy; non-saturated stochastic .4*LEVELS preference",
+  "certificate_transfer": false,
+  "original_training_cost": "Inherited PI training budget; not new PPO sample efficiency"
+}

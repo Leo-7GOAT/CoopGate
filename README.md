@@ -6,11 +6,20 @@
 The completed results below use model-based multi-agent policy iteration,
 **not MAPPO**. A new decentralized actor / centralized critic PPO pipeline,
 independent rollout/GAE audit and actual SUMO integration are implemented.
-The first single-agent PPO development run did **not** beat the strong planner;
-the follow-up is in progress. Three-agent training has not started because the
-new single-agent superiority prerequisite remains unmet. No previous risk certificate transfers to new
-weights. See the [prospective protocol](docs/mappo_ctde_20261101_protocol.md)
+The PI-warm-started single PPO now completes **2,560 actual SUMO executions**
+and full replay: ramp cost/time/command variation improve **2.886% / 2.339% /
+17.708%** versus the unchanged strong ego planner. These are single-seed
+development results; PPO has not demonstrated an additional ramp improvement
+over its unchanged pretrained initializer. The first joint MAPPO run has three
+independently updated actors and a centralized critic, but remains **1.221%
+worse than strong team planning**. The next fixed joint experiment is active.
+No previous risk certificate transfers to new
+weights. See the [single competence assessment](artifacts/mappo_ctde_20261101/development/single_4601_sumo_full/single_competence.json),
+[full SUMO replay](artifacts/mappo_ctde_20261101/development/single_4601_sumo_full/verification.json),
+[prospective protocol](docs/mappo_ctde_20261101_protocol.md)
 and [verified progress / remaining work](docs/mappo_ctde_20261101_progress.md).
+The 13-page manuscript below still reports the prior PI studies; its MAPPO
+revision awaits the new experiments, gate certification and comparisons.
 
 Completed joint study (2026-10-31): **16,384 unique SUMO records, 4,096 independent
 initials, and full independent physical/controller replay**. Both collection stages

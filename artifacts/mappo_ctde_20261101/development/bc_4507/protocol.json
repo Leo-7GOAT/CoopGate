@@ -1,0 +1,41 @@
+{
+  "algorithm": "planner_bc_initializer_20261101",
+  "initialization_method": "expected expert regret plus .025s soft-target CE, ReLU256 startup only",
+  "ppo_config": {
+    "width": 128,
+    "n_envs": 64,
+    "rollout": 64,
+    "epochs": 5,
+    "minibatch": 1024,
+    "actor_lr": 3e-05,
+    "critic_lr": 0.0003,
+    "gamma": 1.0,
+    "gae_lambda": 1.0,
+    "clip": 0.2,
+    "value_scale": 10.0,
+    "entropy": 0.005,
+    "max_grad_norm": 0.5,
+    "kinematic_features": true,
+    "accelerated_features": true,
+    "phase_actor": true,
+    "initial_actor_lr": 3e-05,
+    "startup_width": 256,
+    "startup_relu": true
+  },
+  "seed": 4507,
+  "epochs": 400,
+  "initials": 8192,
+  "parent_ppo": {
+    "path": "artifacts/mappo_ctde_20261101/development/single_4506/policy.pt",
+    "sha256": "3c815866fe2f1813a65c7c7c17649740bd4a8d76c80389bfb3a0e665bad727f7"
+  },
+  "dataset_source": {
+    "path": "artifacts\\mappo_ctde_20261101\\development\\bc_4506\\dataset.pt",
+    "sha256": "356ee8126e2020a4ddcb4a1e9cf9e2702f790b402e2e678b9b4c27af3c0f425b"
+  },
+  "fresh_expert_queries": 0,
+  "flow_head": "exact frozen parent PPO flow",
+  "startup_head": "fresh random ReLU256",
+  "supervised_lr": 0.0003,
+  "subsequent_ppo": "new on-policy samples only; no expert table read by PPO"
+}

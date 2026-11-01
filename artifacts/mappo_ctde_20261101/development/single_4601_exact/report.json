@@ -1,0 +1,555 @@
+{
+  "protocol": {
+    "purpose": "development; not a risk certificate or untouched confirmation",
+    "backend": "exact",
+    "n_independent_initials": 128,
+    "seed_base": 95300001,
+    "modes": [
+      "clean",
+      "uniform",
+      "bias",
+      "pulse"
+    ],
+    "methods": [
+      "rule",
+      "ego_planner",
+      "team_planner",
+      "legacy_initial",
+      "single_central_4601"
+    ],
+    "checkpoints": {
+      "legacy_initial": {
+        "path": "artifacts/mappo_ctde_20261101/development/legacy_901/initializer.pt",
+        "sha256": "dec13ddf0e995f2edacb6d8b4de2478f6a62c57536e83f4105ca8ad4217082cf",
+        "stage": "legacy_initial",
+        "steps": 0
+      },
+      "single_central_4601": {
+        "path": "artifacts/mappo_ctde_20261101/development/single_4601/policy.pt",
+        "sha256": "06c59165cf30afc634cb283d45ede01c22341324403a6d56f3d76606aa59a0b6",
+        "stage": "single",
+        "steps": 262144
+      }
+    },
+    "expected_executions": 2560,
+    "no_outcome_filtering": true,
+    "source_sha256": {
+      "src/coopgate/action_repair_v20.py": "ae91c82d56183b41711cbab319b1fa3e5e925264e72d4213c5d120d1dffd59de",
+      "src/coopgate/actuator_intervention_v31.py": "be18c8a5e5b88194ea9f4056ba443cc1136e9ef36d206b2737ce0eca763d4a81",
+      "src/coopgate/actuator_prediction_roundoff_v31.py": "a63c868f08ac0b601e2b561011052a767cc8b8c79a2be6eb9ca40fa247b3e23c",
+      "src/coopgate/actuator_prediction_v30.py": "94ceb73c4b07302889a7f057a781f905aea5086bb3abe07d838a2dc5afd928fa",
+      "src/coopgate/actuator_recovery_v34.py": "1b15134b0280f286745a659bcb281af3a26b83f9fe3b84e33b5f7009184f1917",
+      "src/coopgate/admission_risk_v15.py": "7870ae34857e43164cca2f85964e5fabeb116358a4ca398cef788bcf396e29ea",
+      "src/coopgate/advantage_gate_v18.py": "a06558ce500965c7a78bf39b5e7d3f74346e12e38c8d9aee13dc2416276f0de3",
+      "src/coopgate/aged_observation_envelope.py": "f9843b7b4a6050cf0cc8c60a25daca88a8654814ee2a131d19d2718b23d2529a",
+      "src/coopgate/arrival_phase_v20.py": "831f7a7013610c8dcf050d418fd5f1c66da5c7c5ced5a5c02408939e06dda621",
+      "src/coopgate/bounded_observation_v45.py": "9b04747ced04040618a641c41de251e6b218077fe3b9b39bd01ddbc0229d14aa",
+      "src/coopgate/bounded_portfolio_v19.py": "844c88355a16d8e6936da1c646922ccdc249a5f90b898b32e6c9b776384e12e7",
+      "src/coopgate/buffered_actuator_v33.py": "83a712ec0136823f4aafc5251ac44cfca1d545794119fee0c5af2bb2d1a70e6c",
+      "src/coopgate/buffered_baseline_v25.py": "e25980a011405f9159384f8fa965798be545a2d4333dfead80018d64148b9ea1",
+      "src/coopgate/buffered_phase_v25.py": "b4ed27cb47340bb3d6796a1de530dc0fd71ac53e9b319f74190f4ee479f1f198",
+      "src/coopgate/cached_portfolio_v19.py": "bdc32c68fd0abb6ab8524a72fc7887b8c273c510192dc6d3e7c74398124de6ed",
+      "src/coopgate/candidate_ablation_v43.py": "70214e07be9f8e943628189a6e514e2b7fd1eab8ae857eb0e5fa31b51b9d9b0e",
+      "src/coopgate/certificate_policy_v14.py": "5e1aafd92aabc9b3d3afff7c3fc0bd1d5a7f85401b4f0145139f9e4f76ce0464",
+      "src/coopgate/certification.py": "fd5c820b9b6c49820cccc03f9e4045c55c7c9f1f02ae56924023a4ea8f3f9957",
+      "src/coopgate/chain_recovery.py": "611305f6e6731061ad5efc24e6f29376bf5e709bce380662c21b1ce1feb51d64",
+      "src/coopgate/cli.py": "b85d3dfed1486ee07a8aa2a4388343f6d7495f6e12d125cfb634dd288e015380",
+      "src/coopgate/common_adoption_v27.py": "77e286bfd5a1338b0432e415d60bdbf02aabd0cf02b84af731f09b664caafefb",
+      "src/coopgate/comparison_v19.py": "3a2ed9b0305320dfd3f0f02f6e8fd1d54d2899529d5bcd30ce3a8b2dc82ab66e",
+      "src/coopgate/composed_gate_v18.py": "8aacdf2a623b39ef6d12738c9374e597b2288cfe4c32925ee77ad9e5b1fbc510",
+      "src/coopgate/compound_backup_tube.py": "bb9083d4e05c4f958c0b1aafd035f7f47f5c01dcbbc92d1d5de1a056de17d754",
+      "src/coopgate/confidence_v12.py": "0d3547e1d9f899596e393367c100150250dca495d8f5672384b2098d5d52e2cd",
+      "src/coopgate/config.py": "817c37ef52ee95a3c397bc81f7c69cf6c8671ec87ec99f562f8c42fb3f9878fb",
+      "src/coopgate/controllers.py": "911d04aa4c6e40fc8a2bd45391ea97471d147ab8d387999989a0ebe47dbe6feb",
+      "src/coopgate/cooperative_iteration_v16.py": "38a77c6fe19a32c09439ecb4841febb2ec2e699477726165986a401a53f0cd65",
+      "src/coopgate/cooperative_v15.py": "45958e36ef760655da0a1ef90463c077cb73d0decc3a42566569a06c52caad56",
+      "src/coopgate/deadline_profile_v26.py": "5bc8cadcdf9ebb56b53ddf5cd6e9abbe96803d09b60741e3fb98a8af08061746",
+      "src/coopgate/deduplicated_planner_v19.py": "d55a17334cb5409145ed6542e209c01b378d33c1d0268dfcb7c92f8e103b864a",
+      "src/coopgate/disturbance_v9.py": "f854af83228c958fedc832e5bf5ab726e0d241fc39ed8238ec33b849e3c9aae1",
+      "src/coopgate/disturbed_advantage_v19.py": "1a160aa333c277f4c0af3ac68ea2ece9b532d30062da478e3c228b1bf0819046",
+      "src/coopgate/dmps_curriculum_initials.py": "3102728cd6d2d8458912aa83ea379afca4d38766f494f972f41a13b0ac3f6389",
+      "src/coopgate/dmps_effective_action.py": "35a04882d01a33d7acbff734f4ea7a2b4895fa17d63c6f36ef5a117b9992ad4c",
+      "src/coopgate/dmps_evaluation_replay.py": "9154f48d8ffc8ea00bb11bb062cef666fa7b3f5aa8b88531323db214fcaa9b4f",
+      "src/coopgate/dmps_execution_bridge.py": "aeba1f68e98eae830c0ef090c134f7169ac1c2bc272f08128a8283dd183ba2b6",
+      "src/coopgate/dmps_feasible_actor.py": "a51e051b31f32ed280762980ff944ee22d2247bc9043fab850dcbd1420436725",
+      "src/coopgate/dmps_nominal_model.py": "0f2ce4e212e73f2b49c55a5a7340dc813c90bc67b5d92f57477c5796d12c7a5a",
+      "src/coopgate/dmps_nominal_model_v2.py": "2fea1577fd12c9797ecd366e459467da3c252deb9c453e89f69b62c96ea94cc1",
+      "src/coopgate/dmps_sumo_clock.py": "4a6a85a4e9fb057a7f18d0763c9f2bc392f8106971ec6bb8c2180fb8241f2012",
+      "src/coopgate/dmps_sumo_process.py": "81763d419820b447e4faa16dd05f8870018a75b2c8a90ea374622d4a785a35dc",
+      "src/coopgate/dmps_sumo_reload.py": "e779eca69c1f2bbc18bb6ddf276291eb55fdae024f4330a5709785aa9af53432",
+      "src/coopgate/dmps_sumo_snapshot.py": "87aec8ec114eb199e365837faf99e4045e7a54c4649f826425d1f2ff06a7b6c4",
+      "src/coopgate/ego_confidence_v13.py": "c668e9f9c6ced963de1d09dbe8592dcd6481b6baed1a0c7d3606c712ab35a37d",
+      "src/coopgate/ego_models_v13.py": "19b42dc97dd5bb925fecc81fa517dfee3bda399bd370663b15cd9e9a5acab275",
+      "src/coopgate/ego_v13.py": "050ed97d850b906b87e6135a50b08bf2c91da984948ecdb1a5b6bc95294fe866",
+      "src/coopgate/episode_selection_v19.py": "36d23e904474a634b6be5c6afcf105be5fad2e3050b1d90499ff10f3c9116ac6",
+      "src/coopgate/episode_store_v21.py": "548826684d9f3ac355bf2cb5b4e1f673a50468ac9e4f1aae31cdcf595feaa37e",
+      "src/coopgate/experiment.py": "80c9dd82acf16705ec7f5c0a7c275817fd8dd75034be41f660fd3b075e7af80e",
+      "src/coopgate/experiment_v10.py": "e7ae91c5e8dbf65fe0e0292b4b463e1d26d1ca675965f15d3c50877871f4a972",
+      "src/coopgate/experiment_v11.py": "55df0a59472bc7be264b98254ebf070f3891406b977789b4becfe0863fd5c4e3",
+      "src/coopgate/experiment_v8.py": "a1f09704cc5a05d734e0d1170415a736a6c5093075c71e1bcbdb4c3aee0b38c5",
+      "src/coopgate/experiment_v9.py": "227ac8632c3adf05fdf19995290e86f9f200872f41984adff3ee1e89458f0226",
+      "src/coopgate/fair_comparison_v39.py": "f82c5828e65682f17fc48b7c9eae0069aedf5f5ede67d2a2a36c2c005cf6205c",
+      "src/coopgate/fair_failure_analysis_v44.py": "6af30bef4e1f2e7263b2f81efc354339a0afc7dfac3b81953d24b7eb5d94c16b",
+      "src/coopgate/fair_runtime_v41.py": "69f258d9547c5c5d5e60846d76f02f1d355cefbab00fbd91b1edc6321bb8b3c2",
+      "src/coopgate/family_risk_v20.py": "89f6ebb1a02cc59922da8c7be5064669820ef4872016e17b3d363ba68097c043",
+      "src/coopgate/fast_repair_v20.py": "6d3014762d7d21488032b8d757ea99391b47b683f331fe09fb32dec32e562e16",
+      "src/coopgate/fast_v8.py": "1ca80253fa3fa9411b3d3b245c7bb58a98025b0f1da06e2622f803c8f2df4d64",
+      "src/coopgate/joint_admission_v15.py": "4cccb7925af5cea79c9f11383d2dfa67626f2e842af0bdd3e6816693dab0d7ea",
+      "src/coopgate/joint_planner_v15.py": "af27229cf2094367860d3e70d166a0b47e87701ce158142ed123d2e660e8a7de",
+      "src/coopgate/joint_risk_data_v42.py": "3f86c7c6da376c94ed2cd5039bd026403ad1c75df755e1ffee9a9d46e35167fd",
+      "src/coopgate/kinematic_policy_v14.py": "62e355e2d8b30f340961a2ca3b3bb61320d185b6f2f5f5d01def881d7504dec2",
+      "src/coopgate/learned_rollout_v13.py": "bfbda2c118dbbcf51ed4b072965088f31afe2795cb0bff04b98609847ceab87d",
+      "src/coopgate/learning_v3.py": "86a79787c9c77da3dab9cfe3999b5ecc3f8644dd131fd1d7eb5d2f09c61ecc78",
+      "src/coopgate/learning_v4.py": "3618faefacaa7ba9e7b8226699d76e560a7524b3cf03e0ac5f7a233980fb0e99",
+      "src/coopgate/learning_v6.py": "042effa2979828c5331fc4776aa4fdc2af48cee3135191dbe265f524364b7b18",
+      "src/coopgate/mappo.py": "6929024f8cf82dd79e45b6d3b6ce05b19cdadb99d019a8e8b43bb45a282f8a94",
+      "src/coopgate/mappo_ctde.py": "71d83024a44c7a7c06ea683c38a99a83b5e0a3d82f3e7eb19e5d9edcc4f03c90",
+      "src/coopgate/mappo_reset_curriculum.py": "3a427749252c2ae108e0cd5cab951b78fcbb9a526c769a3635cfe7947afad983",
+      "src/coopgate/marl_v12.py": "e1787954402c3713c2bfc6a5f1be9896612e28c45aafc9e19391e4d43a4000a9",
+      "src/coopgate/matched_shift_v21.py": "d5f05d699545909bcffaae9114d8309741439fad373e31caeab413b299352e8a",
+      "src/coopgate/memoized_recovery_v37.py": "3ba963fa2f2cbf6735784c73eae8cbfb595206010ecdcbc4591b46021b69c5df",
+      "src/coopgate/merge_v4.py": "8db139e9a16316b9278513660c8b91056f8fdb8feae787ec5e188b1a01b114a6",
+      "src/coopgate/mixture_shift_bounds.py": "b38b8a543640277f9d9ff380de5c2567ee327adb459b716def656cc058e0a30e",
+      "src/coopgate/observable_initial_v19.py": "e0cf39ebb729402c772c43ffc2418b595dc5997aba112366793061ba3ccef6a7",
+      "src/coopgate/online_actuator_gate_v32.py": "17a3f37deaaf99f621eaffd483e6546a676ac395855938d7b0789f31b160ca03",
+      "src/coopgate/ood_mismatch_v39.py": "99a85534aafd50354a3d38f5a231de8b129210a7c4a97ca5fea3a26f85770e70",
+      "src/coopgate/ordered_repair_v20.py": "75a36257599125b29da7cda840f4a4b7c35acbb132da30e4d95808189483512c",
+      "src/coopgate/paired.py": "50924f6ead7c07646487807340d657bc4534cd6e36d4211653e46874f849881c",
+      "src/coopgate/parallel_portfolio_v19.py": "8968b14f19ed67c485c6d9b0e1f1ca784e0dbebdf84636d1f4bc545167ea2ba3",
+      "src/coopgate/performance_identity_v31.py": "40ed80da2ba30506558bc559c844614b048c5986e482228f24664ccf68e5380b",
+      "src/coopgate/persistent_phase_v24.py": "c9f8c2c73e2a972322bf7d1fc617a1df771d057e393cfa0737c1e0fc2de1b990",
+      "src/coopgate/phase_repair_v21.py": "0a25e07d677340d06b8348c69c337d3d074241742214975b39b01614303064a1",
+      "src/coopgate/physical_comparison_analysis_v27.py": "05a302d583b07aae8afdb4746b5562fbb7f93dac976cc46c6eee48e2f41ef20f",
+      "src/coopgate/physical_switch_v27.py": "1572388e3dbd1156bd62be6371aaa9ee1cf63fca1c95e8fec070d4083d911ec9",
+      "src/coopgate/planning_v5.py": "7fda10ca6f1a37f418fe24d043b1089b0ffc81aae2ba48ce8c776b85503c97a0",
+      "src/coopgate/platoon.py": "1330663a2f9470b9a6f9148132a54c5dd7d838be14f47a4669a72936413e0817",
+      "src/coopgate/policy_iteration_v14.py": "e97f7bbadba207d6cfc06ff170a2425abc38843c93db3177e740cee95e0472fa",
+      "src/coopgate/portfolio_gate_v19.py": "4e7820b8bacc945eb7b443b9da392589ebcf4f4a4ae5bd997dca1e8e584ba907",
+      "src/coopgate/ppo_numerics_v15.py": "d439c2c73c395d69bcb7e06ab1dfa27ef502ba5825c19367a0553ec944dd0973",
+      "src/coopgate/precise_deadline_v26.py": "00d49449a1ebf1ffa47ce33c7247590312a78ad9a9208283484963c0e514c98a",
+      "src/coopgate/profile_prediction_v16.py": "8bde794c8a01cf254f03e1a99c4102069e85cf2ad769fe2c65b5b94951bf96a9",
+      "src/coopgate/profile_recovery_v15.py": "bd94523fe2d09729efb4081320ec7023ec8df47d146463cbc60303ad6628a71a",
+      "src/coopgate/prospective_data_v21.py": "f37898c77a8a15dd55e33fe0d65c0e4e986c7b5d96ec799f49fb65c320fa0791",
+      "src/coopgate/prospective_validation_v21.py": "d46dfa6c3993328ee9b382a1d7d94c7a437204e70a297370082158452b845610",
+      "src/coopgate/recovery.py": "d5faf76da0e06918476ae55bf156872116958efdd6a504b6249312ea535e05e7",
+      "src/coopgate/recovery_forecast_v35.py": "9099d1dfcfb4e16bf4f8ff3e0c8acc596a81f211ab216251bd48745c40a420d4",
+      "src/coopgate/recovery_gate_audit_v35.py": "d30ca4ef8d3bc6872a13f4e0483ddc27f54650fdfefef48b38cbb0a0cc74eaf1",
+      "src/coopgate/recovery_intervention_diagnostic.py": "2e3ce7a088dd3848da627d15d5191a21ce753253e251bd726015ccab3a93f9b4",
+      "src/coopgate/recovery_joint_gate_v35.py": "d74a1f795b62f30781b144edb5ee6b669111d84a58ecacc3c04149f8a2d05442",
+      "src/coopgate/recovery_risk_v38.py": "4e674ac970e0e8019499f1f7dae83709f7fea5fd71112536f11129ad0f1ce47f",
+      "src/coopgate/recovery_risk_v39.py": "e5152e81800d939fd7a548a880a98a7dfdee95dd1e2a334e694c42612a912a42",
+      "src/coopgate/regression_diagnostic_v28.py": "bc5f0835b0ea5f627f98fe58f3366a1c8320e2cdae51c5231a9d4bda6f9a2424",
+      "src/coopgate/repair_portfolio_v20.py": "600fccb2f48ed0cc4ad8939dbe02f8b237adc7d3f4b34b6ce41e9e8d0ca6bbb4",
+      "src/coopgate/reuse_prediction_certificate.py": "2a18f61d0be0363538732d7d1f781c1260df1369e9414d62aebe46d59007db12",
+      "src/coopgate/risk_comparators_v19.py": "fb1baa872a359853b8420af12d68f8fa05ddfb41ecbf6047dff5b19c37f48a88",
+      "src/coopgate/risk_v7.py": "4471231ba5356f27eaf1823e2a50cee2b95706de380556d60b203988fe43289b",
+      "src/coopgate/robust_v9.py": "c579b0c57516c9954e0c1c0d06da7324804a01e40402e8aff39fa98f5d80bd6b",
+      "src/coopgate/rollout_v10.py": "ea74fe7f3bb107ecfaf95cf7ff394feec66598b030b9b2e7db0560cc53fefd4e",
+      "src/coopgate/selective_transfer_v25.py": "9b8ecc4051372ca158894d52a205aabbfcfcdf70ee84d6ba823100435e3b16c5",
+      "src/coopgate/shield.py": "976c02028240b4ea8494186eb8c0200270fc8c27b71142b2bec70e4aec66cd83",
+      "src/coopgate/shifted_sumo_v19.py": "49d97a9e9098d08f1b3df72b8cb6c3e7b3fbe394d43fcaa23a65215813ae1ffc",
+      "src/coopgate/sim.py": "f9e3d7dbd7b2cadb7f46d0b534d27a72d76ca9f3f7682b83161d1c2329c210f2",
+      "src/coopgate/single_v12.py": "69e46bf846fa968188a0e020f30a916ed86e3bc138abe406e3c6ae09bd712ba3",
+      "src/coopgate/smooth_v11.py": "fc6af2a1ec0ec184dd6af94dc31f7ee8045fdc9eee45a22f6e076edea86cf250",
+      "src/coopgate/stratified_risk.py": "9f44c2e7ad0ef4beab08f8c9360af1e2474eafebc8182a0935ec09ddb36c205a",
+      "src/coopgate/stress_prediction_v17.py": "b1d40ead3a97a7e6d50bf7d339f085181743548a87597b533f8ba684c9521272",
+      "src/coopgate/temporal_portfolio_v20.py": "098208618e6546dc8ba75c02e715450c5e68e69eb1ab7c04b7cfd2c0e22803b2",
+      "src/coopgate/timestamped_control_probe.py": "666da5a17585802cd6003565d901f20341b4734f02285fc0e55efdef14ff9b8d",
+      "src/coopgate/training_v12.py": "52591e8a36bce6070e4a01c115d49806b53f4d59dc85dcad97be584e1d409049",
+      "src/coopgate/verify_v7.py": "8e5f23c8c75dbf90b8a88175236de503f28932295897b2508cb3a6c42264eedb",
+      "src/coopgate/zero_score_projection.py": "8889e24de5dc0c6419e246b65e4ae965d2ffd8697901428b54462de56b686743",
+      "src/coopgate/__init__.py": "7ce2c9b64fe527c64ed90b72b46553dae55a68094a125e758730a7bcd1ecc132",
+      "tools/evaluate_mappo_ctde.py": "a2f56b472d7cc8d9150669d22949c7dd521acd88218604bc0cf58fac1d9eda37"
+    }
+  },
+  "results": {
+    "rule": {
+      "executions": 512,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        10.19873046875,
+        11.21435546875,
+        11.86962890625
+      ],
+      "controller_p95_ms": 0.12109987437725067,
+      "controller_max_ms": 0.29380014166235924,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -3.807762336029424,
+          "mean_team_gain_s": -0.38330078125,
+          "team_gain_one_sided_t_lower_s": -0.46615824701183334,
+          "mean_per_vehicle_gain_s": [
+            -0.0263671875,
+            -1.17138671875,
+            0.0478515625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.09487074516017681,
+            -1.4440212136107828,
+            -0.07298132750208555
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -10.88022525341717,
+          "mean_team_gain_s": -1.0802205403645835,
+          "team_gain_one_sided_t_lower_s": -1.1640262002961854,
+          "mean_per_vehicle_gain_s": [
+            -1.11053466796875,
+            -1.1510009765625,
+            -0.9791259765625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.3803723257856202,
+            -1.6359317619739553,
+            -1.2178224243098583
+          ]
+        },
+        "legacy_initial": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -4.724954838605333,
+          "mean_team_gain_s": -0.4696858723958333,
+          "team_gain_one_sided_t_lower_s": -0.5685675749766214,
+          "mean_per_vehicle_gain_s": [
+            -0.00244140625,
+            -1.4854736328125,
+            0.078857421875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.10513272037367163,
+            -1.7950935267047483,
+            -0.046082439438587114
+          ]
+        },
+        "single_central_4601": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -4.89385169226019,
+          "mean_team_gain_s": -0.48919677734375006,
+          "team_gain_one_sided_t_lower_s": -0.5832581850504631,
+          "mean_per_vehicle_gain_s": [
+            -0.04345703125,
+            -1.46124267578125,
+            0.037109375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.14063037741745507,
+            -1.766635033392077,
+            -0.08426393347295502
+          ]
+        }
+      }
+    },
+    "ego_planner": {
+      "executions": 512,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        10.17236328125,
+        10.04296875,
+        11.91748046875
+      ],
+      "controller_p95_ms": 4.251339891925453,
+      "controller_max_ms": 40.450100088492036,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.0,
+          "mean_team_gain_s": 0.0,
+          "team_gain_one_sided_t_lower_s": 0.0,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -7.01834233173142,
+          "mean_team_gain_s": -0.6969197591145834,
+          "team_gain_one_sided_t_lower_s": -0.7911798499918378,
+          "mean_per_vehicle_gain_s": [
+            -1.08416748046875,
+            0.0203857421875,
+            -1.0269775390625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.3510282400675515,
+            -0.3232528599583324,
+            -1.2566205730508184
+          ]
+        },
+        "legacy_initial": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -0.9203065599263687,
+          "mean_team_gain_s": -0.08638509114583331,
+          "team_gain_one_sided_t_lower_s": -0.14806021848620105,
+          "mean_per_vehicle_gain_s": [
+            0.02392578125,
+            -0.3140869140625,
+            0.031005859375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.0732649604582203,
+            -0.45837681416697007,
+            -0.07560169925536282
+          ]
+        },
+        "single_central_4601": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -1.0968873359970281,
+          "mean_team_gain_s": -0.10589599609374999,
+          "team_gain_one_sided_t_lower_s": -0.16420315246100392,
+          "mean_per_vehicle_gain_s": [
+            -0.01708984375,
+            -0.28985595703125,
+            -0.0107421875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.10868652046340284,
+            -0.43026895733527637,
+            -0.12344860204663272
+          ]
+        }
+      }
+    },
+    "team_planner": {
+      "executions": 512,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        9.08819580078125,
+        10.0633544921875,
+        10.8905029296875
+      ],
+      "controller_p95_ms": 24.014250072650604,
+      "controller_max_ms": 57.75599996559322,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 6.174781526727371,
+          "mean_team_gain_s": 0.6969197591145834,
+          "team_gain_one_sided_t_lower_s": 0.602659668237329,
+          "mean_per_vehicle_gain_s": [
+            1.08416748046875,
+            -0.0203857421875,
+            1.0269775390625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.8173067208699485,
+            -0.3640243443333324,
+            0.7973345050741816
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.0,
+          "mean_team_gain_s": 0.0,
+          "team_gain_one_sided_t_lower_s": 0.0,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "legacy_initial": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 5.31481986591445,
+          "mean_team_gain_s": 0.61053466796875,
+          "team_gain_one_sided_t_lower_s": 0.497620253716305,
+          "mean_per_vehicle_gain_s": [
+            1.10809326171875,
+            -0.33447265625,
+            1.0579833984375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.844536884959332,
+            -0.653878519960556,
+            0.8224159459197792
+          ]
+        },
+        "single_central_4601": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 5.153882995720868,
+          "mean_team_gain_s": 0.5910237630208334,
+          "team_gain_one_sided_t_lower_s": 0.48176176850632246,
+          "mean_per_vehicle_gain_s": [
+            1.06707763671875,
+            -0.31024169921875,
+            1.0162353515625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.8046715516271523,
+            -0.6379068474036715,
+            0.780725974054268
+          ]
+        }
+      }
+    },
+    "legacy_initial": {
+      "executions": 512,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        10.1962890625,
+        9.7288818359375,
+        11.948486328125
+      ],
+      "controller_p95_ms": 1.296879979781806,
+      "controller_max_ms": 3.4568000119179487,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.7111130635619873,
+          "mean_team_gain_s": 0.08638509114583331,
+          "team_gain_one_sided_t_lower_s": 0.024709963805465585,
+          "mean_per_vehicle_gain_s": [
+            -0.02392578125,
+            0.3140869140625,
+            -0.031005859375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.1211165229582203,
+            0.16979701395802996,
+            -0.1376134180053628
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -6.249731368329297,
+          "mean_team_gain_s": -0.61053466796875,
+          "team_gain_one_sided_t_lower_s": -0.723449082221195,
+          "mean_per_vehicle_gain_s": [
+            -1.10809326171875,
+            0.33447265625,
+            -1.0579833984375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.371649638478168,
+            0.015066792539443985,
+            -1.2935508509552207
+          ]
+        },
+        "legacy_initial": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.0,
+          "mean_team_gain_s": 0.0,
+          "team_gain_one_sided_t_lower_s": 0.0,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "single_central_4601": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -0.20595941891447817,
+          "mean_team_gain_s": -0.01951090494791667,
+          "team_gain_one_sided_t_lower_s": -0.039324179719034735,
+          "mean_per_vehicle_gain_s": [
+            -0.041015625,
+            0.02423095703125,
+            -0.041748046875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.07304347492399364,
+            -0.03115714737385196,
+            -0.09415518968792447
+          ]
+        }
+      }
+    },
+    "single_central_4601": {
+      "executions": 512,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        10.1552734375,
+        9.75311279296875,
+        11.90673828125
+      ],
+      "controller_p95_ms": 1.2338501401245594,
+      "controller_max_ms": 2.750700106844306,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.9096551415966032,
+          "mean_team_gain_s": 0.10589599609374999,
+          "team_gain_one_sided_t_lower_s": 0.047588839726496045,
+          "mean_per_vehicle_gain_s": [
+            0.01708984375,
+            0.28985595703125,
+            0.0107421875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.07450683296340284,
+            0.1494429567272236,
+            -0.10196422704663272
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -6.032141771043314,
+          "mean_team_gain_s": -0.5910237630208334,
+          "team_gain_one_sided_t_lower_s": -0.7002857575353443,
+          "mean_per_vehicle_gain_s": [
+            -1.06707763671875,
+            0.31024169921875,
+            -1.0162353515625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.3294837218103477,
+            -0.017423448966171595,
+            -1.251744729070732
+          ]
+        },
+        "legacy_initial": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.16917556876731155,
+          "mean_team_gain_s": 0.01951090494791667,
+          "team_gain_one_sided_t_lower_s": -0.0003023698232013962,
+          "mean_per_vehicle_gain_s": [
+            0.041015625,
+            -0.02423095703125,
+            0.041748046875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.008987775076006357,
+            -0.07961906143635196,
+            -0.010659095937924468
+          ]
+        },
+        "single_central_4601": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.0,
+          "mean_team_gain_s": 0.0,
+          "team_gain_one_sided_t_lower_s": 0.0,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  },
+  "executions": 2560,
+  "elapsed_s": 101.5903776998166,
+  "intervals": "Development t intervals on independent initial means; not finite-sample certificates"
+}

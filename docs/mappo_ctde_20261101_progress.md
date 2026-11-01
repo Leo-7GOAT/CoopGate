@@ -1,5 +1,44 @@
 # MAPPO replacement: verified progress
 
+## Current authoritative milestone (read this before historical notes)
+
+- I (`single_4601`) is genuine newly updated single-PPO with an explicitly
+  audited V14 PI initialization. All 2,560 actual SUMO executions and all
+  63,227 commands / 316,135 physical substeps independently replayed. Ramp
+  cost gain2.886%, time2.339%, variation17.708%; original numeric thresholds
+  and development cluster intervals are met. There is only ONE new PPO seed,
+  not the full original three-seed acceptance. Ramp cost versus the untouched
+  initializer is .0242s worse, so additional PPO ramp benefit is unproved.
+- J (`joint_4701`) completed 1,048,576 joint transitions, all three independent
+  actors' parameter/gradient audits, 4,608 exact comparisons and 72 actual SUMO
+  integration/replay runs. Mean team gain vs untouched initialization .4218s,
+  but raw team cost is 1.2213% worse than strong team planning. Ramp cost
+  deteriorates by1.3038s; restoring rear actor2 has zero effect on all512
+  trajectories. This is authentic MAPPO execution with inadequate cooperation,
+  not a passed final efficacy result. Its planned large-SUMO follow-up was not
+  enabled by the failed development condition; no result or sample was deleted.
+- K (`joint_4702`) is active through native pipeline session64355, source-bound
+  execution receipts `artifacts/mappo_ctde_20261101/joint_4702_execution`.
+  Its 2,097,152-transition training/audit have completed; full nine-method
+  comparison is running. A broad rear coasting initialization explores a
+  different merge ordering; it is explicitly a prior, not learned behavior.
+  Preserve the frozen source/protocol until the pipeline exits. Do not restart
+  it on observation timeout. See `docs/mappo_joint_coast_20261101_protocol.md`.
+- The new audited MAPPO deployment adapter connects actual joint actor weights
+  to the existing actuator recovery/finite-bank gates. Physical baseline parity
+  and modified-weight rejection are tested. It issues NO inherited or new risk
+  certificate; actuator/MAPPO performance, matched adoption, latency and fresh
+  risk/adoption/utility tests are still pending.
+- All completed A--I/J raw data are retained in their separate byte-verified
+  deliveries. E/F/G/H remain negative development outcomes, not discarded
+  runs. Old PI studies, their failures and original paper remain unchanged.
+
+K's pipeline owns native child handles and will conditionally run the registered
+full SUMO follow-up only if its exact joint-versus-strong-team condition passes.
+Read its completed report/role reverts; avoid inferring success from training
+curves, parameter changes, native zero exits, or a positive initial prior.
+The active goal is NOT complete or blocked.
+
 The new goal is active. The former research-delivery goal remains completed;
 its experiments, negative results and manuscript are not relabeled as MAPPO.
 

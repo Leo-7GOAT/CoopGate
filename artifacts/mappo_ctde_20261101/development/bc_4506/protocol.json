@@ -1,0 +1,38 @@
+{
+  "algorithm": "planner_bc_initializer_20261101",
+  "initialization_method": "local-clock phase heads, startup cost-sensitive fixed expert",
+  "parent_ppo": {
+    "path": "artifacts/mappo_ctde_20261101/development/single_4505/policy.pt",
+    "sha256": "784de28db8074a831c9ee3957949d427799ee423a87c9c3ed186db4966005355"
+  },
+  "ppo_config": {
+    "width": 128,
+    "n_envs": 64,
+    "rollout": 64,
+    "epochs": 5,
+    "minibatch": 1024,
+    "actor_lr": 3e-05,
+    "critic_lr": 0.0003,
+    "gamma": 1.0,
+    "gae_lambda": 1.0,
+    "clip": 0.2,
+    "value_scale": 10.0,
+    "entropy": 0.005,
+    "max_grad_norm": 0.5,
+    "kinematic_features": true,
+    "accelerated_features": true,
+    "phase_actor": true,
+    "initial_actor_lr": 0.0003
+  },
+  "seed": 4506,
+  "source_seed_base": 951000001,
+  "initials": 8192,
+  "source": "fresh alternating nominal/dense starts; fixed nominal one-step plus rule-tail costs",
+  "cost_target": "same objective as original strong ego planner first-action search",
+  "temperature_seconds": 0.25,
+  "epochs": 400,
+  "bc_lr": 0.0003,
+  "flow_head": "frozen exact copy of completed parent PPO",
+  "meaning": "Supervised initialization only; not PPO, no online planning",
+  "subsequent_ppo_data": "must be freshly collected; expert dataset not read by PPO updates"
+}

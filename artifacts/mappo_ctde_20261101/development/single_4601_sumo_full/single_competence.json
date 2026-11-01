@@ -1,0 +1,64 @@
+{
+  "method": "single_central_4601",
+  "backend": "sumo",
+  "n_independent_initials": 128,
+  "repeated_mode_pairs": 512,
+  "metrics": {
+    "cost": {
+      "baseline_mean": 10.04296875,
+      "policy_mean": 9.75311279296875,
+      "aggregate_mean_gain_percent": 2.8861581096849473,
+      "mean_paired_gain": 0.28985595703125,
+      "development_cluster_bootstrap_ci95": [
+        0.124383544921875,
+        0.46185302734375
+      ]
+    },
+    "time": {
+      "baseline_mean": 9.685546875,
+      "policy_mean": 9.458984375,
+      "aggregate_mean_gain_percent": 2.3391812865497075,
+      "mean_paired_gain": 0.2265625,
+      "development_cluster_bootstrap_ci95": [
+        0.0810546875,
+        0.375
+      ]
+    },
+    "variation": {
+      "baseline_mean": 7.1484375,
+      "policy_mean": 5.882568359375,
+      "aggregate_mean_gain_percent": 17.708333333333332,
+      "mean_paired_gain": 1.265869140625,
+      "development_cluster_bootstrap_ci95": [
+        0.677490234375,
+        1.871337890625
+      ]
+    }
+  },
+  "original_numeric_thresholds": {
+    "cost_gain_percent_min": 1.0,
+    "time_gain_percent_min": 0.5,
+    "variation_gain_percent_min": 10.0
+  },
+  "numeric_thresholds_met": true,
+  "new_training_seeds_in_this_comparison": 1,
+  "full_original_three_seed_acceptance_claim": false,
+  "ancestry": "PI warm start; this does not establish from-scratch PPO sample efficiency",
+  "initializer_contrast": {
+    "all_scope_gain_assessable": true,
+    "mean_paired_percentage_gain": 0.16917556876731155,
+    "mean_team_gain_s": 0.01951090494791667,
+    "team_gain_one_sided_t_lower_s": -0.0003023698232013962,
+    "mean_per_vehicle_gain_s": [
+      0.041015625,
+      -0.02423095703125,
+      0.041748046875
+    ],
+    "per_vehicle_gain_one_sided_t_lower_s": [
+      0.008987775076006357,
+      -0.07961906143635196,
+      -0.010659095937924468
+    ]
+  },
+  "interpretation": "Single-seed development competence only, not a new risk certificate or three-seed formal acceptance"
+}
