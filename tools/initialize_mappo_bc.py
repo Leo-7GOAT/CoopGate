@@ -23,20 +23,28 @@ from coopgate.merge_v4 import MergeConfig
 from develop_v12 import initial
 
 
-def initialize(out, n=8192, seed=4503):
+def initialize(out, n=8192, seed=4503, dataset=None, epochs=80, accelerated=False, actor_lr=3e-4, entropy=.02):
     out=Path(out); out.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(1); torch.manual_seed(seed)
     rng=np.random.default_rng(seed)
-    cfg=PPOConfig(kinematic_features=True, entropy=.02, gae_lambda=1.)
+    cfg=PPOConfig(kinematic_features=True, entropy=entropy, gae_lambda=1.,
+                  accelerated_features=accelerated,actor_lr=actor_lr)
     model=MAPPOCTDE(cfg)
     plan=dict(algorithm='planner_bc_initializer_20261101', purpose='expert initialization, NOT MAPPO',
         source='fresh strong ego planner proposals; no old policy-iteration weights',
-        state_target_count=n, seed=seed, source_seed_base=948000001, epochs=80,
+        state_target_count=n, seed=seed, source_seed_base=948000001, epochs=epochs,
+        reused_dataset=None if dataset is None else dict(path=str(dataset),sha256=hashlib.sha256(Path(dataset).read_bytes()).hexdigest()),
         learning_rate=3e-4, label_smoothing=.05, ppo_config=asdict(cfg),
         primary_checkpoint='fixed final epoch; no test-based checkpoint selection',
         information='same 18 local features and 8 deterministic kinematic functions')
     (out/'protocol.json').write_text(json.dumps(plan, indent=2)+'\n')
     obs=[]; masks=[]; labels=[]; audit=[]; episode=0; started=time.perf_counter()
+    if dataset:
+        existing=torch.load(dataset,map_location='cpu',weights_only=True)
+        if len(existing['labels'])!=n:
+            raise ValueError('Reuse the entire fixed expert dataset')
+        obs=list(existing['obs'].numpy());masks=list(existing['mask'].numpy())
+        labels=existing['labels'].tolist();audit=existing['audit_states']
     while len(obs)<n:
         source_seed=948000001+episode
         scenario='nominal' if episode%2==0 else 'dense'
@@ -66,7 +74,7 @@ def initialize(out, n=8192, seed=4503):
     obs=torch.as_tensor(np.asarray(obs)); mask=torch.as_tensor(np.asarray(masks)); labels=torch.tensor(labels)
     torch.save(dict(obs=obs, mask=mask, labels=labels, audit_states=audit, protocol=plan), out/'dataset.pt')
     optimizer=torch.optim.Adam(model.actor.parameters(), lr=3e-4)
-    for epoch in range(80):
+    for epoch in range(epochs):
         for ids in torch.randperm(n).split(512):
             dist=model.distribution(obs[ids], mask[ids])
             chosen=dist.log_prob(labels[ids])
@@ -80,7 +88,7 @@ def initialize(out, n=8192, seed=4503):
     checkpoint=dict(**plan, model=dict(actor=model.actor.state_dict()),
                     dataset_sha256=hashlib.sha256((out/'dataset.pt').read_bytes()).hexdigest())
     torch.save(checkpoint, out/'initializer.pt')
-    report=dict(expert_samples=n, expert_episodes=episode, epochs=80,
+    report=dict(expert_samples=n, new_expert_episodes=episode, epochs=epochs,
         train_action_accuracy=accuracy, elapsed_s=time.perf_counter()-started,
         initializer_sha256=hashlib.sha256((out/'initializer.pt').read_bytes()).hexdigest(),
         meaning='Supervised initialization only; no held-out or PPO benefit established')
@@ -91,4 +99,7 @@ def initialize(out, n=8192, seed=4503):
 if __name__ == '__main__':
     parser=argparse.ArgumentParser(); parser.add_argument('--out', required=True)
     parser.add_argument('--samples', type=int, default=8192); parser.add_argument('--seed', type=int, default=4503)
-    args=parser.parse_args(); initialize(args.out, args.samples, args.seed)
+    parser.add_argument('--dataset');parser.add_argument('--epochs',type=int,default=80)
+    parser.add_argument('--accelerated',action='store_true');parser.add_argument('--actor-lr',type=float,default=3e-4)
+    parser.add_argument('--entropy',type=float,default=.02)
+    args=parser.parse_args(); initialize(args.out,args.samples,args.seed,args.dataset,args.epochs,args.accelerated,args.actor_lr,args.entropy)

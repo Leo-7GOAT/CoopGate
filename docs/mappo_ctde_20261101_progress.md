@@ -83,7 +83,7 @@ All 8,192 BC labels were regenerated from the declared 431 planner trajectories
 and matched. Completed C data and its initializer are preserved in a verified
 archive of 180 files, 62,645,882 original bytes and 22,286,885 compressed bytes.
 
-## In progress: prospectively amended D
+## Completed development D: unlabeled reset-state curriculum
 
 An unlabeled reset-state pool was generated from 907 fresh rule trajectories:
 8,192 exact float64 near-merge states, previous commands and clocks. No expert
@@ -92,7 +92,28 @@ Half of training starts now use these states; the rest retain the original
 sampler. On-policy PPO continues from C for 2,097,152 new transitions, seed
 4504. A separate 8,192-step numerical smoke run completed; it is not an
 efficacy result or an independent training seed. Actual original-start paired
-evaluation of the fixed final model is still pending.
+evaluation of the fixed final model completed all 2,560 executions without
+failure. Team gain versus strong ego planning is 1.1371% (development t lower
+.0751 seconds), but ramp cost remains .1663 seconds worse. Compared on these
+same cases, D is .0121 seconds worse for the ramp than parent C. Thus this
+attempt did not solve the prerequisite. A further 32 actual-SUMO integration
+runs matched 720 commands and 3,600 independent physical substeps.
+
+Post-hoc selected-case diagnostics show very confident wrong INITIAL actions:
+all 16 selected best/worst episodes first differ at step zero; some failures
+have softmax maxima >.99999 and >6 seconds of nominal suffix regret. Realized
+future tapes were used only for offline diagnosis, never by actor/gate. This
+cannot estimate population prevalence, but it rules out treating max softmax
+as a validated safety confidence.
+
+## In progress: prospectively amended E
+
+Add analytic accelerating entry/exit margins derived exclusively from local
+observations. Refit a separately labeled BC initializer on the same 8,192
+training labels for 400 epochs, then run 2,097,152 genuine PPO transitions,
+seed 4505, original starts, smaller actor LR 3e-5 and entropy .005. Final
+paired evaluation includes BC-only and parent D, with unchanged strong
+baselines and fresh development seeds. This new hypothesis is unverified.
 
 Three-agent MAPPO, independent seeds and new gate certification remain pending.
 

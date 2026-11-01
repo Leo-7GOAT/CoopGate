@@ -150,3 +150,36 @@ fresh 128 development initials 94800001--94800128 and four modes. Compare D,
 its parent C, both strong planners and highest-admissible rule. Preserve all
 methods, cases and failures. State-reset training changes the training
 objective's initial-state law, and does not guarantee original-start gains.
+
+## Development amendment E: accelerated arrival representation
+
+D completed all 2,097,152 new PPO transitions, 2,560 full development executions
+and the on-policy audit. It improves team mean relative to strong ego planning
+by 1.1371%, but ramp cost is still .1663 seconds worse. Compared on the SAME D
+cases, D's ramp cost is .0121 seconds worse than C's. Therefore the curriculum
+did not solve the single-agent prerequisite and is not promoted to joint MAPPO.
+
+A bounded post-hoc diagnostic selected 8 best/8 worst D episodes, not a new
+efficacy set. All first command differences occurred at step zero. Several
+selected failures have actor max probabilities above .99999 and nominal
+one-step-then-baseline suffix regret above 6 seconds. These are illustrative
+selected cases, not a prevalence estimate. Softmax gating is thus unsupported.
+
+E appends 10 deterministic local features: own accelerating arrival times at
+conflict entry/exit and neighbors' relative entry/exit/goal margins, using the
+analytic constant acceleration 2.5m/s^2 and speed cap 20m/s. These are feature
+approximations, not predictions with a guarantee or future-state/oracle inputs.
+They address the incorrect ordering that a constant-speed ETA can imply when
+cars accelerate. Actor inputs are 36 features; central critic adds all public
+feature functions to the 13 global state features. The PPO algorithm is unchanged.
+
+Reuse the ENTIRE previously audited 8,192-label BC TRAINING dataset (no new
+expert trajectory or held-out label), initialize random weights with seed 4505
+and train the new actor for 400 supervised epochs. Then collect 2,097,152 new
+on-policy PPO transitions from ORIGINAL starts, no curriculum; lambda=1,
+entropy=.005, actor LR=3e-5, critic LR=3e-4. The final model, its BC-only
+initializer and parent D must all be compared against both unchanged strong
+planners on fresh development initials 94900001--94900128, four modes.
+The extra BC fitting, representation and PPO settings are a multi-factor
+development attempt; no isolated causal effect or independent replication is
+claimed. Passing imitation accuracy alone cannot pass the prerequisite.

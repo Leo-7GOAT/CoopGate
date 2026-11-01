@@ -189,7 +189,10 @@ if __name__ == '__main__':
     parser.add_argument('--expert-initial')
     parser.add_argument('--continue-single')
     parser.add_argument('--reset-pool')
+    parser.add_argument('--accelerated',action='store_true')
+    parser.add_argument('--actor-lr',type=float,default=3e-4)
     args=parser.parse_args()
-    config=PPOConfig(kinematic_features=args.kinematic, entropy=args.entropy, gae_lambda=args.gae_lambda)
+    config=PPOConfig(kinematic_features=args.kinematic or args.accelerated, entropy=args.entropy,
+                     gae_lambda=args.gae_lambda,accelerated_features=args.accelerated,actor_lr=args.actor_lr)
     train(args.out, args.steps, args.seed, args.stage, args.critic, args.initial, config, args.expert_initial,
           args.continue_single, args.reset_pool)

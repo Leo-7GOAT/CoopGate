@@ -30,6 +30,7 @@ class PPOConfig:
     entropy: float = .01
     max_grad_norm: float = .5
     kinematic_features: bool = False
+    accelerated_features: bool = False
 
 
 def local_kinematic_features(obs):
@@ -51,6 +52,35 @@ def local_kinematic_features(obs):
                       visible*(distance.abs()<35.).float(),
                       visible*(eta<own_eta).float()))
     return torch.cat((obs, torch.stack(extra, dim=-1)), dim=-1)
+
+
+def accelerating_arrival(distance, speed):
+    """Analytic constant-a=2.5 arrival with speed cap 20; no policy rollout."""
+    distance=distance.clamp(min=0.)
+    speed=speed.clamp(min=0.,max=20.)
+    accelerate_time=(20.-speed)/2.5
+    accelerate_distance=(400.-speed.square())/5.
+    hit=(torch.sqrt(speed.square()+5.*distance)-speed)/2.5
+    cruise=accelerate_time+(distance-accelerate_distance)/20.
+    return torch.where(distance<=accelerate_distance,hit,cruise)
+
+
+def accelerated_interval_features(obs):
+    position,speed=obs[...,0]*150.,obs[...,1]*20.
+    entry=accelerating_arrival(-25.-position,speed)
+    leave=accelerating_arrival(6.8-position,speed)
+    goal=accelerating_arrival(60.-position,speed)
+    extra=[entry/10.,leave/10.]
+    for start in (6,12):
+        visible=obs[...,start]
+        neighbor_position=position+obs[...,start+1]*150.
+        neighbor_speed=speed+obs[...,start+2]*20.
+        other_entry=accelerating_arrival(-25.-neighbor_position,neighbor_speed)
+        other_leave=accelerating_arrival(6.8-neighbor_position,neighbor_speed)
+        other_goal=accelerating_arrival(60.-neighbor_position,neighbor_speed)
+        extra.extend([visible*(other_entry-entry)/10.,visible*(other_entry-leave)/10.,
+                      visible*(other_leave-entry)/10.,visible*(other_goal-goal)/10.])
+    return torch.stack(extra,dim=-1)
 
 
 def mlp(inputs, width, outputs, output_gain):
@@ -75,19 +105,27 @@ class MAPPOCTDE(nn.Module):
         self.config = config or PPOConfig()
         if critic_kind not in ('central', 'local'):
             raise ValueError('critic_kind must be central or local')
+        if self.config.accelerated_features and not self.config.kinematic_features:
+            raise ValueError('Accelerated representation extends kinematic representation')
         self.critic_kind = critic_kind
-        actor_dim=OBS_DIM+8*int(self.config.kinematic_features)
-        critic_dim=(STATE_DIM+24*int(self.config.kinematic_features)) if critic_kind=='central' else actor_dim
+        actor_dim=OBS_DIM+8*int(self.config.kinematic_features)+10*int(self.config.accelerated_features)
+        critic_dim=(STATE_DIM+3*(actor_dim-OBS_DIM)) if critic_kind=='central' else actor_dim
         self.actor = mlp(actor_dim, self.config.width, len(LEVELS), .01)
         self.critic = mlp(critic_dim,
                           self.config.width, 1, 1.)
+
+    def features(self,observations):
+        features=local_kinematic_features(observations) if self.config.kinematic_features else observations
+        if self.config.accelerated_features:
+            features=torch.cat((features,accelerated_interval_features(observations)),dim=-1)
+        return features
 
     def distribution(self, observations, mask):
         if observations.shape[-1] != OBS_DIM or mask.shape != observations.shape[:-1] + (len(LEVELS),):
             raise ValueError('Local observations/action masks have incompatible shapes')
         if not mask.any(-1).all():
             raise ValueError('Empty categorical action support')
-        features=local_kinematic_features(observations) if self.config.kinematic_features else observations
+        features=self.features(observations)
         logits = self.actor(features)
         if not torch.isfinite(logits).all():
             raise ValueError('Nonfinite actor logits')
@@ -96,10 +134,10 @@ class MAPPOCTDE(nn.Module):
     def value(self, observations, state):
         if self.critic_kind == 'central':
             if self.config.kinematic_features:
-                extra=local_kinematic_features(observations)[..., 18:].flatten(start_dim=-2)
+                extra=self.features(observations)[..., 18:].flatten(start_dim=-2)
                 state=torch.cat((state, extra), dim=-1)
             return self.config.value_scale * self.critic(state).expand(*state.shape[:-1], 3)
-        features=local_kinematic_features(observations) if self.config.kinematic_features else observations
+        features=self.features(observations)
         return self.config.value_scale * self.critic(features).squeeze(-1)
 
     @torch.no_grad()

@@ -150,3 +150,20 @@ def test_reset_curriculum_carries_command_memory_and_global_clock(tmp_path):
     assert np.isfinite(reward).all()
     assert not active[:,(0,2)].any()
     assert not boundary.any()
+
+
+def test_accelerated_arrival_matches_physics_and_preserves_local_information():
+    from coopgate.mappo_ctde import accelerating_arrival
+    # Reach vmax in 4s after 60m; another 40m takes 2s.
+    torch.testing.assert_close(accelerating_arrival(torch.tensor([60.,100.]),torch.tensor([10.,10.])),torch.tensor([4.,6.]))
+    model=MAPPOCTDE(PPOConfig(width=32,kinematic_features=True,accelerated_features=True))
+    obs=torch.zeros(4,3,18);obs[...,0]=-.6;obs[...,1]=.5
+    obs[...,6]=obs[...,12]=1.
+    mask=torch.ones(4,3,13,dtype=torch.bool)
+    original=model.distribution(obs,mask).logits.detach().clone()
+    state=torch.randn(4,13)
+    value=model.value(obs,state)
+    (value.mean()+model.distribution(obs,mask).entropy().mean()).backward()
+    assert all(torch.isfinite(p.grad).all() for p in model.parameters())
+    altered=obs.clone();altered[:,2,1]=.8
+    torch.testing.assert_close(original[:,0],model.distribution(altered,mask).logits[:,0])
