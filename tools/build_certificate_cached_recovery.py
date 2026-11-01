@@ -116,7 +116,7 @@ def build():
     inputs=[Path(inspect.getsourcefile(module)) for module in (nominal,memo,pruning)]
     manifest='\n'.join('# input '+p.name+' sha256='+hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs)+'\n'
     target=ROOT/'src/coopgate/certificate_cached_recovery.py'
-    with target.open('x',encoding='utf-8') as f:f.write(manifest+HEADER+''.join(blocks)+FOOTER)
+    with target.open('x',encoding='utf-8',newline='\n') as f:f.write(manifest+HEADER+''.join(blocks)+FOOTER)
     ast.parse(target.read_text());print(str(target),flush=True)
 
 
