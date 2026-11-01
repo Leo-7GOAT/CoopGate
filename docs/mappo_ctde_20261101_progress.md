@@ -38,12 +38,37 @@ matched the exact physical simulator in all 858 commands and 4,290 independently
 reconstructed physical substeps. These repeated executions do not add any
 independent initials or support learner superiority.
 
-## In progress
+## Completed development B (seed 4502)
 
 Prospectively amended B: new seed 4502, fresh random initialization, deterministic
 local kinematic features, entropy .02, fixed 2,097,152-transition single-agent
-PPO budget. Final-budget paired development evaluation and audits are pending.
-No success or improvement is inferred from its intermediate training curve.
+PPO budget completed in 303 seconds. Both saved rollout audits passed. Fresh
+128-initial/four-mode paired evaluation completed all 2,048 executions without
+failures. Ramp cost was 10.5605 seconds versus strong ego planning 10.0291
+seconds. Team gain was -1.2368% relative to strong ego planning and -7.4455%
+relative to strong team planning. Thus B also fails the prerequisite; no joint
+training is started. A/B use different fresh development sets, so their scores
+are not a controlled estimate of the representation change's causal effect.
+
+Completed A/B raw data, training weights/curves, source snapshots and failed
+integration instrumentation are all preserved in a byte-verified archive:
+321 files, 87,208,894 original bytes, 28,281,950 compressed bytes.
+
+## In progress: prospectively amended C
+
+A separately labeled, non-PPO expert initializer was trained on exactly 8,192
+fresh strong-ego-planner proposals, 431 simulated trajectories and 80 supervised
+epochs. Training action accuracy is 91.31%; this is NOT held-out traffic
+performance or PPO benefit. No old PI weights/labels are used.
+
+C now performs 2,097,152 actual on-policy single-agent PPO transitions with
+lambda=1, seed 4503, starting from that actor. Its PPO collector and updates
+never read expert labels. The fixed final model must be compared both with
+the strong planners and with the BC-only initializer, on fresh development
+seeds. This explicit expert-initialized PPO path supersedes the earlier
+development-only no-imitation-initialization choice. It is not from-scratch
+MAPPO, and imitation benefit cannot be attributed to reinforcement learning.
+Three-agent MAPPO, independent seeds and new gate certification remain pending.
 
 ## Next gates
 
