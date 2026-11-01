@@ -2,6 +2,15 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
+**New active work (2026-11-01): authentic on-policy MAPPO replacement.**
+The completed results below use model-based multi-agent policy iteration,
+**not MAPPO**. A new decentralized actor / centralized critic PPO pipeline,
+independent rollout/GAE audit and actual SUMO integration are implemented.
+The first single-agent PPO development run did **not** beat the strong planner;
+the follow-up is in progress. No previous risk certificate transfers to new
+weights. See the [prospective protocol](docs/mappo_ctde_20261101_protocol.md)
+and [verified progress / remaining work](docs/mappo_ctde_20261101_progress.md).
+
 Completed joint study (2026-10-31): **16,384 unique SUMO records, 4,096 independent
 initials, and full independent physical/controller replay**. Both collection stages
 and the native finalizer exited zero. All three fixed models pass the registered

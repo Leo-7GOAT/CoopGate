@@ -1,0 +1,28 @@
+{
+  "purpose": "development; not a risk certificate or untouched confirmation",
+  "backend": "sumo",
+  "n_independent_initials": 2,
+  "seed_base": 94500001,
+  "modes": [
+    "clean",
+    "uniform",
+    "bias",
+    "pulse"
+  ],
+  "methods": [
+    "rule",
+    "ego_planner",
+    "team_planner",
+    "single_central_4501"
+  ],
+  "checkpoints": {
+    "single_central_4501": {
+      "path": "artifacts/mappo_ctde_20261101/development/single_4501/policy.pt",
+      "sha256": "65f76d5e9ef8c330a9998235356838390baff2d022afa9cd64695de25b086540",
+      "stage": "single",
+      "steps": 262144
+    }
+  },
+  "expected_executions": 32,
+  "no_outcome_filtering": true
+}
