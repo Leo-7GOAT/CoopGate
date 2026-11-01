@@ -195,9 +195,12 @@ if __name__ == '__main__':
     parser.add_argument('--actor-lr',type=float,default=3e-4)
     parser.add_argument('--phase-actor',action='store_true')
     parser.add_argument('--initial-actor-lr',type=float,default=3e-4)
+    parser.add_argument('--startup-width',type=int,default=0)
+    parser.add_argument('--startup-relu',action='store_true')
     args=parser.parse_args()
     config=PPOConfig(kinematic_features=args.kinematic or args.accelerated, entropy=args.entropy,
                      gae_lambda=args.gae_lambda,accelerated_features=args.accelerated,actor_lr=args.actor_lr,
-                     phase_actor=args.phase_actor,initial_actor_lr=args.initial_actor_lr)
+                     phase_actor=args.phase_actor,initial_actor_lr=args.initial_actor_lr,
+                     startup_width=args.startup_width,startup_relu=args.startup_relu)
     train(args.out, args.steps, args.seed, args.stage, args.critic, args.initial, config, args.expert_initial,
           args.continue_single, args.reset_pool)

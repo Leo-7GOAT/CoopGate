@@ -219,3 +219,29 @@ planners on 128 new development initials 95000001--95000128, four modes. Keep
 all methods/cases. The target remains positive ramp improvement over the strong
 ego planner before formal joint learning, with actual-SUMO verification and
 separate final confirmation required. No guarantee of achieving this is made.
+
+## Development amendment G: startup approximation quality
+
+F completed 1,048,576 real PPO transitions and the full 3,072-execution
+development comparison. Both actor heads have verified nonzero PPO gradients.
+Ramp cost still exceeds strong ego planning by .1434 seconds; the prerequisite
+remains unmet. Its initializer's in-sample greedy nominal startup regret is
+.4990 seconds, with 871/8,192 training starts above one second. This motivates
+improving the supervised startup approximation rather than increasing PPO steps
+without a diagnosed cause.
+
+G preserves F's completed PPO flow head exactly. The startup head is a fresh
+ReLU256 network; flow and centralized critic remain Tanh128. Reuse the ENTIRE
+audited F expert cost table, no additional expert query or held-out data. Fit
+400 epochs with LR3e-4 to expected expert regret plus .025 seconds times the
+soft-target cross entropy. Invalid action costs are masked before multiplying
+probabilities, avoiding 0*infinity. This is a separately labeled model-based
+initializer; it is not MAPPO or a new policy-iteration algorithm.
+
+Seed 4507 performs 1,048,576 NEW on-policy PPO transitions from ORIGINAL starts,
+both actor-head LRs3e-5, critic LR3e-4, lambda1, entropy .005. PPO updates do
+not read expert costs. Evaluate final G, parent F and its BC-only initializer
+against both unchanged strong planners on fresh 128 development initials
+95100001--95100128, four modes. Full source, all failures and final checkpoints
+are retained; no intermediate model selection. Architecture and initialization
+differences must be disclosed. No success is inferred from training regret.

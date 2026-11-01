@@ -33,6 +33,8 @@ class PPOConfig:
     accelerated_features: bool = False
     phase_actor: bool = False
     initial_actor_lr: float = 3e-4
+    startup_width: int = 0
+    startup_relu: bool = False
 
 
 def local_kinematic_features(obs):
@@ -85,9 +87,10 @@ def accelerated_interval_features(obs):
     return torch.stack(extra,dim=-1)
 
 
-def mlp(inputs, width, outputs, output_gain):
-    net = nn.Sequential(nn.Linear(inputs, width), nn.Tanh(),
-                        nn.Linear(width, width), nn.Tanh(), nn.Linear(width, outputs))
+def mlp(inputs, width, outputs, output_gain, relu=False):
+    activation=nn.ReLU if relu else nn.Tanh
+    net = nn.Sequential(nn.Linear(inputs, width), activation(),
+                        nn.Linear(width, width), activation(), nn.Linear(width, outputs))
     for layer in net:
         if isinstance(layer, nn.Linear):
             nn.init.orthogonal_(layer.weight, np.sqrt(2.))
@@ -98,9 +101,9 @@ def mlp(inputs, width, outputs, output_gain):
 
 class PhaseActor(nn.Module):
     """Two local heads, routed by the public decision clock, not global state."""
-    def __init__(self,inputs,width):
+    def __init__(self,inputs,width,startup_width=0,startup_relu=False):
         super().__init__()
-        self.initial=mlp(inputs,width,len(LEVELS),.01)
+        self.initial=mlp(inputs,startup_width or width,len(LEVELS),.01,relu=startup_relu)
         self.flow=mlp(inputs,width,len(LEVELS),.01)
 
     def forward(self,features):
@@ -124,7 +127,7 @@ class MAPPOCTDE(nn.Module):
         self.critic_kind = critic_kind
         actor_dim=OBS_DIM+8*int(self.config.kinematic_features)+10*int(self.config.accelerated_features)
         critic_dim=(STATE_DIM+3*(actor_dim-OBS_DIM)) if critic_kind=='central' else actor_dim
-        self.actor = PhaseActor(actor_dim,self.config.width) if self.config.phase_actor else mlp(actor_dim,self.config.width,len(LEVELS),.01)
+        self.actor = PhaseActor(actor_dim,self.config.width,self.config.startup_width,self.config.startup_relu) if self.config.phase_actor else mlp(actor_dim,self.config.width,len(LEVELS),.01)
         self.critic = mlp(critic_dim,
                           self.config.width, 1, 1.)
 
