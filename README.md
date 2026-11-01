@@ -58,6 +58,8 @@ observed individual regressions; it does not dominate mean utility. Zero observe
 harm is not zero population risk. This comparison uses different data/online
 prediction budgets, adds no independent samples or SUMO runs, and issues no new
 finite-sample certificate. [Original author test and held-out results](artifacts/literature_reproduction/cspi_factorial_prospective/analysis/complete.json).
+[Complete factorial/CSPI raw data and byte-verified archive inventory](artifacts/factorial_cspi_completed_delivery_20261101/inventory.json)
+retain all 3,200 trajectories and the original randomized exports and author outputs.
 
 Fair-review recovery (2026-11-01): the original **5,120-run fair collection is
 complete with native exit zero and all 160 sealed block hashes verified**. Its
