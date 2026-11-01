@@ -19,7 +19,7 @@ from docx.shared import Cm, Pt
 from summarize_completed_ood_20261027 import read_complete as completed_ood
 
 ROOT = Path(__file__).resolve().parents[1]
-REFERENCE = ROOT / 'runs/completed_evidence_supplement_20261026/revision2/CoopGate_论文实验与理论补充_20261026.docx'
+REFERENCE = ROOT / 'artifacts/paper_supplement_20261026/CoopGate_论文实验与理论补充_20261026.docx'
 REFERENCE_SHA = 'd4310c3a98cae08438cb46db8f8414710c41b2f4d57c39f82fc386b170729ec6'
 OUT = ROOT / 'runs/manuscript_completed_20261101/revision1'
 NAME = 'CoopGate_论文完整初稿_20261101.docx'
