@@ -81,6 +81,15 @@
   thresholds pass. Do not edit their frozen source/protocol or restart them.
   Three-seed acceptance remains unproved, and J/K/L are not three
   identical-configuration replications.
+- Two exact-L JOINT replications are now ACTIVE, with the SAME fixed I parent:
+  4704/session11127/native train PID67728 and4705/session85960/PID8996.
+  Each2,097,152 new joint steps, then5,120 exact comparisons,80 SUMO/replay,
+  and the unchanged conditional3,072-run full SUMO. See
+  `docs/mappo_joint_replications_20261101_protocol.md`. These are independent
+  joint optimization RNG seeds conditional on one parent, not independent
+  complete single/joint pipelines. Keep all negative outcomes; no best seed.
+  The parent queues own actual native exit handles. Do not modify their
+  frozen source/protocol or restart any queue on tool observation timeout.
 - All completed A--L raw data are retained in their separate byte-verified
   deliveries. E/F/G/H remain negative development outcomes, not discarded
   runs. Old PI studies, their failures and original paper remain unchanged.
@@ -223,7 +232,8 @@ commands and 4,805 physical substeps. All E data are archived (182 files,
 The continuation commands and session references below are historical and
 superseded by the authoritative current milestone above. Do not execute them
 again. F/G/H completed without satisfying the prerequisite; I/J/K supersede
-these operational instructions. Fixed4602 full SUMO is active;4603 is terminal.
+these operational instructions. Fixed4602 full SUMO and joint4704/4705 are
+active;4603 and the L400-run gate integration are terminal.
 
 The startup and subsequent actor heads are now routed only by the already
 observed local clock. This separates rare initial decisions from abundant
