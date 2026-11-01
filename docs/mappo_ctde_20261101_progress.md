@@ -40,6 +40,14 @@
   and modified-weight rejection are tested. It issues NO inherited or new risk
   certificate; actuator/MAPPO performance, matched adoption, latency and fresh
   risk/adoption/utility tests are still pending.
+- The K actor also completed the new recovery wiring smoke: five actual SUMO
+  runs, all five selectors, collection/review native exit0, all115 commands
+  and575 physical substeps independently matched, including complete memoized
+  gate replay. This ONE initial is not efficacy evidence. The finite-bank
+  selector adopted no learned action, so its conditional-harm denominator is
+  zero/undefined. Training ran concurrently; these callback timings are not
+  isolated runtime evidence. The full400-run integration protocol is registered
+  separately in `docs/mappo_recovery_integration_20261101_protocol.md`.
 - All completed A--K raw data are retained in their separate byte-verified
   deliveries. E/F/G/H remain negative development outcomes, not discarded
   runs. Old PI studies, their failures and original paper remain unchanged.
