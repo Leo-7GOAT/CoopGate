@@ -18,7 +18,7 @@ from coopgate.disturbance_v9 import DisturbedMergeEnv, disturbance_tape
 from coopgate.ego_v13 import EgoRolloutGate, ego_observations
 from coopgate.fast_v8 import parameters
 from coopgate.joint_planner_v15 import JointRolloutGate
-from coopgate.mappo_ctde import load_mappo
+from coopgate.mappo_ctde import MAPPOCTDE, PPOConfig, load_mappo
 from coopgate.marl_v12 import LEVELS, action_mask, batch_step, project_joint
 from coopgate.merge_v4 import MergeConfig
 from develop_v12 import initial
@@ -110,11 +110,20 @@ def exact_episode(seed, scenario, mode, factory):
                 controller_ms=[x['controller_ms'] for x in trace], trace=trace)
 
 
-def evaluate(out, paths, n=128, seed_base=94500001, backend='exact'):
+def evaluate(out, paths, n=128, seed_base=94500001, backend='exact', expert_initial=None):
     out=Path(out); out.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(1)
     factories=dict(rule=RuleGate, ego_planner=EgoRolloutGate, team_planner=JointRolloutGate)
     checkpoints={}
+    if expert_initial:
+        source=torch.load(expert_initial, map_location='cpu', weights_only=True)
+        if source['algorithm'] != 'planner_bc_initializer_20261101':
+            raise ValueError('BC-only control must use an explicit non-PPO initializer')
+        bc=MAPPOCTDE(PPOConfig(**source['ppo_config']))
+        bc.actor.load_state_dict(source['model']['actor']); bc.eval()
+        factories['bc_only']=lambda:PPOGate(bc, 'single')
+        checkpoints['bc_only']=dict(path=str(expert_initial), sha256=hashlib.sha256(Path(expert_initial).read_bytes()).hexdigest(),
+                                    stage='bc_only', steps=0)
     for path in paths:
         model, meta=load_mappo(path)
         if meta['steps'] != meta['target_steps']:
@@ -172,7 +181,8 @@ def evaluate(out, paths, n=128, seed_base=94500001, backend='exact'):
         own=[r for r in rows if r['method'] == method]
         failures=sum(not r['completed'] for r in own)
         comparisons={}
-        for reference in ('ego_planner', 'team_planner'):
+        references=['ego_planner', 'team_planner']+(['bc_only'] if expert_initial else [])
+        for reference in references:
             paired=[lookup[r['seed'], r['mode'], reference] for r in own]
             if failures or any(not p['completed'] for p in paired):
                 comparisons[reference]=dict(all_scope_gain_assessable=False)
@@ -187,7 +197,8 @@ def evaluate(out, paths, n=128, seed_base=94500001, backend='exact'):
             comparisons[reference]=dict(all_scope_gain_assessable=True,
                 mean_paired_percentage_gain=float(gain.mean()), mean_team_gain_s=float(team.mean()),
                 team_gain_one_sided_t_lower_s=lower,
-                mean_per_vehicle_gain_s=deltas.mean(0).tolist())
+                mean_per_vehicle_gain_s=deltas.mean(0).tolist(),
+                per_vehicle_gain_one_sided_t_lower_s=(deltas.mean(0)-t.ppf(.95,n-1)*deltas.std(0,ddof=1)/np.sqrt(n)).tolist() if n>1 else None)
         timings=np.concatenate([r['controller_ms'] for r in own])
         summary[method]=dict(executions=len(own), failures=failures,
             mean_per_vehicle_cost=np.mean([r['per_vehicle_cost'] for r in own], axis=0).tolist(),
@@ -207,5 +218,6 @@ if __name__ == '__main__':
     parser.add_argument('--n', type=int, default=128)
     parser.add_argument('--seed-base', type=int, default=94500001)
     parser.add_argument('--backend', choices=['exact','sumo'], default='exact')
+    parser.add_argument('--expert-initial')
     args=parser.parse_args()
-    evaluate(args.out, args.paths, args.n, args.seed_base, args.backend)
+    evaluate(args.out, args.paths, args.n, args.seed_base, args.backend, args.expert_initial)

@@ -91,3 +91,32 @@ isolate their separate causal effects. Evaluate the fixed final model on fresh
 All original strong baselines remain. This is development, with no confirmatory
 p-value or risk certificate. A further attempt requires another explicit
 prospective amendment and preservation of B regardless of its outcome.
+
+## Development amendment C: separately declared expert initialization
+
+B completed all 2,097,152 transitions and 2,048 paired development executions.
+It still lost to strong ego planning: ramp cost 10.5605 versus 10.0291 seconds.
+No joint training is authorized by these negative development results.
+
+To avoid indefinitely repeating random-initialization runs, C explicitly relaxes
+the earlier DEVELOPMENT choice of no teacher initialization. This changes the
+training method, not the learning-superiority target or the strong baseline.
+The user requested authentic MAPPO, which permits a disclosed supervised
+initializer followed by actual on-policy PPO. This is NOT called from-scratch
+MAPPO, and imitation alone cannot establish RL benefit.
+
+Generate exactly 8,192 fresh strong-ego-planner proposal labels starting at seed
+948000001, alternating nominal/dense and cycling four disturbance modes. Train
+the local actor for exactly 80 supervised epochs, smoothing .05, LR 3e-4; save
+this BC-only actor separately with a non-PPO algorithm identity. No old PI
+weights or PI labels are used. No held-out actions/outcomes are teacher data.
+
+Seed 4503 then performs 2,097,152 new on-policy single-agent PPO transitions
+with the same kinematic architecture, entropy .02, GAE lambda=1 (Monte Carlo
+credit across episode boundaries, with normal rollout-cutoff bootstrapping).
+The PPO collector/update code never reads the teacher dataset. Compare the
+fixed final PPO actor AND BC-only initializer to both strong planners and rule
+on 128 new development initials, seeds 94700001--94700128, four modes. Also
+report paired PPO-minus-BC improvement, not just PPO-minus-planner. Preserve
+all initializers, updates and outcomes. This multi-factor development attempt
+cannot isolate the causal benefit of any one hyperparameter.

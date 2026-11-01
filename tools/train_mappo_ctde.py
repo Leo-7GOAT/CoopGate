@@ -21,12 +21,14 @@ def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def train(out, steps, seed, stage, critic_kind='central', initial=None, config=None):
+def train(out, steps, seed, stage, critic_kind='central', initial=None, config=None, expert_initial=None):
     cfg = config or PPOConfig()
     if steps <= 0 or steps % cfg.n_envs:
         raise ValueError('Step budget must be a positive multiple of vector width')
     if initial and stage != 'joint':
         raise ValueError('Only the joint stage may warm start from new single PPO')
+    if expert_initial and (initial or stage != 'single'):
+        raise ValueError('Expert initializer is a separate single-stage development path')
     out = Path(out)
     out.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(1)
@@ -40,6 +42,11 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
         if init_meta['stage'] != 'single' or init_meta['steps'] != init_meta['target_steps']:
             raise ValueError('Only completed new single PPO weights may initialize joint actor')
         model.actor.load_state_dict(source.actor.state_dict())
+    if expert_initial:
+        source=torch.load(expert_initial, map_location='cpu', weights_only=True)
+        if source['algorithm'] != 'planner_bc_initializer_20261101' or source['ppo_config'] != asdict(cfg):
+            raise ValueError('Expected a separately declared matching planner-BC initializer')
+        model.actor.load_state_dict(source['model']['actor'])
     initial_actor = {k:v.detach().clone() for k,v in model.actor.state_dict().items()}
     optimizer = torch.optim.Adam([dict(params=model.actor.parameters(), lr=cfg.actor_lr),
                                   dict(params=model.critic.parameters(), lr=cfg.critic_lr)], eps=1e-5)
@@ -48,13 +55,15 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
     meta = dict(algorithm='mappo_ctde_20261101' if critic_kind == 'central' else 'ippo_local_20261101',
         stage=stage, critic_kind=critic_kind, seed=seed, target_steps=steps, ppo_config=asdict(cfg),
         initial_checkpoint=None if initial is None else dict(path=str(initial), sha256=digest(initial)),
+        expert_initializer=None if expert_initial is None else dict(path=str(expert_initial), sha256=digest(expert_initial)),
         source_commit=subprocess.check_output(['git','rev-parse','HEAD'], cwd=ROOT, text=True).strip(),
         source_sha256=source_hashes, training_backend='exact vector simulator, not SUMO process invocations',
         likelihood_action='sampled pre-shield categorical proposal',
         actor_information='local 18 observed features only', critic_information='global 13 public state features' if critic_kind=='central' else 'local 18 observed features',
         reward='ramp cost' if stage=='single' else 'mean per-car cost',
         time_limit='terminal finite 25s horizon; no terminal bootstrap',
-        primary_checkpoint='final fixed step budget', no_teacher_actions=True, no_policy_iteration=True)
+        primary_checkpoint='final fixed step budget', no_teacher_actions=expert_initial is None,
+        no_teacher_actions_in_ppo_updates=True, no_policy_iteration=True)
     (out/'protocol.json').write_text(json.dumps(meta, indent=2)+'\n', encoding='utf-8')
     for name in source_hashes:
         target=out/'source'/name
@@ -160,6 +169,8 @@ if __name__ == '__main__':
     parser.add_argument('--initial')
     parser.add_argument('--kinematic', action='store_true')
     parser.add_argument('--entropy', type=float, default=.01)
+    parser.add_argument('--gae-lambda', type=float, default=.95)
+    parser.add_argument('--expert-initial')
     args=parser.parse_args()
-    config=PPOConfig(kinematic_features=args.kinematic, entropy=args.entropy)
-    train(args.out, args.steps, args.seed, args.stage, args.critic, args.initial, config)
+    config=PPOConfig(kinematic_features=args.kinematic, entropy=args.entropy, gae_lambda=args.gae_lambda)
+    train(args.out, args.steps, args.seed, args.stage, args.critic, args.initial, config, args.expert_initial)

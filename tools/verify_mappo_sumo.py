@@ -9,7 +9,7 @@ import torch
 from coopgate.disturbance_v9 import disturbance_tape
 from coopgate.ego_v13 import EgoRolloutGate
 from coopgate.joint_planner_v15 import JointRolloutGate
-from coopgate.mappo_ctde import load_mappo
+from coopgate.mappo_ctde import MAPPOCTDE, PPOConfig, load_mappo
 from coopgate.merge_v4 import MergeConfig, transition_safe
 from evaluate_mappo_ctde import exact_episode, RuleGate, PPOGate
 
@@ -22,6 +22,14 @@ def verify(directory):
         raise ValueError('Actual SUMO results required')
     factories=dict(rule=RuleGate, ego_planner=EgoRolloutGate, team_planner=JointRolloutGate)
     for name, item in protocol['checkpoints'].items():
+        if item['stage'] == 'bc_only':
+            source=torch.load(item['path'], map_location='cpu', weights_only=True)
+            if source['algorithm'] != 'planner_bc_initializer_20261101':
+                raise ValueError('Wrong BC control')
+            bc=MAPPOCTDE(PPOConfig(**source['ppo_config']))
+            bc.actor.load_state_dict(source['model']['actor']); bc.eval()
+            factories[name]=lambda bc=bc:PPOGate(bc, 'single')
+            continue
         model, meta=load_mappo(item['path'])
         factories[name]=lambda model=model, stage=meta['stage']:PPOGate(model, stage)
     rows=[json.loads(line) for line in (directory/'episodes.jsonl').read_text().splitlines()]
