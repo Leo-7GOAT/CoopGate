@@ -22,7 +22,7 @@ def digest(path):
 
 
 def train(out, steps, seed, stage, critic_kind='central', initial=None, config=None, expert_initial=None,
-          continue_single=None, reset_pool=None,legacy_initial=None):
+          continue_single=None, reset_pool=None,legacy_initial=None,rear_coast=False):
     cfg = config or PPOConfig()
     if steps <= 0 or steps % cfg.n_envs:
         raise ValueError('Step budget must be a positive multiple of vector width')
@@ -63,6 +63,13 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
         if source['algorithm']!='legacy_pi_actor_initializer_20261101' or source['ppo_config']!=asdict(cfg):
             raise ValueError('Explicit matching legacy-PI initializer required; it is not a PPO result')
         model.actor.load_state_dict(source['model']['actor'])
+    if rear_coast:
+        if stage!='joint' or not initial or not cfg.role_actors:
+            raise ValueError('Rear courtesy prior is a disclosed joint-stage initialization only')
+        from coopgate.marl_v12 import LEVELS
+        with torch.no_grad():
+            model.actor.roles[2][-1].weight.zero_()
+            model.actor.roles[2][-1].bias.copy_(torch.tensor(-.08*np.abs(LEVELS),dtype=torch.float32))
     initial_actor = {k:v.detach().clone() for k,v in model.actor.state_dict().items()}
     actor_groups=([dict(params=model.actor.initial.parameters(),lr=cfg.initial_actor_lr),
                    dict(params=model.actor.flow.parameters(),lr=cfg.actor_lr)] if cfg.phase_actor
@@ -84,6 +91,7 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
         legacy_initializer=None if legacy_initial is None else dict(path=str(legacy_initial),sha256=digest(legacy_initial),
             ancestry='Model-based policy-iteration ego actor; old performance/certificates are not new PPO evidence'),
         inherited_legacy_initializer=inherited_legacy,
+        rear_coast_initialization=bool(rear_coast),
         reset_pool=None if reset_pool is None else dict(path=str(reset_pool), sha256=digest(reset_pool), probability=.5,
             training_metrics='suffix cost on 50% reset states; not comparable to original-start costs'),
         source_commit=subprocess.check_output(['git','rev-parse','HEAD'], cwd=ROOT, text=True).strip(),
@@ -218,6 +226,7 @@ if __name__ == '__main__':
     parser.add_argument('--role-actors',action='store_true');parser.add_argument('--actor-relu',action='store_true')
     parser.add_argument('--logit-scale',type=float,default=1.)
     parser.add_argument('--width',type=int,default=128)
+    parser.add_argument('--rear-coast',action='store_true')
     args=parser.parse_args()
     config=PPOConfig(width=args.width,kinematic_features=args.kinematic or args.accelerated, entropy=args.entropy,
                      gae_lambda=args.gae_lambda,accelerated_features=args.accelerated,actor_lr=args.actor_lr,
@@ -225,4 +234,4 @@ if __name__ == '__main__':
                      startup_width=args.startup_width,startup_relu=args.startup_relu,
                      role_actors=args.role_actors,actor_relu=args.actor_relu,actor_logit_scale=args.logit_scale)
     train(args.out, args.steps, args.seed, args.stage, args.critic, args.initial, config, args.expert_initial,
-          args.continue_single,args.reset_pool,args.legacy_initial)
+          args.continue_single,args.reset_pool,args.legacy_initial,args.rear_coast)

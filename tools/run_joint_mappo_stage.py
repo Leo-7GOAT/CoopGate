@@ -26,8 +26,12 @@ def utc():
 
 
 def run(seed=4701,steps=1048576):
-    if seed!=4701 or steps!=1048576:
-        raise ValueError('This development plan fixes seed4701 and 1,048,576 transitions')
+    settings={4701:dict(steps=1048576,initial_seed=95500001,protocol='mappo_joint_20261101_protocol.md',rear_coast=False),
+              4702:dict(steps=2097152,initial_seed=95600001,protocol='mappo_joint_coast_20261101_protocol.md',rear_coast=True)}
+    if seed not in settings or steps!=settings[seed]['steps']:
+        raise ValueError('Use a registered fixed joint-stage seed/budget')
+    config=settings[seed]
+    study=f'joint_{seed}'
     parent=BASE/'single_4601/policy.pt'
     proof=BASE/'single_4601_sumo_full'
     report=json.loads((proof/'report.json').read_text())
@@ -39,18 +43,19 @@ def run(seed=4701,steps=1048576):
             or not verification['all_match'] or verification['actual_sumo_episodes']!=2560
             or not competence['numeric_thresholds_met']):
         raise ValueError('Full new single-PPO SUMO superiority and complete replay required')
-    execution=ROOT/'artifacts/mappo_ctde_20261101/joint_4701_execution'
+    execution=ROOT/f'artifacts/mappo_ctde_20261101/{study}_execution'
     execution.mkdir(parents=True,exist_ok=False)
     names=['train_mappo_ctde.py','evaluate_mappo_ctde.py','verify_mappo_sumo.py',
            'audit_mappo_ctde.py','analyze_mappo_development.py','archive_mappo_ctde.py','run_joint_mappo_stage.py']
     paths=list((ROOT/'src/coopgate').glob('*.py'))+[ROOT/'tools'/n for n in names]
-    paths += [ROOT/'docs/mappo_ctde_20261101_protocol.md',ROOT/'docs/mappo_joint_20261101_protocol.md',
+    paths += [ROOT/'docs/mappo_ctde_20261101_protocol.md',ROOT/'docs'/config['protocol'],
               parent,proof/'report.json',proof/'verification.json',proof/'single_competence.json']
     frozen={p.relative_to(ROOT).as_posix():sha(p) for p in paths}
     plan=dict(seed=seed,steps=steps,created_utc=utc(),source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
               frozen_sha256=frozen,condition='New single PPO full SUMO ramp superiority and replay passed',
               actual_single_proof_sha256=sha(proof/'verification.json'),
-              primary_initials=128,primary_seed_base=95500001,modes=4,
+              primary_initials=128,primary_seed_base=config['initial_seed'],modes=4,
+              rear_coast_initialization=config['rear_coast'],
               exact_expected_executions=4608,
               role_replacement='All three roles separately restored to original parameters, full paired closed-loop evaluation; no new independent initials',
               sumo_integration_expected_executions=72,
@@ -86,30 +91,33 @@ def run(seed=4701,steps=1048576):
         if code!=0:
             raise RuntimeError(f'{name} exited {code}; prefix preserved, no retry')
 
-    own=BASE/'joint_4701'
-    exact=BASE/'joint_4701_exact'
-    integration=BASE/'joint_4701_sumo_integration'
+    own=BASE/study
+    exact=BASE/f'{study}_exact'
+    integration=BASE/f'{study}_sumo_integration'
     common=['--paths',str(parent),str(own/'policy.pt'),'--joint-initial',str(own/'initial.pt')]
     try:
-        command('train',['tools/train_mappo_ctde.py','--out',str(own),'--steps',str(steps),'--seed',str(seed),
+        train_args=['tools/train_mappo_ctde.py','--out',str(own),'--steps',str(steps),'--seed',str(seed),
             '--stage','joint','--width','256','--kinematic','--role-actors','--actor-relu',
-            '--logit-scale','5','--entropy','.01','--gae-lambda','1','--actor-lr','.0001','--initial',str(parent)])
+            '--logit-scale','5','--entropy','.01','--gae-lambda','1','--actor-lr','.0001','--initial',str(parent)]
+        if config['rear_coast']:
+            train_args.append('--rear-coast')
+        command('train',train_args)
         command('training-audit',['tools/audit_mappo_ctde.py',str(own)])
         command('exact',['tools/evaluate_mappo_ctde.py','--out',str(exact),*common,
-            '--revert-final',str(own/'policy.pt'),'--n','128','--seed-base','95500001','--backend','exact'])
+            '--revert-final',str(own/'policy.pt'),'--n','128','--seed-base',str(config['initial_seed']),'--backend','exact'])
         command('sumo-integration',['tools/evaluate_mappo_ctde.py','--out',str(integration),*common,
-            '--revert-final',str(own/'policy.pt'),'--n','2','--seed-base','95500001','--backend','sumo'])
+            '--revert-final',str(own/'policy.pt'),'--n','2','--seed-base',str(config['initial_seed']),'--backend','sumo'])
         command('sumo-integration-review',['tools/verify_mappo_sumo.py',str(integration)])
         command('conflict-analysis',['tools/analyze_mappo_development.py',str(exact)])
         primary=json.loads((exact/'report.json').read_text())
-        joint=primary['results']['joint_central_4701']
+        joint=primary['results'][f'joint_central_{seed}']
         contrast=joint['comparisons']['team_planner']
         eligible=bool(joint['failures']==0 and contrast['all_scope_gain_assessable']
                       and contrast['mean_team_gain_s']>0 and contrast['team_gain_one_sided_t_lower_s']>0)
         if eligible:
-            full=BASE/'joint_4701_sumo_full'
+            full=BASE/f'{study}_sumo_full'
             command('sumo-full',['tools/evaluate_mappo_ctde.py','--out',str(full),*common,
-                '--n','128','--seed-base','95500001','--backend','sumo'])
+                '--n','128','--seed-base',str(config['initial_seed']),'--backend','sumo'])
             command('sumo-full-review',['tools/verify_mappo_sumo.py',str(full)])
         else:
             record(dict(stage='sumo-full',event='not-enabled-by-preregistered-development-condition',

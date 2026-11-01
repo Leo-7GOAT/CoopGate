@@ -25,6 +25,23 @@ from develop_v12 import initial
 from experiment_ego_v13 import run_episode
 
 
+class MeasuredCallback:
+    """Measure every select call, including terminal exceptions, without retries."""
+    def __init__(self,selected):
+        self.selected=selected
+        self.measurements=[]
+
+    def select(self,*args,**kwargs):
+        started=time.perf_counter()
+        try:
+            return self.selected.select(*args,**kwargs)
+        finally:
+            self.measurements.append((time.perf_counter()-started)*1000.)
+
+    def __getattr__(self,name):
+        return getattr(self.selected,name)
+
+
 class PPOGate(JointPolicyGate):
     def __init__(self, policy, stage):
         super().__init__(policy)
@@ -107,10 +124,11 @@ def exact_episode(seed, scenario, mode, factory):
                 completed=complete, aborted=error is not None, error=error,
                 per_vehicle_finish=finish.tolist(), per_vehicle_variation=variation.tolist(),
                 per_vehicle_cost=cost.tolist(), team_cost=float(cost.mean()),
-                controller_ms=[x['controller_ms'] for x in trace], trace=trace)
+                controller_ms=[x['controller_ms'] for x in trace]+([error['controller_ms']] if error and 'controller_ms' in error else []),trace=trace)
 
 
-def evaluate(out, paths, n=128, seed_base=94500001, backend='exact', expert_initial=None,legacy_initial=None):
+def evaluate(out, paths, n=128, seed_base=94500001, backend='exact', expert_initial=None,legacy_initial=None,
+             joint_initial=None,revert_final=None):
     out=Path(out); out.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(1)
     factories=dict(rule=RuleGate, ego_planner=EgoRolloutGate, team_planner=JointRolloutGate)
@@ -143,11 +161,34 @@ def evaluate(out, paths, n=128, seed_base=94500001, backend='exact', expert_init
         factories[name]=lambda model=model, stage=meta['stage']:PPOGate(model, stage)
         checkpoints[name]=dict(path=str(path), sha256=hashlib.sha256(Path(path).read_bytes()).hexdigest(),
                                stage=meta['stage'], steps=meta['steps'])
+    if joint_initial:
+        untouched,untouched_meta=load_mappo(joint_initial)
+        if untouched_meta['stage']!='joint' or untouched_meta['steps']!=0:
+            raise ValueError('Joint initializer comparator must retain zero-update identity')
+        factories['joint_initial']=lambda:PPOGate(untouched,'joint')
+        checkpoints['joint_initial']=dict(path=str(joint_initial),sha256=hashlib.sha256(Path(joint_initial).read_bytes()).hexdigest(),
+                                          stage='joint_initial',steps=0)
+        if revert_final:
+            final,final_meta=load_mappo(revert_final)
+            if final_meta['stage']!='joint' or final_meta['steps']!=final_meta['target_steps'] or not final.config.role_actors:
+                raise ValueError('Role replacement requires completed separate-actor joint PPO')
+            for role in range(3):
+                reverted=MAPPOCTDE(final.config,final.critic_kind)
+                reverted.load_state_dict(final.state_dict())
+                reverted.actor.roles[role].load_state_dict(untouched.actor.roles[role].state_dict());reverted.eval()
+                name=f'joint_revert_{role}'
+                factories[name]=lambda reverted=reverted:PPOGate(reverted,'joint')
+                checkpoints[name]=dict(path=str(revert_final),sha256=hashlib.sha256(Path(revert_final).read_bytes()).hexdigest(),
+                    stage='joint_revert',steps=final_meta['steps'],role=role,initial_path=str(joint_initial),
+                    initial_sha256=checkpoints['joint_initial']['sha256'])
+    elif revert_final:
+        raise ValueError('Role replacement requires its explicit joint initial checkpoint')
     modes=('clean', 'uniform', 'bias', 'pulse')
     protocol=dict(purpose='development; not a risk certificate or untouched confirmation',
                   backend=backend, n_independent_initials=n, seed_base=seed_base,
                   modes=modes, methods=list(factories), checkpoints=checkpoints,
                   expected_executions=n*len(modes)*len(factories), no_outcome_filtering=True)
+    protocol['timing_definition']='Complete select callback wall time, including exceptions; warmup excluded; no hard-real-time claim'
     root=Path(__file__).resolve().parents[1]
     inputs=list((root/'src/coopgate').glob('*.py'))+[Path(__file__)]
     protocol['source_sha256']={p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs}
@@ -170,12 +211,14 @@ def evaluate(out, paths, n=128, seed_base=94500001, backend='exact', expert_init
                         if backend == 'exact':
                             row=exact_episode(seed, scenario, mode, factory)
                         else:
+                            measured=MeasuredCallback(factory())
                             result, trace, actual_initial=run_episode(env, seed, scenario, mode,
-                                                        lambda _state, f=factory:f(), True)
+                                                        lambda _state, m=measured:m, True)
                             row={**result, 'seed':seed, 'scenario':scenario, 'mode':mode,
                                  'initial':actual_initial.tolist(), 'trace':trace}
                             cost=np.array(row['per_vehicle_finish'])+.05*np.array(row['per_vehicle_variation'])
                             row.update(per_vehicle_cost=cost.tolist(), team_cost=float(cost.mean()))
+                            row['controller_ms']=list(measured.measurements)
                         row['method']=name
                         file.write(json.dumps(row)+'\n'); file.flush()
                         rows.append({k:v for k,v in row.items() if k != 'trace'})
@@ -215,13 +258,15 @@ def evaluate(out, paths, n=128, seed_base=94500001, backend='exact', expert_init
         summary[method]=dict(executions=len(own), failures=failures,
             mean_per_vehicle_cost=np.mean([r['per_vehicle_cost'] for r in own], axis=0).tolist(),
             controller_p95_ms=float(np.percentile(timings, 95)), controller_max_ms=float(timings.max()),
+            controller_calls=int(len(timings)),controller_over_500ms=int((timings>500.).sum()),
             comparisons=comparisons)
     report=dict(protocol=protocol, results=summary, executions=len(rows),
                 elapsed_s=time.perf_counter()-started,
                 intervals='Development t intervals on independent initial means; not finite-sample certificates')
     (out/'report.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
-    print(json.dumps(dict(executions=report['executions'],elapsed_s=report['elapsed_s'],
-                          results=summary)),flush=True)
+    compact={name:dict(failures=item['failures'],mean_vehicle_cost=item['mean_per_vehicle_cost'],
+                       vs_team=item['comparisons']['team_planner']) for name,item in summary.items()}
+    print(json.dumps(dict(executions=report['executions'],elapsed_s=report['elapsed_s'],results=compact)),flush=True)
 
 
 if __name__ == '__main__':
@@ -233,5 +278,7 @@ if __name__ == '__main__':
     parser.add_argument('--backend', choices=['exact','sumo'], default='exact')
     parser.add_argument('--expert-initial')
     parser.add_argument('--legacy-initial')
+    parser.add_argument('--joint-initial');parser.add_argument('--revert-final')
     args=parser.parse_args()
-    evaluate(args.out,args.paths,args.n,args.seed_base,args.backend,args.expert_initial,args.legacy_initial)
+    evaluate(args.out,args.paths,args.n,args.seed_base,args.backend,args.expert_initial,args.legacy_initial,
+             args.joint_initial,args.revert_final)
