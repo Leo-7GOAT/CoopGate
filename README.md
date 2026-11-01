@@ -15,8 +15,9 @@ Risk/adoption validity requires the registered IID sampling assumptions; paired
 t gain inference is normal-IID exact and otherwise asymptotic with finite variance.
 The certificate covers the registered mixture and strong-lag laws; statewise and
 out-of-distribution risk are outside its scope. The OOD stress limitation below
-remains unchanged. Fair comparison, candidate factorial, author-code CSPI analysis,
-and complete raw-data delivery remain in progress.
+remains unchanged. The fair comparison, candidate factorial and author-code CSPI
+analysis are complete below; final factorial raw-data delivery and manuscript
+review remain in progress.
 [Original certificate](artifacts/joint_risk_recovery_20261031/analysis/certificate.json)
 and [native exit, coverage and results receipt](artifacts/joint_risk_recovery_20261031/analysis/completion_receipt_20261031.json).
 
@@ -34,7 +35,29 @@ and [native completion and failure accounting](artifacts/fair_replay_recovery_20
 [Complete sealed raw data and byte-verified archive inventory](artifacts/fair_completed_delivery_20261101/inventory.json)
 retain every failed and timed-out record.
 [Public Git bytes verified against all 495 original files](artifacts/fair_completed_publication_20261101.json).
-The uncapped candidate factorial and original-author CSPI comparison remain pending.
+
+Completed candidate factorial (2026-11-01): **3,200 SUMO runs, the same 640
+independent initials, full original replay, and actual native collection/review
+exits zero**. No baseline or candidate execution failures were observed. With
+projected candidates, bank admission reduces harmful-and-adopted cases from
+**53/640 to 5/640**, while mean per-initial gain decreases from **2.4311% to
+1.4002%**, and adopted episodes from **583 to 397**. With bank admission,
+projection increases gain from **1.1088% to 1.4002%** and adoption from **233 to
+397**, but harmful-and-adopted cases increase from **1 to 5**. These are complete
+paired descriptive comparisons, without a new risk certificate or significance
+claim. [Original factorial report](artifacts/candidate_factorial/complete_fair_cases/analysis/report.json)
+and [native exits and complete counts](artifacts/candidate_factorial/complete_fair_cases/analysis/completion_receipt_20261101.json).
+
+Completed original-author CSPI supplement: both original tests pass and deploy
+the **same single threshold**. On all **128 held-out parent initials**, CSPI and
+CSPI-MT each attain **2.5245% aggregate cost gain**, **105 actual adopted episodes**
+and **11 harmful-and-adopted episodes**; projected-bank obtains **1.2874% aggregate
+cost gain**, **84 adopted episodes** and **zero harmful-and-adopted episodes**.
+All methods and references complete. The bank trades gain/adoption for fewer
+observed individual regressions; it does not dominate mean utility. Zero observed
+harm is not zero population risk. This comparison uses different data/online
+prediction budgets, adds no independent samples or SUMO runs, and issues no new
+finite-sample certificate. [Original author test and held-out results](artifacts/literature_reproduction/cspi_factorial_prospective/analysis/complete.json).
 
 Fair-review recovery (2026-11-01): the original **5,120-run fair collection is
 complete with native exit zero and all 160 sealed block hashes verified**. Its
