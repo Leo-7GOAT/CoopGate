@@ -1,0 +1,73 @@
+# MAPPO replacement: development protocol, 2026-11-01
+
+Status: implementation/development, not a new performance or risk certificate.
+The completed V16--V44 studies and their failures remain unchanged. Their
+policy-iteration checkpoints are NOT MAPPO weights, and their certificates
+cannot be transferred to this learner.
+
+## Algorithm identity
+
+Implement feed-forward MAPPO following Yu et al. (NeurIPS 2022), with a
+parameter-shared local categorical actor, a centralized team-value critic,
+joint synchronous on-policy trajectories, finite-horizon GAE, per-agent clipped
+PPO ratios, entropy regularization, clipped value regression and gradient
+clipping. IPPO replaces only the critic information/aggregation. Actors see
+18 ego-centric observed features (including visible neighbor command history),
+never the centralized state, hidden disturbance mode, seed, future errors or
+critic output. The physical command filter remains centralized.
+
+PPO log probabilities refer to sampled pre-filter action indices, NOT executed
+commands. There are no planner action labels, counterfactual policy iteration,
+distillation, replay-buffer updates or planning-based reward labels. Actor and
+critic start from random weights; the joint stage may explicitly initialize
+from the new single-agent PPO checkpoint, whose hash must be reported. No old
+policy-iteration initialization is permitted.
+
+The 50-decision, 25-second task is a genuine finite horizon. Arrival and horizon
+are terminal boundaries (no bootstrap); collection cutoffs bootstrap but do not
+reset an episode. A common team return is used; inactive vehicle proposals are
+excluded from actor/entropy losses. A fixed 10-second return scale is used for
+value regression, not a change to the evaluation objective.
+
+## Bounded development before confirmation
+
+1. Smoke tests and numerical/gradient audit, then a single-ramp-agent PPO run
+   of 262,144 joint transitions, seed 4501. Other vehicles propose their
+   highest slew-admissible acceleration. This is a single-agent prerequisite,
+   not evidence of multi-agent collaboration.
+2. A joint MAPPO development run of 1,048,576 joint transitions, seed 4511,
+   explicitly initialized from the preceding PPO model. All three actors'
+   local proposals now contribute to shared-parameter updates.
+3. Fresh development initial seeds 94500001--94500128, equal nominal/dense
+   quotas and four original disturbance modes. Compare the strong ego planner,
+   strong cooperative planner, highest-admissible rule, single PPO and joint
+   MAPPO. First use the exact vectorized physical simulator; SUMO verification
+   must independently match trajectories before any traffic result is accepted.
+   These are development data, not untouched confirmation data.
+4. Final-budget checkpoints are primary. Intermediate checkpoints may diagnose
+   learning curves but cannot silently replace the primary endpoint. Any
+   subsequent configuration gets a new directory and prospective amendment;
+   all failures and time spent remain visible.
+
+Training uses the existing exact longitudinal simulator and common robust
+physical filter, with four disturbance modes bounded by 0.5. It is model-free
+PPO learning in a simulator, not training on live SUMO invocations. This first
+stage matches V15 physics; actuator-memory deployment and its existing strong
+recovery baseline require a separate adapter and independent validation.
+
+Three independent training seeds, IPPO, single-agent substitution, actuator
+classes, adoption-matched gate comparisons and per-selector actual runtime are
+later acceptance stages. Their plans must be fixed before their held-out
+outcomes are inspected. No claim of MAPPO beating the strong baseline is made
+until the paired results exist; negative results do not authorize weakening
+the baseline, deleting seeds or renaming the old learner.
+
+Main research question remains the gate: retain useful learned behavior while
+controlling individual baseline-relative degradation. MAPPO is the authentic
+learning backbone, not a novelty claim by itself. Neither softmax nor an
+unvalidated margin is a per-state safety probability. Prior finite-bank/risk
+results apply only to the previously frozen full controller.
+
+Reference: https://arxiv.org/abs/2103.01955 and
+https://github.com/marlbenchmark/on-policy (method guidance; this is an
+independent traffic adaptation, not an unchanged original-author executable).
