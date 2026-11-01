@@ -57,8 +57,10 @@ def train(out, steps, seed, stage, critic_kind='central', initial=None, config=N
             raise ValueError('Single continuation requires completed matching on-policy single PPO')
         model.load_state_dict(source.state_dict())
     initial_actor = {k:v.detach().clone() for k,v in model.actor.state_dict().items()}
-    optimizer = torch.optim.Adam([dict(params=model.actor.parameters(), lr=cfg.actor_lr),
-                                  dict(params=model.critic.parameters(), lr=cfg.critic_lr)], eps=1e-5)
+    actor_groups=([dict(params=model.actor.initial.parameters(),lr=cfg.initial_actor_lr),
+                   dict(params=model.actor.flow.parameters(),lr=cfg.actor_lr)] if cfg.phase_actor
+                  else [dict(params=model.actor.parameters(),lr=cfg.actor_lr)])
+    optimizer = torch.optim.Adam(actor_groups+[dict(params=model.critic.parameters(),lr=cfg.critic_lr)],eps=1e-5)
     source_paths = list((ROOT/'src/coopgate').glob('*.py')) + [Path(__file__), ROOT/'docs/mappo_ctde_20261101_protocol.md']
     source_hashes = {p.relative_to(ROOT).as_posix():digest(p) for p in source_paths}
     meta = dict(algorithm='mappo_ctde_20261101' if critic_kind == 'central' else 'ippo_local_20261101',
@@ -191,8 +193,11 @@ if __name__ == '__main__':
     parser.add_argument('--reset-pool')
     parser.add_argument('--accelerated',action='store_true')
     parser.add_argument('--actor-lr',type=float,default=3e-4)
+    parser.add_argument('--phase-actor',action='store_true')
+    parser.add_argument('--initial-actor-lr',type=float,default=3e-4)
     args=parser.parse_args()
     config=PPOConfig(kinematic_features=args.kinematic or args.accelerated, entropy=args.entropy,
-                     gae_lambda=args.gae_lambda,accelerated_features=args.accelerated,actor_lr=args.actor_lr)
+                     gae_lambda=args.gae_lambda,accelerated_features=args.accelerated,actor_lr=args.actor_lr,
+                     phase_actor=args.phase_actor,initial_actor_lr=args.initial_actor_lr)
     train(args.out, args.steps, args.seed, args.stage, args.critic, args.initial, config, args.expert_initial,
           args.continue_single, args.reset_pool)

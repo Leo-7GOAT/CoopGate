@@ -167,3 +167,19 @@ def test_accelerated_arrival_matches_physics_and_preserves_local_information():
     assert all(torch.isfinite(p.grad).all() for p in model.parameters())
     altered=obs.clone();altered[:,2,1]=.8
     torch.testing.assert_close(original[:,0],model.distribution(altered,mask).logits[:,0])
+
+
+def test_phase_actor_routes_only_on_own_clock_and_both_heads_receive_gradients():
+    cfg=PPOConfig(width=16,phase_actor=True)
+    model=MAPPOCTDE(cfg)
+    obs=torch.zeros(2,3,18);obs[1,:,5]=.2
+    mask=torch.ones(2,3,13,dtype=torch.bool)
+    with torch.no_grad():
+        model.actor.initial[-1].bias[0]=1.
+        model.actor.flow[-1].bias[1]=1.
+    logits=model.distribution(obs,mask).logits
+    assert (logits[0].argmax(-1)==0).all()
+    assert (logits[1].argmax(-1)==1).all()
+    model.distribution(obs,mask).entropy().sum().backward()
+    for head in (model.actor.initial,model.actor.flow):
+        assert sum(float(p.grad.square().sum()) for p in head.parameters())>0

@@ -31,6 +31,8 @@ class PPOConfig:
     max_grad_norm: float = .5
     kinematic_features: bool = False
     accelerated_features: bool = False
+    phase_actor: bool = False
+    initial_actor_lr: float = 3e-4
 
 
 def local_kinematic_features(obs):
@@ -94,6 +96,18 @@ def mlp(inputs, width, outputs, output_gain):
     return net
 
 
+class PhaseActor(nn.Module):
+    """Two local heads, routed by the public decision clock, not global state."""
+    def __init__(self,inputs,width):
+        super().__init__()
+        self.initial=mlp(inputs,width,len(LEVELS),.01)
+        self.flow=mlp(inputs,width,len(LEVELS),.01)
+
+    def forward(self,features):
+        initial=features[...,5].abs()<1e-8
+        return torch.where(initial[...,None],self.initial(features),self.flow(features))
+
+
 class MAPPOCTDE(nn.Module):
     """One local actor shared across roles; one scalar common-payoff critic.
 
@@ -110,7 +124,7 @@ class MAPPOCTDE(nn.Module):
         self.critic_kind = critic_kind
         actor_dim=OBS_DIM+8*int(self.config.kinematic_features)+10*int(self.config.accelerated_features)
         critic_dim=(STATE_DIM+3*(actor_dim-OBS_DIM)) if critic_kind=='central' else actor_dim
-        self.actor = mlp(actor_dim, self.config.width, len(LEVELS), .01)
+        self.actor = PhaseActor(actor_dim,self.config.width) if self.config.phase_actor else mlp(actor_dim,self.config.width,len(LEVELS),.01)
         self.critic = mlp(critic_dim,
                           self.config.width, 1, 1.)
 

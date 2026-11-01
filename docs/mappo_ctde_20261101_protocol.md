@@ -183,3 +183,39 @@ planners on fresh development initials 94900001--94900128, four modes.
 The extra BC fitting, representation and PPO settings are a multi-factor
 development attempt; no isolated causal effect or independent replication is
 claimed. Passing imitation accuracy alone cannot pass the prerequisite.
+
+## Development amendment F: separate startup credit and cost-sensitive initialization
+
+E completed the fixed 2,097,152 PPO transitions and 3,072 development executions.
+It improves ramp cost by .1729 seconds relative to BC alone but still loses
+to the unchanged strong ego planner by .1804 seconds. No joint expansion.
+Training-label diagnostics show only 431 initial decisions among 8,192 labels:
+initial accuracy .6613 versus .9376 after the first decision. These are training
+diagnostics, not a held-out classifier score or a guarantee about physical harm.
+
+F uses a local-clock-routed actor with two MLP heads, one for t=0 and one for
+t>0. The only routing input is the actor's already public local clock. Both
+heads remain shared across vehicles and train with the same PPO surrogate;
+the centralized critic is unchanged. This is an architecture/initialization
+adaptation of MAPPO, not a new policy-gradient algorithm. F has more actor
+parameters, which must be disclosed rather than called capacity matched to E.
+
+Initialize both heads from completed E's PPO actor. Freeze the flow head while
+fitting the startup head on exactly 8,192 NEW training initials, seed base
+951000001, alternating nominal/dense. For each of nine admissible initial
+proposals evaluate the same fixed nominal one-step-plus-rule-tail objective
+used by the strong ego planner, recording every counterfactual transition.
+The target distribution is softmax(-cost/.25 seconds), which does not punish
+physically equivalent near-tied actions as arbitrarily different hard labels.
+Fit startup head for 400 epochs, LR 3e-4. This is COST-SENSITIVE EXPERT
+INITIALIZATION, not PPO and not a reuse of PI weights or evaluation data.
+
+Seed 4506 then collects 1,048,576 NEW on-policy PPO transitions from ORIGINAL
+starts. Flow-head LR=3e-5, startup-head LR=3e-4, critic LR=3e-4, lambda=1,
+entropy=.005. PPO updates never read expert costs/targets. Save final weights
+and independently audit the log probabilities, GAE and gradients of both heads.
+Evaluate F, its separate initializer and parent E against both unchanged strong
+planners on 128 new development initials 95000001--95000128, four modes. Keep
+all methods/cases. The target remains positive ramp improvement over the strong
+ego planner before formal joint learning, with actual-SUMO verification and
+separate final confirmation required. No guarantee of achieving this is made.
