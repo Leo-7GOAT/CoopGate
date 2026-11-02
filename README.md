@@ -28,8 +28,9 @@ bank tail latency and is not adopted. Neither replay adds SUMO trials.
 
 The old minimum margin is degenerate at adopted decisions. A separate
 [scenario-score threshold prototype](docs/scenario_confidence_gate_20261101_protocol.md)
-is implemented/tested; its score is NOT a safety probability and its actual
-SUMO/calibration/confirmation are pending. See the
+is implemented/tested; its score is NOT a safety probability. Its10-run actual
+SUMO smoke and independent score/physics/decision replay pass. The800-run
+development grid is active; fresh calibration/confirmation remain pending. See the
 [MAPPO mathematics](docs/mappo_algorithm_identity_20261101.md),
 [prospective protocol](docs/mappo_ctde_20261101_protocol.md) and
 [verified progress / remaining work](docs/mappo_ctde_20261101_progress.md).

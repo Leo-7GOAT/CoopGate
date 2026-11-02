@@ -115,10 +115,26 @@
   pass fractions with registered failed-path budgets0/1/3. Budget0 preserves
   original real predictor admission in four-class tests; synthetic tests show
   threshold switching. Eight targeted tests pass. This is NOT a calibrated
-  probability/risk certificate. Actual new-rule SUMO and independent score
-  checking/calibration/confirmation are NEXT, not already run. See
+  probability/risk certificate. Actual new-rule SUMO wiring smoke is now
+  COMPLETE:10 actual runs,220 commands/1100 physical substeps,collection71871
+  and separate review both exited0. New independent reviewer reconstructs
+  actuator physics/memory certificates AND all33 score comparisons/whole gate.
+  Tampered score/budget/missing-path evidence is rejected in targeted tests.
+  This one initial is not efficacy or calibration. See
   `docs/scenario_confidence_gate_20261101_protocol.md`. Do not mislabel its
   allowed positive path differences as strict-bank evidence.
+- Full score development is ACTIVE:800 actual SUMO executions split into four
+  disjoint200-run shards. Native collection sessions24745/83748/38299/54617
+  correspond to shards0/1/2/3 under `development/scenario_score_grid_20261102_shardN`.
+  All three fixed models,all budgets0/1/3,one shared baseline,five scenes,four
+  classes,four modes; SAME five initials,not20/80/800 independent samples.
+  Do not change frozen sources or restart on observation timeout. For EACH
+  actual zero native collection exit,run `tools/evaluate_scenario_confidence.py
+  review --out artifacts/mappo_ctde_20261101/development/scenario_score_grid_20261102_shardN`.
+  Observe review exit,write exact native receipt,then aggregate only the
+  complete union with `tools/summarize_scenario_score_grid.py`. Registered in
+  `docs/scenario_score_development_20261102_protocol.md`. No new risk budget
+  is spent and no threshold is certified from this development grid.
 - All completed A--L raw data are retained in their separate byte-verified
   deliveries. E/F/G/H remain negative development outcomes, not discarded
   runs. Old PI studies, their failures and original paper remain unchanged.
@@ -314,9 +330,9 @@ are complete. Stable superiority, IPPO and new gate certification remain pending
 
 ## Next gates
 
-1. Implement independent actual-SUMO smoke/review for the new score-threshold
-   rule, retaining actuator-memory physical checks and complete path scores.
-   Existing strict-bank replay cannot certify intentionally allowed regressions.
+1. Finish all four actual score-development shards and independent reviews,
+   then the complete matrix,retaining physical checks and complete path scores.
+   Wiring smoke/checker is done; full development and fresh calibration remain.
 2. Register fresh calibration/confirmation, fixed thresholds and new familywise
    error allocation for ALL three models; retain risk<=5%,adoption>=20%,
    utility>.5%. Add the calibration-selected adoption-matched control.
