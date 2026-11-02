@@ -157,9 +157,11 @@
   RNG; audit counts228,135 actor parameters,75,777 centralized versus72,961
   shared-local critic parameters. This is not capacity/compute equality and
   does not imply equal compute. All three paired seeds are registered in
-  `docs/ippo_matched_20261102_protocol.md`.4704/session58854/PID46940 and
-  4705/session15585/PID73696 are ACTIVE with unchanged full budgets. Preserve
-  their frozen sources until actual native termination; no replacement seed.
+  `docs/ippo_matched_20261102_protocol.md`.4704/session58854 and4705/session15585
+  are also COMPLETE,all native stages exited0,each5,632 exact/88 SUMO/replay.
+  MAPPO-vs-local mean gains across seeds are+.04671/-.02004/+.02722s; lower
+  bounds+.01792/-.04735/-.01063s. No consistent all-seed MAPPO superiority.
+  All raw outcomes,source snapshots and checkpoints are archived;no replacement.
 - Parameter-scenario prototype preserves original33 noise paths and adds8
   declared endpoint paths with separate executed-history actuator memories.
   Five parameter/memory tests and independent checker tamper test pass.
@@ -171,14 +173,24 @@
   adopted3/3. Other two models preserve+1.9370% gain/adoption3/3/harm0.
   Only ONE reused initial; no generalization or risk certificate. Maximum
   callback for augmented4705 is1289.46ms,so online cost remains unresolved.
-- FRESH parameter development is ACTIVE:560 actual runs,seven methods,four
+- FRESH parameter development is COMPLETE:560 actual runs,seven methods,four
   disjoint140-run shards under `development/parameter_scenario_grid_20261102_shardN`.
-  Collection sessions7908/14251/15152/71687 map to shards0/1/2/3. Fresh base
+  Collection sessions7908/14251/15152/71687 and review27818/73236/76717/77084
+  all observed actual exit0. Fresh base
   seed97000001,five scenes/four classes/four modes,SAME five draws across
-  rules/models,not560 independent trials. After EACH actual zero collection
-  exit run `tools/evaluate_parameter_scenarios.py review --out [shard directory]`,
-  observe review exit,save native receipt and aggregate complete union with
-  `tools/summarize_parameter_grid.py`. All negative outcomes remain required.
+  rules/models,not560 independent trials. All13,422 commands/67,110 physical
+  substeps independently matched;complete union/identity checked by
+  `tools/summarize_parameter_grid.py`. Parameter gains1.65809%/1.68685%/1.71066%,
+  adopted31/32/32,harmful1/1/1. Original gains1.70942%/1.66845%/1.73540%,
+  adopted37/37/38,harmful2/3/1. No risk certification or same-adoption claim.
+  Parameter callback p95=621/763/588ms,max3885/4005/3806ms under disclosed
+  contention. This cost is unresolved;do not present the gate as real-time.
+- Adoption-matched episode thinning implementation/tests are prepared. Coins
+  have separate controller streams;actual executed adoption is NOT the coin.
+  No probability is calibrated from these five-initial development sets.
+  Actual confirmation/control collection remains required. Error-allocation
+  inventory scanned330 metadata files,found23 with allocations,skipped0;
+  it allocates NO error and does not yet prove the next attempt unused.
 - All completed A--L raw data are retained in their separate byte-verified
   deliveries. E/F/G/H remain negative development outcomes, not discarded
   runs. Old PI studies, their failures and original paper remain unchanged.
@@ -374,8 +386,13 @@ are complete. Stable superiority, IPPO and new gate certification remain pending
 
 ## Next gates
 
-1. Finish fresh560-run parameter-scenario collection/review and complete matrix.
-   Known adverse-fixture repair is done; broader development is unproved.
+1. Parameter development and all IPPO comparisons are done. Resolve measured
+   multi-second gate cost before freezing final online implementation. A fast
+   learned surrogate can be investigated using the expensive gate as an OFFLINE
+   teacher,but must keep true MAPPO actors,physical certificates and baseline,
+   and receive its OWN fresh whole-controller risk/adoption/utility validation.
+   Teacher/model certificates cannot transfer. No such surrogate is implemented
+   or certified yet;do not relabel it as PPO if trained by supervised labels.
 2. Register fresh calibration/confirmation, fixed thresholds and new familywise
    error allocation for ALL three models; retain risk<=5%,adoption>=20%,
    utility>.5%. Add the calibration-selected adoption-matched control.
