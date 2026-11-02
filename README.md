@@ -2,7 +2,7 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
-**Active MAPPO work (2026-11-01).** Three independent local actors, a centralized
+**Active MAPPO work (2026-11-02).** Three independent local actors, a centralized
 critic, joint on-policy proposals, GAE and clipped PPO are implemented and
 independently audited. Fixed joint seeds4703/4704/4705 EACH complete2,097,152
 new joint steps,5,120 exact comparisons and80 actual SUMO integration/replay.
@@ -61,11 +61,18 @@ evidence while reducing positive-floor callback cost53–58%. Fresh80-initial/
 development-selected0.25% floor,adoption is21/25/22 of80 and mean paired cost
 gain is.899%/1.033%/.888%,with0 observed harmful adoptions. The1% floor instead
 hasone harmful adoption per model;all negative outcomes remain. These balanced
-development results do NOT certify risk. The candidate is frozen before formal
-sampling and has no new error allocation. See the
+development results do NOT certify risk. The candidate was frozen before formal
+sampling. The complete allocation/predecessor audit and64-run actual-SUMO
+adapter validation now pass. The unchanged full-size MAPPO attempt3 is
+explicitly registered at.05/12 and LIVE:3072 calibration plus1024 IID
+confirmation initials,16384 primary and37888 total SUMO executions with
+actual nominal,independent adoption-thinned and physical-only controls.
+No partial scientific outcomes or new risk certificate are reported.
+See the [live formal scope and execution handoff](docs/mappo_formal_live_20261102.md),
+[frozen formal protocol](docs/mappo_formal_attempt3_20261102_protocol.md),
 [complete fresh matrix](docs/gain_margin_fresh_20261102_results.md) and
 [mathematics and proof limits](docs/gain_margin_mathematics_20261102.md).
-Fresh calibration/confirmation remain pending. See the
+Full formal sampling/replay and the new manuscript remain incomplete. See the
 [MAPPO mathematics](docs/mappo_algorithm_identity_20261101.md),
 [prospective protocol](docs/mappo_ctde_20261101_protocol.md) and
 [verified progress / remaining work](docs/mappo_ctde_20261101_progress.md).

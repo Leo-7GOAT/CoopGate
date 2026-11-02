@@ -47,6 +47,11 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,competence):
       '而非仅比较两个策略的总体期望回报。Learn then Test 将风险控制表述为统计检验[6]；'
       '本文沿用固定候选、独立验证的思想，保留分层采样对应的推断，而不把在线评分直接当作校准概率。'
       '研究贡献的强度取决于对照是否支持上述差异，不能由术语组合或仿真次数单独判断。')
+    p('CSPI-MT 已针对阈值策略研究多个候选相对基线的改进检验和阈值选择[7]。'
+      'DMPS 则让局部恢复规划同时考虑短期任务进展与长期回报，并与学习过程结合[8]。'
+      '这些工作表明，采用统计检验或让安全恢复考虑性能都已有明确先例。本文冻结训练后的联合策略，'
+      '验证新的多车部署门控在实际采用条件下的逐车损害、采用率及团队收益，并提供共享物理模型的在线对照。'
+      '本文的新正式实验不包含 CSPI-MT 或 DMPS 的完整任务适配，因此不能由当前结果推断优于两者。')
     h('3 任务模型与传统基线')
     p('任务包含主路前车、汇入车和主路后车。车辆沿给定路线运动，观测包含当前位置、速度、执行指令历史及局部邻车信息。'
       '物理积分步长为 0.1 s，控制周期为 0.5 s，回合时域为 25 s。离散加速度提案包含 13 个等级，'
@@ -257,7 +262,9 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,competence):
       '[4] Zhang W, Bastani O, Kumar V. MAMPS Safe Multi-Agent Reinforcement Learning via Model Predictive Shielding. https://arxiv.org/abs/1910.12639',
       '[5] Laroche R, Trichelair P, Tachet des Combes R. Safe Policy Improvement with Baseline Bootstrapping. ICML, 2019. https://proceedings.mlr.press/v97/laroche19a.html',
       '[6] Angelopoulos A N, Bates S, Candès E J, Jordan M I, Lei L. Learn then Test Calibrating Predictive Algorithms to Achieve Risk Control. https://arxiv.org/abs/2110.01052',
-      '[7] CoopGate. Frozen source,training audits,complete formal records,negative results and replay receipts. https://github.com/Leo-7GOAT/CoopGate',
+      '[7] Cho B M, Pop A R, Gan K, et al. CSPI-MT Calibrated Safe Policy Improvement with Multiple Testing for Threshold Policies. 2024. https://arxiv.org/abs/2408.12004',
+      '[8] Banerjee A, Rahmani K, Biswas J, Dillig I. Dynamic Model Predictive Shielding for Provably Safe Reinforcement Learning. NeurIPS, 2024. https://arxiv.org/abs/2405.13863',
+      '[9] CoopGate. Frozen source,training audits,complete formal records,negative results and replay receipts. https://github.com/Leo-7GOAT/CoopGate',
     ]
     for reference in refs:
         node=p(reference);node.paragraph_format.first_line_indent=0

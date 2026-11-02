@@ -22,6 +22,7 @@ def write(path,value):path.write_text(json.dumps(value),encoding='utf-8')
 
 
 def completed(study):
+    write(study/'plan.json',dict(fixture_only=True))
     (study/'analysis').mkdir()
     write(study/'analysis/certificate.json',dict(joint_deployment_certified=False))
     write(study/'analysis/comparisons.json',dict(negative_results_preserved=True))
@@ -70,3 +71,36 @@ def test_nonzero_owner_cannot_create_formal_source_snapshot(tmp_path,monkeypatch
     write(study/'orchestrator_native_receipt.json',dict(actual_native_exit_code=1))
     with pytest.raises(ValueError):snapshot.snapshot(study)
     assert not (study/'source').exists()
+
+
+def test_repeat_replay_refuses_live_study_without_writing_reports(tmp_path,monkeypatch):
+    import replay_mappo_formal_delivery as repeat
+    study,out=setup(tmp_path,monkeypatch)
+    monkeypatch.setattr(repeat.e,'ROOT',tmp_path);monkeypatch.setattr(repeat.e,'FORMAL',study)
+    monkeypatch.setattr(repeat.e,'bound',lambda root,validation:{})
+    report=tmp_path/'runs/replay.json'
+    with pytest.raises(FileNotFoundError):repeat.replay('calibration',0,report)
+    assert not report.parent.exists()
+
+
+def test_repeat_replay_preserves_original_receipts_and_writes_new_report(tmp_path,monkeypatch):
+    import replay_mappo_formal_delivery as repeat
+    study,out=setup(tmp_path,monkeypatch);receipt=completed(study)
+    directory=study/'calibration/shard0';directory.mkdir(parents=True)
+    for name in ('verification','collection_complete'):
+        write(directory/(name+'.json'),dict(executions=5376))
+    for event in receipt['stages']:
+        if event['stage']=='calibration' and event['shard']==0:
+            key='verification' if event['action']=='review' else 'collection_complete'
+            event[key+'_sha256']=hashlib.sha256((directory/(key+'.json')).read_bytes()).hexdigest()
+    write(study/'completion_receipt.json',receipt)
+    originals={p:p.read_bytes() for p in study.rglob('*') if p.is_file()}
+    monkeypatch.setattr(repeat.e,'ROOT',tmp_path);monkeypatch.setattr(repeat.e,'FORMAL',study)
+    monkeypatch.setattr(repeat.e,'bound',lambda root,validation:{})
+    monkeypatch.setattr(repeat.e,'load_models',lambda:{})
+    monkeypatch.setattr(repeat.e,'reviewed_records',lambda *args:(({},dict(method='baseline')) for _ in range(5376)))
+    monkeypatch.setattr(repeat.runtime,'audit_record',lambda *args:dict(reference_replayed_commands=2,physical_substeps=10,recorded_failure=0))
+    report=tmp_path/'runs/replay.json';repeat.replay('calibration',0,report)
+    assert json.loads(report.read_text())['executions']==5376
+    assert json.loads(report.read_text())['new_sumo_runs']==0
+    assert all(p.read_bytes()==data for p,data in originals.items())
