@@ -2,6 +2,18 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
+**Latest development repair (2026-11-02):** 665 actual SUMO executions with full
+exact replay test an additional 1–3 coupled parameter/bias paths per uncertain
+actuator class. On all 15 known adverse initials, harmful model-initial
+adoptions fall from 29 to 3; this regression set was used to fit the paths.
+On 80 fresh balanced development initials, no harmful adoption is observed,
+adoption remains 27.5–31.25% and mean paired gains are 0.979–1.177%.
+Two known adverse initials remain and callback maxima exceed 1 second.
+This is promising development evidence, **not a passed risk certificate**.
+See the [complete repair result](docs/mappo_compact_coupled_results_20261102.md),
+[physical/mathematical rationale](docs/mappo_coupled_mechanism_20261102.md),
+and [complete raw development archive](artifacts/mappo_ctde_20261101/completed_compact_coupled_delivery_20261102/inventory.json).
+
 **Formal MAPPO result (2026-11-02): complete experiment; joint certification NOT passed.**
 All37,888 SUMO runs and full independent replays are complete,with actual native
 exits0. The three gated MAPPO models have mean paired cost gains1.425%/1.436%/

@@ -1,5 +1,14 @@
 # Active goal handoff after fresh confidence margin development
 
+**Latest completed repair:** `mappo_compact_coupled_results_20261102.md`
+supersedes the older next-action list below. All 665 compact-gate SUMO runs and
+exact replays are complete; root34365 actually exited0. Regression harm is
+29 to3, while 80 new development initials retain useful adoption/gain with no
+observed harm. Sources and bank are frozen under commit61044859c3. Preserve
+the two remaining adverse initials and proceed to an unused-attempt audit and
+independent registration; no attempt4 has been allocated by this development.
+No experiment is currently live. The goal remains active and unresolved.
+
 **Superseded operational status:** Full formal MAPPO attempt3 is COMPLETE
 under source commit3734be22c8;all37,888 collection/reviews and owner29459
 actually exited0. The unchanged joint certificate FAILED mixture risk.
