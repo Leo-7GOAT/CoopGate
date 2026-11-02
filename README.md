@@ -51,6 +51,13 @@ pairs,3,353 commands/16,765 physical substeps. Actual callback costs fall54–55
 but each MAPPO model retains one harmful adopted episode;no risk acceptance
 is claimed. An offline true-baseline advantage decomposition identifies the
 first erroneous admission and exactly accounts for its observed cost/time harm.
+A [normalized gain-confidence margin](docs/gain_margin_20261102_results.md)
+completes52 actual SUMO fixture runs and independent checks. Positive floors
+remove the known early error while retaining later MAPPO use,but these are TWO
+reused initials,not generalization. Exact rejection-only min-score pruning
+preserves all48 controller trajectories/2,610 paired callbacks and full selected
+evidence while reducing positive-floor callback cost53–58%. Fresh80-initial/
+1,040-run development is registered and active;formal certification is pending.
 Fresh calibration/confirmation remain pending. See the
 [MAPPO mathematics](docs/mappo_algorithm_identity_20261101.md),
 [prospective protocol](docs/mappo_ctde_20261101_protocol.md) and
