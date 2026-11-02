@@ -74,7 +74,8 @@ def collect(out,checkpoint,n=1,seed_base=97000001,scope='integration',runtime_co
     cases=schedule(n,seed_base,scope,shard,shards)
     sources=list((ROOT/'src/coopgate').glob('*.py'))+[Path(__file__),
         ROOT/'tools/audit_buffered_scope_v25.py',ROOT/'tools/experiment_ego_v13.py',ROOT/'docs/scenario_score_sumo_20261102_protocol.md',
-        ROOT/'docs/scenario_score_development_20261102_protocol.md',ROOT/'docs/parameter_scenario_sumo_20261102_protocol.md']
+        ROOT/'docs/scenario_score_development_20261102_protocol.md',ROOT/'docs/parameter_scenario_sumo_20261102_protocol.md',
+        ROOT/'docs/parameter_scenario_development_20261102_protocol.md']
     plan=dict(scope=scope,n=n,seed_base=seed_base,shard=shard,shards=shards,checkpoint=None,
         model=identity,cases=cases,methods=list(RULES),expected_executions=len(cases)*len(RULES),
         independent_initials=len({(k[0],k[1]) for k in cases}),
