@@ -3,6 +3,11 @@
 The study remains LIVE under owning session60574. None of these tools may
 authorize early effect inspection, change the frozen source or rerun SUMO.
 
+The [coupled-study reproduction guide](mappo_coupled_reproduction_20261102.md)
+now includes exclusive read-only replay and actual-result plotting entry points.
+Their live-study refusal and report/receipt preservation checks are tested;
+no partial effects were read and no new driving episodes were launched.
+
 After the actual owner terminal result, follow the live handoff. On exit0,
 write the owner receipt binding the exact completion receipt. The common
 `tools/mappo_completed_attempt4.py` reader requires that root witness, all16
