@@ -11,7 +11,13 @@ ROOT=Path(__file__).resolve().parents[1]
 def snapshot(directory):
     directory=Path(directory).resolve()
     scope=(ROOT/'artifacts/mappo_ctde_20261101/development').resolve()
-    if directory.parent!=scope:raise ValueError('Explicit local MAPPO development directory required')
+    formal=(ROOT/'artifacts/mappo_ctde_20261101/formal_mappo_attempt3_20261102').resolve()
+    if directory.parent!=scope and directory!=formal:raise ValueError('Explicit authorized MAPPO study directory required')
+    if directory==formal:
+        receipt=json.loads((directory/'completion_receipt.json').read_bytes())
+        native=json.loads((directory/'orchestrator_native_receipt.json').read_bytes())
+        if native['actual_native_exit_code']!=0 or receipt['actual_native_finalizer']['actual_native_exit_code']!=0:
+            raise ValueError('Actual formal owner/finalizer terminal zero required')
     plan=json.loads((directory/'plan.json').read_text())
     target=directory/'source';target.mkdir(exist_ok=False)
     inventory=[]

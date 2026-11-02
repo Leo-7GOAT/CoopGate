@@ -12,16 +12,33 @@ SCOPE=ROOT/'artifacts/mappo_ctde_20261101'
 def archive(out,names):
     if len(names)!=len(set(names)):
         raise ValueError('Duplicate requested directories')
-    out=Path(out);out.mkdir(parents=True,exist_ok=False)
+    out=Path(out)
+    if out.exists():raise FileExistsError('Retain existing delivery')
     files=[]
     for name in names:
         if '/' in name or '\\' in name or name in ('.','..'):
             raise ValueError('Explicit direct directory names only')
-        directory=(SCOPE/name if name.endswith('_execution') else SCOPE/'development'/name).resolve()
-        parent=SCOPE.resolve() if name.endswith('_execution') else (SCOPE/'development').resolve()
+        formal=name=='formal_mappo_attempt3_20261102'
+        direct=formal or name.endswith('_execution')
+        directory=(SCOPE/name if direct else SCOPE/'development'/name).resolve()
+        parent=SCOPE.resolve() if direct else (SCOPE/'development').resolve()
         if directory.parent!=parent or not directory.is_dir():
             raise ValueError('Outside the authorized completed MAPPO scope')
-        if not any((directory/n).exists() for n in ('complete.json','completion.json','report.json')):
+        if formal:
+            receipt=json.loads((directory/'completion_receipt.json').read_bytes())
+            native=json.loads((directory/'orchestrator_native_receipt.json').read_bytes())
+            expected={(s,a,i) for s in ('calibration','confirmation') for a in ('collect','review') for i in range(4)}
+            if (native['actual_native_exit_code']!=0 or receipt['actual_native_finalizer']['actual_native_exit_code']!=0
+                or receipt['total_actual_sumo_runs']!=37888 or receipt['main_actual_sumo_runs']!=16384
+                or receipt['independent_initials']!=4096 or len(receipt['stages'])!=16
+                or {(e['stage'],e['action'],e['shard']) for e in receipt['stages']}!=expected
+                or any(e['actual_native_exit_code']!=0 for e in receipt['stages'])):
+                raise ValueError('Full formal native completion required')
+            for key in ('certificate','comparisons'):
+                if hashlib.sha256((directory/f'analysis/{key}.json').read_bytes()).hexdigest()!=receipt[key+'_sha256']:
+                    raise ValueError('Final formal analysis changed')
+            if not (directory/'source_snapshot.json').exists():raise ValueError('Exact formal source snapshot required')
+        elif not any((directory/n).exists() for n in ('complete.json','completion.json','report.json')):
             raise ValueError('Refuse unfinished directory '+name)
         if (directory/'policy.pt').exists() and not (directory/'audit.json').exists():
             raise ValueError('PPO training audit required before delivery')
@@ -35,6 +52,7 @@ def archive(out,names):
                     raise ValueError('Escaped source path')
                 files.append(path)
     files=sorted(files)
+    out.mkdir(parents=True,exist_ok=False)
     parts=[];inventory=[];bundle=None;part=None;members=[]
 
     def close_part():

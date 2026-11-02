@@ -64,6 +64,16 @@ def evidence():
             and audit['on_policy_proposals_verified'] and audit['independent_gae_verified']):raise ValueError('Genuine joint PPO audit missing')
         audits.append(audit)
     competence=read(BASE/'development/single_4601_sumo_full/single_competence.json')
+    read(BASE/'development/single_4603_exact/single_competence.json')
+    read(BASE/'ippo_matched_family_20261102.json')
+    development=read(BASE/'gain_margin_fresh_analysis_20261102/independent_audit.json')
+    if development['actual_sumo_executions']!=1040 or development['independent_initials']!=80:
+        raise ValueError('Complete independent development evidence required')
+    diagnostic=read(BASE/'parameter_counterexample_diagnosis_20261102.json')
+    if (not diagnostic['privileged_offline_only'] or diagnostic['online_controller_changed']
+        or diagnostic['independent_adverse_initials']!=1
+        or any(e['telescoping_identity_residual_max']!=0 for e in diagnostic['examples'])):
+        raise ValueError('Offline counterexample evidence changed')
     return cert,comparison,competence
 
 
