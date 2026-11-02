@@ -1,0 +1,124 @@
+{
+  "scope": "off-policy recorded-prefix diagnostic",
+  "closed_loop_sumo_runs": 0,
+  "extra_independent_initials": 0,
+  "policy": {
+    "policy_sha256": "ffe58343ef0ee9eda1113cfc19aedccc900fc556fce15f66e3a99e45c6d9b451",
+    "audit_sha256": "f15ba9152546e885afc0f6b07f670dbd8c0862d27db43c50e0b38c4403438a39",
+    "algorithm": "mappo_ctde_20261101",
+    "joint_steps": 2097152,
+    "seed": 4705,
+    "ancestry": {
+      "path": "artifacts/mappo_ctde_20261101/development/legacy_901/initializer.pt",
+      "sha256": "dec13ddf0e995f2edacb6d8b4de2478f6a62c57536e83f4105ca8ad4217082cf",
+      "ancestry": "Model-based policy-iteration ego actor; old performance/certificates are not new PPO evidence"
+    },
+    "inherited_risk_certificate": false,
+    "learned_coordination_superiority_proved_by_loader": false
+  },
+  "online_privileged_inputs": false,
+  "oracle_labels_used_only_for_reporting": true,
+  "source_sha256": {
+    "src/coopgate/parameter_scenario_gate.py": "6240686360a88c94a1ce993901b50d29b83a3e2703fc814d87197f20396827a9",
+    "tools/probe_parameter_scenarios.py": "4d55ad65f73792d5fdc2ba56c4c8a1b63e0f9e60b9571c2a3e595744bb9673f4",
+    "docs/parameter_scenario_20261102_protocol.md": "85847928ac98ef73fb861959ae97a9de77679048d3be4ec9697000b4bb9c7d85"
+  },
+  "examples": [
+    {
+      "case": [
+        96902001,
+        "slow_yield",
+        "lag_strong",
+        "clean"
+      ],
+      "step": 1,
+      "old_command": [
+        2.5,
+        0.3125,
+        -0.15625
+      ],
+      "new_prefix_probe_command": [
+        2.5,
+        0.0,
+        -0.9375
+      ],
+      "unchanged_command": false,
+      "old_oracle_regression": true,
+      "new_learning_used": true,
+      "score": 1.0,
+      "parameter_path_rejections": 1
+    },
+    {
+      "case": [
+        96902001,
+        "slow_yield",
+        "lag_strong",
+        "clean"
+      ],
+      "step": 3,
+      "old_command": [
+        2.5,
+        2.5,
+        0.625
+      ],
+      "new_prefix_probe_command": [
+        2.5,
+        2.5,
+        0.625
+      ],
+      "unchanged_command": true,
+      "old_oracle_regression": false,
+      "new_learning_used": true,
+      "score": 1.0,
+      "parameter_path_rejections": 0
+    },
+    {
+      "case": [
+        96902001,
+        "slow_yield",
+        "lag_strong",
+        "uniform"
+      ],
+      "step": 1,
+      "old_command": [
+        2.5,
+        0.3125,
+        -0.15625
+      ],
+      "new_prefix_probe_command": [
+        2.5,
+        0.0,
+        -0.9375
+      ],
+      "unchanged_command": false,
+      "old_oracle_regression": true,
+      "new_learning_used": true,
+      "score": 1.0,
+      "parameter_path_rejections": 1
+    },
+    {
+      "case": [
+        96902001,
+        "slow_yield",
+        "lag_strong",
+        "pulse"
+      ],
+      "step": 1,
+      "old_command": [
+        2.5,
+        0.3125,
+        -0.15625
+      ],
+      "new_prefix_probe_command": [
+        2.5,
+        0.0,
+        -0.9375
+      ],
+      "unchanged_command": false,
+      "old_oracle_regression": true,
+      "new_learning_used": true,
+      "score": 1.0,
+      "parameter_path_rejections": 1
+    }
+  ]
+}
