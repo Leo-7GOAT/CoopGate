@@ -46,7 +46,11 @@ preserves every command and original evidence field in all240 parameter-gate
 trajectories/11,460 replay callbacks. Total callback time falls55.21%/55.30%/
 54.95%;over500ms calls fall248 to23 across the three models. Worst callbacks
 still exceed1s,so no500ms or hard-real-time guarantee is claimed. Fresh140-run
-SUMO equivalence is separately registered and in progress;replay adds no trials.
+actual SUMO equivalence also passes:20 independent initials,60 implementation
+pairs,3,353 commands/16,765 physical substeps. Actual callback costs fall54–55%,
+but each MAPPO model retains one harmful adopted episode;no risk acceptance
+is claimed. An offline true-baseline advantage decomposition identifies the
+first erroneous admission and exactly accounts for its observed cost/time harm.
 Fresh calibration/confirmation remain pending. See the
 [MAPPO mathematics](docs/mappo_algorithm_identity_20261101.md),
 [prospective protocol](docs/mappo_ctde_20261101_protocol.md) and
