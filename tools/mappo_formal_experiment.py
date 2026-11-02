@@ -9,11 +9,13 @@ from contextlib import ExitStack
 import hashlib
 import json
 import os
+import platform
 from pathlib import Path
 import subprocess
 import time
 import numpy as np
 import torch
+import numba
 from coopgate.episode_store_v21 import EpisodeStore,observations,inventory
 from coopgate.mappo_deployment import load_deployment_actor
 from coopgate.episode_thinning_control import matching_probability
@@ -33,7 +35,7 @@ VALIDATION=BASE/'development/formal_adapter_validation_20261102'
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def read(path):return json.loads(Path(path).read_text())
+def read(path):return json.loads(Path(path).read_bytes())
 
 
 def write(path,value):
@@ -54,6 +56,8 @@ def source_files():
     sources+=[ROOT/'tools'/n for n in ('mappo_formal_common.py','mappo_formal_design.py','mappo_formal_runtime.py',
         'mappo_formal_experiment.py','mappo_risk_attempt3.py','mappo_joint_data.py','build_mappo_formal_adapters.py')]
     sources += [ROOT/'tools/mappo_native_launch.py',ROOT/'tools/run_mappo_formal_validation.py']
+    sources += [ROOT/'tools/run_mappo_formal.py',ROOT/'tools/mappo_formal_finalize.py',ROOT/'tools/verify_mappo_predecessor.py',
+        ROOT/'tests/test_mappo_native_launch.py',ROOT/'tests/test_mappo_formal_integrity.py']
     sources += [ROOT/'tests/test_mappo_formal_adapters.py',ROOT/'tests/test_mappo_formal_failures.py',ROOT/'docs/mappo_formal_attempt3_20261102_protocol.md']
     return sources
 
@@ -87,13 +91,20 @@ def build(validation=False):
     print(json.dumps(dict(root=str(out),executions=plan['total_sumo_runs'],validation_only=validation,error_allocated=False)),flush=True)
 
 
-def bound(root,validation):
+def verify_plan(root,validation):
     plan=read(root/'plan.json')
     if plan['validation_only']!=validation or plan['reset_domain']['invalid']:raise ValueError('Invalid study domain')
     if plan['candidate_sha256']!=sha(BASE/'gain_margin_fixed_candidate_20261102.json'):raise ValueError('Candidate binding changed')
-    design.validate_candidate()
+    candidate=design.validate_candidate()
+    current=dict(python=platform.python_version(),numpy=np.__version__,torch=torch.__version__,numba=numba.__version__)
+    if current!=candidate['runtime']:raise ValueError('Frozen actual runtime/library versions changed')
     for name,digest in plan['source_sha256'].items():
         if sha(ROOT/name)!=digest:raise ValueError('Frozen study source changed: '+name)
+    return plan
+
+
+def bound(root,validation):
+    plan=verify_plan(root,validation)
     if not validation:
         binding=read(root/'binding.json');allocation=read(root/'allocation.json')
         if binding['plan_sha256']!=sha(root/'plan.json') or binding['allocation_sha256']!=sha(root/'allocation.json'):
@@ -109,7 +120,12 @@ def stage_cases(root,stage,plan):
     if stage=='confirmation':
         controls=read(root/'matching_controls.json')
         if controls['calibration_terminal_verified'] is not True:raise ValueError('Matching controls precede completed calibration')
+        binding=read(root/'confirmation_control_binding.json')
+        if (binding['matching_sha256']!=sha(root/'matching_controls.json') or
+            binding['calibration_native_receipt_sha256']!=sha(root/'calibration/native_stage_receipt.json')):
+            raise ValueError('Confirmation controller randomization binding changed')
         cases=design.stage_cases('confirmation',controls['probabilities'])
+        if canonical_sha256(cases)!=binding['cases_with_independent_coins_sha256']:raise ValueError('Independent controller coins changed')
         if [{k:v for k,v in c.items() if k!='controller_coins'} for c in cases]!=plan['cases'][stage]:
             raise ValueError('Confirmation case changed beyond independent controller coins')
     return cases
