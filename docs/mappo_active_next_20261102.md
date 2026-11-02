@@ -1,8 +1,9 @@
 # Active goal handoff after fresh confidence margin development
 
-**Superseded operational status:** Full formal MAPPO attempt3 is now registered
-and LIVE under source commit3734be22c8. Follow
-`mappo_formal_live_20261102.md` and the retained owner session29459.
+**Superseded operational status:** Full formal MAPPO attempt3 is COMPLETE
+under source commit3734be22c8;all37,888 collection/reviews and owner29459
+actually exited0. The unchanged joint certificate FAILED mixture risk.
+Follow `mappo_formal_attempt3_20261102_results.md`;the owner is TERMINAL.
 Do not repeat the allocation audit,build,registration or launch below.
 The historical evidence and scientific requirements here remain applicable.
 

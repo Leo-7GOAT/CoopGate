@@ -2,6 +2,19 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
+**Formal MAPPO result (2026-11-02): complete experiment; joint certification NOT passed.**
+All37,888 SUMO runs and full independent replays are complete,with actual native
+exits0. The three gated MAPPO models have mean paired cost gains1.425%/1.436%/
+1.399%,with lower bounds1.144%/1.163%/1.121%. Adoption and strong-lag risk
+conditions also pass. Original mixture-risk upper bounds6.229%/5.382%/5.380%
+exceed the unchanged5% limit,so the fixed-family joint decision is false.
+No old certificate transfers and no spent error is reset. See the
+[complete formal result](docs/mappo_formal_attempt3_20261102_results.md),
+[byte-verified data archive](artifacts/mappo_ctde_20261101/completed_formal_mappo_attempt3_delivery_20261102/inventory.json),
+and [12-page genuine MAPPO draft](artifacts/paper_mappo_20261102/CoopGate_真实MAPPO论文初稿_20261102.docx).
+The goal remains active for the unresolved risk condition;submission readiness
+and hard-real-time deployment are not claimed.
+
 **Active MAPPO work (2026-11-02).** Three independent local actors, a centralized
 critic, joint on-policy proposals, GAE and clipped PPO are implemented and
 independently audited. Fixed joint seeds4703/4704/4705 EACH complete2,097,152
@@ -64,15 +77,16 @@ hasone harmful adoption per model;all negative outcomes remain. These balanced
 development results do NOT certify risk. The candidate was frozen before formal
 sampling. The complete allocation/predecessor audit and64-run actual-SUMO
 adapter validation now pass. The unchanged full-size MAPPO attempt3 is
-explicitly registered at.05/12 and LIVE:3072 calibration plus1024 IID
+explicitly registered at.05/12 and COMPLETE:3072 calibration plus1024 IID
 confirmation initials,16384 primary and37888 total SUMO executions with
 actual nominal,independent adoption-thinned and physical-only controls.
-No partial scientific outcomes or new risk certificate are reported.
+The complete unchanged joint certificate is negative;all raw adverse outcomes remain.
 See the [live formal scope and execution handoff](docs/mappo_formal_live_20261102.md),
 [frozen formal protocol](docs/mappo_formal_attempt3_20261102_protocol.md),
 [complete fresh matrix](docs/gain_margin_fresh_20261102_results.md) and
 [mathematics and proof limits](docs/gain_margin_mathematics_20261102.md).
-Full formal sampling/replay and the new manuscript remain incomplete. See the
+Full formal sampling/replay and the new12-page draft now complete;the mixture-risk
+condition remains unmet. See the
 [MAPPO mathematics](docs/mappo_algorithm_identity_20261101.md),
 [prospective protocol](docs/mappo_ctde_20261101_protocol.md) and
 [verified progress / remaining work](docs/mappo_ctde_20261101_progress.md).

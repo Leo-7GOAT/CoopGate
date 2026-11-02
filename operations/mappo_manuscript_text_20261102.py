@@ -181,6 +181,12 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,competence,figur
     p('同采用率对照仅从完整校准的实际采用计数估计硬币概率 p=N目标采用/N名义采用。确认中硬币由独立控制器随机流生成，'
       '每回合只运行名义或相同基线分支。比例无效时不裁剪为合法值，标记该匹配对照无效，但仍完成全部目标与基线确认。'
       '这种估计匹配不保证确认集的实际采用率精确相等，因此同时报告成对采用率差的区间，不能将硬币概率当作观察到的采用率。')
+    p('条件于校准后固定的 p，若回合硬币 C 与外部路径独立且基线分支精确等于配对基线，则随机弃权只按 p 缩减采用率和平均收益。'
+      '当 p>0 且名义策略的采用事件概率为正时，其采用后条件损害率与名义策略相同。记 N 为名义门控、C 为弃权控制器，有')
+    eq('Pr(',sub('A','C'),') = p Pr(',sub('A','N'),')',
+       '    ',sub('R','C'),' = ',sub('R','N'),'    E[',sub('Δ','C'),'] = p E[',sub('Δ','N'),']')
+    p('该恒等式由 Aᶜ={C=1}∩Aᴺ 及基线分支的配对收益为零得到，解释了为什么独立随机弃权可以检验场景选择的作用。'
+      '它不把校准比例估计升级为精确的总体采用率匹配，也不为观察到的两控制器差异提供额外显著性结论。')
     p('控制器的普通异常、未完成、碰撞和约束违反均保留截断成本及已执行前缀，不减少固定样本数。'
       '不能解释为控制器结果的后端或证据完整性错误会停止该实验并保留记录。'
       '正式运行前的 64 次 SUMO 适配验证、64 条独立复核及 18 项测试检查了异常保留、实际进程退出和完整采样表。'
@@ -208,6 +214,12 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,competence,figur
       '任何一项未达到原门槛均保留为未通过，不通过舍弃种子、提高伤害容差或替换统计规则获得接受。'
       '零次观测失败也不意味着总体失败概率严格为零。')
     if not certified:
+        p('本次失败来自混合分布风险界：三个模型的上界分别为 '
+          +'、'.join(num(100*members[s+':mixture']['pointwise_risk_upper'])+'%' for s in seeds)
+          +'，均超过 5%。强滞后风险界、确认采用率下界和收益下界均达到预定要求。'
+          '校准中有害采用分别为 '+ '、'.join(str(members[s+':mixture']['harmful_adoptions']) for s in seeds)
+          +' 次。这些完整观察支持正的部署收益，但不足以建立原定整组风险认证。')
+    if not certified:
         p('本次完整实验未建立预定的整组部署认证。下表的平均改善和风险点估计仍可用于解释方法行为，'
           '但不能替代未通过的置信界，也不能写成“已保证安全且优于基线”。后续研究需要新的独立方案和证据。')
     summaries=comparison['confirmation_methods'];rows=[]
@@ -233,6 +245,12 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,competence,figur
       '区间覆盖零不证明等价或精确同率；它们是比较诊断，不是新的部署证书。'
       '有效匹配概率状态为 '+str(comparison['calibration_matching']['all_matching_valid'])+'。'
       '只有结合实际采用差、收益与逐车有害结果，才能判断目标门控的优势是否超出单纯少用学习。')
+    p('确认集中目标门控的实际采用数为 '+ '、'.join(str(summaries[s]['adopted']) for s in seeds)
+      +'，随机弃权对照为 '+ '、'.join(str(summaries['thinned_'+s]['adopted']) for s in seeds)
+      +'；相应有害采用数分别为 '+ '、'.join(str(summaries[s]['harmful_adopted']) for s in seeds)
+      +' 与 '+ '、'.join(str(summaries['thinned_'+s]['harmful_adopted']) for s in seeds)
+      +'。本组描述结果同时出现较多的学习采用与较少的逐车退化，支持门控区分风险场景的解释。'
+      '实际采用率仍存在约 4–6 个百分点的差异，区间也没有证明等价，因此不把该比较写成精确同率或新的因果认证。')
     h('10 工程计算代价与落地边界')
     rows=[]
     for name in order:

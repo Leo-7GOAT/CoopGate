@@ -1,5 +1,11 @@
 # Genuine MAPPO full formal validation
 
+**Superseded live status:** all37,888 executions/reviews and actual owner
+session29459 exit0 are complete. Finalizer21516 exit0;owner terminal chunk9035ee.
+The joint scientific certificate FAILED mixture risk,not execution integrity.
+Follow `mappo_formal_attempt3_20261102_results.md`. Do not restart this study.
+The original live account below is retained as history.
+
 The unbudgeted user goal is ACTIVE. Genuine joint MAPPO and its actor/GAE
 audits are complete;new deployment evidence and the new manuscript are not.
 

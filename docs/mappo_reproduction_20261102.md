@@ -1,7 +1,8 @@
 # Reproducing the genuine MAPPO study
 
-Formal attempt3 is currently LIVE. Its final certificate,complete data delivery
-and new Word manuscript do not yet exist. Do not rerun registration,collection
+Formal attempt3 is COMPLETE. Its final certificate is negative,all37,888
+actual records/reviews and native exits are complete,and the12-page genuine
+MAPPO manuscript is delivered. Do not rerun registration,collection
 or review into its existing directories. This guide separates restoring
 completed evidence from launching a new scientific experiment.
 
@@ -40,16 +41,17 @@ For the formal actors and parent,a minimal dependency set is:
 - mappo_predecessor_budget_audit_20261102:complete old allocation inventory
   ZIP and predecessor native/hash proof.
 
-Do not relabel previous PI certificates as MAPPO evidence. The planned
-completed_formal_mappo_attempt3_delivery_20261102 will be created only after
-the actual owner,all16 collector/reviewer children and finalizer exit zero.
-It will contain raw sealed blocks,the unchanged final analysis (even if
-negative),all native receipts and exact frozen source snapshots.
+Do not relabel previous PI certificates as MAPPO evidence. The completed
+completed_formal_mappo_attempt3_delivery_20261102 contains19 independent ZIP
+parts with1,748 byte-verified files:raw sealed blocks,the unchanged negative
+final analysis,all native receipts and exact frozen source snapshots.
 
 ## Repeat review without overwriting original results
 
-Once the complete formal delivery exists and has been extracted,work in an
-isolated checkout with the exact source/runtime. Use the new read-only review
+After extracting the complete formal delivery,work in an isolated checkout
+with the exact source/runtime. The read-only helper was added after3734be22c8;
+use a delivery commit that includes it,while the157 original study dependencies
+must still match the frozen inventory byte-for-byte. Use the read-only review
 entry point,which refuses live studies and writes only an exclusive new report
 under runs/. For example:
 
