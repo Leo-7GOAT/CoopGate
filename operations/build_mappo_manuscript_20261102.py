@@ -9,6 +9,7 @@ import hashlib
 import json
 from pathlib import Path
 from zipfile import ZipFile
+from lxml import etree
 from docx import Document
 from docx.shared import Cm,Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -22,6 +23,7 @@ BASE=ROOT/'artifacts/mappo_ctde_20261101'
 FORMAL=BASE/'formal_mappo_attempt3_20261102'
 REFERENCE=ROOT/'artifacts/paper_supplement_20261026/CoopGate_论文实验与理论补充_20261026.docx'
 REFERENCE_SHA='d4310c3a98cae08438cb46db8f8414710c41b2f4d57c39f82fc386b170729ec6'
+FIGURES=BASE/'formal_mappo_attempt3_figures_20261102'
 INPUTS={}
 
 
@@ -83,6 +85,14 @@ def evidence():
 def build(out):
     if out.exists():raise FileExistsError('Keep every manuscript revision')
     cert,comparison,competence=evidence()
+    figures=read(FIGURES/'report.json')
+    if (figures['source_certificate_sha256']!=sha(FORMAL/'analysis/certificate.json')
+        or figures['source_comparisons_sha256']!=sha(FORMAL/'analysis/comparisons.json')
+        or figures['owner_receipt_sha256']!=sha(FORMAL/'orchestrator_native_receipt.json')):
+        raise ValueError('Figures do not describe this exact completed formal study')
+    image_hashes={x['path']:x['sha256'] for x in figures['figures'] if x['path'].endswith('.png')}
+    for name,digest in image_hashes.items():
+        if sha(FIGURES/name)!=digest:raise ValueError('Formal figure changed')
     if sha(REFERENCE)!=REFERENCE_SHA:raise ValueError('Retained layout reference changed')
     doc=Document(REFERENCE);section=doc.sections[0]._sectPr.xml
     for child in list(doc.element.body):
@@ -132,20 +142,36 @@ def build(out):
                     for run in para.runs:run.font.size=Pt(10);run.bold=ri==0
         p('')
     def num(x,d=3):return '不可评估' if x is None else f'{x:.{d}f}'
+    def figure(name,caption):
+        if name+'.png' not in image_hashes:raise ValueError('Required completed figure missing')
+        para=p('');para.paragraph_format.keep_with_next=True;para.paragraph_format.first_line_indent=Cm(0)
+        para.alignment=WD_ALIGN_PARAGRAPH.CENTER;para.add_run().add_picture(str(FIGURES/(name+'.png')),width=Cm(16.4))
+        cap=p(caption,'Caption');cap.paragraph_format.keep_with_next=False
+        cap.paragraph_format.keep_together=True
     from mappo_manuscript_text_20261102 import compose
-    compose(p,h,eq,table,num,scripted,fraction,summation,cert,comparison,competence)
+    compose(p,h,eq,table,num,scripted,fraction,summation,cert,comparison,competence,figure)
+    if len(doc.inline_shapes)!=3:raise ValueError('Exactly three complete scientific figures required')
     if doc.sections[0]._sectPr.xml!=section:raise ValueError('Reference geometry changed')
     for name,digest in INPUTS.items():
         if sha(ROOT/name)!=digest:raise ValueError('Completed evidence changed during authoring')
     out.mkdir(parents=True,exist_ok=False);target=out/'CoopGate_真实MAPPO论文初稿_20261102.docx';doc.save(target)
     with ZipFile(REFERENCE) as original,ZipFile(target) as final:
-        if set(original.namelist())!=set(final.namelist()):raise ValueError('Unexpected template component change')
+        old=set(original.namelist());new=set(final.namelist())
+        if not old<=new:raise ValueError('Original template component removed')
+        for name in new-old:
+            if not name.startswith('word/media/') or hashlib.sha256(final.read(name)).hexdigest() not in image_hashes.values():
+                raise ValueError('Unexpected new package component')
         for name in original.namelist():
-            if name not in ('word/document.xml','docProps/core.xml') and original.read(name)!=final.read(name):
+            if name not in ('word/document.xml','docProps/core.xml','[Content_Types].xml','word/_rels/document.xml.rels') and original.read(name)!=final.read(name):
                 raise ValueError('Preserve-only template component changed: '+name)
+        def relationships(bundle):
+            return {n.get('Id'):dict(n.attrib) for n in etree.fromstring(bundle.read('word/_rels/document.xml.rels'))}
+        oldrels,newrels=relationships(original),relationships(final)
+        if any(newrels.get(k)!=v for k,v in oldrels.items()):raise ValueError('Existing template relationship changed')
     record=dict(document_sha256=sha(target),reference_sha256=REFERENCE_SHA,completed_inputs_sha256=INPUTS,
         builder_sha256=sha(__file__),text_source_sha256=sha(ROOT/'operations/mappo_manuscript_text_20261102.py'),
         native_equations=len(list(doc.element.body.iter(qn('m:oMath')))),live_partial_outcomes_read=False,
+        embedded_completed_figures=len(doc.inline_shapes),existing_template_relationships_preserved=True,
         old_pi_manuscript_unchanged=True,template_opaque_parts_byte_preserved=True,final_visual_review_required=True)
     (out/'build.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(dict(output=str(target),native_equations=record['native_equations']),ensure_ascii=False))

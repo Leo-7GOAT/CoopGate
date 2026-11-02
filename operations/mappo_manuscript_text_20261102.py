@@ -2,7 +2,7 @@
 from docx.shared import Pt
 
 
-def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,competence):
+def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,competence,figure):
     seeds=('4703','4704','4705');members=cert['primary_risk']['members']
     certified=cert['joint_deployment_certified']
     verdict='通过全部预定联合条件' if certified else '未通过全部预定联合条件'
@@ -124,7 +124,7 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,competence):
       '零门槛特意保留原数值语义。实现记录拒绝路径、分母和上界，并独立重算这些证据。')
     h('6 2 真实闭环相对基线的性能分解',2)
     p('命题 2  令 z 包含状态、执行器记忆、基线观察器及时间。给定同一初态、真实参数和外部扰动路径，'
-      'Vᴮ 是真实系统中从 z 执行基线的剩余成本。对完整定义终端价值的有限轨迹，真实基线优势及差值满足')
+      'Vᴮ 是真实系统中从 z 执行基线的剩余成本。对成功完成、或已将中止截断成本纳入终端成本的有限轨迹，真实基线优势及差值满足')
     eq(sub('A','t','B'),'(z,u) = ',sub('c','t'),'(z,u)+',sub('V','t+1','B'),'(z′)−',sub('V','t','B'),'(z)',
        '    ',sub('J','G'),'−',sub('J','B'),' = ',summation('t=0','T−1',[sub('A','t','B'),'(',sub('z','t'),',',sub('u','t'),')']))
     p('证明将优势定义沿实际轨迹相加，中间价值项抵消，使用终端 Vᴮ=0 即得。实际基线动作的优势由 Bellman 递推为零。'
@@ -201,6 +201,7 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,competence):
         rows.append((s,num(100*mix['pointwise_risk_upper'])+'%',num(100*lag['pointwise_risk_upper'])+'%',
                      num(100*ad['adoption_lower'])+'%',num(g['gain_lower_percent'])+'%'))
     table('表 2 固定三模型的正式单侧界',['种子','混合风险上界','强滞后风险上界','采用率下界','收益下界'],rows,[1.6,3.9,3.9,3.5,3.5])
+    figure('formal_acceptance','图 1 固定三模型的正式风险采用率与收益界  虚线为原定判定门槛')
     p('整个固定模型族'+verdict+'。联合 p 值为 '+num(cert['joint_family_p_value'],6)
       +'，检验水平为 '+num(cert['allocated_error'],6)+'；观测的主基线与目标执行失败计数为 '
       +str(cert['observed_execution_failures'])+'。'
@@ -218,6 +219,7 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,competence):
         r=summaries[name];rows.append((labels[name],str(r['adopted'])+'/1024',str(r['harmful_adopted']),
                                      num(r['mean_paired_percentage_gain'])+'%',str(r['execution_failures'])))
     table('表 3 完整确认集的逐方法描述结果',['方法','实际采用回合','有害采用回合','平均配对收益','执行失败'],rows,[4.0,3.4,3.0,3.6,2.4])
+    figure('formal_control_comparisons','图 2 完整确认集上的门控及对照  Gate 为目标门控 Thinned 为随机回合弃权  比例文字为有害采用数除以采用数')
     p('表 3 的有害采用按每辆车的实际成本或到达时间计算。任一车退化即记为有害，即便团队平均改善。'
       '没有采用的失败回合仍进入完整性检查及收益统计，不被该“有害采用”列隐藏或删除。'
       '共享证书适配器比较的是相同物理模型下的决策规则，不支持对原论文在其原始环境中优劣的推广。')
@@ -237,6 +239,7 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,competence):
         r=summaries[name];rows.append((labels[name],str(r['callbacks']),num(r['callback_p95_ms'],1),
                                      num(r['callback_max_ms'],1),str(r['callback_over_500ms'])))
     table('表 5 完整实际在线回调耗时',['方法','回调数','P95 毫秒','最大毫秒','超过 500 毫秒'],rows,[4.0,2.6,3.0,3.0,3.8])
+    figure('formal_callback_cost','图 3 各方法完整在线回调的 P95 与最大耗时  纵轴为对数刻度  虚线表示 500 毫秒')
     p('计时包含实际提案、规划预测、物理检查和门控选择，也保留抛异常调用的已花费时间。'
       '四路并发及共享桌面条件会引入调度噪声，P95 和最大值是实测统计，不是最坏执行时间证明。'
       '通信延迟不在本研究统计范围。同步仿真在每次回调完成后推进时钟；超过 500 ms 没有被超时截断或替换为伪成功。'
