@@ -26,7 +26,13 @@ decision rule,including its original numerical tolerances.
 Fixed exploratory floors0,.0025,.005,.01 must remain visible for ALL three
 models. Check zero-floor decision/evidence parity first. Then test the already
 known regression initial96902001 and fresh counterexample97110131 as clearly
-reused mechanism fixtures. Retain failures and adoption,not just harm counts.
+reused mechanism fixtures. The registered first actual grid has52 executions:
+96902001 slow_yield strong-lag clean/uniform/pulse and97110131 dense strong-lag
+clean;each gets baseline plus all3 actors times all4 floors. These are TWO
+reused initials,not52 new independent trials. Compare every original field
+of zero-floor runs to the prior reviewed actual SUMO sources,and independently
+reconstruct the new confidence arithmetic,physical substeps and full decisions.
+Retain failures and adoption,not just harm counts.
 Do NOT filter existing complete episodes offline to pretend a new controller
 was executed:rejecting a decision changes every later state and proposal.
 
