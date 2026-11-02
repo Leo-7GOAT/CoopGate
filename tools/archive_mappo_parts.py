@@ -18,13 +18,16 @@ def archive(out,names):
     for name in names:
         if '/' in name or '\\' in name or name in ('.','..'):
             raise ValueError('Explicit direct directory names only')
-        formal=name=='formal_mappo_attempt3_20261102'
+        formal=name in ('formal_mappo_attempt3_20261102','formal_mappo_attempt4_20261102')
         direct=formal or name.endswith('_execution')
         directory=(SCOPE/name if direct else SCOPE/'development'/name).resolve()
         parent=SCOPE.resolve() if direct else (SCOPE/'development').resolve()
         if directory.parent!=parent or not directory.is_dir():
             raise ValueError('Outside the authorized completed MAPPO scope')
         if formal:
+            if name=='formal_mappo_attempt4_20261102':
+                from mappo_completed_attempt4 import complete_evidence
+                complete_evidence(directory)
             receipt=json.loads((directory/'completion_receipt.json').read_bytes())
             native=json.loads((directory/'orchestrator_native_receipt.json').read_bytes())
             expected={(s,a,i) for s in ('calibration','confirmation') for a in ('collect','review') for i in range(4)}
