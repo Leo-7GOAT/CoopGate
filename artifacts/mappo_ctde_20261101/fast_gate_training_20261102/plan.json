@@ -1,0 +1,30 @@
+{
+  "algorithm": "supervised_arbitration_distillation_not_PPO",
+  "teacher_data_sha256": "864a2d4e2431f09a53613bbf9c9fab1875474445d28c0185b1fec0ced336948f",
+  "epochs": 100,
+  "minibatch": 256,
+  "lr": 0.0003,
+  "weight_decay": 0.0001,
+  "width": 128,
+  "class_weight": "sqrt(n_baseline/n_class),cap10;unseen classes masked",
+  "normalization": "TRAIN-ONLY mean/std,floor.05",
+  "cross_validation": "Leave ONE independent initial group out across ALL models/modes/plants",
+  "final_seeds": [
+    22011,
+    22012,
+    22013,
+    22014,
+    22015
+  ],
+  "thresholds": [
+    0.9,
+    0.95,
+    0.99
+  ],
+  "risk_certificate": false,
+  "source_sha256": {
+    "src/coopgate/fast_gate_model.py": "a72ab53202e5cc847a33c1812870b2d65bf2d002e2f9d01cfa622cb0fcf67887",
+    "tools/train_fast_gate.py": "4cf68106af87518cbd0091d9ffff6f7e5999835e209ce88eb1aec7d01fea187f",
+    "docs/fast_gate_20261102_protocol.md": "8cd3b9a3552272046104608ae3551e8ed69cdde3015d18b54568e8cb5b85febb"
+  }
+}
