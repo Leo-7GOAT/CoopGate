@@ -8,6 +8,11 @@ spawn agents, change models/metrics or edit the three preexisting dirty files:
 `operations/continue_joint_recovery_20261028.ps1`,
 `tests/test_execute_prospective_v22.py`, `tools/execute_prospective_v22.py`.
 
+**Latest phase:** all21,504 calibration executions and all independent reviews
+have completed. IID confirmation collection has started under the SAME live
+owner60574. No target effects were read or parameters changed. Read the
+additional paired holdout obligation below before any completion decision.
+
 ## Actual status and authoritative owner
 
 **LIVE owning exec session60574**, launched using repository venv Python:
@@ -109,6 +114,8 @@ No force push or original dirty-file modification occurred.
 3. Read the complete certificate and all-control comparisons. Report all
    thresholds and failures; no cherry-picking, altered tolerance/bound or alpha
    transfer. Attempt3 remains COMPLETE and FAILED under its original5% limit.
+   Also run the already registered secondary paired holdout ablation below;
+   do not stop at primary completion or omit an unfavorable ablation.
 4. Byte-archive all completed raw blocks/source/native receipts in <=24 MiB
    standalone parts, verifying every restored file. Publish small Git transfer
    batches; a single500MB push repeatedly reset previously. Never force-push or
@@ -124,3 +131,46 @@ No force push or original dirty-file modification occurred.
 6. Confirm remote GitHub refs/data after publication. Mark goal complete only
    when its actual scientific and delivery requirements are achieved; never
    merely because a version or long run finished. No premature shutdown.
+
+## Additional fixed paired holdout ablation
+
+To test the coupled-path mechanism on the SAME independent initial conditions,
+`coupled_holdout_ablation_20261102/plan.json` was registered at
+2026-11-02T13:54:23.765748Z BEFORE primary confirmation collection started and
+before accessing any confirmation effects. It fixes every1024 primary
+confirmation initial and the original PrunedGainMarginGate0.0025 with all three
+unchanged MAPPO models. Protocol:
+`docs/mappo_coupled_holdout_ablation_20261102_protocol.md`.
+
+This adds exactly3072 old-gate actual SUMO runs plus full independent replay,
+paired against existing primary baseline/new-gate outcomes. It adds ZERO
+independent initials and no alpha/certificate. Primary37888 runs,all16 controls
+and thresholds remain intact. Total primary plus supplement is40960 actual
+executions on the SAME4096 independent primary initials. Only descriptive
+paired harm removed/introduced/retained,adoption and utility comparisons are
+reported; no new significance or separate-collection speedup claim.
+
+The wrapper is `tools/run_coupled_holdout_ablation.py`, bound at source commit
+4880e9230c6dbeb7ad10a007082a86be9d413751 and published with its binding in
+commit6c29d1fbad. Three guard tests pass; actual-live refusal was also observed
+before completion. No additional SUMO has started. Do not edit the bound
+wrapper,protocol,completion guard or cases. No repeat audit/register/bind.
+
+**After actual primary60574 exit0 and its owner receipt,run:**
+
+```powershell
+& C:/Users/Leo/Desktop/papper/.venv/Scripts/python.exe tools/run_coupled_holdout_ablation.py run
+```
+
+Capture and retain that new native owner handle; all four direct worker
+handles are owned and their actual exit codes recorded. Do not launch while
+primary collection/timing is live. The command itself requires full primary
+completion and refuses earlier execution. After its actual owner exit0,bind
+its report SHA in an owner receipt,archive all raw sealed blocks and include
+the full paired comparison in the new manuscript. Retain harm introduced by
+the repair and all failures even if the result is unfavorable.
+
+Postprocessing/reproduction helpers prepared after8db are described in
+`mappo_attempt4_postprocessing_20261102.md` and
+`mappo_coupled_reproduction_20261102.md`. The original160 study dependencies
+still match; none of these helpers modifies the frozen primary experiment.
