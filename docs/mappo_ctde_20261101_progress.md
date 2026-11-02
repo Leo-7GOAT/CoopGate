@@ -147,14 +147,38 @@
   SUMO trial. Clean-mode evidence particularly motivates actuator-parameter/
   memory uncertainty assessment; no claim isolates causes in noisy modes.
   See `scenario_forecast_error_diagnosis_20261102.json`.
-- Fixed IPPO local-value ablation is ACTIVE,first seed4703/native pipeline98901,
-  train PID58820. It preserves exact actor initial tensors,config and proposal
+- Fixed IPPO local-value ablation seed4703/native pipeline98901 is COMPLETE,
+  all actual native exits0:2,097,152 joint steps,5,632 exact comparisons,88
+  actual SUMO integrations and replay. Versus strong team planning it remains
+  .05088s worse,so full3,584-SUMO follow-up was not enabled. On identical
+  cases MAPPO's team cost is .04671s better than IPPO (development t lower
+  .01792s); this is ONE paired seed,not a replicated superiority claim.
+  It preserves exact actor initial tensors,config and proposal
   RNG; audit counts228,135 actor parameters,75,777 centralized versus72,961
   shared-local critic parameters. This is not capacity/compute equality and
-  has not demonstrated a performance result. Same2,097,152 budget plus5,632
-  exact comparisons/88 actual SUMO integrations and replay. All three paired
-  seeds are registered in `docs/ippo_matched_20261102_protocol.md`;4704/4705
-  remain required. Preserve frozen sources until pipeline termination.
+  does not imply equal compute. All three paired seeds are registered in
+  `docs/ippo_matched_20261102_protocol.md`.4704/session58854/PID46940 and
+  4705/session15585/PID73696 are ACTIVE with unchanged full budgets. Preserve
+  their frozen sources until actual native termination; no replacement seed.
+- Parameter-scenario prototype preserves original33 noise paths and adds8
+  declared endpoint paths with separate executed-history actuator memories.
+  Five parameter/memory tests and independent checker tamper test pass.
+  Offline prefix probe changes3/3 old oracle-adverse commands,preserves the
+  one nonadverse command; this probe is not a closed-loop performance result.
+- ACTUAL paired regression fixture is COMPLETE:21 SUMO runs,552 commands/
+  2760 substeps,collection79371/review90643 observed exit0. Original4705 has
+  harmful3/3 and-1.2863% gain; augmented4705 has harmful0/3 and+2.1186%,STILL
+  adopted3/3. Other two models preserve+1.9370% gain/adoption3/3/harm0.
+  Only ONE reused initial; no generalization or risk certificate. Maximum
+  callback for augmented4705 is1289.46ms,so online cost remains unresolved.
+- FRESH parameter development is ACTIVE:560 actual runs,seven methods,four
+  disjoint140-run shards under `development/parameter_scenario_grid_20261102_shardN`.
+  Collection sessions7908/14251/15152/71687 map to shards0/1/2/3. Fresh base
+  seed97000001,five scenes/four classes/four modes,SAME five draws across
+  rules/models,not560 independent trials. After EACH actual zero collection
+  exit run `tools/evaluate_parameter_scenarios.py review --out [shard directory]`,
+  observe review exit,save native receipt and aggregate complete union with
+  `tools/summarize_parameter_grid.py`. All negative outcomes remain required.
 - All completed A--L raw data are retained in their separate byte-verified
   deliveries. E/F/G/H remain negative development outcomes, not discarded
   runs. Old PI studies, their failures and original paper remain unchanged.
@@ -350,9 +374,8 @@ are complete. Stable superiority, IPPO and new gate certification remain pending
 
 ## Next gates
 
-1. Score development and matrix are done. Diagnose and address reference-model
-   actuator/memory uncertainty exposed by strict33/33 adverse decisions before
-   formal testing; preserve the failure instead of selecting a promising threshold.
+1. Finish fresh560-run parameter-scenario collection/review and complete matrix.
+   Known adverse-fixture repair is done; broader development is unproved.
 2. Register fresh calibration/confirmation, fixed thresholds and new familywise
    error allocation for ALL three models; retain risk<=5%,adoption>=20%,
    utility>.5%. Add the calibration-selected adoption-matched control.

@@ -31,9 +31,12 @@ The old minimum margin is degenerate at adopted decisions. A separate
 is implemented/tested; its score is NOT a safety probability. Its10-run actual
 SUMO smoke and independent score/physics/decision replay pass. The800-run
 development grid also completes full replay. Strict33/33 scoring still admits
-three performance-regressing4705 episodes in strong lag: the uncertainty model
-needs further work. Fresh calibration/confirmation remain pending. A matched
-local-value PPO comparator is training. See the
+three performance-regressing4705 episodes in strong lag. A parameter-scenario
+extension repairs those three reused actual-SUMO conditions while still
+adopting learning in all three; fresh560-run development is active. This is
+not generalization or risk certification,and callback cost remains unresolved.
+One matched local-value PPO seed completes training/replay;two are active.
+Fresh calibration/confirmation remain pending. See the
 [MAPPO mathematics](docs/mappo_algorithm_identity_20261101.md),
 [prospective protocol](docs/mappo_ctde_20261101_protocol.md) and
 [verified progress / remaining work](docs/mappo_ctde_20261101_progress.md).
