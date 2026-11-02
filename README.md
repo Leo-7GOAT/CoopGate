@@ -33,12 +33,14 @@ SUMO smoke and independent score/physics/decision replay pass. The800-run
 development grid also completes full replay. Strict33/33 scoring still admits
 three performance-regressing4705 episodes in strong lag. A parameter-scenario
 extension repairs those three reused actual-SUMO conditions while still
-adopting learning in all three; fresh560-run development is active. This is
-not risk certification. Fresh560-run development completes replay:parameter
+adopting learning in all three. This is not risk certification.
+Fresh560-run development completes replay:parameter
 gate gains1.66%/1.69%/1.71% with one harmful adopted condition per model,on
 only FIVE independent initial draws. Multi-second worst callback cost remains
 unresolved. All three matched local-value PPO seeds complete;centralized-critic
 advantage is inconsistent across seeds and is not claimed.
+The [supervised fast-gate study](docs/fast_gate_20261102_results.md) fails grouped
+positive validation and is not promoted; it never replaces the MAPPO actors.
 Fresh calibration/confirmation remain pending. See the
 [MAPPO mathematics](docs/mappo_algorithm_identity_20261101.md),
 [prospective protocol](docs/mappo_ctde_20261101_protocol.md) and

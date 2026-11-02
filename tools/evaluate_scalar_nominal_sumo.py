@@ -57,7 +57,7 @@ def require_replay():
 def collect(out):
     dependency=require_replay();out=Path(out);out.mkdir(parents=True,exist_ok=False);torch.set_num_threads(1)
     models,identities=load_models();cases=schedule()
-    files=list((ROOT/'src/coopgate').glob('*.py'))+[Path(__file__),ROOT/'tools/audit_buffered_scope_v25.py',ROOT/'tools/experiment_ego_v13.py',ROOT/'docs/scalar_nominal_sumo_20261102_protocol.md']
+    files=list((ROOT/'src/coopgate').glob('*.py'))+[Path(__file__),ROOT/'tools/audit_buffered_scope_v25.py',ROOT/'tools/experiment_ego_v13.py',ROOT/'tools/run_scalar_nominal_sumo.py',ROOT/'tests/test_scalar_sumo_evidence.py',ROOT/'docs/scalar_nominal_sumo_20261102_protocol.md']
     plan=dict(cases=cases,methods=METHODS,expected_executions=140,independent_initials=20,
         model=identities,prerequisite=dependency,
         source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
