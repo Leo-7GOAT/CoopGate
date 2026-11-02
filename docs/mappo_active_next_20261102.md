@@ -1,5 +1,10 @@
 # Active goal handoff after fresh confidence margin development
 
+**Current operational authority:** `mappo_formal_attempt4_live_20261102.md`.
+Attempt4 is now registered and LIVE under owning native session60574. Do not
+repeat the audit,build,adapter validation,registration or launcher. The
+development paragraph below describes the earlier completed stage only.
+
 **Latest completed repair:** `mappo_compact_coupled_results_20261102.md`
 supersedes the older next-action list below. All 665 compact-gate SUMO runs and
 exact replays are complete; root34365 actually exited0. Regression harm is

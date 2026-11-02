@@ -2,6 +2,15 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
+**Formal attempt4 is running (2026-11-02).** The compact coupled-path repair,
+all three genuine MAPPO seeds and the original thresholds are frozen under
+source commit8db061e90b. Independent 64-run adapter validation and all18
+preflight checks passed. The unused attempt4 slot is now explicitly allocated
+alpha0.0025; registration was public before formal collection. The full
+37,888-execution/4,096-initial study runs all original fair controls and exact
+replays. No partial result or successful certification is claimed. See the
+[live execution handoff](docs/mappo_formal_attempt4_live_20261102.md).
+
 **Latest development repair (2026-11-02):** 665 actual SUMO executions with full
 exact replay test an additional 1–3 coupled parameter/bias paths per uncertain
 actuator class. On all 15 known adverse initials, harmful model-initial
