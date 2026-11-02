@@ -17,7 +17,7 @@ import numpy as np
 from coopgate.episode_store_v21 import EpisodeStore,observations
 from coopgate.pruned_gain_margin_gate import PrunedGainMarginGate
 from mappo_native_launch import command
-from mappo_joint_data import episode_outcome
+from mappo_coupled_joint_data import episode_outcome
 import mappo_coupled_formal_experiment as e
 import mappo_coupled_formal_runtime as runtime
 from mappo_completed_attempt4 import complete_evidence
@@ -35,6 +35,10 @@ def guard(require_complete=False):
         raise ValueError('Must retain every original confirmation initial and old fixed model')
     if plan['source_sha256']!=primary['source_sha256'] or plan['expected_additional_sumo_executions']!=3072:
         raise ValueError('Frozen comparison source/scope changed')
+    if len(plan['cases'])!=1024 or len({c['cluster_id'] for c in plan['cases']})!=1024:
+        raise ValueError('Exactly all1024 independent primary confirmation initials required')
+    if plan['actor_identities']!=e.design.validate_candidate()['actor_identities']:
+        raise ValueError('Old/new gate must use exactly the same fixed actors')
     if require_complete:complete_evidence()
     return plan
 
@@ -46,6 +50,7 @@ def bind():
     if hashlib.sha256(committed).hexdigest()!=e.sha(source):raise ValueError('Commit wrapper before binding')
     e.write(OUT/'implementation_binding.json',dict(plan_sha256=e.sha(OUT/'plan.json'),
         wrapper_sha256=e.sha(source),old_candidate_sha256=e.sha(e.BASE/'gain_margin_fixed_candidate_20261102.json'),
+        completion_guard_sha256=e.sha(e.ROOT/'tools/mappo_completed_attempt4.py'),
         source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=e.ROOT,text=True).strip(),
         bound_utc=datetime.now(timezone.utc).isoformat(),additional_sumo_runs_at_binding=0,
         new_error_allocated=False,primary_target_changed=False))
@@ -56,6 +61,8 @@ def bound(require_complete=False):
     if (binding['plan_sha256']!=e.sha(OUT/'plan.json') or binding['wrapper_sha256']!=e.sha(__file__)
         or binding['old_candidate_sha256']!=e.sha(e.BASE/'gain_margin_fixed_candidate_20261102.json')):
         raise ValueError('Bound old-gate wrapper changed')
+    if binding['completion_guard_sha256']!=e.sha(e.ROOT/'tools/mappo_completed_attempt4.py'):
+        raise ValueError('Primary actual-terminal guard changed')
     return plan
 
 
