@@ -47,7 +47,9 @@ def write(path,value):
     Path(path).write_text(json.dumps(value,indent=2,allow_nan=False)+'\n',encoding='utf-8')
 
 
-def schedule(n,seed_base,scope):
+def schedule(n,seed_base,scope,shard=0,shards=1):
+    if shards not in (1,4) or not 0<=shard<shards or scope=='smoke' and shards!=1:
+        raise ValueError('Explicit one/four-way partition, no sharded smoke')
     if not 0<n<1000 or scope not in ('smoke','integration'):
         raise ValueError('Explicit bounded integration or numerical smoke required')
     if scope=='smoke' and n!=1:
@@ -55,19 +57,20 @@ def schedule(n,seed_base,scope):
     scenes=SCENES if scope=='integration' else SCENES[:1]
     profiles=PROFILES if scope=='integration' else PROFILES[:1]
     modes=MODES if scope=='integration' else MODES[:1]
-    return [(seed_base+1000*s+i,scene,profile,mode)
+    complete=[(seed_base+1000*s+i,scene,profile,mode)
             for s,scene in enumerate(scenes) for i in range(n)
             for profile in profiles for mode in modes]
+    return complete[shard::shards]
 
 
-def collect(out,checkpoint,n=1,seed_base=96900001,scope='integration',runtime_context='Not isolated; concurrent workload unspecified'):
+def collect(out,checkpoint,n=1,seed_base=96900001,scope='integration',runtime_context='Not isolated; concurrent workload unspecified',shard=0,shards=1):
     out=Path(out);out.mkdir(parents=True,exist_ok=False)
     torch.set_num_threads(1)
     models,identity=load_models()
-    cases=schedule(n,seed_base,scope)
+    cases=schedule(n,seed_base,scope,shard,shards)
     sources=list((ROOT/'src/coopgate').glob('*.py'))+[Path(__file__),
         ROOT/'tools/audit_buffered_scope_v25.py',ROOT/'tools/experiment_ego_v13.py',ROOT/'docs/scenario_score_sumo_20261102_protocol.md']
-    plan=dict(scope=scope,n=n,seed_base=seed_base,checkpoint=None,
+    plan=dict(scope=scope,n=n,seed_base=seed_base,shard=shard,shards=shards,checkpoint=None,
         model=identity,cases=cases,methods=list(RULES),expected_executions=len(cases)*len(RULES),
         independent_initials=len({(k[0],k[1]) for k in cases}),
         source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
@@ -180,9 +183,10 @@ if __name__=='__main__':
     parser.add_argument('--n',type=int,default=1);parser.add_argument('--seed-base',type=int,default=96900001)
     parser.add_argument('--scope',choices=('smoke','integration'),default='smoke')
     parser.add_argument('--runtime-context',default='Not isolated; concurrent workload unspecified')
+    parser.add_argument('--shard',type=int,default=0);parser.add_argument('--shards',type=int,default=1)
     args=parser.parse_args()
     if args.action=='collect':
         pass # Fixed three-model family; no best-seed checkpoint argument
-        collect(args.out,args.checkpoint,args.n,args.seed_base,args.scope,args.runtime_context)
+        collect(args.out,args.checkpoint,args.n,args.seed_base,args.scope,args.runtime_context,args.shard,args.shards)
     else:
         review(args.out)
