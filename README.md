@@ -57,7 +57,14 @@ remove the known early error while retaining later MAPPO use,but these are TWO
 reused initials,not generalization. Exact rejection-only min-score pruning
 preserves all48 controller trajectories/2,610 paired callbacks and full selected
 evidence while reducing positive-floor callback cost53–58%. Fresh80-initial/
-1,040-run development is registered and active;formal certification is pending.
+1,040-run development and full independent replay now complete. At the fixed
+development-selected0.25% floor,adoption is21/25/22 of80 and mean paired cost
+gain is.899%/1.033%/.888%,with0 observed harmful adoptions. The1% floor instead
+hasone harmful adoption per model;all negative outcomes remain. These balanced
+development results do NOT certify risk. The candidate is frozen before formal
+sampling and has no new error allocation. See the
+[complete fresh matrix](docs/gain_margin_fresh_20261102_results.md) and
+[mathematics and proof limits](docs/gain_margin_mathematics_20261102.md).
 Fresh calibration/confirmation remain pending. See the
 [MAPPO mathematics](docs/mappo_algorithm_identity_20261101.md),
 [prospective protocol](docs/mappo_ctde_20261101_protocol.md) and
