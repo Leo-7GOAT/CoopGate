@@ -17,11 +17,13 @@ def run():
     source=BASE/'development/scalar_nominal_full_20261102'
     out=BASE/'scalar_nominal_replay_analysis_20261102';out.mkdir(exist_ok=False)
     report=json.loads((source/'report.json').read_text());native=json.loads((source/'native_receipt.json').read_text())
+    plan=json.loads((source/'plan.json').read_text())
     if native['actual_native_exit_code']!=0 or sha(source/'callbacks.jsonl')!=report['callbacks_sha256']:
         raise ValueError('Observed terminal zero and unmodified complete replay required')
     source_rows={}
     for i in range(4):
         p=BASE/f'development/parameter_scenario_grid_20261102_shard{i}/episodes.jsonl'
+        if sha(p)!=plan['source_hashes'][p.parent.name]:raise ValueError('Original SUMO source changed')
         for line in p.read_text().splitlines():
             r=json.loads(line)
             if r['row']['rule']=='parameter_scenario_confidence':source_rows[tuple(r['key'])]=r

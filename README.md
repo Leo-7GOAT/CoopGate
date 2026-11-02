@@ -41,6 +41,12 @@ unresolved. All three matched local-value PPO seeds complete;centralized-critic
 advantage is inconsistent across seeds and is not claimed.
 The [supervised fast-gate study](docs/fast_gate_20261102_results.md) fails grouped
 positive validation and is not promoted; it never replaces the MAPPO actors.
+An [exact scalar implementation](docs/scalar_nominal_recovery_20261102_results.md)
+preserves every command and original evidence field in all240 parameter-gate
+trajectories/11,460 replay callbacks. Total callback time falls55.21%/55.30%/
+54.95%;over500ms calls fall248 to23 across the three models. Worst callbacks
+still exceed1s,so no500ms or hard-real-time guarantee is claimed. Fresh140-run
+SUMO equivalence is separately registered and in progress;replay adds no trials.
 Fresh calibration/confirmation remain pending. See the
 [MAPPO mathematics](docs/mappo_algorithm_identity_20261101.md),
 [prospective protocol](docs/mappo_ctde_20261101_protocol.md) and

@@ -17,7 +17,7 @@ def snapshot(directory):
     inventory=[]
     for name,expected in plan.get('source_sha256',plan.get('sources_sha256',{})).items():
         original=(ROOT/name).resolve()
-        if not original.is_relative_to(ROOT) or not name.startswith(('src/','tools/','docs/')):
+        if not original.is_relative_to(ROOT) or not name.startswith(('src/','tools/','docs/','tests/')):
             raise ValueError('Unexpected frozen source path')
         data=original.read_bytes()
         if hashlib.sha256(data).hexdigest()!=expected:
