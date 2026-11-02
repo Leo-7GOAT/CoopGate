@@ -5,12 +5,13 @@ from pathlib import Path
 import subprocess
 import sys
 from mappo_formal_experiment import VALIDATION,ROOT,write,sha
+from mappo_native_launch import command as native_command
 
 
 def run():
     execution=VALIDATION/'execution';execution.mkdir(exist_ok=False);events=[]
     for action in ('collect','review'):
-        command=[sys.executable,str(ROOT/'tools/mappo_formal_experiment.py'),action,'--stage','validation','--validation']
+        command=native_command(ROOT/'tools/mappo_formal_experiment.py',action,'--stage','validation','--validation')
         with (execution/f'{action}.log').open('x',encoding='utf-8') as log:
             child=subprocess.Popen(command,cwd=ROOT,stdout=log,stderr=subprocess.STDOUT)
             event=dict(stage='validation',action=action,native_pid=child.pid,command=command,started_utc=datetime.now(timezone.utc).isoformat())

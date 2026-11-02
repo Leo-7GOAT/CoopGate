@@ -53,6 +53,7 @@ def source_files():
     sources=list((ROOT/'src/coopgate').glob('*.py'))
     sources+=[ROOT/'tools'/n for n in ('mappo_formal_common.py','mappo_formal_design.py','mappo_formal_runtime.py',
         'mappo_formal_experiment.py','mappo_risk_attempt3.py','mappo_joint_data.py','build_mappo_formal_adapters.py')]
+    sources += [ROOT/'tools/mappo_native_launch.py',ROOT/'tools/run_mappo_formal_validation.py']
     sources += [ROOT/'tests/test_mappo_formal_adapters.py',ROOT/'tests/test_mappo_formal_failures.py',ROOT/'docs/mappo_formal_attempt3_20261102_protocol.md']
     return sources
 
