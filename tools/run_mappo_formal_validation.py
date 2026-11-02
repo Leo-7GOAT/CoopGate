@@ -17,7 +17,11 @@ def run():
             event=dict(stage='validation',action=action,native_pid=child.pid,command=command,started_utc=datetime.now(timezone.utc).isoformat())
             with (execution/'events.jsonl').open('a',encoding='utf-8') as f:f.write(json.dumps(event)+'\n')
             code=child.wait();event.update(actual_native_exit_code=code,finished_utc=datetime.now(timezone.utc).isoformat());events.append(event)
-            if code:raise SystemExit(code)
+            if code:
+                with (execution/'events.jsonl').open('a',encoding='utf-8') as f:f.write(json.dumps(event)+'\n')
+                write(execution/f'{action}_failed_native_exit.json',event)
+                print(json.dumps(event),flush=True)
+                raise SystemExit(code)
             if action=='collect':
                 event.update(plan_sha256=sha(VALIDATION/'plan.json'),collection_complete_sha256=sha(VALIDATION/'validation/shard0/collection_complete.json'))
                 write(VALIDATION/'validation/shard0/collect_native_exit.json',event)
