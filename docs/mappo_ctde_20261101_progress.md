@@ -191,6 +191,14 @@
   Actual confirmation/control collection remains required. Error-allocation
   inventory scanned330 metadata files,found23 with allocations,skipped0;
   it allocates NO error and does not yet prove the next attempt unused.
+- Fast-gate teacher dataset is prepared at `gate_distillation_data_20261102`:
+  5,964 decisions,73 online-only features,29 arbitration classes,EXACT command
+  reconstruction for all5,964 labels. Only SIX independent initial groups
+  underlie these correlated frames. Labels describe teacher choices,including
+  its imperfect decisions;they are not ground-truth no-harm labels or PPO
+  transitions. No student is trained yet. Split by whole initial across all
+  models/modes/plants,never frames;keep original true MAPPO actors and physical
+  baseline. Any student needs independent whole-controller certification.
 - All completed A--L raw data are retained in their separate byte-verified
   deliveries. E/F/G/H remain negative development outcomes, not discarded
   runs. Old PI studies, their failures and original paper remain unchanged.
