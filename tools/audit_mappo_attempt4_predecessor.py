@@ -6,6 +6,8 @@ parsed without filename/size exclusions. This audits; it allocates no error.
 """
 import hashlib
 import json
+from concurrent.futures import ThreadPoolExecutor
+from functools import lru_cache
 from pathlib import Path
 import subprocess
 import zipfile
@@ -43,19 +45,31 @@ def run():
     scope=(e.ROOT/'artifacts').resolve()
     paths=subprocess.check_output(['rg','--files',str(scope),'-g','*.json'],cwd=e.ROOT,text=True).splitlines()
     inventory=[];hits=[];errors=[];reused=parsed=0;seen=set()
-    for index,raw in enumerate(paths):
-        path=Path(raw).resolve()
-        if not path.is_relative_to(scope):raise ValueError('Escaped project artifact scope')
-        name=path.relative_to(e.ROOT).as_posix();seen.add(name);data=path.read_bytes();digest=hashlib.sha256(data).hexdigest()
-        identity=dict(path=name,sha256=digest,bytes=len(data));inventory.append(identity)
+    @lru_cache(maxsize=32768)
+    def resolved_parent(parent):
+        resolved=parent.resolve()
+        if not resolved.is_relative_to(scope):raise ValueError('Escaped project artifact scope')
+        return resolved
+    def inspect(raw):
+        path=Path(raw);parent=resolved_parent(path.parent)
+        actual=path.resolve() if path.is_symlink() else parent/path.name
+        if not actual.is_relative_to(scope):raise ValueError('Escaped project artifact file')
+        name=path.relative_to(e.ROOT).as_posix();data=path.read_bytes();digest=hashlib.sha256(data).hexdigest()
+        identity=dict(path=name,sha256=digest,bytes=len(data))
         if name in known and known[name]['sha256']==digest:
-            found=knownhits.get(name,[]);reused+=1
+            return identity,knownhits.get(name,[]),None,True
         else:
-            parsed+=1
-            try:found=entries(json.loads(data))
-            except (ValueError,UnicodeDecodeError) as exc:errors.append(dict(**identity,error=str(exc)));continue
-        if found:hits.append(dict(**identity,entries=found))
-        if (index+1)%25000==0:print(json.dumps(dict(verified_json=index+1,reused_parse_proofs=reused,new_or_changed_parsed=parsed)),flush=True)
+            try:return identity,entries(json.loads(data)),None,False
+            except (ValueError,UnicodeDecodeError) as exc:return identity,[],dict(**identity,error=str(exc)),False
+    # Bounded batches avoid hundreds of thousands of queued Future objects.
+    # Hash every file,overlapping SSD metadata/read latency;retain rg order.
+    with ThreadPoolExecutor(max_workers=16) as pool:
+        for start in range(0,len(paths),512):
+            for identity,found,error,same in pool.map(inspect,paths[start:start+512]):
+                inventory.append(identity);seen.add(identity['path']);reused+=int(same);parsed+=int(not same)
+                if error:errors.append(error)
+                if found:hits.append(dict(**identity,entries=found))
+            if start//512%48==0:print(json.dumps(dict(verified_json=len(inventory),reused_parse_proofs=reused,new_or_changed_parsed=parsed)),flush=True)
     removed=sorted(set(known)-seen)
     removed_allocations=sorted(set(knownhits)&set(removed))
     later=[]
