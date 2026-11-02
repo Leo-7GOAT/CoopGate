@@ -36,6 +36,9 @@ def read(p):
 def evidence():
     # This gate precedes ALL access to scientific outcomes,including past ones.
     receipt=read(FORMAL/'completion_receipt.json')
+    owner=read(FORMAL/'orchestrator_native_receipt.json')
+    if owner['actual_native_exit_code']!=0 or owner['completion_receipt_sha256']!=sha(FORMAL/'completion_receipt.json'):
+        raise ValueError('Observed native owner exit for this exact completion required')
     if (receipt['actual_native_finalizer']['actual_native_exit_code']!=0
         or not receipt['all_collector_and_reviewer_native_exits_zero']
         or receipt['main_actual_sumo_runs']!=16384 or receipt['total_actual_sumo_runs']!=37888
