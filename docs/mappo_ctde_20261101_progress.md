@@ -394,20 +394,31 @@ are complete. Stable superiority, IPPO and new gate certification remain pending
 
 ## Next gates
 
-1. Parameter development and all IPPO comparisons are done. Resolve measured
-   multi-second gate cost before freezing final online implementation. A fast
-   learned surrogate can be investigated using the expensive gate as an OFFLINE
-   teacher,but must keep true MAPPO actors,physical certificates and baseline,
-   and receive its OWN fresh whole-controller risk/adoption/utility validation.
-   Teacher/model certificates cannot transfer. No such surrogate is implemented
-   or certified yet;do not relabel it as PPO if trained by supervised labels.
-2. Register fresh calibration/confirmation, fixed thresholds and new familywise
+1. Parameter development and all IPPO comparisons are done. The grouped
+   supervised fast gate FAILED positive generalization and is not promoted.
+   Exact scalar prediction-internal planning completes240-trajectory/11,460-
+   callback replay and140 fresh actual SUMO executions with identical original
+   commands/evidence. Full callback cost falls about55%;500ms overruns remain.
+   See `scalar_nominal_recovery_20261102_results.md` and its complete archives.
+2. Retain the fresh shared strong-lag counterexample:all three models have one
+   harmful adopted episode in20 independent new initials. Offline true-baseline
+   advantage decomposition exactly identifies its first erroneous admission.
+   A32-cell observation-consistency observer retains true parameters at3657
+   decision boundaries,but its27 representative-point probe STILL misses the
+   error. It is NOT an implemented repair or new online controller.
+3. Implement/test the explicitly registered normalized worst-path team-gain
+   margin in `gain_margin_20261102_protocol.md`;zero-floor parity is required.
+   All original per-car tests,nominal ranking,physical certificates,fixed three
+   actors and failures remain. No offline episode filtering or threshold
+   selection on confirmation. New closed-loop evidence is still required.
+4. Register fresh calibration/confirmation, fixed thresholds and new familywise
    error allocation for ALL three models; retain risk<=5%,adoption>=20%,
    utility>.5%. Add the calibration-selected adoption-matched control.
-3. Complete IPPO and online cost validation. Retain4603's failed interval and
+5. IPPO and new timing comparisons are complete;consistent all-seed MAPPO-over-
+   IPPO superiority is unproved. Retain4603's failed interval and
    all-model raw-superiority/utility gaps; do not chase a replacement seed.
-4. Use new exact-pruning implementation only after fresh actual SUMO verification;
+6. Use new exact-pruning implementation only after fresh actual SUMO verification;
    certificate caching is not a proven latency improvement.
-5. Update the paper only with completed new results; publish code, data and
+7. Update the paper only with completed new results; publish code, data and
    negative outcomes. No claim of venue readiness until these evidence gaps
    are assessed.
