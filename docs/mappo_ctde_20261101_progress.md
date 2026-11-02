@@ -123,18 +123,38 @@
   This one initial is not efficacy or calibration. See
   `docs/scenario_confidence_gate_20261101_protocol.md`. Do not mislabel its
   allowed positive path differences as strict-bank evidence.
-- Full score development is ACTIVE:800 actual SUMO executions split into four
+- Full score development is COMPLETE:800 actual SUMO executions split into four
   disjoint200-run shards. Native collection sessions24745/83748/38299/54617
   correspond to shards0/1/2/3 under `development/scenario_score_grid_20261102_shardN`.
   All three fixed models,all budgets0/1/3,one shared baseline,five scenes,four
   classes,four modes; SAME five initials,not20/80/800 independent samples.
-  Do not change frozen sources or restart on observation timeout. For EACH
-  actual zero native collection exit,run `tools/evaluate_scenario_confidence.py
-  review --out artifacts/mappo_ctde_20261101/development/scenario_score_grid_20261102_shardN`.
-  Observe review exit,write exact native receipt,then aggregate only the
-  complete union with `tools/summarize_scenario_score_grid.py`. Registered in
+  Collections and reviews38484/33650/62613/97697 all observed exit0.
+  Complete union has18,844 commands/94,220 physical substeps independently
+  matched,with no missing/duplicate cases. Summarized by
+  `tools/summarize_scenario_score_grid.py`. Registered in
   `docs/scenario_score_development_20261102_protocol.md`. No new risk budget
   is spent and no threshold is certified from this development grid.
+- Strict-budget gains are .85952%/.82096%/.59872%; harmful adoptions0/30,
+  0/46,3/33. Budget1 gains .88044%/.84841%/.63925%,harm0/31,0/48,2/35.
+  Budget3 gains .95691%/.86279%/.74187%,harm1/39,1/52,2/41. These repeated
+  FIVE-initial results show a tradeoff,not certified risk or stable superiority.
+  All three strict-budget adverse4705 episodes share slow_yield/lag_strong
+  initial96902001. The gate's33/33 score does not prevent actual regression.
+- A privileged OFFLINE diagnosis re-evaluates four adopted decisions in those
+  adverse episodes with the true realized plant/memory and future tape. Three
+  reveal a cost/time regression that the original finite bank admitted.
+  This is selected-case model-error evidence,not an online comparator or extra
+  SUMO trial. Clean-mode evidence particularly motivates actuator-parameter/
+  memory uncertainty assessment; no claim isolates causes in noisy modes.
+  See `scenario_forecast_error_diagnosis_20261102.json`.
+- Fixed IPPO local-value ablation is ACTIVE,first seed4703/native pipeline98901,
+  train PID58820. It preserves exact actor initial tensors,config and proposal
+  RNG; audit counts228,135 actor parameters,75,777 centralized versus72,961
+  shared-local critic parameters. This is not capacity/compute equality and
+  has not demonstrated a performance result. Same2,097,152 budget plus5,632
+  exact comparisons/88 actual SUMO integrations and replay. All three paired
+  seeds are registered in `docs/ippo_matched_20261102_protocol.md`;4704/4705
+  remain required. Preserve frozen sources until pipeline termination.
 - All completed A--L raw data are retained in their separate byte-verified
   deliveries. E/F/G/H remain negative development outcomes, not discarded
   runs. Old PI studies, their failures and original paper remain unchanged.
@@ -330,9 +350,9 @@ are complete. Stable superiority, IPPO and new gate certification remain pending
 
 ## Next gates
 
-1. Finish all four actual score-development shards and independent reviews,
-   then the complete matrix,retaining physical checks and complete path scores.
-   Wiring smoke/checker is done; full development and fresh calibration remain.
+1. Score development and matrix are done. Diagnose and address reference-model
+   actuator/memory uncertainty exposed by strict33/33 adverse decisions before
+   formal testing; preserve the failure instead of selecting a promising threshold.
 2. Register fresh calibration/confirmation, fixed thresholds and new familywise
    error allocation for ALL three models; retain risk<=5%,adoption>=20%,
    utility>.5%. Add the calibration-selected adoption-matched control.
