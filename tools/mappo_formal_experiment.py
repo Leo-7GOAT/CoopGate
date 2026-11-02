@@ -8,6 +8,7 @@ from collections import Counter
 from contextlib import ExitStack
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import time
@@ -157,14 +158,20 @@ def collect(stage,shard,validation=False):
             write(directory/'collection_complete.json',manifest[-1])
             bound(root,validation)
             print(json.dumps(dict(stage=stage,shard=shard,completed=count,blocks=block_index+1,elapsed_s=time.perf_counter()-started)),flush=True)
-    write(out/'collection_complete.json',dict(blocks=manifest,executions=count,expected=sum(len(c['methods']) for b in assigned for c in b),
+    write(out/'collection_complete.json',dict(blocks=manifest,executions=count,expected=sum(len(c['methods']) for b in assigned for c in b),native_pid=os.getpid(),
         plan_sha256=sha(root/'plan.json'),elapsed_s=time.perf_counter()-started))
 
 
 def reviewed_records(root,stage,shard,plan):
     cases=stage_cases(root,stage,plan);by_id={c['cluster_id']:c for c in cases};out=stage_path(root,stage,shard)
     complete=read(out/'collection_complete.json')
-    for block in complete['blocks']:
+    assigned=blocks_for(cases,shard,1 if plan['validation_only'] else 4)
+    if len(complete['blocks'])!=len(assigned):raise ValueError('Missing/duplicate scheduled block')
+    for block_index,(block,planned) in enumerate(zip(complete['blocks'],assigned)):
+        expected=[[c['cluster_id'],m] for c in planned for m in c['methods']]
+        expected_metadata=dict(plan_sha256=sha(root/'plan.json'),stage=stage,shard=shard,index=block_index,cases_sha256=canonical_sha256(planned))
+        if block['block']!=f'block{block_index:04d}' or block['keys']!=expected or block['metadata']!=expected_metadata:
+            raise ValueError('Block differs from the complete outcome-free case/method schedule')
         directory=out/block['block']
         if sha(directory/'observations.sqlite')!=block['database_sha256'] or sha(directory/'observations.sqlite.seal.json')!=block['seal_sha256']:
             raise ValueError('Sealed episode block changed')
@@ -176,7 +183,11 @@ def review(stage,shard,validation=False):
     root=VALIDATION if validation else FORMAL;plan=bound(root,validation);torch.set_num_threads(1)
     # Owning launcher must publish an actual native collection exit witness.
     terminal=read(stage_path(root,stage,shard)/'collect_native_exit.json')
-    if terminal['actual_native_exit_code']!=0:raise ValueError('Collection did not terminate zero')
+    collected=read(stage_path(root,stage,shard)/'collection_complete.json')
+    if (terminal['actual_native_exit_code']!=0 or terminal['native_pid']!=collected['native_pid']
+            or terminal['plan_sha256']!=sha(root/'plan.json')
+            or terminal['collection_complete_sha256']!=sha(stage_path(root,stage,shard)/'collection_complete.json')):
+        raise ValueError('No matching actual zero native exit for this exact collected stage')
     models=load_models();count=commands=substeps=failures=0
     for c,r in reviewed_records(root,stage,shard,plan):
         method=r['method'];model=None if method=='baseline' else models[method.split('_')[-1]]
