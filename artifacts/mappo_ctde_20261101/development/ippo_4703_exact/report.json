@@ -1,0 +1,1662 @@
+{
+  "protocol": {
+    "purpose": "development; not a risk certificate or untouched confirmation",
+    "backend": "exact",
+    "n_independent_initials": 128,
+    "seed_base": 95700001,
+    "modes": [
+      "clean",
+      "uniform",
+      "bias",
+      "pulse"
+    ],
+    "methods": [
+      "rule",
+      "ego_planner",
+      "team_planner",
+      "single_central_4601",
+      "joint_local_4703",
+      "joint_central_4703",
+      "joint_initial",
+      "joint_revert_0",
+      "joint_revert_1",
+      "joint_revert_2",
+      "joint_revert_2_parent"
+    ],
+    "checkpoints": {
+      "single_central_4601": {
+        "path": "C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\artifacts\\mappo_ctde_20261101\\development\\single_4601\\policy.pt",
+        "sha256": "06c59165cf30afc634cb283d45ede01c22341324403a6d56f3d76606aa59a0b6",
+        "stage": "single",
+        "steps": 262144
+      },
+      "joint_local_4703": {
+        "path": "C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\artifacts\\mappo_ctde_20261101\\development\\ippo_4703\\policy.pt",
+        "sha256": "dab46e0c87be53077fbb89dc16128b5c15e44f1f0ddb7168b3693f519e06ccbe",
+        "stage": "joint",
+        "steps": 2097152
+      },
+      "joint_central_4703": {
+        "path": "C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\artifacts\\mappo_ctde_20261101\\development\\joint_4703\\policy.pt",
+        "sha256": "c71e214c5892e52e6e51fe43a57da2f0163a75e8fb6075f7d0a8311083523ea3",
+        "stage": "joint",
+        "steps": 2097152
+      },
+      "joint_initial": {
+        "path": "C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\artifacts\\mappo_ctde_20261101\\development\\ippo_4703\\initial.pt",
+        "sha256": "1cab3ed797efd1865a5cfb053dfcda2bd9944c5bf025fbe7115c55133d48134d",
+        "stage": "joint_initial",
+        "steps": 0
+      },
+      "joint_revert_0": {
+        "path": "C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\artifacts\\mappo_ctde_20261101\\development\\ippo_4703\\policy.pt",
+        "sha256": "dab46e0c87be53077fbb89dc16128b5c15e44f1f0ddb7168b3693f519e06ccbe",
+        "stage": "joint_revert",
+        "steps": 2097152,
+        "role": 0,
+        "initial_path": "C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\artifacts\\mappo_ctde_20261101\\development\\ippo_4703\\initial.pt",
+        "initial_sha256": "1cab3ed797efd1865a5cfb053dfcda2bd9944c5bf025fbe7115c55133d48134d"
+      },
+      "joint_revert_1": {
+        "path": "C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\artifacts\\mappo_ctde_20261101\\development\\ippo_4703\\policy.pt",
+        "sha256": "dab46e0c87be53077fbb89dc16128b5c15e44f1f0ddb7168b3693f519e06ccbe",
+        "stage": "joint_revert",
+        "steps": 2097152,
+        "role": 1,
+        "initial_path": "C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\artifacts\\mappo_ctde_20261101\\development\\ippo_4703\\initial.pt",
+        "initial_sha256": "1cab3ed797efd1865a5cfb053dfcda2bd9944c5bf025fbe7115c55133d48134d"
+      },
+      "joint_revert_2": {
+        "path": "C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\artifacts\\mappo_ctde_20261101\\development\\ippo_4703\\policy.pt",
+        "sha256": "dab46e0c87be53077fbb89dc16128b5c15e44f1f0ddb7168b3693f519e06ccbe",
+        "stage": "joint_revert",
+        "steps": 2097152,
+        "role": 2,
+        "initial_path": "C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\artifacts\\mappo_ctde_20261101\\development\\ippo_4703\\initial.pt",
+        "initial_sha256": "1cab3ed797efd1865a5cfb053dfcda2bd9944c5bf025fbe7115c55133d48134d"
+      },
+      "joint_revert_2_parent": {
+        "path": "C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\artifacts\\mappo_ctde_20261101\\development\\ippo_4703\\policy.pt",
+        "sha256": "dab46e0c87be53077fbb89dc16128b5c15e44f1f0ddb7168b3693f519e06ccbe",
+        "stage": "joint_revert",
+        "steps": 2097152,
+        "role": 2,
+        "initial_path": "C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\artifacts\\mappo_ctde_20261101\\development\\single_4601\\policy.pt",
+        "initial_sha256": "06c59165cf30afc634cb283d45ede01c22341324403a6d56f3d76606aa59a0b6",
+        "meaning": "Restore the parent highest-admissible rear role, not the coasting initializer"
+      }
+    },
+    "expected_executions": 5632,
+    "no_outcome_filtering": true,
+    "timing_definition": "Complete select callback wall time, including exceptions; warmup excluded; no hard-real-time claim",
+    "source_sha256": {
+      "src/coopgate/action_repair_v20.py": "ae91c82d56183b41711cbab319b1fa3e5e925264e72d4213c5d120d1dffd59de",
+      "src/coopgate/actuator_intervention_v31.py": "be18c8a5e5b88194ea9f4056ba443cc1136e9ef36d206b2737ce0eca763d4a81",
+      "src/coopgate/actuator_prediction_roundoff_v31.py": "a63c868f08ac0b601e2b561011052a767cc8b8c79a2be6eb9ca40fa247b3e23c",
+      "src/coopgate/actuator_prediction_v30.py": "94ceb73c4b07302889a7f057a781f905aea5086bb3abe07d838a2dc5afd928fa",
+      "src/coopgate/actuator_recovery_v34.py": "1b15134b0280f286745a659bcb281af3a26b83f9fe3b84e33b5f7009184f1917",
+      "src/coopgate/admissible_recovery_pruning.py": "19a87e96473323c7c16b672b817a6a7f16adf04850f80ee68fffe3ac4ee65a26",
+      "src/coopgate/admission_risk_v15.py": "7870ae34857e43164cca2f85964e5fabeb116358a4ca398cef788bcf396e29ea",
+      "src/coopgate/advantage_gate_v18.py": "a06558ce500965c7a78bf39b5e7d3f74346e12e38c8d9aee13dc2416276f0de3",
+      "src/coopgate/aged_observation_envelope.py": "f9843b7b4a6050cf0cc8c60a25daca88a8654814ee2a131d19d2718b23d2529a",
+      "src/coopgate/arrival_phase_v20.py": "831f7a7013610c8dcf050d418fd5f1c66da5c7c5ced5a5c02408939e06dda621",
+      "src/coopgate/bounded_observation_v45.py": "9b04747ced04040618a641c41de251e6b218077fe3b9b39bd01ddbc0229d14aa",
+      "src/coopgate/bounded_portfolio_v19.py": "844c88355a16d8e6936da1c646922ccdc249a5f90b898b32e6c9b776384e12e7",
+      "src/coopgate/buffered_actuator_v33.py": "83a712ec0136823f4aafc5251ac44cfca1d545794119fee0c5af2bb2d1a70e6c",
+      "src/coopgate/buffered_baseline_v25.py": "e25980a011405f9159384f8fa965798be545a2d4333dfead80018d64148b9ea1",
+      "src/coopgate/buffered_phase_v25.py": "b4ed27cb47340bb3d6796a1de530dc0fd71ac53e9b319f74190f4ee479f1f198",
+      "src/coopgate/cached_portfolio_v19.py": "bdc32c68fd0abb6ab8524a72fc7887b8c273c510192dc6d3e7c74398124de6ed",
+      "src/coopgate/candidate_ablation_v43.py": "70214e07be9f8e943628189a6e514e2b7fd1eab8ae857eb0e5fa31b51b9d9b0e",
+      "src/coopgate/certificate_cached_recovery.py": "db261684120cecb6c3a829b72d4d6608be5f807a882f45b1c1ada3e892a9731f",
+      "src/coopgate/certificate_policy_v14.py": "5e1aafd92aabc9b3d3afff7c3fc0bd1d5a7f85401b4f0145139f9e4f76ce0464",
+      "src/coopgate/certification.py": "fd5c820b9b6c49820cccc03f9e4045c55c7c9f1f02ae56924023a4ea8f3f9957",
+      "src/coopgate/chain_recovery.py": "611305f6e6731061ad5efc24e6f29376bf5e709bce380662c21b1ce1feb51d64",
+      "src/coopgate/cli.py": "b85d3dfed1486ee07a8aa2a4388343f6d7495f6e12d125cfb634dd288e015380",
+      "src/coopgate/common_adoption_v27.py": "77e286bfd5a1338b0432e415d60bdbf02aabd0cf02b84af731f09b664caafefb",
+      "src/coopgate/comparison_v19.py": "3a2ed9b0305320dfd3f0f02f6e8fd1d54d2899529d5bcd30ce3a8b2dc82ab66e",
+      "src/coopgate/composed_gate_v18.py": "8aacdf2a623b39ef6d12738c9374e597b2288cfe4c32925ee77ad9e5b1fbc510",
+      "src/coopgate/compound_backup_tube.py": "bb9083d4e05c4f958c0b1aafd035f7f47f5c01dcbbc92d1d5de1a056de17d754",
+      "src/coopgate/confidence_v12.py": "0d3547e1d9f899596e393367c100150250dca495d8f5672384b2098d5d52e2cd",
+      "src/coopgate/config.py": "817c37ef52ee95a3c397bc81f7c69cf6c8671ec87ec99f562f8c42fb3f9878fb",
+      "src/coopgate/controllers.py": "911d04aa4c6e40fc8a2bd45391ea97471d147ab8d387999989a0ebe47dbe6feb",
+      "src/coopgate/cooperative_iteration_v16.py": "38a77c6fe19a32c09439ecb4841febb2ec2e699477726165986a401a53f0cd65",
+      "src/coopgate/cooperative_v15.py": "45958e36ef760655da0a1ef90463c077cb73d0decc3a42566569a06c52caad56",
+      "src/coopgate/deadline_profile_v26.py": "5bc8cadcdf9ebb56b53ddf5cd6e9abbe96803d09b60741e3fb98a8af08061746",
+      "src/coopgate/deduplicated_planner_v19.py": "d55a17334cb5409145ed6542e209c01b378d33c1d0268dfcb7c92f8e103b864a",
+      "src/coopgate/disturbance_v9.py": "f854af83228c958fedc832e5bf5ab726e0d241fc39ed8238ec33b849e3c9aae1",
+      "src/coopgate/disturbed_advantage_v19.py": "1a160aa333c277f4c0af3ac68ea2ece9b532d30062da478e3c228b1bf0819046",
+      "src/coopgate/dmps_curriculum_initials.py": "3102728cd6d2d8458912aa83ea379afca4d38766f494f972f41a13b0ac3f6389",
+      "src/coopgate/dmps_effective_action.py": "35a04882d01a33d7acbff734f4ea7a2b4895fa17d63c6f36ef5a117b9992ad4c",
+      "src/coopgate/dmps_evaluation_replay.py": "9154f48d8ffc8ea00bb11bb062cef666fa7b3f5aa8b88531323db214fcaa9b4f",
+      "src/coopgate/dmps_execution_bridge.py": "aeba1f68e98eae830c0ef090c134f7169ac1c2bc272f08128a8283dd183ba2b6",
+      "src/coopgate/dmps_feasible_actor.py": "a51e051b31f32ed280762980ff944ee22d2247bc9043fab850dcbd1420436725",
+      "src/coopgate/dmps_nominal_model.py": "0f2ce4e212e73f2b49c55a5a7340dc813c90bc67b5d92f57477c5796d12c7a5a",
+      "src/coopgate/dmps_nominal_model_v2.py": "2fea1577fd12c9797ecd366e459467da3c252deb9c453e89f69b62c96ea94cc1",
+      "src/coopgate/dmps_sumo_clock.py": "4a6a85a4e9fb057a7f18d0763c9f2bc392f8106971ec6bb8c2180fb8241f2012",
+      "src/coopgate/dmps_sumo_process.py": "81763d419820b447e4faa16dd05f8870018a75b2c8a90ea374622d4a785a35dc",
+      "src/coopgate/dmps_sumo_reload.py": "e779eca69c1f2bbc18bb6ddf276291eb55fdae024f4330a5709785aa9af53432",
+      "src/coopgate/dmps_sumo_snapshot.py": "87aec8ec114eb199e365837faf99e4045e7a54c4649f826425d1f2ff06a7b6c4",
+      "src/coopgate/ego_confidence_v13.py": "c668e9f9c6ced963de1d09dbe8592dcd6481b6baed1a0c7d3606c712ab35a37d",
+      "src/coopgate/ego_models_v13.py": "19b42dc97dd5bb925fecc81fa517dfee3bda399bd370663b15cd9e9a5acab275",
+      "src/coopgate/ego_v13.py": "050ed97d850b906b87e6135a50b08bf2c91da984948ecdb1a5b6bc95294fe866",
+      "src/coopgate/episode_selection_v19.py": "36d23e904474a634b6be5c6afcf105be5fad2e3050b1d90499ff10f3c9116ac6",
+      "src/coopgate/episode_store_v21.py": "548826684d9f3ac355bf2cb5b4e1f673a50468ac9e4f1aae31cdcf595feaa37e",
+      "src/coopgate/experiment.py": "80c9dd82acf16705ec7f5c0a7c275817fd8dd75034be41f660fd3b075e7af80e",
+      "src/coopgate/experiment_v10.py": "e7ae91c5e8dbf65fe0e0292b4b463e1d26d1ca675965f15d3c50877871f4a972",
+      "src/coopgate/experiment_v11.py": "55df0a59472bc7be264b98254ebf070f3891406b977789b4becfe0863fd5c4e3",
+      "src/coopgate/experiment_v8.py": "a1f09704cc5a05d734e0d1170415a736a6c5093075c71e1bcbdb4c3aee0b38c5",
+      "src/coopgate/experiment_v9.py": "227ac8632c3adf05fdf19995290e86f9f200872f41984adff3ee1e89458f0226",
+      "src/coopgate/fair_comparison_v39.py": "f82c5828e65682f17fc48b7c9eae0069aedf5f5ede67d2a2a36c2c005cf6205c",
+      "src/coopgate/fair_failure_analysis_v44.py": "6af30bef4e1f2e7263b2f81efc354339a0afc7dfac3b81953d24b7eb5d94c16b",
+      "src/coopgate/fair_runtime_v41.py": "69f258d9547c5c5d5e60846d76f02f1d355cefbab00fbd91b1edc6321bb8b3c2",
+      "src/coopgate/family_risk_v20.py": "89f6ebb1a02cc59922da8c7be5064669820ef4872016e17b3d363ba68097c043",
+      "src/coopgate/fast_repair_v20.py": "6d3014762d7d21488032b8d757ea99391b47b683f331fe09fb32dec32e562e16",
+      "src/coopgate/fast_v8.py": "1ca80253fa3fa9411b3d3b245c7bb58a98025b0f1da06e2622f803c8f2df4d64",
+      "src/coopgate/joint_admission_v15.py": "4cccb7925af5cea79c9f11383d2dfa67626f2e842af0bdd3e6816693dab0d7ea",
+      "src/coopgate/joint_planner_v15.py": "af27229cf2094367860d3e70d166a0b47e87701ce158142ed123d2e660e8a7de",
+      "src/coopgate/joint_risk_data_v42.py": "3f86c7c6da376c94ed2cd5039bd026403ad1c75df755e1ffee9a9d46e35167fd",
+      "src/coopgate/kinematic_policy_v14.py": "62e355e2d8b30f340961a2ca3b3bb61320d185b6f2f5f5d01def881d7504dec2",
+      "src/coopgate/learned_rollout_v13.py": "bfbda2c118dbbcf51ed4b072965088f31afe2795cb0bff04b98609847ceab87d",
+      "src/coopgate/learning_v3.py": "86a79787c9c77da3dab9cfe3999b5ecc3f8644dd131fd1d7eb5d2f09c61ecc78",
+      "src/coopgate/learning_v4.py": "3618faefacaa7ba9e7b8226699d76e560a7524b3cf03e0ac5f7a233980fb0e99",
+      "src/coopgate/learning_v6.py": "042effa2979828c5331fc4776aa4fdc2af48cee3135191dbe265f524364b7b18",
+      "src/coopgate/mappo.py": "6929024f8cf82dd79e45b6d3b6ce05b19cdadb99d019a8e8b43bb45a282f8a94",
+      "src/coopgate/mappo_ctde.py": "16c1a6a58d3da4834c31d9845c3101a746370a372c6d708817d200e4e66ff0ef",
+      "src/coopgate/mappo_deployment.py": "3303a9358a1fb292bf68f3061e11c80c2ec77a183ceb5ee6aa491d6a731e529f",
+      "src/coopgate/mappo_reset_curriculum.py": "3a427749252c2ae108e0cd5cab951b78fcbb9a526c769a3635cfe7947afad983",
+      "src/coopgate/marl_v12.py": "e1787954402c3713c2bfc6a5f1be9896612e28c45aafc9e19391e4d43a4000a9",
+      "src/coopgate/matched_shift_v21.py": "d5f05d699545909bcffaae9114d8309741439fad373e31caeab413b299352e8a",
+      "src/coopgate/memoized_recovery_v37.py": "3ba963fa2f2cbf6735784c73eae8cbfb595206010ecdcbc4591b46021b69c5df",
+      "src/coopgate/merge_v4.py": "8db139e9a16316b9278513660c8b91056f8fdb8feae787ec5e188b1a01b114a6",
+      "src/coopgate/mixture_shift_bounds.py": "b38b8a543640277f9d9ff380de5c2567ee327adb459b716def656cc058e0a30e",
+      "src/coopgate/observable_initial_v19.py": "e0cf39ebb729402c772c43ffc2418b595dc5997aba112366793061ba3ccef6a7",
+      "src/coopgate/online_actuator_gate_v32.py": "17a3f37deaaf99f621eaffd483e6546a676ac395855938d7b0789f31b160ca03",
+      "src/coopgate/ood_mismatch_v39.py": "99a85534aafd50354a3d38f5a231de8b129210a7c4a97ca5fea3a26f85770e70",
+      "src/coopgate/ordered_repair_v20.py": "75a36257599125b29da7cda840f4a4b7c35acbb132da30e4d95808189483512c",
+      "src/coopgate/paired.py": "50924f6ead7c07646487807340d657bc4534cd6e36d4211653e46874f849881c",
+      "src/coopgate/parallel_portfolio_v19.py": "8968b14f19ed67c485c6d9b0e1f1ca784e0dbebdf84636d1f4bc545167ea2ba3",
+      "src/coopgate/performance_identity_v31.py": "40ed80da2ba30506558bc559c844614b048c5986e482228f24664ccf68e5380b",
+      "src/coopgate/persistent_phase_v24.py": "c9f8c2c73e2a972322bf7d1fc617a1df771d057e393cfa0737c1e0fc2de1b990",
+      "src/coopgate/phase_repair_v21.py": "0a25e07d677340d06b8348c69c337d3d074241742214975b39b01614303064a1",
+      "src/coopgate/physical_comparison_analysis_v27.py": "05a302d583b07aae8afdb4746b5562fbb7f93dac976cc46c6eee48e2f41ef20f",
+      "src/coopgate/physical_switch_v27.py": "1572388e3dbd1156bd62be6371aaa9ee1cf63fca1c95e8fec070d4083d911ec9",
+      "src/coopgate/planning_v5.py": "7fda10ca6f1a37f418fe24d043b1089b0ffc81aae2ba48ce8c776b85503c97a0",
+      "src/coopgate/platoon.py": "1330663a2f9470b9a6f9148132a54c5dd7d838be14f47a4669a72936413e0817",
+      "src/coopgate/policy_iteration_v14.py": "e97f7bbadba207d6cfc06ff170a2425abc38843c93db3177e740cee95e0472fa",
+      "src/coopgate/portfolio_gate_v19.py": "4e7820b8bacc945eb7b443b9da392589ebcf4f4a4ae5bd997dca1e8e584ba907",
+      "src/coopgate/ppo_numerics_v15.py": "d439c2c73c395d69bcb7e06ab1dfa27ef502ba5825c19367a0553ec944dd0973",
+      "src/coopgate/precise_deadline_v26.py": "00d49449a1ebf1ffa47ce33c7247590312a78ad9a9208283484963c0e514c98a",
+      "src/coopgate/profile_prediction_v16.py": "8bde794c8a01cf254f03e1a99c4102069e85cf2ad769fe2c65b5b94951bf96a9",
+      "src/coopgate/profile_recovery_v15.py": "bd94523fe2d09729efb4081320ec7023ec8df47d146463cbc60303ad6628a71a",
+      "src/coopgate/prospective_data_v21.py": "f37898c77a8a15dd55e33fe0d65c0e4e986c7b5d96ec799f49fb65c320fa0791",
+      "src/coopgate/prospective_validation_v21.py": "d46dfa6c3993328ee9b382a1d7d94c7a437204e70a297370082158452b845610",
+      "src/coopgate/recovery.py": "d5faf76da0e06918476ae55bf156872116958efdd6a504b6249312ea535e05e7",
+      "src/coopgate/recovery_forecast_v35.py": "9099d1dfcfb4e16bf4f8ff3e0c8acc596a81f211ab216251bd48745c40a420d4",
+      "src/coopgate/recovery_gate_audit_v35.py": "d30ca4ef8d3bc6872a13f4e0483ddc27f54650fdfefef48b38cbb0a0cc74eaf1",
+      "src/coopgate/recovery_intervention_diagnostic.py": "2e3ce7a088dd3848da627d15d5191a21ce753253e251bd726015ccab3a93f9b4",
+      "src/coopgate/recovery_joint_gate_v35.py": "d74a1f795b62f30781b144edb5ee6b669111d84a58ecacc3c04149f8a2d05442",
+      "src/coopgate/recovery_risk_v38.py": "4e674ac970e0e8019499f1f7dae83709f7fea5fd71112536f11129ad0f1ce47f",
+      "src/coopgate/recovery_risk_v39.py": "e5152e81800d939fd7a548a880a98a7dfdee95dd1e2a334e694c42612a912a42",
+      "src/coopgate/regression_diagnostic_v28.py": "bc5f0835b0ea5f627f98fe58f3366a1c8320e2cdae51c5231a9d4bda6f9a2424",
+      "src/coopgate/repair_portfolio_v20.py": "600fccb2f48ed0cc4ad8939dbe02f8b237adc7d3f4b34b6ce41e9e8d0ca6bbb4",
+      "src/coopgate/reuse_prediction_certificate.py": "2a18f61d0be0363538732d7d1f781c1260df1369e9414d62aebe46d59007db12",
+      "src/coopgate/risk_comparators_v19.py": "fb1baa872a359853b8420af12d68f8fa05ddfb41ecbf6047dff5b19c37f48a88",
+      "src/coopgate/risk_v7.py": "4471231ba5356f27eaf1823e2a50cee2b95706de380556d60b203988fe43289b",
+      "src/coopgate/robust_v9.py": "c579b0c57516c9954e0c1c0d06da7324804a01e40402e8aff39fa98f5d80bd6b",
+      "src/coopgate/rollout_v10.py": "ea74fe7f3bb107ecfaf95cf7ff394feec66598b030b9b2e7db0560cc53fefd4e",
+      "src/coopgate/scenario_confidence_gate.py": "6397f364589c20c9dce2f12afd13a23712436357d5e83034c20fdacf0183bff4",
+      "src/coopgate/scenario_gate_audit.py": "fb6d1583a9b3a49c3c42e7734d4e4eaa75b926fafa1c0ec539f76d2c7c66d1be",
+      "src/coopgate/selective_transfer_v25.py": "9b8ecc4051372ca158894d52a205aabbfcfcdf70ee84d6ba823100435e3b16c5",
+      "src/coopgate/shield.py": "976c02028240b4ea8494186eb8c0200270fc8c27b71142b2bec70e4aec66cd83",
+      "src/coopgate/shifted_sumo_v19.py": "49d97a9e9098d08f1b3df72b8cb6c3e7b3fbe394d43fcaa23a65215813ae1ffc",
+      "src/coopgate/sim.py": "f9e3d7dbd7b2cadb7f46d0b534d27a72d76ca9f3f7682b83161d1c2329c210f2",
+      "src/coopgate/single_v12.py": "69e46bf846fa968188a0e020f30a916ed86e3bc138abe406e3c6ae09bd712ba3",
+      "src/coopgate/smooth_v11.py": "fc6af2a1ec0ec184dd6af94dc31f7ee8045fdc9eee45a22f6e076edea86cf250",
+      "src/coopgate/stratified_risk.py": "9f44c2e7ad0ef4beab08f8c9360af1e2474eafebc8182a0935ec09ddb36c205a",
+      "src/coopgate/stress_prediction_v17.py": "b1d40ead3a97a7e6d50bf7d339f085181743548a87597b533f8ba684c9521272",
+      "src/coopgate/temporal_portfolio_v20.py": "098208618e6546dc8ba75c02e715450c5e68e69eb1ab7c04b7cfd2c0e22803b2",
+      "src/coopgate/timestamped_control_probe.py": "666da5a17585802cd6003565d901f20341b4734f02285fc0e55efdef14ff9b8d",
+      "src/coopgate/training_v12.py": "52591e8a36bce6070e4a01c115d49806b53f4d59dc85dcad97be584e1d409049",
+      "src/coopgate/verify_v7.py": "8e5f23c8c75dbf90b8a88175236de503f28932295897b2508cb3a6c42264eedb",
+      "src/coopgate/zero_score_projection.py": "8889e24de5dc0c6419e246b65e4ae965d2ffd8697901428b54462de56b686743",
+      "src/coopgate/__init__.py": "7ce2c9b64fe527c64ed90b72b46553dae55a68094a125e758730a7bcd1ecc132",
+      "tools/evaluate_mappo_ctde.py": "5b49b0c67a7aab3287aa8cb596ccd8b69411dde65c355522ec536b8e753cf6ce"
+    }
+  },
+  "results": {
+    "rule": {
+      "executions": 512,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        10.27294921875,
+        11.0009765625,
+        11.982666015625
+      ],
+      "controller_p95_ms": 0.10199989192187786,
+      "controller_max_ms": 0.7925999816507101,
+      "controller_calls": 13577,
+      "controller_over_500ms": 0,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -3.5993907375866776,
+          "mean_team_gain_s": -0.3673502604166667,
+          "team_gain_one_sided_t_lower_s": -0.45121060616360786,
+          "mean_per_vehicle_gain_s": [
+            -0.05322265625,
+            -1.1591796875,
+            0.1103515625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.13531909264509556,
+            -1.4300691878560334,
+            0.0023416102581087367
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -11.098995283259129,
+          "mean_team_gain_s": -1.1041463216145833,
+          "team_gain_one_sided_t_lower_s": -1.204866858796371,
+          "mean_per_vehicle_gain_s": [
+            -1.134033203125,
+            -1.233154296875,
+            -0.94525146484375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.4064677904191678,
+            -1.718364855921056,
+            -1.1988340301957494
+          ]
+        },
+        "single_central_4601": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -4.605934399513138,
+          "mean_team_gain_s": -0.46282958984375,
+          "team_gain_one_sided_t_lower_s": -0.5571198660287038,
+          "mean_per_vehicle_gain_s": [
+            -0.087890625,
+            -1.36407470703125,
+            0.0634765625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.18328163444476875,
+            -1.6549074426558585,
+            -0.046461564860904594
+          ]
+        },
+        "joint_local_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -10.490306847786364,
+          "mean_team_gain_s": -1.0532633463541667,
+          "team_gain_one_sided_t_lower_s": -1.153837771015658,
+          "mean_per_vehicle_gain_s": [
+            -1.556640625,
+            -0.373046875,
+            -1.2301025390625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.850472041616914,
+            -0.8581169771914972,
+            -1.4822399991032995
+          ]
+        },
+        "joint_central_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -10.998144590182086,
+          "mean_team_gain_s": -1.0999755859375,
+          "team_gain_one_sided_t_lower_s": -1.1976791986463435,
+          "mean_per_vehicle_gain_s": [
+            -1.3343505859375,
+            -0.9710693359375,
+            -0.9945068359375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.6166866324714673,
+            -1.4486377881749406,
+            -1.2515366225730689
+          ]
+        },
+        "joint_initial": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_0": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -9.206677157221765,
+          "mean_team_gain_s": -0.9209391276041667,
+          "team_gain_one_sided_t_lower_s": -1.037721590256206,
+          "mean_per_vehicle_gain_s": [
+            -1.40087890625,
+            -0.23046875,
+            -1.1314697265625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.7080218578738178,
+            -0.7066539479654474,
+            -1.3875586866260206
+          ]
+        },
+        "joint_revert_1": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -7.785605347869902,
+          "mean_team_gain_s": -0.7915852864583335,
+          "team_gain_one_sided_t_lower_s": -0.8811696714137465,
+          "mean_per_vehicle_gain_s": [
+            -0.4849853515625,
+            -1.62921142578125,
+            -0.26055908203125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.6578787912644525,
+            -2.0113813692981553,
+            -0.43540647876018823
+          ]
+        },
+        "joint_revert_2": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_2_parent": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -10.433428566823103,
+          "mean_team_gain_s": -1.047607421875,
+          "team_gain_one_sided_t_lower_s": -1.1485848381648556,
+          "mean_per_vehicle_gain_s": [
+            -1.55615234375,
+            -0.373046875,
+            -1.213623046875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.8499060702173364,
+            -0.8581169771914972,
+            -1.4670646370522933
+          ]
+        }
+      }
+    },
+    "ego_planner": {
+      "executions": 512,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        10.2197265625,
+        9.841796875,
+        12.093017578125
+      ],
+      "controller_p95_ms": 3.790219989605244,
+      "controller_max_ms": 9.395200060680509,
+      "controller_calls": 12672,
+      "controller_over_500ms": 0,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.0,
+          "mean_team_gain_s": 0.0,
+          "team_gain_one_sided_t_lower_s": 0.0,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -7.445181657335757,
+          "mean_team_gain_s": -0.7367960611979167,
+          "team_gain_one_sided_t_lower_s": -0.8441018772018385,
+          "mean_per_vehicle_gain_s": [
+            -1.080810546875,
+            -0.073974609375,
+            -1.05560302734375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.359745414846964,
+            -0.4272097593202999,
+            -1.3076399671952084
+          ]
+        },
+        "single_central_4601": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -1.0241156599479555,
+          "mean_team_gain_s": -0.09547932942708333,
+          "team_gain_one_sided_t_lower_s": -0.14866846772621584,
+          "mean_per_vehicle_gain_s": [
+            -0.03466796875,
+            -0.20489501953125,
+            -0.046875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.13265430466264186,
+            -0.3719377736767865,
+            -0.16428676704027306
+          ]
+        },
+        "joint_local_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -6.832384060568235,
+          "mean_team_gain_s": -0.6859130859375,
+          "team_gain_one_sided_t_lower_s": -0.7866409658952103,
+          "mean_per_vehicle_gain_s": [
+            -1.50341796875,
+            0.7861328125,
+            -1.3404541015625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.8040432192279592,
+            0.43716732705861616,
+            -1.5921540507762142
+          ]
+        },
+        "joint_central_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -7.348897933041749,
+          "mean_team_gain_s": -0.7326253255208333,
+          "team_gain_one_sided_t_lower_s": -0.8359886625347426,
+          "mean_per_vehicle_gain_s": [
+            -1.2811279296875,
+            0.1881103515625,
+            -1.1048583984375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.5668186308603633,
+            -0.160079241732149,
+            -1.3631494453705284
+          ]
+        },
+        "joint_initial": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_0": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -5.547427894879716,
+          "mean_team_gain_s": -0.5535888671875,
+          "team_gain_one_sided_t_lower_s": -0.6608104072533703,
+          "mean_per_vehicle_gain_s": [
+            -1.34765625,
+            0.9287109375,
+            -1.2418212890625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.6665992520135409,
+            0.5785351470050832,
+            -1.5051451256672923
+          ]
+        },
+        "joint_revert_1": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -4.188501749200531,
+          "mean_team_gain_s": -0.4242350260416667,
+          "team_gain_one_sided_t_lower_s": -0.503591164370777,
+          "mean_per_vehicle_gain_s": [
+            -0.4317626953125,
+            -0.47003173828125,
+            -0.37091064453125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.6043884591024259,
+            -0.7386245135688932,
+            -0.5430685427247072
+          ]
+        },
+        "joint_revert_2": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_2_parent": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -6.777273977960877,
+          "mean_team_gain_s": -0.6802571614583335,
+          "team_gain_one_sided_t_lower_s": -0.7812105966036005,
+          "mean_per_vehicle_gain_s": [
+            -1.5029296875,
+            0.7861328125,
+            -1.323974609375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.8034771347700116,
+            0.43716732705861616,
+            -1.5769955191450036
+          ]
+        }
+      }
+    },
+    "team_planner": {
+      "executions": 512,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        9.138916015625,
+        9.767822265625,
+        11.03741455078125
+      ],
+      "controller_p95_ms": 21.059600077569478,
+      "controller_max_ms": 53.33929997868836,
+      "controller_calls": 11817,
+      "controller_over_500ms": 0,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 6.443081567929706,
+          "mean_team_gain_s": 0.7367960611979167,
+          "team_gain_one_sided_t_lower_s": 0.629490245193995,
+          "mean_per_vehicle_gain_s": [
+            1.080810546875,
+            0.073974609375,
+            1.05560302734375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.8018756789030359,
+            -0.2792605405702999,
+            0.8035660874922916
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.0,
+          "mean_team_gain_s": 0.0,
+          "team_gain_one_sided_t_lower_s": 0.0,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "single_central_4601": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 5.507361113297323,
+          "mean_team_gain_s": 0.6413167317708333,
+          "team_gain_one_sided_t_lower_s": 0.5242197261013247,
+          "mean_per_vehicle_gain_s": [
+            1.046142578125,
+            -0.13092041015625,
+            1.00872802734375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.7800551305929997,
+            -0.4662280897424553,
+            0.7753230360741905
+          ]
+        },
+        "joint_local_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.42415325763235295,
+          "mean_team_gain_s": 0.05088297526041667,
+          "team_gain_one_sided_t_lower_s": -0.012038952874390427,
+          "mean_per_vehicle_gain_s": [
+            -0.422607421875,
+            0.860107421875,
+            -0.28485107421875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.5951765649247741,
+            0.5039972372544685,
+            -0.43327762810997184
+          ]
+        },
+        "joint_central_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -0.039003307391977826,
+          "mean_team_gain_s": 0.004170735677083329,
+          "team_gain_one_sided_t_lower_s": -0.0562258307552783,
+          "mean_per_vehicle_gain_s": [
+            -0.2003173828125,
+            0.2620849609375,
+            -0.04925537109375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.3628635318383249,
+            -0.05719608282855715,
+            -0.1984532853050252
+          ]
+        },
+        "joint_initial": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_0": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 1.5757620152957692,
+          "mean_team_gain_s": 0.18320719401041669,
+          "team_gain_one_sided_t_lower_s": 0.09865573148688775,
+          "mean_per_vehicle_gain_s": [
+            -0.266845703125,
+            1.002685546875,
+            -0.18621826171875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.4822157755636655,
+            0.6457079952961371,
+            -0.36389740078029287
+          ]
+        },
+        "joint_revert_1": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 2.715125956572582,
+          "mean_team_gain_s": 0.31256103515625,
+          "team_gain_one_sided_t_lower_s": 0.2134709913896085,
+          "mean_per_vehicle_gain_s": [
+            0.6490478515625,
+            -0.39605712890625,
+            0.6846923828125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.438698036495059,
+            -0.6737342730123452,
+            0.49970652571811397
+          ]
+        },
+        "joint_revert_2": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_2_parent": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.47648915758127763,
+          "mean_team_gain_s": 0.05653889973958333,
+          "team_gain_one_sided_t_lower_s": -0.006472817361846142,
+          "mean_per_vehicle_gain_s": [
+            -0.422119140625,
+            0.860107421875,
+            -0.26837158203125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.5946118379035326,
+            0.5039972372544685,
+            -0.4179665160080815
+          ]
+        }
+      }
+    },
+    "single_central_4601": {
+      "executions": 512,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        10.18505859375,
+        9.63690185546875,
+        12.046142578125
+      ],
+      "controller_p95_ms": 1.0928399860858917,
+      "controller_max_ms": 6.207800004631281,
+      "controller_calls": 12473,
+      "controller_over_500ms": 0,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.8378602793603519,
+          "mean_team_gain_s": 0.09547932942708333,
+          "team_gain_one_sided_t_lower_s": 0.042290191127950835,
+          "mean_per_vehicle_gain_s": [
+            0.03466796875,
+            0.20489501953125,
+            0.046875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.06331836716264186,
+            0.037852265385713485,
+            -0.07053676704027305
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -6.518819683607455,
+          "mean_team_gain_s": -0.6413167317708333,
+          "team_gain_one_sided_t_lower_s": -0.7584137374403418,
+          "mean_per_vehicle_gain_s": [
+            -1.046142578125,
+            0.13092041015625,
+            -1.00872802734375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.3122300256570003,
+            -0.20438726942995528,
+            -1.2421330186133095
+          ]
+        },
+        "single_central_4601": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.0,
+          "mean_team_gain_s": 0.0,
+          "team_gain_one_sided_t_lower_s": 0.0,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "joint_local_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -5.85051013238925,
+          "mean_team_gain_s": -0.5904337565104167,
+          "team_gain_one_sided_t_lower_s": -0.6911864952548041,
+          "mean_per_vehicle_gain_s": [
+            -1.46875,
+            0.99102783203125,
+            -1.2935791015625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.761615641214495,
+            0.6702217387807521,
+            -1.530990203014014
+          ]
+        },
+        "joint_central_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -6.360341491231389,
+          "mean_team_gain_s": -0.63714599609375,
+          "team_gain_one_sided_t_lower_s": -0.7392745281154223,
+          "mean_per_vehicle_gain_s": [
+            -1.2464599609375,
+            0.39300537109375,
+            -1.0579833984375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.521879788109125,
+            0.07879565573473274,
+            -1.2878237074524184
+          ]
+        },
+        "joint_initial": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_0": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -4.560833089043973,
+          "mean_team_gain_s": -0.45810953776041663,
+          "team_gain_one_sided_t_lower_s": -0.5616020174694619,
+          "mean_per_vehicle_gain_s": [
+            -1.31298828125,
+            1.13360595703125,
+            -1.1949462890625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.6194731951560122,
+            0.8300735781375598,
+            -1.4387817977553676
+          ]
+        },
+        "joint_revert_1": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -3.1898596312801457,
+          "mean_team_gain_s": -0.3287556966145833,
+          "team_gain_one_sided_t_lower_s": -0.39922258047681813,
+          "mean_per_vehicle_gain_s": [
+            -0.3970947265625,
+            -0.26513671875,
+            -0.32403564453125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.549046560003865,
+            -0.48302803949050477,
+            -0.46015606765111317
+          ]
+        },
+        "joint_revert_2": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_2_parent": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -5.794892026952228,
+          "mean_team_gain_s": -0.58477783203125,
+          "team_gain_one_sided_t_lower_s": -0.6856765437801137,
+          "mean_per_vehicle_gain_s": [
+            -1.46826171875,
+            0.99102783203125,
+            -1.277099609375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.7610462449154858,
+            0.6702217387807521,
+            -1.5160451842219507
+          ]
+        }
+      }
+    },
+    "joint_local_4703": {
+      "executions": 512,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        8.71630859375,
+        10.6279296875,
+        10.7525634765625
+      ],
+      "controller_p95_ms": 1.2178099481388927,
+      "controller_max_ms": 17.31989998370409,
+      "controller_calls": 11919,
+      "controller_over_500ms": 0,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 5.970979795916951,
+          "mean_team_gain_s": 0.6859130859375,
+          "team_gain_one_sided_t_lower_s": 0.5851852059797897,
+          "mean_per_vehicle_gain_s": [
+            1.50341796875,
+            -0.7861328125,
+            1.3404541015625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            1.2027927182720408,
+            -1.1350982979413837,
+            1.0887541523487858
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -0.6502935187181905,
+          "mean_team_gain_s": -0.05088297526041667,
+          "team_gain_one_sided_t_lower_s": -0.11380490339522377,
+          "mean_per_vehicle_gain_s": [
+            0.422607421875,
+            -0.860107421875,
+            0.28485107421875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.2500382788252259,
+            -1.2162176064955315,
+            0.13642452032752816
+          ]
+        },
+        "single_central_4601": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 5.089618993401786,
+          "mean_team_gain_s": 0.5904337565104167,
+          "team_gain_one_sided_t_lower_s": 0.48968101776602935,
+          "mean_per_vehicle_gain_s": [
+            1.46875,
+            -0.99102783203125,
+            1.2935791015625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            1.175884358785505,
+            -1.311833925281748,
+            1.056168000110986
+          ]
+        },
+        "joint_local_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.0,
+          "mean_team_gain_s": 0.0,
+          "team_gain_one_sided_t_lower_s": 0.0,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "joint_central_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -0.504871970873,
+          "mean_team_gain_s": -0.04671223958333333,
+          "team_gain_one_sided_t_lower_s": -0.07549975125298312,
+          "mean_per_vehicle_gain_s": [
+            0.2222900390625,
+            -0.5980224609375,
+            0.235595703125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.09959496778314035,
+            -0.8224980187019333,
+            0.111368819804878
+          ]
+        },
+        "joint_initial": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_0": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 1.1622070514657104,
+          "mean_team_gain_s": 0.13232421875,
+          "team_gain_one_sided_t_lower_s": 0.08013349617450843,
+          "mean_per_vehicle_gain_s": [
+            0.15576171875,
+            0.142578125,
+            0.0986328125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.05260509418976725,
+            0.022089264171799766,
+            0.010755968899701318
+          ]
+        },
+        "joint_revert_1": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 2.2704815572097656,
+          "mean_team_gain_s": 0.26167805989583337,
+          "team_gain_one_sided_t_lower_s": 0.17910711420637687,
+          "mean_per_vehicle_gain_s": [
+            1.0716552734375,
+            -1.25616455078125,
+            0.96954345703125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.8068602718601822,
+            -1.5713921168199274,
+            0.7535410258499344
+          ]
+        },
+        "joint_revert_2": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_2_parent": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.05164624819930734,
+          "mean_team_gain_s": 0.005655924479166667,
+          "team_gain_one_sided_t_lower_s": 0.0013092110770603904,
+          "mean_per_vehicle_gain_s": [
+            0.00048828125,
+            0.0,
+            0.0164794921875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.0013265050357542856,
+            0.0,
+            0.0032750749631395275
+          ]
+        }
+      }
+    },
+    "joint_central_4703": {
+      "executions": 512,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        8.9385986328125,
+        10.0299072265625,
+        10.9881591796875
+      ],
+      "controller_p95_ms": 1.219560019671917,
+      "controller_max_ms": 3.333800006657839,
+      "controller_calls": 11789,
+      "controller_over_500ms": 0,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 6.399785159416636,
+          "mean_team_gain_s": 0.7326253255208333,
+          "team_gain_one_sided_t_lower_s": 0.6292619885069239,
+          "mean_per_vehicle_gain_s": [
+            1.2811279296875,
+            -0.1881103515625,
+            1.1048583984375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.9954372285146367,
+            -0.536299944857149,
+            0.8465673515044716
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -0.17288097046389705,
+          "mean_team_gain_s": -0.004170735677083329,
+          "team_gain_one_sided_t_lower_s": -0.06456730210944496,
+          "mean_per_vehicle_gain_s": [
+            0.2003173828125,
+            -0.2620849609375,
+            0.04925537109375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.037771233786675074,
+            -0.5813660047035571,
+            -0.0999425431175252
+          ]
+        },
+        "single_central_4601": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 5.5249148056332995,
+          "mean_team_gain_s": 0.63714599609375,
+          "team_gain_one_sided_t_lower_s": 0.5350174640720777,
+          "mean_per_vehicle_gain_s": [
+            1.2464599609375,
+            -0.39300537109375,
+            1.0579833984375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.971040133765875,
+            -0.7072150864527673,
+            0.8281430894225816
+          ]
+        },
+        "joint_local_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.43560146945639205,
+          "mean_team_gain_s": 0.04671223958333333,
+          "team_gain_one_sided_t_lower_s": 0.017924727913683536,
+          "mean_per_vehicle_gain_s": [
+            -0.2222900390625,
+            0.5980224609375,
+            -0.235595703125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.34498511034185964,
+            0.37354690317306677,
+            -0.359822586445122
+          ]
+        },
+        "joint_central_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.0,
+          "mean_team_gain_s": 0.0,
+          "team_gain_one_sided_t_lower_s": 0.0,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "joint_initial": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_0": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 1.5829057081878515,
+          "mean_team_gain_s": 0.17903645833333334,
+          "team_gain_one_sided_t_lower_s": 0.11303756589735106,
+          "mean_per_vehicle_gain_s": [
+            -0.0665283203125,
+            0.7406005859375,
+            -0.136962890625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.24057163119624714,
+            0.4977350395497627,
+            -0.29919858512606035
+          ]
+        },
+        "joint_revert_1": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 2.730996091146439,
+          "mean_team_gain_s": 0.3083902994791667,
+          "team_gain_one_sided_t_lower_s": 0.228368385359227,
+          "mean_per_vehicle_gain_s": [
+            0.849365234375,
+            -0.65814208984375,
+            0.73394775390625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.602740562162497,
+            -0.9406586720483849,
+            0.5316290205106835
+          ]
+        },
+        "joint_revert_2": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_2_parent": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.4876410068724273,
+          "mean_team_gain_s": 0.0523681640625,
+          "team_gain_one_sided_t_lower_s": 0.02277048619699574,
+          "mean_per_vehicle_gain_s": [
+            -0.2218017578125,
+            0.5980224609375,
+            -0.2191162109375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.3444917356217281,
+            0.37354690317306677,
+            -0.3452393971683265
+          ]
+        }
+      }
+    },
+    "joint_initial": {
+      "executions": 512,
+      "failures": 59,
+      "mean_per_vehicle_cost": [
+        10.30224609375,
+        9.85504150390625,
+        16.71240234375
+      ],
+      "controller_p95_ms": 1.1884449515491717,
+      "controller_max_ms": 100.79300007782876,
+      "controller_calls": 17518,
+      "controller_over_500ms": 0,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": false
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": false
+        },
+        "single_central_4601": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_local_4703": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_central_4703": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_initial": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_0": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_1": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_2": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_2_parent": {
+          "all_scope_gain_assessable": false
+        }
+      }
+    },
+    "joint_revert_0": {
+      "executions": 512,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        8.8720703125,
+        10.7705078125,
+        10.8511962890625
+      ],
+      "controller_p95_ms": 1.191135065164417,
+      "controller_max_ms": 25.78729996457696,
+      "controller_calls": 12094,
+      "controller_over_500ms": 0,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 4.787062215034151,
+          "mean_team_gain_s": 0.5535888671875,
+          "team_gain_one_sided_t_lower_s": 0.4463673271216298,
+          "mean_per_vehicle_gain_s": [
+            1.34765625,
+            -0.9287109375,
+            1.2418212890625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            1.0287132479864591,
+            -1.2788867279949168,
+            0.9784974524577077
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -1.97485953360222,
+          "mean_team_gain_s": -0.18320719401041669,
+          "team_gain_one_sided_t_lower_s": -0.2677586565339456,
+          "mean_per_vehicle_gain_s": [
+            0.266845703125,
+            -1.002685546875,
+            0.18621826171875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.051475630686334484,
+            -1.359663098453863,
+            0.008539122657207104
+          ]
+        },
+        "single_central_4601": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 3.9098784500158716,
+          "mean_team_gain_s": 0.45810953776041663,
+          "team_gain_one_sided_t_lower_s": 0.35461705805137134,
+          "mean_per_vehicle_gain_s": [
+            1.31298828125,
+            -1.13360595703125,
+            1.1949462890625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            1.0065033673439878,
+            -1.4371383359249403,
+            0.9511107803696324
+          ]
+        },
+        "joint_local_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -1.3094798187494594,
+          "mean_team_gain_s": -0.13232421875,
+          "team_gain_one_sided_t_lower_s": -0.18451494132549157,
+          "mean_per_vehicle_gain_s": [
+            -0.15576171875,
+            -0.142578125,
+            -0.0986328125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.2589183433102328,
+            -0.2630669858282002,
+            -0.18650965610029868
+          ]
+        },
+        "joint_central_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -1.8324249514494133,
+          "mean_team_gain_s": -0.17903645833333334,
+          "team_gain_one_sided_t_lower_s": -0.24503535076931562,
+          "mean_per_vehicle_gain_s": [
+            0.0665283203125,
+            -0.7406005859375,
+            0.136962890625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.10751499057124714,
+            -0.9834661323252373,
+            -0.025272803876060373
+          ]
+        },
+        "joint_initial": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_0": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.0,
+          "mean_team_gain_s": 0.0,
+          "team_gain_one_sided_t_lower_s": 0.0,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "joint_revert_1": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.9590694603752477,
+          "mean_team_gain_s": 0.12935384114583334,
+          "team_gain_one_sided_t_lower_s": 0.023032288146473373,
+          "mean_per_vehicle_gain_s": [
+            0.9158935546875,
+            -1.39874267578125,
+            0.87091064453125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.6141394106536087,
+            -1.7179611617269908,
+            0.6257208095586984
+          ]
+        },
+        "joint_revert_2": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_2_parent": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -1.2524988946602933,
+          "mean_team_gain_s": -0.12666829427083334,
+          "team_gain_one_sided_t_lower_s": -0.17724154756789567,
+          "mean_per_vehicle_gain_s": [
+            -0.1552734375,
+            -0.142578125,
+            -0.0821533203125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.2580648066538279,
+            -0.2630669858282002,
+            -0.1677235252179107
+          ]
+        }
+      }
+    },
+    "joint_revert_1": {
+      "executions": 512,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        9.7879638671875,
+        9.37176513671875,
+        11.72210693359375
+      ],
+      "controller_p95_ms": 1.2146798195317383,
+      "controller_max_ms": 8.235200075432658,
+      "controller_calls": 12042,
+      "controller_over_500ms": 0,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 3.6928360317772713,
+          "mean_team_gain_s": 0.4242350260416667,
+          "team_gain_one_sided_t_lower_s": 0.3448788877125563,
+          "mean_per_vehicle_gain_s": [
+            0.4317626953125,
+            0.47003173828125,
+            0.37091064453125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.2591369315225741,
+            0.20143896299360675,
+            0.19875274633779283
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -3.279075845611557,
+          "mean_team_gain_s": -0.31256103515625,
+          "team_gain_one_sided_t_lower_s": -0.4116510789228915,
+          "mean_per_vehicle_gain_s": [
+            -0.6490478515625,
+            0.39605712890625,
+            -0.6846923828125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.859397666629941,
+            0.11837998480015477,
+            -0.8696782399068861
+          ]
+        },
+        "single_central_4601": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 2.828850513406257,
+          "mean_team_gain_s": 0.3287556966145833,
+          "team_gain_one_sided_t_lower_s": 0.2582888127523485,
+          "mean_per_vehicle_gain_s": [
+            0.3970947265625,
+            0.26513671875,
+            0.32403564453125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.24514289312113502,
+            0.04724539800949523,
+            0.18791522141138686
+          ]
+        },
+        "joint_local_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -2.6443473377338926,
+          "mean_team_gain_s": -0.26167805989583337,
+          "team_gain_one_sided_t_lower_s": -0.34424900558528987,
+          "mean_per_vehicle_gain_s": [
+            -1.0716552734375,
+            1.25616455078125,
+            -0.96954345703125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.3364502750148177,
+            0.9409369847425727,
+            -1.1855458882125656
+          ]
+        },
+        "joint_central_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -3.1249974271965772,
+          "mean_team_gain_s": -0.3083902994791667,
+          "team_gain_one_sided_t_lower_s": -0.3884122135991064,
+          "mean_per_vehicle_gain_s": [
+            -0.849365234375,
+            0.65814208984375,
+            -0.73394775390625
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.095989906587503,
+            0.37562550763911506,
+            -0.9362664873018165
+          ]
+        },
+        "joint_initial": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_0": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -1.484678304234755,
+          "mean_team_gain_s": -0.12935384114583334,
+          "team_gain_one_sided_t_lower_s": -0.2356753941451933,
+          "mean_per_vehicle_gain_s": [
+            -0.9158935546875,
+            1.39874267578125,
+            -0.87091064453125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.2176476987213913,
+            1.0795241898355092,
+            -1.1161004795038016
+          ]
+        },
+        "joint_revert_1": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.0,
+          "mean_team_gain_s": 0.0,
+          "team_gain_one_sided_t_lower_s": 0.0,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "joint_revert_2": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_2_parent": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -2.593385129242162,
+          "mean_team_gain_s": -0.2560221354166667,
+          "team_gain_one_sided_t_lower_s": -0.33934918263969005,
+          "mean_per_vehicle_gain_s": [
+            -1.0711669921875,
+            1.25616455078125,
+            -0.95306396484375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -1.3360109275339265,
+            0.9409369847425727,
+            -1.1712473976630584
+          ]
+        }
+      }
+    },
+    "joint_revert_2": {
+      "executions": 512,
+      "failures": 49,
+      "mean_per_vehicle_cost": [
+        8.76220703125,
+        12.22796630859375,
+        15.7998046875
+      ],
+      "controller_p95_ms": 1.1532001662999392,
+      "controller_max_ms": 4.924300126731396,
+      "controller_calls": 17401,
+      "controller_over_500ms": 0,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": false
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": false
+        },
+        "single_central_4601": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_local_4703": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_central_4703": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_initial": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_0": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_1": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_2": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_2_parent": {
+          "all_scope_gain_assessable": false
+        }
+      }
+    },
+    "joint_revert_2_parent": {
+      "executions": 512,
+      "failures": 0,
+      "mean_per_vehicle_cost": [
+        8.716796875,
+        10.6279296875,
+        10.76904296875
+      ],
+      "controller_p95_ms": 1.1764199938625095,
+      "controller_max_ms": 6.6547999158501625,
+      "controller_calls": 11928,
+      "controller_over_500ms": 0,
+      "comparisons": {
+        "ego_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 5.919594845859597,
+          "mean_team_gain_s": 0.6802571614583335,
+          "team_gain_one_sided_t_lower_s": 0.5793037263130665,
+          "mean_per_vehicle_gain_s": [
+            1.5029296875,
+            -0.7861328125,
+            1.323974609375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            1.2023822402299884,
+            -1.1350982979413837,
+            1.0709536996049964
+          ]
+        },
+        "team_planner": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -0.704556639640089,
+          "mean_team_gain_s": -0.05653889973958333,
+          "team_gain_one_sided_t_lower_s": -0.1195506168410128,
+          "mean_per_vehicle_gain_s": [
+            0.422119140625,
+            -0.860107421875,
+            0.26837158203125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.24962644334646747,
+            -1.2162176064955315,
+            0.11877664805441851
+          ]
+        },
+        "single_central_4601": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 5.038638019695199,
+          "mean_team_gain_s": 0.58477783203125,
+          "team_gain_one_sided_t_lower_s": 0.48387912028238633,
+          "mean_per_vehicle_gain_s": [
+            1.46826171875,
+            -0.99102783203125,
+            1.277099609375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            1.1754771925845142,
+            -1.311833925281748,
+            1.0381540345280493
+          ]
+        },
+        "joint_local_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -0.05487416191523042,
+          "mean_team_gain_s": -0.005655924479166667,
+          "team_gain_one_sided_t_lower_s": -0.010002637881272943,
+          "mean_per_vehicle_gain_s": [
+            -0.00048828125,
+            0.0,
+            -0.0164794921875
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            -0.0023030675357542853,
+            0.0,
+            -0.02968390941186047
+          ]
+        },
+        "joint_central_4703": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": -0.559392119320461,
+          "mean_team_gain_s": -0.0523681640625,
+          "team_gain_one_sided_t_lower_s": -0.08196584192800427,
+          "mean_per_vehicle_gain_s": [
+            0.2218017578125,
+            -0.5980224609375,
+            0.2191162109375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0991117800032719,
+            -0.8224980187019333,
+            0.0929930247066735
+          ]
+        },
+        "joint_initial": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_0": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 1.1122155128217912,
+          "mean_team_gain_s": 0.12666829427083334,
+          "team_gain_one_sided_t_lower_s": 0.07609504097377102,
+          "mean_per_vehicle_gain_s": [
+            0.1552734375,
+            0.142578125,
+            0.0821533203125
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.05248206834617211,
+            0.022089264171799766,
+            -0.0034168845929107017
+          ]
+        },
+        "joint_revert_1": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 2.214990771718863,
+          "mean_team_gain_s": 0.2560221354166667,
+          "team_gain_one_sided_t_lower_s": 0.17269508819364332,
+          "mean_per_vehicle_gain_s": [
+            1.0711669921875,
+            -1.25616455078125,
+            0.95306396484375
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.8063230568410735,
+            -1.5713921168199274,
+            0.7348805320244416
+          ]
+        },
+        "joint_revert_2": {
+          "all_scope_gain_assessable": false
+        },
+        "joint_revert_2_parent": {
+          "all_scope_gain_assessable": true,
+          "mean_paired_percentage_gain": 0.0,
+          "mean_team_gain_s": 0.0,
+          "team_gain_one_sided_t_lower_s": 0.0,
+          "mean_per_vehicle_gain_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "per_vehicle_gain_one_sided_t_lower_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  },
+  "executions": 5632,
+  "elapsed_s": 151.2004766999744,
+  "intervals": "Development t intervals on independent initial means; not finite-sample certificates"
+}
