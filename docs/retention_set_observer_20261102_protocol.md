@@ -29,7 +29,14 @@ certificate follows merely from this observer property.
 First verify containment with bounded innovations,velocity saturation,zero
 speed,changing actual commands and contradictory measurements. Then replay
 the already verified adverse/other traces to measure informativeness without
-claiming new samples. A prospective gate may use retained parameter bounds
+claiming new samples. The fixed prefix probe evaluates all27 Cartesian
+lower/mid/upper rho representatives of the retained envelope on both adopted
+decisions of the ONE reused clean adverse initial97110131,for all three
+models. Reconstruct each representative memory only from executed history;
+use a fixed all-zero innovation tape. Actual plant/memory are read separately
+ONLY to audit that the observer retained the true cell/memory,never to make
+the27 predictions. Report every representative/failure and do not call an
+off-policy prefix probe a closed-loop repair. A prospective gate may use retained parameter bounds
 and reconstruct candidate memory from command history;that full controller
 needs its OWN actual SUMO tests,whole-callback timing,same-adoption controls
 and all unchanged formal risk/adoption/utility requirements. No new gate is
