@@ -1,5 +1,11 @@
 # Active goal handoff after fresh confidence margin development
 
+**Superseded operational status:** Full formal MAPPO attempt3 is now registered
+and LIVE under source commit3734be22c8. Follow
+`mappo_formal_live_20261102.md` and the retained owner session29459.
+Do not repeat the allocation audit,build,registration or launch below.
+The historical evidence and scientific requirements here remain applicable.
+
 Goal remains ACTIVE. User wants genuine MAPPO,confidence-gated traditional
 fallback,complete reproducible experiments,paper and public GitHub delivery.
 No goal completion,shutdown,model substitution or new exploratory score search.
