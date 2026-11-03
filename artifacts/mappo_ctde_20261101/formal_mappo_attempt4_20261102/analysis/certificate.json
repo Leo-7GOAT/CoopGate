@@ -1,0 +1,299 @@
+{
+  "attempt": 4,
+  "allocated_error": 0.0025,
+  "total_attempt_error": 0.05,
+  "fixed_models": [
+    4703,
+    4704,
+    4705
+  ],
+  "fixed_inferential_members": [
+    "risk:4703:mixture",
+    "risk:4703:strong_lag",
+    "risk:4704:mixture",
+    "risk:4704:strong_lag",
+    "risk:4705:mixture",
+    "risk:4705:strong_lag",
+    "adoption:4703",
+    "adoption:4704",
+    "adoption:4705",
+    "gain:4703",
+    "gain:4704",
+    "gain:4705"
+  ],
+  "calibration_initials": 3072,
+  "confirmation_initials": 1024,
+  "primary_risk": {
+    "members": {
+      "4703:mixture": {
+        "harmful_adoptions": 2,
+        "adoptions": 939,
+        "pointwise_p_value": 0.0016510022178835015,
+        "pointwise_risk_upper": 0.04745107135248822,
+        "conditional_risk_observed": true,
+        "method": "stratified_joint_harm_over_adoption",
+        "stratified": {
+          "risk_upper": 0.04745107135248822,
+          "joint_harm_upper": 0.011915080191262032,
+          "adoption_lower": 0.2511024483040937,
+          "stratum_joint_harm_uppers": [
+            0.010453965769989228,
+            0.010453965769989228,
+            0.010453965769989228,
+            0.016298423455080445
+          ],
+          "stratum_adoption_lowers": [
+            0.26544824823903074,
+            0.17144067365553395,
+            0.2300794173457162,
+            0.3374414539760937
+          ],
+          "component_alpha": 0.0003125,
+          "allocated_error": 0.0025,
+          "target_weights": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "finite_sample_valid_under_within_stratum_iid": true,
+          "pooled_adoptions_are_binomial": false,
+          "pointwise_p_value": 0.0016510022178835015,
+          "risk_limit": 0.05,
+          "certified": true
+        }
+      },
+      "4703:strong_lag": {
+        "harmful_adoptions": 2,
+        "adoptions": 305,
+        "pointwise_p_value": 2.3360603105109802e-05,
+        "pointwise_risk_upper": 0.03275684460189642,
+        "conditional_risk_observed": true,
+        "method": "within_stratum_exact_binomial"
+      },
+      "4704:mixture": {
+        "harmful_adoptions": 8,
+        "adoptions": 974,
+        "pointwise_p_value": 0.012049113757907293,
+        "pointwise_risk_upper": 0.06029259446048511,
+        "conditional_risk_observed": true,
+        "method": "stratified_joint_harm_over_adoption",
+        "stratified": {
+          "risk_upper": 0.06029259446048511,
+          "joint_harm_upper": 0.015777780043439632,
+          "adoption_lower": 0.26168686527132545,
+          "stratum_joint_harm_uppers": [
+            0.010453965769989228,
+            0.013606292289568915,
+            0.013606292289568915,
+            0.025444569824631474
+          ],
+          "stratum_adoption_lowers": [
+            0.2679037705111079,
+            0.1856566737602277,
+            0.25197966532532207,
+            0.34120735148864423
+          ],
+          "component_alpha": 0.0003125,
+          "allocated_error": 0.0025,
+          "target_weights": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "finite_sample_valid_under_within_stratum_iid": true,
+          "pooled_adoptions_are_binomial": false,
+          "pointwise_p_value": 0.012049113757907293,
+          "risk_limit": 0.05,
+          "certified": false
+        }
+      },
+      "4704:strong_lag": {
+        "harmful_adoptions": 6,
+        "adoptions": 308,
+        "pointwise_p_value": 0.005052786142942475,
+        "pointwise_risk_upper": 0.053325894137123894,
+        "conditional_risk_observed": true,
+        "method": "within_stratum_exact_binomial"
+      },
+      "4705:mixture": {
+        "harmful_adoptions": 4,
+        "adoptions": 946,
+        "pointwise_p_value": 0.003763573754422822,
+        "pointwise_risk_upper": 0.052590739103572016,
+        "conditional_risk_observed": true,
+        "method": "stratified_joint_harm_over_adoption",
+        "stratified": {
+          "risk_upper": 0.052590739103572016,
+          "joint_harm_upper": 0.013319196381298937,
+          "adoption_lower": 0.2532612510934322,
+          "stratum_joint_harm_uppers": [
+            0.010453965769989228,
+            0.013606292289568915,
+            0.010453965769989228,
+            0.018762561695648376
+          ],
+          "stratum_adoption_lowers": [
+            0.27036131788087076,
+            0.17144067365553395,
+            0.23129140247964403,
+            0.33995161035768007
+          ],
+          "component_alpha": 0.0003125,
+          "allocated_error": 0.0025,
+          "target_weights": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "finite_sample_valid_under_within_stratum_iid": true,
+          "pooled_adoptions_are_binomial": false,
+          "pointwise_p_value": 0.003763573754422822,
+          "risk_limit": 0.05,
+          "certified": false
+        }
+      },
+      "4705:strong_lag": {
+        "harmful_adoptions": 3,
+        "adoptions": 307,
+        "pointwise_p_value": 0.00012224424428063937,
+        "pointwise_risk_upper": 0.0381643068286894,
+        "conditional_risk_observed": true,
+        "method": "within_stratum_exact_binomial"
+      }
+    },
+    "family_p_value": 0.012049113757907293,
+    "maximum_conditional_risk_upper": 0.06029259446048511,
+    "allocated_error": 0.0025,
+    "risk_limit": 0.05,
+    "attempt": 4,
+    "all_fixed_models_both_targets_certified": false,
+    "intersection_union_test": true,
+    "constituent_bonferroni_used": false,
+    "within_mixture_bound_bonferroni_used": true,
+    "calibration_iid_within_each_plant_required": true,
+    "statewise_probability_certified": false,
+    "out_of_distribution_risk_certified": false
+  },
+  "adoption": {
+    "members": {
+      "4703": {
+        "adoptions": 328,
+        "initials": 1024,
+        "observed_rate": 0.3203125,
+        "pointwise_p_value": 8.397658889227755e-20,
+        "adoption_lower": 0.2799730730382532,
+        "certified": true
+      },
+      "4704": {
+        "adoptions": 322,
+        "initials": 1024,
+        "observed_rate": 0.314453125,
+        "pointwise_p_value": 3.600020997454745e-18,
+        "adoption_lower": 0.2743469458899764,
+        "certified": true
+      },
+      "4705": {
+        "adoptions": 322,
+        "initials": 1024,
+        "observed_rate": 0.314453125,
+        "pointwise_p_value": 3.600020997454745e-18,
+        "adoption_lower": 0.2743469458899764,
+        "certified": true
+      }
+    },
+    "threshold": 0.2,
+    "attempt": 4,
+    "allocated_error": 0.0025,
+    "family_p_value": 3.600020997454745e-18,
+    "minimum_adoption_lower": 0.2743469458899764,
+    "all_fixed_models_adoption_certified": true,
+    "exact_binomial": true,
+    "intersection_union_test": true,
+    "constituent_bonferroni_used": false
+  },
+  "paired_gain": {
+    "members": {
+      "4703": {
+        "mean_gain_percent": 1.0874528842628286,
+        "standard_deviation": 3.0556901430677117,
+        "standard_error": 0.09549031697086599,
+        "pointwise_p_value": 5.482443230574026e-10,
+        "gain_lower_percent": 0.8188255221241374,
+        "testable": true,
+        "certified": true
+      },
+      "4704": {
+        "mean_gain_percent": 1.0874580817793624,
+        "standard_deviation": 3.1195757478794444,
+        "standard_error": 0.09748674212123264,
+        "pointwise_p_value": 1.1710696451478235e-09,
+        "gain_lower_percent": 0.8132145017992962,
+        "testable": true,
+        "certified": true
+      },
+      "4705": {
+        "mean_gain_percent": 1.0790746364099393,
+        "standard_deviation": 3.057763995024999,
+        "standard_error": 0.09555512484453121,
+        "pointwise_p_value": 9.54941484544879e-10,
+        "gain_lower_percent": 0.8102649608315113,
+        "testable": true,
+        "certified": true
+      }
+    },
+    "threshold_percent": 0.5,
+    "attempt": 4,
+    "allocated_error": 0.0025,
+    "critical": 2.813137191917053,
+    "family_p_value": 1.1710696451478235e-09,
+    "minimum_gain_lower_percent": 0.8102649608315113,
+    "all_fixed_models_gain_certified": true,
+    "paired_by_independent_initial": true,
+    "exact_finite_sample": false,
+    "normal_iid_exact_otherwise_asymptotic": true,
+    "intersection_union_test": true,
+    "constituent_bonferroni_used": false
+  },
+  "constituent_p_values": {
+    "risk:4703:mixture": 0.0016510022178835015,
+    "risk:4703:strong_lag": 2.3360603105109802e-05,
+    "risk:4704:mixture": 0.012049113757907293,
+    "risk:4704:strong_lag": 0.005052786142942475,
+    "risk:4705:mixture": 0.003763573754422822,
+    "risk:4705:strong_lag": 0.00012224424428063937,
+    "adoption:4703": 8.397658889227755e-20,
+    "adoption:4704": 3.600020997454745e-18,
+    "adoption:4705": 3.600020997454745e-18,
+    "gain:4703": 5.482443230574026e-10,
+    "gain:4704": 1.1710696451478235e-09,
+    "gain:4705": 9.54941484544879e-10
+  },
+  "joint_family_p_value": 0.012049113757907293,
+  "all_statistical_components_certified": false,
+  "observed_execution_failures": 0,
+  "all_baseline_and_candidate_executions_complete": true,
+  "joint_deployment_certified": false,
+  "intersection_union_test": true,
+  "constituent_bonferroni_used": false,
+  "controller_family_selection_permitted": false,
+  "confirmation_outcomes_used_for_selection": false,
+  "confirmation_iid_mixture_sampling_required": true,
+  "zero_observed_failures_is_not_zero_population_failure_risk": true,
+  "baseline_failed_pairs_imputed_harm": 0,
+  "baseline_failure_samples_removed": 0,
+  "gain_retains_capped_failure_costs": true,
+  "algorithm": "genuine jointly trained MAPPO",
+  "candidate_sha256": "e28ffe2f5afa7682e29b8c1f6e741c8b1ffe92d306eefdfe3983b7c8fa84c56e",
+  "common_gain_floor": 0.0025,
+  "primary_actual_sumo_executions": 16384,
+  "total_actual_sumo_executions": 37888,
+  "independent_initials": 4096,
+  "actual_same_adoption_controls_executed": true,
+  "matching_probabilities_valid": true,
+  "old_certificate_transferred": false,
+  "all_formal_thresholds_preserved": true,
+  "requested_combined_evidence_complete": false
+}

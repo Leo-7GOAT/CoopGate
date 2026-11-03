@@ -2,6 +2,17 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
+**Current result (2026-11-03): attempt4 is COMPLETE and joint certification FAILED.**
+All37,888 executions and complete replays finished with actual root exit0.
+Mixture risk uppers are4.745%/6.029%/5.259%;strong-lag4704 is5.333%.
+Adoption and gain requirements pass,but the original5% risk requirement does
+not pass for the full fixed family. No seed,bound or spent alpha is replaced.
+The additional paired ablation was interrupted externally;1375 durable records
+are preserved and only1697 missing planned records are being recovered in a
+new directory. Its original root exit is unknown. See the
+[complete result and recovery status](docs/mappo_formal_attempt4_20261103_results.md).
+The older running-status paragraphs below are historical and superseded.
+
 **Formal attempt4 is running (2026-11-02).** The compact coupled-path repair,
 all three genuine MAPPO seeds and the original thresholds are frozen under
 source commit8db061e90b. Independent 64-run adapter validation and all18

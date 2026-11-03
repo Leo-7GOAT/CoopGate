@@ -1,5 +1,27 @@
 # Genuine MAPPO coupled-gate formal attempt4: live handoff
 
+**Superseded primary status 2026-11-03:** primary60574 is TERMINAL actual exit0,
+chunk07d0cf;all37888 runs/reviews complete. Joint certificate FAILED:
+mixture uppers4.7451/6.0293/5.2591%,strong-lag4704 upper5.3326%.
+Do NOT poll/restart60574 or reallocate attempt4. Owner receipt is already written.
+Full numerical diagnosis49539 also actually exited0 (chunke2036a).
+
+Original supplementary owner99073 was lost across pause/resume;explicit worker
+PIDs64348/56480/54496/34132 are absent. Its native root exit is UNKNOWN.
+1375 durable records are retained. Exclusive recovery owner **27223 is LIVE**
+using `tools/recover_coupled_holdout_ablation.py run`,new directory
+`coupled_holdout_ablation_recovery_20261103`. No record is silently replaced;
+only1697 missing planned rows execute. All3072 rows receive fresh exact replay.
+Original unsealed7-row prefix was validated unchanged (terminalf35b0f).
+Actual total attempts including interrupted non-durable work is unknown.
+Poll27223;do not launch duplicate recovery or rewrite its registration/code.
+After its actual exit0,bind the report SHA in a recovery owner receipt and
+publish paired results,including introduced/retained harm. No new alpha allocated.
+The primary raw19-part archive and all3 source-bound figures are already
+generated;their native exits were observed0. Desktop manuscript still reports
+attempt3 and needs a new honest revision. Read
+`mappo_formal_attempt4_20261103_results.md` for current facts. Goal ACTIVE.
+
 Goal ACTIVE. The original user objective remains genuine MAPPO, confidence
 gating, traditional safety fallback, useful gains, honest complete experiments,
 paper and public GitHub. Do not shut down while unfinished. Never access
