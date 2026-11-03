@@ -96,7 +96,10 @@ exact zero-adoption baseline paths. The same320pilot MAPPO rows have83/86/83
 adoptions,gains1.265244/1.275997/1.308709%. Adoption differs;not a matched-rate
 or PPO-update causal certificate. It is not a public preregistration or an
 addition to the frozen primary certificate. See the complete random results
-document. Its968file/20079660byte ZIP is verified;public transport pending.
+document. Its968file/20079660byte ZIP and metadata are now PUBLIC at9af8e3fbb087.
+Native publisher70329 actual0 terminal92273c,all11Gittransfers0,exact original
+consolidated tree and historical dirty bytes preserved. Only the initial
+abbreviated-ref preflight failed before any journal/push;that actual1 is retained.
 
 Next tasks during frozen run:only update non-frozen documentation/demos and
 postprocessing. Preserve primary45056,registered6144and the separate960random

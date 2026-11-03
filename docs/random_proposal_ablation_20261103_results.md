@@ -45,5 +45,11 @@ artifacts/mappo_ctde_20261101/development/random_proposal_ablation_20261103.
 The byte-verified standalone raw archive contains968files,27027683original
 bytes and20079660ZIPbytes,with exact extracted-member hashes under
 artifacts/mappo_ctde_20261101/completed_random_proposal_delivery_20261103.
-Archive native command actually exited0,terminal chunk5417dc. It is ready for
-publication;do not claim public raw availability until transport completes.
+Archive native command actually exited0,terminal chunk5417dc. The full raw ZIP
+and metadata are now PUBLIC at9af8e3fbb087b5fd6f696be54e6672012946dcff.
+Native publication70329 actually exited0,terminal92273c;all11bounded Git
+transfers exited0 and the exact original consolidated tree matches remote main.
+The initial abbreviated-ref launch was rejected before journal/push creation
+(actual1,5b438e);it did not alter the scientific data or remote. The successful
+full-ref launch and both histories remain recorded. See the archive's
+publication_native_receipt.json for exact SHA and actual terminal evidence.
