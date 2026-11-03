@@ -1,0 +1,303 @@
+{
+  "completed": true,
+  "results": {
+    "4703": {
+      "initials": 320,
+      "active_decision_boundaries": [
+        5718,
+        6357,
+        6675
+      ],
+      "proposal_differs_from_baseline": [
+        1267,
+        925,
+        5067
+      ],
+      "executed_differs_from_baseline": [
+        22,
+        73,
+        25
+      ],
+      "initials_with_executed_role_change": [
+        19,
+        66,
+        22
+      ],
+      "proposals_by_role": [
+        [
+          -4.375,
+          -3.125,
+          -0.625,
+          0.0,
+          1.875,
+          2.5
+        ],
+        [
+          -5.0,
+          -4.375,
+          -3.75,
+          -3.125,
+          -2.5,
+          -1.875,
+          -1.25,
+          -0.625,
+          0.0,
+          0.625,
+          1.25,
+          1.875,
+          2.5
+        ],
+        [
+          -1.875,
+          -1.25,
+          -0.625,
+          0.625,
+          1.25,
+          1.875,
+          2.5
+        ]
+      ],
+      "learning_steps": 103,
+      "multi_role_execution_steps": 14,
+      "role_parameter_delta_squared_l2": [
+        44.67694559157826,
+        0.48173527358449064,
+        17.43953389802482
+      ]
+    },
+    "4704": {
+      "initials": 320,
+      "active_decision_boundaries": [
+        5711,
+        6367,
+        6668
+      ],
+      "proposal_differs_from_baseline": [
+        1133,
+        1003,
+        3949
+      ],
+      "executed_differs_from_baseline": [
+        27,
+        71,
+        20
+      ],
+      "initials_with_executed_role_change": [
+        25,
+        64,
+        18
+      ],
+      "proposals_by_role": [
+        [
+          -4.375,
+          -1.875,
+          -1.25,
+          -0.625,
+          0.625,
+          1.25,
+          1.875,
+          2.5
+        ],
+        [
+          -5.0,
+          -4.375,
+          -3.75,
+          -3.125,
+          -2.5,
+          -1.875,
+          -1.25,
+          -0.625,
+          0.0,
+          0.625,
+          1.25,
+          1.875,
+          2.5
+        ],
+        [
+          -1.875,
+          -1.25,
+          -0.625,
+          0.625,
+          1.25,
+          1.875,
+          2.5
+        ]
+      ],
+      "learning_steps": 101,
+      "multi_role_execution_steps": 15,
+      "role_parameter_delta_squared_l2": [
+        28.746003589825705,
+        0.5286407135754416,
+        17.208977401372977
+      ]
+    },
+    "4705": {
+      "initials": 320,
+      "active_decision_boundaries": [
+        5715,
+        6355,
+        6672
+      ],
+      "proposal_differs_from_baseline": [
+        616,
+        949,
+        3870
+      ],
+      "executed_differs_from_baseline": [
+        25,
+        73,
+        25
+      ],
+      "initials_with_executed_role_change": [
+        22,
+        65,
+        22
+      ],
+      "proposals_by_role": [
+        [
+          -4.375,
+          -0.625,
+          0.0,
+          1.25,
+          1.875,
+          2.5
+        ],
+        [
+          -5.0,
+          -4.375,
+          -3.75,
+          -3.125,
+          -2.5,
+          -1.875,
+          -1.25,
+          -0.625,
+          0.0,
+          0.625,
+          1.25,
+          1.875,
+          2.5
+        ],
+        [
+          -1.875,
+          -1.25,
+          -0.625,
+          0.0,
+          0.625,
+          1.25,
+          1.875,
+          2.5
+        ]
+      ],
+      "learning_steps": 103,
+      "multi_role_execution_steps": 16,
+      "role_parameter_delta_squared_l2": [
+        53.43239370151423,
+        0.46703575323408586,
+        17.476271800347604
+      ]
+    }
+  },
+  "source": {
+    "4703": {
+      "protocol_sha256": "1a15d734973ca1d2c6fb00bc952eb4511469463b78153a0d2b29ed4c6a162796",
+      "audit_sha256": "5d9f472c42b8b9735769c83dd32ac3ee6e4fbe781e0a0c180599d6863a1e48a1",
+      "policy_sha256": "c71e214c5892e52e6e51fe43a57da2f0163a75e8fb6075f7d0a8311083523ea3"
+    },
+    "4704": {
+      "protocol_sha256": "9744f895d16d5a43b3992fb602f23acd9e772f7abbea46734a891782ae880c9b",
+      "audit_sha256": "5e6e3547428a183982aae66816466c1c884ea55047b9aa9aca7c779caf0c81b3",
+      "policy_sha256": "3a40a657255e65fcbec14559ac1bdbcb5edba998e104807c41c90101b6dda3fe"
+    },
+    "4705": {
+      "protocol_sha256": "f560c452bb12c5c9905bea4510f719379cfe65a25aa53ca48f2d61660cbe9dc5",
+      "audit_sha256": "f15ba9152546e885afc0f6b07f670dbd8c0862d27db43c50e0b38c4403438a39",
+      "policy_sha256": "ffe58343ef0ee9eda1113cfc19aedccc900fc556fce15f66e3a99e45c6d9b451"
+    }
+  },
+  "ppo_configs": {
+    "4703": {
+      "width": 256,
+      "n_envs": 64,
+      "rollout": 64,
+      "epochs": 5,
+      "minibatch": 1024,
+      "actor_lr": 0.0001,
+      "critic_lr": 0.0003,
+      "gamma": 1.0,
+      "gae_lambda": 1.0,
+      "clip": 0.2,
+      "value_scale": 10.0,
+      "entropy": 0.01,
+      "max_grad_norm": 0.5,
+      "kinematic_features": true,
+      "accelerated_features": false,
+      "phase_actor": false,
+      "initial_actor_lr": 0.0003,
+      "startup_width": 0,
+      "startup_relu": false,
+      "role_actors": true,
+      "actor_relu": true,
+      "actor_logit_scale": 5.0,
+      "ego_actor_lr": 1e-05
+    },
+    "4704": {
+      "width": 256,
+      "n_envs": 64,
+      "rollout": 64,
+      "epochs": 5,
+      "minibatch": 1024,
+      "actor_lr": 0.0001,
+      "critic_lr": 0.0003,
+      "gamma": 1.0,
+      "gae_lambda": 1.0,
+      "clip": 0.2,
+      "value_scale": 10.0,
+      "entropy": 0.01,
+      "max_grad_norm": 0.5,
+      "kinematic_features": true,
+      "accelerated_features": false,
+      "phase_actor": false,
+      "initial_actor_lr": 0.0003,
+      "startup_width": 0,
+      "startup_relu": false,
+      "role_actors": true,
+      "actor_relu": true,
+      "actor_logit_scale": 5.0,
+      "ego_actor_lr": 1e-05
+    },
+    "4705": {
+      "width": 256,
+      "n_envs": 64,
+      "rollout": 64,
+      "epochs": 5,
+      "minibatch": 1024,
+      "actor_lr": 0.0001,
+      "critic_lr": 0.0003,
+      "gamma": 1.0,
+      "gae_lambda": 1.0,
+      "clip": 0.2,
+      "value_scale": 10.0,
+      "entropy": 0.01,
+      "max_grad_norm": 0.5,
+      "kinematic_features": true,
+      "accelerated_features": false,
+      "phase_actor": false,
+      "initial_actor_lr": 0.0003,
+      "startup_width": 0,
+      "startup_relu": false,
+      "role_actors": true,
+      "actor_relu": true,
+      "actor_logit_scale": 5.0,
+      "ego_actor_lr": 1e-05
+    }
+  },
+  "same_declared_ppo_configuration_across_three_models": true,
+  "inference": "Nonzero audited all-role parameter changes and measured role commands prove training/execution participation;they do not prove causal cooperation or centralized-critic superiority.",
+  "pilot_source_report_sha256": "a11ec28a9db2241de3d345892d00f738c8564d0bc847e314c37262b3194c188a",
+  "analysis_source_sha256": "2af4d63cda6ac30f0bd33ed4a829bc5bda897244df8e918facdbb5aade22bbea",
+  "independent_reused_initials": 320,
+  "reused_model_initial_records": 960,
+  "new_sumo_runs": 0,
+  "new_independent_initials": 0,
+  "new_error_allocated": false
+}

@@ -35,6 +35,12 @@ No new risk certificate is claimed. See the
 [prospective powered protocol](docs/mappo_formal_attempt5_powered_20261103_protocol.md)
 and [fixed power-planning assumptions](docs/history_power_design_20261103_protocol.md).
 
+**Formal attempt5 is RUNNING.** Exact source76d3a772336e and complete
+registration99afdd57422c were public before collection. The45056-run
+study keeps all original criteria and controls;scheduled alpha.05/30 is spent.
+No interim success or new certification is claimed. See the
+[current immutable scope and live handoff](docs/mappo_powered_history_live_20261103.md).
+
 The older running-status paragraphs below are historical and superseded.
 
 **Formal attempt4 is running (2026-11-02).** The compact coupled-path repair,
