@@ -75,6 +75,16 @@ outcome diagnosis and figure generation;human visual review and a new completed
 manuscript remain mandatory. Do not launch a second scheduler or ablation.
 The scheduler is tooling outside the frozen163sources;it does not change the
 formal protocol,controllers,data,inference or scientific acceptance criteria.
+New post-completion tools are tools/replay_mappo_powered_history_delivery.py
+(whole-shard controller/physics replay) andtools/archive_powered_history_completed.py
+(standalone ZIP parts,all extracted bytes checked). They refuse live effects.
+operations/build_powered_history_evidence_20261103.py exports pure JSON ONLY
+after primary,pipeline,all6144ablations and960random-control native owners0.
+The separate bundled-runtime manuscript builder and text are prepared,not
+executed:operations/build_powered_mappo_manuscript_20261103.py and
+operations/powered_mappo_manuscript_text_20261103.py. No new DOCX exists yet.
+Before its first creation run the documents marker once;render and inspect
+every page before Desktop delivery. Do not relabel the old13-page draft final.
 
 A separate one-worker below-normal-priority random-proposal development control
 is running under native owner session40315. Three independently seeded uniform

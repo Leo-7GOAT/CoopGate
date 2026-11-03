@@ -44,6 +44,12 @@ No interim success or new certification is claimed. See the
 All three local roles are audited as genuinely jointly trained AND active in
 deployment: [training/execution role evidence](docs/deployed_mappo_roles_20261103.md).
 This demonstrates participation,not a causal advantage over independent PPO.
+The active implementation is [MAPPO CTDE](src/coopgate/mappo_ctde.py),with
+[audited actor loading](src/coopgate/mappo_deployment.py). Training uses the
+matched batched numerical environment;the independently reviewed closed-loop
+validation actually launches SUMO. A new exact-rational
+[identification counterexample](docs/lag_identification_limits_20261103.md)
+explains why changing innovations cannot be treated as a known constant bias.
 The seven additional completed development/recovery/audit raw archives are
 now public,with [exact-byte publication evidence](artifacts/mappo_ctde_20261101/completed_history_archives_publication_receipt_20261103.json).
 An owned scheduler waits for actual primary completion before executing both
