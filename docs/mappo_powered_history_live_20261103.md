@@ -55,18 +55,38 @@ ablation:known harmful model-initials18→9→4,extra fit removes5 phase harms,
 introduces0 on this reused set. New80candidate gains1.619/1.718/1.663%,adoption
 22/24/22. Further1280pilot runs on320NEW cases give gains1.265/1.276/1.309%,
 adoption83/86/83,harm0/failure0. All these are DEVELOPMENT,not formal evidence.
-Full raw archives exist but some additional ZIPs still await public transport;
-do not claim all newer raw records public until exact remote blobs verified.
+The seven completed development/recovery/audit ZIPs are now PUBLIC: all
+118183984 bytes and their manifest match the published tree atbfa590f806f6.
+Native publication39645 actually exited0 (terminal chunkd137a1). This covers
+completed development only;the live formal5 records are not yet finalized.
 
 Attempt4 remains COMPLETE FAILED with all37888raw records PUBLIC atdaf9158097,
 19byte-verified ZIPs. Its old/new supplementary3072planned outcomes complete;
 1375original records retained+1697actual resumed runs. Original interrupted
 root99073 exit and lost attempt count remain UNKNOWN. No certificate transfer.
 
-Next tasks during frozen run:publish remaining byte-verified development/
-recovery/audit ZIPs with bounded Git delta transport;only update non-frozen
-documentation/demos/postprocessing. After actual45056root0,run both registered
-ablations,finalize honest figures/manuscript and public full data. Existing
+An independent completion scheduler is now waiting under native session73394,
+with its launch identity inpowered_history_completion_pipeline_20261103.
+It requires primary actual_root_native_terminal and the complete owner receipt,
+then checks complete_evidence before running BOTH registered ablations,compact
+then phase,even after a complete negative scientific decision. Each child is
+directly waited and its actual terminal code persisted. It next executes full
+outcome diagnosis and figure generation;human visual review and a new completed
+manuscript remain mandatory. Do not launch a second scheduler or ablation.
+The scheduler is tooling outside the frozen163sources;it does not change the
+formal protocol,controllers,data,inference or scientific acceptance criteria.
+
+A separate one-worker below-normal-priority random-proposal development control
+is running under native owner session40315. Three independently seeded uniform
+legal local proposal streams reuse the complete320-case pilot and same fixed
+history gate,for960additional actual SUMO runs and zero new independent initials.
+No actor checkpoint is used or impersonated. Inspect its performance only after
+its actual root terminal0;retain every unfavorable outcome. It is not a public
+preregistration or an addition to the frozen primary certificate.
+
+Next tasks during frozen run:only update non-frozen documentation/demos and
+postprocessing. Preserve primary45056,registered6144and the separate960random
+controls. Finalize honest figures/manuscript and publish complete final data. Existing
 Desktop20261103paper13pages SHA3fd611d5fcfcdfa19788983aec341ec1e68da2bd72a71756172c3a70df2f9ea0
 reports negative4 and development,not new5. Goal NOT achieved. No shutdown,
 package changes,agents,or access to C:/Users/Leo/Desktop/论文整改 or its processes.

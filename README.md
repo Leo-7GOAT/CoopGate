@@ -41,6 +41,16 @@ study keeps all original criteria and controls;scheduled alpha.05/30 is spent.
 No interim success or new certification is claimed. See the
 [current immutable scope and live handoff](docs/mappo_powered_history_live_20261103.md).
 
+All three local roles are audited as genuinely jointly trained AND active in
+deployment: [training/execution role evidence](docs/deployed_mappo_roles_20261103.md).
+This demonstrates participation,not a causal advantage over independent PPO.
+The seven additional completed development/recovery/audit raw archives are
+now public,with [exact-byte publication evidence](artifacts/mappo_ctde_20261101/completed_history_archives_publication_receipt_20261103.json).
+An owned scheduler waits for actual primary completion before executing both
+previously registered1024-case paired mechanism ablations,including negative
+results. A separate development control tests uniform legal proposals through
+the same gate;it does not change the formal study or its fixed inference.
+
 The older running-status paragraphs below are historical and superseded.
 
 **Formal attempt4 is running (2026-11-02).** The compact coupled-path repair,
