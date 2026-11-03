@@ -1808,17 +1808,22 @@ V1默认配置与历史数据保留；修正路网和训练方式后，不能将
 
 ## Quick start (Python 3.11+)
 
+The full test suite uses the optional baseline-analysis dependencies. These
+commands create a separate fresh test/demo environment;the frozen experiment
+runtime has its own environment. See the
+[CI dependency and test-entry notes](docs/reproducibility_ci_20261103.md).
+
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
-.\.venv\Scripts\python -m pip install -e ".[dev]"
-.\.venv\Scripts\python -m pytest -q
-.\.venv\Scripts\coopgate smoke
+python -m venv .venv-check
+.\.venv-check\Scripts\python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+.\.venv-check\Scripts\python -m pip install -e ".[dev,fast,baselines]"
+.\.venv-check\Scripts\python -m pytest -q
+.\.venv-check\Scripts\coopgate smoke
 # Open the actual SUMO simulator GUI:
-.\.venv\Scripts\coopgate smoke --gui
+.\.venv-check\Scripts\coopgate smoke --gui
 ```
 
-On Linux/macOS, replace `.\.venv\Scripts\` with `.venv/bin/`. The `eclipse-sumo`
+On Linux/macOS, replace `.\.venv-check\Scripts\` with `.venv-check/bin/`. The `eclipse-sumo`
 wheel supplies SUMO and netconvert. Linux may require system OpenGL/FOX libraries;
 see the CI workflow and SUMO installation documentation.
 

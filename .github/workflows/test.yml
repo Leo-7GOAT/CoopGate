@@ -1,5 +1,12 @@
 name: test
-on: [push, pull_request]
+on:
+  push:
+    branches-ignore:
+      - 'data-transfer-*'
+  pull_request:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   tests:
     runs-on: ubuntu-22.04

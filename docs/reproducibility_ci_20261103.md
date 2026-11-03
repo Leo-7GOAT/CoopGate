@@ -36,3 +36,13 @@ Full GitHub rerun status must be checked after this fix is public. Local
 targeted passes are not a claim that the entire workflow or all historical
 release replays have passed. Exact local receipts and original failure links
 are underartifacts/mappo_ctde_20261101/reproducibility_ci_repair_20261103.
+
+The quick start now creates a fresh .venv-check and requests all full-suite
+extras. Existing experiment environments are not reinstalled. CI also ignores
+the publisher's reserved data-transfer-* intermediate blob-transport branches,
+while retaining every main/code-branch push and pull-request check. Same-ref
+concurrency replaces obsolete checks with the latest complete workflow;all
+test assertions and historical release-verifier commands remain unchanged.
+Cancelled obsolete CI runs remain recorded and are never called successful
+scientific experiments. Main-study data collection and reference replay are
+separate locally owned processes and are unaffected by this CI scheduling.
