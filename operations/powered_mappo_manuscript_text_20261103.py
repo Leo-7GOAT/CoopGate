@@ -196,7 +196,23 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,data,figure):
     p('匹配概率全部有效状态为 '+str(comparison['calibration_matching']['all_matching_valid'])+'。'
       '区间由配对不一致事件的四个精确二项单侧界作差，并对三组比较分配规定误差。'
       '覆盖零不证明等价，不把估计匹配描述成实际采用率精确相同。')
-    h('9 1 门控机制的全确认集消融',2)
+    h('9 1 预定场景的完整确认结果',2)
+    scenes=data['diagnosis']['by_stage']['confirmation']['by_scene'];rows=[]
+    if sum(group['baseline']['initials'] for group in scenes.values())!=1024:
+        raise ValueError('Every confirmation initial must remain in the scene table')
+    for scene,group in sorted(scenes.items()):
+        n=group['baseline']['initials']
+        if any(group[s]['initials']!=n for s in seeds):
+            raise ValueError('Scene summaries must retain the same paired methods')
+        rows.append((scene,str(n),*[num(group[s]['mean_paired_percentage_gain'])+'%' for s in seeds],
+            ' / '.join(str(group[s]['adopted']) for s in seeds),
+            ' / '.join(str(group[s]['harmful_adopted']) for s in seeds)))
+    table('表 5 预定场景中的确认结果',['场景','初态数','4703 收益','4704 收益','4705 收益','采用数 三模型','有害采用 三模型'],
+          rows,[3.0,1.2,2.3,2.3,2.3,2.8,2.5])
+    p('场景名称及采样规则在收集前固定，各行保留所有对应确认初态，不按效果重新分组。'
+      '三模型计数顺序为 4703、4704、4705，收益仍为相对同一初态实际基线的百分比成本改善。'
+      '采用和性能退化计数用于核对场景覆盖与收益差异；整体证书不自动构成每个场景的条件风险证书。')
+    h('9 2 门控机制的全确认集消融',2)
     rows=[]
     for variant,label in (('compact','原门控'),('phase','仅相位')):
         for s in seeds:
@@ -205,11 +221,11 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,data,figure):
                 str(a['harmful_adopted'])+' / '+str(b['harmful_adopted']),
                 join(d[k] for k in ('harm_removed','harm_introduced','harm_retained')),
                 num(r['mean_paired_gain_difference_history_minus_comparator'])))
-    table('表 5 消融与历史门控的完整配对结果',['比较','采用数 旧/历史','有害采用 旧/历史','移除/新增/保留损害','收益差百分点'],rows,[2.8,3.4,3.4,3.8,3.0])
+    table('表 6 消融与历史门控的完整配对结果',['比较','采用数 旧/历史','有害采用 旧/历史','移除/新增/保留损害','收益差百分点'],rows,[2.8,3.4,3.4,3.8,3.0])
     p('全部 6,144 次额外实际运行均使用相同固定 actor、物理模型、收益门槛和确认初态。'
       '“原门控”比较整个新增相位与历史机制，“仅相位”隔离额外历史预测的作用。'
       '采用数、配对收益损失和新增损害都保留；这些是完整描述性机制比较，不另行产生部署证书。')
-    h('9 2 随机合法提案与真实角色参与',2)
+    h('9 3 随机合法提案与真实角色参与',2)
     rows=[]
     learned=data['random_proposals']['original_mappo_results']
     random=data['random_proposals']['results']
@@ -219,7 +235,7 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,data,figure):
             r=results[key];s=key.split(':')[-1]
             rows.append((label+' '+str(s),str(r['adopted'])+'/320',str(r['harmful_adopted']),
                          num(r['mean_paired_percentage_gain'])+'%',str(r['execution_failures'])))
-    table('表 6 相同门控下的已学习与随机合法提案',['提案','采用回合','有害采用','平均配对收益','失败'],rows,[4.4,3.3,3.0,3.3,2.4])
+    table('表 7 相同门控下的已学习与随机合法提案',['提案','采用回合','有害采用','平均配对收益','失败'],rows,[4.4,3.3,3.0,3.3,2.4])
     p('随机提案不加载 actor checkpoint，三个车的随机流独立，且不读取真实隐藏参数与未来创新。'
       '比较用于检验收益是否主要来自门控搜索合法动作；不因原始策略经过训练就预设它优于随机提案。'
       '该开发对照与主确认集不同，不能据其结果改变主研究的候选、门槛或证书。')
@@ -231,11 +247,11 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,data,figure):
     for s in seeds:
         r=data['deployed_roles']['results'][s]
         rows.append((s,*[str(v) for v in r['executed_differs_from_baseline']],str(r['multi_role_execution_steps'])))
-    table('表 7 开发集上实际偏离基线的角色控制步',['模型','前车','汇入车','后车','至少两角色同时改变'],rows,[1.8,3.0,3.0,3.0,5.6])
+    table('表 8 开发集上实际偏离基线的角色控制步',['模型','前车','汇入车','后车','至少两角色同时改变'],rows,[1.8,3.0,3.0,3.0,5.6])
     p('角色计数来自完整 320 初态开发集，检查活动车辆实际执行命令与同一状态下基线命令的差异。'
       '所有角色均有多个提案和非零实际控制改变，结合训练审计支持真实全角色 MAPPO；'
       '它仍不单独证明合作的因果增益或集中式 critic 相对 IPPO 的优势。')
-    h('9 3 保留的失败研究与开发数据',2)
+    h('9 4 保留的失败研究与开发数据',2)
     old=data['prior_attempt4']['certificate']
     p('前一独立研究完成 37,888 次 SUMO，但未通过整组风险要求。其混合风险上界为 '
       +join(num(100*old['primary_risk']['members'][s+':mixture']['pointwise_risk_upper'])+'%' for s in seeds)
@@ -253,7 +269,7 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,data,figure):
     rows=[]
     for s in seeds:
         r=summary[s];rows.append((s,str(r['callbacks']),num(r['callback_p95_ms']),num(r['callback_max_ms']),str(r['callback_over_500ms'])))
-    table('表 8 目标门控的完整实际在线回调',['模型','回调数','P95 毫秒','最大毫秒','超过 500 毫秒'],rows,[2.4,3.4,3.2,3.6,3.8])
+    table('表 9 目标门控的完整实际在线回调',['模型','回调数','P95 毫秒','最大毫秒','超过 500 毫秒'],rows,[2.4,3.4,3.2,3.6,3.8])
     figure('formal_callback_cost','图 3 各方法完整在线回调耗时；共享桌面负载条件下测量，不构成硬实时证明')
     p('实验桌面为 Ryzen 5 9600X、约 64 GB 系统内存及 RTX 5060 Ti 16 GB。'
       '计时包含实际推理、物理验证、所有预测路径及历史拟合，未计通信延迟，也未用超时截断掩盖慢调用。'
