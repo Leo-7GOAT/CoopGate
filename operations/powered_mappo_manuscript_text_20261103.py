@@ -223,6 +223,10 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,data,figure):
     p('随机提案不加载 actor checkpoint，三个车的随机流独立，且不读取真实隐藏参数与未来创新。'
       '比较用于检验收益是否主要来自门控搜索合法动作；不因原始策略经过训练就预设它优于随机提案。'
       '该开发对照与主确认集不同，不能据其结果改变主研究的候选、门槛或证书。')
+    p('在此开发集上，三组已训练提案的最小平均收益为 '
+      +num(min(learned['fresh:history:'+s]['mean_paired_percentage_gain'] for s in seeds))
+      +'%，三组随机提案的最大平均收益为 '+num(max(r['mean_paired_percentage_gain'] for r in random.values()))
+      +'%。两组采用率不同，该比较不构成同采用率优势证明，也未把 PPO 更新与继承初始化的贡献单独分离。')
     rows=[]
     for s in seeds:
         r=data['deployed_roles']['results'][s]

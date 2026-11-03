@@ -56,6 +56,11 @@ An owned scheduler waits for actual primary completion before executing both
 previously registered1024-case paired mechanism ablations,including negative
 results. A separate development control tests uniform legal proposals through
 the same gate;it does not change the formal study or its fixed inference.
+That development control is now COMPLETE:with the identical gate,trained
+MAPPO proposals achieve1.265–1.309%mean paired gain versus0.628–0.747%for
+uniform legal proposals on the same320initials. Adoption differs and this is
+not a new certificate. See the
+[complete random-proposal comparison and limitations](docs/random_proposal_ablation_20261103_results.md).
 
 The older running-status paragraphs below are historical and superseded.
 

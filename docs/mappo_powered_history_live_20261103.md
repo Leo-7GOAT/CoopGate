@@ -87,12 +87,16 @@ Before its first creation run the documents marker once;render and inspect
 every page before Desktop delivery. Do not relabel the old13-page draft final.
 
 A separate one-worker below-normal-priority random-proposal development control
-is running under native owner session40315. Three independently seeded uniform
+is COMPLETE under native owner40315,actual0 terminal0e9bee. Three independently seeded uniform
 legal local proposal streams reuse the complete320-case pilot and same fixed
 history gate,for960additional actual SUMO runs and zero new independent initials.
-No actor checkpoint is used or impersonated. Inspect its performance only after
-its actual root terminal0;retain every unfavorable outcome. It is not a public
-preregistration or an addition to the frozen primary certificate.
+No actor checkpoint is used or impersonated. Full960runs/replays give random
+adoption56/58/54of320,gains.746704/.726608/.627899%,allharm/failure0,and792
+exact zero-adoption baseline paths. The same320pilot MAPPO rows have83/86/83
+adoptions,gains1.265244/1.275997/1.308709%. Adoption differs;not a matched-rate
+or PPO-update causal certificate. It is not a public preregistration or an
+addition to the frozen primary certificate. See the complete random results
+document. Its968file/20079660byte ZIP is verified;public transport pending.
 
 Next tasks during frozen run:only update non-frozen documentation/demos and
 postprocessing. Preserve primary45056,registered6144and the separate960random
