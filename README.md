@@ -7,10 +7,34 @@ All37,888 executions and complete replays finished with actual root exit0.
 Mixture risk uppers are4.745%/6.029%/5.259%;strong-lag4704 is5.333%.
 Adoption and gain requirements pass,but the original5% risk requirement does
 not pass for the full fixed family. No seed,bound or spent alpha is replaced.
-The additional paired ablation was interrupted externally;1375 durable records
-are preserved and only1697 missing planned records are being recovered in a
-new directory. Its original root exit is unknown. See the
+The supplementary paired ablation is now COMPLETE:1375 durable records retained,
+1697 missing planned outcomes actually executed,and all3072 records replayed.
+It does not reduce confirmed harm;gain drops.057/.073/.055 percentage points.
+The original interrupted root exit and lost in-flight attempt count stay unknown. See the
 [complete result and recovery status](docs/mappo_formal_attempt4_20261103_results.md).
+
+**New development improvement:** an observed-history lag/bias forecast plus
+strict crossing-phase rejection reduces known harmful model-initials18→4.
+On80 NEW balanced initials,the three fixed MAPPO actors with this gate achieve
+27.5%/30%/27.5% adoption and1.619%/1.718%/1.663% mean paired gain,with zero
+observed harm or execution failure. All644 actual SUMO runs are independently
+replayed. These are development results,not a replacement formal certificate;
+the new gate loses some opportunities and four known harms remain.
+See [complete new development results](docs/observed_history_20261103_results.md).
+The13-page Chinese manuscript revision includes the failed formal study,the
+unfavorable full paired ablation,and this new development;all figures and native
+equations were rendered and visually checked. It is not submission-ready.
+
+**Independent-study preparation:** a further fixed320-initial/1280-run power
+pilot completed with zero observed harm/failure,adoption83/86/83 of320 and mean
+gains1.265%/1.276%/1.309%. The blind fixed-grid planning rule selects4096
+calibration and1024 confirmation initials under the identical original risk,
+adoption and gain thresholds. This45056-run proposal changes sample size only;
+the gate and actors are unchanged. The old unallocated3072/1024 draft stays.
+No new risk certificate is claimed. See the
+[prospective powered protocol](docs/mappo_formal_attempt5_powered_20261103_protocol.md)
+and [fixed power-planning assumptions](docs/history_power_design_20261103_protocol.md).
+
 The older running-status paragraphs below are historical and superseded.
 
 **Formal attempt4 is running (2026-11-02).** The compact coupled-path repair,
