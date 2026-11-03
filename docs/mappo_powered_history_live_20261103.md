@@ -75,6 +75,18 @@ outcome diagnosis and figure generation;human visual review and a new completed
 manuscript remain mandatory. Do not launch a second scheduler or ablation.
 The scheduler is tooling outside the frozen163sources;it does not change the
 formal protocol,controllers,data,inference or scientific acceptance criteria.
+An independent Win32 terminal observer is now attached to the SAME existing
+pipelinePID26112 (creation2026-11-03T09:33:23.196009Z,imagePython311). Its native
+owner session56958,observerPID71496,source46914e27b5f3,holds an actual kernel
+process handle. It verifies the exclusive launch,creation time,image and source
+before waiting;no global process enumeration or process mutation. On actual
+root0 it writes owner_native_exit.json binding the completed report;on actual
+nonzero it retains that terminal code and writes no success owner. An actual
+exit0fixture and actual exit7fixture independently agree with direct child.wait,
+with proof underpipeline_terminal_watcher_validation_20261103,actual0 55da5a.
+Future monitors MUST reuse/verify an existing matching owner receipt instead of
+blindly recreating an exclusive file. This observer supplements the desktop
+handle and still requires its own process to survive;it is not a reboot service.
 New post-completion tools are tools/replay_mappo_powered_history_delivery.py
 (whole-shard controller/physics replay) andtools/archive_powered_history_completed.py
 (standalone ZIP parts,all extracted bytes checked). They refuse live effects.
