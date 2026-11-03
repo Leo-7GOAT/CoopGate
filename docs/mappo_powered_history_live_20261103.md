@@ -15,6 +15,11 @@ SHA is02d47c7882e1750e0f911c6b73bc8378e354195bdee193d58545c3c067eb25d2.
 The fixed matching setup started under nativePID58236 at2026-11-03T11:25:15Z;
 confirmation16384runs follows automatically after that actual exit0. This is
 execution progress only,no interim scientific decision or new certificate.
+Matching nativePID58236 actually exited0 at2026-11-03T11:27:29.945619Z.
+All four confirmation collectors are now running:owned nativePIDs15384,33568,
+40796,31876,launched11:27:29–30Z. Full confirmation scope remains16384actual
+executions over1024IIDinitials,followed by all four independent reference
+replays. Do not inspect target effects or alter the frozen procedure mid-run.
 
 Source commit76d3a772336e0ffd7a568ff2d63a01ebd4ca9a26 was public BEFORE collection.
 Registration commit99afdd57422c0079a7f71d370f3d8fe921398fa1 was verified public
