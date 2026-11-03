@@ -8,6 +8,14 @@ actual inner exit0,the exact orchestrator_native_receipt.json. No inference
 from file presence or process absence. Formal parent creates execution/events
 with all explicitly owned native worker PIDs. Never scan global processes.
 
+Calibration milestone:all28672actual SUMO records and all28672independent
+controller/physics replays are complete. All eight calibration collect/review
+native children actually exited0. The complete calibration native stage receipt
+SHA is02d47c7882e1750e0f911c6b73bc8378e354195bdee193d58545c3c067eb25d2.
+The fixed matching setup started under nativePID58236 at2026-11-03T11:25:15Z;
+confirmation16384runs follows automatically after that actual exit0. This is
+execution progress only,no interim scientific decision or new certificate.
+
 Source commit76d3a772336e0ffd7a568ff2d63a01ebd4ca9a26 was public BEFORE collection.
 Registration commit99afdd57422c0079a7f71d370f3d8fe921398fa1 was verified public
 BEFORE collection. Plan SHA d17c6086b21243bc5080887f9dd52f6d8769f444ef10b092917d88be2e3a0ccc.
