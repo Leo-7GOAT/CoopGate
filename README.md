@@ -1816,7 +1816,8 @@ runtime has its own environment. See the
 ```powershell
 python -m venv .venv-check
 .\.venv-check\Scripts\python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
-.\.venv-check\Scripts\python -m pip install -e ".[dev,fast,baselines]"
+.\.venv-check\Scripts\python -m pip install -e ".[dev,fast]"
+.\.venv-check\Scripts\python -m pip install -r requirements-baselines.txt
 .\.venv-check\Scripts\python -m pytest -q
 .\.venv-check\Scripts\coopgate smoke
 # Open the actual SUMO simulator GUI:

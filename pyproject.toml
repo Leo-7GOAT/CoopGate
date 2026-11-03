@@ -12,7 +12,6 @@ dependencies = ["numpy>=1.26", "scipy>=1.11", "osqp>=1.0", "torch>=2.2", "traci>
 [project.optional-dependencies]
 dev = ["pytest>=8"]
 fast = ["numba>=0.61,<0.66"]
-baselines = ["pandas>=2.2", "scikit-learn>=1.4", "threadpoolctl>=3.1"]
 
 [project.scripts]
 coopgate = "coopgate.cli:main"
@@ -22,4 +21,3 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["src", "tools"]
