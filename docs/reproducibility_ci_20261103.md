@@ -62,3 +62,12 @@ production execution guard changes. The resulting local regression command
 passed 77 tests in 23.90 seconds (actual exit 0, terminal 519c44), including four
 new candidate-search unit regressions. This is not a full workflow pass; the
 next fresh remote run and historical release verifiers still require checking.
+
+Full workflow 41645028464 at source commit
+2a199000449067c03697c08e366977740c635ce0 completed SUCCESSFULLY, including
+pytest and every historical release verifier (35 recorded steps, all success).
+The full metadata is preserved in full_workflow_success.json. Downloading its
+full text log separately failed with a TLS handshake timeout; that transport
+failure is retained and does not change the workflow's authenticated status.
+Later development sources need their own new workflow; this result is tied to
+the stated commit and must not be generalized to an untested future head.

@@ -2,7 +2,17 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
-**Current result (2026-11-03): attempt4 is COMPLETE and joint certification FAILED.**
+**Current result (2026-11-03): powered attempt5 is COMPLETE; joint certification FAILED.**
+All45056 primary and6144 registered paired-ablation SUMO runs and complete
+replays finished. The three genuine MAPPO models improve mean paired cost by
+0.916%/0.916%/0.909%, but seed4704 adoption lower19.854% misses20% and seed4705
+mixture harm upper5.064% exceeds5%. No seed, criterion or spent alpha is removed.
+The full ablations do not reduce harm and lose some gain. The new12-page
+manuscript reports these results and is not submission-ready. See the
+[complete result and reproducibility evidence](docs/mappo_powered_attempt5_completed_20261103.md).
+The archive release remains a draft until its separate publication receipt.
+
+**Earlier attempt4 (retained negative result):**
 All37,888 executions and complete replays finished with actual root exit0.
 Mixture risk uppers are4.745%/6.029%/5.259%;strong-lag4704 is5.333%.
 Adoption and gain requirements pass,but the original5% risk requirement does
@@ -13,7 +23,7 @@ It does not reduce confirmed harm;gain drops.057/.073/.055 percentage points.
 The original interrupted root exit and lost in-flight attempt count stay unknown. See the
 [complete result and recovery status](docs/mappo_formal_attempt4_20261103_results.md).
 
-**New development improvement:** an observed-history lag/bias forecast plus
+**Earlier development finding (not confirmed by the subsequent full ablations):** an observed-history lag/bias forecast plus
 strict crossing-phase rejection reduces known harmful model-initials18→4.
 On80 NEW balanced initials,the three fixed MAPPO actors with this gate achieve
 27.5%/30%/27.5% adoption and1.619%/1.718%/1.663% mean paired gain,with zero
@@ -21,7 +31,7 @@ observed harm or execution failure. All644 actual SUMO runs are independently
 replayed. These are development results,not a replacement formal certificate;
 the new gate loses some opportunities and four known harms remain.
 See [complete new development results](docs/observed_history_20261103_results.md).
-The13-page Chinese manuscript revision includes the failed formal study,the
+The earlier13-page Chinese manuscript revision includes the failed formal study,the
 unfavorable full paired ablation,and this new development;all figures and native
 equations were rendered and visually checked. It is not submission-ready.
 
@@ -35,11 +45,12 @@ No new risk certificate is claimed. See the
 [prospective powered protocol](docs/mappo_formal_attempt5_powered_20261103_protocol.md)
 and [fixed power-planning assumptions](docs/history_power_design_20261103_protocol.md).
 
-**Formal attempt5 is RUNNING.** Exact source76d3a772336e and complete
-registration99afdd57422c were public before collection. The45056-run
-study keeps all original criteria and controls;scheduled alpha.05/30 is spent.
-No interim success or new certification is claimed. See the
-[current immutable scope and live handoff](docs/mappo_powered_history_live_20261103.md).
+**Formal attempt5 collection and all registered completion obligations finished.**
+The original risk/adoption/gain requirements remain unchanged;alpha.05/30 is
+spent and joint certification remains false. Later integrated-search and
+switching-reserve prototypes are development only;no new formal alpha is
+allocated and no clear combined improvement is claimed. Their raw results and
+original implementation failures remain in separate records.
 
 All three local roles are audited as genuinely jointly trained AND active in
 deployment: [training/execution role evidence](docs/deployed_mappo_roles_20261103.md).

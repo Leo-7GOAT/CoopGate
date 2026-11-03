@@ -183,7 +183,6 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,data,figure):
         r=summary[method];rows.append((labels[method],str(r['adopted'])+'/1024',str(r['harmful_adopted']),
                                       num(r['mean_paired_percentage_gain'])+'%',str(r['execution_failures'])))
     table('表 3 全部确认方法的实际闭环结果',['方法','采用回合','有害采用回合','平均配对收益','执行失败'],rows,[4.0,3.4,3.0,3.6,2.4])
-    figure('formal_control_comparisons','图 2 全确认集的目标门控及公平对照；比例为有害采用数除以实际采用数')
     p('有害采用按任一车辆的实际退化定义。零采用失败仍进入执行失败和收益统计。'
       '以上为整个部署控制器的结果，不能归因于集中式 critic 单独优越。原始联合策略相对强团队规划的跨种子优势尚未建立，'
       '已有 IPPO 对照也未支持所有种子一致优越；不以真实 MAPPO 的训练事实替代优越性的实验依据。')
@@ -196,6 +195,7 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,data,figure):
     p('匹配概率全部有效状态为 '+str(comparison['calibration_matching']['all_matching_valid'])+'。'
       '区间由配对不一致事件的四个精确二项单侧界作差，并对三组比较分配规定误差。'
       '覆盖零不证明等价，不把估计匹配描述成实际采用率精确相同。')
+    figure('formal_control_comparisons','图 2 全确认集的目标门控及公平对照；比例为有害采用数除以实际采用数')
     h('9 1 预定场景的完整确认结果',2)
     scenes=data['diagnosis']['by_stage']['confirmation']['by_scene'];rows=[]
     if sum(group['baseline']['initials'] for group in scenes.values())!=1024:
@@ -275,7 +275,7 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,data,figure):
       '计时包含实际推理、物理验证、所有预测路径及历史拟合，未计通信延迟，也未用超时截断掩盖慢调用。'
       '仿真按同步控制周期推进；P95 和最大值必须与 500 ms 周期共同检查。'
       '共享负载、不同采集批次及系统调度影响耗时，不以非配对批次推断因果加速。')
-    p('代码、登记、固定权重、实际退出凭据和逐字节数据清单公开于 https://github.com/Leo-7GOAT/CoopGate。'
+    p('代码、登记与固定权重的公开入口为 https://github.com/Leo-7GOAT/CoopGate；本轮归档含实际退出凭据及逐文件 SHA256，公开交付状态以仓库清单与正式 Release 资产为准，上传中的草稿不计为公开完成。'
       '完整诊断重新计算所有方法统计，并检查零采用轨迹、首次采用前缀及随机弃权分支与各自实际基线或名义运行一致。'
       '正式样本不参与重新选阈值，未来修改必须单独验证。')
     h('11 讨论与结论')
