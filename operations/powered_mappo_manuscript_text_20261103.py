@@ -237,6 +237,11 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,data,figure):
       +join(num(100*old['primary_risk']['members'][s+':mixture']['pointwise_risk_upper'])+'%' for s in seeds)
       +'，失败与全部原始记录均保留。新门控的开发依次包括 644 次历史验证、276 次复用初态相位消融和 1,280 次新的 320 初态功效试验。'
       '已知反例集合用于开发，不能将其损害减少当作独立泛化收益。')
+    recovery=data['prior_paired_recovery']
+    p('前一研究的 3,072 个配对门控消融结果亦全部保留：新增耦合预测路径没有减少确认集损害，平均收益反而分别下降 '
+      +join(num(-recovery['results'][s]['mean_paired_gain_difference_coupled_minus_original']) for s in seeds)
+      +' 个百分点。该比较保留先前 1,375 条持久记录并实际补完 1,697 次缺失运行；'
+      '原中断进程退出状态及丢失的在途尝试总数未知，不将它们改写为成功完成。')
     p('样本量由读取功效试验效果前冻结的 12 设计规则确定。规则在经验分层重采样及规定损害压力假设下，'
       '选择 4,096 校准与 1,024 确认；其模拟通过概率下界不是对真实研究成功率的保证。'
       '扩大样本量是推断设计变化，不是算法改进，也没有降低原风险、采用率或收益门槛。')

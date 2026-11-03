@@ -103,6 +103,11 @@ def build(out):
             raise ValueError('Original study analysis changed')
     data['prior_attempt4'] = dict(certificate=read(old / 'analysis/certificate.json'),
                                   comparison=read(old / 'analysis/comparisons.json'))
+    recovery = owned_report(e.BASE / 'coupled_holdout_ablation_recovery_20261103',
+                            'complete_recorded_old_gate_outcomes', 3072)
+    if recovery['actual_resumed_sumo_executions'] != 1697 or not recovery['original_root_exit_unknown']:
+        raise ValueError('Original interrupted recovery accounting must remain explicit')
+    data['prior_paired_recovery'] = recovery
     data['diagnosis'] = read(e.BASE / 'formal_mappo_attempt5_powered_diagnosis_20261103/report.json')
     if (data['diagnosis']['original_records'] != 45056
             or data['diagnosis']['independent_initials'] != 5120
