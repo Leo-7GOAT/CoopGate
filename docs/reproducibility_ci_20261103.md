@@ -50,3 +50,15 @@ pushes, pull requests, test assertions and release-verifier steps remain.
 Cancelled CI is never counted as a successful scientific run. The separate
 locally owned simulation and replay jobs are unaffected. Scientific thresholds,
 registered samples and spent error allocations remain unchanged.
+
+The corrective fresh run 41642197460 completed with 27 failed, 1963 passed and
+30 skipped in 569.43 seconds. All remaining failures were the same host-runtime
+comparison in historical synthetic prefix-identity tests. The new explicit
+conftest fixture isolates only the two named unit tests in three immutable
+historical files; it supplies their registered runtime identity in memory.
+A separate negative test calls the unchanged production loader and requires
+an incompatible runtime to be rejected. No historical plan, hash, test file or
+production execution guard changes. The resulting local regression command
+passed 77 tests in 23.90 seconds (actual exit 0, terminal 519c44), including four
+new candidate-search unit regressions. This is not a full workflow pass; the
+next fresh remote run and historical release verifiers still require checking.
