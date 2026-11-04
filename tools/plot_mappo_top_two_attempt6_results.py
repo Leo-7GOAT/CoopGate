@@ -57,7 +57,7 @@ def render(out):
     fig.text(.5,-.07,'Original component bounds; alpha=0.05/42; joint acceptance by IUT.\nGain t bound: normal IID exact; otherwise asymptotic.',ha='center',fontsize=12.5)
     fig.tight_layout(rect=(0,0,1,.86));save(fig,'formal_acceptance')
     summary=comp['confirmation_methods'];prefixes=('','nominal_','thinned_','mps_','mamps_')
-    labels=('Gate','Same-pool\nnominal','Thinned\nnominal','MPS','MAMPS')
+    labels=('Gate','Nominal','Thinned','MPS*','MAMPS*')
     all_gains=[summary[p+s]['mean_paired_percentage_gain'] for s in SEEDS for p in prefixes]
     fig,axes=plt.subplots(3,3,figsize=(10,10),sharex=True)
     for column,seed in enumerate(SEEDS):
@@ -78,7 +78,7 @@ def render(out):
             axes[1,column].annotate(str(r['harmful_adopted'])+'/'+str(r['adopted']),(index,0 if not r['adopted'] else 100*r['harmful_adopted']/r['adopted']),xytext=(0,5),textcoords='offset points',ha='center',fontsize=12.5,rotation=45)
     axes[0,0].set_ylabel('Adoption (%)');axes[1,0].set_ylabel('Harm / adopted (%)');axes[2,0].set_ylabel('Paired gain (%)')
     fig.suptitle('All 1,024 IID confirmation initials, including failures',fontsize=16)
-    fig.text(.5,-.01,'Descriptive points; no new certificate. Harm protects every vehicle.\nThinning uses calibration counts; actual adoption rates need not match.',ha='center',fontsize=12.5)
+    fig.text(.5,-.01,'Nominal and thinned use the same expanded candidate pool.\n* Shared-oracle adapters; descriptive comparisons, no new certificate.\nThinning matches adoption in expectation, not exactly.',ha='center',fontsize=12.5)
     fig.tight_layout(rect=(0,.04,1,.97));save(fig,'formal_control_comparisons')
     fig,axes=plt.subplots(1,3,figsize=(10,4.8))
     lower_time=min(summary[p+s]['callback_p95_ms'] for s in SEEDS for p in prefixes)*.7
@@ -94,7 +94,7 @@ def render(out):
         axes[column].set_xticks(xs,shown,rotation=40,ha='right');axes[column].set_title('MAPPO '+seed);axes[column].grid(axis='y',alpha=.18)
     axes[0].set_ylabel('Callback time (ms, log scale)');axes[0].legend(fontsize=12.5)
     fig.suptitle('Complete online callbacks on the shared desktop',fontsize=16)
-    fig.text(.5,-.08,'Every method executes and times its own full callback.\nNo communication latency, deadline cutoff or hard-real-time claim.',ha='center',fontsize=12.5)
+    fig.text(.5,-.08,'Nominal and thinned share the candidate pool; * denotes adapters.\nFull callbacks; no communication latency or hard-real-time claim.',ha='center',fontsize=12.5)
     fig.tight_layout();save(fig,'formal_callback_cost')
     report=dict(plotter_source_sha256=sha(Path(__file__)),source_certificate_sha256=sha(STUDY/'analysis/certificate.json'),source_comparisons_sha256=sha(STUDY/'analysis/comparisons.json'),
         owner_receipt_sha256=sha(STUDY/'orchestrator_native_receipt.json'),joint_deployment_certified=cert['joint_deployment_certified'],

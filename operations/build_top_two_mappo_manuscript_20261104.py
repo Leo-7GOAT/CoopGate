@@ -24,7 +24,7 @@ BASE=ROOT/'artifacts/mappo_ctde_20261101'
 FORMAL=BASE/'formal_mappo_attempt6_top_two_recovery_20261104'
 REFERENCE=ROOT/'artifacts/paper_supplement_20261026/CoopGate_论文实验与理论补充_20261026.docx'
 REFERENCE_SHA='d4310c3a98cae08438cb46db8f8414710c41b2f4d57c39f82fc386b170729ec6'
-FIGURES=BASE/'formal_mappo_attempt6_top_two_figures_20261104'
+FIGURES=BASE/'formal_mappo_attempt6_top_two_figures_20261104_revision2'
 INPUTS={}
 
 

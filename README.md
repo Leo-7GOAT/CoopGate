@@ -2,13 +2,27 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
+**Completed independent result (2026-11-04): all three genuine MAPPO models
+pass the original attempt6 joint risk, adoption and gain requirements.**
+All 59,392 scheduled SUMO method-initial records and independent replays are
+complete on 7,168 initials. Mean paired cost gains are 1.115%/1.093%/1.099%,
+gain lower bounds 0.833%/0.814%/0.814%, adoption lower bounds
+24.513%/24.699%/23.958%, and mixture harm upper bounds
+3.008%/2.928%/3.361%. Original thresholds, all fixed seeds and alpha0.05/42
+remain unchanged. The same-pool thinned controls retain harmful adoptions;
+matching is in expectation, not exact equality. The slow callback tail exceeds
+the 500 ms period, so this is not a hard-real-time deployment claim.
+See [complete results, controls and limitations](docs/mappo_top_two_attempt6_completed_20261104.md).
+The claim concerns the gated closed-loop system on the declared distribution;
+raw-policy superiority and centralized-critic causal advantage remain unproved.
+
 **New development (2026-11-04): complete fresh top-two pilot improves all three models.**
 320 new development initials / 2240 actual SUMO episodes and full replay:
 paired mean gains increase from1.100%/1.110%/1.177% to1.351%/1.372%/1.410%,
 adopted episodes from86/91/86 to97/105/97,with zero observed per-car harm or
 execution failure. This evaluates integrated candidate search plus bounded
 local rank-two proposals; it does not isolate their individual effects.
-The earlier reused-data screen remains FAILED. There is no new risk certificate.
+The earlier reused-data screen remains FAILED. This pilot itself is not a risk certificate.
 See [complete results](docs/top_two_fresh_20261104_results.md) and the
 [fixed independent attempt6 proposal](docs/mappo_top_two_formal_attempt6_20261104_protocol.md).
 The existing models were genuinely trained with joint on-policy MAPPO,
