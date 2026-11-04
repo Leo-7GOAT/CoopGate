@@ -135,6 +135,7 @@ def run():
         postprocessing_sources_sha256={name:r.original.sha(ROOT/name) for name in (
             'operations/build_top_two_paper_evidence_20261104.py',
             'tools/mappo_completed_top_two_attempt6.py',
+            'tools/mappo_reviewed_storage_attempt6.py',
             'tools/recover_mappo_top_two_attempt6.py')})
     OUT.mkdir(exist_ok=False);r.durable(OUT/'evidence.json',result)
     print(json.dumps(dict(completed=True,evidence_sha256=r.original.sha(OUT/'evidence.json'),

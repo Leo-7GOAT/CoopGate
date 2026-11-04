@@ -7,6 +7,7 @@ import argparse
 import json
 from pathlib import Path
 import recover_mappo_top_two_attempt6 as recovery
+from mappo_reviewed_storage_attempt6 import verify_reviewed_blocks
 
 e = recovery.original
 
@@ -60,7 +61,7 @@ def complete_evidence(study=None):
                 raise ValueError('Per-shard exact replay or physical execution accounting differs')
             # Validate every scheduled sealed block identity/hash without using
             # effects to decide which records should remain in the dataset.
-            executions = sum(1 for _ in e.reviewed_records(study, stage, shard, plan))
+            executions = verify_reviewed_blocks(e,study,stage,shard,plan)['executions']
             if executions != expected_n:
                 raise ValueError('Sealed full schedule differs from native receipts')
             counts.append(actual)
