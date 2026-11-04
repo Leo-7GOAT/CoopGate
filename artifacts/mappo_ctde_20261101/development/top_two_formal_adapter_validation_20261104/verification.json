@@ -1,0 +1,54 @@
+{
+  "validation_only": true,
+  "formal_samples": 0,
+  "error_allocated": false,
+  "actual_sumo_executions": 64,
+  "full_independent_reviews": 64,
+  "source_verification_sha256": "90dac215e1b2321f76ea6aea308c16873e418cab2a10074f3d4738fb87fc55dc",
+  "stages": [
+    {
+      "stage": "validation",
+      "action": "collect",
+      "native_pid": 69572,
+      "command": [
+        "C:\\Users\\Leo\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-S",
+        "-c",
+        "import sys,site,runpy;package=sys.argv.pop(1);root=sys.argv.pop(1);script=sys.argv.pop(1);sys.argv[0]=script;site.addsitedir(package);sys.path.insert(0,package);sys.path.insert(0,root+\"/src\");sys.path.insert(0,root+\"/tools\");runpy.run_path(script,run_name=\"__main__\")",
+        "C:\\Users\\Leo\\Desktop\\papper\\.venv\\Lib\\site-packages",
+        "C:\\Users\\Leo\\Desktop\\papper\\CoopGate",
+        "C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\tools\\mappo_top_two_formal_experiment.py",
+        "collect",
+        "--stage",
+        "validation",
+        "--validation"
+      ],
+      "started_utc": "2026-11-04T02:22:34.754996+00:00",
+      "actual_native_exit_code": 0,
+      "finished_utc": "2026-11-04T02:23:24.178854+00:00",
+      "plan_sha256": "f947e8d8bc333a4e2b0a78832560ef4e0f8d769f33ec2a15b8df7054908317c3",
+      "collection_complete_sha256": "bcc02988b9a692d903d95ef3b0d0344857ca2b6f2561ab4ba403a4fff57abd5b"
+    },
+    {
+      "stage": "validation",
+      "action": "review",
+      "native_pid": 20316,
+      "command": [
+        "C:\\Users\\Leo\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-S",
+        "-c",
+        "import sys,site,runpy;package=sys.argv.pop(1);root=sys.argv.pop(1);script=sys.argv.pop(1);sys.argv[0]=script;site.addsitedir(package);sys.path.insert(0,package);sys.path.insert(0,root+\"/src\");sys.path.insert(0,root+\"/tools\");runpy.run_path(script,run_name=\"__main__\")",
+        "C:\\Users\\Leo\\Desktop\\papper\\.venv\\Lib\\site-packages",
+        "C:\\Users\\Leo\\Desktop\\papper\\CoopGate",
+        "C:\\Users\\Leo\\Desktop\\papper\\CoopGate\\tools\\mappo_top_two_formal_experiment.py",
+        "review",
+        "--stage",
+        "validation",
+        "--validation"
+      ],
+      "started_utc": "2026-11-04T02:23:24.198880+00:00",
+      "actual_native_exit_code": 0,
+      "finished_utc": "2026-11-04T02:23:53.349547+00:00"
+    }
+  ]
+}
