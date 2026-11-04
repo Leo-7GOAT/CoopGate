@@ -4,6 +4,9 @@ The nominal/thinned comparator receives the SAME bounded rank-two candidate
 provider as the target. MPS/MAMPS remain disclosed raw-proposal adapters.
 """
 from types import FunctionType
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import mappo_powered_history_formal_runtime as old
 from coopgate.recovery_joint_gate_v35 import RecoveryJointGate
 from coopgate.episode_thinning_control import EpisodeThinnedNominal
