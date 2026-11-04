@@ -2,15 +2,29 @@
 
 **Reproducible confidence gating and cooperative merge control in Eclipse SUMO.**
 
+**New development (2026-11-04): complete fresh top-two pilot improves all three models.**
+320 new development initials / 2240 actual SUMO episodes and full replay:
+paired mean gains increase from1.100%/1.110%/1.177% to1.351%/1.372%/1.410%,
+adopted episodes from86/91/86 to97/105/97,with zero observed per-car harm or
+execution failure. This evaluates integrated candidate search plus bounded
+local rank-two proposals; it does not isolate their individual effects.
+The earlier reused-data screen remains FAILED. There is no new risk certificate.
+See [complete results](docs/top_two_fresh_20261104_results.md) and the
+[fixed independent attempt6 proposal](docs/mappo_top_two_formal_attempt6_20261104_protocol.md).
+The existing models were genuinely trained with joint on-policy MAPPO,
+a centralized critic and three decentralized actors; this follow-up does not
+retrain them or deploy their critic. The paper is not submission-ready.
+
 **Current result (2026-11-03): powered attempt5 is COMPLETE; joint certification FAILED.**
-All45056 primary and6144 registered paired-ablation SUMO runs and complete
+All45056 main-study and6144 registered paired-ablation SUMO runs and complete
 replays finished. The three genuine MAPPO models improve mean paired cost by
 0.916%/0.916%/0.909%, but seed4704 adoption lower19.854% misses20% and seed4705
 mixture harm upper5.064% exceeds5%. No seed, criterion or spent alpha is removed.
 The full ablations do not reduce harm and lose some gain. The new12-page
 manuscript reports these results and is not submission-ready. See the
 [complete result and reproducibility evidence](docs/mappo_powered_attempt5_completed_20261103.md).
-The archive release remains a draft until its separate publication receipt.
+The [complete archive release](https://github.com/Leo-7GOAT/CoopGate/releases/tag/mappo-attempt5-complete-20261103)
+is public,with its separately verified publication receipt.
 
 **Earlier attempt4 (retained negative result):**
 All37,888 executions and complete replays finished with actual root exit0.
