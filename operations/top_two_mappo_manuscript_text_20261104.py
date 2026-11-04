@@ -27,7 +27,7 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,data,old_data,fi
       '门控需要同时控制采用后的逐车退化、保持足够采用率，并产生相对强基线的实际收益。')
     p('本文针对一种具体失效方式改进候选搜索：原选择器可能先挑选一个名义上最优的指令，再因额外历史或相位条件否决它，'
       '从而丢弃其余可能通过的候选。我们在排序后的搜索中逐个检验这些条件，并利用各 actor 的局部次优偏好增加有限替代指令。'
-      '方案保持同一物理基线、演员参数及收益门槛；其作用需要由完整闭环结果验证，不能由候选集合扩大直接推出。')
+      '方案保持同一物理基线、策略参数及收益门槛；其作用需要由完整闭环结果验证，不能由候选集合扩大直接推出。')
     p('本文的研究内容是候选级的相对性能筛选、观测历史条件下的物理分析，以及采用后风险与用途的独立联合验证。'
       'MAPPO、学习加备份、预测安全过滤和统计校准均有既有研究，本文不主张首次提出这些范式。'
       '开发数据用于选择固定方案，正式样本不重新选择模型或阈值。')
@@ -94,6 +94,11 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,data,old_data,fi
         rows=[(s,num(100*risk[s+':mixture']['pointwise_risk_upper'])+'%',num(100*risk[s+':strong_lag']['pointwise_risk_upper'])+'%',
             num(100*cert['adoption']['members'][s]['adoption_lower'])+'%',num(cert['paired_gain']['members'][s]['gain_lower_percent'])+'%') for s in seeds]
         table('表 2 三个固定模型的正式单侧界',['模型','混合风险上界','强滞后风险上界','采用率下界','收益下界'],rows,[1.5,3.9,4.0,3.5,3.5])
+        calibration_harm=cert['primary_risk']['members']
+        p('三个模型的校准有害采用数与采用数分别为 '+join(
+          str(calibration_harm[s+':mixture']['harmful_adoptions'])+'/'+str(calibration_harm[s+':mixture']['adoptions']) for s in seeds)
+          +'；强滞后子组分别为 '+join(str(calibration_harm[s+':strong_lag']['harmful_adoptions'])+'/'+str(calibration_harm[s+':strong_lag']['adoptions']) for s in seeds)
+          +'。这些已观察退化全部保留。确认目标的零观测损害不抹除校准退化，也不意味着总体零风险。')
         figure('formal_acceptance','图 1 原定风险 采用率及收益条件的联合验证')
         order=['baseline']+[prefix+s for s in seeds for prefix in ('','nominal_','thinned_','mps_','mamps_')]
         labels={'baseline':'传统基线'}
@@ -106,8 +111,8 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,data,old_data,fi
             q=comparison['adoption_differences'][s]
             rows.append((s,num(comparison['calibration_matching']['probabilities'][s],4),num(100*q['observed_difference']),
                          '['+num(100*q['lower'])+', '+num(100*q['upper'])+']'))
-        table('表 4 目标与弃权对照的采用率差',['模型','校准硬币概率','实际差 百分点','区间 百分点'],rows,[1.6,4.0,5.0,5.8])
-        p('全部匹配概率有效状态为 '+str(comparison['calibration_matching']['all_matching_valid'])+'。'
+        table('表 4 目标与弃权对照的采用率差',['模型','校准采用概率','实际差 百分点','区间 百分点'],rows,[1.6,4.0,5.0,5.8])
+        p(('三组校准采用概率均有效，对照均已完整执行。' if comparison['calibration_matching']['all_matching_valid'] else '存在无效匹配概率，不将失效对照报告为采用率匹配。')+
           '区间来自配对不一致事件的四个精确二项单侧界，并按原规定在三组比较内分配误差。覆盖零不证明等价，'
           '校准估计不保证确认集或总体采用率精确相同。对照的收益和损害点值是描述性比较，不另行产生部署证书。')
         rows=[]
@@ -163,7 +168,10 @@ def compose(p,h,eq,table,num,sub,frac,summation,cert,comparison,data,old_data,fi
             active=text.startswith(('2 ','3 ','4 ','6 ')) or text=='参考文献'
             if text.startswith('5 '):methods()
             if text.startswith('7 '):remaining()
-        if active:return h('4 MAPPO 联合训练' if text=='4 真实 MAPPO 联合训练' else text,level)
+        if active:
+            headings={'4 真实 MAPPO 联合训练':'4 MAPPO 联合训练',
+                      '3 物理模型、任务与传统基线':'3 物理模型及任务与传统基线'}
+            return h(headings.get(text,text),level)
     def filtered_eq(*args):
         if active:return eq(*args)
     # Reuse already audited physical/training/conditional-theory prose and native

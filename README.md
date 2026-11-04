@@ -15,6 +15,11 @@ the 500 ms period, so this is not a hard-real-time deployment claim.
 See [complete results, controls and limitations](docs/mappo_top_two_attempt6_completed_20261104.md).
 The claim concerns the gated closed-loop system on the declared distribution;
 raw-policy superiority and centralized-critic causal advantage remain unproved.
+The [updated Chinese manuscript](artifacts/mappo_ctde_20261101/paper_completed_top_two_20261104/CoopGate_MAPPO候选搜索与置信门控论文_20261104.docx)
+contains 11 visually reviewed pages,14 editable equations,7 numerical tables
+and3 actual-result figures. All table values are checked against terminal
+evidence. Complete raw archives are delivered through repository Releases;
+the earlier interruption evidence and failed studies remain separately available.
 
 **New development (2026-11-04): complete fresh top-two pilot improves all three models.**
 320 new development initials / 2240 actual SUMO episodes and full replay:
@@ -29,7 +34,7 @@ The existing models were genuinely trained with joint on-policy MAPPO,
 a centralized critic and three decentralized actors; this follow-up does not
 retrain them or deploy their critic. The paper is not submission-ready.
 
-**Current result (2026-11-03): powered attempt5 is COMPLETE; joint certification FAILED.**
+**Previous result (2026-11-03): powered attempt5 is COMPLETE; joint certification FAILED.**
 All45056 main-study and6144 registered paired-ablation SUMO runs and complete
 replays finished. The three genuine MAPPO models improve mean paired cost by
 0.916%/0.916%/0.909%, but seed4704 adoption lower19.854% misses20% and seed4705
@@ -75,9 +80,9 @@ and [fixed power-planning assumptions](docs/history_power_design_20261103_protoc
 
 **Formal attempt5 collection and all registered completion obligations finished.**
 The original risk/adoption/gain requirements remain unchanged;alpha.05/30 is
-spent and joint certification remains false. Later integrated-search and
-switching-reserve prototypes are development only;no new formal alpha is
-allocated and no clear combined improvement is claimed. Their raw results and
+spent and its joint certification remains false. The initial integrated-search
+and switching-reserve prototypes were development only,without allocating
+formal alpha or establishing a clear combined improvement. Their raw results and
 original implementation failures remain in separate records.
 
 All three local roles are audited as genuinely jointly trained AND active in
