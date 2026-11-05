@@ -95,7 +95,7 @@ coopgate smoke --gui
 python tools/mappo_completed_top_two_attempt6.py
 ```
 
-复核器要求原运行依赖版本与登记一致；不匹配时会拒绝，不应修改登记文件绕过检查。动画可直接用公开摘录重建，无需下载完整实验：
+复核器要求原运行依赖版本与登记一致；不匹配时会拒绝，不应修改登记文件绕过检查。中文动画可直接用公开摘录重建，无需下载完整实验；系统需提供微软雅黑、Noto Sans CJK 或文泉驿微米黑字体：
 
 ```bash
 python tools/render_gate_comparison.py --out runs/gate-comparison
