@@ -8,9 +8,13 @@ CoopGate 研究固定路线三车汇入中的一个问题：**学习策略提出
 
 ## 仿真记录回放
 
-![已完成 SUMO 记录的纵向状态示意回放](media/recorded_replay.gif)
+![同场景三方对比：传统基线、同候选池名义控制与置信门控 MAPPO](media/gate_comparison/comparison.gif)
 
-实心标记为门控 MAPPO，空心标记为配对传统基线。动画展示固定模型 4703 在确认分片 0 中按顺序出现的首个全程回退案例和首个采用学习指令案例；不按收益挑选。**画面来自封存 SUMO 记录的示意重绘，三行表示车辆角色，不是物理车道，也不是 SUMO-GUI 录屏。** 按 2 倍速播放，不新增实验或统计样本。[原始字段摘录](media/replay_cases.json) · [来源与校验](media/replay_provenance.json)
+左、中、右三栏共享相同初态、执行器和扰动，分别展示传统基线、去掉置信与历史过滤的同候选池方案、完整置信门控。所有方案均保留物理检查。动画在首次采用学习指令时暂停，展示 **0.396% 的预测收益分数通过 0.250% 门槛**，其余未选中学习指令的区间执行基线。
+
+本例中，名义控制采用 5 个学习控制区间，汇入车代价比基线增加 0.0625；门控只采用 1 个区间，代价减少 0.125。**三方到达时间相同，该例的改善来自实际命令变化项，不能解读为通行更快或避免碰撞。** 右下角同时展示模型 4703 在全部 1,024 个确认初态上的退化数与平均收益，保留名义方案平均收益更高的取舍。
+
+案例按分片 0 的顺序选择首个“门控有采用、名义方案有逐车成本退化”的模型 4703 回合，不按收益大小排序；这是为解释行为而按结果条件选取的案例，不是代表性随机样本。**道路投影与帧间插值为示意，数据来自封存 SUMO 记录，非 GUI 录屏，不新增实验。** 正常片段 2 倍速，采用节点和结尾有停顿。[静态结果图](media/gate_comparison/comparison.png) · [记录摘录](media/gate_comparison/case.json) · [来源校验](media/gate_comparison/provenance.json) · [基础回放](media/recorded_replay.gif)
 
 ## 核心贡献
 
@@ -94,7 +98,7 @@ python tools/mappo_completed_top_two_attempt6.py
 复核器要求原运行依赖版本与登记一致；不匹配时会拒绝，不应修改登记文件绕过检查。动画可直接用公开摘录重建，无需下载完整实验：
 
 ```bash
-python tools/render_readme_replay.py --out runs/readme-replay
+python tools/render_gate_comparison.py --out runs/gate-comparison
 ```
 
 ## 代码与研究资料
